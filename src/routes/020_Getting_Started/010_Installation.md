@@ -3,7 +3,7 @@
     import Figure from "../../lib/figures/Figure.svelte";
 </script>
 
-# Installing and Using ProjectIt
+# Installing and Using Freon
 
 Be sure to have <a href="https://nodejs.org/" target="_blank">node.js</a> 
 and <a href="https://yarnpkg.com/" target="_blank">yarn</a>
@@ -11,11 +11,11 @@ running. We are typically using the latest versions of all,
 although older versions likely work just as well.
 You could also try and use <a href="https://www.npmjs.com/" target="_blank">npm</a> instead of yarn.
 
-There are two ways to start with ProjectIt, either use our
+There are two ways to start with Freon, either use our
 Example project or use our Template project.
 
 ## Start with the Example Project
-The simplest manner to start working with ProjectIt is to clone the example project from github.
+The simplest manner to start working with Freon is to clone the example project from github.
 In the following the root of your project will be indicated with '~'.
 
 *   Clone branch `master` from <a href="https://github.com/projectit-org/ProjectIt-example" target="_blank">
@@ -61,7 +61,7 @@ If you are having trouble using the editor, have a look at the key-bindings unde
 
 ## Start with the Template project
 
-Another way to start working with ProjectIt is to clone our template project from github. The template 
+Another way to start working with Freon is to clone our template project from github. The template 
 project provides a shell for the generated editor that enables the user to work with multiple models and
 [model units](/010_Intro/030_Models_and_Model_Units).
 In the following the root of the project will be indicated with '~'.
@@ -81,7 +81,7 @@ In the following the root of the project will be indicated with '~'.
 
 *	Create a language definition file which defines the structure of your language. The 
      extension of this file must be `.ast`. You can, for instance, copy
-     `EntityLanguage.ast` from the ProjectIt example to your own `defs`-folder. Or, you can follow the 
+     `EntityLanguage.ast` from the Freon example to your own `defs`-folder. Or, you can follow the 
      tutorial on [language structure definition](/030_Developing_a_Language/010_Default_Level).
 
 <Note>
@@ -149,11 +149,15 @@ If you are having trouble using the editor, have a look at the key-bindings unde
 </Note>
 
 ## Next steps
-Now you are ready for a closer look at ProjectIt. You can for instance:
+Now you are ready for a closer look at Freon. You can for instance:
 
 * Have a look at how the example language is defined by browsing through the language definition
 files in the <a href="https://github.com/projectit-org/ProjectIt-example" target="_blank">ProjectIt Example project</a>.
   You can find them in `~/src/defs`.
 * Read [Developing a language](/030_Developing_a_Language) to see how you can create your own language.
 * Have a look at the [structure](/020_Getting_Started/020_Project_Structure) of the generated project.
-* See what the different options there are for calling the [ProjectIt generator](/020_Getting_Started/030_Calling_the_Generator).
+* See what the different options there are for calling the [Freon generator](/020_Getting_Started/030_Calling_the_Generator).
+
+If you are working with Webstorm, you might consider installing the 
+plugin <a href="https://plugins.jetbrains.com/plugin/7677-awesome-console" target="_blank">Awesome Console</a>.
+This plugin redirects a click on an error message in the console to the correct position in any of the language definition files.

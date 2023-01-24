@@ -1,10 +1,10 @@
 
-# The ProjectIt Core Interfaces
+# The Freon Core Interfaces
 
-There are two series of interfaces that make ProjectIt and its generated code extensible and flexible. The first
+There are two series of interfaces that make Freon and its generated code extensible and flexible. The first
 series are the xref:../tools-interfaces/tools-interfaces-intro[interfaces of the generated code].
 
-The second series of interfaces are those that define parts of the core of the ProjectIt framework:
+The second series of interfaces are those that define parts of the core of the Freon framework:
 
 * [PiProjection](/060_Under_the_Hood/010_The_Editor_Framework/020_The_Editor_Interfaces/010_PiProjection_Interface)
 * [PiActions](/060_Under_the_Hood/010_The_Editor_Framework/020_The_Editor_Interfaces/020_PiAction_Interface)

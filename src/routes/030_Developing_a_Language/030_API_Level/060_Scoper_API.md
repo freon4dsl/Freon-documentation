@@ -86,7 +86,7 @@ export interface PiScoper {
 ```
 
 ## Adjusting the Environment
-Furthermore, you need to tell ProjectIt to use this new scoper instead of the generate one. You do this by
+Furthermore, you need to tell Freon to use this new scoper instead of the generate one. You do this by
 changing the line that initializes the scoper in the class `<yourLanguageName>Environment`. You can find it
 in `~/picode/environment/`. Obviously,
 you need to exchange `<yourLanguageName>` by the name of the language that you are creating.

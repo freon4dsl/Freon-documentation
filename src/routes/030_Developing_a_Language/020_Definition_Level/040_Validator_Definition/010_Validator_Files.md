@@ -13,7 +13,7 @@ Given a simple property of type *identifier*, a **valid-identifier-rule** can be
 rule if it is a valid identifier according to the TypeScript definition.
 
 For a *valid-identifier-rule* the `validIdentifier` keyword is used followed by an optional simple property. When the
-property is present, this property is checked. When the property is not present, ProjectIt assumes that the
+property is present, this property is checked. When the property is not present, Freon assumes that the
 concept has a simple property named ‘`name`’ of type ‘`identifier`’, and it will check this property.
 
 

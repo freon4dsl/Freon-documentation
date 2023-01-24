@@ -92,6 +92,7 @@
                   ]},
          { name: 'Source Code Documentation', path: '/060_Under_the_Hood/030_Source_Code_Documentation'},
                ]},
+      { name: 'Release notes', path: '/090_Release_notes'},
       { name: 'About', path: '/099_about'},];
 	</script>
 	

@@ -20,7 +20,7 @@ language DocuProject
 ```
 
 ## Concepts
-The ProjectIt language structure, which describes the abstract syntax tree (AST), consists of a
+The Freon language structure, which describes the abstract syntax tree (AST), consists of a
 list of a [Models](/030_Developing_a_Language/010_Default_Level/010_Defining_the_Language_Structure#Model), 
 [Model Units](/030_Developing_a_Language/010_Default_Level/010_Defining_the_Language_Structure#Model_Unit),
 [Concepts](/030_Developing_a_Language/010_Default_Level/010_Defining_the_Language_Structure#Concept),
@@ -123,7 +123,7 @@ A *binary expression concept* is an expression concept that has two sub expressi
 and an operator, which in the concrete syntax usually goes in the middle. For example, the expression `4 + 5` 
 has as left operand `4`, as operator `+`, and as right operand `5`. 
 
-Any concrete binary expression concept needs to have a priority. The priority is used by ProjectIt to balance the 
+Any concrete binary expression concept needs to have a priority. The priority is used by Freon to balance the 
 abstract syntax tree (see [Projectional Editing](/010_Intro/010_Projectional_Editing#tree-balancing)). In 
 the [second level tutorial](/030_Developing_a_Language/020_Definition_Level/010_Editor_Definition/050_Other_Options) you can 
 find more information on how to set the operand.

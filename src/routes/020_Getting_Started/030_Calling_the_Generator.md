@@ -3,9 +3,9 @@
     import Figure from "../../lib/figures/Figure.svelte";
 </script>
 
-# Use of the ProjectIt Generator
+# Use of the Freon Generator
 
-The ProjectIt commandline tool generates code from the various definition files as described in
+The Freon commandline tool generates code from the various definition files as described in
 [A Language in Five Parts](/010_Intro/040_A_Language_in_Five_Parts).
 If you type ‘`projectit`’ in a (bash) terminal you will see
 an overview of the different

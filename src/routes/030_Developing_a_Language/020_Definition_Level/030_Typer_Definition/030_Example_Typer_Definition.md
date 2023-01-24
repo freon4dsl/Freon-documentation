@@ -5,7 +5,7 @@ This example shows how generic types and unit of measurements can be defined.
 ## The Typer Definition of the Example Language
 
 Once the structure of the example language is defined, we are able to focus on 
-the typer definition. Because types in ProjectIt do not reside within the AST, 
+the typer definition. Because types in Freon do not reside within the AST, 
 but are completely separate from it, we need to associate a type concept with 
 each of our AST concepts.
 

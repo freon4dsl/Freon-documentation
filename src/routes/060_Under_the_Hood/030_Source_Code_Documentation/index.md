@@ -1,13 +1,13 @@
 
 # Source Code Documentation
 
-The source code for the development of ProjectIt is organised into the following packages.
+The source code for the development of Freon is organised into the following packages.
 
 * *docs*: documentation, i.e. this website
 * *packages/core*: framework source code.
 * *packages/core/src/editor*: the editor framework source code.
 * *packages/core/src/language/decorators*: source code for <a href="https://mobx.js.org/" target="_blank">MobX</a> decorators that can be used to easily implement a language that can be
-directly used by ProjectIt.
+directly used by Freon.
 * *packages/meta*: source code that reads the language definition files and generates the language environment.
 * *packages/meta/src/languagedef*: source code that generates code from a language structure definition (*.ast*) file.
 * *packages/meta/src/editordef*: source code that generates code from an editor definition (*.edit*) file.

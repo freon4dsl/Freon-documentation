@@ -1,7 +1,7 @@
 
 # The Pi-tool Interfaces
 
-There are two series of interfaces that make ProjectIt and its generated code extensible and flexible. The first
+There are two series of interfaces that make Freon and its generated code extensible and flexible. The first
 series are the interfaces implemented by the generated code:
 
 * [PiEnvironment](/060_Under_the_Hood/020_The_PiTool_Interfaces/010_PiEnvironment_Interface)
@@ -13,4 +13,4 @@ series are the interfaces implemented by the generated code:
 * [PiStdlib](/060_Under_the_Hood/020_The_PiTool_Interfaces/080_PiStandardlib_Interface)
 
 The second series of interfaces are those that define parts of the
-[ProjectIt Editor Framework](/060_Under_the_Hood/010_The_Editor_Framework).
+[Freon Editor Framework](/060_Under_the_Hood/010_The_Editor_Framework).
