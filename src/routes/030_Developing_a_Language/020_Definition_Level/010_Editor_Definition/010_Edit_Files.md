@@ -73,7 +73,7 @@ InsurancePart*
 ```
 
 ### <a name="ordering"></a> Precedence of Editors
-The named editors are ordered; the order can be indicated by adding a **precendence** to the editor. The
+The named editors are ordered; the order can be indicated by adding a **precedence** to the editor. The
 projections are found based on this order. The `default` editor is always the last (i.e. its precedence is 0).
 If a box/projection for a concept is not present in the editor with the highest precedence,
 then the next editor is searched for a projection for the concept and so on, till the default editor is reached.

@@ -61,15 +61,15 @@ figureNumber={2}
 In the above figure, when the user types a `+` symbol after the `**`, it is not enough
 to simply add the `+` in the AST.
 
-* First of all,  a placeholder should be added to make the xpression strcuturally correct,
+* First of all, a placeholder should be added to make the expression structurally correct,
   so we should see something like
   * `a * ... + b`.
 * Doing so will lead to the second AST shown.
 * But ... this AST is not balanced right!
   *  When adding parenthesis to show the AST, this will look like `a * (... + b)`
-  * But the user (using his knowledge of priorities of `**` and `+` will read `(a * ...) + b`.
+  * But the user (using his knowledge of priorities of `**` and `+`) will read `(a * ...) + b`.
 * Therefore, the AST needs to be re-balanced to take the priorities of the multiplication and addition into account.
-  This re-balancing leads to the trhird AST show, where the structure of the AST
+  This re-balancing leads to the third AST show, where the structure of the AST
   properly reflects what the user understands.
 
 Freon understands this kind of tree balancing and will automatically apply them while editing expressions.

@@ -17,6 +17,9 @@ caption={'Screenshot of commandline options'}
 figureNumber={1}
 />
 
+// TODO  update screenshot to current
+// FIXME  *all* within a Svelte fragment doesn't render as Markdown
+
 <Note>
 <svelte:fragment slot="header"> Incomplete code</svelte:fragment>
 <svelte:fragment slot="content">

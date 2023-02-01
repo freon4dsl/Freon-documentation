@@ -54,7 +54,7 @@ behind the tool.
 ## What Are You: a _Language Engineer_ or a _User_?
 We assume that people who want to use Freon know at least the basics of making mini-languages. For instance,
 the terms metamodel, abstract syntax tree, scope, concrete syntax, parsing, etc., should be familiar. When we address the Freon
-user we call him, or her a **language engineer**. The people that will be using the generated work environment are simply called **users**.
+user we call them a **language engineer**. The people that will be using the generated work environment are simply called **users**.
 
 ## Welcome, Language Engineer
 So welcome, language engineer, to the world of Freon. This website is meant for you. It explains how Freon can help 

@@ -59,9 +59,9 @@ concept InsurancePart {
 
 ## Optional Properties
 Properties may be optional. This is indicated using a question mark after the property name. 
-Lists are always considered to be optional, there is no need for the question mark there.
+Lists are always considered to be optional - there is no need for the question mark there.
 
-Because this causes problem is the editor, simple properties may not be optional at the moment.
+Because this causes problems in the editor, simple properties may not be optional at the moment.
 
 ```ts
 // docu-project/defs/language-main.ast#L57-L59

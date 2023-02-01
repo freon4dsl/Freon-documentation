@@ -2,7 +2,7 @@
 #  PiValidator
 
 An object that implements `PiValidator` is able to validate a node in the AST. The
-validation can be only on the node itself, or it can include all child-nodes resursively.
+validation can be only on the node itself, or it can include all child-nodes recursively.
 
 The errors that are found are returned in the form of a list of `PiError` objects. Every `PiError`
 holds a message, and a reference to the node that is faulty.

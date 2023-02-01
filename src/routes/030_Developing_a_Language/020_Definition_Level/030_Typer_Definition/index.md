@@ -16,7 +16,7 @@ For each *concept* in the AST the typer will
 2. use to the *typing rule(s) generated from the typer definition*, when this definition is present. 
 
 There are no default typing rules, so the typer does not have a fallback to a third level, that is,
-when ask for the type of an AST node thetyper will simply return a null value.
+when ask for the type of an AST node the typer will simply return a null value.
 
 ## Content
 In [Typer Files](/030_Developing_a_Language/020_Definition_Level/030_Typer_Definition/010_Typer_Files) you can find an explanation of the parts of a typer definition.

@@ -16,7 +16,7 @@ types of expressions.
     structure models.
     (We already have a prototype based on 
 the <a href="https://github.com/dslmeinte/mps-open-source/tree/master/mps-analyser" target="_blank"> MPS Analyser</a>
-    from Meinte Broersma.)
+    from Meinte Boersma.)
 * Improve the *diagrammatic view* of the language definition and make the generation customizable.
 * ...
 

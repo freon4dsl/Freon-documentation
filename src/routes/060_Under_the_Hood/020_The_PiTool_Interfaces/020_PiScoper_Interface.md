@@ -2,7 +2,7 @@
 #  PiScoper
 
 An object that implements `PiScoper` is able to return the named elements that are visible
-for a certain AST node. This node can be a 'normal' model element or it can be a namespace.
+for a certain AST node. This node can be a 'normal' model element, or it can be a namespace.
 If the node is a 'normal' element, the names visbible in its (lexical) surrounding namespace
 are returned.
 

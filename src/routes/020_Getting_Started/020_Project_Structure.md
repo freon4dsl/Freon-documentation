@@ -6,7 +6,7 @@
 
 This description of the project structure of a Freon project is based on 
 the <a href="https://github.com/projectit-org/ProjectIt-example" target="_blank">ProjectIt-example</a> project which
-you can clone from github.
+you can clone from GitHub.
 
 The source code (in `~/src`) in a Freon project is organised into the following subfolders.
 
@@ -50,7 +50,7 @@ ordinary HTML and in Markdown format. In the future we plan to make the generati
   in string format to a file.
 
 * *webapp*: source code for the web-application used for all generated languages.
-* Note worthy is the file `picode/webapp/config/WebappConfiguration.ts`. This file holds the references to the generated language
+* Noteworthy is the file `picode/webapp/config/WebappConfiguration.ts`. This file holds the references to the generated language
 workbench and the web address of the server which stores your user's models.
 
 Another folder that can be found in the project is `~/modelstore`. This is the folder where

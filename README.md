@@ -38,5 +38,5 @@ yarn dev -- --open
 
 In de docs folder:
 
-- Check whether the .nojekyll file is there, to avoid github from doing stuff that breaks the site.
+- Check whether the .nojekyll file is there, to avoid GitHub from doing stuff that breaks the site.
 - Check whether the CNAME file with www.projectit.org is there
