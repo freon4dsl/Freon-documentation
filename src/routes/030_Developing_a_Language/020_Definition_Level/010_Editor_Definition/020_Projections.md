@@ -25,7 +25,7 @@ This is
 
 ## Including Properties
 When you define a projection for a concept or interface, you will want to include its properties. For
-this you need to use the special notation `${}`. This tells ProjectIt to include a property, according to the projection
+this you need to use the special notation `${}`. This tells Freon to include a property, according to the projection
 that is defined for the type of the property.
 
 In the following example `self.body` is a property of type `DocuExpression`.
@@ -65,11 +65,11 @@ Because you may only use direct properties, the prefix <code>self</code> may be 
 
 ### <a name="named_projection"></a> Including a Property Projection from Another Editor
 Normally, the property that you include will be displayed according to the projection of its type. This projection 
-will be found by ProjectIt using the [ordering](/030_Developing_a_Language/020_Definition_Level/010_Editor_Definition/010_Edit_Files#ordering)
+will be found by Freon using the [ordering](/030_Developing_a_Language/020_Definition_Level/010_Editor_Definition/010_Edit_Files#ordering)
 as defined in the configuration. 
 
 When you specifically want to use another projection, you can use a **named property projection**. In that case, 
-ProjectIt will use the projection defined for the concept in the editor with the specified name.
+Freon will use the projection defined for the concept in the editor with the specified name.
 
 In this example, the projection for `self.parts` will first be searched in the editor named `comments`.
 If it cannot be found, the normal ordering of projections will proceed.
@@ -148,7 +148,7 @@ the headers of the table and which parts of the list elements are displayed in w
 <Note>
 <svelte:fragment slot="content">
 Note that you only need to include one
-table projection for both column and row based tables. ProjectIt will swap the entries when needed.
+table projection for both column and row based tables. Freon will swap the entries when needed.
 </svelte:fragment>
 </Note>
 

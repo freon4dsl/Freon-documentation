@@ -19,6 +19,6 @@ export interface PiProjection {
 ```
 
 Implementing this interface should return a *Box* for each `element` in the AST.
-ProjectIt includes boxes of various types (textual, tabular, horizontal or vertical collections, etc.)
+Freon includes boxes of various types (textual, tabular, horizontal or vertical collections, etc.)
 to define this projection.
 The box model is further described in the xref:../framework/editor-framework[editor framework].

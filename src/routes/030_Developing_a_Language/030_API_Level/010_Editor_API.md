@@ -5,7 +5,7 @@ At the API level the editor can be changed by implementing two interfaces:
 [`PiProjection`](/060_Under_the_Hood/010_The_Editor_Framework/020_The_Editor_Interfaces/010_PiProjection_Interface) and 
 [`PiAction`](/060_Under_the_Hood/010_The_Editor_Framework/020_The_Editor_Interfaces/020_PiAction_Interface). But
 before you dive into all this, we suggest that you become familiar with the information
-about the [ProjectIt Editor Framework](/060_Under_the_Hood/010_The_Editor_Framework).
+about the [Freon Editor Framework](/060_Under_the_Hood/010_The_Editor_Framework).
 
 
 ## Learning More

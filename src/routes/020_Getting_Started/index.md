@@ -1,7 +1,7 @@
 
-# Getting Started with ProjectIt
+# Getting Started with Freon
 
-To get started with **ProjectIt**, please, read the following pages in order.
+To get started with **Freon**, please, read the following pages in order.
 
 1. [Installation](/020_Getting_Started/010_Installation)
 2. [Project Structure](/020_Getting_Started/020_Project_Structure)

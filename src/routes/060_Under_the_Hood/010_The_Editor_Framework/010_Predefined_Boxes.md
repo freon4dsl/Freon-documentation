@@ -5,14 +5,15 @@ A Box is an abstract class describing the features that are common for all boxes
 As explained in the [editor framework](/060_Under_the_Hood/010_The_Editor_Framework), 
 each box has a mandatory model element and role. The following predefined boxes are available.
 
-| Primitive Boxes| Grouping Boxes|
-|----------------|---------------|
-| AliasBox       | GridBox
-| IndentBox      | OptionalBox
-| LabelBox       | HorizontalListBox
-| SelectBox      | VerticalListBox
-| SvgBox         | 
-| TextBox        |
+| Primitive Boxes | Grouping Boxes      |
+|-----------------|---------------------|
+| AliasBox        | GridBox             |
+| IndentBox       | TableBox            |
+| LabelBox        | HorizontalListBox   |
+| SelectBox       | VerticalListBox     |
+| SvgBox          | HorizontalLayoutBox |
+| TextBox         | VerticalLayoutBox   |
+|                 | OptionalBox         |
 
 All box types have a corresponding Component that renders the box in the browser. These components are build
 with <a href="https://svelte.dev" target="_blank">Svelte</a>. In the source code the box implementations reside in
@@ -82,7 +83,7 @@ new TextBox(
     element,
     "role",
     () => element.stringValue,
-    (newValue: string) => element.stringValue # newValue
+    (newValue: string) => element.stringValue = newValue
 )
 ```
 
@@ -94,29 +95,42 @@ no longer any characters.
 
 ## Grouping Boxes
 
-Grouping Boxes have other boxes as content. A grouping box is used to project a composed AST node, like 
+Grouping or layout Boxes have other boxes as content. A grouping box is used to project a composed AST node, like 
 a list, or a concept that has part properties, in the editor.
 
-## GridBox
-A `GridBox` is used to show boxes in a tabular fashion.
-// TODO document GridBox
+### OptionalBox
+An `OptionalBox` shows an optional projection.
+
+// TODO document OptionalBox
+
+There are three types of boxes for properties that are lists. It is assumed that all child boxes have the same type.
+
+### TableBox
+A `TableBox` shows a list from the model in a table, either row-based or column-based.
 
 ### HorizontalListBox
-A `HorizontalListBox` show a list of child boxes next to each other horizontally.
+A `HorizontalListBox` shows all elements from a list next to each other horizontally.
 
-An example of using a `HorizontalListBox` is the following that represents the
+### VerticalListBox
+A `VerticalListBox` shows all elements from a list one after another vertically.
+
+There are also boxes that can group any set of child boxes, no matter what there types are.
+
+### GridBox
+A `GridBox` is used to show any child boxes in a tabular fashion.
+// TODO document GridBox
+
+### HorizontalLayoutBox
+A `HorizontalLayoutBox` show a list of child boxes next to each other horizontally.
+
+An example of using a `HorizontalLayoutBox` is the following that represents the
 projection of a StringLiteral.
 
 ```ts
 // TODO example
 ```
 
-## OptionalBox
-An `OptionalBox` shows an optional projection.
+### VerticalLayoutBox
+A `VerticalLayoutBox` show a list of child boxes next to each other vertically.
 
-// TODO document OptionalBox
-
-### VerticalListBox
-A `VerticalListBox` show a list of child boxes next to each other vertically.
-
-Its usage is similar to that of the `HorizontalListBox`.
+Its usage is similar to that of the `VerticalLayoutBox`.

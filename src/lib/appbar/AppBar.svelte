@@ -12,9 +12,9 @@
 		</Button>
 		</Tooltip>
 
-		<div class="title">PI Documentation</div>
+		<div class="title">Freon Docs</div>
 	{:else}
-		<div class="title">ProjectIt Documentation (version {versionNumber})</div>
+		<div class="title">Freon Documentation (version {versionNumber})</div>
 	{/if}
 
 	<span class='linkLogo'>
@@ -23,7 +23,7 @@
 		</Tooltip>
 	</span>
 
-	<a target="_blank" href="https://github.com/projectit-org/ProjectIt" alt="ProjectIt on GitHub" class='linkLogo'>
+	<a target="_blank" href="https://github.com/projectit-org/ProjectIt" alt="Freon/ProjectIt on GitHub" class='linkLogo'>
 		<Tooltip tip="github source" bottom>
 			<GithubLogo />
 		</Tooltip>

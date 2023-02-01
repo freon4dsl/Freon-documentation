@@ -7,7 +7,7 @@
     let caption2 = 'Tower of Babel';
     let figureNumber2 = 2;
 </script>
-# Upcoming: <i>ProjectIt</i> will change its name to <i>Freon</i>
+# The name <i>ProjectIt</i> has changed to <i>Freon</i>
 
 Because the nature of this project has changed from a tool to create a projectional editor to a tool to create a DSL,
 we have decided to change the name of the project. In the future, this tool will be called <i>'Freon'</i>.

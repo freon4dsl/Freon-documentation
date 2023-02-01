@@ -4,7 +4,7 @@
 </script>
 
 # The Editor Definition Files
-In an editor definition file (`.edit` file) you can define a ProjectIt editor by providing extra information
+In an editor definition file (`.edit` file) you can define a Freon editor by providing extra information
 for each *concept* or *interface* in your language. Currently, you can define the following three items per
 *concept* or *interface*.
 
@@ -78,7 +78,7 @@ projections are found based on this order. The `default` editor is always the la
 If a box/projection for a concept is not present in the editor with the highest precedence,
 then the next editor is searched for a projection for the concept and so on, till the default editor is reached.
 
-When you omit the precedence, ProjectIt will assign one based on the order in which the files are read,
+When you omit the precedence, Freon will assign one based on the order in which the files are read,
 which normally is alphabetically. However, we cannot guarantee any specific order.
 
 <Note>

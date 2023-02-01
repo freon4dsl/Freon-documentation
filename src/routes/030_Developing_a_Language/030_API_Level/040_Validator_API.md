@@ -4,11 +4,11 @@
 The validator can be adjusted on the API level by adding a single Typescript class. This class should implement
 the worker part of the visitor pattern, adding checks per node of the AST that is visited.
 
-You can add the Typescript class anywhere, providing you let ProjectIt know where the file can be found through
-the ProjectIt configuration.
+You can add the Typescript class anywhere, providing you let Freon know where the file can be found through
+the Freon configuration.
 
 ## Adjusting the Configuration
-You should let ProjectIt know where it can find your customized validation class by adding an 
+You should let Freon know where it can find your customized validation class by adding an 
 instance of your class to the `customValidations` array in
 the file `ProjectitConfiguration.ts`. You will find this file in `~/picode/projectit`.
 It is generated once, and wil not be overwritten on regeneration.
@@ -21,7 +21,7 @@ customValidations: EntityCheckerInterface[] = [new CustomEntityValidator()];
 ```
 
 ## You own Validation Class
-As a convenience, ProjectIt generates a file `~/picode/validator/Custom<yourLanguageName>Validator.ts`, 
+As a convenience, Freon generates a file `~/picode/validator/Custom<yourLanguageName>Validator.ts`, 
 which will not be overwritten upon regeneration. If you want to use it you can skip steps 1 and 2 in the next
 list.
 

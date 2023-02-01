@@ -15,9 +15,9 @@ is there to answer one of the following questions.
 Note that (for now) these sections need to be in the `.type` file in this order.
 
 ## Types or Type Concepts
-In ProjectIt all types are completely separate from the elements of your AST. These are called **Type Concepts**, 
+In Freon all types are completely separate from the elements of your AST. These are called **Type Concepts**, 
 which all implements the interface **PiType**. Type Concepts can be defined in two ways. Either they are defined 
-in the `.type` file, or some AST nodes are declared to be types. In the latter case, ProjectIt generates a `Type Concept` 
+in the `.type` file, or some AST nodes are declared to be types. In the latter case, Freon generates a `Type Concept` 
 which holds a reference to the AST node. 
 
 To indicate which AST concepts are considered to be types in your language,

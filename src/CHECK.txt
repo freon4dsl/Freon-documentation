@@ -1,3 +1,5 @@
+Found 1 warnings in file 020_Getting_Started\030_Calling_the_Generator.md:
+	TODO remaining on line 20
 Found 1 warnings in file 030_Developing_a_Language\020_Definition_Level\020_Scoper_Definition\010_Scoper_Files.md:
 	TODO remaining on line 29
 Found 4 warnings in file 030_Developing_a_Language\030_API_Level\030_Writing_Actions.md:
@@ -8,12 +10,12 @@ Found 4 warnings in file 030_Developing_a_Language\030_API_Level\030_Writing_Act
 Found 1 warnings in file 030_Developing_a_Language\030_API_Level\040_Validator_API.md:
 	TODO remaining on line 46
 Found 6 warnings in file 060_Under_the_Hood\010_The_Editor_Framework\010_Predefined_Boxes.md:
-	TODO remaining on line 35
-	TODO remaining on line 67
-	TODO remaining on line 72
-	TODO remaining on line 102
-	TODO remaining on line 111
-	TODO remaining on line 117
+	TODO remaining on line 36
+	TODO remaining on line 68
+	TODO remaining on line 73
+	TODO remaining on line 104
+	TODO remaining on line 121
+	TODO remaining on line 130
 Found 1 warnings in file 060_Under_the_Hood\010_The_Editor_Framework\020_The_Editor_Interfaces\020_PiAction_Interface.md:
 	TODO remaining on line 4
 Found 1 warnings in file 060_Under_the_Hood\010_The_Editor_Framework\020_The_Editor_Interfaces\030_PiExpression_Interface.md:
@@ -24,4 +26,4 @@ Found 5 warnings in file 060_Under_the_Hood\010_The_Editor_Framework\index.md:
 	TODO remaining on line 148
 	TODO remaining on line 151
 	TODO remaining on line 157
-Total errors: 0, total warnings: 19.
+Total errors: 0, total warnings: 20.

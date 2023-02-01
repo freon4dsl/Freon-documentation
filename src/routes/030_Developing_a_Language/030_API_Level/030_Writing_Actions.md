@@ -15,7 +15,7 @@ Actions determine what you can do, how you interact with the editor.
 As a convenience, the file `~/picode/editor/Custom<yourLanguageName>Actions.ts` is generated, which is a placeholder
 for your own actions written in TypeScript. This file contains four constants for 
 different kind of actions. What you need to
-do is to define these constants. Then ProjectIt will merge your actions
+do is to define these constants. Then Freon will merge your actions
 with the default actions. If a trigger for an action is identical to a default one,
 your custom actions take precedence.
 

@@ -1,14 +1,14 @@
 
 # Our Philosophy
 
-The design philosophy that we follow in ProjectIt can best be described by the following quote from 
+The design philosophy that we follow in Freon can best be described by the following quote from 
 the well-known graphical user interface designer Alan Kay.
 
 > *Simple things should be simple, complex things should be possible.* 
 > (<a href="https://en.wikipedia.org/wiki/Alan_Kay" target="_blank">Alan Kay, Turing Award Winner</a>)
 
 ## The Pareto Principle
-ProjectIt is a minimal viable product which supports the
+Freon is a minimal viable product which supports the
 language engineer in creating a work environment for a mini-language. A key principle
 is the <a href="https://en.wikipedia.org/wiki/Pareto*principle" target="_blank">Pareto principle</a> 
 (or 80%-20% rule),
@@ -19,16 +19,16 @@ In software development the Pareto principle translates to “*80% of the develo
 effort is spent on 20% of the application*”, this 20% being the more complex parts.
 Still, the other 80% of the application needs to be created as well. 
 
-ProjectIt aims to
+Freon aims to
 make the latter **as simple as possible**, while keeping the generated code **open** for the
 language engineer to code the more complex parts by hand. One of our use cases is the
 creation of a prototype language in a day or in a couple of days at most.
 
 ## Other Guidelines
 
-Other guidelines have been **ease of use**, and **flexibility**. ProjectIt may not (yet <img src="/images/smile.png" alt="OOPS" width="20" height="20">) do
+Other guidelines have been **ease of use**, and **flexibility**. Freon may not (yet <img src="/images/smile.png" alt="OOPS" width="20" height="20">) do
 everything you need, but what it does, should be very easy to get into. Furthermore,
-ProjectIt is designed to be **extendable**, and **easy to integrate with other tooling**. 
+Freon is designed to be **extendable**, and **easy to integrate with other tooling**. 
 In practise this means that: 
 
 * Every part of the work environment that is generated, can be _exchanged_ for one 
@@ -42,7 +42,7 @@ With these principles in mind, we have started of small and simple. Every defini
 from the language structure to the validation rules, is kept **minimal**. Over time, in an **agile**
 fashion, these will be extended whenever the need arises. 
 
-Furthermore, we intend to use **bootstrapping** in one of the next versions of ProjectIt
+Furthermore, we intend to use **bootstrapping** in one of the next versions of Freon
 to create editors for every one of the definition languages. If you are interested, you can
 check out our [wish list](/010_Intro/090_Future_Developments) of features to be developed in the future.
 
@@ -65,7 +65,7 @@ Efficiency of Projectional Editing: A Controlled Experiment</a> as follows.
 > [Markus Voelter a.o., Efficiency of Projectional Editing]
 ****
 
-This is the reason that in ProjectIt we allow only name-based references, which are resolved
+This is the reason that in Freon we allow only name-based references, which are resolved
 on a need-to basis. Every reference is 
 an instance of the class `PiElementReference`, which holds:
 

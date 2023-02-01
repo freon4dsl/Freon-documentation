@@ -4,11 +4,11 @@
 
 # Project Structure
 
-This description of the project structure of a ProjectIt project is based on 
+This description of the project structure of a Freon project is based on 
 the <a href="https://github.com/projectit-org/ProjectIt-example" target="_blank">ProjectIt-example</a> project which
 you can clone from GitHub.
 
-The source code (in `~/src`) in a ProjectIt project is organised into the following subfolders.
+The source code (in `~/src`) in a Freon project is organised into the following subfolders.
 
 * *defs*: the language definition files.
 * *picode*: the generated source code.
@@ -24,6 +24,10 @@ The source code (in `~/src`) in a ProjectIt project is organised into the follow
   This folder contains one file that will not be overwritten at regeneration: `ProjectitConfiguration.ts`.
   Here you can configure any [third-level customization](/030_Developing_a_Language/030_API_Level) that you want the
   generated code to take into account.
+* *picode/diagrams*: a number of UML diagrams generated from the language structure including an UML 
+class diagram of the AST, an overview of all inheritance in the language, and one diagram per .ast file.
+You can find all of them both in
+ordinary HTML and in Markdown format. In the future we plan to make the generation customizable.
 * *picode/editor*: code for the editor. This folder contains two files that will not be overwritten 
   at regeneration: `Custom<yourLanguageName>Actions.ts`and `Custom<yourLanguageName>Projection.ts`. 
   (`<yourLanguageName>` will be replaced by the name you have given your language in the .ast files.)
@@ -89,5 +93,5 @@ You can start it through the commandline:
 ```
 
 Note that both the server, and the web application are provided for your convenience. We assume 
-that when ProjectIt is used in a larger context, these two parts will be interchanged with 
+that when Freon is used in a larger context, these two parts will be interchanged with 
 suitable choices made by the language engineer and team.

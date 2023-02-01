@@ -11,7 +11,7 @@ application was written in a single file. Since the 1980s every self-respecting 
 It is our strong conviction that this approach should also be taken when dealing with models.
 
 ## Introducing Model Units
-Similar to how the source code for a single application is split into classes and/or modules, every model in ProjectIt is split
+Similar to how the source code for a single application is split into classes and/or modules, every model in Freon is split
 into **model units**. Each model may contain units of multiple types, either an array of units, or a single unit. The next example
 shows how to define model units. Here, 
 an *InsuranceModel* consists of a list of *Parts* and a list of *Products*.
@@ -47,11 +47,11 @@ published a number of papers on the topic.
 
 ## <a name="public"></a> Model Unit Interfaces
 Another essential idea that we borrow from programming is **information hiding**.
-Every model unit in ProjectIt defines an interface.
+Every model unit in Freon defines an interface.
 The interface determines which elements from the model unit are visible (i.e. can be referred to) 
 in other units in the same model.
 
-In a ProjectIt definition of the language structure (the [.ast file](/010_Intro/040_A_Language_in_Five_Parts)) 
+In a Freon definition of the language structure (the [.ast file](/010_Intro/040_A_Language_in_Five_Parts)) 
 concepts and properties can be defined to be **private**.
 Whereas other parts of a model unit can be referenced from another model unit,i.e. the **public** parts, private parts can only be referenced from
 the same model unit.
