@@ -1,4 +1,4 @@
-# Changes from version 0.4.0 to 0.5.0
+# Changes from Version 0.4.0 to 0.5.0
 
 * A diagram generator was added. It generates a UML class diagram of the complete AST, 
  an overview of all inheritance in the language, and one diagram per .ast file.
@@ -17,7 +17,7 @@ one that searches random text within the shown model unit.
 * Many under the hood changes were made that improve the way in which a user model 
 is transformed into the html/javascript that is shown in the browser.
 
-## Known Issues in Release 0.5.0
+## Known Issues in Version 0.5.0
 
 1. In tables not all the context menu options are functioning correctly.
 2. When creating a new element, the selection is on the first editable/selectabe child, 
