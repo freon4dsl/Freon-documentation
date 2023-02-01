@@ -28,10 +28,10 @@
 		<meta http-equiv="content-security-policy" content="">
 	<link rel="stylesheet" href="/_app/assets/pages/__layout.svelte-3f550184.css">
 	<link rel="stylesheet" href="/_app/assets/Note.svelte_svelte_type_style_lang-a108c8ba.css">
-	<link rel="modulepreload" href="/_app/start-2e129a9d.js">
+	<link rel="modulepreload" href="/_app/start-12d6bb62.js">
 	<link rel="modulepreload" href="/_app/chunks/vendor-0dc77bd0.js">
-	<link rel="modulepreload" href="/_app/pages/__layout.svelte-996ae318.js">
-	<link rel="modulepreload" href="/_app/pages/030_Developing_a_Language/030_API_Level/index.md-2f671993.js">
+	<link rel="modulepreload" href="/_app/pages/__layout.svelte-1aa9e867.js">
+	<link rel="modulepreload" href="/_app/pages/030_Developing_a_Language/030_API_Level/index.md-2424cdd5.js">
 	<link rel="modulepreload" href="/_app/chunks/Note-b0db7989.js">
 	</head>
 	<body>
@@ -46,7 +46,7 @@
 <main class="main-window svelte-awlnq7">
 
 
-<div class="app-bar svelte-ae0shh"><div class="title svelte-ae0shh">ProjectIt Documentation (version 0.4.0)</div>
+<div class="app-bar svelte-ae0shh"><div class="title svelte-ae0shh">Freon Documentation (version 0.5.0)</div>
 
 	<span class="linkLogo svelte-ae0shh"><div class="tooltip-wrapper svelte-12vmiyh"><span class="tooltip-slot svelte-12vmiyh">
 
@@ -61,7 +61,7 @@
 </button></span>
 	<div class="tooltip svelte-12vmiyh    bottom"><div class="default-tip svelte-12vmiyh" style="background-color: var(--theme-colors-tooltip_background); color: var(--theme-colors-tooltip_color) font-size: .4em">dark mode</div></div></div></span>
 
-	<a target="_blank" href="https://github.com/projectit-org/ProjectIt" alt="ProjectIt on GitHub" class="linkLogo svelte-ae0shh"><div class="tooltip-wrapper svelte-12vmiyh"><span class="tooltip-slot svelte-12vmiyh">
+	<a target="_blank" href="https://github.com/projectit-org/ProjectIt" alt="Freon/ProjectIt on GitHub" class="linkLogo svelte-ae0shh"><div class="tooltip-wrapper svelte-12vmiyh"><span class="tooltip-slot svelte-12vmiyh">
 
 
 
@@ -73,7 +73,8 @@
 		
 
 		<a target="_blank" href="https://www.projectit.org" class="linkLogo svelte-ae0shh">
-			<div class="tooltip-wrapper svelte-12vmiyh"><span class="tooltip-slot svelte-12vmiyh"><img src="/projectit-logo-inverse-colors.png" style="color:red" alt="ProjectIt Logo" height="24" class="svelte-ae0shh"></span>
+			<div class="tooltip-wrapper svelte-12vmiyh"><span class="tooltip-slot svelte-12vmiyh"><img src="/freonlogo.png" style="color:red" alt="ProjectIt Logo" height="24" class="svelte-ae0shh">
+</span>
 	<div class="tooltip svelte-12vmiyh    bottom"><div class="default-tip svelte-12vmiyh" style="background-color: var(--theme-colors-tooltip_background); color: var(--theme-colors-tooltip_color) font-size: .4em">home</div></div></div></a>
 
 </div>
@@ -202,6 +203,7 @@
 
 		</nav>
 </div>
+					</li><li class="svelte-1u9fis1"><span class="svelte-mno2fe"><a class="leafText svelte-mno2fe" href="/090_Release_notes">Release notes</a></span>
 					</li><li class="svelte-1u9fis1"><span class="svelte-mno2fe"><a class="leafText svelte-mno2fe" href="/099_about">About</a></span>
 					</li></ul></nav>
 </div>
@@ -214,13 +216,13 @@
 
 
 <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" fill="var(--theme-colors-accent)"><path d="M0 0h24v24H0z" fill="none"></path><path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-7 9h-2V5h2v6zm0 4h-2v-2h2v2z"></path></svg></span><span class="head svelte-1sq0zwq">Parts of this documentation are outdated</span>
-	<div class="content svelte-1sq0zwq">Sorry, ProjectIt / Freon is constantly in development, therefore parts of this section are outdated. 
+	<div class="content svelte-1sq0zwq">Sorry, Freon / Freon is constantly in development, therefore parts of this section are outdated. 
 In the future the documentation will be updated.
 </div>
 </div>
 <p>Please, become acquainted with the <a href="/010_Intro/050_Three_Levels_of_Customization">three levels of customization</a>
-used by ProjectIt.
-This section explains the 3rd of these three levels where you can customize ProjectIt in TypeScript.</p>
+used by Freon.
+This section explains the 3rd of these three levels where you can customize Freon in TypeScript.</p>
 <h2>Customize a Pi-tool</h2>
 <p>Third level full adaptability <em>per concept</em> is currently possible for:</p>
 <ul><li><a href="/030_Developing_a_Language/030_API_Level/010_Editor_API">Editor</a></li>
@@ -229,7 +231,7 @@ This section explains the 3rd of these three levels where you can customize Proj
 <p>To add third level adaptability for the scoper, parser and unparser is one of the
 entries in our <a href="/010_Intro/090_Future_Developments">wish list</a>.</p>
 <h2>Adding your Own Files</h2>
-<p>As a convenience, ProjectIt generates templates for
+<p>As a convenience, Freon generates templates for
 your customization in the files <code>~/picode/editor/Custom&lt;yourLanguageName&gt;Projection.ts</code>, <code>~/picode/editor/Custom&lt;yourLanguageName&gt;Actions.ts</code>, etc
 (<code>&lt;yourLanguageName&gt;</code> is a placeholder for the name of the language as defined in your .ast file). You can use
 these files to add your own special elements.</p>
@@ -285,17 +287,16 @@ This is done by implementing their respective interfaces.</p>
     <div class="horizontal divider svelte-m1dwbj" style="left: calc(20% - 8px)"></div></div>
 
 </div>
-		<footer class="svelte-1hxqcuo">
-    <span class="copyright svelte-1hxqcuo">Created by ProjectIt - © 2022 -
+		<footer class="svelte-1hxqcuo"><span class="copyright svelte-1hxqcuo">Created by OpenModeling - © 2023 -
         <a href="http://www.projectit.org/" target="_blank" class="link svelte-1hxqcuo">www.projectit.org
         </a></span>
 </footer></main>
 
 
-		<script type="module" data-hydrate="1gh73k6">
-		import { start } from "/_app/start-2e129a9d.js";
+		<script type="module" data-hydrate="1nrymef">
+		import { start } from "/_app/start-12d6bb62.js";
 		start({
-			target: document.querySelector('[data-hydrate="1gh73k6"]').parentNode,
+			target: document.querySelector('[data-hydrate="1nrymef"]').parentNode,
 			paths: {"base":"","assets":""},
 			session: {},
 			route: true,
@@ -305,8 +306,8 @@ This is done by implementing their respective interfaces.</p>
 				status: 200,
 				error: null,
 				nodes: [
-					import("/_app/pages/__layout.svelte-996ae318.js"),
-						import("/_app/pages/030_Developing_a_Language/030_API_Level/index.md-2f671993.js")
+					import("/_app/pages/__layout.svelte-1aa9e867.js"),
+						import("/_app/pages/030_Developing_a_Language/030_API_Level/index.md-2424cdd5.js")
 				],
 				url: new URL("http://sveltekit-prerender/030_Developing_a_Language/030_API_Level"),
 				params: {}

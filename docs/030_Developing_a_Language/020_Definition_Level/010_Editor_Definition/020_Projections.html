@@ -28,10 +28,10 @@
 		<meta http-equiv="content-security-policy" content="">
 	<link rel="stylesheet" href="/_app/assets/pages/__layout.svelte-3f550184.css">
 	<link rel="stylesheet" href="/_app/assets/Note.svelte_svelte_type_style_lang-a108c8ba.css">
-	<link rel="modulepreload" href="/_app/start-2e129a9d.js">
+	<link rel="modulepreload" href="/_app/start-12d6bb62.js">
 	<link rel="modulepreload" href="/_app/chunks/vendor-0dc77bd0.js">
-	<link rel="modulepreload" href="/_app/pages/__layout.svelte-996ae318.js">
-	<link rel="modulepreload" href="/_app/pages/030_Developing_a_Language/020_Definition_Level/010_Editor_Definition/020_Projections.md-fd6f89ea.js">
+	<link rel="modulepreload" href="/_app/pages/__layout.svelte-1aa9e867.js">
+	<link rel="modulepreload" href="/_app/pages/030_Developing_a_Language/020_Definition_Level/010_Editor_Definition/020_Projections.md-c21a9c04.js">
 	<link rel="modulepreload" href="/_app/chunks/Note-b0db7989.js">
 	</head>
 	<body>
@@ -46,7 +46,7 @@
 <main class="main-window svelte-awlnq7">
 
 
-<div class="app-bar svelte-ae0shh"><div class="title svelte-ae0shh">ProjectIt Documentation (version 0.4.0)</div>
+<div class="app-bar svelte-ae0shh"><div class="title svelte-ae0shh">Freon Documentation (version 0.5.0)</div>
 
 	<span class="linkLogo svelte-ae0shh"><div class="tooltip-wrapper svelte-12vmiyh"><span class="tooltip-slot svelte-12vmiyh">
 
@@ -61,7 +61,7 @@
 </button></span>
 	<div class="tooltip svelte-12vmiyh    bottom"><div class="default-tip svelte-12vmiyh" style="background-color: var(--theme-colors-tooltip_background); color: var(--theme-colors-tooltip_color) font-size: .4em">dark mode</div></div></div></span>
 
-	<a target="_blank" href="https://github.com/projectit-org/ProjectIt" alt="ProjectIt on GitHub" class="linkLogo svelte-ae0shh"><div class="tooltip-wrapper svelte-12vmiyh"><span class="tooltip-slot svelte-12vmiyh">
+	<a target="_blank" href="https://github.com/projectit-org/ProjectIt" alt="Freon/ProjectIt on GitHub" class="linkLogo svelte-ae0shh"><div class="tooltip-wrapper svelte-12vmiyh"><span class="tooltip-slot svelte-12vmiyh">
 
 
 
@@ -73,7 +73,8 @@
 		
 
 		<a target="_blank" href="https://www.projectit.org" class="linkLogo svelte-ae0shh">
-			<div class="tooltip-wrapper svelte-12vmiyh"><span class="tooltip-slot svelte-12vmiyh"><img src="/projectit-logo-inverse-colors.png" style="color:red" alt="ProjectIt Logo" height="24" class="svelte-ae0shh"></span>
+			<div class="tooltip-wrapper svelte-12vmiyh"><span class="tooltip-slot svelte-12vmiyh"><img src="/freonlogo.png" style="color:red" alt="ProjectIt Logo" height="24" class="svelte-ae0shh">
+</span>
 	<div class="tooltip svelte-12vmiyh    bottom"><div class="default-tip svelte-12vmiyh" style="background-color: var(--theme-colors-tooltip_background); color: var(--theme-colors-tooltip_color) font-size: .4em">home</div></div></div></a>
 
 </div>
@@ -251,6 +252,7 @@
 
 		</nav>
 </div>
+					</li><li class="svelte-1u9fis1"><span class="svelte-mno2fe"><a class="leafText svelte-mno2fe" href="/090_Release_notes">Release notes</a></span>
 					</li><li class="svelte-1u9fis1"><span class="svelte-mno2fe"><a class="leafText svelte-mno2fe" href="/099_about">About</a></span>
 					</li></ul></nav>
 </div>
@@ -274,7 +276,7 @@ This <span class="token keyword">is</span>
 <span class="token punctuation">&#125;</span></code><!-- HTML_TAG_END --></pre>
 <h2>Including Properties</h2>
 <p>When you define a projection for a concept or interface, you will want to include its properties. For
-this you need to use the special notation <code>${}</code>. This tells ProjectIt to include a property, according to the projection
+this you need to use the special notation <code>${}</code>. This tells Freon to include a property, according to the projection
 that is defined for the type of the property.</p>
 <p>In the following example <code>self.body</code> is a property of type <code>DocuExpression</code>.
 It will be projected according to the projection for <code>DocuExpression</code>, whereas <code>self.declaredType</code>
@@ -311,10 +313,10 @@ CalcFunction <span class="token punctuation">&#123;</span>
 </div>
 <h3><a name="named_projection"></a> Including a Property Projection from Another Editor</h3>
 <p>Normally, the property that you include will be displayed according to the projection of its type. This projection
-will be found by ProjectIt using the <a href="/030_Developing_a_Language/020_Definition_Level/010_Editor_Definition/010_Edit_Files#ordering">ordering</a>
+will be found by Freon using the <a href="/030_Developing_a_Language/020_Definition_Level/010_Editor_Definition/010_Edit_Files#ordering">ordering</a>
 as defined in the configuration. </p>
 <p>When you specifically want to use another projection, you can use a <strong>named property projection</strong>. In that case,
-ProjectIt will use the projection defined for the concept in the editor with the specified name.</p>
+Freon will use the projection defined for the concept in the editor with the specified name.</p>
 <p>In this example, the projection for <code>self.parts</code> will first be searched in the editor named <code>comments</code>.
 If it cannot be found, the normal ordering of projections will proceed.</p>
 <pre class="language-ts"><!-- HTML_TAG_START --><code class="language-ts"><span class="token comment">// docu-project/defs/editor-specials.edit#L3-L9</span>
@@ -383,7 +385,7 @@ the headers of the table and which parts of the list elements are displayed in w
 
 <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" fill="var(--theme-colors-accent)"><path d="M0 0h24v24H0z" fill="none"></path><path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-7 9h-2V5h2v6zm0 4h-2v-2h2v2z"></path></svg></span><span class="head svelte-1sq0zwq">Important!</span>
 	<div class="content svelte-1sq0zwq">Note that you only need to include one
-table projection for both column and row based tables. ProjectIt will swap the entries when needed.
+table projection for both column and row based tables. Freon will swap the entries when needed.
 </div>
 </div>
 <p>For example, to project the <code>parts</code> property of concept <code>BaseProduct</code> as a row based table, you can use the following code.</p>
@@ -501,17 +503,16 @@ is present.
     <div class="horizontal divider svelte-m1dwbj" style="left: calc(20% - 8px)"></div></div>
 
 </div>
-		<footer class="svelte-1hxqcuo">
-    <span class="copyright svelte-1hxqcuo">Created by ProjectIt - © 2022 -
+		<footer class="svelte-1hxqcuo"><span class="copyright svelte-1hxqcuo">Created by OpenModeling - © 2023 -
         <a href="http://www.projectit.org/" target="_blank" class="link svelte-1hxqcuo">www.projectit.org
         </a></span>
 </footer></main>
 
 
-		<script type="module" data-hydrate="bq5idx">
-		import { start } from "/_app/start-2e129a9d.js";
+		<script type="module" data-hydrate="thnul0">
+		import { start } from "/_app/start-12d6bb62.js";
 		start({
-			target: document.querySelector('[data-hydrate="bq5idx"]').parentNode,
+			target: document.querySelector('[data-hydrate="thnul0"]').parentNode,
 			paths: {"base":"","assets":""},
 			session: {},
 			route: true,
@@ -521,8 +522,8 @@ is present.
 				status: 200,
 				error: null,
 				nodes: [
-					import("/_app/pages/__layout.svelte-996ae318.js"),
-						import("/_app/pages/030_Developing_a_Language/020_Definition_Level/010_Editor_Definition/020_Projections.md-fd6f89ea.js")
+					import("/_app/pages/__layout.svelte-1aa9e867.js"),
+						import("/_app/pages/030_Developing_a_Language/020_Definition_Level/010_Editor_Definition/020_Projections.md-c21a9c04.js")
 				],
 				url: new URL("http://sveltekit-prerender/030_Developing_a_Language/020_Definition_Level/010_Editor_Definition/020_Projections"),
 				params: {}

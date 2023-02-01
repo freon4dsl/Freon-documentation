@@ -28,10 +28,10 @@
 		<meta http-equiv="content-security-policy" content="">
 	<link rel="stylesheet" href="/_app/assets/pages/__layout.svelte-3f550184.css">
 	<link rel="stylesheet" href="/_app/assets/Note.svelte_svelte_type_style_lang-a108c8ba.css">
-	<link rel="modulepreload" href="/_app/start-2e129a9d.js">
+	<link rel="modulepreload" href="/_app/start-12d6bb62.js">
 	<link rel="modulepreload" href="/_app/chunks/vendor-0dc77bd0.js">
-	<link rel="modulepreload" href="/_app/pages/__layout.svelte-996ae318.js">
-	<link rel="modulepreload" href="/_app/pages/020_Getting_Started/020_Project_Structure.md-0cb2b7ce.js">
+	<link rel="modulepreload" href="/_app/pages/__layout.svelte-1aa9e867.js">
+	<link rel="modulepreload" href="/_app/pages/020_Getting_Started/020_Project_Structure.md-19be6003.js">
 	<link rel="modulepreload" href="/_app/chunks/Note-b0db7989.js">
 	</head>
 	<body>
@@ -46,7 +46,7 @@
 <main class="main-window svelte-awlnq7">
 
 
-<div class="app-bar svelte-ae0shh"><div class="title svelte-ae0shh">ProjectIt Documentation (version 0.4.0)</div>
+<div class="app-bar svelte-ae0shh"><div class="title svelte-ae0shh">Freon Documentation (version 0.5.0)</div>
 
 	<span class="linkLogo svelte-ae0shh"><div class="tooltip-wrapper svelte-12vmiyh"><span class="tooltip-slot svelte-12vmiyh">
 
@@ -61,7 +61,7 @@
 </button></span>
 	<div class="tooltip svelte-12vmiyh    bottom"><div class="default-tip svelte-12vmiyh" style="background-color: var(--theme-colors-tooltip_background); color: var(--theme-colors-tooltip_color) font-size: .4em">dark mode</div></div></div></span>
 
-	<a target="_blank" href="https://github.com/projectit-org/ProjectIt" alt="ProjectIt on GitHub" class="linkLogo svelte-ae0shh"><div class="tooltip-wrapper svelte-12vmiyh"><span class="tooltip-slot svelte-12vmiyh">
+	<a target="_blank" href="https://github.com/projectit-org/ProjectIt" alt="Freon/ProjectIt on GitHub" class="linkLogo svelte-ae0shh"><div class="tooltip-wrapper svelte-12vmiyh"><span class="tooltip-slot svelte-12vmiyh">
 
 
 
@@ -73,7 +73,8 @@
 		
 
 		<a target="_blank" href="https://www.projectit.org" class="linkLogo svelte-ae0shh">
-			<div class="tooltip-wrapper svelte-12vmiyh"><span class="tooltip-slot svelte-12vmiyh"><img src="/projectit-logo-inverse-colors.png" style="color:red" alt="ProjectIt Logo" height="24" class="svelte-ae0shh"></span>
+			<div class="tooltip-wrapper svelte-12vmiyh"><span class="tooltip-slot svelte-12vmiyh"><img src="/freonlogo.png" style="color:red" alt="ProjectIt Logo" height="24" class="svelte-ae0shh">
+</span>
 	<div class="tooltip svelte-12vmiyh    bottom"><div class="default-tip svelte-12vmiyh" style="background-color: var(--theme-colors-tooltip_background); color: var(--theme-colors-tooltip_color) font-size: .4em">home</div></div></div></a>
 
 </div>
@@ -146,16 +147,17 @@
 
 		</nav>
 </div>
+					</li><li class="svelte-1u9fis1"><span class="svelte-mno2fe"><a class="leafText svelte-mno2fe" href="/090_Release_notes">Release notes</a></span>
 					</li><li class="svelte-1u9fis1"><span class="svelte-mno2fe"><a class="leafText svelte-mno2fe" href="/099_about">About</a></span>
 					</li></ul></nav>
 </div>
 	</div></section></div>
 
     <div class="pane svelte-m1dwbj" style="width: 80%;"><section class="splitpane-content svelte-awlnq7" slot="b"><div class="content-box svelte-awlnq7"><h1>Project Structure</h1>
-<p>This description of the project structure of a ProjectIt project is based on
+<p>This description of the project structure of a Freon project is based on
 the <a href="https://github.com/projectit-org/ProjectIt-example" target="_blank">ProjectIt-example</a> project which
-you can clone from github.</p>
-<p>The source code (in <code>~/src</code>) in a ProjectIt project is organised into the following subfolders.</p>
+you can clone from GitHub.</p>
+<p>The source code (in <code>~/src</code>) in a Freon project is organised into the following subfolders.</p>
 <ul><li><p><em>defs</em>: the language definition files.</p></li>
 <li><p><em>picode</em>: the generated source code.</p>
 <div class="note svelte-1sq0zwq"><span class="icon svelte-1sq0zwq">
@@ -173,6 +175,10 @@ you can clone from github.</p>
 This folder contains one file that will not be overwritten at regeneration: <code>ProjectitConfiguration.ts</code>.
 Here you can configure any <a href="/030_Developing_a_Language/030_API_Level">third-level customization</a> that you want the
 generated code to take into account.</p></li>
+<li><p><em>picode/diagrams</em>: a number of UML diagrams generated from the language structure including an UML
+class diagram of the AST, an overview of all inheritance in the language, and one diagram per .ast file.
+You can find all of them both in
+ordinary HTML and in Markdown format. In the future we plan to make the generation customizable.</p></li>
 <li><p><em>picode/editor</em>: code for the editor. This folder contains two files that will not be overwritten
 at regeneration: <code>Custom&lt;yourLanguageName&gt;Actions.ts</code>and <code>Custom&lt;yourLanguageName&gt;Projection.ts</code>.
 (<code>&lt;yourLanguageName&gt;</code> will be replaced by the name you have given your language in the .ast files.)
@@ -194,7 +200,7 @@ would like to do.</p></li>
 <li><p><em>picode/writer</em>: code that is able to write your user’s <a href="/010_Intro/030_Models_and_Model_Units">model units</a>
 in string format to a file.</p></li>
 <li><p><em>webapp</em>: source code for the web-application used for all generated languages.</p></li>
-<li><p>Note worthy is the file <code>picode/webapp/config/WebappConfiguration.ts</code>. This file holds the references to the generated language
+<li><p>Noteworthy is the file <code>picode/webapp/config/WebappConfiguration.ts</code>. This file holds the references to the generated language
 workbench and the web address of the server which stores your user’s models.</p></li></ul>
 <p>Another folder that can be found in the project is <code>~/modelstore</code>. This is the folder where
 the server stores all models, and it is created at the moment that the server is started.
@@ -227,23 +233,22 @@ using <a href="https://svelte.dev/" target="_blank">Svelte</a>.
 You can start it through the commandline:</p>
 <pre class="language-bash"><!-- HTML_TAG_START --><code class="language-bash">    <span class="token function">yarn</span> dev</code><!-- HTML_TAG_END --></pre>
 <p>Note that both the server, and the web application are provided for your convenience. We assume
-that when ProjectIt is used in a larger context, these two parts will be interchanged with
+that when Freon is used in a larger context, these two parts will be interchanged with
 suitable choices made by the language engineer and team.</p></div></section></div>
 
     <div class="horizontal divider svelte-m1dwbj" style="left: calc(20% - 8px)"></div></div>
 
 </div>
-		<footer class="svelte-1hxqcuo">
-    <span class="copyright svelte-1hxqcuo">Created by ProjectIt - © 2022 -
+		<footer class="svelte-1hxqcuo"><span class="copyright svelte-1hxqcuo">Created by OpenModeling - © 2023 -
         <a href="http://www.projectit.org/" target="_blank" class="link svelte-1hxqcuo">www.projectit.org
         </a></span>
 </footer></main>
 
 
-		<script type="module" data-hydrate="1qw1408">
-		import { start } from "/_app/start-2e129a9d.js";
+		<script type="module" data-hydrate="1w6862u">
+		import { start } from "/_app/start-12d6bb62.js";
 		start({
-			target: document.querySelector('[data-hydrate="1qw1408"]').parentNode,
+			target: document.querySelector('[data-hydrate="1w6862u"]').parentNode,
 			paths: {"base":"","assets":""},
 			session: {},
 			route: true,
@@ -253,8 +258,8 @@ suitable choices made by the language engineer and team.</p></div></section></di
 				status: 200,
 				error: null,
 				nodes: [
-					import("/_app/pages/__layout.svelte-996ae318.js"),
-						import("/_app/pages/020_Getting_Started/020_Project_Structure.md-0cb2b7ce.js")
+					import("/_app/pages/__layout.svelte-1aa9e867.js"),
+						import("/_app/pages/020_Getting_Started/020_Project_Structure.md-19be6003.js")
 				],
 				url: new URL("http://sveltekit-prerender/020_Getting_Started/020_Project_Structure"),
 				params: {}

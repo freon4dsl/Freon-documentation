@@ -28,10 +28,10 @@
 		<meta http-equiv="content-security-policy" content="">
 	<link rel="stylesheet" href="/_app/assets/pages/__layout.svelte-3f550184.css">
 	<link rel="stylesheet" href="/_app/assets/Figure.svelte_svelte_type_style_lang-d2c04b30.css">
-	<link rel="modulepreload" href="/_app/start-2e129a9d.js">
+	<link rel="modulepreload" href="/_app/start-12d6bb62.js">
 	<link rel="modulepreload" href="/_app/chunks/vendor-0dc77bd0.js">
-	<link rel="modulepreload" href="/_app/pages/__layout.svelte-996ae318.js">
-	<link rel="modulepreload" href="/_app/pages/010_Intro/050_Three_Levels_of_Customization.md-a05848b2.js">
+	<link rel="modulepreload" href="/_app/pages/__layout.svelte-1aa9e867.js">
+	<link rel="modulepreload" href="/_app/pages/010_Intro/050_Three_Levels_of_Customization.md-cdb1cb9e.js">
 	<link rel="modulepreload" href="/_app/chunks/Figure-4dd15a94.js">
 	</head>
 	<body>
@@ -46,7 +46,7 @@
 <main class="main-window svelte-awlnq7">
 
 
-<div class="app-bar svelte-ae0shh"><div class="title svelte-ae0shh">ProjectIt Documentation (version 0.4.0)</div>
+<div class="app-bar svelte-ae0shh"><div class="title svelte-ae0shh">Freon Documentation (version 0.5.0)</div>
 
 	<span class="linkLogo svelte-ae0shh"><div class="tooltip-wrapper svelte-12vmiyh"><span class="tooltip-slot svelte-12vmiyh">
 
@@ -61,7 +61,7 @@
 </button></span>
 	<div class="tooltip svelte-12vmiyh    bottom"><div class="default-tip svelte-12vmiyh" style="background-color: var(--theme-colors-tooltip_background); color: var(--theme-colors-tooltip_color) font-size: .4em">dark mode</div></div></div></span>
 
-	<a target="_blank" href="https://github.com/projectit-org/ProjectIt" alt="ProjectIt on GitHub" class="linkLogo svelte-ae0shh"><div class="tooltip-wrapper svelte-12vmiyh"><span class="tooltip-slot svelte-12vmiyh">
+	<a target="_blank" href="https://github.com/projectit-org/ProjectIt" alt="Freon/ProjectIt on GitHub" class="linkLogo svelte-ae0shh"><div class="tooltip-wrapper svelte-12vmiyh"><span class="tooltip-slot svelte-12vmiyh">
 
 
 
@@ -73,7 +73,8 @@
 		
 
 		<a target="_blank" href="https://www.projectit.org" class="linkLogo svelte-ae0shh">
-			<div class="tooltip-wrapper svelte-12vmiyh"><span class="tooltip-slot svelte-12vmiyh"><img src="/projectit-logo-inverse-colors.png" style="color:red" alt="ProjectIt Logo" height="24" class="svelte-ae0shh"></span>
+			<div class="tooltip-wrapper svelte-12vmiyh"><span class="tooltip-slot svelte-12vmiyh"><img src="/freonlogo.png" style="color:red" alt="ProjectIt Logo" height="24" class="svelte-ae0shh">
+</span>
 	<div class="tooltip svelte-12vmiyh    bottom"><div class="default-tip svelte-12vmiyh" style="background-color: var(--theme-colors-tooltip_background); color: var(--theme-colors-tooltip_color) font-size: .4em">home</div></div></div></a>
 
 </div>
@@ -150,13 +151,14 @@
 
 		</nav>
 </div>
+					</li><li class="svelte-1u9fis1"><span class="svelte-mno2fe"><a class="leafText svelte-mno2fe" href="/090_Release_notes">Release notes</a></span>
 					</li><li class="svelte-1u9fis1"><span class="svelte-mno2fe"><a class="leafText svelte-mno2fe" href="/099_about">About</a></span>
 					</li></ul></nav>
 </div>
 	</div></section></div>
 
-    <div class="pane svelte-m1dwbj" style="width: 80%;"><section class="splitpane-content svelte-awlnq7" slot="b"><div class="content-box svelte-awlnq7"><h1>Three Levels to Customize ProjectIt</h1>
-<p>From the five parts of the language definition, ProjectIt generates a work environment
+    <div class="pane svelte-m1dwbj" style="width: 80%;"><section class="splitpane-content svelte-awlnq7" slot="b"><div class="content-box svelte-awlnq7"><h1>Three Levels to Customize Freon</h1>
+<p>From the five parts of the language definition, Freon generates a work environment
 containing an editor, a scope provider or scoper, a type provider or typer, a validator,
 a standard library, and some utilities like a parser/deparser.
 All of these are separate components that are called <strong>pi-tools</strong>.</p>
@@ -187,14 +189,14 @@ utilize the second level can be found in <a href="/030_Developing_a_Language/020
 <h3>API Level</h3>
 <p>The <em>third or API level</em> (colored black in the above figure), takes hand-coding in TypeScript,
 but produces a result that is extremely adjusted to your needs. More on how to make use of this
-level, e.g. how to use the core editor framework of ProjectIt,
+level, e.g. how to use the core editor framework of Freon,
 can be found in <a href="/030_Developing_a_Language/030_API_Level">API Level</a>.</p>
 <h2>Combining the Three Levels into One Application</h2>
-<p>ProjectIt combines definitions at each level into one application, where the third level precedes the second, and
+<p>Freon combines definitions at each level into one application, where the third level precedes the second, and
 the second level precedes the first.
 For instance, the generated editor will per <a href="/030_Developing_a_Language/010_Default_Level/010_Defining_the_Language_Structure#concept"><strong>concept</strong></a> in the language:</p>
 <ol><li>use the <em>hand-made projection</em> from the API level, when this is present. If not, the editor will</li>
-<li>use the <em>projection generated from the editor definition</em> from the ProjectIt definition Level, when this definition is present.
+<li>use the <em>projection generated from the editor definition</em> from the Freon definition Level, when this definition is present.
 Finally, when no definition is present, the editor will</li>
 <li>use the <em>default projection</em> from the default level, the one generated when no <code>.edit</code> definition file is present.</li></ol>
 <p>This allows the language engineer to start quickly with a working (but somewhat rough) language environment
@@ -205,7 +207,7 @@ and piece by piece refine this on either the second or the third level.</p>
 <p>At the time of writing this approach is implemented for the editor, validator, and typer, in future this
 will also apply to the scoper, the parser, and the unparser.</p>
 <h1>Overview of the Generated Pi-tools and Their Customizability</h1>
-<p>ProjectIt generates an integrated set of tools that support the language that you are creating.
+<p>Freon generates an integrated set of tools that support the language that you are creating.
 This table gives an overview of these tools, and shows how you can adjust them to your needs.
 See <a href="/010_Intro/040_A_Language_in_Five_Parts">The Five Definition Files</a> for an explanation of the parts
 of the language definition.</p>
@@ -257,22 +259,21 @@ of the language definition.</p>
 <td align="center">yes</td>
 <td align="center">none available</td>
 <td align="center">can be changed or replaced</td></tr></tbody></table>
-<p>If you are using ProjectIt, and are missing a specific tool or feature, please let us know through info AT projectit.org.</p></div></section></div>
+<p>If you are using Freon, and are missing a specific tool or feature, please let us know through info AT projectit.org.</p></div></section></div>
 
     <div class="horizontal divider svelte-m1dwbj" style="left: calc(20% - 8px)"></div></div>
 
 </div>
-		<footer class="svelte-1hxqcuo">
-    <span class="copyright svelte-1hxqcuo">Created by ProjectIt - © 2022 -
+		<footer class="svelte-1hxqcuo"><span class="copyright svelte-1hxqcuo">Created by OpenModeling - © 2023 -
         <a href="http://www.projectit.org/" target="_blank" class="link svelte-1hxqcuo">www.projectit.org
         </a></span>
 </footer></main>
 
 
-		<script type="module" data-hydrate="83s639">
-		import { start } from "/_app/start-2e129a9d.js";
+		<script type="module" data-hydrate="169j6a4">
+		import { start } from "/_app/start-12d6bb62.js";
 		start({
-			target: document.querySelector('[data-hydrate="83s639"]').parentNode,
+			target: document.querySelector('[data-hydrate="169j6a4"]').parentNode,
 			paths: {"base":"","assets":""},
 			session: {},
 			route: true,
@@ -282,8 +283,8 @@ of the language definition.</p>
 				status: 200,
 				error: null,
 				nodes: [
-					import("/_app/pages/__layout.svelte-996ae318.js"),
-						import("/_app/pages/010_Intro/050_Three_Levels_of_Customization.md-a05848b2.js")
+					import("/_app/pages/__layout.svelte-1aa9e867.js"),
+						import("/_app/pages/010_Intro/050_Three_Levels_of_Customization.md-cdb1cb9e.js")
 				],
 				url: new URL("http://sveltekit-prerender/010_Intro/050_Three_Levels_of_Customization"),
 				params: {}
