@@ -48,7 +48,7 @@ After a few ages, in which Freon grew up just a little but his human friends cam
 generation after generation, Freon had created many sounds. He even came up with a sound for 
 the sounds that were made. He called his sounds "words", and the sets of words he assembled, 
 he called "languages". With friends in one place he would use one "language", with friends 
-on the other side of earth, or in a another time, he would use another.
+on the other side of earth, or in another time, he would use another.
 
 In a few heavenly moments, which took about three ages on earth, Freon's father, the leader 
 of the gods, noticed that the humans relied more and more on the sounds, and less on the 

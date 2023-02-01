@@ -1,6 +1,6 @@
 # Changes from version 0.4.0 to 0.5.0
 
-* Added diagram generator. It generates an UML class diagram of the AST, 
+* Added diagram generator. It generates a UML class diagram of the AST, 
  an overview of all inheritance in the language and per .ast file
 one diagram.
 * Added a change manager that dispatches all changes in a model to anyone that

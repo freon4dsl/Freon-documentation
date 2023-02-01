@@ -2,7 +2,7 @@
 # PiElement
 
 As ProjectIt uses the AST for projections and behavior, it needs to know about the type of elements in the AST.
-To allow ProjectIt to work, each element type that occurrs in the AST needs to implement the `PiElement` interface.
+To allow ProjectIt to work, each element type that occurs in the AST needs to implement the `PiElement` interface.
 This interface is kept as small as possible, to allow ProjectIt to be used for any AST.
 
 
@@ -36,7 +36,7 @@ contains expressions, as ProjectIt includes special handling of expressions.
 To start with, these functions can be defined to simply return `false`.
 
 Note that ProjectIt does not need to know anything about the structure of your language.
-No need to know the availale element type, nor the properties of en element type, nor anything else.
+No need to know the available element type, nor the properties of en element type, nor anything else.
 This is by design, as ProjectIt is not meant to be a full Language Workbench,
 but instead meant to be used with multiple language workbenches , or none.
 

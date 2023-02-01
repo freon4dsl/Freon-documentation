@@ -16,7 +16,7 @@ which states that for many events, roughly 80% of the effects come from 20% of t
 For example, it is an axiom of business  management that "80% of sales come from 20% of clients".
 
 In software development the Pareto principle translates to “*80% of the development
-effort is spend on 20% of the application*”, this 20% being the more complex parts.
+effort is spent on 20% of the application*”, this 20% being the more complex parts.
 Still, the other 80% of the application needs to be created as well. 
 
 ProjectIt aims to

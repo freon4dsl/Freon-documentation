@@ -97,7 +97,7 @@ CalcFunction {
 
 There are just a few default validation rules:
 
-* Non optional properties must be set.
-* Non optional lists must include one element.
+* Non-optional properties must be set.
+* Non-optional lists must include one element.
 * Names of model units should be valid identifiers.
 * Any reference must be present.

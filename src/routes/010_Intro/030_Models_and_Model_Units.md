@@ -4,8 +4,7 @@
 
 # Models Often Become Too Large
 
-Contrary to what is common in the world of
-<a href="https://en.wikipedia.org/wiki/Domain-specific*language" target="_blank">Domain Specific Languages (DSLs)</a>
+Contrary to what is common in the world of <a href="https://en.wikipedia.org/wiki/Domain-specific*language" target="_blank">Domain Specific Languages (DSLs)</a>
 we believe that a model
 is often too large to handle. When dealing with source code, the times have long gone that a complete
 application was written in a single file. Since the 1980s every self-respecting programming language has supported some kind of modularization.

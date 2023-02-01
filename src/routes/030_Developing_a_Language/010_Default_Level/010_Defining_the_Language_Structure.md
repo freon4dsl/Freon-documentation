@@ -52,7 +52,7 @@ model InsuranceModel {
 
 ### <a name="Model_Unit"></a> Model unit
 A *model unit* is a part of the model that can be edited independently of the rest of the model. A model unit is
-always a direct child of a model. The name of a model unit never be [private](/010_Intro/030_Models_and_Model_Units#public)
+always a direct child of a model. The name of a model unit can never be [private](/010_Intro/030_Models_and_Model_Units#public)
 (see [Models and Model Units](/010_Intro/030_Models_and_Model_Units#public)).
 
 Model units may not extend other units or implement interfaces. 
