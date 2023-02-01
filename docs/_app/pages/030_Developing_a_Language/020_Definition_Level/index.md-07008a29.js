@@ -1,0 +1,5 @@
+import{S as q,i as z,s as D,e as u,t as r,k as E,c as d,a as v,h as c,d as n,m as P,b as T,g as x,H as o,J as b}from"../../../chunks/vendor-0dc77bd0.js";function w(L){let t,f,l,s,_,a,m,p;return{c(){t=u("h1"),f=r("Definition Level"),l=E(),s=u("p"),_=r("Please, become acquainted with the "),a=u("a"),m=r("three levels of customization"),p=r(`
+used by Freon.
+This section explains the second of these three levels.`),this.h()},l(e){t=d(e,"H1",{});var i=v(t);f=c(i,"Definition Level"),i.forEach(n),l=P(e),s=d(e,"P",{});var h=v(s);_=c(h,"Please, become acquainted with the "),a=d(h,"A",{href:!0});var y=v(a);m=c(y,"three levels of customization"),y.forEach(n),p=c(h,`
+used by Freon.
+This section explains the second of these three levels.`),h.forEach(n),this.h()},h(){T(a,"href","/010_Intro/050_Three_Levels_of_Customization")},m(e,i){x(e,t,i),o(t,f),x(e,l,i),x(e,s,i),o(s,_),o(s,a),o(a,m),o(s,p)},p:b,i:b,o:b,d(e){e&&n(t),e&&n(l),e&&n(s)}}}class F extends q{constructor(t){super();z(this,t,null,w,D,{})}}export{F as default};
