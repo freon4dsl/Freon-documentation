@@ -34,7 +34,7 @@ these files to add your own special elements.
 
 The custom files can be renamed and/or 
 put it in another location, or you can create your own set of custom projection files.
-In that case, you need to adjust the file `~/picode/projectit/ProjectItConfiguration`.
+In that case, you need to adjust the file `~/picode/config/FreonConfiguration`.
 
 ```ts
 // docu-project/config/ProjectitConfiguration.ts

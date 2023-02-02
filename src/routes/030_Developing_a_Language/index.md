@@ -37,5 +37,5 @@ figureNumber={1}
 />
 
 We are working on a few other examples. You can find them in the `samples` folder in the
-development branch of <a href="https://github.com/projectit-org/ProjectIt" target="_blank">ProjectIt</a>.
+development branch of <a href="https://github.com/freon4dsl/Freon4dsl" target="_blank">Freon</a>.
 

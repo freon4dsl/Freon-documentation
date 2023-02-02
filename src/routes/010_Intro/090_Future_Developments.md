@@ -20,4 +20,4 @@ the <a href="https://github.com/dslmeinte/mps-open-source/tree/master/mps-analys
 * Improve the *diagrammatic view* of the language definition and make the generation customizable.
 * ...
 
-If you are using Freon, and are missing a specific feature, please let us know through info AT projectit.org.
+If you are using Freon, and are missing a specific feature, please let us know through info AT freon4dsl.dev.

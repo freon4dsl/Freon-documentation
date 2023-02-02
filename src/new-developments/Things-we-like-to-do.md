@@ -1,5 +1,5 @@
 # Intro
-This list contains changes and additions to ProjectIt that we would like to do.
+This list contains changes and additions to Freon that we would like to do.
 This list was composed on 28 december 2021. At this moment there are no priorities
 given to any of the following items.
 

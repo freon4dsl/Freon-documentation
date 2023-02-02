@@ -38,7 +38,7 @@ the limited concept `GenericKind`.
 // docu-project/defs/typer-docu.type#L6-L9
 
 type GenericType {
-    base: PiType;
+    base: FreType;
     kind: GenericKind;
 }
 ```
@@ -59,7 +59,7 @@ your language between curly brackets.
 ```ts
 // docu-project/defs/typer-docu.type#L12-L12
 
-hastype { DocuExpression, DocuType, CalcFunction, Parameter }
+hastype { DocuExpression, DocuType, CalcFunction, Parameter, RiskRef, PayoutRef }
 ```
 
 ## Inference Rules

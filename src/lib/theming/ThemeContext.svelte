@@ -2,7 +2,6 @@
 <script>
     import { setContext, onMount } from "svelte";
     import { writable } from "svelte/store";
-    import {darkMode} from '../Store';
     import { themePresets } from "../Theme-presets.ts";
     // expose props for customization and set default values
     export let themes = [...themePresets];
@@ -18,8 +17,6 @@
         // providing Theme store through context makes store readonly
         theme: Theme,
         toggle: () => {
-            // (re)set the global ==> hack instead of using svg for projectit logo
-            $darkMode = !$darkMode;
             // update internal state
             let _currentIndex = themes.findIndex(h => h.name === _current);
             _current =

@@ -10,7 +10,7 @@ which will not be overwritten upon regeneration. It already contains a class tha
 ## Adjusting the Configuration
 Next you need to tell Freon to use this new typer by adding an
 instance of your class to the `customTypers` array in
-the file `ProjectitConfiguration.ts`. You will find this file in `~/picode/projectit`.
+the file `FreonConfiguration.ts`. You will find this file in `~/picode/config`.
 It is generated once, and wil not be overwritten on regeneration.
 
 Using the above convenience class, the configuration should look like this:

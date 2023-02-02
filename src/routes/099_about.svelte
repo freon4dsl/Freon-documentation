@@ -17,7 +17,7 @@
 	</p>
 
 	<p>
-		All the rest, including any errors, can be contributed to the creators of ProjectIt: Jos Warmer and Anneke Kleppe (see <a href="https://www.openmodeling.nl/" title="Openmodeling">www.openmodeling.nl</a>).
+		All the rest, including any errors, can be contributed to the creators of Freon: Jos Warmer and Anneke Kleppe (see <a href="https://www.openmodeling.nl/" title="Openmodeling">www.openmodeling.nl</a>).
 	</p>
 </div>
 

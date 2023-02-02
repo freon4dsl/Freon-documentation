@@ -18,8 +18,8 @@ Example project or use our Template project.
 The simplest manner to start working with Freon is to clone the example project from GitHub.
 In the following the root of your project will be indicated with '~'.
 
-*   Clone branch `master` from <a href="https://github.com/projectit-org/ProjectIt-example" target="_blank">
-    https://github.com/projectit-org/ProjectIt-example</a> in your preferred IDE.
+*   Clone branch `master` from <a href="https://github.com/freon4dsl/Freon-example.git" target="_blank">
+    https://github.com/freon4dsl/Freon-example.git</a> in your preferred IDE.
     (For an explanation of the content of the project see 
     [Project_Structure](/020_Getting_Started/020_Project_Structure)).
     
@@ -66,8 +66,8 @@ project provides a shell for the generated editor that enables the user to work 
 [model units](/010_Intro/030_Models_and_Model_Units).
 In the following the root of the project will be indicated with '~'.
 
-*   Clone branch `master` from <a href="https://github.com/projectit-org/ProjectIt-template" target="_blank">
-    https://github.com/projectit-org/ProjectIt-template</a>.
+*   Clone branch `master` from <a href="https://github.com/freon4dsl/Freon-template" target="_blank">
+    https://github.com/freon4dsl/Freon-template</a>.
     (For an explanation of the content of the project see
     [Project_Structure](/020_Getting_Started/020_Project_Structure)).
 
@@ -153,7 +153,7 @@ If you are having trouble using the editor, have a look at the key-bindings unde
 Now you are ready for a closer look at Freon. You can for instance:
 
 * Have a look at how the example language is defined by browsing through the language definition
-files in the <a href="https://github.com/projectit-org/ProjectIt-example" target="_blank">ProjectIt Example project</a>.
+files in the <a href="https://github.com/freon4dsl/Freon-example.git" target="_blank">Freon Example project</a>.
   You can find them in `~/src/defs`.
 * Read [Developing a language](/030_Developing_a_Language) to see how you can create your own language.
 * Have a look at the [structure](/020_Getting_Started/020_Project_Structure) of the generated project.

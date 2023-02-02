@@ -148,6 +148,44 @@ export class CustomEntityProjection implements PiProjection {
         );
     }
 
+    public getAttributeBox(attribute: AttributeWithLimitedType): Box {
+        return new HorizontalListBox( // tag::AttributeBox[]
+          attribute,
+          "Attribute",
+          [
+              new TextBox(
+                attribute,"Attribute-name",
+                () => attribute.name,
+                (c: string) => (attribute.name = c as string),
+              ),
+              new LabelBox(attribute, "attribute-label", ": "),
+              this.getReferenceBox(
+                attribute,
+                "Attribute-declaredType",
+                "<select declaredType>",
+                "AttributeType",
+                () => {
+                    if (!!attribute.declaredType) {
+                        return { id: attribute.declaredType.name, label: attribute.declaredType.name };
+                    } else {
+                        return null;
+                    }
+                },
+                async (option: SelectOption): Promise<BehaviorExecutionResult>  => {
+                    if (!!option) {
+                        attribute.declaredType = PiElementReference.create<AttributeType>(
+                          EntityEnvironment.getInstance().scoper.getFromVisibleElements(attribute, option.label, "AttributeType") as AttributeType,
+                          "Type"
+                        );
+                    } else {
+                        attribute.declaredType = null;
+                    }
+                    return BehaviorExecutionResult.EXECUTED;
+                }
+              )
+          ]
+        ); // end::AttributeBox[]
+    }
 
     // private createAttributeBox(att: AttributeWithLimitedType): Box {
     //     return new HorizontalListBox(
@@ -166,45 +204,6 @@ export class CustomEntityProjection implements PiProjection {
     //         ]
     //     );
     // }
-
-    public getAttributeBox(attribute: AttributeWithLimitedType): Box {
-        return new HorizontalListBox( // tag::AttributeBox[]
-            attribute,
-            "Attribute",
-            [
-                new TextBox(
-                    attribute,"Attribute-name",
-                    () => attribute.name,
-                    (c: string) => (attribute.name = c as string),
-                ),
-                new LabelBox(attribute, "attribute-label", ": "),
-                this.getReferenceBox(
-                    attribute,
-                    "Attribute-declaredType",
-                    "<select declaredType>",
-                    "AttributeType",
-                    () => {
-                        if (!!attribute.declaredType) {
-                            return { id: attribute.declaredType.name, label: attribute.declaredType.name };
-                        } else {
-                            return null;
-                        }
-                    },
-                    async (option: SelectOption): Promise<BehaviorExecutionResult>  => {
-                        if (!!option) {
-                            attribute.declaredType = PiElementReference.create<AttributeType>(
-                                EntityEnvironment.getInstance().scoper.getFromVisibleElements(attribute, option.label, "AttributeType") as AttributeType,
-                                "Type"
-                            );
-                        } else {
-                            attribute.declaredType = null;
-                        }
-                        return BehaviorExecutionResult.EXECUTED;
-                    }
-                )
-            ]
-        ); // end::AttributeBox[]
-    }
 
     public getReferenceBox(
         element: PiElement,

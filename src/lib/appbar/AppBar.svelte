@@ -23,7 +23,7 @@
 		</Tooltip>
 	</span>
 
-	<a target="_blank" href="https://github.com/projectit-org/ProjectIt" alt="Freon/ProjectIt on GitHub" class='linkLogo'>
+	<a target="_blank" href="https://github.com/freon4dsl/Freon4dsl.git" alt="Freon on GitHub" class='linkLogo'>
 		<Tooltip tip="github source" bottom>
 			<GithubLogo />
 		</Tooltip>
@@ -33,8 +33,7 @@
 		<!-- TODO change images for dark mode -->
 		<!-- normally, the brand icon is shown-->
 
-		<a target="_blank" href="https://www.projectit.org" class='linkLogo'>
-<!--			// use global var ==> hack instead of using svg for projectit logo-->
+		<a target="_blank" href="https://www.freon4dsl.dev" class='linkLogo'>
 			<Tooltip tip="home" bottom>
 			<img src="/freonlogo.png"  style="color:red" alt="Freon Logo" height='24'>
 			</Tooltip>
@@ -50,7 +49,6 @@
 	import MenuIcon from '../icons/MenuIcon.svelte';
 	import Button from '../buttons/Button.svelte';
 	import GithubLogo from '../icons/GithubLogo.svelte';
-	import { darkMode } from '../Store';
 	import Tooltip from '../buttons/Tooltip.svelte';
 
 </script>

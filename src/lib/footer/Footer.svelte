@@ -1,8 +1,8 @@
 <footer>
     <span class="copyright">
         Created by OpenModeling - &copy; 2023 -
-        <a href="http://www.projectit.org/" target="_blank" class="link">
-            www.projectit.org
+        <a href="http://www.freon4dsl.dev/" target="_blank" class="link">
+            www.freon4dsl.dev
         </a>
     </span>
 </footer>

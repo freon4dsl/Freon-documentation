@@ -17,7 +17,7 @@ all projections are based on boxes. In the next few steps we will show you how t
 of boxes to project your AST nodes, and how to style these boxes according to your wishes.
 
 The projections in this section are available in 
-the <a href="https://github.com/projectit-org/ProjectIt-example" target="_blank">ProjectIt-example</a>.
+the <a href="https://github.com/freon4dsl/Freon-example.git" target="_blank">Freon-example</a>.
 
 ## Customize by implementing `getBox()`
 
@@ -56,7 +56,7 @@ the property `name` of class `EntityModelUnit`.
 // tutorial-language/defs/LanguageDefinition.ast#L56-L61
 
 modelunit EntityModelUnit {
-    public name: identifier;
+    name: identifier;
 
     functions: EntityFunction[];
     entities: Entity[];
@@ -86,63 +86,13 @@ When we start the editor based on this projection, we see the following:
 <Figure
     imageName={"demomodelname.png"}
     caption={"Simple Projection of a name property"}
-    figureNumber={1}
-></Figure>
-
-
-It doesn't look very nice currently.
-
-1. The label is not distinguishable from the name of the model.
-2. When the name of the model becomes empty, there is no visual clue that you can add a name.
+    figureNumber={1}>
+</Figure>
 
 ### Step 2 - Adding Style and a PlaceHolder
-To make the label look different from the value of the property, we need to add a style
-to the `LabelBox`. To do so, we associate the `LabelBox` with the style `projectitStyles.keyword`.
-This will project it in a different color.
 
-Also, we give the `TextBox` has a `placeHolder` property. The placeholder will be shown
-whenever the contents of the `TextBox`
-is empty, giving the user a visual clue that a name could be entered.
-
-```ts
-// tutorial-language/editor/CustomEntityProjection.ts#L53-L63
-
-// Modelbox with style added
-private createModelBox2(model: EntityModelUnit): Box {
-    return new HorizontalListBox(model, "model", [
-        new LabelBox(model, "model-label", "Model", {
-            style: styleToCSS(projectitStyles.keyword)
-        }),
-        new TextBox(model, "model-name", () => model.name, (c: string) => (model.name = c), {
-            placeHolder: "<name>"
-        })
-    ]);
-}
-```
-
-The result looks a lot better.
-
-<Figure
-    imageName={"demomodelname-with-style.png"}
-    caption={"Simple Projection with Styles"}
-    figureNumber={2}
-></Figure>
-
-
-The style `projectitStyles.keyword` is defined in the file `~/picode/editor/styles/styles.ts` as follows.
-In principle all CSS styles can be used here. Learn more about styling
-in [Styling](/030_Developing_a_Language/040_Styling).
-
-
-
-```ts
-// tutorial-language/editor/styles/styles.ts#L37-L40
-
-export const keyword: PiStyle = {
-    "font-weight": "bold",
-    color: "blue"
-};
-```
+[//]: # (// TODO Jos, please create new text for styling)
+In version 0.5.0 this has been changed such that you can use CSS classes. More info follows...
 
 ### Step 3 - Projecting a List
 
@@ -249,7 +199,57 @@ concept AttributeWithLimitedType {
 ```
 
 ```ts
-// tutorial-language/editor/CustomEntityProjection.ts#L71-L106
+// tutorial-language/defs/LanguageDefinition.ast#L56-L61
+
+modelunit EntityModelUnit {
+    name: identifier;
+
+    functions: EntityFunction[];
+    entities: Entity[];
+}
+```
+
+```ts
+// tutorial-language/editor/CustomEntityProjection.ts#L151-L188
+
+public getAttributeBox(attribute: AttributeWithLimitedType): Box {
+    return new HorizontalListBox( // tag::AttributeBox[]
+      attribute,
+      "Attribute",
+      [
+          new TextBox(
+            attribute,"Attribute-name",
+            () => attribute.name,
+            (c: string) => (attribute.name = c as string),
+          ),
+          new LabelBox(attribute, "attribute-label", ": "),
+          this.getReferenceBox(
+            attribute,
+            "Attribute-declaredType",
+            "<select declaredType>",
+            "AttributeType",
+            () => {
+                if (!!attribute.declaredType) {
+                    return { id: attribute.declaredType.name, label: attribute.declaredType.name };
+                } else {
+                    return null;
+                }
+            },
+            async (option: SelectOption): Promise<BehaviorExecutionResult>  => {
+                if (!!option) {
+                    attribute.declaredType = PiElementReference.create<AttributeType>(
+                      EntityEnvironment.getInstance().scoper.getFromVisibleElements(attribute, option.label, "AttributeType") as AttributeType,
+                      "Type"
+                    );
+                } else {
+                    attribute.declaredType = null;
+                }
+                return BehaviorExecutionResult.EXECUTED;
+            }
+          )
+      ]
+    ); // end::AttributeBox[]
+}
 ```
 
 ### Step 4 - Adding Behavior

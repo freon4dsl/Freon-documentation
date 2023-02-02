@@ -66,4 +66,4 @@ As a start, you could ..
 * .. dive deeper into the [structure of the generated code](/020_Getting_Started/020_Project_Structure).
 * .. get to know more about the [meta-code](/060_Under_the_Hood) of Freon.
 
-**Have fun!** If you have questions that are not answered in this documentation, please email us at _info AT projectit.org_.
+**Have fun!** If you have questions that are not answered in this documentation, please email us at _info AT freon4dsl.dev_.
