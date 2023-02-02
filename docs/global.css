@@ -2,10 +2,10 @@
 	/* the following css properties are present in order for the text completion during development to function */
 	/* they are overwritten by the THEME values in 'themePresets.ts' */
 	--theme-colors-color: teal;           /* Primary text color */
-	--theme-colors-inverse_color: #d3e3fd;    /* Text color on non_normal background */
+	--theme-colors-inverse_color: #4f9a94;    /* Text color on non_normal background */
 	--theme-colors-bg_app_bar: teal;      /* Color of header and footer */
-	--theme-colors-bg_color: #d3e3fd;         /* Background color */
-	--theme-colors-bg_panel: #d3e3fd; 	      /* Dialog background color */
+	--theme-colors-bg_color: #4f9a94;         /* Background color */
+	--theme-colors-bg_panel: #4f9a94; 	      /* Dialog background color */
 	--theme-colors-divider: teal; 	      /* Dialog Title background color */
 	--theme-colors-primary: teal;         /* Dialog primary button text color */
 	--theme-colors-list_divider: teal;    /* Color of lines between columns in the error list */
@@ -32,7 +32,7 @@
 	--theme-colors-bg_alias_box: white;
 	--theme-colors-color_alias_box: teal;
 	/* Dropdown */
-	--theme-colors-bg_dropdown_component: lightblue;
+	--theme-colors-bg_dropdown_component: #4f9a94;
 	--theme-colors-border_dropdown_component: teal;
 	--theme-colors-color_dropdownitem_component: teal;
 	--theme-colors-border_dropdownitem_component: teal;
