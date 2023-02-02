@@ -5,7 +5,7 @@
 # Project Structure
 
 This description of the project structure of a Freon project is based on 
-the <a href="https://github.com/projectit-org/ProjectIt-example" target="_blank">ProjectIt-example</a> project which
+the <a href="https://github.com/freon4dsl/Freon-example.git" target="_blank">Freon-example</a> project which
 you can clone from GitHub.
 
 The source code (in `~/src`) in a Freon project is organised into the following subfolders.

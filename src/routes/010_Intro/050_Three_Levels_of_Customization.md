@@ -97,5 +97,5 @@ of the language definition.
 | visitor pattern implementation    | yes | .ast    | can be extended |
 | web application                   | yes | none available   | can be changed or replaced |
 
-If you are using Freon, and are missing a specific tool or feature, please let us know through info AT projectit.org.
+If you are using Freon, and are missing a specific tool or feature, please let us know through info AT freon4dsl.dev.
 

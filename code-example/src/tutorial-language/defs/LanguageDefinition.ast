@@ -7,8 +7,8 @@ model EntityModel {
 }
 
 modelunit SomeOtherModelUnit {
-    public name: identifier;
-    public somePart: Entity;
+    name: identifier;
+    somePart: Entity;
 }
 
 interface BaseType {
@@ -54,7 +54,7 @@ binary expression MultiplyExpression base BinaryExpression {
 }
 
 modelunit EntityModelUnit {
-    public name: identifier;
+    name: identifier;
 
     functions: EntityFunction[];
     entities: Entity[];

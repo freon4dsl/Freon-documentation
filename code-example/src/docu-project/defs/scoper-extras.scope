@@ -1,0 +1,6 @@
+scoper DocuScoper for language DocuProject
+
+isnamespace { Entity }
+Entity {
+    namespace_addition = self.baseEntity;
+}

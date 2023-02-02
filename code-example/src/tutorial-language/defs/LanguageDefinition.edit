@@ -1,4 +1,4 @@
-editor StartEditor for language Entity
+editor StartEditor
 
 Text {
 [
@@ -60,29 +60,29 @@ IfExpression {
         ${self.whenFalse}
     endif
     ]
-    trigger "if"
+    trigger = "if"
 }
 PlusExpression {
-    symbol "+"
+    symbol = "+"
 }
 
 MultiplyExpression {
-    symbol "*"
+    symbol = "*"
 }
 
 DivideExpression {
-    symbol "/"
+    symbol = "/"
 }
 LessThenExpression {
-    symbol "<"
+    symbol = "<"
 }
 OrExpression {
-    symbol "or"
+    symbol = "or"
 }
 
 Entity {
     [
-        ${self.isCompany keyword[COMPANY]}
+        ${self.isCompany [COMPANY]}
         entity ${self.name} [? base ${self.baseEntity}] {
             ${self.attributes vertical }      // this list is projected as a vertical list without separator or terminator
             ${self.functions  table columns } // this list is projected as a column based table
@@ -98,10 +98,10 @@ FunctionCallExpression {
 }
 */
 FunctionCallExpression {
-        [+
-        CALL ${self.functionDefinition:specials} (  )
+        [
+        CALL ${self.functionDefinition} (  )
         ]
-    trigger "function"
+    trigger = "function"
 }
 EntityModelUnit {
         [

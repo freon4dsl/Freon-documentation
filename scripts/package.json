@@ -5,8 +5,10 @@
     "navTree": "dist/_NavTreeFiller.js"
   },
   "scripts": {
+    "generateDocuProject": "cd ../code-example/ && yarn build && cd ../scripts/",
     "navTree": "tsc && node dist/_NavTreeFiller.js",
     "adocToMd": "tsc && node dist/AdocToMd.js",
-    "checkLinks": "tsc && node dist/LinkChecker.js"
+    "checkLinks": "tsc && node dist/LinkChecker.js",
+    "build": "yarn generateDocuProject && tsc && node dist/LinkChecker.js && node dist/_NavTreeFiller.js"
   }
 }

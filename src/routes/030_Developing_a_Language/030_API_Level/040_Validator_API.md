@@ -10,7 +10,7 @@ the Freon configuration.
 ## Adjusting the Configuration
 You should let Freon know where it can find your customized validation class by adding an 
 instance of your class to the `customValidations` array in
-the file `ProjectitConfiguration.ts`. You will find this file in `~/picode/projectit`.
+the file `FreonConfiguration.ts`. You will find this file in `~/picode/config`.
 It is generated once, and wil not be overwritten on regeneration.
 
 Using the above example class, the configuration should look like this:

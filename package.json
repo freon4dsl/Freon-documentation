@@ -13,7 +13,7 @@
     "check": "svelte-check --tsconfig ./tsconfig.json",
     "check:watch": "svelte-check --tsconfig ./tsconfig.json --watch",
     "link-check": "find src/routes -name '*.md' -exec yarn markdown-link-check {};",
-    "prepare": "cd scripts && yarn checkLinks && yarn navTree && cd .. && yarn embedme --source-root code-example/src \"src/routes/**/*.md\""
+    "prepare": "cd scripts && yarn build && cd .. && yarn embedme --source-root code-example/src \"src/routes/**/*.md\""
   },
   "devDependencies": {
     "@smui/button": "^5.0.0-beta.7",

@@ -1,6 +1,6 @@
-# ProjectIt Documentation
+# Freon Documentation
 
-This project contains the sources for all documentation on [ProjectIt](https://github.com/projectit-org/ProjectIt). It is powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
+This project contains the sources for all documentation on [Freon](https://github.com/freon4dsl/Freon4dsl). It is powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
 
 ## Creating a documentation website
 
@@ -39,4 +39,4 @@ yarn dev -- --open
 In de docs folder:
 
 - Check whether the .nojekyll file is there, to avoid GitHub from doing stuff that breaks the site.
-- Check whether the CNAME file with www.projectit.org is there
+- Check whether the CNAME file with www.freon4dsl.dev is there

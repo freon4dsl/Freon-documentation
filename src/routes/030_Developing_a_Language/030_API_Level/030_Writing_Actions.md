@@ -63,9 +63,8 @@ and action
 are defined in two different files, respectively `CustomEntityProjections.ts` and `CustomEntityActions.ts`.
 
 ```ts
-// tutorial-language/editor/CustomEntityActions.ts#L39-L51
+// tutorial-language/editor/CustomEntityActions.ts#L40-L51
 
-    // Add your own custom behavior here
     {
         activeInBoxRoles: ["end-of-attribute-list"],                                            // <1>
         trigger: "attribute",                                                                   // <2>

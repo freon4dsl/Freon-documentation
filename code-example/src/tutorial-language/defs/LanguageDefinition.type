@@ -1,4 +1,4 @@
-typer Entity for language Entity
+typer Entity
 
 // 'BaseType' is the root of the type hierarchy
 istype { BaseType, Type, Entity, AttributeType }
