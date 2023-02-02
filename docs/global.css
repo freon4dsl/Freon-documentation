@@ -39,13 +39,13 @@
 	/* Selectable */
 	--theme-colors-bg_selected: rgba(211, 227, 253, 255);
 	--theme-colors-border_selected: teal;
-	/* ProjectIt sizes */
+	/* Freon sizes */
 	--pi-header-height: 36px;
 	--pi-footer-height: 16px;
 	--pi-menu-height: 24px;
 	--pi-statusbar-height: 24px;
 
-	/* ProjectIt font sizes */
+	/* Freon font sizes */
 	--pi-header-font-size: 16px;
 	--pi-button-font-size: 12px;
 	--pi-error-font-size: 14px;
@@ -65,7 +65,7 @@
 	--button-font-family: var(--font-family);
 	--code-font-family: 'Roboto Mono', Menlo, Consolas, monospace;
 
-	/* added for documentation to theme variables from ProjectIt */
+	/* added for documentation to theme variables from Freon */
 	--theme-colors-button_color: white;
 	--theme-colors-button_bg_color: rgba(0,0,139, 1); /* teal with opacity 1 */
 	--theme-colors-button_active: rgba(0,0,139, .7); /* teal with opacity .7 */

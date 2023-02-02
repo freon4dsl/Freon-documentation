@@ -3,12 +3,12 @@ Found 1 warnings in file 020_Getting_Started\030_Calling_the_Generator.md:
 Found 1 warnings in file 030_Developing_a_Language\020_Definition_Level\020_Scoper_Definition\010_Scoper_Files.md:
 	TODO remaining on line 29
 Found 1 warnings in file 030_Developing_a_Language\030_API_Level\020_Writing_Projections.md:
-	TODO remaining on line 100
+	TODO remaining on line 94
 Found 4 warnings in file 030_Developing_a_Language\030_API_Level\030_Writing_Actions.md:
-	TODO remaining on line 93
-	TODO remaining on line 96
-	TODO remaining on line 99
-	TODO remaining on line 102
+	TODO remaining on line 92
+	TODO remaining on line 95
+	TODO remaining on line 98
+	TODO remaining on line 101
 Found 1 warnings in file 030_Developing_a_Language\030_API_Level\040_Validator_API.md:
 	TODO remaining on line 46
 Found 6 warnings in file 060_Under_the_Hood\010_The_Editor_Framework\010_Predefined_Boxes.md:

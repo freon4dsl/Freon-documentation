@@ -28,11 +28,11 @@
 		<meta http-equiv="content-security-policy" content="">
 	<link rel="stylesheet" href="/_app/assets/pages/__layout.svelte-3f550184.css">
 	<link rel="stylesheet" href="/_app/assets/Note.svelte_svelte_type_style_lang-a108c8ba.css">
-	<link rel="modulepreload" href="/_app/start-67ba37a3.js">
+	<link rel="modulepreload" href="/_app/start-6b8e0b64.js">
 	<link rel="modulepreload" href="/_app/chunks/vendor-0dc77bd0.js">
-	<link rel="modulepreload" href="/_app/pages/__layout.svelte-3ba052b6.js">
-	<link rel="modulepreload" href="/_app/pages/030_Developing_a_Language/020_Definition_Level/030_Typer_Definition/010_Typer_Files.md-e9d28cd9.js">
-	<link rel="modulepreload" href="/_app/chunks/Note-b0db7989.js">
+	<link rel="modulepreload" href="/_app/pages/__layout.svelte-2ba1a532.js">
+	<link rel="modulepreload" href="/_app/pages/030_Developing_a_Language/020_Definition_Level/030_Typer_Definition/010_Typer_Files.md-4d4ee5bf.js">
+	<link rel="modulepreload" href="/_app/chunks/Note-20c7a4ff.js">
 	</head>
 	<body>
 		<div style="position: relative; height: 100%; width:100%;" id="svelte">
@@ -61,7 +61,7 @@
 </button></span>
 	<div class="tooltip svelte-12vmiyh    bottom"><div class="default-tip svelte-12vmiyh" style="background-color: var(--theme-colors-tooltip_background); color: var(--theme-colors-tooltip_color) font-size: .4em">dark mode</div></div></div></span>
 
-	<a target="_blank" href="https://github.com/projectit-org/ProjectIt" alt="Freon/ProjectIt on GitHub" class="linkLogo svelte-ae0shh"><div class="tooltip-wrapper svelte-12vmiyh"><span class="tooltip-slot svelte-12vmiyh">
+	<a target="_blank" href="https://github.com/freon4dsl/Freon4dsl.git" alt="Freon on GitHub" class="linkLogo svelte-ae0shh"><div class="tooltip-wrapper svelte-12vmiyh"><span class="tooltip-slot svelte-12vmiyh">
 
 
 
@@ -72,8 +72,7 @@
 	
 		
 
-		<a target="_blank" href="https://www.projectit.org" class="linkLogo svelte-ae0shh">
-			<div class="tooltip-wrapper svelte-12vmiyh"><span class="tooltip-slot svelte-12vmiyh"><img src="/freonlogo.png" style="color:red" alt="Freon Logo" height="24" class="svelte-ae0shh"></span>
+		<a target="_blank" href="https://www.freon4dsl.dev" class="linkLogo svelte-ae0shh"><div class="tooltip-wrapper svelte-12vmiyh"><span class="tooltip-slot svelte-12vmiyh"><img src="/freonlogo.png" style="color:red" alt="Freon Logo" height="24" class="svelte-ae0shh"></span>
 	<div class="tooltip svelte-12vmiyh    bottom"><div class="default-tip svelte-12vmiyh" style="background-color: var(--theme-colors-tooltip_background); color: var(--theme-colors-tooltip_color) font-size: .4em">home</div></div></div></a>
 
 </div>
@@ -282,7 +281,7 @@ the limited concept <code>GenericKind</code>.</p>
 <pre class="language-ts"><!-- HTML_TAG_START --><code class="language-ts"><span class="token comment">// docu-project/defs/typer-docu.type#L6-L9</span>
 
 <span class="token keyword">type</span> <span class="token class-name">GenericType</span> <span class="token punctuation">&#123;</span>
-    base<span class="token operator">:</span> PiType<span class="token punctuation">;</span>
+    base<span class="token operator">:</span> FreType<span class="token punctuation">;</span>
     kind<span class="token operator">:</span> GenericKind<span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span></code><!-- HTML_TAG_END --></pre>
 <p>Note that is it often good practise to have a common superclass or interface for all your types,
@@ -297,7 +296,7 @@ which have a different meaning. </p>
 your language between curly brackets.</p>
 <pre class="language-ts"><!-- HTML_TAG_START --><code class="language-ts"><span class="token comment">// docu-project/defs/typer-docu.type#L12-L12</span>
 
-hastype <span class="token punctuation">&#123;</span> DocuExpression<span class="token punctuation">,</span> DocuType<span class="token punctuation">,</span> CalcFunction<span class="token punctuation">,</span> Parameter <span class="token punctuation">&#125;</span></code><!-- HTML_TAG_END --></pre>
+hastype <span class="token punctuation">&#123;</span> DocuExpression<span class="token punctuation">,</span> DocuType<span class="token punctuation">,</span> CalcFunction<span class="token punctuation">,</span> Parameter<span class="token punctuation">,</span> RiskRef<span class="token punctuation">,</span> PayoutRef <span class="token punctuation">&#125;</span></code><!-- HTML_TAG_END --></pre>
 <h2>Inference Rules</h2>
 <p>In order to determine the type of a term, there need to be a rule, called  an <strong>inference rule</strong>,
 for each concept or interface that is marked <code>hasType</code>. Each of these rules should result in a type concept.
@@ -395,15 +394,15 @@ PredefinedType <span class="token punctuation">&#123;</span>
 
 </div>
 		<footer class="svelte-1hxqcuo"><span class="copyright svelte-1hxqcuo">Created by OpenModeling - © 2023 -
-        <a href="http://www.projectit.org/" target="_blank" class="link svelte-1hxqcuo">www.projectit.org
+        <a href="http://www.freon4dsl.dev/" target="_blank" class="link svelte-1hxqcuo">www.freon4dsl.dev
         </a></span>
 </footer></main>
 
 
-		<script type="module" data-hydrate="16q4hd2">
-		import { start } from "/_app/start-67ba37a3.js";
+		<script type="module" data-hydrate="or4opi">
+		import { start } from "/_app/start-6b8e0b64.js";
 		start({
-			target: document.querySelector('[data-hydrate="16q4hd2"]').parentNode,
+			target: document.querySelector('[data-hydrate="or4opi"]').parentNode,
 			paths: {"base":"","assets":""},
 			session: {},
 			route: true,
@@ -413,8 +412,8 @@ PredefinedType <span class="token punctuation">&#123;</span>
 				status: 200,
 				error: null,
 				nodes: [
-					import("/_app/pages/__layout.svelte-3ba052b6.js"),
-						import("/_app/pages/030_Developing_a_Language/020_Definition_Level/030_Typer_Definition/010_Typer_Files.md-e9d28cd9.js")
+					import("/_app/pages/__layout.svelte-2ba1a532.js"),
+						import("/_app/pages/030_Developing_a_Language/020_Definition_Level/030_Typer_Definition/010_Typer_Files.md-4d4ee5bf.js")
 				],
 				url: new URL("http://sveltekit-prerender/030_Developing_a_Language/020_Definition_Level/030_Typer_Definition/010_Typer_Files"),
 				params: {}

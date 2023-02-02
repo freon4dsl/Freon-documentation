@@ -1,6 +1,6 @@
 {
   ".svelte-kit/runtime/client/start.js": {
-    "file": "start-67ba37a3.js",
+    "file": "start-6b8e0b64.js",
     "src": ".svelte-kit/runtime/client/start.js",
     "isEntry": true,
     "imports": [
@@ -74,7 +74,7 @@
     ]
   },
   "src/routes/__layout.svelte": {
-    "file": "pages/__layout.svelte-3ba052b6.js",
+    "file": "pages/__layout.svelte-2ba1a532.js",
     "src": "src/routes/__layout.svelte",
     "isEntry": true,
     "isDynamicEntry": true,
@@ -86,7 +86,7 @@
     ]
   },
   "src/routes/__error.svelte": {
-    "file": "pages/__error.svelte-f3023b2a.js",
+    "file": "pages/__error.svelte-589866c7.js",
     "src": "src/routes/__error.svelte",
     "isEntry": true,
     "isDynamicEntry": true,
@@ -95,7 +95,7 @@
     ]
   },
   "src/routes/index.md": {
-    "file": "pages/index.md-073651e2.js",
+    "file": "pages/index.md-538795b5.js",
     "src": "src/routes/index.md",
     "isEntry": true,
     "isDynamicEntry": true,
@@ -104,20 +104,20 @@
     ]
   },
   "src/routes/030_Developing_a_Language/index.md": {
-    "file": "pages/030_Developing_a_Language/index.md-3533785c.js",
+    "file": "pages/030_Developing_a_Language/index.md-a4d0c68f.js",
     "src": "src/routes/030_Developing_a_Language/index.md",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
       "_vendor-0dc77bd0.js",
-      "_Figure-4dd15a94.js"
+      "_Figure-8dfe37a0.js"
     ],
     "css": [
       "assets/Figure.svelte_svelte_type_style_lang-d2c04b30.css"
     ]
   },
   "src/routes/030_Developing_a_Language/020_Definition_Level/index.md": {
-    "file": "pages/030_Developing_a_Language/020_Definition_Level/index.md-07008a29.js",
+    "file": "pages/030_Developing_a_Language/020_Definition_Level/index.md-1e24e273.js",
     "src": "src/routes/030_Developing_a_Language/020_Definition_Level/index.md",
     "isEntry": true,
     "isDynamicEntry": true,
@@ -126,7 +126,7 @@
     ]
   },
   "src/routes/030_Developing_a_Language/020_Definition_Level/040_Validator_Definition/index.md": {
-    "file": "pages/030_Developing_a_Language/020_Definition_Level/040_Validator_Definition/index.md-b20397f7.js",
+    "file": "pages/030_Developing_a_Language/020_Definition_Level/040_Validator_Definition/index.md-09d43a86.js",
     "src": "src/routes/030_Developing_a_Language/020_Definition_Level/040_Validator_Definition/index.md",
     "isEntry": true,
     "isDynamicEntry": true,
@@ -135,7 +135,7 @@
     ]
   },
   "src/routes/030_Developing_a_Language/020_Definition_Level/040_Validator_Definition/010_Validator_Files.md": {
-    "file": "pages/030_Developing_a_Language/020_Definition_Level/040_Validator_Definition/010_Validator_Files.md-1cb1351e.js",
+    "file": "pages/030_Developing_a_Language/020_Definition_Level/040_Validator_Definition/010_Validator_Files.md-74821804.js",
     "src": "src/routes/030_Developing_a_Language/020_Definition_Level/040_Validator_Definition/010_Validator_Files.md",
     "isEntry": true,
     "isDynamicEntry": true,
@@ -147,7 +147,7 @@
     ]
   },
   "src/routes/030_Developing_a_Language/020_Definition_Level/010_Editor_Definition/index.md": {
-    "file": "pages/030_Developing_a_Language/020_Definition_Level/010_Editor_Definition/index.md-89f2bce7.js",
+    "file": "pages/030_Developing_a_Language/020_Definition_Level/010_Editor_Definition/index.md-a44444ac.js",
     "src": "src/routes/030_Developing_a_Language/020_Definition_Level/010_Editor_Definition/index.md",
     "isEntry": true,
     "isDynamicEntry": true,
@@ -159,7 +159,7 @@
     ]
   },
   "src/routes/030_Developing_a_Language/020_Definition_Level/010_Editor_Definition/050_Other_Options.md": {
-    "file": "pages/030_Developing_a_Language/020_Definition_Level/010_Editor_Definition/050_Other_Options.md-700ca7a7.js",
+    "file": "pages/030_Developing_a_Language/020_Definition_Level/010_Editor_Definition/050_Other_Options.md-406d1c6c.js",
     "src": "src/routes/030_Developing_a_Language/020_Definition_Level/010_Editor_Definition/050_Other_Options.md",
     "isEntry": true,
     "isDynamicEntry": true,
@@ -168,46 +168,46 @@
     ]
   },
   "src/routes/030_Developing_a_Language/020_Definition_Level/010_Editor_Definition/020_Projections.md": {
-    "file": "pages/030_Developing_a_Language/020_Definition_Level/010_Editor_Definition/020_Projections.md-c21a9c04.js",
+    "file": "pages/030_Developing_a_Language/020_Definition_Level/010_Editor_Definition/020_Projections.md-36f98612.js",
     "src": "src/routes/030_Developing_a_Language/020_Definition_Level/010_Editor_Definition/020_Projections.md",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
       "_vendor-0dc77bd0.js",
-      "_Note-b0db7989.js"
+      "_Note-20c7a4ff.js"
     ],
     "css": [
       "assets/Note.svelte_svelte_type_style_lang-a108c8ba.css"
     ]
   },
   "src/routes/030_Developing_a_Language/020_Definition_Level/010_Editor_Definition/030_Indentation.md": {
-    "file": "pages/030_Developing_a_Language/020_Definition_Level/010_Editor_Definition/030_Indentation.md-b78bc3de.js",
+    "file": "pages/030_Developing_a_Language/020_Definition_Level/010_Editor_Definition/030_Indentation.md-6084d4d1.js",
     "src": "src/routes/030_Developing_a_Language/020_Definition_Level/010_Editor_Definition/030_Indentation.md",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
       "_vendor-0dc77bd0.js",
-      "_Note-b0db7989.js"
+      "_Note-20c7a4ff.js"
     ],
     "css": [
       "assets/Note.svelte_svelte_type_style_lang-a108c8ba.css"
     ]
   },
   "src/routes/030_Developing_a_Language/020_Definition_Level/010_Editor_Definition/010_Edit_Files.md": {
-    "file": "pages/030_Developing_a_Language/020_Definition_Level/010_Editor_Definition/010_Edit_Files.md-2de8721a.js",
+    "file": "pages/030_Developing_a_Language/020_Definition_Level/010_Editor_Definition/010_Edit_Files.md-70dcd59a.js",
     "src": "src/routes/030_Developing_a_Language/020_Definition_Level/010_Editor_Definition/010_Edit_Files.md",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
       "_vendor-0dc77bd0.js",
-      "_Note-b0db7989.js"
+      "_Note-20c7a4ff.js"
     ],
     "css": [
       "assets/Note.svelte_svelte_type_style_lang-a108c8ba.css"
     ]
   },
   "src/routes/030_Developing_a_Language/020_Definition_Level/020_Scoper_Definition/index.md": {
-    "file": "pages/030_Developing_a_Language/020_Definition_Level/020_Scoper_Definition/index.md-86b2d32c.js",
+    "file": "pages/030_Developing_a_Language/020_Definition_Level/020_Scoper_Definition/index.md-c7451074.js",
     "src": "src/routes/030_Developing_a_Language/020_Definition_Level/020_Scoper_Definition/index.md",
     "isEntry": true,
     "isDynamicEntry": true,
@@ -219,20 +219,20 @@
     ]
   },
   "src/routes/030_Developing_a_Language/020_Definition_Level/020_Scoper_Definition/010_Scoper_Files.md": {
-    "file": "pages/030_Developing_a_Language/020_Definition_Level/020_Scoper_Definition/010_Scoper_Files.md-dd04c6bd.js",
+    "file": "pages/030_Developing_a_Language/020_Definition_Level/020_Scoper_Definition/010_Scoper_Files.md-94cfd4ca.js",
     "src": "src/routes/030_Developing_a_Language/020_Definition_Level/020_Scoper_Definition/010_Scoper_Files.md",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
       "_vendor-0dc77bd0.js",
-      "_Note-b0db7989.js"
+      "_Note-20c7a4ff.js"
     ],
     "css": [
       "assets/Note.svelte_svelte_type_style_lang-a108c8ba.css"
     ]
   },
   "src/routes/030_Developing_a_Language/020_Definition_Level/030_Typer_Definition/index.md": {
-    "file": "pages/030_Developing_a_Language/020_Definition_Level/030_Typer_Definition/index.md-c7e60f74.js",
+    "file": "pages/030_Developing_a_Language/020_Definition_Level/030_Typer_Definition/index.md-dbfc6c8a.js",
     "src": "src/routes/030_Developing_a_Language/020_Definition_Level/030_Typer_Definition/index.md",
     "isEntry": true,
     "isDynamicEntry": true,
@@ -244,7 +244,7 @@
     ]
   },
   "src/routes/030_Developing_a_Language/020_Definition_Level/030_Typer_Definition/030_Example_Typer_Definition.md": {
-    "file": "pages/030_Developing_a_Language/020_Definition_Level/030_Typer_Definition/030_Example_Typer_Definition.md-561dc39f.js",
+    "file": "pages/030_Developing_a_Language/020_Definition_Level/030_Typer_Definition/030_Example_Typer_Definition.md-b5a5131a.js",
     "src": "src/routes/030_Developing_a_Language/020_Definition_Level/030_Typer_Definition/030_Example_Typer_Definition.md",
     "isEntry": true,
     "isDynamicEntry": true,
@@ -253,7 +253,7 @@
     ]
   },
   "src/routes/030_Developing_a_Language/020_Definition_Level/030_Typer_Definition/020_Example_Structure.md": {
-    "file": "pages/030_Developing_a_Language/020_Definition_Level/030_Typer_Definition/020_Example_Structure.md-354d8fc1.js",
+    "file": "pages/030_Developing_a_Language/020_Definition_Level/030_Typer_Definition/020_Example_Structure.md-bb0ddd8a.js",
     "src": "src/routes/030_Developing_a_Language/020_Definition_Level/030_Typer_Definition/020_Example_Structure.md",
     "isEntry": true,
     "isDynamicEntry": true,
@@ -262,20 +262,20 @@
     ]
   },
   "src/routes/030_Developing_a_Language/020_Definition_Level/030_Typer_Definition/010_Typer_Files.md": {
-    "file": "pages/030_Developing_a_Language/020_Definition_Level/030_Typer_Definition/010_Typer_Files.md-e9d28cd9.js",
+    "file": "pages/030_Developing_a_Language/020_Definition_Level/030_Typer_Definition/010_Typer_Files.md-4d4ee5bf.js",
     "src": "src/routes/030_Developing_a_Language/020_Definition_Level/030_Typer_Definition/010_Typer_Files.md",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
       "_vendor-0dc77bd0.js",
-      "_Note-b0db7989.js"
+      "_Note-20c7a4ff.js"
     ],
     "css": [
       "assets/Note.svelte_svelte_type_style_lang-a108c8ba.css"
     ]
   },
   "src/routes/030_Developing_a_Language/010_Default_Level/index.md": {
-    "file": "pages/030_Developing_a_Language/010_Default_Level/index.md-fdc49ea1.js",
+    "file": "pages/030_Developing_a_Language/010_Default_Level/index.md-b08bd0e1.js",
     "src": "src/routes/030_Developing_a_Language/010_Default_Level/index.md",
     "isEntry": true,
     "isDynamicEntry": true,
@@ -284,20 +284,20 @@
     ]
   },
   "src/routes/030_Developing_a_Language/010_Default_Level/010_Defining_the_Language_Structure.md": {
-    "file": "pages/030_Developing_a_Language/010_Default_Level/010_Defining_the_Language_Structure.md-da987ba8.js",
+    "file": "pages/030_Developing_a_Language/010_Default_Level/010_Defining_the_Language_Structure.md-8dc71229.js",
     "src": "src/routes/030_Developing_a_Language/010_Default_Level/010_Defining_the_Language_Structure.md",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
       "_vendor-0dc77bd0.js",
-      "_Note-b0db7989.js"
+      "_Note-20c7a4ff.js"
     ],
     "css": [
       "assets/Note.svelte_svelte_type_style_lang-a108c8ba.css"
     ]
   },
   "src/routes/030_Developing_a_Language/010_Default_Level/020_Defining_Concept_Properties.md": {
-    "file": "pages/030_Developing_a_Language/010_Default_Level/020_Defining_Concept_Properties.md-4525f322.js",
+    "file": "pages/030_Developing_a_Language/010_Default_Level/020_Defining_Concept_Properties.md-f26696bc.js",
     "src": "src/routes/030_Developing_a_Language/010_Default_Level/020_Defining_Concept_Properties.md",
     "isEntry": true,
     "isDynamicEntry": true,
@@ -306,27 +306,27 @@
     ]
   },
   "src/routes/030_Developing_a_Language/030_API_Level/index.md": {
-    "file": "pages/030_Developing_a_Language/030_API_Level/index.md-2424cdd5.js",
+    "file": "pages/030_Developing_a_Language/030_API_Level/index.md-52f1bac8.js",
     "src": "src/routes/030_Developing_a_Language/030_API_Level/index.md",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
       "_vendor-0dc77bd0.js",
-      "_Note-b0db7989.js"
+      "_Note-20c7a4ff.js"
     ],
     "css": [
       "assets/Note.svelte_svelte_type_style_lang-a108c8ba.css"
     ]
   },
   "src/routes/030_Developing_a_Language/030_API_Level/020_Writing_Projections.md": {
-    "file": "pages/030_Developing_a_Language/030_API_Level/020_Writing_Projections.md-ad100d87.js",
+    "file": "pages/030_Developing_a_Language/030_API_Level/020_Writing_Projections.md-a3b66388.js",
     "src": "src/routes/030_Developing_a_Language/030_API_Level/020_Writing_Projections.md",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
       "_vendor-0dc77bd0.js",
-      "_Note-b0db7989.js",
-      "_Figure-4dd15a94.js"
+      "_Note-20c7a4ff.js",
+      "_Figure-8dfe37a0.js"
     ],
     "css": [
       "assets/Note.svelte_svelte_type_style_lang-a108c8ba.css",
@@ -334,7 +334,7 @@
     ]
   },
   "src/routes/030_Developing_a_Language/030_API_Level/030_Writing_Actions.md": {
-    "file": "pages/030_Developing_a_Language/030_API_Level/030_Writing_Actions.md-5e4658bf.js",
+    "file": "pages/030_Developing_a_Language/030_API_Level/030_Writing_Actions.md-3f0538af.js",
     "src": "src/routes/030_Developing_a_Language/030_API_Level/030_Writing_Actions.md",
     "isEntry": true,
     "isDynamicEntry": true,
@@ -347,7 +347,7 @@
     ]
   },
   "src/routes/030_Developing_a_Language/030_API_Level/040_Validator_API.md": {
-    "file": "pages/030_Developing_a_Language/030_API_Level/040_Validator_API.md-076cffbe.js",
+    "file": "pages/030_Developing_a_Language/030_API_Level/040_Validator_API.md-fdfb40e2.js",
     "src": "src/routes/030_Developing_a_Language/030_API_Level/040_Validator_API.md",
     "isEntry": true,
     "isDynamicEntry": true,
@@ -356,7 +356,7 @@
     ]
   },
   "src/routes/030_Developing_a_Language/030_API_Level/010_Editor_API.md": {
-    "file": "pages/030_Developing_a_Language/030_API_Level/010_Editor_API.md-4da4dbe6.js",
+    "file": "pages/030_Developing_a_Language/030_API_Level/010_Editor_API.md-b5b4c115.js",
     "src": "src/routes/030_Developing_a_Language/030_API_Level/010_Editor_API.md",
     "isEntry": true,
     "isDynamicEntry": true,
@@ -365,7 +365,7 @@
     ]
   },
   "src/routes/030_Developing_a_Language/030_API_Level/060_Scoper_API.md": {
-    "file": "pages/030_Developing_a_Language/030_API_Level/060_Scoper_API.md-1bb9813a.js",
+    "file": "pages/030_Developing_a_Language/030_API_Level/060_Scoper_API.md-6ebdbb13.js",
     "src": "src/routes/030_Developing_a_Language/030_API_Level/060_Scoper_API.md",
     "isEntry": true,
     "isDynamicEntry": true,
@@ -374,7 +374,7 @@
     ]
   },
   "src/routes/030_Developing_a_Language/030_API_Level/070_Reader_API.md": {
-    "file": "pages/030_Developing_a_Language/030_API_Level/070_Reader_API.md-d6e6242d.js",
+    "file": "pages/030_Developing_a_Language/030_API_Level/070_Reader_API.md-41f173cb.js",
     "src": "src/routes/030_Developing_a_Language/030_API_Level/070_Reader_API.md",
     "isEntry": true,
     "isDynamicEntry": true,
@@ -383,7 +383,7 @@
     ]
   },
   "src/routes/030_Developing_a_Language/030_API_Level/050_Typer_API.md": {
-    "file": "pages/030_Developing_a_Language/030_API_Level/050_Typer_API.md-97ab595f.js",
+    "file": "pages/030_Developing_a_Language/030_API_Level/050_Typer_API.md-f4de548c.js",
     "src": "src/routes/030_Developing_a_Language/030_API_Level/050_Typer_API.md",
     "isEntry": true,
     "isDynamicEntry": true,
@@ -392,7 +392,7 @@
     ]
   },
   "src/routes/030_Developing_a_Language/040_Styling/index.md": {
-    "file": "pages/030_Developing_a_Language/040_Styling/index.md-92faf579.js",
+    "file": "pages/030_Developing_a_Language/040_Styling/index.md-7658a58d.js",
     "src": "src/routes/030_Developing_a_Language/040_Styling/index.md",
     "isEntry": true,
     "isDynamicEntry": true,
@@ -401,7 +401,7 @@
     ]
   },
   "src/routes/030_Developing_a_Language/040_Styling/010_SCCS_Styling.md": {
-    "file": "pages/030_Developing_a_Language/040_Styling/010_SCCS_Styling.md-851f63da.js",
+    "file": "pages/030_Developing_a_Language/040_Styling/010_SCCS_Styling.md-a5419f66.js",
     "src": "src/routes/030_Developing_a_Language/040_Styling/010_SCCS_Styling.md",
     "isEntry": true,
     "isDynamicEntry": true,
@@ -410,7 +410,7 @@
     ]
   },
   "src/routes/020_Getting_Started/index.md": {
-    "file": "pages/020_Getting_Started/index.md-6b5e6f76.js",
+    "file": "pages/020_Getting_Started/index.md-bba4ce6c.js",
     "src": "src/routes/020_Getting_Started/index.md",
     "isEntry": true,
     "isDynamicEntry": true,
@@ -419,14 +419,14 @@
     ]
   },
   "src/routes/020_Getting_Started/030_Calling_the_Generator.md": {
-    "file": "pages/020_Getting_Started/030_Calling_the_Generator.md-0a8b1f6c.js",
+    "file": "pages/020_Getting_Started/030_Calling_the_Generator.md-2151e51d.js",
     "src": "src/routes/020_Getting_Started/030_Calling_the_Generator.md",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
       "_vendor-0dc77bd0.js",
-      "_Note-b0db7989.js",
-      "_Figure-4dd15a94.js"
+      "_Note-20c7a4ff.js",
+      "_Figure-8dfe37a0.js"
     ],
     "css": [
       "assets/Note.svelte_svelte_type_style_lang-a108c8ba.css",
@@ -434,27 +434,27 @@
     ]
   },
   "src/routes/020_Getting_Started/020_Project_Structure.md": {
-    "file": "pages/020_Getting_Started/020_Project_Structure.md-19be6003.js",
+    "file": "pages/020_Getting_Started/020_Project_Structure.md-00b2d766.js",
     "src": "src/routes/020_Getting_Started/020_Project_Structure.md",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
       "_vendor-0dc77bd0.js",
-      "_Note-b0db7989.js"
+      "_Note-20c7a4ff.js"
     ],
     "css": [
       "assets/Note.svelte_svelte_type_style_lang-a108c8ba.css"
     ]
   },
   "src/routes/020_Getting_Started/010_Installation.md": {
-    "file": "pages/020_Getting_Started/010_Installation.md-da590ec0.js",
+    "file": "pages/020_Getting_Started/010_Installation.md-43228f3d.js",
     "src": "src/routes/020_Getting_Started/010_Installation.md",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
       "_vendor-0dc77bd0.js",
-      "_Note-b0db7989.js",
-      "_Figure-4dd15a94.js"
+      "_Note-20c7a4ff.js",
+      "_Figure-8dfe37a0.js"
     ],
     "css": [
       "assets/Note.svelte_svelte_type_style_lang-a108c8ba.css",
@@ -462,7 +462,7 @@
     ]
   },
   "src/routes/060_Under_the_Hood/index.md": {
-    "file": "pages/060_Under_the_Hood/index.md-f11d9028.js",
+    "file": "pages/060_Under_the_Hood/index.md-ee3570d6.js",
     "src": "src/routes/060_Under_the_Hood/index.md",
     "isEntry": true,
     "isDynamicEntry": true,
@@ -471,7 +471,7 @@
     ]
   },
   "src/routes/060_Under_the_Hood/030_Source_Code_Documentation/index.md": {
-    "file": "pages/060_Under_the_Hood/030_Source_Code_Documentation/index.md-e75081fc.js",
+    "file": "pages/060_Under_the_Hood/030_Source_Code_Documentation/index.md-2a2a790e.js",
     "src": "src/routes/060_Under_the_Hood/030_Source_Code_Documentation/index.md",
     "isEntry": true,
     "isDynamicEntry": true,
@@ -480,7 +480,7 @@
     ]
   },
   "src/routes/060_Under_the_Hood/020_The_PiTool_Interfaces/index.md": {
-    "file": "pages/060_Under_the_Hood/020_The_PiTool_Interfaces/index.md-85d47641.js",
+    "file": "pages/060_Under_the_Hood/020_The_PiTool_Interfaces/index.md-c3a74f85.js",
     "src": "src/routes/060_Under_the_Hood/020_The_PiTool_Interfaces/index.md",
     "isEntry": true,
     "isDynamicEntry": true,
@@ -489,7 +489,7 @@
     ]
   },
   "src/routes/060_Under_the_Hood/020_The_PiTool_Interfaces/010_PiEnvironment_Interface.md": {
-    "file": "pages/060_Under_the_Hood/020_The_PiTool_Interfaces/010_PiEnvironment_Interface.md-e2301557.js",
+    "file": "pages/060_Under_the_Hood/020_The_PiTool_Interfaces/010_PiEnvironment_Interface.md-83caa310.js",
     "src": "src/routes/060_Under_the_Hood/020_The_PiTool_Interfaces/010_PiEnvironment_Interface.md",
     "isEntry": true,
     "isDynamicEntry": true,
@@ -498,7 +498,7 @@
     ]
   },
   "src/routes/060_Under_the_Hood/020_The_PiTool_Interfaces/080_PiStandardlib_Interface.md": {
-    "file": "pages/060_Under_the_Hood/020_The_PiTool_Interfaces/080_PiStandardlib_Interface.md-3274229d.js",
+    "file": "pages/060_Under_the_Hood/020_The_PiTool_Interfaces/080_PiStandardlib_Interface.md-8f86dc21.js",
     "src": "src/routes/060_Under_the_Hood/020_The_PiTool_Interfaces/080_PiStandardlib_Interface.md",
     "isEntry": true,
     "isDynamicEntry": true,
@@ -507,7 +507,7 @@
     ]
   },
   "src/routes/060_Under_the_Hood/020_The_PiTool_Interfaces/040_PiValidator_Interface.md": {
-    "file": "pages/060_Under_the_Hood/020_The_PiTool_Interfaces/040_PiValidator_Interface.md-544e789e.js",
+    "file": "pages/060_Under_the_Hood/020_The_PiTool_Interfaces/040_PiValidator_Interface.md-6d4bb558.js",
     "src": "src/routes/060_Under_the_Hood/020_The_PiTool_Interfaces/040_PiValidator_Interface.md",
     "isEntry": true,
     "isDynamicEntry": true,
@@ -516,7 +516,7 @@
     ]
   },
   "src/routes/060_Under_the_Hood/020_The_PiTool_Interfaces/020_PiScoper_Interface.md": {
-    "file": "pages/060_Under_the_Hood/020_The_PiTool_Interfaces/020_PiScoper_Interface.md-a6316fcb.js",
+    "file": "pages/060_Under_the_Hood/020_The_PiTool_Interfaces/020_PiScoper_Interface.md-d325eccb.js",
     "src": "src/routes/060_Under_the_Hood/020_The_PiTool_Interfaces/020_PiScoper_Interface.md",
     "isEntry": true,
     "isDynamicEntry": true,
@@ -525,7 +525,7 @@
     ]
   },
   "src/routes/060_Under_the_Hood/020_The_PiTool_Interfaces/060_PiReader_Interface.md": {
-    "file": "pages/060_Under_the_Hood/020_The_PiTool_Interfaces/060_PiReader_Interface.md-a75d3bcb.js",
+    "file": "pages/060_Under_the_Hood/020_The_PiTool_Interfaces/060_PiReader_Interface.md-b87f9c00.js",
     "src": "src/routes/060_Under_the_Hood/020_The_PiTool_Interfaces/060_PiReader_Interface.md",
     "isEntry": true,
     "isDynamicEntry": true,
@@ -534,7 +534,7 @@
     ]
   },
   "src/routes/060_Under_the_Hood/020_The_PiTool_Interfaces/070_PiWriter_Interface.md": {
-    "file": "pages/060_Under_the_Hood/020_The_PiTool_Interfaces/070_PiWriter_Interface.md-64b0416e.js",
+    "file": "pages/060_Under_the_Hood/020_The_PiTool_Interfaces/070_PiWriter_Interface.md-cc0653a7.js",
     "src": "src/routes/060_Under_the_Hood/020_The_PiTool_Interfaces/070_PiWriter_Interface.md",
     "isEntry": true,
     "isDynamicEntry": true,
@@ -543,7 +543,7 @@
     ]
   },
   "src/routes/060_Under_the_Hood/020_The_PiTool_Interfaces/050_PiTyper_Interface.md": {
-    "file": "pages/060_Under_the_Hood/020_The_PiTool_Interfaces/050_PiTyper_Interface.md-e330689c.js",
+    "file": "pages/060_Under_the_Hood/020_The_PiTool_Interfaces/050_PiTyper_Interface.md-b42cae5d.js",
     "src": "src/routes/060_Under_the_Hood/020_The_PiTool_Interfaces/050_PiTyper_Interface.md",
     "isEntry": true,
     "isDynamicEntry": true,
@@ -552,20 +552,20 @@
     ]
   },
   "src/routes/060_Under_the_Hood/010_The_Editor_Framework/index.md": {
-    "file": "pages/060_Under_the_Hood/010_The_Editor_Framework/index.md-2cc14b0e.js",
+    "file": "pages/060_Under_the_Hood/010_The_Editor_Framework/index.md-4af2fc5c.js",
     "src": "src/routes/060_Under_the_Hood/010_The_Editor_Framework/index.md",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
       "_vendor-0dc77bd0.js",
-      "_Figure-4dd15a94.js"
+      "_Figure-8dfe37a0.js"
     ],
     "css": [
       "assets/Figure.svelte_svelte_type_style_lang-d2c04b30.css"
     ]
   },
   "src/routes/060_Under_the_Hood/010_The_Editor_Framework/020_The_Editor_Interfaces/index.md": {
-    "file": "pages/060_Under_the_Hood/010_The_Editor_Framework/020_The_Editor_Interfaces/index.md-701f0241.js",
+    "file": "pages/060_Under_the_Hood/010_The_Editor_Framework/020_The_Editor_Interfaces/index.md-f68cfd2b.js",
     "src": "src/routes/060_Under_the_Hood/010_The_Editor_Framework/020_The_Editor_Interfaces/index.md",
     "isEntry": true,
     "isDynamicEntry": true,
@@ -574,7 +574,7 @@
     ]
   },
   "src/routes/060_Under_the_Hood/010_The_Editor_Framework/020_The_Editor_Interfaces/040_PiBinary_Expression_Interface.md": {
-    "file": "pages/060_Under_the_Hood/010_The_Editor_Framework/020_The_Editor_Interfaces/040_PiBinary_Expression_Interface.md-4f261518.js",
+    "file": "pages/060_Under_the_Hood/010_The_Editor_Framework/020_The_Editor_Interfaces/040_PiBinary_Expression_Interface.md-c7a0367d.js",
     "src": "src/routes/060_Under_the_Hood/010_The_Editor_Framework/020_The_Editor_Interfaces/040_PiBinary_Expression_Interface.md",
     "isEntry": true,
     "isDynamicEntry": true,
@@ -583,7 +583,7 @@
     ]
   },
   "src/routes/060_Under_the_Hood/010_The_Editor_Framework/020_The_Editor_Interfaces/060_PiNamedElement_Interface.md": {
-    "file": "pages/060_Under_the_Hood/010_The_Editor_Framework/020_The_Editor_Interfaces/060_PiNamedElement_Interface.md-3b6b4621.js",
+    "file": "pages/060_Under_the_Hood/010_The_Editor_Framework/020_The_Editor_Interfaces/060_PiNamedElement_Interface.md-ca69c69a.js",
     "src": "src/routes/060_Under_the_Hood/010_The_Editor_Framework/020_The_Editor_Interfaces/060_PiNamedElement_Interface.md",
     "isEntry": true,
     "isDynamicEntry": true,
@@ -592,7 +592,7 @@
     ]
   },
   "src/routes/060_Under_the_Hood/010_The_Editor_Framework/020_The_Editor_Interfaces/010_PiProjection_Interface.md": {
-    "file": "pages/060_Under_the_Hood/010_The_Editor_Framework/020_The_Editor_Interfaces/010_PiProjection_Interface.md-b2c4e806.js",
+    "file": "pages/060_Under_the_Hood/010_The_Editor_Framework/020_The_Editor_Interfaces/010_PiProjection_Interface.md-992f260d.js",
     "src": "src/routes/060_Under_the_Hood/010_The_Editor_Framework/020_The_Editor_Interfaces/010_PiProjection_Interface.md",
     "isEntry": true,
     "isDynamicEntry": true,
@@ -601,7 +601,7 @@
     ]
   },
   "src/routes/060_Under_the_Hood/010_The_Editor_Framework/020_The_Editor_Interfaces/030_PiExpression_Interface.md": {
-    "file": "pages/060_Under_the_Hood/010_The_Editor_Framework/020_The_Editor_Interfaces/030_PiExpression_Interface.md-ac632c7a.js",
+    "file": "pages/060_Under_the_Hood/010_The_Editor_Framework/020_The_Editor_Interfaces/030_PiExpression_Interface.md-28176cd0.js",
     "src": "src/routes/060_Under_the_Hood/010_The_Editor_Framework/020_The_Editor_Interfaces/030_PiExpression_Interface.md",
     "isEntry": true,
     "isDynamicEntry": true,
@@ -610,7 +610,7 @@
     ]
   },
   "src/routes/060_Under_the_Hood/010_The_Editor_Framework/020_The_Editor_Interfaces/050_PiElement_Interface.md": {
-    "file": "pages/060_Under_the_Hood/010_The_Editor_Framework/020_The_Editor_Interfaces/050_PiElement_Interface.md-218d16e9.js",
+    "file": "pages/060_Under_the_Hood/010_The_Editor_Framework/020_The_Editor_Interfaces/050_PiElement_Interface.md-b2723abb.js",
     "src": "src/routes/060_Under_the_Hood/010_The_Editor_Framework/020_The_Editor_Interfaces/050_PiElement_Interface.md",
     "isEntry": true,
     "isDynamicEntry": true,
@@ -619,7 +619,7 @@
     ]
   },
   "src/routes/060_Under_the_Hood/010_The_Editor_Framework/020_The_Editor_Interfaces/020_PiAction_Interface.md": {
-    "file": "pages/060_Under_the_Hood/010_The_Editor_Framework/020_The_Editor_Interfaces/020_PiAction_Interface.md-c2e1e71e.js",
+    "file": "pages/060_Under_the_Hood/010_The_Editor_Framework/020_The_Editor_Interfaces/020_PiAction_Interface.md-44304236.js",
     "src": "src/routes/060_Under_the_Hood/010_The_Editor_Framework/020_The_Editor_Interfaces/020_PiAction_Interface.md",
     "isEntry": true,
     "isDynamicEntry": true,
@@ -628,7 +628,7 @@
     ]
   },
   "src/routes/060_Under_the_Hood/010_The_Editor_Framework/010_Predefined_Boxes.md": {
-    "file": "pages/060_Under_the_Hood/010_The_Editor_Framework/010_Predefined_Boxes.md-baa2ccb3.js",
+    "file": "pages/060_Under_the_Hood/010_The_Editor_Framework/010_Predefined_Boxes.md-ddd58240.js",
     "src": "src/routes/060_Under_the_Hood/010_The_Editor_Framework/010_Predefined_Boxes.md",
     "isEntry": true,
     "isDynamicEntry": true,
@@ -637,7 +637,7 @@
     ]
   },
   "src/routes/090_Release_notes.md": {
-    "file": "pages/090_Release_notes.md-62376c58.js",
+    "file": "pages/090_Release_notes.md-7ad4513b.js",
     "src": "src/routes/090_Release_notes.md",
     "isEntry": true,
     "isDynamicEntry": true,
@@ -646,7 +646,7 @@
     ]
   },
   "src/routes/010_Intro/index.svelte": {
-    "file": "pages/010_Intro/index.svelte-53ae0382.js",
+    "file": "pages/010_Intro/index.svelte-72509521.js",
     "src": "src/routes/010_Intro/index.svelte",
     "isEntry": true,
     "isDynamicEntry": true,
@@ -655,20 +655,20 @@
     ]
   },
   "src/routes/010_Intro/050_Three_Levels_of_Customization.md": {
-    "file": "pages/010_Intro/050_Three_Levels_of_Customization.md-cdb1cb9e.js",
+    "file": "pages/010_Intro/050_Three_Levels_of_Customization.md-888f4506.js",
     "src": "src/routes/010_Intro/050_Three_Levels_of_Customization.md",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
       "_vendor-0dc77bd0.js",
-      "_Figure-4dd15a94.js"
+      "_Figure-8dfe37a0.js"
     ],
     "css": [
       "assets/Figure.svelte_svelte_type_style_lang-d2c04b30.css"
     ]
   },
   "src/routes/010_Intro/040_A_Language_in_Five_Parts.md": {
-    "file": "pages/010_Intro/040_A_Language_in_Five_Parts.md-f7e996aa.js",
+    "file": "pages/010_Intro/040_A_Language_in_Five_Parts.md-b8bed3ae.js",
     "src": "src/routes/010_Intro/040_A_Language_in_Five_Parts.md",
     "isEntry": true,
     "isDynamicEntry": true,
@@ -677,33 +677,33 @@
     ]
   },
   "src/routes/010_Intro/030_Models_and_Model_Units.md": {
-    "file": "pages/010_Intro/030_Models_and_Model_Units.md-3fb35006.js",
+    "file": "pages/010_Intro/030_Models_and_Model_Units.md-ac45e0a4.js",
     "src": "src/routes/010_Intro/030_Models_and_Model_Units.md",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
       "_vendor-0dc77bd0.js",
-      "_Note-b0db7989.js"
+      "_Note-20c7a4ff.js"
     ],
     "css": [
       "assets/Note.svelte_svelte_type_style_lang-a108c8ba.css"
     ]
   },
   "src/routes/010_Intro/010_Projectional_Editing.md": {
-    "file": "pages/010_Intro/010_Projectional_Editing.md-3019b745.js",
+    "file": "pages/010_Intro/010_Projectional_Editing.md-7e0fb163.js",
     "src": "src/routes/010_Intro/010_Projectional_Editing.md",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
       "_vendor-0dc77bd0.js",
-      "_Figure-4dd15a94.js"
+      "_Figure-8dfe37a0.js"
     ],
     "css": [
       "assets/Figure.svelte_svelte_type_style_lang-d2c04b30.css"
     ]
   },
   "src/routes/010_Intro/090_Future_Developments.md": {
-    "file": "pages/010_Intro/090_Future_Developments.md-7bd3e47a.js",
+    "file": "pages/010_Intro/090_Future_Developments.md-5f44bf50.js",
     "src": "src/routes/010_Intro/090_Future_Developments.md",
     "isEntry": true,
     "isDynamicEntry": true,
@@ -712,7 +712,7 @@
     ]
   },
   "src/routes/010_Intro/020_Our_Philosophy.md": {
-    "file": "pages/010_Intro/020_Our_Philosophy.md-dfba6257.js",
+    "file": "pages/010_Intro/020_Our_Philosophy.md-f0037296.js",
     "src": "src/routes/010_Intro/020_Our_Philosophy.md",
     "isEntry": true,
     "isDynamicEntry": true,
@@ -721,20 +721,20 @@
     ]
   },
   "src/routes/010_Intro/060_Name_Change.md": {
-    "file": "pages/010_Intro/060_Name_Change.md-2cc2c4f4.js",
+    "file": "pages/010_Intro/060_Name_Change.md-f9083f39.js",
     "src": "src/routes/010_Intro/060_Name_Change.md",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
       "_vendor-0dc77bd0.js",
-      "_Figure-4dd15a94.js"
+      "_Figure-8dfe37a0.js"
     ],
     "css": [
       "assets/Figure.svelte_svelte_type_style_lang-d2c04b30.css"
     ]
   },
   "src/routes/099_about.svelte": {
-    "file": "pages/099_about.svelte-469b16c3.js",
+    "file": "pages/099_about.svelte-4e904f6e.js",
     "src": "src/routes/099_about.svelte",
     "isEntry": true,
     "isDynamicEntry": true,
@@ -748,8 +748,8 @@
   "_vendor-0dc77bd0.js": {
     "file": "chunks/vendor-0dc77bd0.js"
   },
-  "_Figure-4dd15a94.js": {
-    "file": "chunks/Figure-4dd15a94.js",
+  "_Figure-8dfe37a0.js": {
+    "file": "chunks/Figure-8dfe37a0.js",
     "imports": [
       "_vendor-0dc77bd0.js"
     ],
@@ -757,8 +757,8 @@
       "assets/Figure.svelte_svelte_type_style_lang-d2c04b30.css"
     ]
   },
-  "_Note-b0db7989.js": {
-    "file": "chunks/Note-b0db7989.js",
+  "_Note-20c7a4ff.js": {
+    "file": "chunks/Note-20c7a4ff.js",
     "imports": [
       "_vendor-0dc77bd0.js"
     ],

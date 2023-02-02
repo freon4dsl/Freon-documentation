@@ -1,9 +1,0 @@
-import{S as N,i as j,s as B,e as d,t as n,k,c,a as h,h as o,d as r,m as q,b as G,g as w,H as t,J as A}from"../../../chunks/vendor-0dc77bd0.js";function F(J){let s,E,v,a,I,m,R,b,_,u,x,C,P,i,W,f,T,z,H;return{c(){s=d("h1"),E=n("# Third Level Customization of the Reader and Writer"),v=k(),a=d("p"),I=n(`The reader (parser) and writer (unparser) can not yet be
-customized `),m=d("strong"),R=n("per concept"),b=n(`. Instead, you can replace the whole
-reader or writer by one create yourself.
-The new reader needs to
-implement the `),_=d("a"),u=d("code"),x=n("PiReader"),C=n(" interface."),P=k(),i=d("p"),W=n("The new writer needs to implement the "),f=d("a"),T=d("code"),z=n("PiWriter"),H=n(" interface."),this.h()},l(e){s=c(e,"H1",{});var l=h(s);E=o(l,"# Third Level Customization of the Reader and Writer"),l.forEach(r),v=q(e),a=c(e,"P",{});var p=h(a);I=o(p,`The reader (parser) and writer (unparser) can not yet be
-customized `),m=c(p,"STRONG",{});var O=h(m);R=o(O,"per concept"),O.forEach(r),b=o(p,`. Instead, you can replace the whole
-reader or writer by one create yourself.
-The new reader needs to
-implement the `),_=c(p,"A",{href:!0});var S=h(_);u=c(S,"CODE",{});var D=h(u);x=o(D,"PiReader"),D.forEach(r),S.forEach(r),C=o(p," interface."),p.forEach(r),P=q(e),i=c(e,"P",{});var y=h(i);W=o(y,"The new writer needs to implement the "),f=c(y,"A",{href:!0});var L=h(f);T=c(L,"CODE",{});var U=h(T);z=o(U,"PiWriter"),U.forEach(r),L.forEach(r),H=o(y," interface."),y.forEach(r),this.h()},h(){G(_,"href","/060_Under_the_Hood/020_The_PiTool_Interfaces/060_PiReader_Interface"),G(f,"href","/060_Under_the_Hood/020_The_PiTool_Interfaces/070_PiWriter_Interface")},m(e,l){w(e,s,l),t(s,E),w(e,v,l),w(e,a,l),t(a,I),t(a,m),t(m,R),t(a,b),t(a,_),t(_,u),t(u,x),t(a,C),w(e,P,l),w(e,i,l),t(i,W),t(i,f),t(f,T),t(T,z),t(i,H)},p:A,i:A,o:A,d(e){e&&r(s),e&&r(v),e&&r(a),e&&r(P),e&&r(i)}}}class M extends N{constructor(s){super();j(this,s,null,F,B,{})}}export{M as default};

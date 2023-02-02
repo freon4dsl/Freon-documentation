@@ -29,12 +29,12 @@
 	<link rel="stylesheet" href="/_app/assets/pages/__layout.svelte-3f550184.css">
 	<link rel="stylesheet" href="/_app/assets/Note.svelte_svelte_type_style_lang-a108c8ba.css">
 	<link rel="stylesheet" href="/_app/assets/Figure.svelte_svelte_type_style_lang-d2c04b30.css">
-	<link rel="modulepreload" href="/_app/start-67ba37a3.js">
+	<link rel="modulepreload" href="/_app/start-6b8e0b64.js">
 	<link rel="modulepreload" href="/_app/chunks/vendor-0dc77bd0.js">
-	<link rel="modulepreload" href="/_app/pages/__layout.svelte-3ba052b6.js">
-	<link rel="modulepreload" href="/_app/pages/030_Developing_a_Language/030_API_Level/020_Writing_Projections.md-ad100d87.js">
-	<link rel="modulepreload" href="/_app/chunks/Note-b0db7989.js">
-	<link rel="modulepreload" href="/_app/chunks/Figure-4dd15a94.js">
+	<link rel="modulepreload" href="/_app/pages/__layout.svelte-2ba1a532.js">
+	<link rel="modulepreload" href="/_app/pages/030_Developing_a_Language/030_API_Level/020_Writing_Projections.md-a3b66388.js">
+	<link rel="modulepreload" href="/_app/chunks/Note-20c7a4ff.js">
+	<link rel="modulepreload" href="/_app/chunks/Figure-8dfe37a0.js">
 	</head>
 	<body>
 		<div style="position: relative; height: 100%; width:100%;" id="svelte">
@@ -63,7 +63,7 @@
 </button></span>
 	<div class="tooltip svelte-12vmiyh    bottom"><div class="default-tip svelte-12vmiyh" style="background-color: var(--theme-colors-tooltip_background); color: var(--theme-colors-tooltip_color) font-size: .4em">dark mode</div></div></div></span>
 
-	<a target="_blank" href="https://github.com/projectit-org/ProjectIt" alt="Freon/ProjectIt on GitHub" class="linkLogo svelte-ae0shh"><div class="tooltip-wrapper svelte-12vmiyh"><span class="tooltip-slot svelte-12vmiyh">
+	<a target="_blank" href="https://github.com/freon4dsl/Freon4dsl.git" alt="Freon on GitHub" class="linkLogo svelte-ae0shh"><div class="tooltip-wrapper svelte-12vmiyh"><span class="tooltip-slot svelte-12vmiyh">
 
 
 
@@ -74,8 +74,7 @@
 	
 		
 
-		<a target="_blank" href="https://www.projectit.org" class="linkLogo svelte-ae0shh">
-			<div class="tooltip-wrapper svelte-12vmiyh"><span class="tooltip-slot svelte-12vmiyh"><img src="/freonlogo.png" style="color:red" alt="Freon Logo" height="24" class="svelte-ae0shh"></span>
+		<a target="_blank" href="https://www.freon4dsl.dev" class="linkLogo svelte-ae0shh"><div class="tooltip-wrapper svelte-12vmiyh"><span class="tooltip-slot svelte-12vmiyh"><img src="/freonlogo.png" style="color:red" alt="Freon Logo" height="24" class="svelte-ae0shh"></span>
 	<div class="tooltip svelte-12vmiyh    bottom"><div class="default-tip svelte-12vmiyh" style="background-color: var(--theme-colors-tooltip_background); color: var(--theme-colors-tooltip_color) font-size: .4em">home</div></div></div></a>
 
 </div>
@@ -221,7 +220,7 @@ the implementation, when no projection is defined, a default projection will be 
 all projections are based on boxes. In the next few steps we will show you how to build a hierarchy
 of boxes to project your AST nodes, and how to style these boxes according to your wishes.</p>
 <p>The projections in this section are available in
-the <a href="https://github.com/projectit-org/ProjectIt-example" target="_blank">ProjectIt-example</a>.</p>
+the <a href="https://github.com/freon4dsl/Freon-example.git" target="_blank">Freon-example</a>.</p>
 <h2>Customize by implementing <code>getBox()</code></h2>
 <p>In order to customize the editor you need to implement the <code>getBox(...)</code> method in the
 file <code>~/picode/editor/Custom&lt;yourLanguageName&gt;Projection.ts</code>.
@@ -253,7 +252,7 @@ the property <code>name</code> of class <code>EntityModelUnit</code>.</p>
 <pre class="language-ts"><!-- HTML_TAG_START --><code class="language-ts"><span class="token comment">// tutorial-language/defs/LanguageDefinition.ast#L56-L61</span>
 
 modelunit EntityModelUnit <span class="token punctuation">&#123;</span>
-    <span class="token keyword">public</span> name<span class="token operator">:</span> identifier<span class="token punctuation">;</span>
+    name<span class="token operator">:</span> identifier<span class="token punctuation">;</span>
 
     functions<span class="token operator">:</span> EntityFunction<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
     entities<span class="token operator">:</span> Entity<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
@@ -276,42 +275,8 @@ this <code>HorizontalListBox</code>. This method should be called in the overall
 <figure class="figure svelte-iiau5p"><img class="image svelte-iiau5p" src="/images/demomodelname.png" alt="Image 'demomodelname.png' seems to be missing">
 <figcaption id="demomodelname.png">Figure 1. Simple Projection of a name property</figcaption>
 </figure>
-<p>It doesn’t look very nice currently.</p>
-<ol><li>The label is not distinguishable from the name of the model.</li>
-<li>When the name of the model becomes empty, there is no visual clue that you can add a name.</li></ol>
 <h3>Step 2 - Adding Style and a PlaceHolder</h3>
-<p>To make the label look different from the value of the property, we need to add a style
-to the <code>LabelBox</code>. To do so, we associate the <code>LabelBox</code> with the style <code>projectitStyles.keyword</code>.
-This will project it in a different color.</p>
-<p>Also, we give the <code>TextBox</code> has a <code>placeHolder</code> property. The placeholder will be shown
-whenever the contents of the <code>TextBox</code>
-is empty, giving the user a visual clue that a name could be entered.</p>
-<pre class="language-ts"><!-- HTML_TAG_START --><code class="language-ts"><span class="token comment">// tutorial-language/editor/CustomEntityProjection.ts#L53-L63</span>
-
-<span class="token comment">// Modelbox with style added</span>
-<span class="token keyword">private</span> <span class="token function">createModelBox2</span><span class="token punctuation">(</span>model<span class="token operator">:</span> EntityModelUnit<span class="token punctuation">)</span><span class="token operator">:</span> Box <span class="token punctuation">&#123;</span>
-    <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">HorizontalListBox</span><span class="token punctuation">(</span>model<span class="token punctuation">,</span> <span class="token string">"model"</span><span class="token punctuation">,</span> <span class="token punctuation">[</span>
-        <span class="token keyword">new</span> <span class="token class-name">LabelBox</span><span class="token punctuation">(</span>model<span class="token punctuation">,</span> <span class="token string">"model-label"</span><span class="token punctuation">,</span> <span class="token string">"Model"</span><span class="token punctuation">,</span> <span class="token punctuation">&#123;</span>
-            style<span class="token operator">:</span> <span class="token function">styleToCSS</span><span class="token punctuation">(</span>projectitStyles<span class="token punctuation">.</span>keyword<span class="token punctuation">)</span>
-        <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-        <span class="token keyword">new</span> <span class="token class-name">TextBox</span><span class="token punctuation">(</span>model<span class="token punctuation">,</span> <span class="token string">"model-name"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> model<span class="token punctuation">.</span>name<span class="token punctuation">,</span> <span class="token punctuation">(</span>c<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">(</span>model<span class="token punctuation">.</span>name <span class="token operator">=</span> c<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">&#123;</span>
-            placeHolder<span class="token operator">:</span> <span class="token string">"&lt;name>"</span>
-        <span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
-    <span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">&#125;</span></code><!-- HTML_TAG_END --></pre>
-<p>The result looks a lot better.</p>
-<figure class="figure svelte-iiau5p"><img class="image svelte-iiau5p" src="/images/demomodelname-with-style.png" alt="Image 'demomodelname-with-style.png' seems to be missing">
-<figcaption id="demomodelname-with-style.png">Figure 2. Simple Projection with Styles</figcaption>
-</figure>
-<p>The style <code>projectitStyles.keyword</code> is defined in the file <code>~/picode/editor/styles/styles.ts</code> as follows.
-In principle all CSS styles can be used here. Learn more about styling
-in <a href="/030_Developing_a_Language/040_Styling">Styling</a>.</p>
-<pre class="language-ts"><!-- HTML_TAG_START --><code class="language-ts"><span class="token comment">// tutorial-language/editor/styles/styles.ts#L37-L40</span>
-
-<span class="token keyword">export</span> <span class="token keyword">const</span> keyword<span class="token operator">:</span> PiStyle <span class="token operator">=</span> <span class="token punctuation">&#123;</span>
-    <span class="token string">"font-weight"</span><span class="token operator">:</span> <span class="token string">"bold"</span><span class="token punctuation">,</span>
-    color<span class="token operator">:</span> <span class="token string">"blue"</span>
-<span class="token punctuation">&#125;</span><span class="token punctuation">;</span></code><!-- HTML_TAG_END --></pre>
+<p>In version 0.5.0 this has been changed such that you can use CSS classes. More info follows…</p>
 <h3>Step 3 - Projecting a List</h3>
 <p>Next, we will add the <code>entities</code> property of the <code>EntityModelUnit</code> to the projection.
 The <code>entities</code> property is a list of <code>Entity</code>.</p>
@@ -394,7 +359,54 @@ concept AttributeWithLimitedType <span class="token punctuation">&#123;</span>
     reference declaredType<span class="token operator">:</span> AttributeType<span class="token punctuation">;</span>
     name<span class="token operator">:</span> identifier<span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span></code><!-- HTML_TAG_END --></pre>
-<pre class="language-ts"><!-- HTML_TAG_START --><code class="language-ts"><span class="token comment">// tutorial-language/editor/CustomEntityProjection.ts#L71-L106</span></code><!-- HTML_TAG_END --></pre>
+<pre class="language-ts"><!-- HTML_TAG_START --><code class="language-ts"><span class="token comment">// tutorial-language/defs/LanguageDefinition.ast#L56-L61</span>
+
+modelunit EntityModelUnit <span class="token punctuation">&#123;</span>
+    name<span class="token operator">:</span> identifier<span class="token punctuation">;</span>
+
+    functions<span class="token operator">:</span> EntityFunction<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    entities<span class="token operator">:</span> Entity<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span></code><!-- HTML_TAG_END --></pre>
+<pre class="language-ts"><!-- HTML_TAG_START --><code class="language-ts"><span class="token comment">// tutorial-language/editor/CustomEntityProjection.ts#L151-L188</span>
+
+<span class="token keyword">public</span> <span class="token function">getAttributeBox</span><span class="token punctuation">(</span>attribute<span class="token operator">:</span> AttributeWithLimitedType<span class="token punctuation">)</span><span class="token operator">:</span> Box <span class="token punctuation">&#123;</span>
+    <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">HorizontalListBox</span><span class="token punctuation">(</span> <span class="token comment">// tag::AttributeBox[]</span>
+      attribute<span class="token punctuation">,</span>
+      <span class="token string">"Attribute"</span><span class="token punctuation">,</span>
+      <span class="token punctuation">[</span>
+          <span class="token keyword">new</span> <span class="token class-name">TextBox</span><span class="token punctuation">(</span>
+            attribute<span class="token punctuation">,</span><span class="token string">"Attribute-name"</span><span class="token punctuation">,</span>
+            <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> attribute<span class="token punctuation">.</span>name<span class="token punctuation">,</span>
+            <span class="token punctuation">(</span>c<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">(</span>attribute<span class="token punctuation">.</span>name <span class="token operator">=</span> c <span class="token keyword">as</span> <span class="token builtin">string</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+          <span class="token punctuation">)</span><span class="token punctuation">,</span>
+          <span class="token keyword">new</span> <span class="token class-name">LabelBox</span><span class="token punctuation">(</span>attribute<span class="token punctuation">,</span> <span class="token string">"attribute-label"</span><span class="token punctuation">,</span> <span class="token string">": "</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+          <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">getReferenceBox</span><span class="token punctuation">(</span>
+            attribute<span class="token punctuation">,</span>
+            <span class="token string">"Attribute-declaredType"</span><span class="token punctuation">,</span>
+            <span class="token string">"&lt;select declaredType>"</span><span class="token punctuation">,</span>
+            <span class="token string">"AttributeType"</span><span class="token punctuation">,</span>
+            <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
+                <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token operator">!</span>attribute<span class="token punctuation">.</span>declaredType<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+                    <span class="token keyword">return</span> <span class="token punctuation">&#123;</span> id<span class="token operator">:</span> attribute<span class="token punctuation">.</span>declaredType<span class="token punctuation">.</span>name<span class="token punctuation">,</span> label<span class="token operator">:</span> attribute<span class="token punctuation">.</span>declaredType<span class="token punctuation">.</span>name <span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+                <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
+                    <span class="token keyword">return</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+                <span class="token punctuation">&#125;</span>
+            <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+            <span class="token keyword">async</span> <span class="token punctuation">(</span>option<span class="token operator">:</span> SelectOption<span class="token punctuation">)</span><span class="token operator">:</span> <span class="token builtin">Promise</span><span class="token operator">&lt;</span>BehaviorExecutionResult<span class="token operator">></span>  <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
+                <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token operator">!</span>option<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+                    attribute<span class="token punctuation">.</span>declaredType <span class="token operator">=</span> PiElementReference<span class="token punctuation">.</span><span class="token generic-function"><span class="token function">create</span><span class="token generic class-name"><span class="token operator">&lt;</span>AttributeType<span class="token operator">></span></span></span><span class="token punctuation">(</span>
+                      EntityEnvironment<span class="token punctuation">.</span><span class="token function">getInstance</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>scoper<span class="token punctuation">.</span><span class="token function">getFromVisibleElements</span><span class="token punctuation">(</span>attribute<span class="token punctuation">,</span> option<span class="token punctuation">.</span>label<span class="token punctuation">,</span> <span class="token string">"AttributeType"</span><span class="token punctuation">)</span> <span class="token keyword">as</span> AttributeType<span class="token punctuation">,</span>
+                      <span class="token string">"Type"</span>
+                    <span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
+                    attribute<span class="token punctuation">.</span>declaredType <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+                <span class="token punctuation">&#125;</span>
+                <span class="token keyword">return</span> BehaviorExecutionResult<span class="token punctuation">.</span><span class="token constant">EXECUTED</span><span class="token punctuation">;</span>
+            <span class="token punctuation">&#125;</span>
+          <span class="token punctuation">)</span>
+      <span class="token punctuation">]</span>
+    <span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// end::AttributeBox[]</span>
+<span class="token punctuation">&#125;</span></code><!-- HTML_TAG_END --></pre>
 <h3>Step 4 - Adding Behavior</h3>
 <p>The projection so far is exactly that: a projection. There are no actions defined yet,
 which we need to enable the user to change the model and add elements to it. However,
@@ -410,15 +422,15 @@ complex AST nodes. Find out more about adding behavior in <a href="/030_Developi
 
 </div>
 		<footer class="svelte-1hxqcuo"><span class="copyright svelte-1hxqcuo">Created by OpenModeling - © 2023 -
-        <a href="http://www.projectit.org/" target="_blank" class="link svelte-1hxqcuo">www.projectit.org
+        <a href="http://www.freon4dsl.dev/" target="_blank" class="link svelte-1hxqcuo">www.freon4dsl.dev
         </a></span>
 </footer></main>
 
 
-		<script type="module" data-hydrate="1e87o52">
-		import { start } from "/_app/start-67ba37a3.js";
+		<script type="module" data-hydrate="1c633al">
+		import { start } from "/_app/start-6b8e0b64.js";
 		start({
-			target: document.querySelector('[data-hydrate="1e87o52"]').parentNode,
+			target: document.querySelector('[data-hydrate="1c633al"]').parentNode,
 			paths: {"base":"","assets":""},
 			session: {},
 			route: true,
@@ -428,8 +440,8 @@ complex AST nodes. Find out more about adding behavior in <a href="/030_Developi
 				status: 200,
 				error: null,
 				nodes: [
-					import("/_app/pages/__layout.svelte-3ba052b6.js"),
-						import("/_app/pages/030_Developing_a_Language/030_API_Level/020_Writing_Projections.md-ad100d87.js")
+					import("/_app/pages/__layout.svelte-2ba1a532.js"),
+						import("/_app/pages/030_Developing_a_Language/030_API_Level/020_Writing_Projections.md-a3b66388.js")
 				],
 				url: new URL("http://sveltekit-prerender/030_Developing_a_Language/030_API_Level/020_Writing_Projections"),
 				params: {}
