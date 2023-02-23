@@ -1,5 +1,7 @@
 Still to do in the documentation:
 
+- Need to add: Freon can be started with a parameter 'model' to open a specific model at startup.
+
 LATER 2. improve pictures in 'projectional-editing.adoc'
 13. make screenshots of the editor for every edit-def example
 16. check the images in framework-tutorial.adoc
