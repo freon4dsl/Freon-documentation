@@ -14,8 +14,13 @@ we have decided to change the name of the project. In the future, this tool will
 
 ## Why the Name <i>Freon</i>?
 
-The name <i>Freon</i> was chosen, simply because we like it. However, we could not resist the temptation to 
-invent a reason for this name. If you like, you can read all about the myth of the god of languages, 
+The name <i>Freon</i> was chosen, simply because we like it, but also because it is the Frisian word for 'friend'. 
+We certainly want Freon to be a developer-, and user-friendly tool. There has been some discussion about how to pronounce
+Freon. A native Frisian speaker has been so kind to provide us with the following sound bite. (Thanks, Meinte!)
+<audio controls><source src="../freon - pronounciation.mp3" type="audio/mpeg">Your browser does not support the audio element.</audio>
+
+Besides that, we could not resist the temptation to 
+invent yet another reason for this name. If you like, you can read all about the myth of the god of languages, 
 who is, of course, named <i>Freon</i>.
 
 ## The Myth of <i>Freon</i>
