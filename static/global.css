@@ -1,15 +1,15 @@
 :root {
 	/* the following css properties are present in order for the text completion during development to function */
 	/* they are overwritten by the THEME values in 'themePresets.ts' */
-	--theme-colors-color: teal;           /* Primary text color */
-	--theme-colors-inverse_color: #d3e3fd;    /* Text color on non_normal background */
-	--theme-colors-bg_app_bar: teal;      /* Color of header and footer */
-	--theme-colors-bg_color: #d3e3fd;         /* Background color */
-	--theme-colors-bg_panel: #d3e3fd; 	      /* Dialog background color */
-	--theme-colors-divider: teal; 	      /* Dialog Title background color */
-	--theme-colors-primary: teal;         /* Dialog primary button text color */
-	--theme-colors-list_divider: teal;    /* Color of lines between columns in the error list */
-	--theme-colors-slider: teal;		  /* Color of lines between views */
+	--theme-colors-color: #004d40;           /* Primary text color */
+	--theme-colors-inverse_color: #e0f2f1;    /* Text color on non_normal background */
+	--theme-colors-bg_app_bar: #004d40;      /* Color of header and footer */
+	--theme-colors-bg_color: #e0f2f1;         /* Background color */
+	--theme-colors-bg_panel: #e0f2f1; 	      /* Dialog background color */
+	--theme-colors-divider: #004d40; 	      /* Dialog Title background color */
+	--theme-colors-primary: #004d40;         /* Dialog primary button text color */
+	--theme-colors-list_divider: #004d40;    /* Color of lines between columns in the error list */
+	--theme-colors-slider: #004d40;		  /* Color of lines between views */
 	--theme-colors-accent: #f50057;			  /* Color to get attention to an element */
 	--theme-colors-primary_button_text: black; /* Color of primary buttons in dialogs */
 	--theme-colors-secondary_button_text: grey; /* Color of non-primary buttons in dialogs */
@@ -17,7 +17,7 @@
 
 	/* Projectional Editor "globals" */
 	--theme-colors-bg_editor: white;			/* The background color of the editor */
-	--theme-colors-text_editor: teal;		/* The color of the text, unless set otherwise by the projection */
+	--theme-colors-text_editor: #004d40;		/* The color of the text, unless set otherwise by the projection */
 	--theme-fonts-size_editor: 14px;				/* The font size of the text, unless set otherwise by the projection */
 	--theme-fonts-style_editor: italic;				/* The font size of the text, unless set otherwise by the projection */
 	--theme-fonts-weight_editor: normal;				/* The font size of the text, unless set otherwise by the projection */
@@ -25,20 +25,20 @@
 	/* TextBox */
 	--theme-colors-bg_empty_before_text_box: #f4f4f4;
 	--theme-colors-bg_text_box: white;
-	--theme-colors-color_text_box: teal;
-	--theme-colors-color_empty_before_text_box: teal;
+	--theme-colors-color_text_box: #004d40;
+	--theme-colors-color_empty_before_text_box: #004d40;
 	/* AliasBox && SelectBox */
 	--theme-colors-bg_empty_before_alias_box: #f4f4f4;
 	--theme-colors-bg_alias_box: white;
-	--theme-colors-color_alias_box: teal;
+	--theme-colors-color_alias_box: #004d40;
 	/* Dropdown */
-	--theme-colors-bg_dropdown_component: lightblue;
-	--theme-colors-border_dropdown_component: teal;
-	--theme-colors-color_dropdownitem_component: teal;
-	--theme-colors-border_dropdownitem_component: teal;
+	--theme-colors-bg_dropdown_component: #f4f4f4;
+	--theme-colors-border_dropdown_component: #004d40;
+	--theme-colors-color_dropdownitem_component: #004d40;
+	--theme-colors-border_dropdownitem_component: #004d40;
 	/* Selectable */
 	--theme-colors-bg_selected: rgba(211, 227, 253, 255);
-	--theme-colors-border_selected: teal;
+	--theme-colors-border_selected: #004d40;
 	/* Freon sizes */
 	--pi-header-height: 36px;
 	--pi-footer-height: 16px;
@@ -67,9 +67,9 @@
 
 	/* added for documentation to theme variables from Freon */
 	--theme-colors-button_color: white;
-	--theme-colors-button_bg_color: rgba(0,0,139, 1); /* teal with opacity 1 */
-	--theme-colors-button_active: rgba(0,0,139, .7); /* teal with opacity .7 */
-	--theme-colors-button_hover: rgba(0,0,139, .8); /* teal with opacity .8 */
+	--theme-colors-button_bg_color: rgba(0,0,139, 1); /* #004d40 with opacity 1 */
+	--theme-colors-button_active: rgba(0,0,139, .7); /* #004d40 with opacity .7 */
+	--theme-colors-button_hover: rgba(0,0,139, .8); /* #004d40 with opacity .8 */
 	--theme-colors-ripple_color: #c199f9;
 	--theme-colors-tooltip_color: white;
 	--theme-colors-tooltip_background: red;
