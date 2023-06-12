@@ -6,6 +6,7 @@ But dark mode does not function in the live website at all. Maybe due to GitHub 
 
 Still to do in the documentation:
 
+
 - [ ] improve pictures in 'projectional-editing.adoc'
 - [ ] make screenshots of the editor for every edit-def example
 - [ ] check the images in framework-tutorial.adoc
@@ -16,6 +17,5 @@ Still to do in the documentation:
 - [ ] verwerk alle TODOs die nog in de tekst staan
 - [ ] figures demomodelname.png and demomodelname-with-style.png need to be replaced.
 - [ ] add search mechanism on site
-- [ ] warn the lang. eng. that when the subcommands (not -all) are used to generate to
- other folders, then the imports will not be correct.
+- [ ] warn the lang. eng. that when the subcommands (not -all) are used to generate to other folders, then the imports will not be correct.
 - [ ] pathnames can be used as references (if editor is adjusted)
