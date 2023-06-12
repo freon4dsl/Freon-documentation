@@ -14,10 +14,14 @@ projectional editor is and why is it different from an ordinary editor.
 
 This workbench started out as a tool to create a projectional editor for the web. Recently, its nature 
 has changed to being a tool to create a DSL. Therefore,
-it was decided to change the name. From now on, this tool will be called <i>'Freon'</i>.
-(If you want to know why this name was chosen, please read [name change](/010_Intro/060_Name_Change).) 
+it was decided to change the name. From now on, this tool will be called <i>'Freon'</i>, which is the 
+Frisian word for 'friend'. (If you want to know why this name was chosen, please read [name change](/010_Intro/060_Name_Change).) 
 The old name will, unfortunately, still pop up sometimes. Sorry for the confusion, please understand that 
 both names refer to the same tool. 
+
+There has been some discussion about how to pronounce
+Freon. A native Frisian speaker has been so kind to provide us with the following sound bite. (Thanks, Meinte!)
+<audio controls><source src="../freon - pronounciation.mp3" type="audio/mpeg">Your browser does not support the audio element.</audio>
 
 ### The Core Framework
 The core of Freon is a TypeScript/JavaScript framework for building web-based, projectional
@@ -65,5 +69,14 @@ As a start, you could ..
 * .. find out how to define a language and its editor, etc. in the [tutorials](/030_Developing_a_Language/010_Default_Level).
 * .. dive deeper into the [structure of the generated code](/020_Getting_Started/020_Project_Structure).
 * .. get to know more about the [meta-code](/060_Under_the_Hood) of Freon.
+
+.. or view the presentation and demo we gave on May 31, 2023 for <a href="https://mde-network.com/" target="_blank">MDENet</a>.
+### The presentation
+<iframe width="620" height="345" src="https://www.youtube.com/embed/Eb9WGZyL92w">
+</iframe>
+
+### The demo
+<iframe width="620" height="345" src="https://www.youtube.com/embed/pdQaCfRkgA8">
+</iframe>
 
 **Have fun!** If you have questions that are not answered in this documentation, please email us at _info AT freon4dsl.dev_.

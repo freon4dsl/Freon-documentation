@@ -28,24 +28,9 @@ to let Freon know that the typer from the Freon Definition Level should be used 
 The following code changes the `conformsList` method for lists of `Variables`. It checks the lists in 
 reverse order: A-B-C conforms to C-B-A.
 
+[//]: # (TODO code does not come through)
 ```ts
 // tutorial-language/typer/CustomEntityTyperPart.ts#L32-L48
 
-public conformList(typelist1: EntityEveryConcept[], typelist2: EntityEveryConcept[]): boolean | null {
-    if (typelist1.length > 0 && (typelist1[0] instanceof Variable)) {
-        if (typelist1.length !== typelist2.length) return false;
-        let result: boolean = true;
-        const max_length = typelist1.length;
-        for (let i = 0; i < typelist1.length; i++) {
-            result = EntityEnvironment.getInstance().typer.conformsTo(typelist1[i], typelist2[max_length - i]);
-            if (result == false) return result;
-        }
-        return result;
-    } else {
-        return null;
-    }
-}
-/**
- * See interface
- */
+
 ```
