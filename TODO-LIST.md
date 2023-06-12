@@ -2,23 +2,20 @@ IN version 0.5.0 the theming does not function. Therefore, I adjusted the colors
 But dark mode does not function in the live website at all. Maybe due to GitHub pages????
 
 [//]: # (TODO!!!)
+- [ ] Use of url to supply model parameter: http://localhost:5000/?model=Layout1
 
 Still to do in the documentation:
 
-LATER 2. improve pictures in 'projectional-editing.adoc'
-13. make screenshots of the editor for every edit-def example
-16. check the images in framework-tutorial.adoc
-19. JOS: rewrite the third-level pages on custom build projections and actions
-20. JOS: add location of tutorial custom build projections in source code
-21. JOS: write documentation on support for expressions
-22. JOS: write more on name-based references
-27. verwerk alle TODOs die nog in de tekst staan
---
-28. figures demomodelname.png and demomodelname-with-style.png need to be replaced.
-29. add search mechanism on site
-30. warn the lang. eng. that when the subcommands (not -all) are used to generate to
+- [ ] improve pictures in 'projectional-editing.adoc'
+- [ ] make screenshots of the editor for every edit-def example
+- [ ] check the images in framework-tutorial.adoc
+- [ ] JOS: rewrite the third-level pages on custom build projections and actions
+- [ ] JOS: add location of tutorial custom build projections in source code
+- [ ] JOS: write documentation on support for expressions
+- [ ] JOS: write more on name-based references
+- [ ] verwerk alle TODOs die nog in de tekst staan
+- [ ] figures demomodelname.png and demomodelname-with-style.png need to be replaced.
+- [ ] add search mechanism on site
+- [ ] warn the lang. eng. that when the subcommands (not -all) are used to generate to
  other folders, then the imports will not be correct.
-    
-Changes made from version 0.1.0 onwards that still need to be documented:
-
-4. pathnames can be used as references (if editor is adjusted)
+- [ ] pathnames can be used as references (if editor is adjusted)
