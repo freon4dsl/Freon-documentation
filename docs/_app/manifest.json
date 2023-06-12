@@ -1,6 +1,6 @@
 {
   ".svelte-kit/runtime/client/start.js": {
-    "file": "start-6b8e0b64.js",
+    "file": "start-0310c5ba.js",
     "src": ".svelte-kit/runtime/client/start.js",
     "isEntry": true,
     "imports": [
@@ -95,7 +95,7 @@
     ]
   },
   "src/routes/index.md": {
-    "file": "pages/index.md-538795b5.js",
+    "file": "pages/index.md-e16fd956.js",
     "src": "src/routes/index.md",
     "isEntry": true,
     "isDynamicEntry": true,
@@ -721,7 +721,7 @@
     ]
   },
   "src/routes/010_Intro/060_Name_Change.md": {
-    "file": "pages/010_Intro/060_Name_Change.md-f9083f39.js",
+    "file": "pages/010_Intro/060_Name_Change.md-b4e52b50.js",
     "src": "src/routes/010_Intro/060_Name_Change.md",
     "isEntry": true,
     "isDynamicEntry": true,
