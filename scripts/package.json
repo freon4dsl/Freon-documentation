@@ -1,14 +1,16 @@
 {
   "private": true,
-  "name": "navTree",
+  "name": "navtree",
+  "type": "module",
   "bin": {
-    "navTree": "dist/_NavTreeFiller.js"
+    "navTree": "dist/NavTreeFiller.js"
   },
   "scripts": {
-    "generateDocuProject": "cd ../code-example/ && yarn build && cd ../scripts/",
-    "navTree": "tsc && node dist/_NavTreeFiller.js",
-    "adocToMd": "tsc && node dist/AdocToMd.js",
+    "generate": "npm run docuProject && npm run tutorial",
+    "docuProject": "cd ../code-examples/DocuProject && npm run generate && cd ../../scripts/",
+    "tutorial": "cd ../code-examples/TutorialLanguage && npm run generate && cd ../../scripts/",
+    "navTree": "tsc && node dist/NavTreeFiller.js",
     "checkLinks": "tsc && node dist/LinkChecker.js",
-    "build": "yarn generateDocuProject && tsc && node dist/LinkChecker.js && node dist/_NavTreeFiller.js"
+    "build": "npm run generate && tsc && node dist/LinkChecker.js && node dist/NavTreeFiller.js"
   }
 }

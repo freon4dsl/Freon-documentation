@@ -8,21 +8,24 @@ Create the website using (either npm or yarn will work) and browse through it.
 
 ```bash
 # Install dependencies
-yarn install
+npm install
 
 # create the content for navigation tree, check the internal links, and include the code fragments
-yarn prepare
+npm run prepare
 
 # create the website in the directory 'docs'
-yarn build
+npm run build
 
 # preview the website
 yarn preview
 ```
+
 > Note: preview should _not_ be used to serve your website in production.
+
 ## Developing
 
 During development, you can use the following commands.
+
 ```bash
 # create the content for navigation tree, check the internal links, and include the code fragments
 yarn prepare
