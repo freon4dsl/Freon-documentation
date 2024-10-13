@@ -4,7 +4,7 @@ This project contains the sources for all documentation on [Freon](https://githu
 
 ## Creating a documentation website
 
-Create the website using (either npm or yarn will work) and browse through it.
+Create the website using (either npm or npm run will work) and browse through it.
 
 ```bash
 # Install dependencies
@@ -17,7 +17,7 @@ npm run prepare
 npm run build
 
 # preview the website
-yarn preview
+npm run preview
 ```
 
 > Note: preview should _not_ be used to serve your website in production.
@@ -28,13 +28,13 @@ During development, you can use the following commands.
 
 ```bash
 # create the content for navigation tree, check the internal links, and include the code fragments
-yarn prepare
+npm run prepare
 
 # create the website and serve it on localhost:3000
-yarn dev
+npm run dev
 
 # or start the server and open the app in a new browser tab
-yarn dev -- --open
+npm run dev -- --open
 ```
 
 ## Publishing

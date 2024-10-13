@@ -79,20 +79,14 @@ export class navTreeFiller {
 
     // first determine the content of the resulting nav tree
     const content: NavTree[] = [];
-    // get content of the folder and sort the names alphabetically
-    // todo determine sorting by some external input or sort the nav tree later by hand?
-    const files: string[] = fs.readdirSync(folder).sort();
-    for (const file of files) {
+    // get content of the folder and sort the names
+    const files: string[] = fs.readdirSync(folder);
+    const sortedFiles: string[] = this.sortNames(folder, files);
+    // end todo
+    for (const file of sortedFiles) {
       const folderPath: string = path.join(folder, file);
       const stat = fs.lstatSync(folderPath);
-      if (!stat.isDirectory()) {
-        // if file is named 'index', ignore it - it is already included by through the parent folder
-        // if (!file.startsWith('index.')) {
-        //   // create a new content element and add it to the result
-        //   const fileName: string = path.parse(folderPath).name;
-        //   content.push(new NavTree(this.createName(fileName),  this.createPath(ignore, folder, fileName), []));
-        // }
-      } else {
+      if (stat.isDirectory()) {
         // add all subfolders to the result
         content.push(this.readFiles(folderPath, ignore));
       }
@@ -101,6 +95,26 @@ export class navTreeFiller {
     const startName: string = this.createName( path.parse(path.relative(ignore, folder)).name );
     // no need to replace "\" by "/" for svelteKit, but it is easier to generate - no escapes necessary
     return new NavTree(startName, this.createPath(ignore, folder), content);
+  }
+
+  private sortNames(folder: string, files: string[]): string[] {
+    const sortedFiles: string[] = [];
+    // sort the files using the file that determines the order, it is named 'order.json'
+    const orderPath: string = path.join(folder, 'order.json');
+    if (fs.existsSync(orderPath)) {
+      const orderContent: string = fs.readFileSync(orderPath, 'utf-8');
+      const jsonObject = JSON.parse(orderContent);
+      for (let i = 1; i < 100; i++) {
+        if (files.includes(jsonObject[i])) {
+          sortedFiles.push(jsonObject[i]);
+          files.splice(files.indexOf(jsonObject[i]), 1);
+        }
+      }
+      sortedFiles.push(...files);
+      return sortedFiles;
+    } else {
+      return files;
+    }
   }
 
   /**

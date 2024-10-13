@@ -11,10 +11,10 @@ The comments and naming should (hopefully) indicate where each variable is being
 
 @use 'sass:color';
 
-@use '../../../../../node_modules/@material/theme/color-palette';
+@use '@material/theme/color-palette';
 
 // Freon Colors!!
-@use '../../../../../node_modules/@material/theme/index' as theme with (
+@use '@material/theme/index' as theme with (
   $primary: #4f9a94,
   $secondary: #ffcc80,
   $surface: #eeeeee,
@@ -47,7 +47,6 @@ The comments and naming should (hopefully) indicate where each variable is being
 :focus {
   outline: none;
 }
-
 // status-bar style is used for the StatusBar component above the editor
 .status-bar {
   //--freon-colors-bg-status: #4f9a94;
@@ -58,7 +57,7 @@ The comments and naming should (hopefully) indicate where each variable is being
 
 .main-frame {
   /* SplitPane divider */
-  --freon-colors-slider: #{theme.$on-secondary}; /* The color of the slider between the error/search pane and the editor */
+  --freon-colors-slider: #{theme.$on-secondary};    /* The color of the slider between the error/search pane and the editor */
 }
 
 .editor-part {
