@@ -1,29 +1,35 @@
 import * as fs from "fs";
 import * as path from "path";
-const searchDir = "../src/routes";
-const logFile = "../src/CHECK.txt";
 export class LinkChecker {
     constructor() {
-        this.correctRoutes = [];
+        this._correctRoutes = [];
         this.totalErrors = 0;
         this.totalWarnings = 0;
         this.result = [];
-        this.logOnly = false;
+        this.logFileOnly = false;
+        this.searchDir = '.';
     }
-    check(logOnly) {
-        this.correctRoutes = [];
+    check(searchDir, logFile, logFileOnly) {
+        this._correctRoutes = [];
         this.totalErrors = 0;
         this.totalWarnings = 0;
         this.result = [];
-        this.logOnly = logOnly;
+        this.logFileOnly = logFileOnly;
+        this.searchDir = searchDir;
         this.getRoutes(searchDir);
         this.checkFolder(searchDir);
         this.addToResult(`Total errors: ${this.totalErrors}, total warnings: ${this.totalWarnings}.`);
         fs.writeFileSync(logFile, this.result.map((line) => line).join("\n"));
     }
+    get correctRoutes() {
+        return this._correctRoutes;
+    }
+    get hasErrors() {
+        return this.totalErrors !== 0;
+    }
     addToResult(line) {
         this.result.push(line);
-        if (!this.logOnly) {
+        if (!this.logFileOnly) {
             console.log(line);
         }
     }
@@ -41,7 +47,7 @@ export class LinkChecker {
                 link = link.replace(/\(/, "");
                 link = link.replace(/\)/, "");
                 link = link.replace(/#[a-zA-Z0-9-_]*/, "");
-                if (!this.correctRoutes.includes(link)) {
+                if (!this._correctRoutes.includes(link)) {
                     errors.push(`${link}, on line ${i + 1}`);
                 }
                 else if (!link.startsWith("/")) {
@@ -53,14 +59,14 @@ export class LinkChecker {
             }
         }
         if (errors.length > 0) {
-            this.addToResult(`Found ${errors.length} incorrect link(s) in file ${path.relative(searchDir, filepath)}:`);
+            this.addToResult(`Found ${errors.length} incorrect link(s) in file ${path.relative(this.searchDir, filepath)}:`);
             for (let i = 0; i < errors.length; i++) {
                 this.addToResult("\t" + errors[i]);
             }
             this.totalErrors += errors.length;
         }
         if (warnings.length > 0) {
-            this.addToResult(`Found ${warnings.length} warnings in file ${path.relative(searchDir, filepath)}:`);
+            this.addToResult(`Found ${warnings.length} warnings in file ${path.relative(this.searchDir, filepath)}:`);
             for (let i = 0; i < warnings.length; i++) {
                 this.addToResult("\t" + warnings[i]);
             }
@@ -130,7 +136,7 @@ export class LinkChecker {
         else {
             newFilepath = filepath;
         }
-        this.correctRoutes.push("/" + path.relative(searchDir, newFilepath).replace(/\\/g, "/"));
+        this._correctRoutes.push("/" + path.relative(this.searchDir, newFilepath).replace(/\\/g, "/"));
         const unstripped = path.basename(filepath);
         if (!unstripped.startsWith('+')) {
             const stripped = unstripped.replace(/^[0-9][0-9][0-9]/, '');
@@ -141,5 +147,4 @@ export class LinkChecker {
         }
     }
 }
-new LinkChecker().check(false);
 //# sourceMappingURL=LinkChecker.js.map

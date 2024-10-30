@@ -11,6 +11,7 @@
     "tutorial": "cd ../code-examples/TutorialLanguage && npm run generate && cd ../../scripts/",
     "navTree": "tsc && node dist/NavTreeFiller.js",
     "checkLinks": "tsc && node dist/LinkChecker.js",
-    "build": "npm run generate && tsc && node dist/LinkChecker.js && node dist/NavTreeFiller.js"
+    "build": "npm run generate && tsc && node dist/LinkChecker.js && node dist/NavTreeFiller.js",
+    "buildSite": "tsc && node dist/Generator.js"
   }
 }

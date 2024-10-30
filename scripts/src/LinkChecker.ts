@@ -1,27 +1,24 @@
 import * as fs from "fs";
 import * as path from "path";
 
-const searchDir: string = "../src/routes";
-const logFile: string = "../src/CHECK.txt";
-
 export class LinkChecker {
-  private correctRoutes: string[] = [];
+  private _correctRoutes: string[] = [];
   private totalErrors: number = 0;
   private totalWarnings: number = 0;
   private result: string[] = [];
-  private logOnly: boolean = false;
+  private logFileOnly: boolean = false;
+  private searchDir: string = '.';
 
-  check(logOnly: boolean) {
+  check(searchDir: string, logFile: string, logFileOnly: boolean) {
     // initialize
-    this.correctRoutes = [];
+    this._correctRoutes = [];
     this.totalErrors = 0;
     this.totalWarnings = 0;
     this.result = [];
-    this.logOnly = logOnly;
+    this.logFileOnly = logFileOnly;
+    this.searchDir = searchDir;
     // get the correct routes
     this.getRoutes(searchDir);
-    // add the correct routes to the result
-    // this.result = this.correctRoutes.concat(this.result);
     // check all files
     this.checkFolder(searchDir);
     // show the results
@@ -31,9 +28,17 @@ export class LinkChecker {
     fs.writeFileSync(logFile, this.result.map((line) => line).join("\n"));
   }
 
+  get correctRoutes(): string[] {
+    return this._correctRoutes;
+  }
+
+  get hasErrors(): boolean {
+    return this.totalErrors !== 0;
+  }
+
   private addToResult(line: string) {
     this.result.push(line);
-    if (!this.logOnly) {
+    if (!this.logFileOnly) {
       console.log(line);
     }
   }
@@ -62,7 +67,7 @@ export class LinkChecker {
         // remove any reference to an anchor
         link = link.replace(/#[a-zA-Z0-9-_]*/, "");
         // now check the link against the available routes
-        if (!this.correctRoutes.includes(link)) {
+        if (!this._correctRoutes.includes(link)) {
           errors.push(`${link}, on line ${i + 1}`);
         } else if (!link.startsWith("/")) {
           // always link relative to "/"
@@ -77,7 +82,7 @@ export class LinkChecker {
     if (errors.length > 0) {
       this.addToResult(
         `Found ${errors.length} incorrect link(s) in file ${path.relative(
-          searchDir,
+          this.searchDir,
           filepath
         )}:`
       );
@@ -89,7 +94,7 @@ export class LinkChecker {
     if (warnings.length > 0) {
       this.addToResult(
         `Found ${warnings.length} warnings in file ${path.relative(
-          searchDir,
+          this.searchDir,
           filepath
         )}:`
       );
@@ -182,8 +187,8 @@ export class LinkChecker {
       newFilepath = filepath;
     }
     // add the "/" prefix, replace all "\" by "/" and add to the list of correct routes
-    this.correctRoutes.push(
-      "/" + path.relative(searchDir, newFilepath).replace(/\\/g, "/")
+    this._correctRoutes.push(
+      "/" + path.relative(this.searchDir, newFilepath).replace(/\\/g, "/")
     );
     // check whether the index number is present
     const unstripped = path.basename(filepath);
@@ -198,5 +203,3 @@ export class LinkChecker {
     }
   }
 }
-
-new LinkChecker().check(false);
