@@ -17,7 +17,7 @@ _concept_ or _interface_.
   the _trigger_ will be used for this purpose.
 
 You cannot create a projection for either a **binary expression concept** or a **limited concept**.
-The editor provides extra [support for expressions](/010_Intro/010_Projectional_Editing#expressions), which
+The editor provides extra [support for expressions](/Intro/Projectional_Editing#expressions), which
 cannot be done if a user defined projection is provided. **Limited concepts** are blocked, because the user of the editor
 can use the instances of the limited concept solely as references.
 
@@ -38,12 +38,12 @@ the appearance of the model in the editor.
 
 For instance, if you define all table projections under the same editor name,
 then your user can switch from viewing objects as lists to viewing them
-as [tables](/030_Developing_a_Language/020_Definition_Level/010_Editor_Definition/020_Projections#tables).
+as [tables](/Developing_a_Language/Definition_Level/Editor_Definition/Projections#tables).
 Or, in another example, you could have an editor (or projection set) that shows only part of the properties of some
 concepts, whereas another editor shows all properties. This makes it possible to cater for different types of users.
 
 Projections may specifically request that a property is displayed using a projection from a named editor.
-For this see [Including a Property Projection from Another Editor](/030_Developing_a_Language/020_Definition_Level/010_Editor_Definition/020_Projections#named_projection).
+For this see [Including a Property Projection from Another Editor](/Developing_a_Language/Definition_Level/Editor_Definition/Projections#named_projection).
 
 ### The Default Editor and Defaults for Every Concept
 
@@ -117,7 +117,7 @@ global {
 ```
 
 The standard keywords can be overwritten per property.
-See [Boolean Keyword Projections](/030_Developing_a_Language/020_Definition_Level/010_Editor_Definition/020_Projections#booleans).
+See [Boolean Keyword Projections](/Developing_a_Language/Definition_Level/Editor_Definition/Projections#booleans).
 
 ## Reference Separator
 

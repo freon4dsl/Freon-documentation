@@ -11,7 +11,7 @@ In the future the documentation will be updated.
 </svelte:fragment>
 </Note>
 
-Please, become acquainted with the [three levels of customization](/010_Intro/050_Three_Levels_of_Customization)
+Please, become acquainted with the [three levels of customization](/Intro/Three_Levels_of_Customization)
 used by Freon.
 This section explains the 3rd of these three levels where you can customize Freon in TypeScript.
 
@@ -19,12 +19,12 @@ This section explains the 3rd of these three levels where you can customize Freo
 
 Third level full adaptability _per concept_ is currently possible for:
 
-- [Editor](/030_Developing_a_Language/030_API_Level/010_Editor_API)
-- [Validator](/030_Developing_a_Language/030_API_Level/040_Validator_API)
-- [Typer](/030_Developing_a_Language/030_API_Level/050_Typer_API)
+- [Editor](/Developing_a_Language/API_Level/Editor_API)
+- [Validator](/Developing_a_Language/API_Level/Validator_API)
+- [Typer](/Developing_a_Language/API_Level/Typer_API)
 
 To add third level adaptability for the scoper, parser and unparser is one of the
-entries in our [wish list](/010_Intro/090_Future_Developments).
+entries in our [wish list](/Intro/Future_Developments).
 
 ## Adding your Own Files
 
@@ -80,16 +80,16 @@ This is done by implementing their respective interfaces.
 
 For the scoper, parser and unparser this is currently the only way to customize.
 
-- [scoper](/030_Developing_a_Language/030_API_Level/060_Scoper_API)
-- [parser](/030_Developing_a_Language/030_API_Level/070_Reader_API)
+- [scoper](/Developing_a_Language/API_Level/Scoper_API)
+- [parser](/Developing_a_Language/API_Level/Reader_API)
 
 ### Fre-tool Interfaces
 
 More information on the interfaces can be found here:
 
-- [FreScoper](/060_Under_the_Hood/020_The_FreTool_Interfaces/020_FreScoper_Interface)
-- [FreTyper](/060_Under_the_Hood/020_The_FreTool_Interfaces/050_FreTyper_Interface)
-- [FreValidator](/060_Under_the_Hood/020_The_FreTool_Interfaces/040_FreValidator_Interface)
-- [FreReader](/060_Under_the_Hood/020_The_FreTool_Interfaces/060_FreReader_Interface)
-- [FreWriter](/060_Under_the_Hood/020_The_FreTool_Interfaces/070_FreWriter_Interface)
-- [FreStdlib](/060_Under_the_Hood/020_The_FreTool_Interfaces/080_FreStandardlib_Interface)
+- [FreScoper](/Under_the_Hood/The_FreTool_Interfaces/FreScoper_Interface)
+- [FreTyper](/Under_the_Hood/The_FreTool_Interfaces/FreTyper_Interface)
+- [FreValidator](/Under_the_Hood/The_FreTool_Interfaces/FreValidator_Interface)
+- [FreReader](/Under_the_Hood/The_FreTool_Interfaces/FreReader_Interface)
+- [FreWriter](/Under_the_Hood/The_FreTool_Interfaces/FreWriter_Interface)
+- [FreStdlib](/Under_the_Hood/The_FreTool_Interfaces/FreStandardlib_Interface)

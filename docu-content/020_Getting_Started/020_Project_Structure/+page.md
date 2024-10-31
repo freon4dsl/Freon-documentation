@@ -22,7 +22,7 @@ The source code (in `~/src`) in a Freon project is organised into the following 
 
 - _picode/config_: code that provides the coupling between all parts of the generated workbench.
   This folder contains one file that will not be overwritten at regeneration: `ProjectitConfiguration.ts`.
-  Here you can configure any [third-level customization](/030_Developing_a_Language/030_API_Level) that you want the
+  Here you can configure any [third-level customization](/Developing_a_Language/API_Level) that you want the
   generated code to take into account.
 - _picode/diagrams_: a number of UML diagrams generated from the language structure including an UML
   class diagram of the AST, an overview of all inheritance in the language, and one diagram per .ast file.
@@ -31,22 +31,22 @@ The source code (in `~/src`) in a Freon project is organised into the following 
 - _picode/editor_: code for the editor. This folder contains two files that will not be overwritten
   at regeneration: `Custom<yourLanguageName>Actions.ts`and `Custom<yourLanguageName>Projection.ts`.
   (`<yourLanguageName>` will be replaced by the name you have given your language in the .ast files.)
-  These two files are the placeholders for any [third-level customization](/030_Developing_a_Language/030_API_Level) that you
+  These two files are the placeholders for any [third-level customization](/Developing_a_Language/API_Level) that you
   would like to do.
 - _picode/language_: code that implements the language structure.
-- _picode/reader_: a parser that is able to read [model units](/010_Intro/030_Models_and_Model_Units)
+- _picode/reader_: a parser that is able to read [model units](/Intro/Models_and_Model_Units)
   from a text string or file.
 - _picode/scoper_: code for that determines which elements are visible for a certain element in the user's model.
 - _picode/stdlib_: code that implements some standard elements of your language, for instance
-  [limited concepts](/030_Developing_a_Language/010_Default_Level).
+  [limited concepts](/Developing_a_Language/Default_Level).
 - _picode/typer_: code that that determines which type is associated with a certain element in the
-  user's model. The file `Custom<yourLanguageName>TyperPart.ts` is the placeholder for any [third-level customization](/030_Developing_a_Language/030_API_Level) that you
+  user's model. The file `Custom<yourLanguageName>TyperPart.ts` is the placeholder for any [third-level customization](/Developing_a_Language/API_Level) that you
   would like to do.
 - _picode/utils_: a default implementation of a visitor for your user's model.
 - _picode/validator_: code that determines whether or not certain parts of your user's model contain
-  errors. The file `Custom<yourLanguageName>Validator.ts` is the placeholder for any [third-level customization](/030_Developing_a_Language/030_API_Level) that you
+  errors. The file `Custom<yourLanguageName>Validator.ts` is the placeholder for any [third-level customization](/Developing_a_Language/API_Level) that you
   would like to do.
-- _picode/writer_: code that is able to write your user's [model units](/010_Intro/030_Models_and_Model_Units)
+- _picode/writer_: code that is able to write your user's [model units](/Intro/Models_and_Model_Units)
   in string format to a file.
 
 - _webapp_: source code for the web-application used for all generated languages.

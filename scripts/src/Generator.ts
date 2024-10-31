@@ -1,5 +1,3 @@
-// import * as fs from "fs";
-// import * as path from "path";
 import { LinkChecker } from './LinkChecker.js';
 import { Md2Svelte } from './Md2Svelte.js';
 
@@ -14,14 +12,12 @@ export class Generator {
 		const linkChecker: LinkChecker = new LinkChecker();
 		linkChecker.check(contentFolder, './Link_Check.txt', true);
 		if (linkChecker.hasErrors) {
+			console.log('Errors in references, see "./scripts/Link_Check.txt"');
 			return;
 		}
 		// References ok, continue
 
-		// For each route, create a folder in src/routes, and an entry in the site-nav-tree.
-		// const routes: string[] = linkChecker.correctRoutes;
-		// console.log(routes)
-
+		console.log('Links ok');
 		// Walk over the folder with all the markdown files.
 		const svelteCreator = new Md2Svelte();
 		svelteCreator.generate(contentFolder, outputFolder);

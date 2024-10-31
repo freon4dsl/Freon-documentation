@@ -28,7 +28,6 @@ export function remarkExtractHeaders() {
 		const addIdToNode = (node, id) => {
 			node.data = node.data || {};
 			node.data.hProperties = node.data.hProperties || {};
-
 			node.data.hProperties.id = id;
 		};
 

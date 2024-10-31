@@ -6,7 +6,7 @@
 # Use of the Freon Generator
 
 The Freon commandline tool generates code from the various definition files as described in
-[A Language in Five Parts](/010_Intro/040_A_Language_in_Five_Parts).
+[A Language in Five Parts](/Intro/A_Language_in_Five_Parts).
 If you type ‘`freon`’ in a (bash) terminal you will see
 an overview of the different
 arguments that can be used. For detailed help about a specific command, type: ‘`freon  <command> -h`’.

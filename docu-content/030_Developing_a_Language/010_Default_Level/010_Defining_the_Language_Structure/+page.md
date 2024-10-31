@@ -23,13 +23,13 @@ language DocuProject
 ## Concepts
 
 The Freon language structure, which describes the abstract syntax tree (AST), consists of a
-list of a [Models](/030_Developing_a_Language/010_Default_Level/010_Defining_the_Language_Structure#Model),
-[Model Units](/030_Developing_a_Language/010_Default_Level/010_Defining_the_Language_Structure#Model_Unit),
-[Concepts](/030_Developing_a_Language/010_Default_Level/010_Defining_the_Language_Structure#Concept),
-[Expression Concepts](/030_Developing_a_Language/010_Default_Level/010_Defining_the_Language_Structure#Expression_Concept),
-[Binary Expression Concepts](/030_Developing_a_Language/010_Default_Level/010_Defining_the_Language_Structure#Binary_Expression_Concept),
-[Limited Concepts](/030_Developing_a_Language/010_Default_Level/010_Defining_the_Language_Structure#Limited_Concept),
-and/or [Interfaces](/030_Developing_a_Language/010_Default_Level/010_Defining_the_Language_Structure#Interface).
+list of a [Models](/Developing_a_Language/Default_Level/Defining_the_Language_Structure#Model),
+[Model Units](/Developing_a_Language/Default_Level/Defining_the_Language_Structure#Model_Unit),
+[Concepts](/Developing_a_Language/Default_Level/Defining_the_Language_Structure#Concept),
+[Expression Concepts](/Developing_a_Language/Default_Level/Defining_the_Language_Structure#Expression_Concept),
+[Binary Expression Concepts](/Developing_a_Language/Default_Level/Defining_the_Language_Structure#Binary_Expression_Concept),
+[Limited Concepts](/Developing_a_Language/Default_Level/Defining_the_Language_Structure#Limited_Concept),
+and/or [Interfaces](/Developing_a_Language/Default_Level/Defining_the_Language_Structure#Interface).
 
 ### Model
 
@@ -56,8 +56,8 @@ model InsuranceModel {
 ### Model unit
 
 A _model unit_ is a part of the model that can be edited independently of the rest of the model. A model unit is
-always a direct child of a model. The name of a model unit can never be [private](/010_Intro/030_Models_and_Model_Units#public)
-(see [Models and Model Units](/010_Intro/030_Models_and_Model_Units#public)).
+always a direct child of a model. The name of a model unit can never be [private](/Intro/Models_and_Model_Units#public)
+(see [Models and Model Units](/Intro/Models_and_Model_Units#public)).
 
 Model units may not extend other units or implement interfaces.
 
@@ -132,8 +132,8 @@ and an operator, which in the concrete syntax usually goes in the middle. For ex
 has as left operand `4`, as operator `+`, and as right operand `5`.
 
 Any concrete binary expression concept needs to have a priority. The priority is used by Freon to balance the
-abstract syntax tree (see [Projectional Editing](/010_Intro/010_Projectional_Editing#tree-balancing)). In
-the [second level tutorial](/030_Developing_a_Language/020_Definition_Level/010_Editor_Definition/040_Other_Options) you can
+abstract syntax tree (see [Projectional Editing](/Intro/Projectional_Editing#tree-balancing)). In
+the [second level tutorial](/Developing_a_Language/Definition_Level/Editor_Definition/Other_Options) you can
 find more information on how to set the operand.
 
 Binary expression concepts may extend one other concept, and implement multiple interfaces.

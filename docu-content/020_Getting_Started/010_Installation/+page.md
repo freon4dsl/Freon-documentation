@@ -22,7 +22,7 @@ In the following the root of your project will be indicated with '~'.
 - Clone branch `master` from <a href="https://github.com/freon4dsl/Freon-example.git" target="_blank">
   https://github.com/freon4dsl/Freon-example.git</a> in your preferred IDE.
   (For an explanation of the content of the project see
-  [Project_Structure](/020_Getting_Started/020_Project_Structure)).
+  [Project_Structure](/Getting_Started/Project_Structure)).
 - Next, install all necessary packages by running:
 
   ```bash
@@ -66,13 +66,13 @@ If you are having trouble using the editor, have a look at the key-bindings unde
 
 Another way to start working with Freon is to clone our template project from GitHub. The template
 project provides a shell for the generated editor that enables the user to work with multiple models and
-[model units](/010_Intro/030_Models_and_Model_Units).
+[model units](/Intro/Models_and_Model_Units).
 In the following the root of the project will be indicated with '~'.
 
 - Clone branch `master` from <a href="https://github.com/freon4dsl/Freon-template" target="_blank">
   https://github.com/freon4dsl/Freon-template</a>.
   (For an explanation of the content of the project see
-  [Project_Structure](/020_Getting_Started/020_Project_Structure)).
+  [Project_Structure](/Getting_Started/Project_Structure)).
 
 - Next, install all necessary packages by running:
 
@@ -86,7 +86,7 @@ In the following the root of the project will be indicated with '~'.
 - Create a language definition file which defines the structure of your language. The
   extension of this file must be `.ast`. You can, for instance, copy
   `EntityLanguage.ast` from the Freon example to your own `defs`-folder. Or, you can follow the
-  tutorial on [language structure definition](/030_Developing_a_Language/010_Default_Level).
+  tutorial on [language structure definition](/Developing_a_Language/Default_Level).
 
 <Note>
     <svelte:fragment slot="header"> Only the language structure is required</svelte:fragment>
@@ -161,9 +161,9 @@ Now you are ready for a closer look at Freon. You can for instance:
 - Have a look at how the example language is defined by browsing through the language definition
   files in the <a href="https://github.com/freon4dsl/Freon-example.git" target="_blank">Freon Example project</a>.
   You can find them in `~/src/defs`.
-- Read [Developing a language](/030_Developing_a_Language) to see how you can create your own language.
-- Have a look at the [structure](/020_Getting_Started/020_Project_Structure) of the generated project.
-- See what the different options there are for calling the [Freon generator](/020_Getting_Started/030_Calling_the_Generator).
+- Read [Developing a language](/Developing_a_Language) to see how you can create your own language.
+- Have a look at the [structure](/Getting_Started/Project_Structure) of the generated project.
+- See what the different options there are for calling the [Freon generator](/Getting_Started/Calling_the_Generator).
 
 If you are working with Webstorm, you might consider installing the
 plugin <a href="https://plugins.jetbrains.com/plugin/7677-awesome-console" target="_blank">Awesome Console</a>.

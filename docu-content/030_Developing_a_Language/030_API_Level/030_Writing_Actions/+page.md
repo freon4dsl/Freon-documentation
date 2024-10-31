@@ -42,7 +42,7 @@ export const MANUAL_KEYBOARD: KeyboardShortcutBehavior[] = [
 Now, let's start with adding an element, e.g. adding a new `property` to an
 `Entity`.
 
-From [Actions](/060_Under_the_Hood/010_The_Editor_Framework#defining-actions) you will have learned
+From [Actions](/Under_the_Hood/The_Editor_Framework#defining-actions) you will have learned
 that an `AliasBox` is a predefined box where the user can type text to trigger some action.
 Thus, we add an `AliasBox` to the projection of the property list.
 Note the role of the box: _end-of-property-list_.

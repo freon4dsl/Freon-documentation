@@ -14,4 +14,4 @@ export * from './tree/Leaf.svelte';
 export * from './tree/Tree.svelte';
 export * from './tree/TreeView.svelte';
 export * from './SectionComponent.svelte';
-export * from './SectionStore.js';
+export * from './SectionType.js';

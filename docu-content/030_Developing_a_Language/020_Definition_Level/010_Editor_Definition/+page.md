@@ -11,7 +11,7 @@ to produce better readable error messages by the validator.
 
 ### Three-level definition
 
-As explained in [Three Levels of Customization](/010_Intro/050_Three_Levels_of_Customization#levels) the generated editor can be defined at three levels.
+As explained in [Three Levels of Customization](/Intro/Three_Levels_of_Customization#levels) the generated editor can be defined at three levels.
 For each _concept_ in the AST the editor will
 
 1. use the _hand-made projection_, when this is present. Otherwise, the editor will
@@ -20,4 +20,4 @@ For each _concept_ in the AST the editor will
 
 The rest of this tutorial explains the second level: how to write an editor definition (`.edit` file).
 For making more adjustments to the projection by adding hand-made projections on the third level, see the
-tutorial on [using the framework](/030_Developing_a_Language/030_API_Level/010_Editor_API).
+tutorial on [using the framework](/Developing_a_Language/API_Level/Editor_API).

@@ -6,7 +6,7 @@
 
 The Projectional Editor Framework is written in TypeScript and <a href="https://svelte.dev/" target="_blank">
 Svelte</a>. This page provides an overview of the Framework.
-If you want to know how to use it, see [Editor API](/030_Developing_a_Language/030_API_Level/010_Editor_API).
+If you want to know how to use it, see [Editor API](/Developing_a_Language/API_Level/Editor_API).
 
 ## Projection Layout Based on Boxes
 
@@ -14,7 +14,7 @@ The layout of every visible element in the editor is based on _boxes_. A box is 
 in the editor. A box can contain any number of child boxes. Every AST node is projected in a box.
 
 The framework provides many types of predefined boxes. See
-[Boxes](/060_Under_the_Hood/010_The_Editor_Framework/010_Predefined_Boxes) for an overview.
+[Boxes](/Under_the_Hood/The_Editor_Framework/Predefined_Boxes) for an overview.
 These boxes can be used to build a projection.
 
 Let's look at a small example to start with. Figure 1 shows the projection of the concept `StringLiteral`. This is mapped to a horizontal list
@@ -28,7 +28,7 @@ caption='Mapping a StringLiteral'
 figureNumber={1}
 />
 
-In TypeScript, using the predefined [Boxes](/060_Under_the_Hood/010_The_Editor_Framework/010_Predefined_Boxes), this projection might look something like:
+In TypeScript, using the predefined [Boxes](/Under_the_Hood/The_Editor_Framework/Predefined_Boxes), this projection might look something like:
 
 ```ts
 new HorizontalListBox([new LabelBox('"'), new TextBox(stringLiteral.value), new LabelBox('"')]);
@@ -151,7 +151,7 @@ property of an action.
 // TODO document expression actions
 
 The challenge posed by editing expressions in a projectional editor are explained
-in [Expressions](/010_Intro/010_Projectional_Editing#expressions).
+in [Expressions](/Intro/Projectional_Editing#expressions).
 
 ## Keyboard Shortcuts
 

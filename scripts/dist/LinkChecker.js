@@ -1,5 +1,6 @@
 import * as fs from 'fs';
 import * as path from 'path';
+import { PathCreator } from './PathCreator.js';
 export class LinkChecker {
     constructor() {
         this._correctRoutes = [];
@@ -16,7 +17,7 @@ export class LinkChecker {
         this.result = [];
         this.logFileOnly = logFileOnly;
         this.searchDir = searchDir;
-        this.getRoutes(searchDir);
+        this.getRoutes(searchDir, searchDir);
         this.checkFolder(searchDir);
         this.addToResult(`Total errors: ${this.totalErrors}, total warnings: ${this.totalWarnings}.`);
         fs.writeFileSync(logFile, this.result.map((line) => line).join('\n'));
@@ -96,7 +97,7 @@ export class LinkChecker {
             }
         }
     }
-    getRoutes(folder) {
+    getRoutes(folder, ignore) {
         if (!fs.existsSync(folder)) {
             console.error(this, "cannot find folder '" + folder + "'");
             return null;
@@ -109,37 +110,9 @@ export class LinkChecker {
         for (const file of files) {
             const filepath = path.join(folder, file);
             const stat = fs.lstatSync(filepath);
-            if (!stat.isDirectory()) {
-                if (path.basename(filepath, '.md') !== 'index' && path.basename(filepath, '.svelte') !== 'index') {
-                    if (path.extname(filepath) === '.md' || path.extname(filepath) === '.svelte') {
-                        this.addRoute(filepath);
-                    }
-                }
-            }
-            else {
-                this.addRoute(filepath);
-                this.getRoutes(filepath);
-            }
-        }
-    }
-    addRoute(filepath) {
-        let newFilepath;
-        if (path.extname(filepath) === '.md') {
-            newFilepath = path.join(path.dirname(filepath), path.basename(filepath, '.md'));
-        }
-        else if (path.extname(filepath) === '.svelte') {
-            newFilepath = path.join(path.dirname(filepath), path.basename(filepath, '.svelte'));
-        }
-        else {
-            newFilepath = filepath;
-        }
-        this._correctRoutes.push('/' + path.relative(this.searchDir, newFilepath).replace(/\\/g, '/'));
-        const unstripped = path.basename(filepath);
-        if (!unstripped.startsWith('+')) {
-            const stripped = unstripped.replace(/^[0-9][0-9][0-9]/, '');
-            if (unstripped === stripped && !unstripped.startsWith('__')) {
-                this.addToResult(`File or folder ${filepath} does not yet adhere to the number convention.`);
-                this.totalWarnings += 1;
+            if (stat.isDirectory()) {
+                this._correctRoutes.push('/' + PathCreator.createPath(ignore, filepath));
+                this.getRoutes(filepath, ignore);
             }
         }
     }

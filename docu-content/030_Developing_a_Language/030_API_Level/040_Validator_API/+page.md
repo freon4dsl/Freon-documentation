@@ -43,7 +43,7 @@ list.
 3.  Now implement any of the methods of the default worker by putting in your validation in
 the corresponding model element method. This method will override the (empty) default implementation.
 The validation error should be pushed onto the `errorList` attribute. Therefore, each error must implement the
-[FreError](/060_Under_the_Hood/020_The_FreTool_Interfaces/040_FreValidator_Interface#FreError) interface.
+[FreError](/Under_the_Hood/The_FreTool_Interfaces/FreValidator_Interface#FreError) interface.
 <!--- (TODO link) --->
 
 The result of the above should look something like this:

@@ -6,7 +6,7 @@ which are also known as <a href="https://en.wikipedia.org/wiki/Domain-specific*l
 Freon generates an integrated
 set of editor, scoper, typer, and validator for your mini-language from a small set of definitions. Together we call this the work environment for your language.
 
-Noteworthy is that the generated editor is a projectional editor. See [projectional editing](/010_Intro/010_Projectional_Editing) to find out what
+Noteworthy is that the generated editor is a projectional editor. See [projectional editing](/Intro/Projectional_Editing) to find out what
 projectional editor is and why is it different from an ordinary editor.
 
 ## <i>Freon</i> was previously called <i>ProjectIt</i>
@@ -14,7 +14,7 @@ projectional editor is and why is it different from an ordinary editor.
 This workbench started out as a tool to create a projectional editor for the web. Recently, its nature
 has changed to being a tool to create a DSL. Therefore,
 it was decided to change the name. From now on, this tool will be called <i>'Freon'</i>, which is the
-Frisian word for 'friend'. (If you want to know why this name was chosen, please read [name change](/010_Intro/060_Name_Change).)
+Frisian word for 'friend'. (If you want to know why this name was chosen, please read [name change](/Intro/Name_Change).)
 The old name will, unfortunately, still pop up sometimes. Sorry for the confusion, please understand that
 both names refer to the same tool.
 
@@ -46,7 +46,7 @@ of the work environment for your mini-language:
 Currently, Freon does not support the creation of debuggers, generators, and
 such. However, there is a beta version of an interpreter included. More
 documentation on this will follow later.
-Overall, we have a (large) [wish list](/010_Intro/090_Future_Developments) of extra features
+Overall, we have a (large) [wish list](/Intro/Future_Developments) of extra features
 that we would like to implement in the future.
 
 In some cases, like e.g. code generators, we think that integration with existing tools is the best solution.
@@ -54,7 +54,7 @@ In other cases we plan to provide Freon components for specific functionality.
 Given time, we hope to realize many of these extra items.
 
 If you want to know why
-we have chosen this development route, read our statement on the [philosophy](/010_Intro/020_Our_Philosophy)
+we have chosen this development route, read our statement on the [philosophy](/Intro/Our_Philosophy)
 behind the tool.
 
 ## What Are You: a _Language Engineer_ or a _User_?
@@ -69,10 +69,10 @@ So welcome, language engineer, to the world of Freon. This website is meant for 
 you in creating a language and building a work environment for it. Please, browse through all the subjects.
 As a start, you could ..
 
-- .. see how you can [install and use](/020_Getting_Started/010_Installation) Freon.
-- .. find out how to define a language and its editor, etc. in the [tutorials](/030_Developing_a_Language/010_Default_Level).
-- .. dive deeper into the [structure of the generated code](/020_Getting_Started/020_Project_Structure).
-- .. get to know more about the [meta-code](/060_Under_the_Hood) of Freon.
+- .. see how you can [install and use](/Getting_Started/Installation) Freon.
+- .. find out how to define a language and its editor, etc. in the [tutorials](/Developing_a_Language/Default_Level).
+- .. dive deeper into the [structure of the generated code](/Getting_Started/Project_Structure).
+- .. get to know more about the [meta-code](/Under_the_Hood) of Freon.
 
 .. or view the presentation and demo we gave on May 31, 2023 for <a href="https://mde-network.com/" target="_blank">MDENet</a>.
 

@@ -53,7 +53,7 @@ but this is not necessary.
 Not all AST nodes need to have a type associated to it. Only those nodes for which you
 need a validation rule, or have another reason to require a type, need to be marked as
 having a type. We refer to those AST nodes as **terms**, so as not to confuse these with
-[`expression concepts`](/030_Developing_a_Language/010_Default_Level/010_Defining_the_Language_Structure),
+[`expression concepts`](/Developing_a_Language/Default_Level/Defining_the_Language_Structure),
 which have a different meaning.
 
 You can indicate which AST nodes are terms by the keyword `hasType` followed by all terms in
@@ -126,7 +126,7 @@ in the type concept a condition is given. If all conditions evaluate to true the
 
 In a condition of a `where-clause` you may use `conformsto`. In that case, invocation of the rule will produce the cartesian product of
 all super concepts of the properties in the conditions. For an
-example, see [Typer Example](/030_Developing_a_Language/020_Definition_Level/030_Typer_Definition/030_Example_Typer_Definition).
+example, see [Typer Example](/Developing_a_Language/Definition_Level/Typer_Definition/Example_Typer_Definition).
 
 <Note>
 <svelte:fragment slot="content">

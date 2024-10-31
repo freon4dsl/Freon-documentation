@@ -1,5 +1,6 @@
 import * as fs from 'fs';
 import * as path from 'path';
+import { PathCreator } from './PathCreator.js';
 
 export class LinkChecker {
 	private _correctRoutes: string[] = [];
@@ -18,7 +19,7 @@ export class LinkChecker {
 		this.logFileOnly = logFileOnly;
 		this.searchDir = searchDir;
 		// get the correct routes
-		this.getRoutes(searchDir);
+		this.getRoutes(searchDir, searchDir);
 		// check all files
 		this.checkFolder(searchDir);
 		// show the results
@@ -119,7 +120,7 @@ export class LinkChecker {
 		}
 	}
 
-	private getRoutes(folder: string) {
+	private getRoutes(folder: string, ignore: string) {
 		if (!fs.existsSync(folder)) {
 			console.error(this, "cannot find folder '" + folder + "'");
 			return null;
@@ -133,41 +134,10 @@ export class LinkChecker {
 		for (const file of files) {
 			const filepath = path.join(folder, file);
 			const stat = fs.lstatSync(filepath);
-			if (!stat.isDirectory()) {
-				// if file is called index, ignore it, because the containing folder is already a correct route
-				if (path.basename(filepath, '.md') !== 'index' && path.basename(filepath, '.svelte') !== 'index') {
-					// if file does not have extension .md or .svelte, ignore it
-					if (path.extname(filepath) === '.md' || path.extname(filepath) === '.svelte') {
-						this.addRoute(filepath);
-					}
-				}
-			} else {
+			if (stat.isDirectory()) {
+				this._correctRoutes.push('/' + PathCreator.createPath(ignore, filepath));
 				// do all subFolders
-				this.addRoute(filepath);
-				this.getRoutes(filepath);
-			}
-		}
-	}
-
-	private addRoute(filepath: string) {
-		// remove the extensions
-		let newFilepath: string;
-		if (path.extname(filepath) === '.md') {
-			newFilepath = path.join(path.dirname(filepath), path.basename(filepath, '.md'));
-		} else if (path.extname(filepath) === '.svelte') {
-			newFilepath = path.join(path.dirname(filepath), path.basename(filepath, '.svelte'));
-		} else {
-			newFilepath = filepath;
-		}
-		// add the "/" prefix, replace all "\" by "/" and add to the list of correct routes
-		this._correctRoutes.push('/' + path.relative(this.searchDir, newFilepath).replace(/\\/g, '/'));
-		// check whether the index number is present
-		const unstripped = path.basename(filepath);
-		if (!unstripped.startsWith('+')) {
-			const stripped = unstripped.replace(/^[0-9][0-9][0-9]/, '');
-			if (unstripped === stripped && !unstripped.startsWith('__')) {
-				this.addToResult(`File or folder ${filepath} does not yet adhere to the number convention.`);
-				this.totalWarnings += 1;
+				this.getRoutes(filepath, ignore);
 			}
 		}
 	}

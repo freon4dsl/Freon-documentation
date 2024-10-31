@@ -1,9 +1,9 @@
-<script>
+<script lang="ts">
 	import IntersectionObserver from 'svelte-intersection-observer';
 
-	let element;
-	export let intersecting;
-	export let id;
+	let element: HTMLElement;
+	export let intersecting: boolean;
+	export let id: string;
 </script>
 
 <IntersectionObserver {element} bind:intersecting threshold={0.5}>

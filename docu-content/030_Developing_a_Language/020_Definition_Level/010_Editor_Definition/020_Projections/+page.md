@@ -66,7 +66,7 @@ Because you may only use direct properties, the prefix <code>self</code> may be 
 ### Including a Property Projection from Another Editor
 
 Normally, the property that you include will be displayed according to the projection of its type. This projection
-will be found by Freon using the [ordering](/030_Developing_a_Language/020_Definition_Level/010_Editor_Definition/010_Edit_Files#ordering)
+will be found by Freon using the [ordering](/Developing_a_Language/Definition_Level/Editor_Definition/Edit_Files#ordering)
 as defined in the configuration.
 
 When you specifically want to use another projection, you can use a **named property projection**. In that case,
@@ -93,7 +93,7 @@ If a property is a list, you can indicate whether it should be projected horizon
 Both keywords are optional. If neither of `vertical` or `horizontal` is present, the property will be displayed as
 a vertical list.
 
-You can also choose to project a list property as a [table](/030_Developing_a_Language/020_Definition_Level/010_Editor_Definition/020_Projections#tables).
+You can also choose to project a list property as a [table](/Developing_a_Language/Definition_Level/Editor_Definition/Projections#tables).
 However, its default projection will always be a list. This is the one that will be generated when a
 projection is not present in the `.edit` files.
 

@@ -5,12 +5,12 @@ series are the xref:../tools-interfaces/tools-interfaces-intro[interfaces of the
 
 The second series of interfaces are those that define parts of the core of the Freon framework:
 
-- [FreProjection](/060_Under_the_Hood/010_The_Editor_Framework/020_The_Editor_Interfaces/010_FreProjection_Interface)
-- [FreActions](/060_Under_the_Hood/010_The_Editor_Framework/020_The_Editor_Interfaces/020_FreAction_Interface)
-- [FreExpression](/060_Under_the_Hood/010_The_Editor_Framework/020_The_Editor_Interfaces/030_FreExpression_Interface)
-- [FreBinaryExpression](/060_Under_the_Hood/010_The_Editor_Framework/020_The_Editor_Interfaces/040_FreBinary_Expression_Interface)
+- [FreProjection](/Under_the_Hood/The_Editor_Framework/The_Editor_Interfaces/FreProjection_Interface)
+- [FreActions](/Under_the_Hood/The_Editor_Framework/The_Editor_Interfaces/FreAction_Interface)
+- [FreExpression](/Under_the_Hood/The_Editor_Framework/The_Editor_Interfaces/FreExpression_Interface)
+- [FreBinaryExpression](/Under_the_Hood/The_Editor_Framework/The_Editor_Interfaces/FreBinary_Expression_Interface)
 
 In both series the following two interfaces are used:
 
-- [FreElement](/060_Under_the_Hood/010_The_Editor_Framework/020_The_Editor_Interfaces/050_FreElement_Interface)
-- [FreNamedElement](/060_Under_the_Hood/010_The_Editor_Framework/020_The_Editor_Interfaces/060_FreNamedElement_Interface)
+- [FreElement](/Under_the_Hood/The_Editor_Framework/The_Editor_Interfaces/FreElement_Interface)
+- [FreNamedElement](/Under_the_Hood/The_Editor_Framework/The_Editor_Interfaces/FreNamedElement_Interface)

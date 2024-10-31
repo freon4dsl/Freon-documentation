@@ -2,6 +2,14 @@ import * as fs from 'fs';
 import * as path from 'path';
 import { compile } from 'mdsvex';
 import { remarkExtractHeaders } from './remark-extract-headers.js';
+import { layoutContent } from './PageLayoutContent.js';
+import { PathCreator } from './PathCreator.js';
+
+const storeContent: string =
+	`import { writable, type Writable } from 'svelte/store';
+	import type { Section } from '$lib/SectionType';
+
+	export const mySections: Writable<Section[]> = writable<Section[]>([]);`;
 
 export class Md2Svelte {
 	generate(contentFolder: string, outputFolder: string) {
@@ -60,12 +68,30 @@ export class Md2Svelte {
 			remarkPlugins: [remarkExtractHeaders]
 		});
 		const scriptPart: string = this.createScriptPart(transformed_code.data.headers);
-		const htmlPart: string = this.changeH2s(transformed_code.code);
-		const fileContent: string = this.combineScriptAndCode(scriptPart, htmlPart);
-
-		const outputPath: string = this.createPath(ignore, filepath);
+		let fileContent: string = '';
+		if (scriptPart.length > 0) { // There are H2 headers on this page
+			const htmlPart: string = this.changeH2s(transformed_code.code);
+			fileContent = this.combineScriptAndCode(scriptPart, htmlPart);
+		} else {
+			fileContent = transformed_code.code;
+		}
+		const outputPath: string = PathCreator.createPath(ignore, filepath);
 		this.createDirIfNotExisting(path.dirname(outputPath), outputFolder);
 		fs.writeFileSync(outputFolder + path.sep + outputPath, fileContent);
+
+		if (scriptPart.length > 0) { // There are H2 headers on this page
+			// Create and write the SectionStore.ts file
+			const storePath: string = path.dirname(outputPath) + path.sep + "SectionStore.ts"
+			fs.writeFileSync(outputFolder + path.sep + storePath, storeContent);
+			if (path.dirname(outputPath) !== '.') { // Do not overwrite the site layout file
+				console.log("Writing " + path.dirname(outputPath))
+				// Create and write the page layout including a page nav
+				const layoutPath: string = path.dirname(outputPath) + path.sep + '+layout.svelte';
+				fs.writeFileSync(outputFolder + path.sep + layoutPath, layoutContent);
+			}
+		} else {
+			// Create and write the page layout without a page nav
+		}
 	}
 
 	/**
@@ -74,25 +100,7 @@ export class Md2Svelte {
 	 * @param code
 	 */
 	combineScriptAndCode(script: string, code: string): string {
-		let innerHtml: string = code.replace(/<script>/, '');
-		//     innerHtml = `<div class="main">
-		//   <div class="column-left">
-		//     ${innerHtml}
-		//   </div>
-		//
-		//   <div class="column-right">
-		//     <nav class="side-nav" >
-		//       <ul>
-		//         {#each $mySections as sec, index}
-		//           <li>
-		//             <a class:visible={index === current} class:nonvisible={index !== current} href={sec.ref}> {sec.title} </a>
-		//           </li>
-		//         {/each}
-		//       </ul>
-		//     </nav>
-		//   </div>
-		// </div>
-		// `;
+		const innerHtml: string = code.replace(/<script>/, '');
 
 		if (code.includes('</script>')) {
 			return script + innerHtml;
@@ -119,50 +127,26 @@ export class Md2Svelte {
 		const visibleSetters = [];
 		if (Array.isArray(headers)) {
 			headers.forEach((head, index) => {
-				console.log('HEAD: ' + JSON.stringify(head.text));
 				headerInfo.push(`{title: "${head.text}", visible: false, ref: '#${head.id}'}`);
 				visibleSetters.push(`$: $mySections[${index}].visible = visible[${index}];`);
 			});
 		} else {
 			console.log('NO ARRAY');
 		}
-		return `<script lang="ts">
-		import SectionComponent from '$lib/SectionComponent.svelte';
-    import {mySections} from '$lib/SectionStore.js';
-		import type { Section } from '$lib/SectionStore.js';
-    $mySections = [
-                      ${headerInfo.map((hh) => `${hh}`).join(',\n')}
-                  ]
-	let visible: boolean[] = [];
-	${visibleSetters.map((hh) => `${hh}`).join('\n')}
-	
-	$: current = getCurrent($mySections);
-
-  function getCurrent(internalSections: Section[]): number {
-    let previous = current;
-    for (let i=0; i < internalSections.length; i++) {
-      if (internalSections[i].visible) {
-        return i;
-      }
-    }
-    return previous;
-  }
-	`;
-	}
-
-	private createPath(ignore: string, file: string): string {
-		// ignore the start of the path if it is equal to 'ignore'
-		let pathStr: string = path.relative(ignore, file);
-		// remove the numbering
-		pathStr = pathStr.replace(/[0-9]*_/g, '');
-		// change the extension to .svelte
-		if (path.extname(pathStr) === '.md') {
-			const basename = path.basename(pathStr, path.extname(pathStr));
-			return path.join(path.dirname(pathStr), basename + '.svelte');
+		if (headerInfo.length > 0) {
+			return `<script lang="ts">
+							import SectionComponent from '$lib/SectionComponent.svelte';
+							import {mySections} from './SectionStore.js';
+							import type { Section } from '$lib/SectionType.js';
+							$mySections = [
+																${headerInfo.map((hh) => `${hh}`).join(',\n')}
+														]
+						let visible: boolean[] = [];
+						${visibleSetters.map((hh) => `${hh}`).join('\n')}
+						`;
+		} else {
+			return '';
 		}
-		// note: there is no need to replace "\" by "/" for svelteKit, but it is easier to generate - no escapes necessary
-		pathStr = pathStr.replace(/\\/g, '/');
-		return pathStr;
 	}
 
 	private createDirIfNotExisting(dir: string, outputFolder: string) {

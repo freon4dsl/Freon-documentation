@@ -1,7 +1,7 @@
 # Third Level Customization of the Typer
 
 The typer can as of now be customized **per concept**. Your new typer needs
-to implement the [FreTyperPart interface](/060_Under_the_Hood/020_The_FreTool_Interfaces/050_FreTyper_Interface).
+to implement the [FreTyperPart interface](/Under_the_Hood/The_FreTool_Interfaces/FreTyper_Interface).
 
 As a convenience, Freon generates a file `~/picode/typer/Custom<yourLanguageName>TyperPart.ts`,
 which will not be overwritten upon regeneration. It already contains a class that implements this interface.

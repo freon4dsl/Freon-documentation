@@ -6,12 +6,12 @@
 
 Developing a Language with Freon is usually done taking the following steps.
 
-1. Develop the [metamodel](/030_Developing_a_Language/010_Default_Level).
+1. Develop the [metamodel](/Developing_a_Language/Default_Level).
 2. Add the concrete syntax by adding an
-   [editor definition](/030_Developing_a_Language/020_Definition_Level/010_Editor_Definition).
+   [editor definition](/Developing_a_Language/Definition_Level/Editor_Definition).
 3. Add scoping, typing and validation information
-   (see [Freon Definition level](/030_Developing_a_Language/020_Definition_Level)).
-4. Fine-tune the result on the [API level](/030_Developing_a_Language/030_API_Level).
+   (see [Freon Definition level](/Developing_a_Language/Definition_Level)).
+4. Fine-tune the result on the [API level](/Developing_a_Language/API_Level).
 
 If you are working with Webstorm, you might consider installing the
 plugin <a href="https://plugins.jetbrains.com/plugin/7677-awesome-console" target="_blank">Awesome Console</a>.

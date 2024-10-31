@@ -44,11 +44,11 @@ fashion, these will be extended whenever the need arises.
 
 Furthermore, we intend to use **bootstrapping** in one of the next versions of Freon
 to create editors for every one of the definition languages. If you are interested, you can
-check out our [wish list](/010_Intro/090_Future_Developments) of features to be developed in the future.
+check out our [wish list](/Intro/Future_Developments) of features to be developed in the future.
 
 ## Name-Based References
 
-In [Support for Expressions](/010_Intro/010_Projectional_Editing#expressions) we explain
+In [Support for Expressions](/Intro/Projectional_Editing#expressions) we explain
 that editing expressions is a known challenge for projectional editors. A second challenge
 is posed by _references_, which is stated in <a href="https://www.voelter.de/data/pub/fse2016-projEditing.pdf" target="_blank">
 Efficiency of Projectional Editing: A Controlled Experiment</a> as follows.
@@ -77,4 +77,4 @@ an instance of the class `PiElementReference`, which holds:
 
 This means that the AST is truly a tree, not a graph. One advantage is that we are not obliged
 to have the complete model in memory. Our use of
-multi-file models is explained in [Models and Model Units](/010_Intro/030_Models_and_Model_Units).
+multi-file models is explained in [Models and Model Units](/Intro/Models_and_Model_Units).

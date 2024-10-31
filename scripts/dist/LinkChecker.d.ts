@@ -12,6 +12,5 @@ export declare class LinkChecker {
     private checkFile;
     private checkFolder;
     private getRoutes;
-    private addRoute;
 }
 //# sourceMappingURL=LinkChecker.d.ts.map
