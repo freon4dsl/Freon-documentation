@@ -7,6 +7,7 @@ export function remarkExtractHeaders() {
 		file.data.headers = [];
 		let currentHeader = null; // Keep track of the current header object
 		let headerCounter = 0;
+		let lowerHeaderCounter = 0;
 
 		const generateId = (text, index) => {
 			let id = text.toLowerCase().replace(/ +/g, '-');
@@ -37,21 +38,27 @@ export function remarkExtractHeaders() {
 		// Visit each heading node in the tree
 		visit(tree, 'heading', (node) => {
 			// Check if the heading is a h2 or higher level
-			const headerText = getHeaderText(node);
-			headerCounter++;
-			const headerId = generateId(headerText, headerCounter); // Generate a unique ID for the header
-
-			currentHeader = {
-				text: headerText,
-				id: headerId,
-				class: 'myText',
-				depth: node.depth
-			};
-
-			addIdToNode(node, headerId); // Add the ID to the heading node
 			if (node.depth <= 2) {
+				const headerText = getHeaderText(node);
+				headerCounter++;
+				const headerId = generateId(headerText, headerCounter); // Generate a unique ID for the header
+
+				currentHeader = {
+					text: headerText,
+					id: headerId,
+					class: 'myText',
+					depth: node.depth
+				};
+
+				addIdToNode(node, headerId); // Add the ID to the heading node
+
 				node.data.hProperties.visible = `{visible[${headerCounter - 1}]}`; // Add a visibility index to the node
 				file.data.headers.push(currentHeader); // Add the current header to the headers array
+			} else {
+				const headerText = getHeaderText(node);
+				lowerHeaderCounter++;
+				const headerId = generateId(headerText, lowerHeaderCounter); // Generate a unique ID for the header
+				addIdToNode(node, headerId); // Add the ID to the heading node
 			}
 		});
 

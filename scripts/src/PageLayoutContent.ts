@@ -37,8 +37,8 @@ export const layoutContent: string =
 <style>
     .side-nav {
       position: fixed;
-      top: 25px;
-      right: 25px;
+      top: 75px;
+      right: 75px;
       width: 15em;
     }
     ul {

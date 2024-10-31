@@ -88,8 +88,6 @@ export class Md2Svelte {
 				const layoutPath: string = path.dirname(outputPath) + path.sep + '+layout.svelte';
 				fs.writeFileSync(outputFolder + path.sep + layoutPath, layoutContent);
 			}
-		} else {
-			// Create and write the page layout without a page nav
 		}
 	}
 

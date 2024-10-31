@@ -5,11 +5,12 @@
 	import { leftPanelVisible } from '../Store';
 	import ArrowDropDown from '$lib/icons/ArrowDropDown.svelte';
 	import ArrowRight from '$lib/icons/ArrowRight.svelte';
+	import type { NavTree } from '$lib/tree/NavTree.js';
 
 	export let name: string = '';
 	export let path: string = '';
 	export let expanded = false;
-	export let content;
+	export let content: NavTree[];
 	let active: boolean;
 	$: active = $page.url.pathname === path;
 	$: if ($page.url.pathname.startsWith(path)) {
@@ -36,6 +37,7 @@
 				{#if expanded}
 					<span class="xxx" on:click={toggle}><ArrowDropDown /> </span>
 					<a href={path} on:click={becomingActive}>{name}</a>
+
 				{:else}
 					<span class="xxx" on:click={toggle}><ArrowRight /> </span>
 					<a href={path} on:click={becomingActive}>{name}</a>

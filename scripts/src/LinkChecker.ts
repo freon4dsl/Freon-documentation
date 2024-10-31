@@ -129,7 +129,8 @@ export class LinkChecker {
 			console.error(this, "'" + folder + "' is not a folder");
 			return null;
 		}
-		// get content of the folder
+
+		// get content of the folder and sort the names alphabetically
 		const files = fs.readdirSync(folder);
 		for (const file of files) {
 			const filepath = path.join(folder, file);

@@ -1,8 +1,7 @@
 import * as fs from 'fs';
 import * as path from 'path';
+import { PathCreator } from './PathCreator.js';
 
-const contentFolder: string = '../src/routes';
-const outputFile: string = '../src/lib/tree/TreeView.svelte';
 
 /**
  * Identical to /src/lib/tree/NavTree, but included here to avoid Node.js errors
@@ -24,16 +23,17 @@ export class navTreeFiller {
 	 * Reads the file structure under 'contentFolder' and generates a nav array in
 	 * file 'outputFile'.
 	 */
-	generateNavTree() {
+	generateNavTree(contentFolder: string, outputFile: string) {
 		const myTree: NavTree = this.readFiles(contentFolder, contentFolder);
 		if (!myTree) {
 			console.log(`Could not read folder '${contentFolder}'`);
 			return;
 		}
+
 		// start template
 		const navContent: string = `<script lang="ts">
 	import Tree from './Tree.svelte';
-	import { NavTree } from './NavTree';
+	import type { NavTree } from './NavTree.js';
 	
 	let root: NavTree[] = [${myTree.content.map((elem) => this.navTreeToString(elem, 2)).join('')}];
 	</script>
@@ -75,13 +75,10 @@ export class navTreeFiller {
 			return null;
 		}
 
-		// first determine the content of the resulting nav tree
 		const content: NavTree[] = [];
-		// get content of the folder and sort the names
-		const files: string[] = fs.readdirSync(folder);
-		const sortedFiles: string[] = this.sortNames(folder, files);
-		// end todo
-		for (const file of sortedFiles) {
+		// get content of the folder and sort the names alphabetically
+		const files = fs.readdirSync(folder).sort();
+		for (const file of files) {
 			const folderPath: string = path.join(folder, file);
 			const stat = fs.lstatSync(folderPath);
 			if (stat.isDirectory()) {
@@ -92,27 +89,7 @@ export class navTreeFiller {
 		// create the name for a folder based on path relative from 'ignore'
 		const startName: string = this.createName(path.parse(path.relative(ignore, folder)).name);
 		// no need to replace "\" by "/" for svelteKit, but it is easier to generate - no escapes necessary
-		return new NavTree(startName, this.createPath(ignore, folder), content);
-	}
-
-	private sortNames(folder: string, files: string[]): string[] {
-		const sortedFiles: string[] = [];
-		// sort the files using the file that determines the order, it is named 'order.json'
-		const orderPath: string = path.join(folder, 'order.json');
-		if (fs.existsSync(orderPath)) {
-			const orderContent: string = fs.readFileSync(orderPath, 'utf-8');
-			const jsonObject = JSON.parse(orderContent);
-			for (let i = 1; i < 100; i++) {
-				if (files.includes(jsonObject[i])) {
-					sortedFiles.push(jsonObject[i]);
-					files.splice(files.indexOf(jsonObject[i]), 1);
-				}
-			}
-			sortedFiles.push(...files);
-			return sortedFiles;
-		} else {
-			return files;
-		}
+		return new NavTree(startName, '/' + PathCreator.createPath(ignore, folder), content);
 	}
 
 	/**
@@ -123,35 +100,16 @@ export class navTreeFiller {
 	private createName(folderName: string) {
 		let myName: string = folderName;
 		if (!!folderName && folderName.length > 0) {
+			// remove the numbering
+			myName = myName.replace(/[0-9]+_/g, '');
 			// replace all underscores and dashes by spaces
 			myName = myName.replace(/[_\\-]/g, ' ');
 			// start the name with an uppercase character
 			myName = myName[0].toUpperCase() + myName.substring(1);
+			// note: there is no need to replace "\" by "/" for svelteKit, but it is easier to generate - no escapes necessary
+			myName = myName.replace(/\\/g, '/');
 		}
 		return myName;
-	}
-
-	/**
-	 * Finds the path to use based on the three parameters
-	 * @param ignore: the path up till the folder where the files are located
-	 * @param folder: the folder where the file is located, or the folder for which we create the path
-	 * @param fileName: if present, name of the file, else we are handling a folder
-	 * @private
-	 */
-	private createPath(ignore: string, folder: string, fileName?: string) {
-		// ignore the start of the path if it is equal to 'ignore'
-		let pathStr = path.relative(ignore, folder);
-		// if there is a path then prefixed it with a separator
-		if (pathStr.length > 0) {
-			pathStr = path.sep + pathStr;
-		}
-		// if there is a fileName (it is a file, not a folder) then add it to the result
-		if (!!fileName && fileName.length > 0) {
-			pathStr = pathStr + path.sep + fileName;
-		}
-		// no need to replace "\" by "/" for svelteKit, but it is easier to generate - no escapes necessary
-		pathStr = pathStr.replace(/\\/g, '/');
-		return pathStr;
 	}
 
 	/**
@@ -180,4 +138,4 @@ export class navTreeFiller {
 	}
 }
 
-new navTreeFiller().generateNavTree();
+
