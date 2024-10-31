@@ -70,7 +70,7 @@ export class Md2Svelte {
 		const scriptPart: string = this.createScriptPart(transformed_code.data.headers);
 		let fileContent: string = '';
 		if (scriptPart.length > 0) { // There are H2 headers on this page
-			const htmlPart: string = this.changeH2s(transformed_code.code);
+			const htmlPart: string = this.changeHtags(transformed_code.code);
 			fileContent = this.combineScriptAndCode(scriptPart, htmlPart);
 		} else {
 			fileContent = transformed_code.code;
@@ -84,7 +84,6 @@ export class Md2Svelte {
 			const storePath: string = path.dirname(outputPath) + path.sep + "SectionStore.ts"
 			fs.writeFileSync(outputFolder + path.sep + storePath, storeContent);
 			if (path.dirname(outputPath) !== '.') { // Do not overwrite the site layout file
-				console.log("Writing " + path.dirname(outputPath))
 				// Create and write the page layout including a page nav
 				const layoutPath: string = path.dirname(outputPath) + path.sep + '+layout.svelte';
 				fs.writeFileSync(outputFolder + path.sep + layoutPath, layoutContent);
@@ -109,14 +108,16 @@ export class Md2Svelte {
 		}
 	}
 
-	/** Changes <h2> tags to <SectionComponent> tags, with the right props
+	/** Changes <h2> and <h1> tags to <SectionComponent> tags, with the right props
 	 *
 	 * @param code
 	 */
-	changeH2s(code: string): string {
+	changeHtags(code: string): string {
 		let result = code.replace(/<h2/g, '<SectionComponent');
+		result = result.replace(/<h1/g, '<SectionComponent');
 		result = result.replace(/visible=/g, 'bind:intersecting=');
 		result = result.replace(/<\/h2>/g, '</SectionComponent>');
+		result = result.replace(/<\/h1>/g, '</SectionComponent>');
 		return result;
 	}
 
@@ -137,7 +138,6 @@ export class Md2Svelte {
 			return `<script lang="ts">
 							import SectionComponent from '$lib/SectionComponent.svelte';
 							import {mySections} from './SectionStore.js';
-							import type { Section } from '$lib/SectionType.js';
 							$mySections = [
 																${headerInfo.map((hh) => `${hh}`).join(',\n')}
 														]

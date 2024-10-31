@@ -21,7 +21,10 @@ export function remarkExtractHeaders() {
 		};
 
 		const getHeaderText = (node) => {
-			return toString(node);
+			// remove any styling, like <i> and </b>
+			let result = toString(node);
+			result = result.replace(/<\/?[a-z]>/g, '')
+			return result;
 		};
 
 		// Function to add an ID to a node
@@ -46,7 +49,7 @@ export function remarkExtractHeaders() {
 			};
 
 			addIdToNode(node, headerId); // Add the ID to the heading node
-			if (node.depth === 2) {
+			if (node.depth <= 2) {
 				node.data.hProperties.visible = `{visible[${headerCounter - 1}]}`; // Add a visibility index to the node
 				file.data.headers.push(currentHeader); // Add the current header to the headers array
 			}

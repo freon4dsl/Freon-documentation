@@ -21,6 +21,7 @@ export const layoutContent: string =
    </div>
     <div class="column-right">
         <nav class="side-nav" >
+        <h3>On this page</h3>
             <ul>
                 {#each $mySections as sec, index}
                     <li>
