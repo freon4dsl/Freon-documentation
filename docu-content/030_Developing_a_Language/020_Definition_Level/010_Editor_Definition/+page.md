@@ -9,7 +9,7 @@ The editor definition is the definition of the **concrete syntax** of the langua
 well as the generation of the parser and unparser. The concrete syntax given in the editor definition is also used
 to produce better readable error messages by the validator.
 
-### <a name="editor-three-levels"></a> Three-level definition
+### Three-level definition
 
 As explained in [Three Levels of Customization](/010_Intro/050_Three_Levels_of_Customization#levels) the generated editor can be defined at three levels.
 For each _concept_ in the AST the editor will

@@ -31,7 +31,7 @@ list of a [Models](/030_Developing_a_Language/010_Default_Level/010_Defining_the
 [Limited Concepts](/030_Developing_a_Language/010_Default_Level/010_Defining_the_Language_Structure#Limited_Concept),
 and/or [Interfaces](/030_Developing_a_Language/010_Default_Level/010_Defining_the_Language_Structure#Interface).
 
-### <a name="Model"></a> Model
+### Model
 
 A _model_ is the root of the abstract syntax tree, and as such the complete description specified by the user.
 It may hold any number of model units as children. These model units may be of different type. For instance, you
@@ -53,7 +53,7 @@ model InsuranceModel {
 }
 ```
 
-### <a name="Model_Unit"></a> Model unit
+### Model unit
 
 A _model unit_ is a part of the model that can be edited independently of the rest of the model. A model unit is
 always a direct child of a model. The name of a model unit can never be [private](/010_Intro/030_Models_and_Model_Units#public)
@@ -74,7 +74,7 @@ Model units have one special entry `file-extension`, as shown in the example abo
 indication of the file type that the generated parser will associate with this model unit, i.e. an
 instance of the above model unit will be exported/imported to/from a file with this extension.
 
-### <a name="Concept"></a> Concept
+### Concept
 
 A _concept_ is the basic element of your language definition. It defines which instances can be present in
 a model created by your users.
@@ -104,7 +104,7 @@ limited BooleanType implements NamedType {
 }
 ```
 
-### <a name="Expression_Concept"></a> Expression Concept
+### Expression Concept
 
 An _expression concept_ is a concept that is an expression. The editor deals with these differently in
 order to give your user a more natural editing experience.
@@ -112,6 +112,7 @@ order to give your user a more natural editing experience.
 Expression concepts may extend one other concept, and implement multiple interfaces.
 
 <!-- embedme DocuProject/src/defs/language-expressions.ast#L10-L18 -->
+
 ```txt
 abstract expression Literal base DocuExpression {
 
@@ -124,7 +125,7 @@ expression NumberLiteral base Literal {
     value: number;
 ```
 
-### <a name="Binary_Expression_Concept"></a> Binary Expression Concept
+### Binary Expression Concept
 
 A _binary expression concept_ is an expression concept that has two sub expressions, left and right operands,
 and an operator, which in the concrete syntax usually goes in the middle. For example, the expression `4 + 5`
@@ -138,6 +139,7 @@ find more information on how to set the operand.
 Binary expression concepts may extend one other concept, and implement multiple interfaces.
 
 <!-- embedme DocuProject/src/defs/language-expressions.ast#L23-L43 -->
+
 ```txt
 expression BooleanLiteral base Literal {
     value: boolean;
@@ -162,7 +164,7 @@ binary expression MultiplyExpression base BinaryExpression {
 }
 ```
 
-### <a name="Limited_Concept"></a> Limited Concept
+### Limited Concept
 
 A _limited concept_ is a concept that has a limited number of predefined instances. Actually, it is an extended
 version of an enumeration. All instances become part of the standard library of your language.
@@ -204,7 +206,7 @@ instances of limited concepts.
 </svelte:fragment>
 </Note>
 
-### <a name="Interface"></a> Interface
+### Interface
 
 An _interface_ is a concept that has no instances. It may extend multiple other interfaces.
 

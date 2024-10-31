@@ -7,23 +7,23 @@ of the language environment. It is usually a singleton object.
 /* File: core/src/environment/PiEnvironment.ts */
 
 export interface PiEnvironment {
-  /**
-   * Creates a new model, an implementation of the language defined in the .ast file
-   * @param name
-   */
-  newModel(modelName: string): PiModel;
+	/**
+	 * Creates a new model, an implementation of the language defined in the .ast file
+	 * @param name
+	 */
+	newModel(modelName: string): PiModel;
 
-  scoper: PiScoper;
-  typer: PiTyper;
-  validator: PiValidator;
-  editor: PiEditor;
-  stdlib: PiStdlib;
-  writer: PiWriter;
-  reader: PiReader;
+	scoper: PiScoper;
+	typer: PiTyper;
+	validator: PiValidator;
+	editor: PiEditor;
+	stdlib: PiStdlib;
+	writer: PiWriter;
+	reader: PiReader;
 
-  // projectionalEditorComponent: ProjectionalEditor;
-  languageName: string;
-  unitNames: string[];
-  fileExtensions: Map<string, string>;
+	// projectionalEditorComponent: ProjectionalEditor;
+	languageName: string;
+	unitNames: string[];
+	fileExtensions: Map<string, string>;
 }
 ```

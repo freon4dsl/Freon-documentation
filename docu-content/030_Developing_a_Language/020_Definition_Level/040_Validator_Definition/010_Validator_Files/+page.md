@@ -93,7 +93,7 @@ CalcFunction {
 }
 ```
 
-# <a name="default-validation-rules"></a>The Default Validation Rules
+# </a>The Default Validation Rules
 
 There are just a few default validation rules:
 

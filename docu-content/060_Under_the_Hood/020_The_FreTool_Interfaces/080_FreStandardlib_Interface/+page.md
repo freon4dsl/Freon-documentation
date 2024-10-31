@@ -9,15 +9,15 @@ If you want to write your own standard library you will need to implement this i
 /* File: core/src/stdlib/PiStdlib.ts  */
 
 export interface PiStdlib {
-  elements: PiNamedElement[];
+	elements: PiNamedElement[];
 
-  /**
-   * Returns the element named 'name', if it can be found in this library.
-   * When 'metatype' is provided, the element is only returned when it is
-   * an instance of this metatype.
-   * @param name
-   * @param metatype
-   */
-  find(name: string, metatype?: string): PiNamedElement;
+	/**
+	 * Returns the element named 'name', if it can be found in this library.
+	 * When 'metatype' is provided, the element is only returned when it is
+	 * an instance of this metatype.
+	 * @param name
+	 * @param metatype
+	 */
+	find(name: string, metatype?: string): PiNamedElement;
 }
 ```

@@ -6,12 +6,12 @@ An object that implements `PiAction` <!--- TODO -->
 /* File: core/src/editor/PiAction.ts */
 
 export interface PiActions {
-  expressionCreators: PiExpressionCreator[];
+	expressionCreators: PiExpressionCreator[];
 
-  binaryExpressionCreators: PiBinaryExpressionCreator[];
+	binaryExpressionCreators: PiBinaryExpressionCreator[];
 
-  customBehaviors: PiCustomBehavior[];
+	customBehaviors: PiCustomBehavior[];
 
-  keyboardActions: KeyboardShortcutBehavior[];
+	keyboardActions: KeyboardShortcutBehavior[];
 }
 ```

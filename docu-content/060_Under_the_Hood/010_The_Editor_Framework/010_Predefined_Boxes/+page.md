@@ -36,8 +36,8 @@ type in an addition to the expression, changing, for instance, `4 + 5` into `3 *
 // TODO document AliasBox
 
 ```ts
-new AliasBox(element, "role", "[" + property + "]", {
-  propertyName: property,
+new AliasBox(element, 'role', '[' + property + ']', {
+	propertyName: property
 })<1>;
 ```
 
@@ -46,7 +46,7 @@ new AliasBox(element, "role", "[" + property + "]", {
 An `IndentBox` shows white space to indent other boxes.
 
 ```ts
-new IndentBox(element, "role", 5, childBox);
+new IndentBox(element, 'role', 5, childBox);
 ```
 
 ### LabelBox
@@ -57,8 +57,8 @@ Being a function allows the label text to change dynamically,
 depending on the result value of the function.
 
 ```ts
-new LabelBox(element, "role", "fixed text")<1>;
-new LabelBox(element, "role", () => element.value)<2>;
+new LabelBox(element, 'role', 'fixed text')<1>;
+new LabelBox(element, 'role', () => element.value)<2>;
 ```
 
 ### SelectBox
@@ -67,15 +67,7 @@ A `SelectBox` shows a choice, e.g. for a reference property. When inactive, it s
 when active, it shows a dropdown list of possible elements that would fit this position.
 
 ```ts
-new SelectBox(
-  element,
-  role,
-  placeHolder,
-  getOptions,
-  getSelectedOption,
-  selectOption,
-  initializer
-);
+new SelectBox(element, role, placeHolder, getOptions, getSelectedOption, selectOption, initializer);
 ```
 
 // TODO add explanation of example code
@@ -95,10 +87,10 @@ the second function to set the value of the text.
 
 ```ts
 new TextBox(
-  element,
-  "role",
-  () => element.stringValue,
-  (newValue: string) => (element.stringValue = newValue)
+	element,
+	'role',
+	() => element.stringValue,
+	(newValue: string) => (element.stringValue = newValue)
 );
 ```
 

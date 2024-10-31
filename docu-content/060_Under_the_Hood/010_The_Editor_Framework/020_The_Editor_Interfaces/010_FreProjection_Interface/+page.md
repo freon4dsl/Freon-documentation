@@ -6,13 +6,13 @@ The projection from your model/AST is defined by implementing the _PiProjection_
 /* File: core/src/editor/PiProjection.ts  */
 
 export interface PiProjection {
-  /**
-   * returns the box for `element`.
-   */
-  getBox(element: PiElement): Box;
+	/**
+	 * returns the box for `element`.
+	 */
+	getBox(element: PiElement): Box;
 
-  rootProjection: PiProjection;
-  name: string;
+	rootProjection: PiProjection;
+	name: string;
 }
 ```
 

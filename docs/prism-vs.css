@@ -4,98 +4,97 @@
  */
 
 :root {
-  /* all colors are put in variables, to be able to switch from light to dark theme */
-  --theme-colors-code_color: #393a34; /* to be changed in dark mode */
-  --theme-colors-code_background: #c1def1; /* to be changed in dark mode */
-  --theme-colors-code_background_color: white; /* to be changed in dark mode */
-  --theme-colors-code_keyword: #0000ff;
-  --theme-colors-token_color_string: #a31515; /* to be changed in dark mode */
-  --theme-colors-block_quote_background: cornsilk;
+	/* all colors are put in variables, to be able to switch from light to dark theme */
+	--theme-colors-code_color: #393a34; /* to be changed in dark mode */
+	--theme-colors-code_background: #c1def1; /* to be changed in dark mode */
+	--theme-colors-code_background_color: white; /* to be changed in dark mode */
+	--theme-colors-code_keyword: #0000ff;
+	--theme-colors-token_color_string: #a31515; /* to be changed in dark mode */
+	--theme-colors-block_quote_background: cornsilk;
 
-  --theme-colors-code_border: #dddddd;
-  --theme-colors-inline_code_color: #f8f8f8;
-  --theme-colors-token_color: #008000;
-  --theme-colors-token_inserted: #36acaa;
+	--theme-colors-code_border: #dddddd;
+	--theme-colors-inline_code_color: #f8f8f8;
+	--theme-colors-token_color: #008000;
+	--theme-colors-token_inserted: #36acaa;
 }
 
-code[class*="language-"],
-pre[class*="language-"] {
-  color: var(--theme-colors-code_color);
-  font-family: "Consolas", "Bitstream Vera Sans Mono", "Courier New", Courier,
-    monospace;
-  direction: ltr;
-  text-align: left;
-  white-space: pre;
-  word-spacing: normal;
-  word-break: normal;
-  font-size: 0.9em;
-  line-height: 1.2em;
+code[class*='language-'],
+pre[class*='language-'] {
+	color: var(--theme-colors-code_color);
+	font-family: 'Consolas', 'Bitstream Vera Sans Mono', 'Courier New', Courier, monospace;
+	direction: ltr;
+	text-align: left;
+	white-space: pre;
+	word-spacing: normal;
+	word-break: normal;
+	font-size: 0.9em;
+	line-height: 1.2em;
 
-  -moz-tab-size: 4;
-  -o-tab-size: 4;
-  tab-size: 4;
+	-moz-tab-size: 4;
+	-o-tab-size: 4;
+	tab-size: 4;
 
-  -webkit-hyphens: none;
-  -moz-hyphens: none;
-  -ms-hyphens: none;
-  hyphens: none;
+	-webkit-hyphens: none;
+	-moz-hyphens: none;
+	-ms-hyphens: none;
+	hyphens: none;
 }
 
-pre > code[class*="language-"] {
-  font-size: 1em;
+pre > code[class*='language-'] {
+	font-size: 1em;
 }
 
-pre[class*="language-"]::-moz-selection,
-pre[class*="language-"] ::-moz-selection,
-code[class*="language-"]::-moz-selection,
-code[class*="language-"] ::-moz-selection {
-  background: var(--theme-colors-code_background);
+pre[class*='language-']::-moz-selection,
+pre[class*='language-'] ::-moz-selection,
+code[class*='language-']::-moz-selection,
+code[class*='language-'] ::-moz-selection {
+	background: var(--theme-colors-code_background);
 }
 
-pre[class*="language-"]::selection,
-pre[class*="language-"] ::selection,
-code[class*="language-"]::selection,
-code[class*="language-"] ::selection {
-  background: var(--theme-colors-code_background);
+pre[class*='language-']::selection,
+pre[class*='language-'] ::selection,
+code[class*='language-']::selection,
+code[class*='language-'] ::selection {
+	background: var(--theme-colors-code_background);
 }
 
 /* Code blocks */
-pre[class*="language-"] {
-  padding: 1em;
-  margin: 0.5em 0;
-  overflow: auto;
-  border: 1px solid var(--theme-colors-code_border);
-  background-color: var(--theme-colors-code_background_color);
+pre[class*='language-'] {
+	padding: 1em;
+	margin: 0.5em 0;
+	overflow: auto;
+	border: 1px solid var(--theme-colors-code_border);
+	background-color: var(--theme-colors-code_background_color);
 }
 
 /* Inline code */
-:not(pre) > code[class*="language-"] {
-  padding: 0.2em;
-  padding-top: 1px;
-  padding-bottom: 1px;
-  background: var(--theme-colors-inline_code_color);
-  border: 1px solid var(--theme-colors-code_border);
+:not(pre) > code[class*='language-'] {
+	padding: 0.2em;
+	padding-top: 1px;
+	padding-bottom: 1px;
+	background: var(--theme-colors-inline_code_color);
+	border: 1px solid var(--theme-colors-code_border);
 }
 
 .token.comment,
 .token.prolog,
 .token.doctype,
 .token.cdata {
-  color: var(--theme-colors-token_color);
-  font-style: italic;
+	color: var(--theme-colors-token_color);
+	font-style: italic;
 }
 
 .token.namespace {
-  opacity: 0.7;
+	opacity: 0.7;
 }
 
 .token.string {
-  color: var(--theme-colors-token_color_string);
+	color: var(--theme-colors-token_color_string);
 }
 
 .token.punctuation,
 .token.operator {
-  color: var(--theme-colors-code_color); /* no highlight */
+	color: var(--theme-colors-code_color); /* no highlight */
 }
 
 .token.url,
@@ -105,7 +104,7 @@ pre[class*="language-"] {
 .token.variable,
 .token.constant,
 .token.inserted {
-  color: var(--theme-colors-token_inserted);
+	color: var(--theme-colors-token_inserted);
 }
 
 .token.atrule,
@@ -114,83 +113,75 @@ pre[class*="language-"] {
 .language-autohotkey .token.selector,
 .language-json .token.boolean,
 .language-json .token.number,
-code[class*="language-css"] {
-  color: var(--theme-colors-code_keyword);
+code[class*='language-css'] {
+	color: var(--theme-colors-code_keyword);
 }
 
 .token.function {
-  color: var(--theme-colors-code_color);
+	color: var(--theme-colors-code_color);
 }
 
 .token.deleted,
 .language-autohotkey .token.tag {
-  color: #9a050f;
+	color: #9a050f;
 }
 
 .token.selector,
 .language-autohotkey .token.keyword {
-  color: #00009f;
+	color: #00009f;
 }
 
 .token.important {
-  color: #e90;
+	color: #e90;
 }
 
 .token.important,
 .token.bold {
-  font-weight: bold;
+	font-weight: bold;
 }
 
 .token.italic {
-  font-style: italic;
+	font-style: italic;
 }
 
 .token.class-name,
 .language-json .token.property {
-  color: #2b91af;
+	color: #2b91af;
 }
 
 .token.tag,
 .token.selector {
-  color: #800000;
+	color: #800000;
 }
 
 .token.attr-name,
 .token.property,
 .token.regex,
 .token.entity {
-  color: #ff0000;
+	color: #ff0000;
 }
 
 .token.directive.tag .tag {
-  background: #ffff00;
-  color: var(--theme-colors-code_color);
+	background: #ffff00;
+	color: var(--theme-colors-code_color);
 }
 
 /* overrides color-values for the Line Numbers plugin
  * http://prismjs.com/plugins/line-numbers/
  */
 .line-numbers.line-numbers .line-numbers-rows {
-  border-right-color: #a5a5a5;
+	border-right-color: #a5a5a5;
 }
 
 .line-numbers .line-numbers-rows > span:before {
-  color: #2b91af;
+	color: #2b91af;
 }
 
 /* overrides color-values for the Line Highlight plugin
 * http://prismjs.com/plugins/line-highlight/
 */
 .line-highlight.line-highlight {
-  background: rgba(193, 222, 241, 0.2);
-  background: -webkit-linear-gradient(
-    left,
-    rgba(193, 222, 241, 0.2) 70%,
-    rgba(221, 222, 241, 0)
-  );
-  background: linear-gradient(
-    to right,
-    rgba(193, 222, 241, 0.2) 70%,
-    rgba(221, 222, 241, 0)
-  );
+	background: rgba(193, 222, 241, 0.2);
+	background: -webkit-linear-gradient(left, rgba(193, 222, 241, 0.2) 70%, rgba(221, 222, 241, 0));
+	background: linear-gradient(to right, rgba(193, 222, 241, 0.2) 70%, rgba(221, 222, 241, 0));
 }

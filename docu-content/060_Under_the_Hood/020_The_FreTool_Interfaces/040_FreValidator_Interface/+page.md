@@ -12,15 +12,15 @@ If you want to write your own validator you will need to implement this interfac
 /* File: core/src/validator/PiValidator.ts */
 
 export interface PiValidator {
-  /**
-   * Returns a list of errors on 'modelelement' according to the validation rules
-   * stated in the validation definition. If 'includeChildren' is true, the child
-   * nodes of 'modelelement' in the AST are also checked.
-   *
-   * @param modelelement
-   * @param includeChildren
-   */
-  validate(modelelement: PiElement, includeChildren?: boolean): PiError[];
+	/**
+	 * Returns a list of errors on 'modelelement' according to the validation rules
+	 * stated in the validation definition. If 'includeChildren' is true, the child
+	 * nodes of 'modelelement' in the AST are also checked.
+	 *
+	 * @param modelelement
+	 * @param includeChildren
+	 */
+	validate(modelelement: PiElement, includeChildren?: boolean): PiError[];
 }
 ```
 
@@ -34,9 +34,9 @@ export interface PiValidator {
  * element or a list of model elements.
  */
 export class PiError {
-  message: string; // human-readable error message
-  reportedOn: PiElement | PiElement[]; // the model element that does not comply
-  locationdescription: string; // human-readable indication of 'reportedOn'
-  severity: PiErrorSeverity; // indication of how serious the error is, default is 'ToDo'
+	message: string; // human-readable error message
+	reportedOn: PiElement | PiElement[]; // the model element that does not comply
+	locationdescription: string; // human-readable indication of 'reportedOn'
+	severity: PiErrorSeverity; // indication of how serious the error is, default is 'ToDo'
 }
 ```

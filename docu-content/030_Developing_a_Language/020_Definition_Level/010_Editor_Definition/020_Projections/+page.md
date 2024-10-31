@@ -63,7 +63,7 @@ Because you may only use direct properties, the prefix <code>self</code> may be 
 </svelte:fragment>
 </Note>
 
-### <a name="named_projection"></a> Including a Property Projection from Another Editor
+### Including a Property Projection from Another Editor
 
 Normally, the property that you include will be displayed according to the projection of its type. This projection
 will be found by Freon using the [ordering](/030_Developing_a_Language/020_Definition_Level/010_Editor_Definition/010_Edit_Files#ordering)
@@ -134,8 +134,6 @@ A terminator or separator should not contain a newline character. Horizontal or 
 purely determined by the keywords <code>horizontal</code> and <code>vertical</code>.
 </svelte:fragment>
 </Note>
-
-<a name="tables"></a>
 
 ## Tables
 
@@ -225,8 +223,6 @@ InsurancePart{
 ```
 
 Note that optional projections for non-optional properties are not allowed.
-
-<a name="booleans"></a>
 
 ## Boolean Keyword Projections
 

@@ -27,7 +27,7 @@ figureNumber={1}
 4. The action on the projection is mapped to an action on the model/AST.
 5. (or 1 again) The changed model/AST is (re)mapped to a visual representation.
 
-## <a name="expressions"></a> Support For Expressions
+## Support For Expressions
 
 Editing expressions in a projectional editor is a well-known challenge. The representation of an expression
 in the AST is highly structured. Yet, because its appearance to the user looks textual, users expect that
@@ -51,7 +51,7 @@ For this reason, Freon has in-build support for expressions. There is extra func
 be able to add an expression before or after an existing expression. Secondly, the AST of any binary
 expression is automatically balanced.
 
-## <a name="tree-balancing"></a>Adding to an Existing Expression
+## Adding to an Existing Expression
 
 <Figure 
 imageName={'expressions-problem.png'} 

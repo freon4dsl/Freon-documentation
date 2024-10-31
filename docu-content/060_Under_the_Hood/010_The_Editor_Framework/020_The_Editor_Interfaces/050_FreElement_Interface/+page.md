@@ -8,19 +8,19 @@ This interface is kept as small as possible, to allow Freon to be used for any A
 /* File: core/src/language/PiElement.ts */
 
 export interface PiElement {
-  piId(): string;
+	piId(): string;
 
-  piLanguageConcept(): string;
+	piLanguageConcept(): string;
 
-  piContainer(): PiContainerDescriptor;
+	piContainer(): PiContainerDescriptor;
 
-  piIsModel(): boolean;
+	piIsModel(): boolean;
 
-  piIsUnit(): boolean;
+	piIsUnit(): boolean;
 
-  piIsExpression(): boolean;
+	piIsExpression(): boolean;
 
-  piIsBinaryExpression(): boolean;
+	piIsBinaryExpression(): boolean;
 }
 ```
 

@@ -8,6 +8,6 @@ implementations. The difference is that `PiNamedElements` have a name property.
 /* File: core/src/language/PiNamedElement.ts  */
 
 export interface PiNamedElement extends PiElement {
-  name: string;
+	name: string;
 }
 ```

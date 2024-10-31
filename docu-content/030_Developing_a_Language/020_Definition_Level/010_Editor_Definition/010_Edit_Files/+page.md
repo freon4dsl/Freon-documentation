@@ -74,7 +74,7 @@ InsurancePart*
 '}' ;
 ```
 
-### <a name="ordering"></a> Precedence of Editors
+### Precedence of Editors
 
 The named editors are ordered; the order can be indicated by adding a **precedence** to the editor. The
 projections are found based on this order. The `default` editor is always the last (i.e. its precedence is 0).

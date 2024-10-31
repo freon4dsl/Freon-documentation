@@ -28,7 +28,7 @@ to let Freon know that the typer from the Freon Definition Level should be used 
 The following code changes the `conformsList` method for lists of `Variables`. It checks the lists in
 reverse order: A-B-C conforms to C-B-A.
 
-[//]: # "TODO code does not come through"
+[//]: # 'TODO code does not come through'
 
 ```ts
 // TutorialLanguage/src/typer/CustomEntityModelTyperPart.ts#L32-L48

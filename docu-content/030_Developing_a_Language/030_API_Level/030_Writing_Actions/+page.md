@@ -3,7 +3,7 @@
     import Figure from "$lib/figures/Figure.svelte";
 </script>
 
-# <a name="writing-actions"></a> Writing Actions in TypeScript
+# Writing Actions in TypeScript
 
 When you have created your own custom projection, this projection is exactly that:
 a projection. Other than the built-in default behavior (held in the file
@@ -21,19 +21,19 @@ your custom actions take precedence.
 
 ```ts
 export const MANUAL_EXPRESSION_CREATORS: PiExpressionCreator[] = [
-  // Add your own custom expression creators here
+	// Add your own custom expression creators here
 ];
 
 export const MANUAL_BINARY_EXPRESSION_CREATORS: PiBinaryExpressionCreator[] = [
-  // Add your own custom binary expression creators here
+	// Add your own custom binary expression creators here
 ];
 
 export const MANUAL_CUSTOM_BEHAVIORS: PiCustomBehavior[] = [
-  // Add your own custom behavior here
+	// Add your own custom behavior here
 ];
 
 export const MANUAL_KEYBOARD: KeyboardShortcutBehavior[] = [
-  // Add your own custom keyboard shortcuts here
+	// Add your own custom keyboard shortcuts here
 ];
 ```
 
@@ -49,8 +49,6 @@ Note the role of the box: _end-of-property-list_.
 
 ```ts
 // TutorialLanguage/src/editor/CustomEntityModelProjection.ts#L141-L146
-
-
 ```
 
 Then we create the actual action and attach it to the role of the `AliasBox`. Note that the projection
@@ -59,8 +57,6 @@ are defined in two different files, respectively `CustomEntityModelProjections.t
 
 ```ts
 // TutorialLanguage/src/editor/CustomEntityModelActions.ts#L40-L51
-
-
 ```
 
 The numbers in the comments indicate what happens here:

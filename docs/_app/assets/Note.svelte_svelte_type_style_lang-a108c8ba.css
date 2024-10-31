@@ -1,20 +1,20 @@
 .note.svelte-1sq0zwq {
-  background: var(--theme-colors-note_background);
-  margin: 20px;
-  border-radius: 3px;
-  box-shadow: 2px 2px 6px #ffffff40;
-  padding: 0 0.5em 0.7em;
-  overflow-x: auto;
-  color: var(--theme-colors-color);
+	background: var(--theme-colors-note_background);
+	margin: 20px;
+	border-radius: 3px;
+	box-shadow: 2px 2px 6px #ffffff40;
+	padding: 0 0.5em 0.7em;
+	overflow-x: auto;
+	color: var(--theme-colors-color);
 }
 .icon.svelte-1sq0zwq {
-  position: relative;
-  top: 8px;
+	position: relative;
+	top: 8px;
 }
 .head.svelte-1sq0zwq {
-  font-weight: 700;
-  padding-left: 0.7em;
+	font-weight: 700;
+	padding-left: 0.7em;
 }
 .content.svelte-1sq0zwq {
-  padding: 0.5em;
+	padding: 0.5em;
 }

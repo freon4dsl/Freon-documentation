@@ -3,7 +3,7 @@
     import Figure from "$lib/figures/Figure.svelte";
 </script>
 
-# <a name="writing-projections"></a> Writing Projections in TypeScript
+# Writing Projections in TypeScript
 
 The editor is always an implementation of the interface
 [`FreProjection`](/060_Under_the_Hood/010_The_Editor_Framework/020_The_Editor_Interfaces/010_FreProjection_Interface). The
@@ -69,8 +69,6 @@ this `HorizontalListBox`. This method should be called in the overall method `ge
 
 ```ts
 // TutorialLanguage/src/editor/CustomEntityModelProjection.ts#L45-L51
-
-
 ```
 
 When we start the editor based on this projection, we see the following:
@@ -83,7 +81,7 @@ When we start the editor based on this projection, we see the following:
 
 ### Step 2 - Adding Style and a PlaceHolder
 
-[//]: # "// TODO Jos, please create new text for styling"
+[//]: # '// TODO Jos, please create new text for styling'
 
 In version 0.5.0 this has been changed such that you can use CSS classes. More info follows...
 
@@ -105,8 +103,6 @@ in the previous step.
 
 ```ts
 // TutorialLanguage/src/editor/CustomEntityModelProjection.ts#L67-L86
-
-
 ```
 
 The projection of a single `Entity` is done using `this.rootProjection.getBox(ent)`. This will call a
@@ -135,8 +131,6 @@ entity in a `VerticalListBox`.
 
 ```ts
 // TutorialLanguage/src/editor/CustomEntityModelProjection.ts#L108-L127
-
-
 ```
 
 Next in the hierarchy of boxes is the projection of the elements of the `attributes` list. Once again,
@@ -166,8 +160,6 @@ modelunit EntityModelUnit {
 
 ```ts
 // TutorialLanguage/src/editor/CustomEntityModelProjection.ts#L151-L188
-
-
 ```
 
 ### Step 4 - Adding Behavior

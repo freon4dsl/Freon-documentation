@@ -31,11 +31,7 @@ figureNumber={1}
 In TypeScript, using the predefined [Boxes](/060_Under_the_Hood/010_The_Editor_Framework/010_Predefined_Boxes), this projection might look something like:
 
 ```ts
-new HorizontalListBox([
-  new LabelBox('"'),
-  new TextBox(stringLiteral.value),
-  new LabelBox('"'),
-]);
+new HorizontalListBox([new LabelBox('"'), new TextBox(stringLiteral.value), new LabelBox('"')]);
 ```
 
 ## Coupling Behavior to Boxes
@@ -76,7 +72,7 @@ new HorizontalListBox(literal, "full-string", [      // <1>
    the role of the box, the getter function for the content, and the setter function, used when the content changes.
 4. The second label box for the end quote. Except for its role, this is identical to the first label box.
 
-## <a name="defining-actions"></a> Behavior is Defined by Actions
+## Behavior is Defined by Actions
 
 The behavior coupled to a _Box_ is defined by an `Action`. To identify which action should be executed,
 each behavior is specified by:
@@ -97,68 +93,48 @@ There are four different types of action, each of which extend the `FreBehavior`
 
 ```ts
 export interface FreBehavior {
-  /**
-   * The trigger to activate this behavior
-   */
-  trigger: FreTriggerType;
-  /**
-   * The box roles in which this trigger is active
-   */
-  activeInBoxRoles: string[];
-  /**
-   * Optional callback function that returns whether the trigger is applicable for the specific box.
-   */
-  isApplicable?: (box: Box) => boolean;
-  // TODO add comments here and in the source code
-  boxRoleToSelect?: string;
-  caretPosition?: FreCaret;
-  referenceShortcut?: ReferenceShortcut;
+	/**
+	 * The trigger to activate this behavior
+	 */
+	trigger: FreTriggerType;
+	/**
+	 * The box roles in which this trigger is active
+	 */
+	activeInBoxRoles: string[];
+	/**
+	 * Optional callback function that returns whether the trigger is applicable for the specific box.
+	 */
+	isApplicable?: (box: Box) => boolean;
+	// TODO add comments here and in the source code
+	boxRoleToSelect?: string;
+	caretPosition?: FreCaret;
+	referenceShortcut?: ReferenceShortcut;
 }
 /**
  * Behavior with custom action, intended to be used to create non expression elements.
  */
 export interface FreCustomBehavior extends FreBehavior {
-  action: (
-    box: Box,
-    trigger: string,
-    editor: FreEditor,
-    propertyName?: string
-  ) => FreElement | null;
-  undo?: (box: Box, ed: FreEditor) => void;
+	action: (box: Box, trigger: string, editor: FreEditor, propertyName?: string) => FreElement | null;
+	undo?: (box: Box, ed: FreEditor) => void;
 }
 /**
  * Special behavior for creating an expression.
  */
 export interface FreExpressionCreator extends FreBehavior {
-  expressionBuilder: (
-    box: Box,
-    trigger: string,
-    editor: FreEditor,
-    propertyName?: string
-  ) => FreExpression;
+	expressionBuilder: (box: Box, trigger: string, editor: FreEditor, propertyName?: string) => FreExpression;
 }
 /**
  * Special behavior for creating a binary expression.
  */
 export interface FreBinaryExpressionCreator extends FreBehavior {
-  expressionBuilder: (
-    box: Box,
-    trigger: string,
-    editor: FreEditor,
-    propertyName?: string
-  ) => FreBinaryExpression;
+	expressionBuilder: (box: Box, trigger: string, editor: FreEditor, propertyName?: string) => FreBinaryExpression;
 }
 /**
  * Special behavior initialized by keyboard strokes.
  */
 export interface KeyboardShortcutBehavior extends FreBehavior {
-  action: (
-    box: Box,
-    trigger: FreKey,
-    editor: FreEditor,
-    propertyName?: string
-  ) => Promise<FreElement>;
-  trigger: FreKey;
+	action: (box: Box, trigger: FreKey, editor: FreEditor, propertyName?: string) => Promise<FreElement>;
+	trigger: FreKey;
 }
 ```
 

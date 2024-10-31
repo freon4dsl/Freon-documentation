@@ -47,7 +47,7 @@ published a number of papers on the topic.
   <a href="https://www.mendix.com/"target="_blank">Mendix</a> meta-model to allow for working with large models
   in their web based modeling tools. This work was presented at Splash 2016 in _Making Mendix Meta Model Driven_.
 
-## <a name="public"></a> Model Unit Interfaces
+## Model Unit Interfaces
 
 Another essential idea that we borrow from programming is **information hiding**.
 Every model unit in Freon defines an interface.
