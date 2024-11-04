@@ -37,7 +37,6 @@
 				{#if expanded}
 					<span class="xxx" on:click={toggle}><ArrowDropDown /> </span>
 					<a href={path} on:click={becomingActive}>{name}</a>
-
 				{:else}
 					<span class="xxx" on:click={toggle}><ArrowRight /> </span>
 					<a href={path} on:click={becomingActive}>{name}</a>

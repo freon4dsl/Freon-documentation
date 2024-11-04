@@ -30,3 +30,4 @@ The second step of generating the documentation website is to use
 9.  Based on the path of all markdown files a site-nav is generated (NavTreeFiller.ts), which will be shown to the right of every page.
 
 10. Format the generated Svelte code, using package.json: npm run format.
+http://material-foundation.github.io?primary=%23D6BCAD&bodyFont=Noto+Sans+Old+Italic&displayFont=PT+Serif&colorMatch=false

@@ -15,3 +15,4 @@ export * from './tree/Tree.svelte';
 export * from './tree/TreeView.svelte';
 export * from './SectionComponent.svelte';
 export * from './SectionType.js';
+export * from './Store.js';
