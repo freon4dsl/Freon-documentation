@@ -8,8 +8,8 @@
     .landing-intro {
         white-space: wrap;
     }
-    .landing-started {
-        margin-left: 2rem;
+    .landing-intro {
+        margin-right: 2rem;
     }
     .landing-spacer {
         min-width: 0.3rem;

@@ -8,15 +8,17 @@
     .landing-intro-child {
         padding: 0.2rem 0.2rem;
     }
+    .landing-intro {
+        margin-right: 0.5rem;
+    }
     .landing-started {
         font-size: 2em;
-        margin-left: 0rem;
     }
     .landing-arrow {
         color: var(--theme-colors-accent);
     }
     .landing-spacer {
-        min-width: 0rem;
+        min-width: 0;
     }
     .landing-text {
         display: flex;
