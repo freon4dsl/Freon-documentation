@@ -13,7 +13,7 @@ export const themePresets = [
 			divider: PI_DARKBLUE /* Color of dialog title background */,
 			list_divider: PI_DARKBLUE /* Color of lines between columns in the error list */,
 			slider: PI_DARKBLUE /* Color of lines between views */,
-			accent: '#f50057' /* Color to get attention to an element */,
+			accent: '#c94117' /* Color to get attention to an element */,
 			primary_button_text: 'black' /* Color of primary buttons in dialogs */,
 			secondary_button_text: 'grey' /* Color of non-primary buttons in dialogs */,
 			// TODO find some appealing default values for the user message colors

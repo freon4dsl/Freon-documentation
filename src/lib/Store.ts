@@ -1,7 +1,7 @@
 import { writable } from 'svelte/store';
 
 // info about Freon
-export const versionNumber = '0.7.0-beta4';
+export const versionNumber = '1.0';
 
 export const miniWindow = writable<boolean>(false);
 

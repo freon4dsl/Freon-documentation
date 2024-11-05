@@ -1,17 +1,18 @@
 <footer>
 	<section class='openmodeling-info'>
 		<ul class='info-text'>
-			<li>Freon is an opensource project and can be used without any charge, although we do ask to include a reference to our work.</li>
+			<li>Freon is an opensource project, and can be used without any charge, although we do ask you to include a reference to our work,
+				either by referencing this site, or by referencing the github sources.</li>
 			<li>Freon was created by Jos Warmer and Anneke Kleppe.</li>
 			<ul class='sub-info-text'>
 			<li>Jos Warmer and Anneke Kleppe also created the 'Object Constraint Language', a part of the Unified Modeling Language.</li>
 			<li>Together, as well as separate, they are the authors of a number of books on software development. </li>
 			</ul>
-			<li>More about our company and our services can be found at <a href='https://www.openmodeling.nl'>www.openmodeling.nl</a> </li>
+			<li>More about our company, and the services we offer can be found at <a href='https://www.openmodeling.nl'>www.openmodeling.nl</a> </li>
 		</ul>
 	</section>
 	<span class="copyright">
-		Created by OpenModeling - &copy; 2024 -
+		Created by OpenModeling - &copy; 2024 all rights reserved -
 		<a href="http://www.freon4dsl.dev/" target="_blank" class="link"> www.freon4dsl.dev </a>
 	</span>
 </footer>
@@ -20,6 +21,7 @@
     .openmodeling-info {
         color: var(--theme-colors-color);
 				text-align: center;
+        font-size: 0.9rem;
     }
 		.info-text {
 				text-align: left;
@@ -46,7 +48,7 @@
 	}
 	.copyright {
 		color: var(--theme-colors-color);
-		font-size: 11px;
+		font-size: 0.7rem;
 		/*position: relative;*/
 		/*bottom: 6px;*/
 	}
