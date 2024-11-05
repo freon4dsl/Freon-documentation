@@ -33,7 +33,6 @@
 		<div class="content-box">
 			<slot />
 		</div>
-		<LandingPageFooter />
 	</main>
 </ThemeContext>
 

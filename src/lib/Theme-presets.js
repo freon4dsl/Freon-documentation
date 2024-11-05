@@ -1,19 +1,23 @@
-const PI_DARKBLUE = '#004d40'; // teal
-const PI_LIGHTBLUE = '#e0f2f1'; // a very lightgreen
+const FRE_LIGHT = '#FEF7DC'; // a very light yellow
+const FRE_COLOR2 = '#FDE281';
+const FRE_COLOR3 = '#FCCB1A';
+const FRE_COLOR4 = '#B08A03';
+const FRE_DARK = '#342B09'; // darkbrown
+const FRE_ACCENT = '#c94117';
 
 export const themePresets = [
 	{
 		name: 'light',
 		colors: {
-			color: PI_DARKBLUE /* Primary text color */,
-			inverse_color: PI_LIGHTBLUE /* Text color on non_normal background */,
-			bg_app_bar: PI_DARKBLUE /* Color of header and footer background */,
+			color: FRE_DARK /* Primary text color */,
+			inverse_color: FRE_LIGHT /* Text color on non_normal background */,
+			bg_app_bar: FRE_DARK /* Color of header and footer background */,
 			text_app_bar: 'white' /* Color of header and footer text */,
-			bg_color: PI_LIGHTBLUE /* Color of background of side panes */,
-			divider: PI_DARKBLUE /* Color of dialog title background */,
-			list_divider: PI_DARKBLUE /* Color of lines between columns in the error list */,
-			slider: PI_DARKBLUE /* Color of lines between views */,
-			accent: '#c94117' /* Color to get attention to an element */,
+			bg_color: FRE_LIGHT /* Color of background of side panes */,
+			divider: FRE_DARK /* Color of dialog title background */,
+			list_divider: FRE_DARK /* Color of lines between columns in the error list */,
+			slider: FRE_DARK /* Color of lines between views */,
+			accent: FRE_ACCENT /* Color to get attention to an element */,
 			primary_button_text: 'black' /* Color of primary buttons in dialogs */,
 			secondary_button_text: 'grey' /* Color of non-primary buttons in dialogs */,
 			// TODO find some appealing default values for the user message colors
@@ -34,19 +38,19 @@ export const themePresets = [
 			// TextBox
 			bg_empty_before_text_box: '#f4f4f4' /* Color of background of empty textbox */,
 			bg_text_box: 'white' /* Color of background of non-empty textbox */,
-			color_text_box: PI_DARKBLUE /* Color of text in textbox */,
-			color_empty_before_text_box: PI_DARKBLUE /* Color of text in empty textbox */,
+			color_text_box: FRE_DARK /* Color of text in textbox */,
+			color_empty_before_text_box: FRE_DARK /* Color of text in empty textbox */,
 			// AliasBox
 			bg_empty_before_alias_box: '#f4f4f4' /* Color of background of empty alias */,
 			bg_alias_box: 'white' /* Color of background of non-empty aliasbox */,
-			color_alias_box: PI_DARKBLUE /* Color of text of aliasbox */,
+			color_alias_box: FRE_DARK /* Color of text of aliasbox */,
 			/* Selection */
 			bg_selected: 'rgba(211, 227, 253, 255)' /* Color of selected element */,
-			border_selected: PI_DARKBLUE /* Color of border of selected element */,
+			border_selected: FRE_DARK /* Color of border of selected element */,
 			/* Dropdown Component */
 			bg_dropdown_component: '#f4f4f4',
-			border_dropdown_component: PI_DARKBLUE,
-			color_dropdownitem_component: PI_DARKBLUE,
+			border_dropdown_component: FRE_DARK,
+			color_dropdownitem_component: FRE_DARK,
 			/* Buttons */
 			button_color: 'white',
 			button_bg_color: 'rgba(0,0,139, 1)' /* darkblue with opacity 1 */,
@@ -80,7 +84,7 @@ export const themePresets = [
 			token_comment: '#008000',
 			code_border: '#dddddd',
 			/* Links */
-			link: '#a237b8',
+			link: '#DE6B48',
 			link_visited: '#7381de',
 			/* Tables */
 			note_background: '#C199F93C',
@@ -99,13 +103,13 @@ export const themePresets = [
 	{
 		name: 'dark',
 		colors: {
-			color: PI_LIGHTBLUE /* Primary text color */,
-			inverse_color: PI_DARKBLUE /* Text color on non_normal background */,
-			bg_app_bar: PI_LIGHTBLUE /* Color of header and footer background */,
-			bg_color: PI_DARKBLUE /* Color of background of side panes */,
-			divider: PI_LIGHTBLUE /* Color of dialog title background */,
-			list_divider: PI_LIGHTBLUE /* Color of lines between columns in the error list */,
-			slider: PI_LIGHTBLUE /* Color of lines between views */,
+			color: FRE_LIGHT /* Primary text color */,
+			inverse_color: FRE_DARK /* Text color on non_normal background */,
+			bg_app_bar: FRE_LIGHT /* Color of header and footer background */,
+			bg_color: FRE_DARK /* Color of background of side panes */,
+			divider: FRE_LIGHT /* Color of dialog title background */,
+			list_divider: FRE_LIGHT /* Color of lines between columns in the error list */,
+			slider: FRE_LIGHT /* Color of lines between views */,
 			accent: '#f50057' /* Color to get attention to an element */,
 			primary_button_text: 'yellow' /* Color of primary buttons in dialogs */,
 			secondary_button_text: 'white' /* Color of non-primary buttons in dialogs */,
@@ -126,20 +130,20 @@ export const themePresets = [
 			text_editor: 'white' /* The color of the text, unless set otherwise by the projection */,
 			// TextBox
 			bg_empty_before_text_box: 'rgba(1, 1, 150, 255)',
-			bg_text_box: PI_DARKBLUE,
+			bg_text_box: FRE_DARK,
 			color_empty_before_text_box: 'white',
 			color_text_box: 'white',
 			// AliasBox
 			bg_empty_before_alias_box: '#f4f4f4',
 			bg_alias_box: 'white',
-			color_alias_box: PI_DARKBLUE,
+			color_alias_box: FRE_DARK,
 			// Selection
 			bg_selected: 'rgba(21, 21, 250, 255)',
-			border_selected: PI_LIGHTBLUE,
+			border_selected: FRE_LIGHT,
 			// Dropdown Component
-			bg_dropdown_component: PI_DARKBLUE,
-			border_dropdown_component: PI_LIGHTBLUE,
-			color_dropdownitem_component: PI_LIGHTBLUE,
+			bg_dropdown_component: FRE_DARK,
+			border_dropdown_component: FRE_LIGHT,
+			color_dropdownitem_component: FRE_LIGHT,
 			/* Buttons */
 			button_color: 'black',
 			button_bg_color: 'rgba(211, 227, 253, 1)' /* lightblue with opacity 1 */,

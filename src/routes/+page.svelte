@@ -1,18 +1,23 @@
+<script>
+import LandingPageFooter from './LandingPageFooter.svelte';
+</script>
+
+<div class='landing'>
 <h1>Build Your Own Language Editor for the Web – Empower Your Backend with Ease!</h1>
 
-<section class="top">
-	<div class="name-intro">
-		<span class="name-intro-child"><span class='image-holder'><img src="freonlogo.png" alt="Freon Logo" style="width:50px; margin-top: 10px;"></span></span>
-		<span class="name-intro-child"><h1>Freon</h1> </span>
-		<span class="name-intro-child">Means 'friend', and comes from the Frisian language. Pronunciation:</span>
-		<audio controls class="name-intro-child audio-control">
+<section class="landing-top">
+	<div class="landing-name-intro">
+		<span class="landing-name-intro-child"><span class='landing-image-holder'><img src="freonlogo.png" alt="Freon Logo" style="width:50px; margin-top: 10px;"></span></span>
+		<span class="landing-name-intro-child"><h1>Freon</h1> </span>
+		<span class="landing-name-intro-child">Means 'friend', and comes from the Frisian language. Pronunciation:</span>
+		<audio controls class="landing-name-intro-child audio-control">
 			<source src="../freon - pronounciation.mp3" type="audio/mpeg" />Your browser does not support the audio element.
 		</audio>
 	</div>
-	<div class="hero-started">
+	<div class="landing-started">
 		<a href="/GettingStarted"
 			>Get Started
-			<span class="arrow">
+			<span class="landing-arrow">
 				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" height="28px"
 					><!--!Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path
 						fill="currentColor"
@@ -24,10 +29,9 @@
 	</div>
 </section>
 
-<section class="hero">
-	<div class="hero-left">
-		<div class="xxx">
-			<h3>Introducing <span class="freon-name">Freon</span>, the ultimate Language Workbench for the web!</h3>
+<section class="landing-hero">
+	<div class="landing-hero-left">
+			<h3>Introducing <span class="landing-freon-name">Freon</span>, the ultimate Language Workbench for the web!</h3>
 			<p>
 				Freon empowers you to effortlessly create custom web-enabled mini-languages, or
 				<a href="https://en.wikipedia.org/wiki/Domain-specific*language" target="_blank"><b>Domain Specific Languages (DSLs)</b></a>,
@@ -62,20 +66,19 @@
 				Unlock the power of custom mini-languages with Freon and see how projectional editing can redefine the way you create and manage
 				DSLs!
 			</p>
-		</div>
 	</div>
-	<div class="hero-right">
-		<img src="./images/Landingpage-image2.webp" alt="An (abstract syntax) Tree" style="width:100%;" />
+	<div class="landing-hero-right">
+		<img src="./images/Landingpage-image2.webp" alt="An (abstract syntax) Tree" />
 	</div>
 </section>
 
 <section>
 	<h2>Testimonial</h2>
-	<div class="card">
-		<div class="testimonial">
-			<div class='testimonial-top'>
-				<span class="testimonial-child"><h4><b>By Mike Vogel, Triradius</b></h4></span>
-				<span class="testimonial-child"><img src="freonlogo.png" alt="Company Logo" style="width:20%"></span>
+	<div class="landing-card">
+		<div class="landing-testimonial">
+			<div class='landing-testimonial-top'>
+				<span class="landing-testimonial-child"><h4><b>By Mike Vogel, Triradial</b></h4></span>
+				<span class="landing-testimonial-child"><img src="freonlogo.png" alt="Company Logo" style="width:40px"></span>
 			</div>
 			<p>
 				"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
@@ -87,9 +90,9 @@
 	</div>
 </section>
 
-<section class="enter-buttons-grid">
+<section class="landing-enter-buttons-grid">
 	<a href="/GettingStarted">
-		<button class="enter-button"
+		<button class="landing-enter-button"
 			><h3>Getting Started</h3>
 			<p>
 				Want to get started immediately... this is the place to go. We show you how to set up your project with a few commands and clicks.
@@ -98,17 +101,17 @@
 		</button></a
 	>
 	<a href="/Documentation"
-		><button class="enter-button"
+		><button class="landing-enter-button"
 			><h3>Documentation</h3>
 			<p>
-				In this section you can find the full documentation of all features of <span class="freon-name">Freon</span>. The explanation uses
+				In this section you can find the full documentation of all features of <span class="landing-freon-name">Freon</span>. The explanation uses
 				small examples to enlighten each feature. Larger comprehensive examples cna be found in the Examples section.
 			</p>
 			<p>Learn more...</p>
 		</button></a
 	>
 	<a href="/Tutorial"
-		><button class="enter-button"
+		><button class="landing-enter-button"
 			><h3>Tutorial</h3>
 			<p>
 				When you are new to this tool, you may like to check out our tutorial. The tutorial takes you step-by-step through the creation of
@@ -119,7 +122,7 @@
 		</button></a
 	>
 	<a href="/Examples"
-		><button class="enter-button"
+		><button class="landing-enter-button"
 			><h3>Examples</h3>
 			<p>
 				In the Examples section the focus is on a number of larger examples that give a more indepth explanation of how to handle a specific
@@ -129,7 +132,7 @@
 		</button></a
 	>
 	<a href="/Demos"
-		><button class="enter-button"
+		><button class="landing-enter-button"
 			><h3>Demos, videos, etc</h3>
 			<p>
 				There are a number of demos and videos available on this site. They cover different topics, like how to use the tool, why it was
@@ -139,10 +142,10 @@
 		</button></a
 	>
 	<a href="/GuidingPrinciples"
-		><button class="enter-button"
+		><button class="landing-enter-button"
 			><h3>Guiding Principles</h3>
 			<p>
-				<span class="freon-name">Freon</span> was created using a lifetime of experience with software development, especially with developing
+				<span class="landing-freon-name">Freon</span> was created using a lifetime of experience with software development, especially with developing
 				softare languages. All this experience has let to a number of great guiding principles for software development, which are being used
 				in the development of this tool. We happily share our insights with you.
 			</p>
@@ -151,119 +154,5 @@
 	>
 </section>
 
-
-<style>
-		.audio-control {
-        width: 100px;
-		}
-    .card {
-        /* Add shadows to create the "card" effect */
-        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-        transition: 0.3s;
-        border-radius: 5px; /* 5px rounded corners */
-				max-width: 80%;
-				text-align: center;
-				margin: auto;
-        background-color: var(--theme-colors-block_quote_background);
-    }
-    /* On mouse-over, add a deeper shadow */
-    .card:hover {
-        box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
-    }
-    /* Add some padding inside the card container */
-    .testimonial {
-        padding: 2px 16px;
-
-    }
-		.testimonial-top {
-        justify-content: space-between;
-				display: flex;
-				flex-direction: row;
-		}
-    .testimonial-child {
-        display: inline-block;
-        /*border: 1px solid red;*/
-        padding: 0.5rem 0.5rem;
-				text-align: right;
-    }
-    img {
-        border-radius: 5px 5px 0 0;
-				box-sizing: border-box;
-    }
-	a {
-		color: var(--theme-colors-accent);
-	}
-	.freon-name {
-		color: var(--theme-colors-accent);
-	}
-	.enter-buttons-grid {
-		display: inline-grid;
-		grid-template-columns: auto auto auto;
-		column-gap: 50px;
-		row-gap: 50px;
-		padding: 2rem;
-	}
-	.enter-button {
-		background-color: var(--theme-colors-bg_app_bar);
-		color: var(--theme-colors-inverse_color);
-		text-align: left;
-		font-size: 1.1rem;
-		padding-left: 10px;
-		padding-right: 10px;
-	}
-	.hero-started {
-		font-size: 2em;
-		text-align: right;
-		display: inline-block;
-		/*border: 1px solid red;*/
-		padding: 0.5rem 0.5rem;
-		vertical-align: middle;
-			margin-left: 2rem;
-	}
-	.hero-left {
-		flex-shrink: 100;
-		padding: 1rem;
-	}
-	/*!* Container holding the image and the text *!*/
-	.hero-right {
-		position: relative;
-		text-align: right;
-		padding: 1rem;
-	}
-	.hero {
-		display: flex;
-		justify-content: space-between;
-		margin-top: 1rem;
-	}
-	.arrow {
-		color: var(--theme-colors-accent);
-	}
-	.name-intro {
-		display: inline-block;
-		/*border: 1px solid black;*/
-		/*margin: 1rem;*/
-		/*padding: 2rem 2rem;*/
-		text-align: left;
-		box-shadow: 3px 3px 3px lightgrey;
-		background-color: var(--theme-colors-block_quote_background);
-		border-radius: 5px;
-		padding-left: 1rem;
-		padding-right: 1rem;
-	}
-	.top {
-		display: inline-block;
-    /*border: 1px solid darkblue;*/
-		padding-left: 1rem;
-		padding-right: 1rem;
-    white-space:nowrap;
-	}
-	.name-intro-child {
-		display: inline-block;
-		/*border: 1px solid red;*/
-		padding: 0.5rem 0.5rem;
-		vertical-align: middle;
-	}
-	.image-holder {
-			display: inline-block;
-	}
-</style>
+<LandingPageFooter />
+</div>

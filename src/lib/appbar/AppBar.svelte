@@ -26,9 +26,31 @@
 			</Button>
 		</Tooltip>
 
-		<div class="title">Freon Docs</div>
+		<div class="title">Freon</div>
 	{:else}
-		<div class="title">Freon Documentation (version {versionNumber})</div>
+		<a target="_blank" href="https://www.freon4dsl.dev" class="linkLogo">
+			<Tooltip tip="home" bottom>
+				<img src="/freonlogo.png" alt="Freon Logo" height="24" />
+			</Tooltip>
+		</a>
+		<div class="title">Freon</div>
+		<div class='main-menu'>
+		<a href="./Documentation" class="linkLogo">
+				<h6>Docs</h6>
+		</a>
+		<a href="./Tutorial" class="linkLogo">
+				<h6>Tutorial</h6>
+		</a>
+		<a href="./Examples" class="linkLogo">
+				<h6>Examples</h6>
+		</a>
+		<a href="./Demo" class="linkLogo">
+				<h6>Demo</h6>
+		</a>
+		<a href="./GuidingPrinciples" class="linkLogo">
+			<h6>Guidelines</h6>
+		</a>
+		</div>
 	{/if}
 
 	<span class="linkLogo">
@@ -42,20 +64,13 @@
 			<GithubLogo />
 		</Tooltip>
 	</a>
-
-	{#if !$miniWindow}
-		<!-- TODO change images for dark mode -->
-		<!-- normally, the brand icon is shown-->
-
-		<a target="_blank" href="https://www.freon4dsl.dev" class="linkLogo">
-			<Tooltip tip="home" bottom>
-				<img src="/freonlogo.png" alt="Freon Logo" height="24" />
-			</Tooltip>
-		</a>
-	{/if}
 </div>
 
 <style>
+	.main-menu {
+		display: flex;
+    align-content: space-between;
+	}
 	.linkLogo {
 		margin-right: 8px;
 		margin-left: 8px;
@@ -80,7 +95,7 @@
 		flex: 1;
 		margin-left: 0.5rem;
 		white-space: nowrap;
-		text-align: center;
+		text-align: left;
 		color: var(--theme-colors-inverse_color);
 	}
 
