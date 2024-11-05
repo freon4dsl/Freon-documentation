@@ -8,36 +8,36 @@ import { miniWindow } from '$lib';
 
 <section class="landing-top">
 	<div class="landing-intro">
-		<span class="landing-intro-child">
-			<span class="landing-name-logo">
-				<span class='landing-image-holder'><img src="freonlogo.png" alt="Freon Logo" style="width:50px; margin-top: 10px;"></span>
+		<div class="landing-intro-child">
+			<div class="landing-name-logo">
+				<div class='landing-image-holder'><img src="freonlogo.png" alt="Freon Logo" style="width:50px; margin-top: 10px;"></div>
 				<h1>Freon</h1>
-			</span>
-		</span>
+			</div>
+		</div>
 
-		<span class="landing-intro-child">
-			<span class='landing-text'>
-				<span>The name means 'friend', and comes from the Frisian language.</span>
-				<span class='landing-spacer'></span>
-				<span class="landing-name-logo">Pronunciation:
+		<div class="landing-intro-child">
+			<div class='landing-text'>
+				<div>The name means 'friend', and comes from the Frisian language.</div>
+				<div class='landing-spacer'></div>
+				<div class="landing-name-logo">Pronunciation:
 					<audio controls class="landing-intro-child landing-audio-control">
-						<source src="../freon - pronounciation.mp3" type="audio/mpeg" />Your browser does not support the audio element.
+						<source src="../freon - pronunciation.mp3" type="audio/mpeg" />Your browser does not support the audio element.
 					</audio>
-				</span>
-			</span>
-		</span>
+				</div>
+			</div>
+		</div>
 	</div>
 	<div class="landing-started">
 		<a href="/GettingStarted"
 			>Get Started
-			<span class="landing-arrow">
+			<div class="landing-arrow">
 				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" height="28px"
 					><!--!Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path
 						fill="currentColor"
 						d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"
 					/></svg
 				>
-			</span>
+			</div>
 		</a>
 	</div>
 </section>
@@ -98,8 +98,8 @@ import { miniWindow } from '$lib';
 	<div class="landing-card">
 		<div class="landing-testimonial">
 			<div class='landing-testimonial-top'>
-				<span class="landing-testimonial-child"><h4><b>By Mike Vogel, Triradial</b></h4></span>
-				<span class="landing-testimonial-child"><img src="freonlogo.png" alt="Company Logo" style="width:40px"></span>
+				<div class="landing-testimonial-child"><h4><b>By Mike Vogel, Triradial</b></h4></div>
+				<div class="landing-testimonial-child"><img src="freonlogo.png" alt="Company Logo" style="width:40px"></div>
 			</div>
 			<p>
 				"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
@@ -112,27 +112,23 @@ import { miniWindow } from '$lib';
 </section>
 
 <section class="landing-enter-buttons-grid">
-	<a href="/GettingStarted">
-		<button class="landing-enter-button"
-			><h3>Getting Started</h3>
+	<a href="/GettingStarted" class="landing-enter-button">
+			<h3>Getting Started</h3>
 			<p>
 				Want to get started immediately... this is the place to go. We show you how to set up your project with a few commands and clicks.
 			</p>
 			<p>Learn more...</p>
-		</button></a
-	>
-	<a href="/Documentation"
-		><button class="landing-enter-button"
+	</a>
+	<a href="/Documentation" class="landing-enter-button"
 			><h3>Documentation</h3>
 			<p>
 				In this section you can find the full documentation of all features of <span class="landing-freon-name">Freon</span>. The explanation uses
 				small examples to enlighten each feature. Larger comprehensive examples cna be found in the Examples section.
 			</p>
 			<p>Learn more...</p>
-		</button></a
+		</a
 	>
-	<a href="/Tutorial"
-		><button class="landing-enter-button"
+	<a href="/Tutorial" class="landing-enter-button"
 			><h3>Tutorial</h3>
 			<p>
 				When you are new to this tool, you may like to check out our tutorial. The tutorial takes you step-by-step through the creation of
@@ -140,30 +136,27 @@ import { miniWindow } from '$lib';
 				typing to your language, and how to create a validator, and an interpreter to your DSL -- from a small set of definitions.
 			</p>
 			<p>Learn more...</p>
-		</button></a
+		</a
 	>
-	<a href="/Examples"
-		><button class="landing-enter-button"
+	<a href="/Examples" class="landing-enter-button"
 			><h3>Examples</h3>
 			<p>
 				In the Examples section the focus is on a number of larger examples that give a more indepth explanation of how to handle a specific
 				topic.
 			</p>
 			<p>Learn more...</p>
-		</button></a
+		</a
 	>
-	<a href="/Demos"
-		><button class="landing-enter-button"
+	<a href="/Demos" class="landing-enter-button"
 			><h3>Demos, videos, etc</h3>
 			<p>
 				There are a number of demos and videos available on this site. They cover different topics, like how to use the tool, why it was
 				created, etc.
 			</p>
 			<p>Learn more...</p>
-		</button></a
+		</a
 	>
-	<a href="/GuidingPrinciples"
-		><button class="landing-enter-button"
+	<a href="/GuidingPrinciples" class="landing-enter-button"
 			><h3>Guiding Principles</h3>
 			<p>
 				<span class="landing-freon-name">Freon</span> was created using a lifetime of experience with software development, especially with developing
@@ -171,7 +164,7 @@ import { miniWindow } from '$lib';
 				in the development of this tool. We happily share our insights with you.
 			</p>
 			<p>Learn more...</p>
-		</button></a
+		</a
 	>
 </section>
 

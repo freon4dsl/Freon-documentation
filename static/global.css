@@ -4,23 +4,23 @@
 :root {
 	/* the following css properties are present in order for the text completion during development to function */
 	/* they are overwritten by the THEME values in 'themePresets.ts' */
-	--theme-colors-color: #004d40; /* Primary text color */
-	--theme-colors-inverse_color: #e0f2f1; /* Text color on non_normal background */
-	--theme-colors-bg_app_bar: #004d40; /* Color of header and footer */
-	--theme-colors-bg_color: #e0f2f1; /* Background color */
-	--theme-colors-bg_panel: #e0f2f1; /* Dialog background color */
-	--theme-colors-divider: #004d40; /* Dialog Title background color */
-	--theme-colors-primary: #004d40; /* Dialog primary button text color */
-	--theme-colors-list_divider: #004d40; /* Color of lines between columns in the error list */
-	--theme-colors-slider: #004d40; /* Color of lines between views */
-	--theme-colors-accent: #DE6B48; /* Color to get attention to an element */
+	--theme-colors-color: #342B09; /* Primary text color */
+	--theme-colors-inverse_color: #FEF7DC; /* Text color on non_normal background */
+	--theme-colors-bg_app_bar: #342B09; /* Color of header and footer */
+	--theme-colors-bg_color: #FEF7DC; /* Background color */
+	--theme-colors-bg_panel: #FEF7DC; /* Dialog background color */
+	--theme-colors-divider: #342B09; /* Dialog Title background color */
+	--theme-colors-primary: #342B09; /* Dialog primary button text color */
+	--theme-colors-list_divider: #342B09; /* Color of lines between columns in the error list */
+	--theme-colors-slider: #342B09; /* Color of lines between views */
+	--theme-colors-accent: #c94117; /* Color to get attention to an element */
 	--theme-colors-primary_button_text: black; /* Color of primary buttons in dialogs */
 	--theme-colors-secondary_button_text: grey; /* Color of non-primary buttons in dialogs */
 	--theme-colors-text_app_bar: 'white'; /* Color of header and footer text */
 
 	/* Projectional Editor "globals" */
 	--theme-colors-bg_editor: white; /* The background color of the editor */
-	--theme-colors-text_editor: #004d40; /* The color of the text, unless set otherwise by the projection */
+	--theme-colors-text_editor: #342B09; /* The color of the text, unless set otherwise by the projection */
 	--theme-fonts-size_editor: 14px; /* The font size of the text, unless set otherwise by the projection */
 	--theme-fonts-style_editor: italic; /* The font size of the text, unless set otherwise by the projection */
 	--theme-fonts-weight_editor: normal; /* The font size of the text, unless set otherwise by the projection */
@@ -28,20 +28,20 @@
 	/* TextBox */
 	--theme-colors-bg_empty_before_text_box: #f4f4f4;
 	--theme-colors-bg_text_box: white;
-	--theme-colors-color_text_box: #004d40;
-	--theme-colors-color_empty_before_text_box: #004d40;
+	--theme-colors-color_text_box: #342B09;
+	--theme-colors-color_empty_before_text_box: #342B09;
 	/* AliasBox && SelectBox */
 	--theme-colors-bg_empty_before_alias_box: #f4f4f4;
 	--theme-colors-bg_alias_box: white;
-	--theme-colors-color_alias_box: #004d40;
+	--theme-colors-color_alias_box: #342B09;
 	/* Dropdown */
 	--theme-colors-bg_dropdown_component: #f4f4f4;
-	--theme-colors-border_dropdown_component: #004d40;
-	--theme-colors-color_dropdownitem_component: #004d40;
-	--theme-colors-border_dropdownitem_component: #004d40;
+	--theme-colors-border_dropdown_component: #342B09;
+	--theme-colors-color_dropdownitem_component: #342B09;
+	--theme-colors-border_dropdownitem_component: #342B09;
 	/* Selectable */
 	--theme-colors-bg_selected: rgba(211, 227, 253, 255);
-	--theme-colors-border_selected: #004d40;
+	--theme-colors-border_selected: #342B09;
 	/* Freon sizes */
 	--pi-header-height: 36px;
 	--pi-footer-height: 16px;
@@ -70,9 +70,9 @@
 
 	/* added for documentation to theme variables from Freon */
 	--theme-colors-button_color: white;
-	--theme-colors-button_bg_color: rgba(0, 0, 139, 1); /* #004d40 with opacity 1 */
-	--theme-colors-button_active: rgba(0, 0, 139, 0.7); /* #004d40 with opacity .7 */
-	--theme-colors-button_hover: rgba(0, 0, 139, 0.8); /* #004d40 with opacity .8 */
+	--theme-colors-button_bg_color: rgba(0, 0, 139, 1); /* #342B09 with opacity 1 */
+	--theme-colors-button_active: rgba(0, 0, 139, 0.7); /* #342B09 with opacity .7 */
+	--theme-colors-button_hover: rgba(0, 0, 139, 0.8); /* #342B09 with opacity .8 */
 	--theme-colors-ripple_color: #c199f9;
 	--theme-colors-tooltip_color: white;
 	--theme-colors-tooltip_background: red;
@@ -146,7 +146,7 @@ a:visited {
 }
 
 /* Styles for the landing page */
-.landing a {
+.landing-started a {
 	color: var(--theme-colors-accent);
 }
 .landing img {
@@ -252,6 +252,12 @@ a:visited {
 	font-size: 1.1rem;
 	padding-left: 10px;
 	padding-right: 10px;
+}
+.landing-enter-button a {
+	color: var(--theme-colors-inverse_color); /* todo check whether we need these two */
+}
+.landing-enter-button a:visited {
+	color: var(--theme-colors-inverse_color);
 }
 /* Styles for the footer */
 .landing-openmodeling-info {
