@@ -1,12 +1,47 @@
 /* Small devices (portrait tablets and phones, 768px and down) */
 @media only screen and (max-width: 768px) {
-    p {
-        font-size: 0.8rem;
-        color: chocolate;
-        background-color: lightgray;
-        border: 2px solid red;
+    /* Styles for the landing page that are different for different screen sizes */
+    /* Styles for landing-top section */
+    .landing-intro {
+        white-space: wrap;
     }
-    :root {
-        font-size: 0.8rem;
+    .landing-intro-child {
+        padding: 0.2rem 0.2rem;
     }
+    .landing-started {
+        font-size: 2em;
+        margin-left: 0rem;
+    }
+    .landing-arrow {
+        color: var(--theme-colors-accent);
+    }
+    .landing-spacer {
+        min-width: 0rem;
+    }
+    .landing-text {
+        display: flex;
+        flex-direction: column;
+        justify-items: center;
+    }
+    /* Styles for hero section */
+    .landing-hero {
+        display: inline-block;
+    }
+    .landing-hero-left {
+        max-width: 100%;
+    }
+    .landing-hero-right {
+        text-align: center;
+    }
+    /* Styles for button grid */
+    .landing-enter-buttons-grid {
+        grid-template-columns: repeat(1, minmax(0, 1fr));
+        column-gap: 20px;
+        row-gap: 20px;
+    }
+    /* Styles for the footer */
+    .landing-info-text {
+        margin: 0rem;
+    }
+    /* end styles for landing page */
 }

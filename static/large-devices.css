@@ -1,11 +1,44 @@
 /* Large devices (laptops/desktops, 1008px and up) */
 @media only screen and (min-width: 1008px) {
-    p {
-        font-size: 1.2rem;
-        color: cadetblue;
-        border: 2px solid red;
-    }
     :root {
         font-size: 1.2rem;
     }
+    /* Styles for the landing page that are different for different screen sizes */
+    /* Styles for landing-top section */
+    .landing-intro {
+        white-space: wrap;
+    }
+    .landing-started {
+        margin-left: 2rem;
+    }
+    .landing-spacer {
+        min-width: 0.3rem;
+    }
+    .landing-text {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+    /* Styles for hero section */
+    .landing-hero {
+        display: flex;
+        justify-content: space-between;
+    }
+    .landing-hero-right {
+        text-align: right;
+    }
+    .landing-hero-left {
+        max-width: 50%;
+    }
+    /* Styles for button grid */
+    .landing-enter-buttons-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        column-gap: 50px;
+        row-gap: 50px;
+    }
+    /* Styles for the footer */
+    .landing-info-text {
+        margin: 0.6rem 5rem 0 5rem;
+    }
+    /* end styles for landing page */
 }

@@ -1,18 +1,31 @@
 <script>
 import LandingPageFooter from './LandingPageFooter.svelte';
+import { miniWindow } from '$lib';
 </script>
 
 <div class='landing'>
 <h1>Build Your Own Language Editor for the Web – Empower Your Backend with Ease!</h1>
 
 <section class="landing-top">
-	<div class="landing-name-intro">
-		<span class="landing-name-intro-child"><span class='landing-image-holder'><img src="freonlogo.png" alt="Freon Logo" style="width:50px; margin-top: 10px;"></span></span>
-		<span class="landing-name-intro-child"><h1>Freon</h1> </span>
-		<span class="landing-name-intro-child">Means 'friend', and comes from the Frisian language. Pronunciation:</span>
-		<audio controls class="landing-name-intro-child audio-control">
-			<source src="../freon - pronounciation.mp3" type="audio/mpeg" />Your browser does not support the audio element.
-		</audio>
+	<div class="landing-intro">
+		<span class="landing-intro-child">
+			<span class="landing-name-logo">
+				<span class='landing-image-holder'><img src="freonlogo.png" alt="Freon Logo" style="width:50px; margin-top: 10px;"></span>
+				<h1>Freon</h1>
+			</span>
+		</span>
+
+		<span class="landing-intro-child">
+			<span class='landing-text'>
+				<span>The name means 'friend', and comes from the Frisian language.</span>
+				<span class='landing-spacer'></span>
+				<span class="landing-name-logo">Pronunciation:
+					<audio controls class="landing-intro-child landing-audio-control">
+						<source src="../freon - pronounciation.mp3" type="audio/mpeg" />Your browser does not support the audio element.
+					</audio>
+				</span>
+			</span>
+		</span>
 	</div>
 	<div class="landing-started">
 		<a href="/GettingStarted"
@@ -30,6 +43,12 @@ import LandingPageFooter from './LandingPageFooter.svelte';
 </section>
 
 <section class="landing-hero">
+<!-- To make sure the image comes before the text on small devices, it is placed here. -->
+	{#if $miniWindow}
+		<div class="landing-hero-right">
+			<img src="./images/Landingpage-image4.webp" alt="An (abstract syntax) Tree" />
+		</div>
+	{/if}
 	<div class="landing-hero-left">
 			<h3>Introducing <span class="landing-freon-name">Freon</span>, the ultimate Language Workbench for the web!</h3>
 			<p>
@@ -67,9 +86,11 @@ import LandingPageFooter from './LandingPageFooter.svelte';
 				DSLs!
 			</p>
 	</div>
-	<div class="landing-hero-right">
-		<img src="./images/Landingpage-image2.webp" alt="An (abstract syntax) Tree" />
-	</div>
+	{#if !$miniWindow}
+		<div class="landing-hero-right">
+			<img src="./images/Landingpage-image4.webp" alt="An (abstract syntax) Tree" />
+		</div>
+	{/if}
 </section>
 
 <section>
@@ -156,3 +177,7 @@ import LandingPageFooter from './LandingPageFooter.svelte';
 
 <LandingPageFooter />
 </div>
+
+<style>
+
+</style>

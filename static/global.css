@@ -152,6 +152,9 @@ a:visited {
 .landing img {
 	border-radius: 5px 5px 0 0;
 	box-sizing: border-box;
+	max-width: 100%;
+	height: auto;
+	width: auto;
 }
 .landing-freon-name {
 	color: var(--theme-colors-accent);
@@ -161,25 +164,25 @@ a:visited {
 	display: inline-block;
 	padding-left: 1rem;
 	padding-right: 1rem;
-
 }
-.landing-name-intro {
+.landing-intro {
 	display: inline-block;
-	/*border: 1px solid black;*/
-	/*margin: 1rem;*/
-	/*padding: 2rem 2rem;*/
 	text-align: left;
 	box-shadow: 3px 3px 3px lightgrey;
 	background-color: var(--theme-colors-block_quote_background);
 	border-radius: 5px;
 	padding-left: 1rem;
 	padding-right: 1rem;
-	white-space:nowrap;
 }
-.landing-name-intro-child {
+.landing-intro-child {
 	display: inline-block;
 	padding: 0.5rem 0.5rem;
 	vertical-align: middle;
+}
+.landing-name-logo {
+	display : flex;
+	flex-direction: row;
+	align-items: center;
 }
 .landing-image-holder {
 	display: inline-block;
@@ -192,28 +195,21 @@ a:visited {
 	font-weight: bolder;
 	text-align: right;
 	display: inline-block;
-	/*border: 1px solid red;*/
 	padding: 0.5rem 0.5rem;
 	vertical-align: middle;
-	margin-left: 2rem;
 }
 .landing-arrow {
 	color: var(--theme-colors-accent);
 }
 /* Styles for hero section */
 .landing-hero {
-	display: flex;
-	justify-content: space-between;
 	margin-top: 1rem;
 }
 .landing-hero-left {
-	flex-shrink: 100;
 	padding: 1rem;
-	max-width: 35%; /* media */
 }
 .landing-hero-right {
 	position: relative;
-	text-align: right;
 	padding: 1rem;
 }
 /* Styles for testimonial section */
@@ -247,9 +243,6 @@ a:visited {
 /* Styles for button grid */
 .landing-enter-buttons-grid {
 	display: inline-grid;
-	grid-template-columns: repeat(3, minmax(0, 1fr));
-	column-gap: 50px;
-	row-gap: 50px;
 	padding: 2rem;
 }
 .landing-enter-button {
@@ -259,5 +252,38 @@ a:visited {
 	font-size: 1.1rem;
 	padding-left: 10px;
 	padding-right: 10px;
+}
+/* Styles for the footer */
+.landing-openmodeling-info {
+	color: var(--theme-colors-color);
+	text-align: center;
+	font-size: 0.9rem;
+}
+.landing-info-text {
+	text-align: left;
+	list-style: none;
+	padding: 0.5rem;
+}
+.landing-sub-info-text {
+	list-style: none;
+}
+.landing-info-text li {
+	padding: 0.2rem;
+}
+.landing-footer {
+	padding-bottom: 4px;
+	text-align: center;
+	background: var(--theme-colors-block_quote_background);
+	color: #eeeeee;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+}
+.landing-copyright {
+	color: var(--theme-colors-color);
+	font-size: 0.7rem;
+}
+.landing-link {
+	color: var(--theme-colors-color);
 }
 /* end styles for landing page */

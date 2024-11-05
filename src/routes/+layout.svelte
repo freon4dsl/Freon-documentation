@@ -39,15 +39,11 @@
 
 <style>
 	.main-window {
-		/*flex: 1;*/
 		margin-top: var(--pi-header-height);
 		margin-bottom: var(--pi-footer-height);
-		/*position: absolute;*/
 		width: 100%;
-		/*height: calc(100% - var(--pi-header-height) - var(--pi-footer-height) - 8px);*/
 		box-sizing: border-box;
 		background: var(--theme-colors-bg_text_box);
-		/*border: var(--theme-colors-list_divider) 1px solid;*/
 		overflow: hidden; /* no scroll bar on main window, instead it should be placed on the children */
 	}
 	.content-box {
