@@ -1,0 +1,11 @@
+/* Medium devices (landscape tablets ans small laptops, 768px and up) */
+@media only screen and (min-width: 768px) {
+    p {
+        font-size: 1rem;
+        color: #2b74e2;
+        border: 2px solid purple;
+    }
+    :root {
+        font-size: 1rem;
+    }
+}

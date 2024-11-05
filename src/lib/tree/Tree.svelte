@@ -2,7 +2,7 @@
 <script lang="ts">
 	import { page } from '$app/stores';
 	import Leaf from './Leaf.svelte';
-	import { leftPanelVisible } from '../Store';
+	import { menuShown } from '../Store';
 	import ArrowDropDown from '$lib/icons/ArrowDropDown.svelte';
 	import ArrowRight from '$lib/icons/ArrowRight.svelte';
 	import type { NavTree } from '$lib/tree/NavTree.js';
@@ -24,7 +24,7 @@
 
 	function becomingActive() {
 		expanded = true;
-		$leftPanelVisible = false;
+		$menuShown = false;
 	}
 
 	// TODO add functionality to make arrow keys run through the tree

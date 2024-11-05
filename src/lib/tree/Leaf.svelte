@@ -1,12 +1,11 @@
 <script lang="ts">
 	import { page } from '$app/stores';
-	import { leftPanelVisible } from '../Store';
-	import { get } from 'svelte/store';
+	import { menuShown } from '../Store';
 	export let name: string;
 	export let path: string;
 
 	function becomingActive() {
-		$leftPanelVisible = false;
+		$menuShown = false;
 	}
 </script>
 

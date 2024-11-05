@@ -5,7 +5,7 @@
 	import Footer from '$lib/footer/Footer.svelte';
 	import AppBar from '$lib/appbar/AppBar.svelte';
 	import ThemeContext from '$lib/theming/ThemeContext.svelte';
-	import { miniWindow, leftPanelVisible } from '$lib/Store';
+	import { miniWindow, menuShown } from '$lib/Store';
 
 	const MAX_WIDTH_SMALL_VIEWPORT = 600;
 
@@ -33,7 +33,7 @@
 	<main class="main-window">
 		<AppBar />
 		{#if $miniWindow}
-			{#if $leftPanelVisible}
+			{#if $menuShown}
 				<TreeView />
 			{:else}
 				<div class="content-box">

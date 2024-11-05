@@ -1,0 +1,12 @@
+/* Small devices (portrait tablets and phones, 768px and down) */
+@media only screen and (max-width: 768px) {
+    p {
+        font-size: 0.8rem;
+        color: chocolate;
+        background-color: lightgray;
+        border: 2px solid red;
+    }
+    :root {
+        font-size: 0.8rem;
+    }
+}

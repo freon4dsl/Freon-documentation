@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { miniWindow, leftPanelVisible, versionNumber } from '$lib/Store';
+	import { miniWindow, menuShown } from '$lib/Store';
 	import ThemeToggle from '$lib/theming/ThemeToggle.svelte';
 	import MenuIcon from '$lib/icons/MenuIcon.svelte';
 	import Button from '../buttons/Button.svelte';
@@ -18,7 +18,7 @@
 		<Tooltip tip="Hide/show content tree" bottom>
 			<Button
 				on:click={() => {
-					$leftPanelVisible = !$leftPanelVisible;
+					$menuShown = !$menuShown;
 				}}
 				icon={true}
 			>
@@ -59,7 +59,7 @@
 		</Tooltip>
 	</span>
 
-	<a target="_blank" href="https://github.com/freon4dsl/Freon4dsl.git" alt="Freon on GitHub" class="linkLogo">
+	<a target="_blank" href="https://github.com/freon4dsl/Freon4dsl.git" class="linkLogo">
 		<Tooltip tip="github source" bottom>
 			<GithubLogo />
 		</Tooltip>

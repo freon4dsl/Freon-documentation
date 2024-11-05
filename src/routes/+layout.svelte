@@ -2,10 +2,8 @@
 	import { onMount } from 'svelte';
 	import AppBar from '$lib/appbar/AppBar.svelte';
 	import ThemeContext from '$lib/theming/ThemeContext.svelte';
-	import { miniWindow } from '$lib/Store';
-	import LandingPageFooter from './LandingPageFooter.svelte';
-
-	const MAX_WIDTH_SMALL_VIEWPORT = 600;
+	import { MAX_WIDTH_SMALL_VIEWPORT, menuShown, miniWindow } from '$lib/Store';
+	import TreeView from '$lib/tree/TreeView.svelte';
 
 	onMount(async () => {
 		// correct layout for the size of the window
@@ -30,6 +28,9 @@
 <ThemeContext>
 	<main class="main-window">
 		<AppBar />
+		{#if $menuShown}
+			<TreeView />
+		{/if}
 		<div class="content-box">
 			<slot />
 		</div>

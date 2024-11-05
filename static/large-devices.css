@@ -1,0 +1,11 @@
+/* Large devices (laptops/desktops, 1008px and up) */
+@media only screen and (min-width: 1008px) {
+    p {
+        font-size: 1.2rem;
+        color: cadetblue;
+        border: 2px solid red;
+    }
+    :root {
+        font-size: 1.2rem;
+    }
+}

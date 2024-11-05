@@ -1,3 +1,6 @@
+@import 'small-devices.css';
+@import 'medium-devices.css';
+@import 'large-devices.css';
 :root {
 	/* the following css properties are present in order for the text completion during development to function */
 	/* they are overwritten by the THEME values in 'themePresets.ts' */
