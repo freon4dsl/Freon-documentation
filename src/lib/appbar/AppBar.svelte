@@ -49,7 +49,7 @@
 
 		<a target="_blank" href="https://www.freon4dsl.dev" class="linkLogo">
 			<Tooltip tip="home" bottom>
-				<img src="/freonlogo.png" style="color:red" alt="Freon Logo" height="24" />
+				<img src="/freonlogo.png" alt="Freon Logo" height="24" />
 			</Tooltip>
 		</a>
 	{/if}

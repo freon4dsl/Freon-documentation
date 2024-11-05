@@ -2,9 +2,10 @@
 
 <section class="top">
 	<div class="name-intro">
+		<span class="name-intro-child"><span class='image-holder'><img src="freonlogo.png" alt="Freon Logo" style="width:50px; margin-top: 10px;"></span></span>
 		<span class="name-intro-child"><h1>Freon</h1> </span>
 		<span class="name-intro-child">Means 'friend', and comes from the Frisian language. Pronunciation:</span>
-		<audio controls class="name-intro-child">
+		<audio controls class="name-intro-child audio-control">
 			<source src="../freon - pronounciation.mp3" type="audio/mpeg" />Your browser does not support the audio element.
 		</audio>
 	</div>
@@ -152,6 +153,9 @@
 
 
 <style>
+		.audio-control {
+        width: 100px;
+		}
     .card {
         /* Add shadows to create the "card" effect */
         box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
@@ -184,6 +188,7 @@
     }
     img {
         border-radius: 5px 5px 0 0;
+				box-sizing: border-box;
     }
 	a {
 		color: var(--theme-colors-accent);
@@ -213,6 +218,7 @@
 		/*border: 1px solid red;*/
 		padding: 0.5rem 0.5rem;
 		vertical-align: middle;
+			margin-left: 2rem;
 	}
 	.hero-left {
 		flex-shrink: 100;
@@ -246,13 +252,18 @@
 	}
 	.top {
 		display: inline-block;
+    /*border: 1px solid darkblue;*/
 		padding-left: 1rem;
 		padding-right: 1rem;
+    white-space:nowrap;
 	}
 	.name-intro-child {
 		display: inline-block;
 		/*border: 1px solid red;*/
 		padding: 0.5rem 0.5rem;
 		vertical-align: middle;
+	}
+	.image-holder {
+			display: inline-block;
 	}
 </style>
