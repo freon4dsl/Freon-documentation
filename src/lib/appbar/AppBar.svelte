@@ -33,23 +33,23 @@
 				<img src="/freonlogo.png" alt="Freon Logo" height="24" />
 			</Tooltip>
 		</a>
-		<a href="./" class="title">
+		<a href="/" class="title">
 		<div >Freon</div>
 		</a>
 		<div class='main-menu'>
-		<a href="./Documentation" class="linkLogo">
+		<a href="/Documentation/Intro" class="linkLogo">
 				<h6>Docs</h6>
 		</a>
-		<a href="./Tutorial" class="linkLogo">
+		<a href="/Tutorial/Intro" class="linkLogo">
 				<h6>Tutorial</h6>
 		</a>
-		<a href="./Examples" class="linkLogo">
+		<a href="/Examples/Intro" class="linkLogo">
 				<h6>Examples</h6>
 		</a>
-		<a href="./Demos" class="linkLogo">
+		<a href="/Demos/Intro" class="linkLogo">
 				<h6>Demo</h6>
 		</a>
-		<a href="./Guiding_Principles" class="linkLogo">
+		<a href="/Guiding_Principles/Intro" class="linkLogo">
 			<h6>Guidelines</h6>
 		</a>
 		</div>

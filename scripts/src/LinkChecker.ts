@@ -136,7 +136,7 @@ export class LinkChecker {
 			const filepath = path.join(folder, file);
 			const stat = fs.lstatSync(filepath);
 			if (stat.isDirectory()) {
-				this._correctRoutes.push('/' + PathCreator.createPath(ignore, filepath));
+				this._correctRoutes.push('/' + PathCreator.createFilePath(ignore, filepath));
 				// do all subFolders
 				this.getRoutes(filepath, ignore);
 			}

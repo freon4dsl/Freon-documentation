@@ -89,7 +89,7 @@ export class navTreeFiller {
 		// create the name for a folder based on path relative from 'ignore'
 		const startName: string = this.createName(path.parse(path.relative(ignore, folder)).name);
 		// no need to replace "\" by "/" for svelteKit, but it is easier to generate - no escapes necessary
-		return new NavTree(startName, '/' + PathCreator.createPath(ignore, folder), content);
+		return new NavTree(startName, '/' + PathCreator.createFilePath(ignore, folder), content);
 	}
 
 	/**

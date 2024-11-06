@@ -2,7 +2,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 import { compile } from 'mdsvex';
 import { remarkExtractHeaders } from './remark-extract-headers.js';
-import { layoutContent } from './PageLayoutContent.js';
+import { categoryLayoutContent, pageLayoutContent } from './PageLayoutContent.js';
 import { PathCreator } from './PathCreator.js';
 
 const storeContent: string =
@@ -35,6 +35,16 @@ export class Md2Svelte {
 		if (!fs.lstatSync(folder).isDirectory()) {
 			console.error(this, "'" + folder + "' is not a folder");
 			return null;
+		}
+		// make the category layouts and toc, if folder is at lowest level
+		const level: number = (folder.match(/\\/g) || []).length;
+		if (level === 2) {
+			// Create and write the layout including a category sidebar
+			const outputPath: string = PathCreator.createFolderPath(ignore, folder);
+			const layoutPath: string = outputPath + path.sep + '+layout.svelte';
+			const categoryName: string = PathCreator.getFolderName(folder) + 'Toc';
+			console.log(`transformFolder folder ${categoryName}`)
+			fs.writeFileSync(outputFolder + path.sep + layoutPath, categoryLayoutContent(categoryName));
 		}
 
 		// get content of the folder
@@ -76,7 +86,7 @@ export class Md2Svelte {
 		} else {
 			fileContent = transformed_code.code;
 		}
-		const outputPath: string = PathCreator.createPath(ignore, filepath);
+		const outputPath: string = PathCreator.createFilePath(ignore, filepath);
 		this.createDirIfNotExisting(path.dirname(outputPath), outputFolder);
 		fs.writeFileSync(outputFolder + path.sep + outputPath, fileContent);
 
@@ -85,9 +95,12 @@ export class Md2Svelte {
 			const storePath: string = path.dirname(outputPath) + path.sep + "SectionStore.ts"
 			fs.writeFileSync(outputFolder + path.sep + storePath, storeContent);
 			if (path.dirname(outputPath) !== '.') { // Do not overwrite the site layout file
-				// Create and write the page layout including a page nav
-				const layoutPath: string = path.dirname(outputPath) + path.sep + '+layout.svelte';
-				fs.writeFileSync(outputFolder + path.sep + layoutPath, layoutContent);
+				const level: number = (filepath.match(/\\/g) || []).length;
+				if (level !== 3) { // level 3 indicates a category, do not create another +layout.svelte
+					// Create and write the page layout including a page nav
+					const layoutPath: string = path.dirname(outputPath) + path.sep + '+layout.svelte';
+					fs.writeFileSync(outputFolder + path.sep + layoutPath, pageLayoutContent);
+				}
 			}
 		}
 	}

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import SideBarEntry from '$lib/side-bar/SideBarEntry.svelte';
+	import SideBarEntry from '$lib/sidebar/SidebarEntry.svelte';
 	import { NavTree } from '$lib';
 
 	export let tocContent: NavTree[] = [];

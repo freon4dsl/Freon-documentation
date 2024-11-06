@@ -1,9 +1,9 @@
 import { LinkChecker } from './LinkChecker.js';
 import { Md2Svelte } from './Md2Svelte.js';
-import { navTreeFiller } from './NavTreeFiller.js';
+import { SideBarFiller } from './SideBarFiller.js';
 
 const contentFolder: string = '../docu-content';
-const siteNavFile: string = "../src/lib/tree/TreeView.svelte";
+const siteNavFile: string = "../src/lib/sidebar/SidebarContent.ts";
 const outputFolder: string = '../src/routes';
 
 export class Generator {
@@ -23,8 +23,8 @@ export class Generator {
 		const svelteCreator = new Md2Svelte();
 		svelteCreator.generate(contentFolder, outputFolder);
 
-		// console.log("Generating site-nav")
-		// new navTreeFiller().generateNavTree(contentFolder, siteNavFile);
+		console.log("Generating site-nav")
+		new SideBarFiller().generateAllTocs(contentFolder, siteNavFile);
 	}
 }
 
