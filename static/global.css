@@ -1,6 +1,9 @@
 @import 'small-devices.css';
 @import 'medium-devices.css';
 @import 'large-devices.css';
+* {
+	box-sizing: border-box;
+}
 :root {
 	/* the following css properties are present in order for the text completion during development to function */
 	/* they are overwritten by the THEME values in 'themePresets.ts' */
@@ -49,7 +52,7 @@
 	--pi-statusbar-height: 24px;
 
 	/* Freon font sizes */
-	--pi-header-font-size: 16px;
+	--pi-header-font-size: 20px;
 	--pi-button-font-size: 12px;
 	--pi-error-font-size: 14px;
 	--pi-menuitem-font-size: 14px;
@@ -103,6 +106,14 @@ body {
 	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
 }
 
+h1  {
+	font-weight: bold;
+	font-size: xx-large;
+}
+h2  {
+	font-weight: bold;
+	font-size: x-large;
+}
 blockquote {
 	margin: 0;
 	padding: 2px 8px;
@@ -293,3 +304,61 @@ a:visited {
 	color: var(--theme-colors-color);
 }
 /* end styles for landing page */
+
+/* Styles for every page */
+.page-side-nav {
+	position: fixed;
+	top: 75px;
+	right: 75px;
+	width: 15em;
+}
+.page-ul {
+	list-style: none;
+	display: flex;
+	flex-direction: column;
+}
+.page-visible  {
+	border-left: solid 4px #d54309;
+}
+.page-nonvisible  {
+	margin-left: 4px;
+}
+.page-li {
+	margin: 5px;
+}
+.page-a {
+	padding: 5px;
+	color: black;
+}
+.page-main {
+	display: flex;
+	overflow: auto;
+}
+.page-column-left {
+	flex: 75;
+	padding: 8px;
+}
+.page-column-right {
+	flex: 25;
+	padding: 2px;
+}
+.main-window {
+	margin-top: var(--pi-header-height);
+	margin-bottom: var(--pi-footer-height);
+	width: 100%;
+	box-sizing: border-box;
+	background: var(--theme-colors-bg_text_box);
+	overflow: hidden; /* no scroll bar on main window, instead it should be placed on the children */
+}
+.content-box {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	padding: 0.5em 1em 0.5em 1em;
+	color: var(--theme-colors-color);
+	background: var(--theme-colors-bg_text_box);
+	box-sizing: border-box;
+	margin: 0 auto 0 0;
+	overflow: auto;
+}
+/* end styles for every page */

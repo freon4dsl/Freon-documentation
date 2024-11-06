@@ -1,7 +1,13 @@
 /* Large devices (laptops/desktops, 1008px and up) */
 @media only screen and (min-width: 1008px) {
     :root {
-        font-size: 1.2rem;
+        font-size: 1.0rem;
+    }
+    .small-screen {
+        display: none;
+    }
+    .large-screen {
+        display: inline-block;
     }
     /* Styles for the landing page that are different for different screen sizes */
     /* Styles for landing-top section */
@@ -26,6 +32,7 @@
     }
     .landing-hero-right {
         text-align: right;
+        padding-right: 5rem;
     }
     .landing-hero-left {
         max-width: 50%;

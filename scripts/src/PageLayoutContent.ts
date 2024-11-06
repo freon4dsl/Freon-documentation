@@ -1,80 +1,105 @@
 export const layoutContent: string =
-	`<script lang="ts">
-		import {mySections} from './SectionStore.js';
-		import type { Section } from '$lib/SectionType.js';
-    $: current = getCurrent($mySections);
+`<script lang="ts">
+	import { mySections } from './SectionStore.js';
+	import type { Section } from '$lib/SectionType.js';
+	import { onMount } from 'svelte';
+	import AppBar from '$lib/appbar/AppBar.svelte';
+	import ThemeContext from '$lib/theming/ThemeContext.svelte';
+	import { MAX_WIDTH_SMALL_VIEWPORT, menuShown, miniWindow } from '$lib/Store';
+	import TreeView from '$lib/tree/TreeView.svelte';
+	import Footer from '$lib/footer/Footer.svelte';
 
-    function getCurrent(internalSections: Section[]): number {
-      let previous = current;
-      for (let i=0; i < internalSections.length; i++) {
-        if (internalSections[i].visible) {
-          return i;
-        }
-      }
-      return previous;
-    }
+	onMount(async () => {
+		// correct layout for the size of the window
+		onResize();
+	});
+
+	async function onResize() {
+		let width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+
+		if (width > MAX_WIDTH_SMALL_VIEWPORT) {
+			// console.log(\`setting miniWindow to false: \${width}\`);
+			miniWindow.set(false);
+		} else {
+			// console.log(\`setting miniWindow to true: \${width}\`);
+			miniWindow.set(true);
+		}
+	}
+
+	$: current = getCurrent($mySections);
+
+	function getCurrent(internalSections: Section[]): number {
+		let previous = current;
+		for (let i = 0; i < internalSections.length; i++) {
+			if (internalSections[i].visible) {
+				return i;
+			}
+		}
+		return previous;
+	}
 </script>
 
-<div class="main">
-    <div class="column-left">
-        <slot/>
-   </div>
-    <div class="column-right">
-        <nav class="side-nav" >
-        <h3>On this page</h3>
-            <ul>
-                {#each $mySections as sec, index}
-                    <li>
-                        <a class:visible={index === current} class:nonvisible={index !== current} href={sec.ref}> {sec.title} </a>
-                    </li>
-                {/each}
-            </ul>
-        </nav>
-    </div>
-</div>
+<svelte:window on:resize={onResize} />
 
+<ThemeContext>
+	<main class="main-window">
+		<AppBar />
+		{#if $miniWindow}
+			{#if $menuShown}
+				<TreeView />
+			{:else}
+				<div class="content-box">
+					<div class="page-main">
+						<div class="page-column-left">
+							<slot />
+						</div>
+						<div class="page-column-right">
+							<nav class="page-side-nav">
+								<h3>On this page</h3>
+								<ul class="page-ul">
+									{#each $mySections as sec, index}
+										<li class="page-li">
+											<a class:page-visible={index === current} class:page-nonvisible={index !== current} href={sec.ref}> {sec.title} </a>
+										</li>
+									{/each}
+								</ul>
+							</nav>
+						</div>
+					</div>
+				</div>
+			{/if}
+		{:else}
+			<div class="splitpane-container">
+					<section class="splitpane-tree">
+						<TreeView />
+					</section>
 
-<style>
-    .side-nav {
-      position: fixed;
-      top: 75px;
-      right: 75px;
-      width: 15em;
-    }
-    ul {
-        list-style: none;
-        display: flex;
-        flex-direction: column;
-    }
-    .visible  {
-        border-left: solid 4px #d54309;
-    }
-    .nonvisible  {
-      margin-left: 4px;
-    }
-    li {
-        margin: 5px;
-    }
-    a {
-      padding: 5px;
-      color: black;
-    }
-    * {
-        box-sizing: border-box;
-    }
-    .main {
-        display: flex;
-        overflow: auto;
-    }
-    .column-left {
-        flex: 75;
-        background: #aaa;
-      padding: 8px;
-    }
-    .column-right {
-        flex: 25;
-        padding: 2px;
-        background: #bbb;
-    }
-</style>
-`
+					<section class="splitpane-content">
+						<div class="content-box">
+							<div class="page-main">
+								<div class="page-column-left">
+									<slot />
+								</div>
+								<div class="page-column-right">
+									<nav class="page-side-nav">
+										<h3>On this page</h3>
+										<ul class="page-ul">
+											{#each $mySections as sec, index}
+												<li class="page-li">
+													<a class:page-visible={index === current} class:page-nonvisible={index !== current} href={sec.ref}>
+														{sec.title}
+													</a>
+												</li>
+											{/each}
+										</ul>
+									</nav>
+								</div>
+							</div>
+						</div>
+					</section>
+			</div>
+		{/if}
+		<Footer />
+	</main>
+</ThemeContext>
+`;

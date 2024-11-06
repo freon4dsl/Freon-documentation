@@ -5,7 +5,6 @@ export * from './figures/Figure.svelte';
 export * from './footer/Footer.svelte';
 export * from './icons';
 export * from './notes/Note.svelte';
-export * from './splitpane/SplitPane.svelte';
 export * from './theming/ThemeContext.svelte';
 export * from './theming/ThemeToggle.svelte';
 export * from './tooltip-button/ToolTipButton.svelte';

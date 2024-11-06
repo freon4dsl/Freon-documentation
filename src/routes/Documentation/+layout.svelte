@@ -1,13 +1,12 @@
 <script lang="ts">
+	import { mySections } from './SectionStore.js';
+	import type { Section } from '$lib/SectionType.js';
 	import { onMount } from 'svelte';
-	import TreeView from '$lib/tree/TreeView.svelte';
-	import SplitPane from '$lib/splitpane/SplitPane.svelte';
-	import Footer from '$lib/footer/Footer.svelte';
 	import AppBar from '$lib/appbar/AppBar.svelte';
 	import ThemeContext from '$lib/theming/ThemeContext.svelte';
-	import { miniWindow, menuShown } from '$lib/Store';
-
-	const MAX_WIDTH_SMALL_VIEWPORT = 600;
+	import { MAX_WIDTH_SMALL_VIEWPORT, menuShown, miniWindow } from '$lib/Store';
+	import TreeView from '$lib/tree/TreeView.svelte';
+	import Footer from '$lib/footer/Footer.svelte';
 
 	onMount(async () => {
 		// correct layout for the size of the window
@@ -25,6 +24,18 @@
 			miniWindow.set(true);
 		}
 	}
+
+	$: current = getCurrent($mySections);
+
+	function getCurrent(internalSections: Section[]): number {
+		let previous = current;
+		for (let i = 0; i < internalSections.length; i++) {
+			if (internalSections[i].visible) {
+				return i;
+			}
+		}
+		return previous;
+	}
 </script>
 
 <svelte:window on:resize={onResize} />
@@ -37,69 +48,56 @@
 				<TreeView />
 			{:else}
 				<div class="content-box">
-					<slot />
+					<div class="page-main">
+						<div class="page-column-left">
+							<slot />
+						</div>
+						<div class="page-column-right">
+							<nav class="page-side-nav">
+								<h3>On this page</h3>
+								<ul class="page-ul">
+									{#each $mySections as sec, index}
+										<li class="page-li">
+											<a class:page-visible={index === current} class:page-nonvisible={index !== current} href={sec.ref}> {sec.title} </a>
+										</li>
+									{/each}
+								</ul>
+							</nav>
+						</div>
+					</div>
 				</div>
 			{/if}
 		{:else}
 			<div class="splitpane-container">
-				<SplitPane type="horizontal" pos={20}>
-					<section class="splitpane-tree" slot="a">
-						<TreeView />
-					</section>
+				<section class="splitpane-tree">
+					<TreeView />
+				</section>
 
-					<section class="splitpane-content" slot="b">
-						<div class="content-box">
-							<slot />
+				<section class="splitpane-content">
+					<div class="content-box">
+						<div class="page-main">
+							<div class="page-column-left">
+								<slot />
+							</div>
+							<div class="page-column-right">
+								<nav class="page-side-nav">
+									<h3>On this page</h3>
+									<ul class="page-ul">
+										{#each $mySections as sec, index}
+											<li class="page-li">
+												<a class:page-visible={index === current} class:page-nonvisible={index !== current} href={sec.ref}>
+													{sec.title}
+												</a>
+											</li>
+										{/each}
+									</ul>
+								</nav>
+							</div>
 						</div>
-					</section>
-				</SplitPane>
+					</div>
+				</section>
 			</div>
 		{/if}
 		<Footer />
 	</main>
 </ThemeContext>
-
-<style>
-	.main-window {
-		/*flex: 1;*/
-		margin-top: var(--pi-header-height);
-		margin-bottom: var(--pi-footer-height);
-		position: absolute;
-		width: 100%;
-		height: calc(100% - var(--pi-header-height) - var(--pi-footer-height) - 8px);
-		box-sizing: border-box;
-		background: var(--theme-colors-bg_color);
-		/*border: var(--theme-colors-list_divider) 1px solid;*/
-		overflow: hidden; /* no scroll bar on main window, instead it should be placed on the children */
-	}
-	.splitpane-container {
-		position: relative;
-		width: 100%;
-		height: 100%;
-	}
-	.splitpane-tree {
-		position: relative;
-		height: 100%;
-		box-sizing: border-box;
-		/*border: var(--theme-colors-list_divider) 1px solid;*/
-	}
-	.splitpane-content {
-		position: relative;
-		height: 100%;
-		box-sizing: border-box;
-		/*border: var(--theme-colors-list_divider) 1px solid;*/
-		overflow: hidden; /* no scroll bar on main window, instead it should be placed on the children */
-	}
-	.content-box {
-		position: relative;
-		width: 100%;
-		height: 100%;
-		padding: 0.5em 1em 0.5em 1em;
-		color: var(--theme-colors-color);
-		background: var(--theme-colors-bg_text_box);
-		box-sizing: border-box;
-		max-width: var(--column-width);
-		margin: 0 auto 0 0;
-		overflow: auto;
-	}
-</style>

@@ -28,12 +28,14 @@
 
 		<div class="title">Freon</div>
 	{:else}
-		<a target="_blank" href="https://www.freon4dsl.dev" class="linkLogo">
+		<a href="https://www.freon4dsl.dev" class="linkLogo">
 			<Tooltip tip="home" bottom>
 				<img src="/freonlogo.png" alt="Freon Logo" height="24" />
 			</Tooltip>
 		</a>
-		<div class="title">Freon</div>
+		<a href="./" class="title">
+		<div >Freon</div>
+		</a>
 		<div class='main-menu'>
 		<a href="./Documentation" class="linkLogo">
 				<h6>Docs</h6>
@@ -44,10 +46,10 @@
 		<a href="./Examples" class="linkLogo">
 				<h6>Examples</h6>
 		</a>
-		<a href="./Demo" class="linkLogo">
+		<a href="./Demos" class="linkLogo">
 				<h6>Demo</h6>
 		</a>
-		<a href="./GuidingPrinciples" class="linkLogo">
+		<a href="./Guiding_Principles" class="linkLogo">
 			<h6>Guidelines</h6>
 		</a>
 		</div>

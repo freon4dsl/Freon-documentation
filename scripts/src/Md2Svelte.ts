@@ -111,8 +111,8 @@ export class Md2Svelte {
 	 * @param code
 	 */
 	changeHtags(code: string): string {
-		let result = code.replace(/<h2/g, '<SectionComponent');
-		result = result.replace(/<h1/g, '<SectionComponent');
+		let result = code.replace(/<h2/g, '<SectionComponent tag="h2" ');
+		result = result.replace(/<h1/g, '<SectionComponent tag="h1" ');
 		result = result.replace(/visible=/g, 'bind:intersecting=');
 		result = result.replace(/<\/h2>/g, '</SectionComponent>');
 		result = result.replace(/<\/h1>/g, '</SectionComponent>');
