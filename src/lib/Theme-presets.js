@@ -5,6 +5,7 @@ const FRE_COLOR4 = '#B08A03';
 const FRE_DARK = '#342B09'; // darkbrown
 const FRE_ACCENT = '#c94117';
 
+/* todo select only the values that are being used, and remove others */
 export const themePresets = [
 	{
 		name: 'light',
@@ -20,6 +21,7 @@ export const themePresets = [
 			accent: FRE_ACCENT /* Color to get attention to an element */,
 			primary_button_text: 'black' /* Color of primary buttons in dialogs */,
 			secondary_button_text: 'grey' /* Color of non-primary buttons in dialogs */,
+			link_hover: FRE_COLOR4 /* color of link when being hovered */,
 			// TODO find some appealing default values for the user message colors
 			user_mess_bg_error: '#ff4d4d' /* Color of user message background when showing an error */,
 			user_mess_bg_warning: '#ffff80' /* Color of user message background when showing a warning */,

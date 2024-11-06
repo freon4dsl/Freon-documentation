@@ -1,6 +1,5 @@
 <script>
 	import LandingPageFooter from './LandingPageFooter.svelte';
-	import { miniWindow } from '$lib';
 </script>
 
 <div class="landing">
