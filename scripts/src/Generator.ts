@@ -1,6 +1,6 @@
 import { LinkChecker } from './LinkChecker.js';
 import { Md2Svelte } from './Md2Svelte.js';
-import { SideBarFiller } from './SideBarFiller.js';
+import { SidebarFiller } from './SidebarFiller.js';
 
 const contentFolder: string = '../docu-content';
 const siteNavFile: string = "../src/lib/sidebar/SidebarContent.ts";
@@ -24,7 +24,7 @@ export class Generator {
 		svelteCreator.generate(contentFolder, outputFolder);
 
 		console.log("Generating site-nav")
-		new SideBarFiller().generateAllTocs(contentFolder, siteNavFile);
+		new SidebarFiller().generateAllTocs(contentFolder, siteNavFile);
 	}
 }
 

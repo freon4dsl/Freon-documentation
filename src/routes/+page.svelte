@@ -161,6 +161,3 @@
 
 	<LandingPageFooter />
 </div>
-
-<style>
-</style>

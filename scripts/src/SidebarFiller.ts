@@ -18,7 +18,7 @@ class TocContents {
 	content?: TocContents[];
 }
 
-export class SideBarFiller {
+export class SidebarFiller {
 	/**
 	 * Reads the file structure under 'contentFolder' and generates a nav array in
 	 * file 'outputFile'.

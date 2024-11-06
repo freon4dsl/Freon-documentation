@@ -1,5 +1,5 @@
 <script lang="ts">
-	import SideBarEntry from '$lib/sidebar/SidebarEntry.svelte';
+	import SidebarEntry from '$lib/sidebar/SidebarEntry.svelte';
 	import type { TocContents } from '$lib/sidebar/TocContents';
 
 	export let tocContent: TocContents;
@@ -12,13 +12,13 @@
 		{#each categoryContent as part}
 			<li>
 				<div class='sidebar-header'>
-					<SideBarEntry name={part.name} path={part.path ? part.path : '/'} />
+					<SidebarEntry name={part.name} path={part.path ? part.path : '/'} />
 				</div>
 				{#if part.content}
 					{#each part.content as pp}
 						<li>
 							<div class='sidebar-simple'>
-								<SideBarEntry name={pp.name} path={pp.path ? pp.path : '/'} />
+								<SidebarEntry name={pp.name} path={pp.path ? pp.path : '/'} />
 							</div>
 						</li>
 					{/each}

@@ -37,14 +37,14 @@ export const pageContent: string =
 
 export function categoryLayoutContent(contentName: string): string {
 return	`<script lang="ts">
-  import SideBar from '$lib/sidebar/SideBar.svelte';
+  import Sidebar from '$lib/sidebar/Sidebar.svelte';
   import Footer from '$lib/footer/Footer.svelte';
   import { ${contentName} } from '$lib/sidebar/SidebarContent.js';
 </script>
 
 <div class="page-container">
   <section class="page-side-nav">
-    <SideBar tocContent={${contentName}} />
+    <Sidebar tocContent={${contentName}} />
   </section>
 
   <section class="page-content-container">
