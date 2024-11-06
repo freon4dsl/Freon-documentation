@@ -43,7 +43,6 @@ export class Md2Svelte {
 			const outputPath: string = PathCreator.createFolderPath(ignore, folder);
 			const layoutPath: string = outputPath + path.sep + '+layout.svelte';
 			const categoryName: string = PathCreator.getFolderName(folder) + 'Toc';
-			console.log(`transformFolder folder ${categoryName}`)
 			fs.writeFileSync(outputFolder + path.sep + layoutPath, categoryLayoutContent(categoryName));
 		}
 

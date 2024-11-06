@@ -1,5 +1,5 @@
 import type { TocContents } from '$lib/sidebar/TocContents';
-		export const documentationToc: TocContents[] = [ 
+		export const documentationToc: TocContents = 
    { name: 'Documentation', path: '/Documentation',
      content: [
       { name: 'Intro', path: '/Documentation/Intro',
@@ -63,37 +63,37 @@ import type { TocContents } from '$lib/sidebar/TocContents';
          { name: 'FreStandardlib Interface', path: '/Documentation/Under_the_Hood/The_FreTool_Interfaces/FreStandardlib_Interface'},
          { name: 'Source Code Documentation', path: '/Documentation/Under_the_Hood/Source_Code_Documentation'},
        ]},
-    ]}, ];
-export const tutorialToc: TocContents[] = [ 
+    ]};
+export const tutorialToc: TocContents = 
    { name: 'Tutorial', path: '/Tutorial',
      content: [
       { name: 'Intro', path: '/Tutorial/Intro'},
-    ]}, ];
-export const examplesToc: TocContents[] = [ 
+    ]};
+export const examplesToc: TocContents = 
    { name: 'Examples', path: '/Examples',
      content: [
       { name: 'Intro', path: '/Examples/Intro'},
-    ]}, ];
-export const demosToc: TocContents[] = [ 
+    ]};
+export const demosToc: TocContents = 
    { name: 'Demos', path: '/Demos',
      content: [
       { name: 'Intro', path: '/Demos/Intro'},
-    ]}, ];
-export const guiding_PrinciplesToc: TocContents[] = [ 
+    ]};
+export const guiding_PrinciplesToc: TocContents = 
    { name: 'Guiding Principles', path: '/Guiding_Principles',
      content: [
       { name: 'Intro', path: '/Guiding_Principles/Intro'},
       { name: 'Our Philosophy', path: '/Guiding_Principles/Our_Philosophy'},
       { name: 'Models and Model Units', path: '/Guiding_Principles/Models_and_Model_Units'},
-    ]}, ];
-export const getting_StartedToc: TocContents[] = [ 
+    ]};
+export const getting_StartedToc: TocContents = 
    { name: 'Getting Started', path: '/Getting_Started',
      content: [
       { name: 'Installation', path: '/Getting_Started/Installation'},
       { name: 'Project Structure', path: '/Getting_Started/Project_Structure'},
       { name: 'Calling the Generator', path: '/Getting_Started/Calling_the_Generator'},
-    ]}, ];
-export const release_NotesToc: TocContents[] = [ 
-   { name: 'Release Notes', path: '/Release_Notes'}, ];
-export const aboutToc: TocContents[] = [ 
-   { name: 'About', path: '/About'}, ];
+    ]};
+export const release_NotesToc: TocContents = 
+   { name: 'Release Notes', path: '/Release_Notes'};
+export const aboutToc: TocContents = 
+   { name: 'About', path: '/About'};

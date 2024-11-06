@@ -44,7 +44,6 @@ export class SideBarFiller {
 				toc.content.push(...this.readSubcategories(folderPath, contentFolder));
 				// add the category to allTocs
 				allTocs.push(toc);
-				// console.log(this.tocToString(toc, 0));
 			}
 		}
 		// write allTocs to an output file
@@ -56,8 +55,7 @@ export class SideBarFiller {
 		const tocStr: string[] = [];
 		for (const toc of tocs) {
 			const categoryName: string = PathCreator.getFolderName(toc.path) + 'Toc';
-			console.log(`generateAllTocs categoryName ${categoryName}`)
-			tocStr.push(`export const ${categoryName}: TocContents[] = [ ${this.tocToString(toc, 1)} ];`)
+			tocStr.push(`export const ${categoryName}: TocContents = ${this.tocToString(toc, 1)};`)
 		}
 		// start template
 		const navContent: string = `import type { TocContents } from '$lib/sidebar/TocContents';
@@ -122,8 +120,6 @@ export class SideBarFiller {
 				const toc: TocContents = new TocContents(name, '/' + PathCreator.createFilePath(ignore, folderPath), [])
 				// add all subfolders to the result
 				toc.content.push(...this.readFolder(folderPath, ignore, 0));
-				// console.log("Found subcategory: " + '/' + PathCreator.createFilePath(ignore, folderPath) +
-				// 	", CONTENT" + toc.content.map(cc => `{name: '${cc.name}', path: '${cc.path}' }`).join("\n"))
 				content.push(toc);
 			}
 		}
@@ -167,12 +163,11 @@ export class SideBarFiller {
 			if (result.content.length > 0) {
 				contentStr = ',' + prefix + '  content: [';
 				for (const tree of result.content) {
-					contentStr = contentStr.concat(this.tocToString(tree, indent + 1));
-					// contentStr = contentStr.concat(`${prefix}   { name: '${tree.name}', path: '${tree.path}'},`)
+					contentStr = contentStr.concat(this.tocToString(tree, indent + 1) + ",");
 				}
 				contentStr = contentStr + prefix + ' ]';
 			}
-			return `${prefix}{ name: '${result.name}', path: '${result.path}'${contentStr}},`;
+			return `${prefix}{ name: '${result.name}', path: '${result.path}'${contentStr}}`;
 		}
 		return '';
 	}

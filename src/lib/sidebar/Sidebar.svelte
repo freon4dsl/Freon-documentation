@@ -1,23 +1,24 @@
 <script lang="ts">
 	import SideBarEntry from '$lib/sidebar/SidebarEntry.svelte';
-	import { NavTree } from '$lib';
+	import type { TocContents } from '$lib/sidebar/TocContents';
 
-	export let tocContent: NavTree[] = [];
+	export let tocContent: TocContents;
 
+	let categoryContent: TocContents[] = tocContent.content ? tocContent.content : [];
 </script>
 
 <nav>
 	<ul class='sidebar-ul'>
-		{#each tocContent as part}
+		{#each categoryContent as part}
 			<li>
 				<div class='sidebar-header'>
-					<SideBarEntry name={part.name} path={part.path} />
+					<SideBarEntry name={part.name} path={part.path ? part.path : '/'} />
 				</div>
 				{#if part.content}
 					{#each part.content as pp}
 						<li>
 							<div class='sidebar-simple'>
-								<SideBarEntry name={pp.name} path={pp.path} />
+								<SideBarEntry name={pp.name} path={pp.path ? pp.path : '/'} />
 							</div>
 						</li>
 					{/each}
