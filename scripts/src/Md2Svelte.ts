@@ -24,6 +24,7 @@ export class Md2Svelte {
 	 *
 	 * @param folder the folder where the files are located
 	 * @param ignore the path up till the contentFolder
+	 * @param outputFolder the folder where the output will be generated
 	 * @private
 	 */
 	private transformFolder(folder: string, ignore: string, outputFolder: string): boolean {
@@ -68,7 +69,7 @@ export class Md2Svelte {
 			remarkPlugins: [remarkExtractHeaders]
 		});
 		const scriptPart: string = this.createScriptPart(transformed_code.data.headers);
-		let fileContent: string = '';
+		let fileContent: string;
 		if (scriptPart.length > 0) { // There are H2 headers on this page
 			const htmlPart: string = this.changeHtags(transformed_code.code);
 			fileContent = this.combineScriptAndCode(scriptPart, htmlPart);

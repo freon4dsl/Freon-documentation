@@ -2,8 +2,9 @@ export const layoutContent: string =
 `<script lang="ts">
   import { mySections } from './SectionStore.js';
   import type { Section } from '$lib/SectionType.js';
-  import TreeView from '$lib/tree/TreeView.svelte';
+  import SideBar from '$lib/side-bar/SideBar.svelte';
   import Footer from '$lib/footer/Footer.svelte';
+	import { documentationToc } from '$lib/side-bar/TocContent';  
 
   $: current = getCurrent($mySections);
 
@@ -20,7 +21,7 @@ export const layoutContent: string =
 
 <div class="page-container">
   <section class="page-side-nav">
-    <TreeView />
+    <SideBar tocContent={documentationToc}/>
   </section>
 
   <section class="page-content-container">

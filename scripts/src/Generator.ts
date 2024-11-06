@@ -23,8 +23,8 @@ export class Generator {
 		const svelteCreator = new Md2Svelte();
 		svelteCreator.generate(contentFolder, outputFolder);
 
-		console.log("Generating site-nav")
-		new navTreeFiller().generateNavTree(contentFolder, siteNavFile);
+		// console.log("Generating site-nav")
+		// new navTreeFiller().generateNavTree(contentFolder, siteNavFile);
 	}
 }
 

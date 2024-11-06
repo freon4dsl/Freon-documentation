@@ -152,7 +152,7 @@ a {
 	text-decoration: none;
 }
 a:hover {
-	color: var(--theme-colors-link-hover);
+	color: var(--theme-colors-link_hover);
 }
 
 /* Styles for the landing page */
@@ -307,7 +307,9 @@ a:hover {
 /* Styles for every page */
 
 .page-container {
-	 box-sizing: border-box;
+	box-sizing: border-box;
+	color: var(--theme-colors-color);
+	background: var(--theme-colors-bg_text_box);
  }
 .page-side-nav {
 	--top-margin: 3rem;
