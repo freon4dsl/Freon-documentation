@@ -2,7 +2,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 import { compile } from 'mdsvex';
 import { remarkExtractHeaders } from './remark-extract-headers.js';
-import { categoryLayoutContent, pageLayoutContent } from './PageLayoutContent.js';
+import { categoryLayoutContent, pageContent } from './PageLayoutContent.js';
 import { PathCreator } from './PathCreator.js';
 
 const storeContent: string =
@@ -43,6 +43,7 @@ export class Md2Svelte {
 			const outputPath: string = PathCreator.createFolderPath(ignore, folder);
 			const layoutPath: string = outputPath + path.sep + '+layout.svelte';
 			const categoryName: string = PathCreator.getFolderName(folder) + 'Toc';
+			this.createDirIfNotExisting(path.dirname(layoutPath), outputFolder);
 			fs.writeFileSync(outputFolder + path.sep + layoutPath, categoryLayoutContent(categoryName));
 		}
 
@@ -85,7 +86,9 @@ export class Md2Svelte {
 		} else {
 			fileContent = transformed_code.code;
 		}
-		const outputPath: string = PathCreator.createFilePath(ignore, filepath);
+		let outputPath: string = PathCreator.createFilePath(ignore, filepath);
+		// change name from '+page.md' to 'PageContent.svelte'
+		outputPath = path.dirname(outputPath) + path.sep + 'PageContent.svelte';
 		this.createDirIfNotExisting(path.dirname(outputPath), outputFolder);
 		fs.writeFileSync(outputFolder + path.sep + outputPath, fileContent);
 
@@ -97,8 +100,8 @@ export class Md2Svelte {
 				const level: number = (filepath.match(/\\/g) || []).length;
 				if (level !== 3) { // level 3 indicates a category, do not create another +layout.svelte
 					// Create and write the page layout including a page nav
-					const layoutPath: string = path.dirname(outputPath) + path.sep + '+layout.svelte';
-					fs.writeFileSync(outputFolder + path.sep + layoutPath, pageLayoutContent);
+					const layoutPath: string = path.dirname(outputPath) + path.sep + '+page.svelte';
+					fs.writeFileSync(outputFolder + path.sep + layoutPath, pageContent);
 				}
 			}
 		}

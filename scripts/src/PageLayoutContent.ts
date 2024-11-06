@@ -1,7 +1,8 @@
-export const pageLayoutContent: string =
+export const pageContent: string =
 `<script lang="ts">
   import { mySections } from './SectionStore.js';
   import type { Section } from '$lib/SectionType.js';
+  import PageContent from './PageContent.svelte';
 
   $: current = getCurrent($mySections);
 
@@ -17,7 +18,7 @@ export const pageLayoutContent: string =
 </script>
 
 <div class="page-main">
-  <slot />
+  <PageContent />
 </div>
 
 <nav class="page-toc">

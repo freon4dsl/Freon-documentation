@@ -20,7 +20,7 @@ both names refer to the same tool.
 
 There has been some discussion about how to pronounce
 Freon. A native Frisian speaker has been so kind to provide us with the following sound bite. (Thanks, Meinte!)
-<audio controls><source src="../freon - pronunciation.mp3" type="audio/mpeg">Your browser does not support the audio element.</audio>
+<audio controls><source src="../../freon - pronunciation.mp3" type="audio/mpeg">Your browser does not support the audio element.</audio>
 
 ### The Core Framework
 
