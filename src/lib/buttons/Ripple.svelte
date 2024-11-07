@@ -3,7 +3,7 @@
 	import { tweened } from 'svelte/motion';
 	import { backOut } from 'svelte/easing';
 
-	export let x, y, sizeIn, size, speed, rippleBlur;
+	export let x: number, y: number, sizeIn, size: number, speed, rippleBlur: number;
 
 	onMount(() => {
 		rippleOpacity.set(0);

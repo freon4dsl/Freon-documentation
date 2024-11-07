@@ -9,6 +9,17 @@
     .large-screen {
         display: none;
     }
+    /* Styles for the app bar that are different for different screen sizes */
+    .app-bar-small {
+        display: flex;
+        align-items: center;
+        padding: 0 4px 0 6px;
+        flex: 1;
+    }
+    .app-bar-large {
+        display: none;
+    }
+    /* end styles for the app bar */
     /* Styles for the landing page that are different for different screen sizes */
     /* Styles for landing-top section */
     .landing-intro {

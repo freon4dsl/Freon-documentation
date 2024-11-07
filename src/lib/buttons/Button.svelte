@@ -121,7 +121,7 @@
 	button.materialStyle {
 		height: 36px;
 		width: 115px;
-		fontsize: 0.875rem;
+		font-size: 0.875rem;
 		color: var(--theme-colors-button_color);
 		background-color: var(--theme-colors-button_bg_color);
 		border-radius: 0.2rem;
@@ -144,7 +144,8 @@
 		background-color: var(--theme-colors-button_bg_color);
 		border-radius: 2rem;
 	}
-	button.iconStyle:hover button.iconStyle:focus {
+	button.iconStyle:hover,
+	button.iconStyle:focus {
 		outline: none;
 		background-color: var(--theme-colors-button_hover);
 		box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);

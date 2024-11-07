@@ -9,6 +9,17 @@
     .large-screen {
         display: none;
     }
+    /* Styles for the app bar that are different for different screen sizes */
+    .app-bar-small {
+        display: none;
+    }
+    .app-bar-large {
+        display: flex;
+        align-items: center;
+        padding: 0 4px 0 6px;
+        flex: 1;
+    }
+    /* end styles for the app bar */
     /* Styles for button grid */
     .landing-enter-buttons-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
