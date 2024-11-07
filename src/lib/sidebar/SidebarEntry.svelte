@@ -1,11 +1,11 @@
 <script lang="ts">
 	import { page } from '$app/stores';
-	import { menuShown } from '../Store';
+	import { popoverElem } from '../Store';
 	export let name: string;
 	export let path: string;
 
 	function becomingActive() {
-		$menuShown = false;
+		$popoverElem.hidePopover();
 	}
 </script>
 
@@ -15,19 +15,17 @@
 
 <style>
 	span {
-		padding: 0 0 0 0.5em;
-		background: 0 0.1em no-repeat;
-		background-size: 1em 1em;
+		padding: 0 0 0 0.5rem;
+		background: 0 0.1rem no-repeat;
+		background-size: 1rem 1rem;
 		white-space: nowrap;
 	}
 	span.active a {
 		background: var(--theme-colors-active);
-		padding: 0.1em 0.3em 0.1em 0.3em;
-		margin-left: -0.3em;
+		padding: 0.1rem 0.3rem 0.1rem 0.3rem;
+		margin-left: -0.3rem;
 	}
 	.leafText {
-		height: 100%;
-		align-items: center;
 		color: var(--theme-colors-color);
 		font-size: 0.9rem;
 		text-decoration: none;

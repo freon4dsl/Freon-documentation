@@ -31,13 +31,16 @@
 <style>
 	.sidebar-ul {
 			list-style: none;
-			padding-left: 0;
+			padding: 0;
+			margin: 0;
 	}
 	.sidebar-header {
-			font-weight: bold;
-			margin-top: 0.5rem;
+		font-weight: bold;
+		margin-top: 1rem;
 	}
   .sidebar-simple {
-     padding-left: 1rem;
+		font-weight: 520;
+    padding-left: 1rem;
+    padding-top: 0.5rem;
   }
 </style>
