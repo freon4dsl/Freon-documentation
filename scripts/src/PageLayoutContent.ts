@@ -4,6 +4,7 @@ export const pageContent: string =
   import type { Section } from '$lib/SectionType.js';
   import PageContent from './PageContent.svelte';
 
+  let showDetails: boolean = false;
   $: current = getCurrent($mySections);
 
   function getCurrent(internalSections: Section[]): number {
@@ -15,9 +16,36 @@ export const pageContent: string =
     }
     return previous;
   }
+  function toggleTocDetails() {
+    showDetails = !showDetails;
+  }
 </script>
 
 <div class="page-main">
+  <div class='page-toc-small'>
+    <p class='page-toc-small-title'>On this page ...</p>
+    <button class='page-toc-small-expand-button' on:click={() => {toggleTocDetails()}  }>
+      {#if showDetails }
+        <img class='page-toc-small-img' src="/images/upload.png" alt="arrow up"/>
+      {:else}
+        <img class='page-toc-small-img' src="/images/down-arrow.png" alt="arrow down"/>
+      {/if}
+    </button>
+  </div>
+    {#if showDetails }
+      <div class='toc-details'>
+        <ul class="page-ul">
+          {#each $mySections as sec, index}
+            <li class="page-toc-text">
+              <a class:page-visible={index === current} class:page-nonvisible={index !== current} href={sec.ref}>
+                {sec.title}
+              </a>
+            </li>
+          {/each}
+        </ul>
+      </div>
+    {/if}
+
   <PageContent />
 </div>
 
@@ -33,6 +61,13 @@ export const pageContent: string =
     {/each}
   </ul>
 </nav>
+
+
+
+<style>
+
+</style>
+
 `;
 
 export function categoryLayoutContent(contentName: string): string {
