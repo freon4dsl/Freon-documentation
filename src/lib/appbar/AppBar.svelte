@@ -3,8 +3,16 @@
 	import MenuIcon from '$lib/icons/MenuIcon.svelte';
 	import GithubLogo from '$lib/icons/GithubLogo.svelte';
 	import Tooltip from '../buttons/Tooltip.svelte';
-	import { popoverElem } from '$lib/Store';
+	import { popoverElem, popoverCategoryElem, category } from '$lib/Store.js';
 	import PopoverMenu from '$lib/appbar/PopoverMenu.svelte';
+	import PopoverCategoryMenu from '$lib/appbar/PopoverCategoryMenu.svelte';
+	import {
+		demosToc,
+		documentationToc,
+		examplesToc,
+		guiding_PrinciplesToc,
+		tutorialToc
+	} from '$lib/sidebar/SidebarContent.js';
 
 </script>
 
@@ -12,6 +20,7 @@
 <!-- TODO add search mechanism -->
 
 <PopoverMenu />
+<PopoverCategoryMenu />
 
 <div class="app-bar">
 	<div class="app-bar-small">
@@ -26,7 +35,6 @@
 		</Tooltip>
 
 		<div class="title">Freon</div>
-
 	</div>
 
 	<div class='app-bar-large'>
@@ -39,21 +47,55 @@
 		<div >Freon</div>
 		</a>
 		<nav class='main-menu'>
-		<a href="/Documentation/Intro" class="linkLogo">
+			<a href="/Documentation/Intro" class="linkLogo">
 				<h6>Docs</h6>
-		</a>
+			</a>
+			<button
+				class="main-menu-small-expand-button"
+				on:click={()=> {$category=documentationToc; $popoverCategoryElem.showPopover()} }
+			>
+				<img class="main-menu-small-img" src="/images/down-chevron-white.png" alt="arrow down" />
+			</button>
+
 		<a href="/Tutorial/Intro" class="linkLogo">
 				<h6>Tutorial</h6>
 		</a>
+			<button
+				class="main-menu-small-expand-button"
+				on:click={()=> {$category=tutorialToc; $popoverCategoryElem.showPopover()} }
+			>
+				<img class="main-menu-small-img" src="/images/down-chevron-white.png" alt="arrow down" />
+			</button>
+
 		<a href="/Examples/Intro" class="linkLogo">
 				<h6>Examples</h6>
 		</a>
+			<button
+				class="main-menu-small-expand-button"
+				on:click={()=> {$category=examplesToc; $popoverCategoryElem.showPopover()} }
+			>
+				<img class="main-menu-small-img" src="/images/down-chevron-white.png" alt="arrow down" />
+			</button>
+
 		<a href="/Demos/Intro" class="linkLogo">
 				<h6>Demo</h6>
 		</a>
+			<button
+				class="main-menu-small-expand-button"
+				on:click={()=> {$category=demosToc; $popoverCategoryElem.showPopover()} }
+			>
+				<img class="main-menu-small-img" src="/images/down-chevron-white.png" alt="arrow down" />
+			</button>
+
 		<a href="/Guiding_Principles/Intro" class="linkLogo">
 			<h6>Guidelines</h6>
 		</a>
+			<button
+				class="main-menu-small-expand-button"
+				on:click={()=> {$category=guiding_PrinciplesToc; $popoverCategoryElem.showPopover()} }
+			>
+				<img class="main-menu-small-img" src="/images/down-chevron-white.png" alt="arrow down" />
+			</button>
 		</nav>
 	</div>
 
@@ -71,6 +113,7 @@
 </div>
 
 <style>
+
 		.app-bar-button {
 				position: relative;
 				border: solid 1px var(--theme-colors-bg_app_bar);

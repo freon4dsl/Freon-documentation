@@ -64,7 +64,7 @@
     /* Styles for categories */
     .page-main {
         margin-left: 19rem; 	/* width of page-side-nav + left of page-side-nav */
-        margin-right: 19rem; 	/* width of page-toc + right of page-toc */
+        margin-right: 22rem; 	/* width of page-toc + right of page-toc */
         padding: 2rem;
     }
     .page-side-nav {
@@ -84,13 +84,19 @@
         position: fixed;
         top: var(--top-margin);
         right: 2rem;
-        width: 17rem;
+        width: 20rem;
         /*border: var(--theme-colors-list_divider) 1px solid;*/
         height: calc(100vh - var(--pi-footer-height) - var(--top-margin));
         transition:color 0.2s linear;
         /*background-color: var(--theme-colors-bg_color);*/
     }
     .page-toc-small {
+        display: none;
+    }
+    .main-menu-small-expand-button {
+        display: none;
+    }
+    .main-menu-small-img {
         display: none;
     }
 }

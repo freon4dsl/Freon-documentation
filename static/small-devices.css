@@ -88,6 +88,7 @@
         max-height: 1rem;
     }
     .page-toc-small {
+        margin-top: 8px;
         display: flex;
         flex-direction: row;
         border-bottom: solid 1px var(--theme-colors-accent);
@@ -100,4 +101,13 @@
         border: solid 1px var(--theme-colors-bg_color);
     }
     /* end styles for small pages */
+    .main-menu-small-expand-button {
+        background: none;
+        border: var(--theme-colors-bg_app_bar);
+        padding: 0;
+    }
+    .main-menu-small-img {
+        max-width: 0.5rem;
+        max-height: 0.5rem;
+    }
 }
