@@ -1,8 +1,6 @@
 <script lang="ts">
-	import { demosToc, guiding_PrinciplesToc, popoverElem, tutorialToc } from '$lib';
-import { documentationToc } from '$lib/sidebar/SidebarContent.ts';
-import Sidebar from '$lib/sidebar/Sidebar.svelte';
-	import { examplesToc } from '$lib/sidebar/SidebarContent.js';
+	import { demosToc, documentationToc, examplesToc, guiding_PrinciplesToc, popoverElem, tutorialToc } from '$lib';
+	import Sidebar from '$lib/sidebar/Sidebar.svelte';
 
 let sideBarContent = [
 	{
@@ -49,8 +47,12 @@ function changeDetails(index: number) {
 		{#each sideBarContent as content, index}
 		<span class='img-container'>
 			<p class='menu-item' on:click={() => {$popoverElem.hidePopover()} }>{content.title}</p>
-			<button class='expand-button' on:click={() => {changeDetails(index)}  }>
-				<img class='xx' src="/images/down-arrow.png" alt="arrow down"/>
+			<button class='side-bar-expand-button' on:click={() => {changeDetails(index)}  }>
+			{#if content.showDetails }
+				<img class='side-bar-img' src="/images/upload.png" alt="arrow up"/>
+			{:else}
+				<img class='side-bar-img' src="/images/down-arrow.png" alt="arrow down"/>
+			{/if}
 			</button>
 		</span>
 		{#if content.showDetails }
@@ -67,7 +69,7 @@ function changeDetails(index: number) {
 </div>
 
 <style>
-		.expand-button {
+		.side-bar-expand-button {
         margin-right: 32px;
         background: none;
         border: solid 1px var(--theme-colors-bg_color);
@@ -77,11 +79,10 @@ function changeDetails(index: number) {
 				align-items: baseline;
         margin: 16px 4px 0px 8px;
 		}
-		.xx {
+		.side-bar-img {
         max-width: 1rem;
         max-height: 1rem;
 		}
-
     .popover-menu {
         background-color: var(--theme-colors-bg_color);
         overflow: auto;

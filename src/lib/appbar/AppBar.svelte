@@ -82,8 +82,8 @@
 	.main-menu {
 		display: flex;
     align-content: space-between;
+		margin-top: 6px;
 	}
-
 	.linkLogo {
 		margin-right: 8px;
 		margin-left: 8px;

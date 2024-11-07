@@ -1,5 +1,5 @@
-/* Medium devices (landscape tablets and small laptops, 768px and up) */
-@media only screen and (min-width: 768px) {
+/* Medium devices (landscape tablets and small laptops, 769px and up) */
+@media only screen and (min-width: 769px) and (max-width: 1082px) {
     :root {
         font-size: 1rem;
     }
@@ -29,4 +29,36 @@
     .landing-hero-right {
         text-align: center;
     }
+    /* end styles for landing page */
+
+    /* Styles for categories */
+    .page-side-nav {
+        display: none;
+    }
+    .page-main {
+        margin-left: 0; 	/* width of page-side-nav + left of page-side-nav */
+        margin-right: 0; 	/* width of page-toc + right of page-toc */
+        padding: 1rem;
+    }
+    .page-toc {
+        display: none;
+    }
+    /* styles for small pages */
+    .page-toc-small-img {
+        max-width: 1rem;
+        max-height: 1rem;
+    }
+    .page-toc-small {
+        display: flex;
+        flex-direction: row;
+        border-bottom: solid 1px var(--theme-colors-accent);
+    }
+    .page-toc-small-title {
+        flex: 1;
+    }
+    .page-toc-small-expand-button {
+        background: none;
+        border: solid 1px var(--theme-colors-bg_color);
+    }
+    /* end styles for small pages */
 }

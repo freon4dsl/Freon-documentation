@@ -1,5 +1,5 @@
-/* Large devices (laptops/desktops, 1008px and up) */
-@media only screen and (min-width: 1008px) {
+/* Large devices (laptops/desktops, 1083px and up) */
+@media only screen and (min-width: 1083px) {
     :root {
         font-size: 1.0rem;
     }
@@ -60,4 +60,37 @@
         margin: 0.6rem 5rem 0 5rem;
     }
     /* end styles for landing page */
+
+    /* Styles for categories */
+    .page-main {
+        margin-left: 19rem; 	/* width of page-side-nav + left of page-side-nav */
+        margin-right: 19rem; 	/* width of page-toc + right of page-toc */
+        padding: 2rem;
+    }
+    .page-side-nav {
+        --top-margin: 3rem;
+        position: fixed;
+        top: var(--top-margin);
+        left: 2rem;
+        padding: 0.5rem 1rem 1rem 0.5rem;
+        width: 17rem;
+        border: var(--theme-colors-list_divider) 1px solid;
+        overflow-y: auto;
+        background-color: var(--theme-colors-bg_color);
+        height: calc(100vh - var(--pi-footer-height) - var(--top-margin));
+    }
+    .page-toc {
+        --top-margin: 3rem;
+        position: fixed;
+        top: var(--top-margin);
+        right: 2rem;
+        width: 17rem;
+        /*border: var(--theme-colors-list_divider) 1px solid;*/
+        height: calc(100vh - var(--pi-footer-height) - var(--top-margin));
+        transition:color 0.2s linear;
+        /*background-color: var(--theme-colors-bg_color);*/
+    }
+    .page-toc-small {
+        display: none;
+    }
 }
