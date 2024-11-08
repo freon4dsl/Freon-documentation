@@ -2,12 +2,11 @@ import * as fs from 'fs';
 import * as path from 'path';
 import { PathCreator } from './PathCreator.js';
 
-
 /**
- * Identical to /src/lib/sidebar/TocContents, but included here to avoid Node.js errors
+ * Identical to /src/lib/sidebar/TocContentsType, but included here to avoid Node.js errors
  */
-class TocContents {
-	constructor(name: string, path: string, content: TocContents[]) {
+class TocContentsType {
+	constructor(name: string, path: string, content: TocContentsType[]) {
 		this.name = name;
 		this.path = path;
 		this.content = content;
@@ -15,7 +14,22 @@ class TocContents {
 
 	name: string;
 	path?: string;
-	content?: TocContents[];
+	content?: TocContentsType[];
+}
+
+/**
+ * Identical to /src/lib/sidebar/CategoryInfoType, except here the toc is a string, not a TocContentsType
+ */
+class CategoryInfoType {
+	constructor(name: string, path: string, toc: string) {
+		this.name = name;
+		this.path = path;
+		this.toc = toc;
+	}
+
+	name: string;
+	path: string;
+	toc: string;
 }
 
 export class SidebarFiller {
@@ -29,7 +43,8 @@ export class SidebarFiller {
 			console.error(this, "cannot find folder '" + contentFolder + "'");
 			return null;
 		}
-		const allTocs: TocContents[] = [];
+		const allTocs: TocContentsType[] = [];
+		const allCategories: CategoryInfoType[] = [];
 		// get all folders in the content: these are the categories
 		const files: string[] = fs.readdirSync(contentFolder).sort();
 		for (const file of files) {
@@ -38,28 +53,36 @@ export class SidebarFiller {
 			if (stat.isDirectory()) {
 				// found a category: create a TocContent entry
 				const name: string = this.createName(path.parse(path.relative(contentFolder, folderPath)).name);
-
-				const toc: TocContents = new TocContents(name, '/' + PathCreator.createFilePath(contentFolder, folderPath), [])
+				const _path: string = '/' + PathCreator.createFilePath(contentFolder, folderPath);
+				const toc: TocContentsType = new TocContentsType(name, _path, [])
 				// add all subfolders to the result
 				toc.content.push(...this.readSubcategories(folderPath, contentFolder));
 				// add the category to allTocs
 				allTocs.push(toc);
+				// also create a categoryInfo entry
+				allCategories.push({name: name, path: _path, toc: PathCreator.getTocName(toc.path)})
 			}
 		}
 		// write allTocs to an output file
-		this.writeOutput(allTocs, outputFile);
+		this.writeOutput(allTocs, allCategories, outputFile);
 	}
 
-	private writeOutput(tocs: TocContents[], outputFile: string) {
+	private writeOutput(tocs: TocContentsType[], allCategories: CategoryInfoType[], outputFile: string) {
 		// create the string for each toc
 		const tocStr: string[] = [];
 		for (const toc of tocs) {
-			const categoryName: string = PathCreator.getFolderName(toc.path) + 'Toc';
-			tocStr.push(`export const ${categoryName}: TocContents = ${this.tocToString(toc, 1)};`)
+			const categoryName: string = PathCreator.getTocName(toc.path);
+			tocStr.push(`export const ${categoryName}: TocContentsType = ${this.tocToString(toc, 1)};`)
 		}
 		// start template
-		const navContent: string = `import type { TocContents } from '$lib/sidebar/TocContents';
-		${ tocStr.map(str => str).join('\n') }`;
+		const navContent: string = `import { type CategoryInfoType, type TocContentsType } from '$lib/sidebar/TocContentsType';
+		
+${ tocStr.map(str => str).join('\n') }
+		
+export const allCategories: CategoryInfoType[] = [
+	${allCategories.map(cat => `{name: '${cat.name}', path: '${cat.path}', toc: ${cat.toc}}`).join(',\n\t\t')}
+];
+`;
 		// end template
 
 		// console.log(navContent)
@@ -74,15 +97,16 @@ export class SidebarFiller {
 	 * @private
 	 * @param folder
 	 * @param ignore
+	 * @param level
 	 */
 
-	private readFolder(folder: string, ignore: string, level: number): TocContents[] {
+	private readFolder(folder: string, ignore: string, level: number): TocContentsType[] {
 		// console.log(`readFolder folder ${folder}`)
 		if (!fs.lstatSync(folder).isDirectory()) {
 			console.error(this, "'" + folder + "' is not a folder");
 			return null;
 		}
-		const content: TocContents[] = [];
+		const content: TocContentsType[] = [];
 		// get content of the folder and sort the names alphabetically
 		const files = fs.readdirSync(folder).sort();
 		for (const file of files) {
@@ -94,20 +118,20 @@ export class SidebarFiller {
 			} else if (file === '+page.md' && level !== 0) {
 				// console.log("found route: " + '/' + PathCreator.createFilePath(ignore, folderPath))
 				const name: string = this.createName(path.parse(path.relative(ignore, folder)).name);
-				const toc: TocContents = new TocContents(name, '/' + PathCreator.createFilePath(ignore, folder), [])
+				const toc: TocContentsType = new TocContentsType(name, '/' + PathCreator.createFilePath(ignore, folder), [])
 				content.push(toc);
 			}
 		}
 		return content;
 	}
 
-	private readSubcategories(folder: string, ignore: string): TocContents[] {
+	private readSubcategories(folder: string, ignore: string): TocContentsType[] {
 		// console.log(`readSubcategory folder ${folder}`)
 		if (!fs.lstatSync(folder).isDirectory()) {
 			console.error(this, "'" + folder + "' is not a folder");
 			return null;
 		}
-		const content: TocContents[] = [];
+		const content: TocContentsType[] = [];
 		// get content of the folder and sort the names alphabetically
 		const files = fs.readdirSync(folder).sort();
 		for (const file of files) {
@@ -117,7 +141,7 @@ export class SidebarFiller {
 				// Found subcategory: create a TocContent entry
 				// console.log("Found subcategory: " + '/' + PathCreator.createFilePath(ignore, folderPath))
 				const name: string = this.createName(path.parse(path.relative(ignore, folderPath)).name);
-				const toc: TocContents = new TocContents(name, '/' + PathCreator.createFilePath(ignore, folderPath), [])
+				const toc: TocContentsType = new TocContentsType(name, '/' + PathCreator.createFilePath(ignore, folderPath), [])
 				// add all subfolders to the result
 				toc.content.push(...this.readFolder(folderPath, ignore, 0));
 				content.push(toc);
@@ -152,7 +176,7 @@ export class SidebarFiller {
 	 * @param indent
 	 * @private
 	 */
-	private tocToString(result: TocContents, indent: number): string {
+	private tocToString(result: TocContentsType, indent: number): string {
 		if (indent > 10) return '';
 		if (result !== null) {
 			let prefix: string = '\n';

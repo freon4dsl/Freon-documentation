@@ -3,14 +3,15 @@
 </script>
 
 <div class="landing">
-	<h1>Build Your Own Language Editor for the Web – Empower Your Backend with Ease!</h1>
+	<h1>Build Your Own Language Editor for the Web</h1>
+	<h2>Empower Your Backend with Ease!</h2>
 
 	<section class="landing-top">
 		<div class="landing-intro">
 			<div class="landing-intro-child">
 				<div class="landing-name-logo">
 					<div class="landing-image-holder"><img src="freonlogo.png" alt="Freon Logo" style="width:50px; margin-top: 10px;" /></div>
-					<h1>Freon</h1>
+					<h1 cla>Freon</h1>
 				</div>
 			</div>
 

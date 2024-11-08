@@ -32,9 +32,6 @@
     .landing-intro {
         margin-right: 0.5rem;
     }
-    .landing-started {
-        font-size: 2em;
-    }
     .landing-arrow {
         color: var(--theme-colors-accent);
     }
@@ -92,6 +89,7 @@
         display: flex;
         flex-direction: row;
         border-bottom: solid 1px var(--theme-colors-accent);
+        margin-bottom: 4px;
     }
     .page-toc-small-title {
         flex: 1;

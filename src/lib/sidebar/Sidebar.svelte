@@ -1,10 +1,10 @@
 <script lang="ts">
 	import SidebarEntry from '$lib/sidebar/SidebarEntry.svelte';
-	import type { TocContents } from '$lib/sidebar/TocContents';
+	import type { TocContentsType } from '$lib/sidebar/TocContentsType';
 
-	export let tocContent: TocContents;
+	export let tocContent: TocContentsType;
 
-	let categoryContent: TocContents[] = tocContent.content ? tocContent.content : [];
+	let categoryContent: TocContentsType[] = tocContent.content ? tocContent.content : [];
 </script>
 
 <nav>

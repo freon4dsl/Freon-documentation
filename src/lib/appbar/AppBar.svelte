@@ -7,13 +7,13 @@
 	import PopoverMenu from '$lib/appbar/PopoverMenu.svelte';
 	import PopoverCategoryMenu from '$lib/appbar/PopoverCategoryMenu.svelte';
 	import {
-		demosToc,
-		documentationToc,
-		examplesToc,
-		guiding_PrinciplesToc,
-		tutorialToc
+		allCategories
 	} from '$lib/sidebar/SidebarContent.js';
 
+	function expandClick(index:number) {
+		$category=allCategories[index].toc;
+		$popoverCategoryElem.showPopover();
+	}
 </script>
 
 <!-- The AppBar is always shown at the top of the viewport -->
@@ -47,55 +47,17 @@
 		<div >Freon</div>
 		</a>
 		<nav class='main-menu'>
-			<a href="/Documentation/Intro" class="linkLogo">
-				<h6>Docs</h6>
-			</a>
-			<button
-				class="main-menu-small-expand-button"
-				on:click={()=> {$category=documentationToc; $popoverCategoryElem.showPopover()} }
-			>
-				<img class="main-menu-small-img" src="/images/down-chevron-white.png" alt="arrow down" />
-			</button>
-
-		<a href="/Tutorial/Intro" class="linkLogo">
-				<h6>Tutorial</h6>
-		</a>
-			<button
-				class="main-menu-small-expand-button"
-				on:click={()=> {$category=tutorialToc; $popoverCategoryElem.showPopover()} }
-			>
-				<img class="main-menu-small-img" src="/images/down-chevron-white.png" alt="arrow down" />
-			</button>
-
-		<a href="/Examples/Intro" class="linkLogo">
-				<h6>Examples</h6>
-		</a>
-			<button
-				class="main-menu-small-expand-button"
-				on:click={()=> {$category=examplesToc; $popoverCategoryElem.showPopover()} }
-			>
-				<img class="main-menu-small-img" src="/images/down-chevron-white.png" alt="arrow down" />
-			</button>
-
-		<a href="/Demos/Intro" class="linkLogo">
-				<h6>Demo</h6>
-		</a>
-			<button
-				class="main-menu-small-expand-button"
-				on:click={()=> {$category=demosToc; $popoverCategoryElem.showPopover()} }
-			>
-				<img class="main-menu-small-img" src="/images/down-chevron-white.png" alt="arrow down" />
-			</button>
-
-		<a href="/Guiding_Principles/Intro" class="linkLogo">
-			<h6>Guidelines</h6>
-		</a>
-			<button
-				class="main-menu-small-expand-button"
-				on:click={()=> {$category=guiding_PrinciplesToc; $popoverCategoryElem.showPopover()} }
-			>
-				<img class="main-menu-small-img" src="/images/down-chevron-white.png" alt="arrow down" />
-			</button>
+			{#each allCategories as cat, index}
+				<a href="{cat.path}" class="linkLogo">
+					<h6>{cat.name}</h6>
+				</a>
+				<button
+					class="main-menu-small-expand-button"
+					on:click={() => expandClick(index) }
+				>
+					<img class="main-menu-small-img" src="/images/down-chevron-white.png" alt="arrow down" />
+				</button>
+			{/each}
 		</nav>
 	</div>
 

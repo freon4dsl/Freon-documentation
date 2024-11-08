@@ -3,6 +3,7 @@ export const pageContent: string =
   import { mySections } from './SectionStore.js';
   import type { Section } from '$lib/SectionType.js';
   import PageContent from './PageContent.svelte';
+  import Breadcrumb from '$lib/breadcrumbs/Breadcrumb.svelte';
 
   let showDetails: boolean = false;
   $: current = getCurrent($mySections);
@@ -46,6 +47,7 @@ export const pageContent: string =
       </div>
     {/if}
 
+	<Breadcrumb />
   <PageContent />
 </div>
 

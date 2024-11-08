@@ -42,8 +42,8 @@ export class Md2Svelte {
 			// Create and write the layout including a category sidebar
 			const outputPath: string = PathCreator.createFolderPath(ignore, folder);
 			const layoutPath: string = outputPath + path.sep + '+layout.svelte';
-			const categoryName: string = PathCreator.getFolderName(folder) + 'Toc';
-			this.createDirIfNotExisting(path.dirname(layoutPath), outputFolder);
+			const categoryName: string = PathCreator.getTocName(folder);
+			PathCreator.createDirIfNotExisting(path.dirname(layoutPath), outputFolder);
 			fs.writeFileSync(outputFolder + path.sep + layoutPath, categoryLayoutContent(categoryName));
 		}
 
@@ -89,7 +89,7 @@ export class Md2Svelte {
 		let outputPath: string = PathCreator.createFilePath(ignore, filepath);
 		// change name from '+page.md' to 'PageContent.svelte'
 		outputPath = path.dirname(outputPath) + path.sep + 'PageContent.svelte';
-		this.createDirIfNotExisting(path.dirname(outputPath), outputFolder);
+		PathCreator.createDirIfNotExisting(path.dirname(outputPath), outputFolder);
 		fs.writeFileSync(outputFolder + path.sep + outputPath, fileContent);
 
 		if (scriptPart.length > 0) { // There are H2 headers on this page
@@ -163,14 +163,5 @@ export class Md2Svelte {
 		}
 	}
 
-	private createDirIfNotExisting(dir: string, outputFolder: string) {
-		const parts = dir.split(path.sep);
-		let current = outputFolder;
-		for (const part of parts) {
-			current = current + '/' + part;
-			if (!fs.existsSync(current)) {
-				fs.mkdirSync(current);
-			}
-		}
-	}
+
 }

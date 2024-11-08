@@ -4,22 +4,19 @@
 	} from '$lib';
 	import Sidebar from '$lib/sidebar/Sidebar.svelte';
 	import { category } from '$lib';
-	import type { TocContents } from '$lib/sidebar/TocContents';
+	import type { TocContentsType } from '$lib/sidebar/TocContentsType';
 
-	let content: TocContents;
+	let content: TocContentsType;
 	$: {
 		content = $category;
-		console.log(content.name)
 	}
 </script>
 
 <div bind:this={$popoverCategoryElem} popover='auto' id='category-menu' class='popover-menu'>
 	<nav >
-		{$category.path}
 			<div class='sub-menu' on:click={() => {$popoverCategoryElem.hidePopover()} } role='dialog'   >
 				<Sidebar tocContent={content} />
 			</div>
-		{content.name}
 	</nav>
 	<button class='close-button' popovertarget='category-menu' popovertargetaction='hide'>
 		<img src="/images/close-icon.png" style="color: red" alt="Freon Logo" height="24px"/>

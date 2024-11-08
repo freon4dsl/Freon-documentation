@@ -1,5 +1,6 @@
-import type { TocContents } from '$lib/sidebar/TocContents';
-		export const documentationToc: TocContents = 
+import { type CategoryInfoType, type TocContentsType } from '$lib/sidebar/TocContentsType';
+		
+export const documentationToc: TocContentsType = 
    { name: 'Documentation', path: '/Documentation',
      content: [
       { name: 'Intro', path: '/Documentation/Intro',
@@ -9,6 +10,12 @@ import type { TocContents } from '$lib/sidebar/TocContents';
          { name: 'Three Levels of Customization', path: '/Documentation/Intro/Three_Levels_of_Customization'},
          { name: 'Name Change', path: '/Documentation/Intro/Name_Change'},
          { name: 'Future Developments', path: '/Documentation/Intro/Future_Developments'},
+       ]},
+      { name: 'Getting Started', path: '/Documentation/Getting_Started',
+        content: [
+         { name: 'Installation', path: '/Documentation/Getting_Started/Installation'},
+         { name: 'Project Structure', path: '/Documentation/Getting_Started/Project_Structure'},
+         { name: 'Calling the Generator', path: '/Documentation/Getting_Started/Calling_the_Generator'},
        ]},
       { name: 'Developing a Language', path: '/Documentation/Developing_a_Language',
         content: [
@@ -64,36 +71,39 @@ import type { TocContents } from '$lib/sidebar/TocContents';
          { name: 'Source Code Documentation', path: '/Documentation/Under_the_Hood/Source_Code_Documentation'},
        ]},
     ]};
-export const tutorialToc: TocContents = 
+export const tutorialToc: TocContentsType = 
    { name: 'Tutorial', path: '/Tutorial',
      content: [
       { name: 'Intro', path: '/Tutorial/Intro'},
     ]};
-export const examplesToc: TocContents = 
+export const examplesToc: TocContentsType = 
    { name: 'Examples', path: '/Examples',
      content: [
       { name: 'Intro', path: '/Examples/Intro'},
     ]};
-export const demosToc: TocContents = 
+export const demosToc: TocContentsType = 
    { name: 'Demos', path: '/Demos',
      content: [
       { name: 'Intro', path: '/Demos/Intro'},
     ]};
-export const guiding_PrinciplesToc: TocContents = 
-   { name: 'Guiding Principles', path: '/Guiding_Principles',
+export const aboutToc: TocContentsType = 
+   { name: 'About', path: '/About',
      content: [
-      { name: 'Intro', path: '/Guiding_Principles/Intro'},
-      { name: 'Our Philosophy', path: '/Guiding_Principles/Our_Philosophy'},
-      { name: 'Models and Model Units', path: '/Guiding_Principles/Models_and_Model_Units'},
+      { name: 'Intro', path: '/About/Intro'},
+      { name: 'Guiding Principles', path: '/About/Guiding_Principles',
+        content: [
+         { name: 'Intro', path: '/About/Guiding_Principles/Intro'},
+         { name: 'Our Philosophy', path: '/About/Guiding_Principles/Our_Philosophy'},
+         { name: 'Models and Model Units', path: '/About/Guiding_Principles/Models_and_Model_Units'},
+       ]},
+      { name: 'Release Notes', path: '/About/Release_Notes'},
+      { name: 'About', path: '/About/About'},
     ]};
-export const getting_StartedToc: TocContents = 
-   { name: 'Getting Started', path: '/Getting_Started',
-     content: [
-      { name: 'Installation', path: '/Getting_Started/Installation'},
-      { name: 'Project Structure', path: '/Getting_Started/Project_Structure'},
-      { name: 'Calling the Generator', path: '/Getting_Started/Calling_the_Generator'},
-    ]};
-export const release_NotesToc: TocContents = 
-   { name: 'Release Notes', path: '/Release_Notes'};
-export const aboutToc: TocContents = 
-   { name: 'About', path: '/About'};
+		
+export const allCategories: CategoryInfoType[] = [
+	{name: 'Documentation', path: '/Documentation', toc: documentationToc},
+		{name: 'Tutorial', path: '/Tutorial', toc: tutorialToc},
+		{name: 'Examples', path: '/Examples', toc: examplesToc},
+		{name: 'Demos', path: '/Demos', toc: demosToc},
+		{name: 'About', path: '/About', toc: aboutToc}
+];

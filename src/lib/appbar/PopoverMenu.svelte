@@ -1,44 +1,24 @@
 <script lang="ts">
-	import { demosToc, documentationToc, examplesToc, guiding_PrinciplesToc, popoverElem, tutorialToc } from '$lib';
+	import { allCategories, popoverElem } from '$lib';
 	import Sidebar from '$lib/sidebar/Sidebar.svelte';
+	import type { SidebarContentType } from '$lib/appbar/SidebarContentType';
 
-let sideBarContent = [
-	{
-		title: 'Documentation',
-		tocContent: documentationToc,
-		showDetails: false
-	},
-	{
-		title: 'Tutorial',
-		tocContent: tutorialToc,
-		showDetails: false
-	},
-	{
-		title: 'Examples',
-		tocContent: examplesToc,
-		showDetails: false
-	},
-	{
-		title: 'Demo',
-		tocContent: demosToc,
-		showDetails: false
-	},
-	{
-		title: 'Guidelines',
-		tocContent: guiding_PrinciplesToc,
-		showDetails: false
-	}
-];
 
-function changeDetails(index: number) {
-	for (let i = 0; i < 5; i++) {
-		if (i === index) {
-			sideBarContent[i].showDetails = !sideBarContent[i].showDetails;
-		} else {
-			sideBarContent[i].showDetails = false;
+	let sideBarContent: SidebarContentType[] = [];
+
+	allCategories.forEach(cat => {
+		sideBarContent.push({title: cat.name, tocContent: cat.toc, showDetails: false});
+	})
+
+	function changeDetails(index: number) {
+		for (let i = 0; i < 5; i++) {
+			if (i === index) {
+				sideBarContent[i].showDetails = !sideBarContent[i].showDetails;
+			} else {
+				sideBarContent[i].showDetails = false;
+			}
 		}
 	}
-}
 
 </script>
 
@@ -46,7 +26,9 @@ function changeDetails(index: number) {
 	<nav >
 		{#each sideBarContent as content, index}
 		<span class='img-container'>
-			<p class='menu-item' on:click={() => {$popoverElem.hidePopover()} }>{content.title}</p>
+			<!-- svelte-ignore a11y-no-noninteractive-element-interactions-->
+			<!-- svelte-ignore a11y-click-events-have-key-events -->
+			<span class='menu-item'  role='contentinfo' on:click={() => {$popoverElem.hidePopover()}}>{content.title}</span>
 			<button class='side-bar-expand-button' on:click={() => {changeDetails(index)}  }>
 			{#if content.showDetails }
 				<img class='side-bar-img' src="/images/upload.png" alt="arrow up"/>

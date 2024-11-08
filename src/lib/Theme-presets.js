@@ -1,8 +1,8 @@
-const FRE_LIGHT = '#FEF7DC'; // a very light yellow
+const FRE_LIGHT = '#FFFDF5'; // a very light yellow
 const FRE_COLOR2 = '#FDE281';
 const FRE_COLOR3 = '#FCCB1A';
 const FRE_COLOR4 = '#B08A03';
-const FRE_DARK = '#342B09'; // darkbrown
+const FRE_DARK = '#272007'; // darkbrown
 const FRE_ACCENT = '#c94117';
 
 /* todo select only the values that are being used, and remove others */
@@ -10,6 +10,8 @@ export const themePresets = [
 	{
 		name: 'light',
 		colors: {
+			color2: FRE_COLOR2,
+			color3: FRE_COLOR3,
 			color: FRE_DARK /* Primary text color */,
 			inverse_color: FRE_LIGHT /* Text color on non_normal background */,
 			bg_app_bar: FRE_DARK /* Color of header and footer background */,

@@ -1,4 +1,5 @@
 import path from 'path';
+import fs from 'fs';
 
 export class PathCreator {
 
@@ -32,11 +33,25 @@ export class PathCreator {
 		// remove the numbering
 		pathStr = pathStr.replace(/[0-9]+_/g, '');
 		// remove any spaces
-		pathStr = pathStr.replace(/ /g, '');
+		return pathStr.replace(/ /g, '');
+	}
+
+	static getTocName(filepath: string) {
+		let pathStr: string = this.getFolderName(filepath);
 		if (pathStr.length > 0) {
-			return pathStr[0].toLowerCase() + pathStr.substring(1);
-		} else {
-			return pathStr;
+			pathStr = pathStr[0].toLowerCase() + pathStr.substring(1);
+		}
+		return pathStr + 'Toc';
+	}
+
+	static createDirIfNotExisting(dir: string, outputFolder: string) {
+		const parts = dir.split(path.sep);
+		let current = outputFolder;
+		for (const part of parts) {
+			current = current + '/' + part;
+			if (!fs.existsSync(current)) {
+				fs.mkdirSync(current);
+			}
 		}
 	}
 }
