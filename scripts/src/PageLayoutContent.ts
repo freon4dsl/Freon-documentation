@@ -1,7 +1,7 @@
 export const pageContent: string =
 `<script lang="ts">
   import { mySections } from './SectionStore.js';
-  import type { Section } from '$lib/SectionType.js';
+  import type { Section } from '$lib/section/SectionType.js';
   import PageContent from './PageContent.svelte';
   import Breadcrumb from '$lib/breadcrumbs/Breadcrumb.svelte';
 
@@ -63,13 +63,6 @@ export const pageContent: string =
     {/each}
   </ul>
 </nav>
-
-
-
-<style>
-
-</style>
-
 `;
 
 export function categoryLayoutContent(contentName: string): string {

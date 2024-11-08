@@ -35,18 +35,3 @@
 		{/if}
 	{/each}
 </div>
-
-<style>
-	.breadcrumb {
-		font-size: 0.8rem;
-	}
-	.breadcrumb a {
-		display: inline-block;
-		color: var(--theme-colors-accent);
-		text-decoration: none;
-	}
-
-	.breadcrumb .label {
-		color: var(--theme-colors-color);
-	}
-</style>

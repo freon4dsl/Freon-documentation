@@ -2,7 +2,7 @@
 	<title>About</title>
 </svelte:head>
 
-<div class="content">
+<div class="about-content">
 	<h1>About this site</h1>
 
 	<p>
@@ -20,11 +20,3 @@
 		>).
 	</p>
 </div>
-
-<style>
-	.content {
-		width: 100%;
-		max-width: var(--column-width);
-		margin: var(--column-margin-top) auto 0 auto;
-	}
-</style>

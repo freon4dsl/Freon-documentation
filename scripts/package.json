@@ -12,6 +12,6 @@
 		"typerExample": "cd ../code-examples/TyperExample && npm run generate && cd ../../scripts/",
 		"embedme": "embedme --silent --source-root ../code-examples \"../docu-content/**/*.md\"",
 		"embedExamples": "npm run generateExamples && npm run embedme",
-		"buildSite": "npm run embedExamples && tsc && node dist/Generator.js "
+		"buildSite": "npm run embedExamples && tsc && node dist/Generator.js"
 	}
 }

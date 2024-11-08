@@ -27,20 +27,3 @@
 		{/each}
 	</ul>
 </nav>
-
-<style>
-	.sidebar-ul {
-		list-style: none;
-		padding: 0;
-		margin: 0;
-	}
-	.sidebar-header {
-		font-weight: bold;
-		margin-top: 1rem;
-	}
-	.sidebar-simple {
-		font-weight: 520;
-		padding-left: 1rem;
-		padding-top: 0.5rem;
-	}
-</style>

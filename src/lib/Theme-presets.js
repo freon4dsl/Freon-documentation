@@ -65,7 +65,7 @@ export const themePresets = [
 			tooltip_color: 'white',
 			tooltip_background: 'red',
 			/* Navigation Tree */
-			active: 'white',
+			active: FRE_COLOR2,
 			/* Syntax Highlighting */
 			code_color: '#393A34',
 			code_background: '#C1DEF1',

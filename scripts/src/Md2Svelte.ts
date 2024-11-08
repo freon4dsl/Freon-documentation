@@ -151,7 +151,7 @@ export class Md2Svelte {
 		}
 		if (headerInfo.length > 0) {
 			return `<script lang="ts">
-							import SectionComponent from '$lib/SectionComponent.svelte';
+							import SectionComponent from '$lib/section/SectionComponent.svelte';
 							import {mySections} from './SectionStore.js';
 							$mySections = [
 																${headerInfo.map((hh) => `${hh}`).join(',\n')}

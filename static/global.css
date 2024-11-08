@@ -1,6 +1,7 @@
 @import 'small-devices.css';
 @import 'medium-devices.css';
 @import 'large-devices.css';
+@import 'lib.css';
 * {
 	box-sizing: border-box;
 }
@@ -87,7 +88,7 @@
 	--theme-colors-table_heading: #8ed4c6;
 	--theme-colors-link: #DE6B48;
 	--theme-colors-link_hover: #B08A03;
-	--theme-colors-active: 'white'; /* active leaf/branch in nav tree */
+	--theme-colors-active: #FDE281; /* active leaf/branch in nav tree */
 	--font-mono: 'Fira Mono', monospace;
 	--column-width: 62rem;
 	--max-image-width: 54rem;
@@ -155,10 +156,13 @@ a {
 a:hover {
 	color: var(--theme-colors-link_hover);
 }
-.content-box {
-	background-color: var(--theme-colors-bg_color);
+.main-window {
+	margin-top: var(--pi-header-height);
+	margin-bottom: var(--pi-footer-height);
+	position: absolute;
+	width: 100%;
+	background: var(--theme-colors-bg_color);
 }
-
 /* Styles for the landing page */
 .landing-started a {
 	color: var(--theme-colors-accent);
@@ -353,5 +357,10 @@ a:hover {
 	font-weight: 320;
 }
 /* end styles for every page */
-
+/* styles for About */
+.about-content {
+	width: 100%;
+	max-width: var(--column-width);
+	margin: var(--column-margin-top) auto 0 auto;
+}
 

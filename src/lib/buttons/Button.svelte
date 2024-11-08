@@ -91,7 +91,7 @@
 
 <button
 	on:click
-	class={myStyle}
+	class="{myStyle} rippleButton"
 	bind:this={rippleBtn}
 	on:touchstart={(e) => handleClick(e.touches[0], 'touch')}
 	on:mousedown={(e) => handleClick(e, 'click')}
@@ -105,73 +105,3 @@
 		{/each}
 	</svg>
 </button>
-
-<style>
-	button {
-		border: none;
-		font-weight: 500;
-		max-width: 100%;
-		padding: 0;
-		position: relative;
-		cursor: pointer;
-		transition: 200ms all ease-out;
-		overflow: hidden;
-		box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-	}
-	button.materialStyle {
-		height: 36px;
-		width: 115px;
-		font-size: 0.875rem;
-		color: var(--theme-colors-button_color);
-		background-color: var(--theme-colors-button_bg_color);
-		border-radius: 0.2rem;
-	}
-	button.materialStyle:hover,
-	button.materialStyle:focus {
-		outline: none;
-		background-color: var(--theme-colors-button_hover);
-		box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-	}
-	button.materialStyle:active {
-		outline: none;
-		background-color: var(--theme-colors-button_active);
-		box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-	}
-	button.iconStyle {
-		height: 24px;
-		width: 24px;
-		color: var(--theme-colors-button_color);
-		background-color: var(--theme-colors-button_bg_color);
-		border-radius: 2rem;
-	}
-	button.iconStyle:hover,
-	button.iconStyle:focus {
-		outline: none;
-		background-color: var(--theme-colors-button_hover);
-		box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-	}
-	button.iconStyle:active {
-		outline: none;
-		background-color: var(--theme-colors-button_active);
-		box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-	}
-	span {
-		position: relative;
-		height: 100%;
-		width: 100%;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		padding: 0;
-		z-index: 1;
-	}
-	svg {
-		height: 100%;
-		pointer-events: none;
-		position: absolute;
-		top: 0;
-		left: 0;
-		z-index: 0;
-		width: 100%;
-	}
-</style>
