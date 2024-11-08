@@ -6,12 +6,10 @@
 	import { popoverElem, popoverCategoryElem, category } from '$lib/Store.js';
 	import PopoverMenu from '$lib/appbar/PopoverMenu.svelte';
 	import PopoverCategoryMenu from '$lib/appbar/PopoverCategoryMenu.svelte';
-	import {
-		allCategories
-	} from '$lib/sidebar/SidebarContent.js';
+	import { allCategories } from '$lib/sidebar/SidebarContent.js';
 
-	function expandClick(index:number) {
-		$category=allCategories[index].toc;
+	function expandClick(index: number) {
+		$category = allCategories[index].toc;
 		$popoverCategoryElem.showPopover();
 	}
 </script>
@@ -27,9 +25,14 @@
 		<!-- this button is shown only when the viewport is small -->
 		<!-- it is used to open the left panel which shows the navigator -->
 		<Tooltip tip="Hide/show content tree" bottom>
-			<button class='app-bar-button' on:click={()=> {$popoverElem.togglePopover()} }>
-				<span class='button-content'>
-				<MenuIcon />
+			<button
+				class="app-bar-button"
+				on:click={() => {
+					$popoverElem.togglePopover();
+				}}
+			>
+				<span class="button-content">
+					<MenuIcon />
 				</span>
 			</button>
 		</Tooltip>
@@ -37,24 +40,21 @@
 		<div class="title">Freon</div>
 	</div>
 
-	<div class='app-bar-large'>
+	<div class="app-bar-large">
 		<a href="https://www.freon4dsl.dev" class="linkLogo">
 			<Tooltip tip="home" bottom>
 				<img src="/freonlogo.png" alt="Freon Logo" height="24" />
 			</Tooltip>
 		</a>
 		<a href="/" class="title">
-		<div >Freon</div>
+			<div>Freon</div>
 		</a>
-		<nav class='main-menu'>
+		<nav class="main-menu">
 			{#each allCategories as cat, index}
-				<a href="{cat.path}" class="linkLogo">
+				<a href={cat.path} class="linkLogo">
 					<h6>{cat.name}</h6>
 				</a>
-				<button
-					class="main-menu-small-expand-button"
-					on:click={() => expandClick(index) }
-				>
+				<button class="main-menu-small-expand-button" on:click={() => expandClick(index)}>
 					<img class="main-menu-small-img" src="/images/down-chevron-white.png" alt="arrow down" />
 				</button>
 			{/each}
@@ -75,18 +75,17 @@
 </div>
 
 <style>
-
-		.app-bar-button {
-				position: relative;
-				border: solid 1px var(--theme-colors-bg_app_bar);
-				padding: 0;
-		}
-    .button-content {
-			background-color: var(--theme-colors-bg_app_bar);
-    }
+	.app-bar-button {
+		position: relative;
+		border: solid 1px var(--theme-colors-bg_app_bar);
+		padding: 0;
+	}
+	.button-content {
+		background-color: var(--theme-colors-bg_app_bar);
+	}
 	.main-menu {
 		display: flex;
-    align-content: space-between;
+		align-content: space-between;
 		margin-top: 6px;
 	}
 	.linkLogo {
@@ -94,9 +93,9 @@
 		margin-left: 8px;
 	}
 	.app-bar {
-    display: flex;
-    align-items: center;
-    padding: 0 4px 0 6px;
+		display: flex;
+		align-items: center;
+		padding: 0 4px 0 6px;
 		height: var(--pi-header-height);
 		color: var(--theme-colors-text_app_bar);
 		background: var(--theme-colors-bg_app_bar);

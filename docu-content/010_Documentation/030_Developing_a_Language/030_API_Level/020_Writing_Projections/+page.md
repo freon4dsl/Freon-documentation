@@ -31,7 +31,6 @@ defined in `~/picode/editor/gen/<yourLanguageName>ProjectionDefault`.
 ```ts
 // TutorialLanguage/src/editor/CustomEntityModelProjection.ts#L40-L43
 
-}
 
 ```
 

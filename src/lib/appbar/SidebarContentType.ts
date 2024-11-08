@@ -4,4 +4,4 @@ export type SidebarContentType = {
 	title: string;
 	tocContent: TocContentsType;
 	showDetails: boolean;
-}
+};

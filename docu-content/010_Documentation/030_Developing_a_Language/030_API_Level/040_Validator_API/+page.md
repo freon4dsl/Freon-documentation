@@ -51,9 +51,6 @@ The result of the above should look something like this:
 ```ts
 // TutorialLanguage/src/validator/CustomEntityModelValidator.ts#L9-L42
 
-{
-  errorList: FreError[] = [];
-}
 
 ```
 

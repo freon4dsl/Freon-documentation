@@ -33,12 +33,12 @@ reverse order: A-B-C conforms to C-B-A.
 ```ts
 // TutorialLanguage/src/typer/CustomEntityModelTyperPart.ts#L32-L48
 
-    return null;
-  }
+		return null;
+	}
 
-  public getSuperTypes(type: FreType): FreType[] | null {
-    return null;
-  }
+	public getSuperTypes(type: FreType): FreType[] | null {
+		return null;
+	}
 }
 
 ```

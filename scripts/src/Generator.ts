@@ -13,13 +13,12 @@ export class Generator {
 		// Check all references to other markdown files and gather the correct routes to these files in one sweep
 		const linkChecker: LinkChecker = new LinkChecker();
 		linkChecker.check(contentFolder, './Link_Check.txt', true);
-		// if (linkChecker.hasErrors) {
-		// 	console.log('Errors in references, see "./scripts/Link_Check.txt"');
-		// 	return;
-		// }
-		// References ok, continue
+		if (linkChecker.hasErrors) {
+			console.log('Errors in references, see "./scripts/Link_Check.txt"');
+			// return;
+		}
 
-		console.log('Links ok, generating svelte pages ...');
+		console.log('Continuing, generating svelte pages ...');
 		// Walk over the folder with all the markdown files.
 		const svelteCreator = new Md2Svelte();
 		svelteCreator.generate(contentFolder, outputFolder);

@@ -8,16 +8,16 @@
 </script>
 
 <nav>
-	<ul class='sidebar-ul'>
+	<ul class="sidebar-ul">
 		{#each categoryContent as part}
 			<li>
-				<div class='sidebar-header'>
+				<div class="sidebar-header">
 					<SidebarEntry name={part.name} path={part.path ? part.path : '/'} />
 				</div>
 				{#if part.content}
 					{#each part.content as pp}
 						<li>
-							<div class='sidebar-simple'>
+							<div class="sidebar-simple">
 								<SidebarEntry name={pp.name} path={pp.path ? pp.path : '/'} />
 							</div>
 						</li>
@@ -30,17 +30,17 @@
 
 <style>
 	.sidebar-ul {
-			list-style: none;
-			padding: 0;
-			margin: 0;
+		list-style: none;
+		padding: 0;
+		margin: 0;
 	}
 	.sidebar-header {
 		font-weight: bold;
 		margin-top: 1rem;
 	}
-  .sidebar-simple {
+	.sidebar-simple {
 		font-weight: 520;
-    padding-left: 1rem;
-    padding-top: 0.5rem;
-  }
+		padding-left: 1rem;
+		padding-top: 0.5rem;
+	}
 </style>

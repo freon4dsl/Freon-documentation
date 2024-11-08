@@ -16,7 +16,7 @@
 		position: fixed;
 		left: 0px;
 		bottom: 0px;
-			z-index: 20;
+		z-index: 20;
 	}
 	.copyright {
 		color: var(--theme-colors-inverse_color);

@@ -7,15 +7,14 @@
 		"url": "https://github.com/freon4dsl/Freon-documentation"
 	},
 	"scripts": {
+		"buildSite": "cd ./scripts && npm run buildSite && cd ../ && npm run format",
 		"dev": "vite dev",
 		"build": "vite build",
 		"preview": "vite preview",
 		"check": "svelte-kit sync && svelte-check --tsconfig tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig tsconfig.json --watch",
 		"lint": "prettier --check . && eslint .",
-		"format": "prettier --write ./src",
-		"link-check": "find src/routes -name '*.md' -exec yarn markdown-link-check {};",
-		"embedme": "embedme --source-root code-examples \"src/routes/**/*.md\""
+		"format": "prettier --loglevel silent --write ./src"
 	},
 	"devDependencies": {
 		"@freon4dsl/core": "0.7.0-beta4",

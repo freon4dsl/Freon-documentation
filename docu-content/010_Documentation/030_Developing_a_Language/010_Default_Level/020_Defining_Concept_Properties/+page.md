@@ -56,7 +56,7 @@ concept `InsurancePart` has a property `name: identifier`.
 // DocuProject/src/defs/language-main.ast#L33-L34
 
 date: string;
-theme: InsuranceTheme; // the 'kind' of insurance
+theme: InsuranceTheme;          // the 'kind' of insurance
 ```
 
 ## Optional Properties

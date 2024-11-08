@@ -10,9 +10,9 @@
 <IntersectionObserver {element} bind:intersecting threshold={0.5}>
 	<div bind:this={element}>
 		{#if tag === 'h1'}
-		<h1 {id}><slot /></h1>
-			{:else}
+			<h1 {id}><slot /></h1>
+		{:else}
 			<h2 {id}><slot /></h2>
-			{/if}
+		{/if}
 	</div>
 </IntersectionObserver>

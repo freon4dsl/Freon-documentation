@@ -12,6 +12,7 @@ const storeContent: string =
 	export const mySections: Writable<Section[]> = writable<Section[]>([]);`;
 
 export class Md2Svelte {
+
 	generate(contentFolder: string, outputFolder: string) {
 		const result: boolean = this.transformFolder(contentFolder, contentFolder, outputFolder);
 		if (!result) {
