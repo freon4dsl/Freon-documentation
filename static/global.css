@@ -82,7 +82,7 @@
 	--theme-colors-ripple_color: #c199f9;
 	--theme-colors-tooltip_color: white;
 	--theme-colors-tooltip_background: red;
-	--theme-colors-note_background: #c199f93c;
+	--theme-colors-note_background: var(--theme-colors-color2);
 	--theme-colors-figure_background: cornsilk;
 	--theme-colors-table_background: cornsilk;
 	--theme-colors-table_heading: #8ed4c6;

@@ -30,8 +30,6 @@ defined in `~/picode/editor/gen/<yourLanguageName>ProjectionDefault`.
 
 ```ts
 // TutorialLanguage/src/editor/CustomEntityModelProjection.ts#L40-L43
-
-
 ```
 
 <Note><svelte:fragment slot="header">Use another filename and/or location</svelte:fragment>

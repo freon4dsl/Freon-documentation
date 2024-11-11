@@ -91,7 +91,7 @@ export const themePresets = [
 			link: '#DE6B48',
 			link_visited: '#7381de',
 			/* Tables */
-			note_background: '#C199F93C',
+			note_background: FRE_COLOR2,
 			figure_background: 'cornsilk',
 			table_background: 'cornsilk',
 			table_heading: '#8ed4c6',
