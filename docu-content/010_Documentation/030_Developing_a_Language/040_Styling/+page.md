@@ -1,9 +1,91 @@
-<script context="module">
-	// this script redirects the user 
-	export async function load() {
-		return {
-			status: 302,
-			redirect: "/Developing_a_Language/Styling/SCCS_Styling"
-		};
-	}
-</script>
+# Styling the Web Application and the Editor
+
+The web application, including the editor, can be styled using the scss files in the folder `~webapp/style`. There are two sets of
+CSS variables that determine the look of the web application, one for the light theme, and one for the dark theme.
+The latter can be found in the folder `~webapp/style/dark`.
+
+The comments and naming should (hopefully) indicate where each variable is being used.
+
+```scss
+// DocuProject/style/_app_theme-light.scss
+
+@use 'sass:color';
+
+@use '@material/theme/color-palette';
+
+// Freon Colors!!
+@use '@material/theme/index' as theme with (
+	$primary: #4f9a94,
+	$secondary: #ffcc80,
+	$surface: #eeeeee,
+	$background: #fff,
+	$error: #b00020,
+	//$on-primary: color-palette.$orange-50,
+	$on-secondary: #00695c,
+	// a slighter darker version of 'primary'
+	$on-surface: color-palette.$grey-600,
+	//$on-error: black,
+	//accessible-ink-color,
+	//contrast,
+	//contrast-tone,
+	//luminance,
+	//text-emphasis,
+	//tone
+);
+
+// Include all the global styles that do not involve dark/light modes.
+@use 'app';
+
+// linear-progress is included for the progress indicator in the EditorPart component
+@use '@material/linear-progress/index' as linear-progress;
+
+// my-colored-bar style is used for the progress indicator in the EditorPart component
+.my-colored-bar {
+	@include linear-progress.bar-color(theme.$red-500);
+	@include linear-progress.buffer-color(theme.$red-100);
+}
+
+:focus {
+	outline: none;
+}
+// status-bar style is used for the StatusBar component above the editor
+.status-bar {
+	//--freon-colors-bg-status: #4f9a94;
+	--freon-colors-bg-status: #80cbc4;
+	--freon-colors-text-status: black;
+	--freon-text-style-status: italic;
+}
+
+.main-frame {
+	/* SplitPane divider */
+	--freon-colors-slider: #{theme.$on-secondary}; /* The color of the slider between the error/search pane and the editor */
+}
+
+.editor-part {
+	box-sizing: border-box;
+}
+
+html,
+body {
+	background-color: theme.$surface;
+	color: theme.$on-surface;
+	margin: 0;
+	box-sizing: border-box;
+	--mdc-theme-primary: #{theme.$primary};
+}
+
+.divider {
+	fill: #ff11ac;
+	color: green;
+	stroke-width: 2px;
+	stroke: blue;
+}
+
+///////////////////////////// Freon /////////////////////
+.freon-component {
+	background-color: #0000000c; // $mac-gray-50t2: ;
+	outline-color: #4c5c96; // $mac-primary-900};
+	outline-width: 0px;
+	outline-style: solid;
+}
+```

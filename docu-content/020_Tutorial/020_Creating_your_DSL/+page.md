@@ -70,6 +70,7 @@ modelunit FlowDescription {
 }
 ```
 
+
 ## The _Topic_ model unit
 
 Let's focus on the Topic model unit first. Because it is likely that we need to make references to topics,
@@ -129,6 +130,20 @@ concept InDepthMaterial base Page {
 By now, you will have understood the gist of how to build a simple metamodel. For the sake of the example,
 we wil not get any further into defining the content of each page type. Let's just assume there are lines of text.
 
+If you like you could generate the editor for our DSL and try it out. Use the following command in the terminal
+window of your IDE (you can exchange npm for the package manager of your choice).
+
+```
+npm run generate
+```
+
+In the github project (todo link) we have provided an example topic model.
+When you open the editor, select TODO as model and have a browse. Yes, we know. It works, but it doesn't look great. In a few step we will learn how to
+make the model in the editor look a bit decent.
+
+
+// todo: first make a .edit file for this unit!!!
+
 ## The _FlowDescription_ model unit
 
 To avoid having very large files, you can divide your language definition into as many files as you like,
@@ -169,9 +184,43 @@ concept FlowRule {
 }
 
 concept PageTransition { /* e.g. 3 mistakes => show A, 2 mistakes => show B, 1 mistake => show C */
-    condition: GradeLiteral;
+    condition: Grade; /* Note: will be changed into an expression later in the tutorial. */
     reference toPage: Page;
 }
 ```
 
-But how to define the condition for a page transition?
+But how to define the condition for a page transition? Well, let's take the easy road for now and make it an enumeration.
+In Freon terminology that is a _limited concept_, which is a slightly more extensive notion than the old-fashioned
+enumeration (see todo link to documentation).
+
+```
+limited Grade {
+    gradeA;
+    gradeB;
+    gradeC;
+    gradeD;
+    gradeE;
+    gradeF;
+}
+```
+
+We will revisit the condition for a page transition later on in the tutorial and change it into a more complex concept. But for now,
+we are done with the second model unit.
+
+Again, you might want to generate the editor and try it out. Note that when you start the editor, it will open
+with the model from the previous step. Simple click on the arrow-left icon in the top bar. This will open an
+overview of all the model units that are in your project. Choose TODO (name of model unit) and you can view and edit the partition that
+we have created for your use. Or, you can play with the File menu. Click `New Model Unit`, and see where that takes you.
+Still, things do not look great, do they? Please be patient. In a few more steps you will learn to beautify the appearance of the model in the editor.
+
+
+
+## The _Test_ model unit
+
+"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit
+in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
+officia deserunt mollit anim id est laborum."
+
+[Previous](/Tutorial/Intro)
+[Next](/Tutorial/Making_an_Editor)

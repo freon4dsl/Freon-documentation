@@ -30,3 +30,5 @@ Each section has a dedicated subject, but it will build upon the previous sectio
 The easiest way to follow this tutorial is to create your own project in the IDE of your choice by TODO. There you can recreate the project, and toys with many of the options.
 Alternatively you can check out the sources for this tutorial on github: TODO link.
 The github project is broken up into the same six parts, so you won't be bothered by any of the details that are not yet explained, when going through the parts one by one.
+
+[Next](/Tutorial/Creating_your_DSL)

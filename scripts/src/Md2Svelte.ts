@@ -62,7 +62,6 @@ export class Md2Svelte {
 				}
 			} else {
 				this.transformFile(folderPath, ignore, outputFolder).then((r) => {
-					// create a site-nav entry
 					return r;
 				});
 			}
@@ -71,6 +70,7 @@ export class Md2Svelte {
 	}
 
 	private async transformFile(filepath: string, ignore: string, outputFolder: string) {
+		// todo remove the numbering from <a> tags
 		// For each file, create a Svelte file containing the content from the markdown,
 		// and a page content (nav) on the side.
 		const markdown: string = fs.readFileSync(filepath, 'utf8');

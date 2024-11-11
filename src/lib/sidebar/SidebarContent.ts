@@ -13,7 +13,6 @@ export const documentationToc: TocContentsType =
        ]},
       { name: 'Getting Started', path: '/Documentation/Getting_Started',
         content: [
-         { name: 'Installation', path: '/Documentation/Getting_Started/Installation'},
          { name: 'Project Structure', path: '/Documentation/Getting_Started/Project_Structure'},
          { name: 'Calling the Generator', path: '/Documentation/Getting_Started/Calling_the_Generator'},
        ]},
@@ -47,7 +46,6 @@ export const documentationToc: TocContentsType =
          { name: 'Scoper API', path: '/Documentation/Developing_a_Language/API_Level/Scoper_API'},
          { name: 'Reader API', path: '/Documentation/Developing_a_Language/API_Level/Reader_API'},
          { name: 'Styling', path: '/Documentation/Developing_a_Language/Styling'},
-         { name: 'SCCS Styling', path: '/Documentation/Developing_a_Language/Styling/SCCS_Styling'},
        ]},
       { name: 'Under the Hood', path: '/Documentation/Under_the_Hood',
         content: [
@@ -70,6 +68,7 @@ export const documentationToc: TocContentsType =
          { name: 'FreStandardlib Interface', path: '/Documentation/Under_the_Hood/The_FreTool_Interfaces/FreStandardlib_Interface'},
          { name: 'Source Code Documentation', path: '/Documentation/Under_the_Hood/Source_Code_Documentation'},
        ]},
+      { name: 'Terminology', path: '/Documentation/Terminology'},
     ]};
 export const tutorialToc: TocContentsType = 
    { name: 'Tutorial', path: '/Tutorial',
@@ -99,7 +98,7 @@ export const aboutToc: TocContentsType =
          { name: 'Models and Model Units', path: '/About/Guiding_Principles/Models_and_Model_Units'},
        ]},
       { name: 'Release Notes', path: '/About/Release_Notes'},
-      { name: 'About', path: '/About/About'},
+      { name: 'About this site', path: '/About/About_this_site'},
     ]};
 		
 export const allCategories: CategoryInfoType[] = [

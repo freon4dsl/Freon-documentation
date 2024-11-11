@@ -35,7 +35,7 @@
 						</div>
 					</div>
 					<div class="landing-started">
-						<a href="/GettingStarted"
+						<a href="/Documentation/Getting_Started"
 						>Get Started
 							<span class="landing-arrow">
 					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" height="28px"
