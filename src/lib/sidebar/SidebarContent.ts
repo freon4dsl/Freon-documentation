@@ -86,7 +86,6 @@ export const demosToc: TocContentsType =
    { name: 'Demos', path: '/Demos',
      content: [
       { name: 'Intro', path: '/Demos/Intro'},
-      { name: 'DocuProjectDemo', path: '/Demos/DocuProjectDemo'},
     ]};
 export const aboutToc: TocContentsType = 
    { name: 'About', path: '/About',
