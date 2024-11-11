@@ -78,12 +78,12 @@ As a start, you could ..
 
 ### The presentation
 
-<iframe width="620" height="345" src="https://www.youtube.com/embed/Eb9WGZyL92w">
+<iframe width="620" height="345" src="https://www.youtube.com/embed/Eb9WGZyL92w" title='The presentation for MDENet, May 2023'>
 </iframe>
 
 ### The demo
 
-<iframe width="620" height="345" src="https://www.youtube.com/embed/pdQaCfRkgA8">
+<iframe width="620" height="345" src="https://www.youtube.com/embed/pdQaCfRkgA8" title='The presentation for MDENet, May 2023'>
 </iframe>
 
 **Have fun!** If you have questions that are not answered in this documentation, please email us at _info AT freon4dsl.dev_.

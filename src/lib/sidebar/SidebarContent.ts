@@ -75,6 +75,7 @@ export const tutorialToc: TocContentsType =
    { name: 'Tutorial', path: '/Tutorial',
      content: [
       { name: 'Intro', path: '/Tutorial/Intro'},
+      { name: 'Creating the language', path: '/Tutorial/Creating_the_language'},
     ]};
 export const examplesToc: TocContentsType = 
    { name: 'Examples', path: '/Examples',
@@ -85,6 +86,7 @@ export const demosToc: TocContentsType =
    { name: 'Demos', path: '/Demos',
      content: [
       { name: 'Intro', path: '/Demos/Intro'},
+      { name: 'DocuProjectDemo', path: '/Demos/DocuProjectDemo'},
     ]};
 export const aboutToc: TocContentsType = 
    { name: 'About', path: '/About',
