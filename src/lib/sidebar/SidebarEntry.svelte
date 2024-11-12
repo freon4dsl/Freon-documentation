@@ -9,6 +9,6 @@
 	}
 </script>
 
-<span class='side-bar-entry' class:active={$page.url.pathname === path}
+<span class="side-bar-entry" class:active={$page.url.pathname === path}
 	><a class="leafText" class:active={$page.url.pathname === path} href={path} on:click={becomingActive}>{name}</a></span
 >

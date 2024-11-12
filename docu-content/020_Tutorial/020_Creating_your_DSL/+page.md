@@ -12,20 +12,6 @@ From this point onwards we also assume that you have a Freon project in your
 favorite IDE, either by creating one through TODO, or by cloning this github
 project TODO.
 
-## Where do the files go?
-
-Your project will be set up to have all your Freon definition files in the folder `src/defs`,
-but if you decide to do things differently, you can change the `package.json` file.
-Look at the scripts for `generate `and `clean-gen`. There you find the folder `src/defs`
-mentioned. If you change these entries you can place the language definition files anywhere you like.
-
-```
-"generate": "bash ../../../scripts/freon-samples-dev.sh -v all -d src/defs -o src/",
-"clean-gen": "bash ../../../scripts/freon-samples-dev.sh clean-it -d src/defs -o src/",
-```
-
-TODO: change the above code into the one that correctly uses the published package.
-
 ## Defining the model and model units
 
 The first we need to decide is the name of our language, and how we
@@ -40,9 +26,9 @@ for the subject. The **FlowDescription** handles the way in which the flow betwe
 the pages need to stream. The last part are the **Tests**, which define the tests for
 the topics, and the flow between the topics.
 
-Create the file `edu-subjects.ast` in the `src/defs` defs, and add the following code.
+Create the file `edu-subjects.ast` in the `src/defs` folder, and add the following code.
 
-```
+```ts
 language Education
 
 model Education /* Computer Aided Learning */ {
@@ -58,7 +44,7 @@ If you are impatient, and already tried to generate the editor, you will have no
 that there are errors in our input. We need to define the concepts Topic,
 FlowDescription, and Test. All three are model units, so we define them as such.
 
-```
+```ts
 modelunit Topic {
 
 }
@@ -80,11 +66,12 @@ Each Topic will have a number of pages.
 
 <Note><svelte:fragment slot="header"> The type identifier versus the type string.</svelte:fragment>  
 <svelte:fragment slot="content">  
-The rules for an identifier in Freon are equal to the rules in Typescript. Any concept or model unit that has a property
-<i>name</i> of type <i>identifier</i> can be referred to.  
+<p>A property of type string may contain any printable character, but the content of an identifier is bound to a number of rules.
+These rules are equal to the rules in Typescript. Any concept or model unit that has a property
+<i>name</i> of type <i>identifier</i> can be referred to. </p>
 </svelte:fragment></Note>
 
-```
+```ts
 modelunit Topic {
     name: identifier;
     description: string; /* e.g. Fractions, or Multiplications */
@@ -101,7 +88,7 @@ include stuff that is more interesting for the kids as well, for instance some v
 There should also be pages with examples, and pages with assignments. So it is a good
 idea to make the **Page** concept abstract and have a number of concepts that inherit from it.
 
-```
+```ts
 abstract concept Page {
     name: identifier;
     questions: Question[];
@@ -127,6 +114,15 @@ concept InDepthMaterial base Page {
 }
 ```
 
+<Note><svelte:fragment slot="header"> The Freon <i>Concept</i></svelte:fragment>
+<svelte:fragment slot="content">
+<p>The Freon concept may be compared to a (UML) class. It can have properties, and may have associations with other concepts.
+It can inherit from other concepts, and/or implement an interface.</p>
+<p>Freon automatically generates a UML class diagram of your metamodel. You can find them in the
+folder <code>src/diagrams</code>, together with some other diagrams
+(for instance, one that focuses on inheritance relations).  </p>
+</svelte:fragment></Note>
+
 By now, you will have understood the gist of how to build a simple metamodel. For the sake of the example,
 we wil not get any further into defining the content of each page type. Let's just assume there are lines of text.
 
@@ -138,11 +134,11 @@ npm run generate
 ```
 
 In the github project (todo link) we have provided an example topic model.
-When you open the editor, select TODO as model and have a browse. Yes, we know. It works, but it doesn't look great. In a few step we will learn how to
-make the model in the editor look a bit decent.
+When you open the editor, select TODO as model and have a browse. Yes, we know. It works, but it doesn't look great.
+In a few steps we will learn how to
+make the model in the editor look a bit decent. But first we are going to define the second model unit, the
+description of the flow between the pages.
 
-
-// todo: first make a .edit file for this unit!!!
 
 ## The _FlowDescription_ model unit
 
@@ -156,7 +152,7 @@ Here we introduce another feature of Freons metamodel, the reference. Each flow 
 The topic is already in the **Topics** model unit, but we add a link, or reference to it by prefixing the property with the keyword
 **reference**.
 
-```
+```ts
 modelunit FlowDescription {
     reference topic: Topic;
     rules: FlowRule[];
@@ -168,7 +164,7 @@ working on. The flow rule will determine which page will be the next, using a se
 A page transition is simply a condition coupled to another page. If the condition is fullfilled, then that
 page will be the next in the flow.
 
-```
+```ts
 language Education
 
 modelunit FlowDescription {
@@ -193,7 +189,7 @@ But how to define the condition for a page transition? Well, let's take the easy
 In Freon terminology that is a _limited concept_, which is a slightly more extensive notion than the old-fashioned
 enumeration (see todo link to documentation).
 
-```
+```ts
 limited Grade {
     gradeA;
     gradeB;
@@ -212,15 +208,6 @@ with the model from the previous step. Simple click on the arrow-left icon in th
 overview of all the model units that are in your project. Choose TODO (name of model unit) and you can view and edit the partition that
 we have created for your use. Or, you can play with the File menu. Click `New Model Unit`, and see where that takes you.
 Still, things do not look great, do they? Please be patient. In a few more steps you will learn to beautify the appearance of the model in the editor.
-
-
-
-## The _Test_ model unit
-
-"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit
-in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
-officia deserunt mollit anim id est laborum."
 
 [Previous](/Tutorial/Intro)
 [Next](/Tutorial/Making_an_Editor)

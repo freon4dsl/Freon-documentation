@@ -76,6 +76,10 @@ export const tutorialToc: TocContentsType =
       { name: 'Intro', path: '/Tutorial/Intro'},
       { name: 'Creating your DSL', path: '/Tutorial/Creating_your_DSL'},
       { name: 'Making an Editor', path: '/Tutorial/Making_an_Editor'},
+      { name: 'More Fun with Projections', path: '/Tutorial/More_Fun_with_Projections'},
+      { name: 'In Need of Scoping', path: '/Tutorial/In_Need_of_Scoping'},
+      { name: 'The Third Model Unit', path: '/Tutorial/The_Third_Model_Unit'},
+      { name: 'Another View on the Same Unit', path: '/Tutorial/Another_View_on_the_Same_Unit'},
     ]};
 export const examplesToc: TocContentsType = 
    { name: 'Examples', path: '/Examples',

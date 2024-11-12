@@ -19,7 +19,7 @@ export class RedirectGenerator {
 				const categoryName: string = PathCreator.getFolderName(file);
 				let outputPath: string = outputFolder + path.sep + categoryName;
 				outputPath = outputPath + path.sep + '+page.server.ts';
-				PathCreator.createDirIfNotExisting(path.dirname(outputPath), outputFolder);
+				PathCreator.createDirIfNotExisting(categoryName, outputFolder);
 				fs.writeFileSync(outputPath, this.makeFileContent(categoryName));
 			}
 		}

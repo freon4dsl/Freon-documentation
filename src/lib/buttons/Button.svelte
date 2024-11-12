@@ -52,9 +52,12 @@
 
 	const debounce = () => {
 		clearTimeout(timer);
-		timer = setTimeout(() => {
-			ripples.clear();
-		}, speed + speed * 2);
+		timer = setTimeout(
+			() => {
+				ripples.clear();
+			},
+			speed + speed * 2
+		);
 	};
 
 	let touch: boolean;

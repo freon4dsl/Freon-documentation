@@ -74,7 +74,7 @@ export class LinkChecker {
 				}
 			}
 			// checks TODOs
-			if (line.includes('TODO')) {
+			if (line.includes('TODO') || line.includes('todo')) {
 				warnings.push(`TODO remaining on line ${i + 1}`);
 			}
 		}
