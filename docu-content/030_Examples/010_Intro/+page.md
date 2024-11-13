@@ -1,6 +1,62 @@
 # Examples
 
-"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit
-in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
-officia deserunt mollit anim id est laborum."
+## How to display a boolean value
+
+### global booleans
+
+```
+global {
+     boolean [YES | NO] // the strings used to display a boolean value
+
+     referenceSeparator [:] // the string that separates the names in a path name, e.g. pack1:cls3:part
+ }
+```
+
+### single booleans
+
+see DocuProject/editor-main-default.edit
+
+```
+
+BaseProduct {[
+    yields profit: ${self.yieldsProfit text [Plenty | Little]}
+]}
+```
+
+- radio button, with or without text
+
+```
+BaseProduct {[
+        is approved level1: ${self.isApprovedLevel1 radio [Sure | NoWay]}
+        is approved level2: ${self.isApprovedLevel2 inner-switch}
+        is approved level3: ${self.isApprovedLevel3 checkbox}
+]}
+`
+- inner-switch
+
+- checkbox
+
+## Other special Components
+- slider
+- button
+
+## Fragments
+
+## Styling
+
+## Custom Projections
+
+## Custom Actions
+
+## Custom Scoper
+
+## Custom Typer
+
+## Custom Validator
+
+## Interpreter
+
+## Include the editor in your own website
+
+## External Svelte Components
+```

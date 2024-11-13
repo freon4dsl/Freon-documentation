@@ -7,8 +7,6 @@ The latter can be found in the folder `~webapp/style/dark`.
 The comments and naming should (hopefully) indicate where each variable is being used.
 
 ```scss
-// DocuProject/style/_app_theme-light.scss
-
 @use 'sass:color';
 
 @use '@material/theme/color-palette';

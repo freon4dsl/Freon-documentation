@@ -1,0 +1,65 @@
+/* This file contains the default editor definition. */
+
+editor default
+
+Topic {[
+    Topic: ${self.name}
+    Description: ${self.description}
+
+    Pages:
+    ${self.pages vertical }
+]}
+
+Page {[
+    ${self.name}
+]}
+
+Theory {[
+    ----------------------------------------------------
+    Theory [=>Page]
+        ${self.lines vertical}
+
+        [=>Page:footing]
+]}
+
+Video {[
+    ----------------------------------------------------
+    Video [=>Page]
+        Maybe this video will help you understand.
+        ${self.url}
+
+        [=>Page:footing]
+]}
+
+WorkSheet {[
+    ----------------------------------------------------
+    Worksheet [=>Page]
+        See if you can answer the following questions.
+
+        [=>Page:footing]
+]}
+
+ExamplePage {[
+    ----------------------------------------------------
+    Example [=>Page]
+        ${self.content}
+
+        Now, please, answer the following questions.
+
+        [=>Page:footing]
+]}
+
+InDepthMaterial {[
+    ----------------------------------------------------
+    [=>Page]
+        ${self.content}
+
+        Test your understanding by answering the following questions.
+
+        [=>Page:footing]
+]}
+
+Question {[
+    ${name}
+        ${self.content} Correct Answer: ${self.correctAnswer}
+]}

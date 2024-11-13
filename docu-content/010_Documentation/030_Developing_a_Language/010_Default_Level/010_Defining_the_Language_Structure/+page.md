@@ -115,7 +115,6 @@ Expression concepts may extend one other concept, and implement multiple interfa
 
 ```txt
 abstract expression Literal base DocuExpression {
-
 }
 expression EuroLiteral base Literal {
     euros: number;
@@ -123,6 +122,7 @@ expression EuroLiteral base Literal {
 }
 expression NumberLiteral base Literal {
     value: number;
+}
 ```
 
 ### Binary Expression Concept
@@ -141,7 +141,6 @@ Binary expression concepts may extend one other concept, and implement multiple 
 <!-- embedme DocuProject/src/defs/language-expressions.ast#L23-L43 -->
 
 ```txt
-expression BooleanLiteral base Literal {
     value: boolean;
 }
 
@@ -162,6 +161,7 @@ binary expression MinusExpression base BinaryExpression {
 binary expression MultiplyExpression base BinaryExpression {
     priority = 8;
 }
+
 ```
 
 ### Limited Concept

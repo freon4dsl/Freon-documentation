@@ -7,7 +7,7 @@ import { PathCreator } from './PathCreator.js';
 
 const storeContent: string =
 	`import { writable, type Writable } from 'svelte/store';
-	import type { Section } from '$lib/SectionType';
+	import type { Section } from '$lib/section/SectionType';
 
 	export const mySections: Writable<Section[]> = writable<Section[]>([]);`;
 
