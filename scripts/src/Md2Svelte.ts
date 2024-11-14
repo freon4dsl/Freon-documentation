@@ -169,6 +169,7 @@ export class Md2Svelte {
               /**
                * This function will go through all the 'pre' elements
                * on the page and add a copy button to them.
+               * Thanks to: https://slavbasharov.com/blog/adding-click-to-copy-code-markdown-blog
                */
               onMount(() => {
                   const codeBlocks = document.querySelectorAll("pre");
@@ -179,7 +180,7 @@ export class Md2Svelte {
                       copyPromptText.innerHTML = "👆 Click here to copy";
                       copyPromptText.className = 'copy-prompt-p';
                       const copyIcon = document.createElement("img");
-                      copyIcon.src = "/images/down-arrow.png";
+                      copyIcon.src = "/images/copy-icon.svg";
                       copyIcon.className = "copy-prompt-img";
                       copyPrompt.appendChild(copyIcon);
                       copyPrompt.appendChild(copyPromptText);

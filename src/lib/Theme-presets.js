@@ -2,7 +2,8 @@ const FRE_LIGHT = '#FFFDF5'; // a very light yellow
 const FRE_COLOR2 = '#FDE281';
 const FRE_COLOR3 = '#FCCB1A';
 const FRE_COLOR4 = '#B08A03';
-const FRE_DARK = '#272007'; // darkbrown
+const FRE_DARK = '#342B09'; // darkbrown
+const FRE_DARK1 = '#1E1905';
 const FRE_ACCENT = '#c94117';
 
 /* todo select only the values that are being used, and remove others */
@@ -161,8 +162,8 @@ export const themePresets = [
 			active: 'black',
 			/* Syntax Highlighting */
 			code_color: '#d4d4d4',
-			code_background: '#264F78',
-			code_background_color: '#1e1e1e',
+			code_background: FRE_DARK1,
+			code_background_color: FRE_DARK1,
 			code_keyword: '#c586c0',
 			token_color_string: '#ce9178',
 			token_keyword: '#569CD6',
