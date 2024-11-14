@@ -393,3 +393,14 @@ pre:hover .copy-prompt-p {
 pre:hover .copy-prompt-img {
 	display: none;
 }
+
+/* Styles for the Previous and Next section in the Tutorial */
+.prev-next {
+	display: flex;
+}
+.prev-next-spacer {
+	flex: 1;
+}
+.prev-next-a {
+	display: flex;
+}

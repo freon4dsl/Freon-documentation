@@ -21,3 +21,4 @@ export * from './theming/ThemeToggle.svelte';
 export * from './section/SectionComponent.svelte';
 export * from './section/SectionType.js';
 export * from './Store.js';
+export * from './tutorial/PrevNextSection.svelte';

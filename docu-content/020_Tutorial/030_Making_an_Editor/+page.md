@@ -1,3 +1,7 @@
+<script>
+    import PrevNextSection from '$lib/tutorial/PrevNextSection.svelte';
+</script>
+
 # Making an Editor for your DSL
 
 At last, your patience is rewarded. In this step of the tutorial we are going to make the editor looking great!
@@ -186,5 +190,4 @@ Question {[
 ]}
 ```
 
-[Previous](/Tutorial/Creating_your_Metamodel)
-[Next](/Tutorial/More_Fun_with_Projections)
+<PrevNextSection prevLink= "/Tutorial/Creating_your_Metamodel" nextLink="/Tutorial/More_Fun_with_Projections" />

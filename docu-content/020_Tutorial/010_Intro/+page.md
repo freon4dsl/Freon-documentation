@@ -1,3 +1,8 @@
+<script>
+    import PrevNextSection from '$lib/tutorial/PrevNextSection.svelte';
+</script>
+
+
 # Welcome to the Freon tutorial!
 
 This step-by-step guide will teach you everything you need to know to easily build your own domain specific language (DSL).
@@ -54,4 +59,4 @@ mentioned. If you change these entries you can place the language definition fil
 "clean-gen": "freon clean-it -d src/defs -o src/",
 ```
 
-[Next](/Tutorial/Creating_your_Metamodel)
+<PrevNextSection nextLink="/Tutorial/Creating_your_Metamodel" />

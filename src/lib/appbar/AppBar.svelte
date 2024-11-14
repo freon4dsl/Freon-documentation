@@ -21,7 +21,7 @@
 
 <PopoverMenu />
 {#each allCategories as cat, index}
-	<PopoverCategoryMenu id="category-{index}" content={cat.toc} bind:this={catMenu[index]}/>
+	<PopoverCategoryMenu id="category-{index}" content={cat.toc} bind:this={catMenu[index]} />
 {/each}
 
 <div class="app-bar">

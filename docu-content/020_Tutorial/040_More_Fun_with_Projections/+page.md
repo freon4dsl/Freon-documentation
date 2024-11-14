@@ -1,5 +1,6 @@
 <script>
     import Note from "$lib/notes/Note.svelte";
+    import PrevNextSection from '$lib/tutorial/PrevNextSection.svelte';
 </script>
 
 # More Fun with Projections
@@ -204,7 +205,4 @@ You see, there is so much fun to have with creating projections. Please try it o
 
 But do come back for the next lesson where we will tackle the topic of adding expressions to your metamodel, and to your editor definitions.
 
-[Previous](/Tutorial/Making_an_Editor)
-<span class='tutorial-spacer'>&nbsp</span>
-
-[Next](/Tutorial/Expressions)
+<PrevNextSection prevLink= "/Tutorial/Making_an_Editor" nextLink="/Tutorial/Expressions" />

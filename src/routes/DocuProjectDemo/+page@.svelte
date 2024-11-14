@@ -25,19 +25,18 @@
 
 	<!-- SMUI/Site Styles -->
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/svelte-material-ui@7.0.0/bare.min.css" />
-	<link rel="stylesheet" href="/demo-global.css"  />
+	<link rel="stylesheet" href="/demo-global.css" />
 	<link rel="stylesheet" href="/demo-site.css" media="(prefers-color-scheme: light)" />
 	<link rel="stylesheet" href="/demo-site-dark.css" media="screen and (prefers-color-scheme: dark)" />
 </svelte:head>
 
-<div class='demo' >
+<div class="demo">
 	<FreonLayout />
 </div>
 
 <style>
-/*@import '/demo-global.css';*/
-/*@import '/demo-site.css';*/
-.demo {
-
-}
+	/*@import '/demo-global.css';*/
+	/*@import '/demo-site.css';*/
+	.demo {
+	}
 </style>

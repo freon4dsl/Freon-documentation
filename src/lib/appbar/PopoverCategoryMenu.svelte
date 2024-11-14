@@ -1,5 +1,5 @@
 <script lang="ts">
-	import {  tutorialToc } from '$lib';
+	import { tutorialToc } from '$lib';
 	import Sidebar from '$lib/sidebar/Sidebar.svelte';
 	import type { TocContentsType } from '$lib/sidebar/TocContentsType';
 
@@ -12,7 +12,7 @@
 	}
 </script>
 
-<div bind:this={divElem} popover="auto" id={id} class="popover-menu">
+<div bind:this={divElem} popover="auto" {id} class="popover-menu">
 	<nav>
 		<!-- svelte-ignore a11y-no-noninteractive-element-interactions-->
 		<!-- svelte-ignore a11y-click-events-have-key-events -->

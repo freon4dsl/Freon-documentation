@@ -1,5 +1,6 @@
 <script>
     import Note from "$lib/notes/Note.svelte";
+    import PrevNextSection from '$lib/tutorial/PrevNextSection.svelte';
 </script>
 
 # Creating your Metamodel
@@ -232,5 +233,4 @@ overview of all the model units that are present in your project. Choose TODO (n
 we have created for your use. Or, you can play with the File menu. Click `New Model Unit`, and see where that takes you.
 Still, things do not look great, do they? Please be patient. In the next lesson you will learn to beautify the appearance of the model in the editor.
 
-[Previous](/Tutorial/Intro)
-[Next](/Tutorial/Making_an_Editor)
+<PrevNextSection prevLink= "/Tutorial/Intro" nextLink="/Tutorial/Making_an_Editor" />
