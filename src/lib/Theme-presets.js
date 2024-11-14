@@ -115,7 +115,7 @@ export const themePresets = [
 			divider: FRE_LIGHT /* Color of dialog title background */,
 			list_divider: FRE_LIGHT /* Color of lines between columns in the error list */,
 			slider: FRE_LIGHT /* Color of lines between views */,
-			accent: '#f50057' /* Color to get attention to an element */,
+			accent: FRE_ACCENT /* Color to get attention to an element */,
 			primary_button_text: 'yellow' /* Color of primary buttons in dialogs */,
 			secondary_button_text: 'white' /* Color of non-primary buttons in dialogs */,
 			// TODO find some appealing default values for the user message colors

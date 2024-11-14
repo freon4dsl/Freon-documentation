@@ -14,5 +14,4 @@ FlowRule {[
 PageTransition { table [
     Condition          | Goto Page
     ${self.condition}  |  ${self.toPage}
-
 ]}

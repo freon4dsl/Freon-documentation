@@ -77,8 +77,8 @@ export const tutorialToc: TocContentsType =
       { name: 'Creating your Metamodel', path: '/Tutorial/Creating_your_Metamodel'},
       { name: 'Making an Editor', path: '/Tutorial/Making_an_Editor'},
       { name: 'More Fun with Projections', path: '/Tutorial/More_Fun_with_Projections'},
-      { name: 'In Need of Scoping', path: '/Tutorial/In_Need_of_Scoping'},
       { name: 'Expressions', path: '/Tutorial/Expressions'},
+      { name: 'In Need of Scoping', path: '/Tutorial/In_Need_of_Scoping'},
     ]};
 export const examplesToc: TocContentsType = 
    { name: 'Examples', path: '/Examples',
