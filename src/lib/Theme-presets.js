@@ -24,7 +24,7 @@ export const themePresets = [
 			accent: FRE_ACCENT /* Color to get attention to an element */,
 			primary_button_text: 'black' /* Color of primary buttons in dialogs */,
 			secondary_button_text: 'grey' /* Color of non-primary buttons in dialogs */,
-			link_hover: FRE_COLOR4 /* color of link when being hovered */,
+			link_hover: FRE_COLOR2 /* color of link when being hovered */,
 			// TODO find some appealing default values for the user message colors
 			user_mess_bg_error: '#ff4d4d' /* Color of user message background when showing an error */,
 			user_mess_bg_warning: '#ffff80' /* Color of user message background when showing a warning */,
@@ -180,8 +180,8 @@ export const themePresets = [
 			token_comment: '#6a9955',
 			code_border: '#1e1e1e',
 			/* Links */
-			link: '#ddb3e5',
-			link_visited: '#73dede',
+			link: FRE_COLOR4,
+			link_visited: FRE_COLOR4,
 			/* Tables */
 			note_background: '#C199F93C',
 			figure_background: 'cornsilk',

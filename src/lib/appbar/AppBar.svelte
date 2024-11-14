@@ -3,14 +3,16 @@
 	import MenuIcon from '$lib/icons/MenuIcon.svelte';
 	import GithubLogo from '$lib/icons/GithubLogo.svelte';
 	import Tooltip from '../buttons/Tooltip.svelte';
-	import { popoverElem, popoverCategoryElem, category } from '$lib/Store.js';
+	import { popoverElem } from '$lib/Store.js';
 	import PopoverMenu from '$lib/appbar/PopoverMenu.svelte';
 	import PopoverCategoryMenu from '$lib/appbar/PopoverCategoryMenu.svelte';
 	import { allCategories } from '$lib/sidebar/SidebarContent.js';
+	import { SvelteComponent } from 'svelte';
+
+	let catMenu: SvelteComponent[] = [];
 
 	function expandClick(index: number) {
-		$category = allCategories[index].toc;
-		$popoverCategoryElem.showPopover();
+		catMenu[index].openContent();
 	}
 </script>
 
@@ -18,7 +20,9 @@
 <!-- TODO add search mechanism -->
 
 <PopoverMenu />
-<PopoverCategoryMenu />
+{#each allCategories as cat, index}
+	<PopoverCategoryMenu id="category-{index}" content={cat.toc} bind:this={catMenu[index]}/>
+{/each}
 
 <div class="app-bar">
 	<div class="app-bar-small">

@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { allCategories, popoverElem } from '$lib';
 	import Sidebar from '$lib/sidebar/Sidebar.svelte';
-	import type { SidebarContentType } from '$lib/appbar/SidebarContentType';
+	import type { SidebarContentType } from '$lib/sidebar/SidebarContentType';
 
 	let sideBarContent: SidebarContentType[] = [];
 

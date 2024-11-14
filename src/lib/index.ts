@@ -2,7 +2,6 @@
 export * from './appbar/AppBar.svelte';
 export * from './appbar/PopoverMenu.svelte';
 export * from './appbar/PopoverCategoryMenu.svelte';
-export * from './appbar/SidebarContentType.js';
 export * from './breadcrumbs/Breadcrumb.svelte';
 export * from './breadcrumbs/BreadcrumbTypes.js';
 export * from './buttons/Button.svelte';
@@ -15,6 +14,7 @@ export * from './notes/Note.svelte';
 export * from './sidebar/Sidebar.svelte';
 export * from './sidebar/SidebarEntry.svelte';
 export * from './sidebar/SidebarContent.js';
+export * from './sidebar/SidebarContentType.js';
 export * from './sidebar/TocContentsType.js';
 export * from './theming/ThemeContext.svelte';
 export * from './theming/ThemeToggle.svelte';

@@ -1,28 +1,32 @@
 <script lang="ts">
-	import { popoverCategoryElem } from '$lib';
+	import {  tutorialToc } from '$lib';
 	import Sidebar from '$lib/sidebar/Sidebar.svelte';
-	import { category } from '$lib';
 	import type { TocContentsType } from '$lib/sidebar/TocContentsType';
 
-	let content: TocContentsType;
-	$: {
-		content = $category;
+	export let id: string;
+	export let content: TocContentsType = tutorialToc;
+	let divElem: HTMLDivElement;
+
+	export function openContent() {
+		divElem.showPopover();
 	}
 </script>
 
-<div bind:this={$popoverCategoryElem} popover="auto" id="category-menu" class="popover-menu">
+<div bind:this={divElem} popover="auto" id={id} class="popover-menu">
 	<nav>
+		<!-- svelte-ignore a11y-no-noninteractive-element-interactions-->
+		<!-- svelte-ignore a11y-click-events-have-key-events -->
 		<div
 			class="sub-menu"
 			on:click={() => {
-				$popoverCategoryElem.hidePopover();
+				divElem.hidePopover();
 			}}
 			role="dialog"
 		>
 			<Sidebar tocContent={content} />
 		</div>
 	</nav>
-	<button class="close-button" popovertarget="category-menu" popovertargetaction="hide">
+	<button class="close-button" popovertarget={id} popovertargetaction="hide">
 		<img src="/images/close-icon.png" style="color: red" alt="Freon Logo" height="24px" />
 	</button>
 </div>

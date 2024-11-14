@@ -52,7 +52,7 @@
 				<section class="landing-hero">
 					<!-- To make sure the image comes before the text on small devices, it is placed here. -->
 					<div class="landing-hero-right small-screen">
-						<img src="./images/Landingpage-image4.webp" alt="An (abstract syntax) Tree" />
+						<img src="./images/landing-page-picture.png" alt="An (abstract syntax) Tree" />
 					</div>
 					<div class="landing-hero-left">
 						<h3>Introducing <span class="landing-freon-name">Freon</span>, the ultimate Language Workbench for the web!</h3>
@@ -92,7 +92,7 @@
 						</p>
 					</div>
 					<div class="landing-hero-right large-screen">
-						<img src="./images/Landingpage-image4.webp" alt="An (abstract syntax) Tree" />
+						<img src="./images/landing-page-picture.png" alt="An (abstract syntax) Tree" />
 					</div>
 				</section>
 
