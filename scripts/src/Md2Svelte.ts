@@ -136,8 +136,9 @@ export class Md2Svelte {
 		return result;
 	}
 
-	createScriptPart(headers: unknown) {
+	createScriptPart(headers: unknown): string {
 		// console.log('HEADERS: ' + JSON.stringify(headers))
+		let result: string = '';
 		// eslint-disable-next-line
 		let headerInfo = [];
 		const visibleSetters = [];
@@ -150,7 +151,7 @@ export class Md2Svelte {
 			console.log('NO ARRAY');
 		}
 		if (headerInfo.length > 0) {
-			return `<script lang="ts">
+			result = `<script lang="ts">
 							import SectionComponent from '$lib/section/SectionComponent.svelte';
 							import {mySections} from './SectionStore.js';
 							$mySections = [
@@ -160,9 +161,38 @@ export class Md2Svelte {
 						${visibleSetters.map((hh) => `${hh}`).join('\n')}
 						`;
 		} else {
-			return '';
+			result = '';
 		}
+		result += `import copy from "copy-to-clipboard";
+              import { onMount } from "svelte";
+              
+              /**
+               * This function will go through all the 'pre' elements
+               * on the page and add a copy button to them.
+               */
+              onMount(() => {
+                  const codeBlocks = document.querySelectorAll("pre");
+                  codeBlocks.forEach((block) => {
+                      const copyPrompt = document.createElement("div");
+                      copyPrompt.className = "copy-prompt";
+                      const copyPromptText = document.createElement("p");
+                      copyPromptText.innerHTML = "👆 Click here to copy";
+                      copyPromptText.className = 'copy-prompt-p';
+                      const copyIcon = document.createElement("img");
+                      copyIcon.src = "/images/down-arrow.png";
+                      copyIcon.className = "copy-prompt-img";
+                      copyPrompt.appendChild(copyIcon);
+                      copyPrompt.appendChild(copyPromptText);
+                      block.appendChild(copyPrompt);
+                      block.querySelector(".copy-prompt > p").addEventListener("click", (evt) => {
+                          copy(block.querySelector("code").textContent);
+                          block.querySelector(".copy-prompt > p").innerHTML = "Copied!";
+                          setTimeout(() => {
+                              block.querySelector(".copy-prompt > p").innerHTML = "👆 Click to copy";
+                          }, 1000);
+                      });
+                  });
+              });`;
+		return result;
 	}
-
-
 }
