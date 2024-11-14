@@ -63,8 +63,8 @@ export const themePresets = [
 			button_hover: 'rgba(0,0,139, .8)' /* darkblue with opacity .8 */,
 			ripple_color: '#c199f9',
 			/* Tooltips */
-			tooltip_color: 'white',
-			tooltip_background: 'red',
+			tooltip_color: FRE_LIGHT,
+			tooltip_background: FRE_DARK,
 			/* Navigation Tree */
 			active: FRE_COLOR2,
 			/* Syntax Highlighting */
@@ -156,8 +156,8 @@ export const themePresets = [
 			button_hover: 'rgba(211, 227, 253, .8)' /* lightblue with opacity .8 */,
 			ripple_color: '#c6b1e4',
 			/* Tooltips */
-			tooltip_color: 'black',
-			tooltip_background: 'red',
+			tooltip_color: FRE_DARK,
+			tooltip_background: FRE_LIGHT,
 			/* Navigation Tree */
 			active: 'black',
 			/* Syntax Highlighting */

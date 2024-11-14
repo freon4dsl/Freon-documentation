@@ -7,7 +7,7 @@
 	export let active = false;
 	export let color = 'var(--theme-colors-tooltip_color)';
 	export let bgColor = 'var(--theme-colors-tooltip_background)';
-	let style = `background-color: ${bgColor}; color: ${color} font-size: .4em`;
+	let style = `background-color: ${bgColor}; color: ${color}; font-size: 0.7rem;`;
 </script>
 
 <div class="tooltip-wrapper">
