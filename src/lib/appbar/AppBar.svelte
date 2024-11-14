@@ -59,7 +59,7 @@
 					<h6>{cat.name}</h6>
 				</a>
 				<button class="main-menu-small-expand-button" on:click={() => expandClick(index)}>
-					<img class="main-menu-small-img" src="/images/down-chevron-white.png" alt="arrow down" />
+					<img class="main-menu-small-img" src="/icons/down-chevron-white.png" alt="arrow down" />
 				</button>
 			{/each}
 		</nav>

@@ -180,7 +180,7 @@ export class Md2Svelte {
                       copyPromptText.innerHTML = "👆 Click to copy";
                       copyPromptText.className = 'copy-prompt-p';
                       const copyIcon = document.createElement("img");
-                      copyIcon.src = "/images/copy-icon.svg";
+                      copyIcon.src = "/icons/copy-icon.svg";
                       copyIcon.className = "copy-prompt-img";
                       copyPrompt.appendChild(copyIcon);
                       copyPrompt.appendChild(copyPromptText);

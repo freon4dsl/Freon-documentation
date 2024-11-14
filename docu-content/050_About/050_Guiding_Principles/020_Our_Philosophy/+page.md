@@ -26,7 +26,7 @@ creation of a prototype language in a day or in a couple of days at most.
 
 ## Other Guidelines
 
-Other guidelines have been **ease of use**, and **flexibility**. Freon may not (yet <img src="/images/smile.png" alt="OOPS" width="20" height="20">) do
+Other guidelines have been **ease of use**, and **flexibility**. Freon may not (yet <img src="/icons/smile.png" alt="OOPS" width="20" height="20">) do
 everything you need, but what it does, should be very easy to get into. Furthermore,
 Freon is designed to be **extendable**, and **easy to integrate with other tooling**.
 In practise this means that:

@@ -1,6 +1,6 @@
 # Freon -- A Language Workbench for the Web
 
-Freon is a Language Workbench (...in the making <img src="/images/smile.png" alt="OOPS" width="20" height="20">,
+Freon is a Language Workbench (...in the making <img src="/icons/smile.png" alt="OOPS" width="20" height="20">,
 so please let us know if you find anything not yet correct). It is a tool for creating mini-languages,
 which are also known as <a href="https://en.wikipedia.org/wiki/Domain-specific*language" target="_blank">Domain Specific Languages (DSLs)</a>.
 Freon generates an integrated

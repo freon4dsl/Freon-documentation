@@ -31,7 +31,8 @@ BaseProduct {[
         is approved level2: ${self.isApprovedLevel2 inner-switch}
         is approved level3: ${self.isApprovedLevel3 checkbox}
 ]}
-`
+```
+
 - inner-switch
 
 - checkbox

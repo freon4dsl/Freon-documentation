@@ -27,9 +27,9 @@ export const pageContent: string =
     <p class='page-toc-small-title'>On this page ...</p>
     <button class='page-toc-small-expand-button' on:click={() => {toggleTocDetails()}  }>
       {#if showDetails }
-        <img class='page-toc-small-img' src="/images/upload.png" alt="arrow up"/>
+        <img class='page-toc-small-img' src="/icons/upload.png" alt="arrow up"/>
       {:else}
-        <img class='page-toc-small-img' src="/images/down-arrow.png" alt="arrow down"/>
+        <img class='page-toc-small-img' src="/icons/down-arrow.png" alt="arrow down"/>
       {/if}
     </button>
   </div>

@@ -1,9 +1,9 @@
 # Wish List for Future Developments
 
 In the future we want to extend Freon with the following features. There is no order
-in this list, nor is there any guarantee that the features will be build. We take on a
+in this list, nor is there any guarantee that the features will be built. We take on a
 task at the moment the need for it arises (or, simply when
-we like doing it <img src="/images/smile.png" alt="SMILE" width="20" height="20">).
+we like doing it <img src="/icons/smile.png" alt="SMILE" width="20" height="20">).
 
 - Support _libraries_ for language development, like a library with definitions for different
   types of expressions.

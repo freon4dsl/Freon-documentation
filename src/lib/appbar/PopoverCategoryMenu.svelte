@@ -27,6 +27,6 @@
 		</div>
 	</nav>
 	<button class="close-button" popovertarget={id} popovertargetaction="hide">
-		<img src="/images/close-icon.png" style="color: red" alt="Freon Logo" height="24px" />
+		<img src="/icons/close-icon.png" style="color: red" alt="Freon Logo" height="24px" />
 	</button>
 </div>
