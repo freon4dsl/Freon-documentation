@@ -17,7 +17,7 @@ Page {[
 Theory {[
     ----------------------------------------------------
     Theory [=>Page]
-        ${self.lines vertical}
+        ${self.content vertical}
 
         [=>Page:footing]
 ]}

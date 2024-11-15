@@ -2,7 +2,7 @@
 
 // todo make a table
 
-- model unit:
+- model unit: in LionWeb: partition 
 
 - limited concept:
 
@@ -23,6 +23,7 @@
 - ast file:
 
 - edit file:
+- trigger:
 
 - typer file:
 

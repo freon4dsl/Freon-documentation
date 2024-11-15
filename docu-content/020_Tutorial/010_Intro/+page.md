@@ -6,7 +6,7 @@
 # Welcome to the Freon tutorial!
 
 This step-by-step guide will teach you everything you need to know to easily build your own domain specific language (DSL).
-You will learn how to create the set of tools, editor, validator, interpreter, etc, which will enable your end-users to use your DSL efficiently.
+You will learn how to create the set of tools, editor, validator, interpreter, etc., which will enable your end-users to use your DSL efficiently.
 
 You can also consult the API docs, or — if you’re impatient to start hacking on your machine locally — create a project with todo.
 
@@ -41,9 +41,9 @@ This tutorial is split into (todo) number of lessons:
 Each section has a dedicated subject, but it will build upon the previous sections. So the best way is to work through them in the order given above.
 
 The easiest way to follow this tutorial is to create your own project in the IDE of your choice by TODO. There you can recreate the project, and toys with many of the options.
-Alternatively you can clone the sources for this tutorial on github: TODO link.
+Alternatively you can clone the sources for this tutorial on GitHub: TODO link.
 
-The github project is broken up into the same number of parts, so you won't be bothered by any of the details that are not yet explained, when going through the parts one by one.
+The GitHub project is broken up into the same number of parts, so you won't be bothered by any of the details that are not yet explained, when going through the parts one by one.
 You can find all definition files for lesson&nbsp1 in the folder named `lesson1-defs`, and likewise for all other lessons. Empty
 the `src/defs` folder (see <a href='#where-do-the-files-go-4'>Where do the files go?</a>), and copy in the files for the lesson you are about to follow.
 

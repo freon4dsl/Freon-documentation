@@ -79,11 +79,24 @@ export const tutorialToc: TocContentsType =
       { name: 'More Fun with Projections', path: '/Tutorial/More_Fun_with_Projections'},
       { name: 'Expressions', path: '/Tutorial/Expressions'},
       { name: 'In Need of Scoping', path: '/Tutorial/In_Need_of_Scoping'},
+      { name: 'What to Do about Types', path: '/Tutorial/What_to_Do_about_Types'},
+      { name: 'Is Everything Alright', path: '/Tutorial/Is_Everything_Alright'},
     ]};
 export const examplesToc: TocContentsType = 
    { name: 'Examples', path: '/Examples',
      content: [
       { name: 'Intro', path: '/Examples/Intro'},
+      { name: 'Special Projections', path: '/Examples/Special_Projections'},
+      { name: 'Custom Projections', path: '/Examples/Custom_Projections'},
+      { name: 'Custom Actions', path: '/Examples/Custom_Actions'},
+      { name: 'Editor Styling', path: '/Examples/Editor_Styling'},
+      { name: 'Projection Fragments', path: '/Examples/Projection_Fragments'},
+      { name: 'Custom Scoping', path: '/Examples/Custom_Scoping'},
+      { name: 'Custom Typing', path: '/Examples/Custom_Typing'},
+      { name: 'Custom Validation', path: '/Examples/Custom_Validation'},
+      { name: 'Svelte Components from a Library', path: '/Examples/Svelte_Components_from_a_Library'},
+      { name: 'Using the Interpreter', path: '/Examples/Using_the_Interpreter'},
+      { name: 'Including Freon in Your Website', path: '/Examples/Including_Freon_in_Your_Website'},
     ]};
 export const demosToc: TocContentsType = 
    { name: 'Demos', path: '/Demos',

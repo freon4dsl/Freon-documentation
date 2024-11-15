@@ -22,7 +22,7 @@ abstract concept Page {
 concept Theory base Page {
 /* For the sake of the example this is simplified.
    Should be formatted text including pictures, etc. */
-    lines: Line[];
+    content: Line[];
 }
 
 concept Line {
@@ -47,5 +47,18 @@ concept InDepthMaterial base Page {
 concept Question {
     name: identifier;
     content: string;
+    correctAnswer: NumberConcept;
+}
+
+abstract concept NumberConcept {
+}
+
+concept SimpleNumber base NumberConcept {
+    value: number;
+}
+
+concept Fraction base NumberConcept {
+    numerator: number;
+    denominator: number;
 }
 

@@ -91,7 +91,7 @@
 	--theme-colors-active: #FDE281; /* active leaf/branch in nav tree */
 	--font-mono: 'Fira Mono', monospace;
 	--column-width: 62rem;
-	--max-image-width: 54rem;
+	--max-image-width: 54rem; /* --column-width minus some padding */
 	--column-margin-top: 1rem;
 }
 

@@ -69,8 +69,8 @@ export const themePresets = [
 			active: FRE_COLOR2,
 			/* Syntax Highlighting */
 			code_color: '#393A34',
-			code_background: '#C1DEF1',
-			code_background_color: 'white',
+			code_inline_background: FRE_COLOR2,
+			code_block_background: 'white',
 			code_keyword: '#0000ff',
 			token_color_string: '#A31515',
 			token_keyword: '#0000ff',
@@ -162,8 +162,8 @@ export const themePresets = [
 			active: 'black',
 			/* Syntax Highlighting */
 			code_color: '#d4d4d4',
-			code_background: FRE_DARK1,
-			code_background_color: FRE_DARK1,
+			code_inline_background: FRE_COLOR4,
+			code_block_background: FRE_DARK1,
 			code_keyword: '#c586c0',
 			token_color_string: '#ce9178',
 			token_keyword: '#569CD6',

@@ -6,8 +6,8 @@
 :root {
 	/* all colors are put in variables, to be able to switch from light to dark theme */
 	--theme-colors-code_color: #393a34; /* to be changed in dark mode */
-	--theme-colors-code_background: #c1def1; /* to be changed in dark mode */
-	--theme-colors-code_background_color: white; /* to be changed in dark mode */
+	--theme-colors-code_inline_background: #FDE281; /* to be changed in dark mode */
+	--theme-colors-code_block_background: white; /* to be changed in dark mode */
 	--theme-colors-code_keyword: #0000ff;
 	--theme-colors-token_color_string: #a31515; /* to be changed in dark mode */
 	--theme-colors-block_quote_background: cornsilk;
@@ -184,4 +184,10 @@ code[class*='language-css'] {
 	background: rgba(193, 222, 241, 0.2);
 	background: -webkit-linear-gradient(left, rgba(193, 222, 241, 0.2) 70%, rgba(221, 222, 241, 0));
 	background: linear-gradient(to right, rgba(193, 222, 241, 0.2) 70%, rgba(221, 222, 241, 0));
+}
+
+/* code blocks within a paragraph need to stand out more */
+
+p code {
+	background-color: var(--theme-colors-code_inline_background);
 }

@@ -12,7 +12,7 @@ Freon projections are very flexible. In this lesson we are going to dive into a 
 We almost forgot to make an editor definition for the _Flow_ model unit. We are going to create a file called `edu-flow-edit`,
 and add the following lines to it.
 
-```text
+```txt
 // Education/lesson3-defs/edu-flow.edit
 
 /* This file contains the default editor definition. */
@@ -71,7 +71,7 @@ Let's create another editor definition for the _Flow_ model unit, one that displ
 the list of _PageTransitions_ in the _FlowRule_ as a table.
 We are going to name this editor definition `rules_as_table`. It goes into the file `edu-flow-table.edit`.
 
-```text
+```txt
 // Education/lesson3-defs/edu-flow-table.edit#L3-L3
 
 editor rules_as_table
@@ -83,7 +83,7 @@ that we are going to display the list `${self.transitions}` as a table, we remov
 Furthermore, we want the elements in the list to be displayed one element per row, thus
 the keyword `rows` is added. It won't be a surprise that you can also display one element per column using the keyword `columns`.
 
-```text
+```txt
 // Education/lesson3-defs/edu-flow-table.edit#L5-L12
 
 FlowRule {[
@@ -109,13 +109,12 @@ Headers are not obligatory, you can create a table without headers, if you like.
 Finally, we define the content of the table cells by indicating which property of the _PageTransition_ should go where. Again the bar
 indicates the transition from one table cell to the next table cell.
 
-```text
+```txt
 // Education/lesson3-defs/edu-flow-table.edit#L14-L17
 
 PageTransition { table [
     Condition          | Goto Page
     ${self.condition}  |  ${self.toPage}
-
 ]}
 ```
 
@@ -136,14 +135,14 @@ for example `[=>Page:footing]`.
 
 But before we can use this feature we need to create the `footing` editor definition. Add a file called `page-footing.edit`, and copy the following lines into it.
 
-```text
+```txt
 // Education/lesson3-defs/page-footing.edit#L3-L11
 
 editor footing
 
 Page {[
     Questions:
-        ${self.questions vertical separator [.]}
+        ${self.questions vertical}
 
     Score
         ${self.calcResult}
@@ -152,13 +151,13 @@ Page {[
 
 Now we are ready to use the above manner to specify a specific editor. With this technique we can rewrite the `edu-subjects.edit` file as follows.
 
-```text
+```txt
 // Education/lesson3-defs/edu-subjects.edit#L17-L60
 
 Theory {[
     ----------------------------------------------------
     Theory [=>Page]
-        ${self.lines vertical}
+        ${self.content vertical}
 
         [=>Page:footing]
 ]}

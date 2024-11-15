@@ -6,5 +6,5 @@
 
 <figure class="figure">
 	<img class="figure-image" src="/images/{imageName}" alt="Image '{imageName}' seems to be missing" />
-	<figcaption id={imageName}>Figure {figureNumber}. {caption}</figcaption>
+	<div class='figcaption' id={imageName}>Figure {figureNumber}. {caption}</div>
 </figure>

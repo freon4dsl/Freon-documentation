@@ -1,0 +1,22 @@
+/* This file contains the default editor definition. */
+
+editor default
+
+Flow {[
+    ${self.name} for topic ${self.topic}
+
+    ${self.rules vertical}
+]}
+
+FlowRule {[
+    -------------------------------------
+    Name: ${self.name}
+        Description: ${self.description}
+        For page ${self.page}
+
+        ${self.transitions}
+]}
+
+PageTransition {[
+    when ${self.condition} goto page ${self.toPage}
+]}

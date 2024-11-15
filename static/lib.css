@@ -72,6 +72,7 @@
     margin: 20px 20px 20px 20px;
     padding: 20px 20px 20px 20px;
     border-radius: 3px;
+    overflow-x: auto;
 }
 .figure-image {
     margin: 10px 10px 10px 10px;
