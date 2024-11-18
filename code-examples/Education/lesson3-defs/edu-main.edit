@@ -2,8 +2,8 @@
 
 editor default
 
-Subject {[
-    Subject Overview
+SiteGroup {[
+    SiteGroup Overview
 
         Name: ${self.name}
 

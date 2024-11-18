@@ -1,7 +1,12 @@
 <script>
     import PrevNextSection from '$lib/tutorial/PrevNextSection.svelte';
-    import Figure from "$lib/figures/Figure.svelte";
+    import Figure from '$lib/figures/Figure.svelte';
+
+    let prevLink= '/Tutorial/Creating_your_Metamodel';
+    let nextLink='/Tutorial/More_Fun_with_Projections';
 </script>
+
+<PrevNextSection {prevLink} {nextLink} />
 
 # Making an Editor for your DSL
 
@@ -9,7 +14,7 @@ At last, your patience is rewarded. In this step of the tutorial we are going to
 
 ## The default editor
 
-Let's create a file called `edu-subjects.edit` in the `src/defs` folder,
+Let's create a file called `edu-main.edit` in the `src/defs` folder,
 and define a default editor for this model unit. Please, enter the following line.
 
 ```txt
@@ -42,8 +47,8 @@ The first step is to focus on the _Topic_ model unit. Let's state how this model
 The projection for _Topic_ consists of four parts.
 
 - A line with the fixed
-  string `Subject:` followed by the name of the subject. For the latter we use a syntax similar to the smart
-  strings in TypeScript: `${self.subject}`. You may leave out the `self.` part. It indicates that we refer to the property of the _Topic_ object
+  string `SiteGroup:` followed by the name of the site group. For the latter we use a syntax similar to the smart
+  strings in TypeScript: `${self.main}`. You may leave out the `self.` part. It indicates that we refer to the property of the _Topic_ object
   that is projected. For clarity, we will be using this prefix everywhere in the tutorial.
 - A line with the fixed string `Topic:` followed by the name of the unit. 
 - The third line is again similar, but projects the `description` property of the model unit. Next, we add an empty line
@@ -57,7 +62,7 @@ The projection for _Topic_ consists of four parts.
 editor default
 
 Topic {[
-    Subject: ${self.subject}
+    SiteGroup: ${self.main}
     Topic: ${self.name}
     Topic description: ${self.description}
 
@@ -209,12 +214,8 @@ Last thing to learn in this lesson is how we can make editing easier for the use
 Its called `Fraction`, and it is formed by combining two numbers, a numerator and a denominator. This is how the concept is defined in the .ast file.
 
 ```txt
-// Education/lesson2-defs/edu-topics.ast#L53-l56
+// Education/lesson2-defs/edu-topics.ast#L53-L56
 
-concept Fraction base NumberConcept {
-    numerator: number;
-    denominator: number;
-}
 
 ```
 
@@ -253,4 +254,4 @@ But don't forget to get back to
 the next part of the tutorial, where we will have more fun with defining projections.
 
 
-<PrevNextSection prevLink= "/Tutorial/Creating_your_Metamodel" nextLink="/Tutorial/More_Fun_with_Projections" />
+<PrevNextSection {prevLink} {nextLink} />

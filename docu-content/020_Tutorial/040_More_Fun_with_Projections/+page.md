@@ -2,7 +2,13 @@
     import Note from "$lib/notes/Note.svelte";
     import PrevNextSection from '$lib/tutorial/PrevNextSection.svelte';
     import Figure from "$lib/figures/Figure.svelte";
+
+    let prevLink= '/Tutorial/Making_an_Editor';
+    let nextLink='/Tutorial/Expressions_in_Freon';
 </script>
+
+<PrevNextSection {prevLink} {nextLink} />
+
 
 # More Fun with Projections
 
@@ -22,7 +28,7 @@ and add the following lines to it. You should be familiar with everything in the
 editor default
 
 Flow {[
-    Flow ${self.name} for subject ${self.subject}
+    Flow ${self.name} for SiteGroup ${self.main}
 
     ${self.rules vertical}
 ]}
@@ -175,8 +181,7 @@ Theory {[
     Theory [=>Page]
         ${self.content vertical  terminator[== END OF LINE]}
 
-    Questions:
-        ${self.questions vertical}
+        [=>Page:footing]
 ]}
 
 Video {[
@@ -185,8 +190,7 @@ Video {[
         Maybe this video will help you understand.
         ${self.url}
 
-    Questions:
-        ${self.questions vertical}
+        [=>Page:footing]
 ]}
 
 WorkSheet {[
@@ -194,8 +198,7 @@ WorkSheet {[
     Worksheet [=>Page]
         See if you can answer the following questions.
 
-    Questions:
-        ${self.questions vertical}
+        [=>Page:footing]
 ]}
 
 ExamplePage {[
@@ -205,17 +208,20 @@ ExamplePage {[
 
         Now, please, answer the following questions.
 
-    Questions:
-        ${self.questions vertical}
+        [=>Page:footing]
 ]}
 
 InDepthMaterial {[
     ----------------------------------------------------
     InDepthMaterial [=>Page]
         ${self.content}
+
+        Test your understanding by answering the following questions.
+
+        [=>Page:footing]
 ```
 And try it out! You see, there is so much fun to have with creating projections.
 But do come back for the next lesson where we will tackle the topic of adding 
 expressions to your metamodel, and to your editor definitions.
 
-<PrevNextSection prevLink= "/Tutorial/Making_an_Editor" nextLink="/Tutorial/Expressions" />
+<PrevNextSection {prevLink} {nextLink} />

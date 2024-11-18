@@ -38,7 +38,8 @@ export class Md2Svelte {
 			return null;
 		}
 		// make the category layouts and toc, if folder is at lowest level
-		const level: number = (folder.match(/\\/g) || []).length;
+		// find the level by counting the number of file separators in the folder name
+		const level: number = (folder.match(new RegExp("\\" + path.sep, "g")) || []).length;
 		if (level === 2) {
 			// Create and write the layout including a category sidebar
 			const outputPath: string = PathCreator.createFolderPath(ignore, folder);

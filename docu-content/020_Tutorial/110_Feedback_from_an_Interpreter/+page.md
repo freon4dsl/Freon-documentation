@@ -1,6 +1,11 @@
 <script>
     import PrevNextSection from '$lib/tutorial/PrevNextSection.svelte';
+
+    let prevLink = '/Tutorial/Projections_for_Expressions';
+    let nextLink = '/Tutorial/What_about_Types';
 </script>
+
+<PrevNextSection {prevLink} {nextLink} />
 
 # Making an Editor for your DSL
 
@@ -9,4 +14,4 @@ minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea co
 in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
 officia deserunt mollit anim id est laborum."
 
-<PrevNextSection prevLink= "/Tutorial/Expressions" nextLink="/Tutorial/Intro" />
+<PrevNextSection {prevLink} {nextLink} />

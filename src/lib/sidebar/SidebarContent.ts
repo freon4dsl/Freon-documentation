@@ -77,11 +77,14 @@ export const tutorialToc: TocContentsType =
       { name: 'Creating your Metamodel', path: '/Tutorial/Creating_your_Metamodel'},
       { name: 'Making an Editor', path: '/Tutorial/Making_an_Editor'},
       { name: 'More Fun with Projections', path: '/Tutorial/More_Fun_with_Projections'},
-      { name: 'Expressions', path: '/Tutorial/Expressions'},
+      { name: 'Expressions in Freon', path: '/Tutorial/Expressions_in_Freon'},
+      { name: 'Projections for Expressions', path: '/Tutorial/Projections_for_Expressions'},
       { name: 'In Need of Scoping', path: '/Tutorial/In_Need_of_Scoping'},
-      { name: 'What to Do about Types', path: '/Tutorial/What_to_Do_about_Types'},
-      { name: 'Is Everything Alright', path: '/Tutorial/Is_Everything_Alright'},
-      { name: 'The Test Model Unit', path: '/Tutorial/The_Test_Model_Unit'},
+      { name: 'The Test model unit', path: '/Tutorial/The_Test_model_unit'},
+      { name: 'What about Types', path: '/Tutorial/What_about_Types'},
+      { name: 'Is Everything Valid', path: '/Tutorial/Is_Everything_Valid'},
+      { name: 'Feedback from an Interpreter', path: '/Tutorial/Feedback_from_an_Interpreter'},
+      { name: 'The Rest', path: '/Tutorial/The_Rest'},
     ]};
 export const examplesToc: TocContentsType = 
    { name: 'Examples', path: '/Examples',

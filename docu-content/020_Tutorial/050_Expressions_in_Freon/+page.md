@@ -1,15 +1,20 @@
 <script>
     import PrevNextSection from '$lib/tutorial/PrevNextSection.svelte';
-    import Figure from "$lib/figures/Figure.svelte";
+    import Figure from '$lib/figures/Figure.svelte';
+
+    let prevLink = '/Tutorial/More_Fun_with_Projections';
+    let nextLink = '/Tutorial/Projections_for_Expressions';
 </script>
+
+<PrevNextSection {prevLink} {nextLink} />
 
 # Expressions in Freon
 
 Many DSLs have some form of expressions, like `24 + 56`. Even though they may appear simple, if you have ever
-tried to build a language, you will know that expressions are tricky bastards (excuse the French). In Freon, therefore, they take 
+tried to build a language, you will know that expressions are tricky bastards (excuse the French). In Freon, therefore, they take
 a very special place.
 
-In this lesson we introduce expressions by adding grading rules to each `Topic`. Therefore, we need to change the metamodel. 
+In this lesson we introduce expressions by adding grading rules to each `Topic`. Therefore, we need to change the metamodel.
 Open the file `edu-topics.ast` and add one line to the `Page` concept.
 
 ```txt
@@ -42,9 +47,9 @@ how the concept should be defined, let's get some idea what the user wants to ex
 ## The Requirements
 
 Grading is all about the answers given to the questions on the page. For instance, if all answers are correct,
-the score should be top grade. But, if all answers are incorrect, the score should be the lowest grade. 
+the score should be top grade. But, if all answers are incorrect, the score should be the lowest grade.
 Speaking to our hypothetical client (<img src="/icons/smile.png" alt="Smiley" width="20" height="20">), we
-learn that the teachers also want to give a certain grade when the answers to certain questions are correct, 
+learn that the teachers also want to give a certain grade when the answers to certain questions are correct,
 where the answers to other questions are less important. So, the teachers may want to write things like:
 
 ```txt
@@ -90,15 +95,15 @@ expression NumberLiteralExpression base ScoreExpression {
 }
 ```
 
-Instead of the keyword `concept`, we use the keyword `expression` to let Freon know that instances 
-of these concepts should be treated differently. We make `ScoreExpression` the base parent of all 
-our expressions, so we can use it where ever we need an expression. For the rest, the definitions look 
+Instead of the keyword `concept`, we use the keyword `expression` to let Freon know that instances
+of these concepts should be treated differently. We make `ScoreExpression` the base parent of all
+our expressions, so we can use it where ever we need an expression. For the rest, the definitions look
 like ordinary concepts.
 
 ## Binary Expressions
 
 Freon adds loads of extra stuff to handle binary expressions. All we have to do is tell Freon that
-the concept is a binary expression concept. Look at how we define the two binary expressions for 
+the concept is a binary expression concept. Look at how we define the two binary expressions for
 the boolean **AND** and **OR**.
 
 ```txt
@@ -121,12 +126,12 @@ binary expression OrExpression base BinaryExpression {
 }
 ```
 
-Here it comes in handy that there is a single base parent for 
+Here it comes in handy that there is a single base parent for
 expressions, the `ScoreExpression`. We can have any instance of a
-`ScoreExpression` at the left hand side of any `BinaryExpression`, as well as to the 
+`ScoreExpression` at the left hand side of any `BinaryExpression`, as well as to the
 right hand side.
 
-Notice that the `AndExpression` and `OrExpression` have no properties of their own. 
+Notice that the `AndExpression` and `OrExpression` have no properties of their own.
 This is usually the case.
 It often makes no sense to add properties, but Freon does not forbid it. However, we
 do add a special feature, namely the `priority`. To be able to balance the abstract syntax tree for
@@ -135,7 +140,7 @@ an expression you need to know which expression has priority over the other.
 For instance, in mathematics multiplication has priority over plus. The expression
 `8 * 7 + 1` should be read as `(8 * 7) + 1`, and not as `8 * (7 + 1)`.
 
-In Freon, we indicate this priority by a number. A high number means high priority, 
+In Freon, we indicate this priority by a number. A high number means high priority,
 a low number means low priority.
 
 ## The Comparison Expressions
@@ -173,12 +178,34 @@ binary expression EqualsExpression base ComparisonExpression {
 }
 ```
 
-Now, let Freon generate the editor again, and open the model `lesson4` (todo check name).
+Now, let Freon generate the editor again, and open the model `lesson4` (todo check name). Note that we are opening 
+another model, because we have added concept to the metamodel. The new model contains instances of the new concepts.
+
+`%@$#&*!!!`, so much work, and nothing has changed!
+Yep, as so often occurs, we forgot one tiny thing: the editor definition for `Page` (or any of its children) does
+not mention the new `grading` property, thus it will not be shown. Let's address that right now. We'll change the `Page` projection
+in `page-footing.edit` to the following.
+
+```txt
+// Education/lesson4-defs/page-footing.edit#L5-L11
+
+Page {[
+    Questions:
+        ${self.questions vertical}
+
+    Score
+        ${self.grading vertical}
+]}
+```
+
+Generate again, and this is (part of) what you will see. Not especially pretty, but we have our expressions. In the next
+lesson you will learn how to project expressions.
 
 <Figure
 imageName={'Tutorial-lesson4-screenshot1.png'}
-caption={'Editor after adding projections for the Flow model unit'}
+caption={'Editor after adding grading to the metamodel'}
 figureNumber={1}
 />
 
-<PrevNextSection prevLink= "/Tutorial/More_Fun_with_Projections" nextLink="/Tutorial/In_Need_of_Scoping" />
+<PrevNextSection {prevLink} {nextLink} />
+

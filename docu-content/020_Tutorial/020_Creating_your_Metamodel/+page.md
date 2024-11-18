@@ -1,7 +1,12 @@
 <script>
-    import Note from "$lib/notes/Note.svelte";
+    import Note from '$lib/notes/Note.svelte';
     import PrevNextSection from '$lib/tutorial/PrevNextSection.svelte';
+
+    let prevLink= '/Tutorial/Intro';
+    let nextLink='/Tutorial/Making_an_Editor';
 </script>
+
+<PrevNextSection {prevLink} {nextLink} />
 
 # Creating your Metamodel
 
@@ -16,18 +21,18 @@ want to divide any model made by the user into partitions. The user will see onl
 at a time in the editor, but references can be made to nodes in other partitions. In
 Freon terminology these partition are called _Model Units_.
 
-We choose to create a model with a number of subjects. Each model is dedicated to
+We choose to create a model with a number of topics. Each model is dedicated to
 one of the courses that our client offers, that is, to one of their websites. Each model is divided into four
 parts. The **Topics** part will deal with the different webpages that are available
-for the subject. The **Flow** handles the way in which the flow between
+for the topic. The **Flow** handles the way in which the flow between
 the pages need to stream. Further there are the **Tests**, which define the tests for
-the topics, and the flow between the topics. Finally, there is the **Subject** part, which gives an overview of 
-a subject, with all topic, flows, and tests that regard that subject.
+the topics, and the flow between the topics. Finally, there is the **SiteGroup** part, which gives an overview of 
+a site group, with all sub topics, flows, and tests that regard that topic.
 
-Create the file `edu-subjects.ast` in the `src/defs` folder, and add the following code.
+Create the file `edu-main.ast` in the `src/defs` folder, and add the following code.
 
 ```txt
-// Education/lesson1-defs/edu-subjects.ast#L1-L10
+// Education/lesson1-defs/edu-main.ast#L1-L10
 
 language Education
 
@@ -36,14 +41,14 @@ model Education /* Computer Aided Learning */ {
     topic: Topic[];
     flow: Flow[];
     tests: Test[];
-    overviews: Subject[];
+    overviews: SiteGroup[];
 }
 
 ```
 
 If you are impatient, and already tried to generate the editor, you will have noticed
 that there are errors in our input. We need to define the concepts Topic,
-Flow, Test, and Subject. All four are model units, so we define them as such.
+Flow, Test, and SiteGroup. All four are model units, so we define them as such.
 
 ```txt
 modelunit Topic {
@@ -55,30 +60,52 @@ modelunit Test {
 modelunit Flow {
 
 }
-modelunit Subject {
+modelunit SiteGroup {
 
 }
 ```
 
-## The _Topic_ model unit
+## The _SiteGroup_ model unit
 
-Let's focus on the Topic model unit first. Because it is likely that we need to make references to topics,
-we give each topic a `name `of type `identifier`. 
+Let's focus on the _SiteGroup_ model unit first. Because it is likely that we need to make references to topics,
+we give each topic a `name `of type `identifier`.
 
 <Note><svelte:fragment slot="header"> The type identifier versus the type string.</svelte:fragment>  
 <svelte:fragment slot="content">
-
 <p>A property of type string may contain any printable character, but the content of an identifier is bound to a number of rules.
 These rules are equal to the rules in Typescript. Any concept or model unit that has a property
 <i>name</i> of type <i>identifier</i> can be referred to. </p>
 </svelte:fragment></Note>
 
-Every topic belongs to a subject, but we do not want this relationship
-to be like a UML aggregation, because we feel that this is too restrictive here. Therefore, we introduce another feature of 
-Freons metamodel, the **reference**. You may compare a reference to a UML directed association, where the role name is the name of the property ('subject'), and the direction
-is from the owner of the property ('Topic') to the type of the property ('Subject').
+Every (sub)topic belongs to a site group, but we do not want this relationship
+to be like a UML aggregation, because we feel that this is too restrictive here. Therefore, we introduce another feature of
+Freons metamodel, the **reference**. You may compare a reference to a UML directed association, where the role name is the name of the property ('topics'), and the direction
+is from the owner of the property ('SiteGroup') to the type of the property ('Topic'). The square brackets behind the type name indicate 
+that we want multiple instances of the type: a list.
 
-A description is probably useful as well, we give it the type `string`, because it should be able to contain all kinds of characters.
+Likewise, we define references to the flows and the tests that are part of this site group.
+
+```txt
+// Education/lesson1-defs/edu-main.ast#L11-L17
+
+modelunit SiteGroup {
+    name: identifier;
+    description: string; /* e.g. Mathematics, fractions for students age 10 */
+    reference topics: Topic[];
+    reference flows: Flow[];
+    reference tests: Test[];
+}
+```
+
+## The _Topic_ model unit
+
+To avoid having very large files, you can divide your language definition into as many files as you like.
+As long as the file extension is `.ast`, and the language has the same name (todo check the latter), the file
+will be taken into account as part of your language metamodel.
+
+So, let's create another file to store the metamodel for the _Topic_ model unit. Like the _SiteGroup_ model 
+unit, the _Topic_ model unit has a name of type identifier. A description is probably 
+useful as well, we give it the type `string`, because it should be able to contain all kinds of characters.
 We are building a model of a website, thus the concept **Page** should definitely be present.
 Each Topic will have a number of pages. The result for now is the code below.
 
@@ -87,7 +114,7 @@ Each Topic will have a number of pages. The result for now is the code below.
 
 modelunit Topic {
     name: identifier;
-    reference subject: Subject;
+    reference main: SiteGroup;
     description: string;
     pages: Page[];
 }
@@ -201,10 +228,6 @@ description of the flow between the pages.
 
 ## The _Flow_ model unit
 
-To avoid having very large files, you can divide your language definition into as many files as you like.
-As long as the file extension is `.ast`, and the language has the same name (todo check the latter), the file
-will be taken into account as part of your language metamodel.
-
 Let's create a second file called `edu-flow.ast`. This file will contain the part of the metamodel that handles
 **Flows**.
 
@@ -214,11 +237,11 @@ Let's create a second file called `edu-flow.ast`. This file will contain the par
 language Education
 
 modelunit Flow {
-    reference subject: Subject;
+    reference main: SiteGroup;
     rules: FlowRule[];
 }
 ```
-Here again, we use a reference to link the flow a subject.
+Here again, we use a reference to link the flow a site group.
 
 In the following code, each **FlowRule** is linked to a certain page. This is the page that the pupil is currently
 working on. The flow rule will determine which page to show next, using a set of **PageTransitions**.
@@ -268,4 +291,4 @@ we have created for your use. Or, you can play with the File menu. Click `New Mo
 
 Still, things do not look great, do they? Please be patient. In the next lesson you will learn to beautify the appearance of the model in the editor.
 
-<PrevNextSection prevLink= "/Tutorial/Intro" nextLink="/Tutorial/Making_an_Editor" />
+<PrevNextSection {prevLink} {nextLink} />
