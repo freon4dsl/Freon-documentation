@@ -95,6 +95,9 @@
 	--column-margin-top: 1rem;
 }
 
+html {
+	scroll-padding-top: var(--pi-header-height);
+}
 html,
 body {
 	position: relative;

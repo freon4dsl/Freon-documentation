@@ -1,16 +1,18 @@
 <script>
     import Note from "$lib/notes/Note.svelte";
     import PrevNextSection from '$lib/tutorial/PrevNextSection.svelte';
+    import Figure from "$lib/figures/Figure.svelte";
 </script>
 
 # More Fun with Projections
 
 Freon projections are very flexible. In this lesson we are going to dive into a number of ways to make your editor look great.
+We are going to create tables!
 
 ## A projection for the _Flow_ model unit
 
 We almost forgot to make an editor definition for the _Flow_ model unit. We are going to create a file called `edu-flow-edit`,
-and add the following lines to it.
+and add the following lines to it. You should be familiar with everything in these projections by now.
 
 ```txt
 // Education/lesson3-defs/edu-flow.edit
@@ -20,7 +22,7 @@ and add the following lines to it.
 editor default
 
 Flow {[
-    ${self.name} for topic ${self.topic}
+    Flow ${self.name} for subject ${self.subject}
 
     ${self.rules vertical}
 ]}
@@ -28,8 +30,8 @@ Flow {[
 FlowRule {[
     -------------------------------------
     Name: ${self.name}
-        Description: ${self.description}
-        For page ${self.page}
+    Description: ${self.description}
+    From page ${self.page}
 
         ${self.transitions}
 ]}
@@ -40,23 +42,29 @@ PageTransition {[
 
 ```
 
-Yes, generate the editor and try it! Note again that to see this definition in action you need to click on the arrow-left
-icon in the top bar, and select (todo) from the list of model units.
+Yes, generate the editor and try it! Note that to see this definition in action you need to click on the arrow-left
+icon in the top bar, and select 'StartFlow' from the list of model units. It looks like this.
+
+<Figure
+imageName={'Tutorial-lesson3-screenshot1.png'}
+caption={'Editor after adding projections for the Flow model unit'}
+figureNumber={1}
+/>
 
 ## More than One Editor
 
 Using Freon you can have multiple views on the same concept. After all, Freon generates a [projectional editor](/Documentation/Intro/Projectional_Editing).
 
-Remember that the editor in the previous lesson, and the one above are called `default`? That is because you can have any number of editors,
-each with their own name. 
+Remember that the editor definition in the previous lesson, and the one above are called `default`? That is 
+because you can have any number of editor definitions, each with its own name. 
 
 You can think of an editor as a different view on the model, but in terms of the editor definition,
-it is a set of projection definitions. This set can consist of a single concept that will have a changed appearance, or multiple
-concepts that need to be displayed differently.
+it is simply a set of projection definitions. This set can consist of a single concept that will have a 
+different appearance than the default, or multiple concepts that need to be displayed differently.
 
 When an editor definition does not have a projection for a certain concept, it falls back to the projection in one of the other
-editor definitions. Which projection is chosen for a certain concept, is determined by a fixed algorithm. If you want to know more about this algorithm,
-read [TODO](link to part of the documentation).
+editor definitions. Which projection is chosen for a certain concept, is determined by a fixed algorithm. 
+If you want to know more about this algorithm, read [TODO](link to part of the documentation).
 
 <Note><svelte:fragment slot="header"> One property, one occurrence in the editor</svelte:fragment>
 <svelte:fragment slot="content">
@@ -67,7 +75,7 @@ does not allow us to do this.</p>
 
 ## Creating Tables
 
-Let's create another editor definition for the _Flow_ model unit, one that displays 
+Let's create a second editor definition for the _Flow_ model unit, one that displays 
 the list of _PageTransitions_ in the _FlowRule_ as a table.
 We are going to name this editor definition `rules_as_table`. It goes into the file `edu-flow-table.edit`.
 
@@ -121,45 +129,54 @@ PageTransition { table [
 Note that for the _PageTransition_ object we have defined a table with two parts. It is the context 
 in which these objects are projected that determines whether these parts are displayed as rows or columns.
 
-When you got all this down in the file `edu-flow-table.edit`, it is time to run the generator again. The editor show look like this.
-Feel free to change `rows` in _FlowRule_ to `columns` to see what changes.
+When you got all this down in the file `edu-flow-table.edit`, it is time to run the generator again. Find the model unit 
+named 'StartFlow again', and ... Yes, there is a table. Feel free to change `rows` in the _FlowRule_ projection
+to `columns` to see what changes.
 
-(TODO add screenshot of editor)
+<Figure
+imageName={'Tutorial-lesson3-screenshot2.png'}
+caption={'Editor after adding projections for the Flow model unit'}
+figureNumber={1}
+/>
+
+If you want to see things like they were before, go the **View** menu, deselect **rules_as_table**, and hit **Apply changes**. The 
+name of the menu option is the name that we have given our second editor definition. If you create more editor definitions, every 
+name will be added to the menu. That way, you are able to switch on and off any of the projection sets / editor definitions.
 
 ## Using a Specific Editor
 
 We already mentioned that there is a specific [algorithm](link to part of the documentation) to determine which projection is shown in the generated editor.
 However, there is a way to circumvent this. Sometimes you want to use a very specific way to display a concept. You can indicate
-that by stating the name of the concept, as well as the name of the editor, using the syntax `[=>ConceptName:editor-name]`,
+that by stating the name of the concept, as well as the name of the editor definition, using the syntax `[=>ConceptName:editor-name]`,
 for example `[=>Page:footing]`.
 
-But before we can use this feature we need to create the `footing` editor definition. Add a file called `page-footing.edit`, and copy the following lines into it.
+We want to see this feature in action! But before we can use the `footing` editor definition, we need to create it. 
+Add a file called `page-footing.edit`, and copy the following lines into it.
 
 ```txt
-// Education/lesson3-defs/page-footing.edit#L3-L11
+// Education/lesson3-defs/page-footing.edit#L3-L8
 
 editor footing
 
 Page {[
     Questions:
-        ${self.questions vertical}
-
-    Score
-        ${self.calcResult}
+        ${self.questions vertical terminator [END]}
 ]}
 ```
 
-Now we are ready to use the above manner to specify a specific editor. With this technique we can rewrite the `edu-subjects.edit` file as follows.
+Now we are ready to specify a specific editor. Let's rewrite the `edu-topics.edit` file as follows.
 
 ```txt
-// Education/lesson3-defs/edu-subjects.edit#L17-L60
+// Education/lesson3-defs/edu-topics.edit#L17-L60
+
 
 Theory {[
     ----------------------------------------------------
     Theory [=>Page]
-        ${self.content vertical}
+        ${self.content vertical  terminator[== END OF LINE]}
 
-        [=>Page:footing]
+    Questions:
+        ${self.questions vertical}
 ]}
 
 Video {[
@@ -168,7 +185,8 @@ Video {[
         Maybe this video will help you understand.
         ${self.url}
 
-        [=>Page:footing]
+    Questions:
+        ${self.questions vertical}
 ]}
 
 WorkSheet {[
@@ -176,7 +194,8 @@ WorkSheet {[
     Worksheet [=>Page]
         See if you can answer the following questions.
 
-        [=>Page:footing]
+    Questions:
+        ${self.questions vertical}
 ]}
 
 ExamplePage {[
@@ -186,22 +205,17 @@ ExamplePage {[
 
         Now, please, answer the following questions.
 
-        [=>Page:footing]
+    Questions:
+        ${self.questions vertical}
 ]}
 
 InDepthMaterial {[
     ----------------------------------------------------
-    [=>Page]
+    InDepthMaterial [=>Page]
         ${self.content}
-
-        Test your understanding by answering the following questions.
-
-        [=>Page:footing]
-]}
 ```
-
-You see, there is so much fun to have with creating projections. Please try it out!
-
-But do come back for the next lesson where we will tackle the topic of adding expressions to your metamodel, and to your editor definitions.
+And try it out! You see, there is so much fun to have with creating projections.
+But do come back for the next lesson where we will tackle the topic of adding 
+expressions to your metamodel, and to your editor definitions.
 
 <PrevNextSection prevLink= "/Tutorial/Making_an_Editor" nextLink="/Tutorial/Expressions" />

@@ -2,64 +2,14 @@
 
 editor default
 
-Topic {[
-    Topic: ${self.name}
-    Description: ${self.description}
+Subject {[
+    Subject Overview
 
-    Pages:
-    ${self.pages vertical }
-]}
+        Name: ${self.name}
 
-Page {[
-    ${self.name}
-]}
+        Description: ${self.description}
 
-Theory {[
-    ----------------------------------------------------
-    Theory [=>Page]
-        ${self.content vertical}
+        Topics: ${self.topics}
 
-        [=>Page:footing]
-]}
-
-Video {[
-    ----------------------------------------------------
-    Video [=>Page]
-        Maybe this video will help you understand.
-        ${self.url}
-
-        [=>Page:footing]
-]}
-
-WorkSheet {[
-    ----------------------------------------------------
-    Worksheet [=>Page]
-        See if you can answer the following questions.
-
-        [=>Page:footing]
-]}
-
-ExamplePage {[
-    ----------------------------------------------------
-    Example [=>Page]
-        ${self.content}
-
-        Now, please, answer the following questions.
-
-        [=>Page:footing]
-]}
-
-InDepthMaterial {[
-    ----------------------------------------------------
-    [=>Page]
-        ${self.content}
-
-        Test your understanding by answering the following questions.
-
-        [=>Page:footing]
-]}
-
-Question {[
-    ${name}
-        ${self.content} Correct Answer: ${self.correctAnswer}
+        Flows: ${self.flows}
 ]}

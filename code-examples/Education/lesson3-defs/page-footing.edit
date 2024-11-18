@@ -4,8 +4,5 @@ editor footing
 
 Page {[
     Questions:
-        ${self.questions vertical}
-
-    Score
-        ${self.calcResult}
+        ${self.questions vertical terminator [END]}
 ]}

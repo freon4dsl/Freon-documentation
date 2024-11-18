@@ -81,6 +81,7 @@ export const tutorialToc: TocContentsType =
       { name: 'In Need of Scoping', path: '/Tutorial/In_Need_of_Scoping'},
       { name: 'What to Do about Types', path: '/Tutorial/What_to_Do_about_Types'},
       { name: 'Is Everything Alright', path: '/Tutorial/Is_Everything_Alright'},
+      { name: 'The Test Model Unit', path: '/Tutorial/The_Test_Model_Unit'},
     ]};
 export const examplesToc: TocContentsType = 
    { name: 'Examples', path: '/Examples',

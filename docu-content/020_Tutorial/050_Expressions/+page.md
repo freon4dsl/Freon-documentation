@@ -1,5 +1,6 @@
 <script>
     import PrevNextSection from '$lib/tutorial/PrevNextSection.svelte';
+    import Figure from "$lib/figures/Figure.svelte";
 </script>
 
 # Expressions in Freon
@@ -8,106 +9,176 @@ Many DSLs have some form of expressions, like `24 + 56`. Even though they may ap
 tried to build a language, you will know that expressions are tricky bastards (excuse the French). In Freon, therefore, they take 
 a very special place.
 
-In this lesson we introduce expressions by creating the metamodel for the third model unit, the _Test_ model unit. Remember that our hypothetical 
-client company wanted a means to test the page flow before the actual webpages are produced. That is what the _Test_ model unit is about.
-
-## What Users Will Write
+In this lesson we introduce expressions by adding grading rules to each `Topic`. Therefore, we need to change the metamodel. 
+Open the file `edu-topics.ast` and add one line to the `Page` concept.
 
 ```txt
-Scenario description 
-    "Test of topic Fractions, flow for grade A students"
-Start: fractions235    
-Step1: on gradeA => expect advancedFractions203
-Step2: on 
-    answer to question1: 5 OR answer to question3: true
-    => expect extraExplanation43
-Step3: on 
-    answer to question1: 1/2 AND answer to question4: 12
-    => expect excellentPage       
+// Education/lesson4-defs/edu-topics.ast#L10-L14
+
+abstract concept Page {
+    name: identifier;
+    questions: Question[];
+    grading: GradeScore[]; /* concept from 'edu-scoring.ast' */
+}
 ```
 
-## The AST for the _Test_ model unit
-
-Ready to create a new file? Let's call it `edu-tests.ast` and fill it with the following code.
+Of course, we are going to define the `GradeScore` concept, but for this we create a new file called `edu-scoring.ast`.
+Add the following lines to it.
 
 ```txt
-// Education/lesson4-defs/edu-tests.ast#L1-L30
+// Education/lesson4-defs/edu-scoring.ast#L1-L6
 
 language Education
 
-modelunit Test {
-    name: identifier;
-    scenarios: Scenario[];
-    reference subject: Subject;
-    reference flow: Flow;
+concept GradeScore {
+    grade: Grade;
+    expr: ScoreExpression;
+}
+```
+
+Yes, the concept `ScoreExpression` represents our expression. To get an idea of
+how the concept should be defined, let's get some idea what the user wants to express.
+
+## The Requirements
+
+Grading is all about the answers given to the questions on the page. For instance, if all answers are correct,
+the score should be top grade. But, if all answers are incorrect, the score should be the lowest grade. 
+Speaking to our hypothetical client (<img src="/icons/smile.png" alt="Smiley" width="20" height="20">), we
+learn that the teachers also want to give a certain grade when the answers to certain questions are correct, 
+where the answers to other questions are less important. So, the teachers may want to write things like:
+
+```txt
+GradeC: Answer to questionX is correct AND the Number of Correct Answers = 3
+
+GradeD: Answer to questionY is correct OR Answer to questionZ is correct AND the Number of Correct Answers > 2
+```
+
+So, what do we have here.
+
+1. There is a number literal for the **3** and **2**.
+2. We need something that represent **Number of Correct Answers**.
+3. To deal with **questionX** and **questionY** we need a reference to a question on the page.
+4. We need binary expressions for the boolean **AND** and **OR**.
+5. There is also a need for an equals expression to be able to deal with the **=-sign**.
+6. The **>-sign** also introduces a new type of expression.
+
+This is how we define the first three concepts of the above list.
+
+```txt
+// Education/lesson4-defs/edu-scoring.ast#L8-L28
+
+///////////////////////////////////
+/// Expressions
+//////////////////////////////////
+abstract expression ScoreExpression {
 }
 
-concept Scenario {
-    description: string;
-    testFlow: TestFlow[];
-    steps: Step[]; /* Note that the order is of importance */
-}
-concept TestFlow {
-    steps: Step[]; /* Note that the order is of importance */
-}
-concept Step {
-    reference expectedPage: Page;
-    answerSeries: Answer[];
-}
-
-concept StartStep base Step {
-    reference fromPage: Page;
-    reference expectedPage: Page;
-    answerSeries: Answer[];
-}
-
-concept Answer {
+/* The value of a question reference is the answer given to the
+given question */
+expression QuestionReference base ScoreExpression {
     reference question: Question;
-```
+}
 
-Let's see what we have got here. Note that we are defining the metamodel, not the editor, at this point.
+/* The value of NrOfCorrectAnswers is the total number of correct
+answers on a page. */
+expression NrOfCorrectAnswers base ScoreExpression {
+}
 
-First, there is again the name of the language, which makes sure that this is part of the metamodel of the _Education_ 
-Language. Second, we define the _Test_ model unit. The main property of the model unit is `scenarios: Scenario[]`,
-a list of test scenarios. Each test scenario deals with a certain flow (`reference flow: FlowDescription`) 
-with regard to a certain topic (`reference topic: Topic`), that is, to a certain subset of 
-pages that cover the topic to be taught. Both of which will be defined in one of the other model units, therefore we use references.
-A test scenario walks through a number of steps until it reaches an end step.
-
-Because there are two different types of steps, both of them inherit from the abstract concept _AbstractStep_. The normal step is one
-that goes from a certain page to another page. Which page is the next depends on the reaction of the pupil to the questions on the page.
-In the metamodel this is represented by `answersGiven: Answer[]`. 
-
-We are testing, thus we are not sure whether the next page is equal to the page described by the _PageTransitions_ from the _Flow_ model units.
-The trick is to compare the next page with what is defined there. We need to mimic the answers given by 
-the pupil to be able to make this comparison. And here is where expressions come in. 
-
-## The _AnswerExpression_ concept
-
-What we need is a way to describe the actual answer given to the question, combine these answers for all questions on a page, and grade
-this combination such that we get something that we can compare with the condition for a _PageTransition_. Let's again look at the 
-definition of a _PageTransition_.
-
-```txt
-// Education/lesson4-defs/edu-flow.ast#L15-L18
-
-concept PageTransition { /* E.g. Grade A => show pageA, Grade F => show pageC */
-    condition: Grade; /* Note: will be changed into an expression later in the tutorial. */
-    reference toPage: Page;
+/* The value of a NumberLiteralExpression is simply a number, like '24' */
+expression NumberLiteralExpression base ScoreExpression {
+    value: number;
 }
 ```
 
-The condition for a page transition is a `Grade`. The result of the grading of the combined answers must therefore 
-be a `Grade`. Our first test could therefore be something that takes a literal `Grade` as condition to a page transition.
+Instead of the keyword `concept`, we use the keyword `expression` to let Freon know that instances 
+of these concepts should be treated differently. We make `ScoreExpression` the base parent of all 
+our expressions, so we can use it where ever we need an expression. For the rest, the definitions look 
+like ordinary concepts.
+
+## Binary Expressions
+
+Freon adds loads of extra stuff to handle binary expressions. All we have to do is tell Freon that
+the concept is a binary expression concept. Look at how we define the two binary expressions for 
+the boolean **AND** and **OR**.
 
 ```txt
-abstract expression GradeExpression {}
+// Education/lesson4-defs/edu-scoring.ast#L30-L44
 
-expression GradeLiteral base GradeExpression {
-    reference grade: Grade;
+///////////////////////////////////
+/// Boolean AND and OR
+//////////////////////////////////
+abstract binary expression BinaryExpression base ScoreExpression {
+    left: ScoreExpression;
+    right: ScoreExpression;
+}
+
+binary expression AndExpression base BinaryExpression {
+    priority = 1;
+}
+
+binary expression OrExpression base BinaryExpression {
+    priority = 1;
 }
 ```
 
+Here it comes in handy that there is a single base parent for 
+expressions, the `ScoreExpression`. We can have any instance of a
+`ScoreExpression` at the left hand side of any `BinaryExpression`, as well as to the 
+right hand side.
 
+Notice that the `AndExpression` and `OrExpression` have no properties of their own. 
+This is usually the case.
+It often makes no sense to add properties, but Freon does not forbid it. However, we
+do add a special feature, namely the `priority`. To be able to balance the abstract syntax tree for
+an expression you need to know which expression has priority over the other.
+
+For instance, in mathematics multiplication has priority over plus. The expression
+`8 * 7 + 1` should be read as `(8 * 7) + 1`, and not as `8 * (7 + 1)`.
+
+In Freon, we indicate this priority by a number. A high number means high priority, 
+a low number means low priority.
+
+## The Comparison Expressions
+
+What is left of the requirements for our expressions are the `=` and `>` signs. But let's
+not be stingy, and create expression concepts for `<`, `>=`, and `<=` as well.
+
+```txt
+// Education/lesson4-defs/edu-scoring.ast#L46-L70
+
+///////////////////////////////////
+/// Comparisons: <=, >=, >, <, ===
+//////////////////////////////////
+abstract binary expression ComparisonExpression base BinaryExpression {
+}
+
+binary expression LessOrEqualsExpression base ComparisonExpression {
+    priority = 2;
+}
+
+binary expression GreaterOrEqualsExpression base ComparisonExpression {
+    priority = 2;
+}
+
+binary expression LessThenExpression base ComparisonExpression {
+    priority = 2;
+}
+
+binary expression GreaterThenExpression base ComparisonExpression {
+    priority = 2;
+}
+
+binary expression EqualsExpression base ComparisonExpression {
+    priority = 2;
+}
+```
+
+Now, let Freon generate the editor again, and open the model `lesson4` (todo check name).
+
+<Figure
+imageName={'Tutorial-lesson4-screenshot1.png'}
+caption={'Editor after adding projections for the Flow model unit'}
+figureNumber={1}
+/>
 
 <PrevNextSection prevLink= "/Tutorial/More_Fun_with_Projections" nextLink="/Tutorial/In_Need_of_Scoping" />
