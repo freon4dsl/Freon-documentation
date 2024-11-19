@@ -115,7 +115,7 @@
 				</section>
 
 				<section class="landing-enter-buttons-grid">
-					<a href="/GettingStarted" class="landing-enter-button">
+					<a href="/Documentation/Getting_Started" class="landing-enter-button">
 						<h3>Getting Started</h3>
 						<p>
 							Want to get started immediately... this is the place to go. We show you how to set up your project with a few commands and

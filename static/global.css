@@ -159,6 +159,9 @@ a {
 a:hover {
 	color: var(--theme-colors-link_hover);
 }
+li {
+	padding: 0.2rem;
+}
 .main-window {
 	margin-top: var(--pi-header-height);
 	margin-bottom: var(--pi-footer-height);

@@ -3,7 +3,7 @@
     import Figure from '$lib/figures/Figure.svelte';
 
     let prevLink = '/Tutorial/How_to_Handle_Typing';
-    let nextLink = '/Tutorial/Feedback_from_an_Interpreter';
+    let nextLink = '/Tutorial/Conclusion';
 </script>
 
 <PrevNextSection {prevLink} {nextLink} />
@@ -80,6 +80,5 @@ caption={'Validation error in grading expression'}
 figureNumber={1}
 />
 
-Next lesson will show you how to create an interpreter for direct feedback to your users.
 
 <PrevNextSection {prevLink} {nextLink} />

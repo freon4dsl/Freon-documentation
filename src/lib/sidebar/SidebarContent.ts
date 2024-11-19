@@ -3,49 +3,44 @@ import { type CategoryInfoType, type TocContentsType } from '$lib/sidebar/TocCon
 export const documentationToc: TocContentsType = 
    { name: 'Documentation', path: '/Documentation',
      content: [
-      { name: 'Intro', path: '/Documentation/Intro',
-        content: [
-         { name: 'Projectional Editing', path: '/Documentation/Intro/Projectional_Editing'},
-         { name: 'A Language in Five Parts', path: '/Documentation/Intro/A_Language_in_Five_Parts'},
-         { name: 'Three Levels of Customization', path: '/Documentation/Intro/Three_Levels_of_Customization'},
-         { name: 'Name Change', path: '/Documentation/Intro/Name_Change'},
-         { name: 'Future Developments', path: '/Documentation/Intro/Future_Developments'},
-       ]},
-      { name: 'Getting Started', path: '/Documentation/Getting_Started',
-        content: [
-         { name: 'Project Structure', path: '/Documentation/Getting_Started/Project_Structure'},
-         { name: 'Calling the Generator', path: '/Documentation/Getting_Started/Calling_the_Generator'},
-       ]},
+      { name: 'Intro', path: '/Documentation/Intro'},
+      { name: 'Getting Started', path: '/Documentation/Getting_Started'},
       { name: 'Developing a Language', path: '/Documentation/Developing_a_Language',
         content: [
-         { name: 'Default Level', path: '/Documentation/Developing_a_Language/Default_Level'},
-         { name: 'Defining the Language Structure', path: '/Documentation/Developing_a_Language/Default_Level/Defining_the_Language_Structure'},
-         { name: 'Defining Concept Properties', path: '/Documentation/Developing_a_Language/Default_Level/Defining_Concept_Properties'},
-         { name: 'Definition Level', path: '/Documentation/Developing_a_Language/Definition_Level'},
-         { name: 'Editor Definition', path: '/Documentation/Developing_a_Language/Definition_Level/Editor_Definition'},
-         { name: 'Edit Files', path: '/Documentation/Developing_a_Language/Definition_Level/Editor_Definition/Edit_Files'},
-         { name: 'Projections', path: '/Documentation/Developing_a_Language/Definition_Level/Editor_Definition/Projections'},
-         { name: 'Indentation', path: '/Documentation/Developing_a_Language/Definition_Level/Editor_Definition/Indentation'},
-         { name: 'Other Options', path: '/Documentation/Developing_a_Language/Definition_Level/Editor_Definition/Other_Options'},
-         { name: 'Fragments', path: '/Documentation/Developing_a_Language/Definition_Level/Editor_Definition/Fragments'},
-         { name: 'External Components', path: '/Documentation/Developing_a_Language/Definition_Level/Editor_Definition/External_Components'},
-         { name: 'Scoper Definition', path: '/Documentation/Developing_a_Language/Definition_Level/Scoper_Definition'},
-         { name: 'Scoper Files', path: '/Documentation/Developing_a_Language/Definition_Level/Scoper_Definition/Scoper_Files'},
-         { name: 'Typer Definition', path: '/Documentation/Developing_a_Language/Definition_Level/Typer_Definition'},
-         { name: 'Typer Files', path: '/Documentation/Developing_a_Language/Definition_Level/Typer_Definition/Typer_Files'},
-         { name: 'Example Structure', path: '/Documentation/Developing_a_Language/Definition_Level/Typer_Definition/Example_Structure'},
-         { name: 'Example Typer Definition', path: '/Documentation/Developing_a_Language/Definition_Level/Typer_Definition/Example_Typer_Definition'},
-         { name: 'Validator Definition', path: '/Documentation/Developing_a_Language/Definition_Level/Validator_Definition'},
-         { name: 'Validator Files', path: '/Documentation/Developing_a_Language/Definition_Level/Validator_Definition/Validator_Files'},
-         { name: 'API Level', path: '/Documentation/Developing_a_Language/API_Level'},
-         { name: 'Editor API', path: '/Documentation/Developing_a_Language/API_Level/Editor_API'},
-         { name: 'Writing Projections', path: '/Documentation/Developing_a_Language/API_Level/Writing_Projections'},
-         { name: 'Writing Actions', path: '/Documentation/Developing_a_Language/API_Level/Writing_Actions'},
-         { name: 'Validator API', path: '/Documentation/Developing_a_Language/API_Level/Validator_API'},
-         { name: 'Typer API', path: '/Documentation/Developing_a_Language/API_Level/Typer_API'},
-         { name: 'Scoper API', path: '/Documentation/Developing_a_Language/API_Level/Scoper_API'},
-         { name: 'Reader API', path: '/Documentation/Developing_a_Language/API_Level/Reader_API'},
-         { name: 'Styling', path: '/Documentation/Developing_a_Language/Styling'},
+         { name: 'Defining the Language Structure', path: '/Documentation/Developing_a_Language/Defining_the_Language_Structure'},
+         { name: 'Defining Concept Properties', path: '/Documentation/Developing_a_Language/Defining_Concept_Properties'},
+       ]},
+      { name: 'Defining an Editor', path: '/Documentation/Defining_an_Editor',
+        content: [
+         { name: 'Editor Definition', path: '/Documentation/Defining_an_Editor/Editor_Definition'},
+         { name: 'Edit Files', path: '/Documentation/Defining_an_Editor/Editor_Definition/Edit_Files'},
+         { name: 'Projections', path: '/Documentation/Defining_an_Editor/Editor_Definition/Projections'},
+         { name: 'Indentation', path: '/Documentation/Defining_an_Editor/Editor_Definition/Indentation'},
+         { name: 'Other Options', path: '/Documentation/Defining_an_Editor/Editor_Definition/Other_Options'},
+         { name: 'Fragments', path: '/Documentation/Defining_an_Editor/Editor_Definition/Fragments'},
+         { name: 'External Components', path: '/Documentation/Defining_an_Editor/Editor_Definition/External_Components'},
+         { name: 'Styling', path: '/Documentation/Defining_an_Editor/Styling'},
+       ]},
+      { name: 'Scoping, Typing, and Validating', path: '/Documentation/Scoping,_Typing,_and_Validating',
+        content: [
+         { name: 'Scoper Definition', path: '/Documentation/Scoping,_Typing,_and_Validating/Scoper_Definition'},
+         { name: 'Scoper Files', path: '/Documentation/Scoping,_Typing,_and_Validating/Scoper_Definition/Scoper_Files'},
+         { name: 'Typer Definition', path: '/Documentation/Scoping,_Typing,_and_Validating/Typer_Definition'},
+         { name: 'Typer Files', path: '/Documentation/Scoping,_Typing,_and_Validating/Typer_Definition/Typer_Files'},
+         { name: 'Example Structure', path: '/Documentation/Scoping,_Typing,_and_Validating/Typer_Definition/Example_Structure'},
+         { name: 'Example Typer Definition', path: '/Documentation/Scoping,_Typing,_and_Validating/Typer_Definition/Example_Typer_Definition'},
+         { name: 'Validator Definition', path: '/Documentation/Scoping,_Typing,_and_Validating/Validator_Definition'},
+         { name: 'Validator Files', path: '/Documentation/Scoping,_Typing,_and_Validating/Validator_Definition/Validator_Files'},
+       ]},
+      { name: 'Customizations', path: '/Documentation/Customizations',
+        content: [
+         { name: 'Editor API', path: '/Documentation/Customizations/Editor_API'},
+         { name: 'Writing Projections', path: '/Documentation/Customizations/Writing_Projections'},
+         { name: 'Writing Actions', path: '/Documentation/Customizations/Writing_Actions'},
+         { name: 'Validator API', path: '/Documentation/Customizations/Validator_API'},
+         { name: 'Typer API', path: '/Documentation/Customizations/Typer_API'},
+         { name: 'Scoper API', path: '/Documentation/Customizations/Scoper_API'},
+         { name: 'Reader API', path: '/Documentation/Customizations/Reader_API'},
        ]},
       { name: 'Under the Hood', path: '/Documentation/Under_the_Hood',
         content: [
@@ -83,13 +78,13 @@ export const tutorialToc: TocContentsType =
       { name: 'More Scoping', path: '/Tutorial/More_Scoping'},
       { name: 'How to Handle Typing', path: '/Tutorial/How_to_Handle_Typing'},
       { name: 'Validating the model', path: '/Tutorial/Validating_the_model'},
-      { name: 'Feedback from an Interpreter', path: '/Tutorial/Feedback_from_an_Interpreter'},
       { name: 'Conclusion', path: '/Tutorial/Conclusion'},
     ]};
 export const examplesToc: TocContentsType = 
    { name: 'Examples', path: '/Examples',
      content: [
       { name: 'Intro', path: '/Examples/Intro'},
+      { name: 'Using the Interpreter', path: '/Examples/Using_the_Interpreter'},
       { name: 'Special Projections', path: '/Examples/Special_Projections'},
       { name: 'Custom Projections', path: '/Examples/Custom_Projections'},
       { name: 'Custom Actions', path: '/Examples/Custom_Actions'},
@@ -99,7 +94,6 @@ export const examplesToc: TocContentsType =
       { name: 'Custom Typing', path: '/Examples/Custom_Typing'},
       { name: 'Custom Validation', path: '/Examples/Custom_Validation'},
       { name: 'Svelte Components from a Library', path: '/Examples/Svelte_Components_from_a_Library'},
-      { name: 'Using the Interpreter', path: '/Examples/Using_the_Interpreter'},
       { name: 'Including Freon in Your Website', path: '/Examples/Including_Freon_in_Your_Website'},
     ]};
 export const demosToc: TocContentsType = 
@@ -107,18 +101,23 @@ export const demosToc: TocContentsType =
      content: [
       { name: 'Intro', path: '/Demos/Intro'},
     ]};
-export const aboutToc: TocContentsType = 
-   { name: 'About', path: '/About',
+export const backgroundToc: TocContentsType = 
+   { name: 'Background', path: '/Background',
      content: [
-      { name: 'Intro', path: '/About/Intro'},
-      { name: 'Guiding Principles', path: '/About/Guiding_Principles',
+      { name: 'Intro', path: '/Background/Intro'},
+      { name: 'Projectional Editing', path: '/Background/Projectional_Editing'},
+      { name: 'Models and Model Units', path: '/Background/Models_and_Model_Units'},
+      { name: 'A Language in Five Parts', path: '/Background/A_Language_in_Five_Parts'},
+      { name: 'Guiding Principles', path: '/Background/Guiding_Principles',
         content: [
-         { name: 'Intro', path: '/About/Guiding_Principles/Intro'},
-         { name: 'Our Philosophy', path: '/About/Guiding_Principles/Our_Philosophy'},
-         { name: 'Models and Model Units', path: '/About/Guiding_Principles/Models_and_Model_Units'},
+         { name: 'Intro', path: '/Background/Guiding_Principles/Intro'},
+         { name: 'Our Philosophy', path: '/Background/Guiding_Principles/Our_Philosophy'},
        ]},
-      { name: 'Release Notes', path: '/About/Release_Notes'},
-      { name: 'About this site', path: '/About/About_this_site'},
+      { name: 'Three Levels of Customization', path: '/Background/Three_Levels_of_Customization'},
+      { name: 'Name Change', path: '/Background/Name_Change'},
+      { name: 'Future Developments', path: '/Background/Future_Developments'},
+      { name: 'Release Notes', path: '/Background/Release_Notes'},
+      { name: 'About this site', path: '/Background/About_this_site'},
     ]};
 		
 export const allCategories: CategoryInfoType[] = [
@@ -126,5 +125,5 @@ export const allCategories: CategoryInfoType[] = [
 		{name: 'Tutorial', path: '/Tutorial', toc: tutorialToc},
 		{name: 'Examples', path: '/Examples', toc: examplesToc},
 		{name: 'Demos', path: '/Demos', toc: demosToc},
-		{name: 'About', path: '/About', toc: aboutToc}
+		{name: 'Background', path: '/Background', toc: backgroundToc}
 ];
