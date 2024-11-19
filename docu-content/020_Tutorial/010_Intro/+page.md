@@ -51,6 +51,8 @@ You can find all definition files for lesson&nbsp1 in the folder named `lesson1-
 the `src/defs` folder (see <a href='#where-do-the-files-go-4'>Where do the files go?</a>), and copy in the files for the lesson you are about to follow. You can also find 
 a number of models that fit the language(s) from the lessons in the model server.
 
+For some hints on how to use the editor, click on the question mark on the top bar of the editor.
+
 ## Where do the files go?
 
 Your project will be set up to have all your Freon definition files in the folder `src/defs`,
@@ -62,5 +64,9 @@ mentioned. If you change these entries you can place the language definition fil
 "generate": "freon -v all -d src/defs -o src/",
 "clean-gen": "freon clean-it -d src/defs -o src/",
 ```
+
+In this tutorial we will make a number of Freon definition files. Note that the extension of the 
+file (for instance, `.ast`, `.valid`) is important, but the name is not. All metamodel definitions 
+need to be in a `.ast` file, all editor definitions in a `.edit` file, etc.
 
 <PrevNextSection {nextLink} />

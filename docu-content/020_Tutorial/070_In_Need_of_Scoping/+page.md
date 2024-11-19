@@ -3,7 +3,7 @@
     import Figure from '$lib/figures/Figure.svelte';
 
     let prevLink = '/Tutorial/Projections_for_Expressions';
-    let nextLink = '/Tutorial/The_Test_model_unit';
+    let nextLink = '/Tutorial/More_Scoping';
 </script>
 
 <PrevNextSection {prevLink} {nextLink} />
@@ -24,11 +24,12 @@ context are divided into sets. These sets do not overlap, but there are subsets 
 
 Let's call the relationship between a name and the smallest possible subset that contains it: the set owns the name. For
 instance, in the figure the name 'Peter' is owned by set8. Using common scoping rules, any name is accessible/visible within 
-the set that owns it, and within any set that contains the name's owner. In the figure the name 'Peter' would be accessible/visible 
+the set that owns it, and within any set that contains the name's owner, but not in other sets.
+In the figure the name 'Peter' would be accessible/visible 
 in (from smallest to largest) set8, set 4, set2, and set1. But it would not be accessible/visible in set3, set5, set6, and set7.
 
 <Figure
-imageName={'/images/Tutorial-lesson6-namespaces.png'}
+imageName={'Tutorial-lesson6-namespaces.png'}
 caption={'Simple View on Namespaces'}
 figureNumber={1}
 />
@@ -57,6 +58,6 @@ isnamespace { Page  }
 That's it. Easy, peasy! You don't believe it? Just try it out for yourselves, and you will see that in the score only the questions
 from that page can be used.
 
-In the following lessons we will learn a few more things about scoping. But first we are going to define the last model unit, the _Test_ unit.
+In the following lessons we will learn a few more things about scoping. But first we need to define the last model unit, the _Test_ unit.
 
 <PrevNextSection {prevLink} {nextLink} />

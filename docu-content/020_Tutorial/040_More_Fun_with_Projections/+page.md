@@ -142,7 +142,7 @@ to `columns` to see what changes.
 <Figure
 imageName={'Tutorial-lesson3-screenshot2.png'}
 caption={'Editor after adding projections for the Flow model unit'}
-figureNumber={1}
+figureNumber={2}
 />
 
 If you want to see things like they were before, go the **View** menu, deselect **rules_as_table**, and hit **Apply changes**. The 

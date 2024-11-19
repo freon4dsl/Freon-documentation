@@ -80,11 +80,11 @@ export const tutorialToc: TocContentsType =
       { name: 'Expressions in Freon', path: '/Tutorial/Expressions_in_Freon'},
       { name: 'Projections for Expressions', path: '/Tutorial/Projections_for_Expressions'},
       { name: 'In Need of Scoping', path: '/Tutorial/In_Need_of_Scoping'},
-      { name: 'The Test model unit', path: '/Tutorial/The_Test_model_unit'},
-      { name: 'What about Types', path: '/Tutorial/What_about_Types'},
-      { name: 'Is Everything Valid', path: '/Tutorial/Is_Everything_Valid'},
+      { name: 'More Scoping', path: '/Tutorial/More_Scoping'},
+      { name: 'How to Handle Typing', path: '/Tutorial/How_to_Handle_Typing'},
+      { name: 'Validating the model', path: '/Tutorial/Validating_the_model'},
       { name: 'Feedback from an Interpreter', path: '/Tutorial/Feedback_from_an_Interpreter'},
-      { name: 'The Rest', path: '/Tutorial/The_Rest'},
+      { name: 'Conclusion', path: '/Tutorial/Conclusion'},
     ]};
 export const examplesToc: TocContentsType = 
    { name: 'Examples', path: '/Examples',

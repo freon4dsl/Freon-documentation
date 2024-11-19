@@ -33,7 +33,7 @@ In fact, the editor that is generated in lesson 1, is completely based on the de
 <Figure
 imageName={'Tutorial-lesson2-screenshot1.png'}
 caption={'Editor from lesson 1'}
-figureNumber={1}
+figureNumber={2}
 />
 
 ## A projection for the _Topic_ model unit
@@ -245,7 +245,7 @@ Now go ahead, generate a new editor, and have a look. Your editor should now loo
 <Figure
 imageName={'Tutorial-lesson2-screenshot2.png'}
 caption={'Editor after adding some projection definitions'}
-figureNumber={1}
+figureNumber={3}
 />
 
 When you've gotten this far, it might be a good idea to try for yourself what

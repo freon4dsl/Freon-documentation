@@ -169,7 +169,7 @@ binary expression MultiplyExpression base BinaryExpression {
 A _limited concept_ is a concept that has a limited number of predefined instances. Actually, it is an extended
 version of an enumeration. All instances become part of the standard library of your language.
 
-A limited concept must always have a name property (<code> name: identifier;</code>), but if this is not provided
+A limited concept must always have a name property (`name: identifier;`), but if this is not provided
 in the definition then it is automatically created. Furthermore, when a predefined instance does not provide a
 value for the name, the name of the instance is used. In this manner, you can define simple enumerations.
 

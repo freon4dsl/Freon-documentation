@@ -39,3 +39,4 @@
 
 - action:
 - NameSpaces:
+- Namespace Addition
