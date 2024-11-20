@@ -3,6 +3,10 @@ import fs from 'fs';
 
 export class PathCreator {
 
+	static createName (ignore: string, folder: string): string {
+		return this._createName(path.parse(path.relative(ignore, folder)).name)
+	}
+
 	static createFilePath(ignore: string, file: string): string {
 		// ignore the start of the path if it is equal to 'ignore'
 		let pathStr: string = path.relative(ignore, file);
@@ -53,5 +57,25 @@ export class PathCreator {
 				fs.mkdirSync(current);
 			}
 		}
+	}
+
+	/**
+	 * Finds the name to be shown in the navigation tree based on the file name
+	 * @private
+	 * @param folderName
+	 */
+	private static _createName(folderName: string) {
+		let myName: string = folderName;
+		if (!!folderName && folderName.length > 0) {
+			// remove the numbering
+			myName = myName.replace(/[0-9]+_/g, '');
+			// replace all underscores and dashes by spaces
+			myName = myName.replace(/[_\\-]/g, ' ');
+			// start the name with an uppercase character
+			myName = myName[0].toUpperCase() + myName.substring(1);
+			// note: there is no need to replace "\" by "/" for svelteKit, but it is easier to generate - no escapes necessary
+			myName = myName.replace(/\\/g, '/');
+		}
+		return myName;
 	}
 }

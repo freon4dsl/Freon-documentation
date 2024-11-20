@@ -4,6 +4,8 @@ import { compile } from 'mdsvex';
 import { remarkExtractHeaders } from './remark-extract-headers.js';
 import { categoryLayoutContent, pageContent } from './PageLayoutContent.js';
 import { PathCreator } from './PathCreator.js';
+import { CategoryInfoType, TocContentsType } from './TocContentsType.js';
+
 
 const storeContent: string =
 	`import { writable, type Writable } from 'svelte/store';
@@ -12,6 +14,13 @@ const storeContent: string =
 	export const mySections: Writable<Section[]> = writable<Section[]>([]);`;
 
 export class Md2Svelte {
+	allTocs: TocContentsType[];
+	allCategories: CategoryInfoType[];
+
+	constructor(allCategories: CategoryInfoType[], allTocs: TocContentsType[]) {
+		this.allCategories = allCategories;
+		this.allTocs = allTocs;
+	}
 
 	generate(contentFolder: string, outputFolder: string) {
 		const result: boolean = this.transformFolder(contentFolder, contentFolder, outputFolder);
@@ -71,7 +80,6 @@ export class Md2Svelte {
 	}
 
 	private async transformFile(filepath: string, ignore: string, outputFolder: string) {
-		// todo remove the numbering from <a> tags
 		// For each file, create a Svelte file containing the content from the markdown,
 		// and a page content (nav) on the side.
 		const markdown: string = fs.readFileSync(filepath, 'utf8');
@@ -80,14 +88,17 @@ export class Md2Svelte {
 			smartypants: true,
 			remarkPlugins: [remarkExtractHeaders]
 		});
-		const scriptPart: string = this.createScriptPart(transformed_code.data.headers);
+		const fileReference: string = PathCreator.createName(ignore, path.dirname(filepath));
+		const scriptPart: string = this.createScriptPart(transformed_code.data.headers, fileReference);
 		let fileContent: string;
-		if (scriptPart.length > 0) { // There are H2 headers on this page
+
+		if (scriptPart.length > 0) { // There is something to add
 			const htmlPart: string = this.changeHtags(transformed_code.code);
 			fileContent = this.combineScriptAndCode(scriptPart, htmlPart);
 		} else {
 			fileContent = transformed_code.code;
 		}
+
 		let outputPath: string = PathCreator.createFilePath(ignore, filepath);
 		// change name from '+page.md' to 'PageContent.svelte'
 		outputPath = path.dirname(outputPath) + path.sep + 'PageContent.svelte';
@@ -110,17 +121,24 @@ export class Md2Svelte {
 	}
 
 	/**
-	 * combines the two script parts
+	 * Adds additional content to the <script> part of the svelte file.
+	 *
+	 * If there is a script in the Markdown, the start tag is removed, the new script is added in front of the
+	 * script content, and a PrevNextSection is added directly after the closing </script> tag.
+	 *
+	 * If there is no script part in the markdown, the additional script is added before the content.
+	 * In both cases a PrevNextSection is added after the content.
 	 * @param script
 	 * @param code
 	 */
 	combineScriptAndCode(script: string, code: string): string {
-		const innerHtml: string = code.replace(/<script>/, '');
+		let innerHtml: string = code.replace(/<script>/, '');
 
 		if (code.includes('</script>')) {
-			return script + innerHtml;
+			innerHtml = innerHtml.replace(/<script>/, "</script>\n\n<PrevNextSection {prevLink} {nextLink} />\n" )
+			return script + innerHtml + "\n\n<PrevNextSection {prevLink} {nextLink} />";
 		} else {
-			return script + '\n</script>' + innerHtml;
+			return script + '\n\t</script>\n<PrevNextSection {prevLink} {nextLink} />' + innerHtml + "\n\n<PrevNextSection {prevLink} {nextLink} />";
 		}
 	}
 
@@ -137,7 +155,7 @@ export class Md2Svelte {
 		return result;
 	}
 
-	createScriptPart(headers: unknown): string {
+	createScriptPart(headers: unknown, fileReference: string): string {
 		// console.log('HEADERS: ' + JSON.stringify(headers))
 		let result: string = '';
 		// eslint-disable-next-line
@@ -195,6 +213,18 @@ export class Md2Svelte {
                       });
                   });
               });`;
+		// todo add the right links here
+		const next: string = '';
+		const prev: string = '';
+		// find fileReference in allTocs
+		console.log(`fileReference: ${fileReference}`)
+
+		result += `    
+		import PrevNextSection from '$lib/tutorial/PrevNextSection.svelte';
+		
+		let prevLink= '${prev}';
+    let nextLink='${next}';
+    `
 		return result;
 	}
 }

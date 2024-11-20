@@ -29,7 +29,7 @@ export class RedirectGenerator {
 		return `import { redirect } from '@sveltejs/kit';
 
 export function load() {
-  throw redirect(302, '/${categoryName}/Intro');
+  throw redirect(302, '/${categoryName}/Overview');
 }`
 	}
 }

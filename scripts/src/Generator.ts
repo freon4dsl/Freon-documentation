@@ -18,13 +18,16 @@ export class Generator {
 			// return;
 		}
 
+		// Run SideBarFiller first. The info is used in Md2Svelte for setting the previous next links.
+		console.log("Svelte pages ok, generating site-nav ...")
+		const filler = new SidebarFiller();
+		filler.generateAllTocs(contentFolder, siteNavFile);
+
 		console.log('Continuing, generating svelte pages ...');
 		// Walk over the folder with all the markdown files.
-		const svelteCreator = new Md2Svelte();
+		const svelteCreator = new Md2Svelte(filler.allCategories, filler.allTocs);
 		svelteCreator.generate(contentFolder, outputFolder);
 
-		console.log("Svelte pages ok, generating site-nav ...")
-		new SidebarFiller().generateAllTocs(contentFolder, siteNavFile);
 
 		console.log("Side-nav pages ok, generating redirect typescript files ...")
 		new RedirectGenerator().generate(contentFolder, outputFolder);
