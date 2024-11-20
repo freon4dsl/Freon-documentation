@@ -1,6 +1,6 @@
 # Freon Terminology
 
-// todo make a table
+[//]: # (todo make a table)
 
 - model unit: in LionWeb: partition 
 

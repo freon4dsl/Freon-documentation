@@ -1,14 +1,18 @@
 <script>
     import Note from "$lib/notes/Note.svelte";
+    import PrevNextSection from '$lib/tutorial/PrevNextSection.svelte';
+
+    let prevLink= '/Documentation/Overview/Running_Example';
+    let nextLink='/Documentation/Creating_the_Metamodel/Defining_Properties';
 </script>
+
+<PrevNextSection {prevLink} {nextLink} />
 
 # The Language Structure Definition
 
-The abstract syntax tree (AST) of the language is described in files with the extension `.ast`.
+The abstract syntax tree (AST), or metamodel, of the language is described in files with the extension `.ast`.
 All files with this extension in the _defs_ folder (i.e. the folder were you keep your definition files)
 are combined into one AST definition.
-
-## Name of the language
 
 Every AST file must start with the declaration of the name of your language. This name is used
 to create the name of a number of generated classes.
@@ -20,18 +24,16 @@ language DocuProject
 
 ```
 
-## Concepts
-
 The Freon language structure, which describes the abstract syntax tree (AST), consists of a
-list of a [Models](/Developing_a_Language/Default_Level/Defining_the_Language_Structure#Model),
-[Model Units](/Developing_a_Language/Default_Level/Defining_the_Language_Structure#Model_Unit),
-[Concepts](/Developing_a_Language/Default_Level/Defining_the_Language_Structure#Concept),
-[Expression Concepts](/Developing_a_Language/Default_Level/Defining_the_Language_Structure#Expression_Concept),
-[Binary Expression Concepts](/Developing_a_Language/Default_Level/Defining_the_Language_Structure#Binary_Expression_Concept),
-[Limited Concepts](/Developing_a_Language/Default_Level/Defining_the_Language_Structure#Limited_Concept),
-and/or [Interfaces](/Developing_a_Language/Default_Level/Defining_the_Language_Structure#Interface).
+list of a [Models](/Documentation/Creating_the_Metamodel/Defining_the_Language_Structure#Model),
+[Model Units](/Documentation/Creating_the_Metamodel/Defining_the_Language_Structure#Model_Unit),
+[Concepts](/Documentation/Creating_the_Metamodel/Defining_the_Language_Structure#Concept),
+[Expression Concepts](/Documentation/Creating_the_Metamodel/Defining_the_Language_Structure#Expression_Concept),
+[Binary Expression Concepts](/Documentation/Creating_the_Metamodel/Defining_the_Language_Structure#Binary_Expression_Concept),
+[Limited Concepts](/Documentation/Creating_the_Metamodel/Defining_the_Language_Structure#Limited_Concept),
+and/or [Interfaces](/Documentation/Creating_the_Metamodel/Defining_the_Language_Structure#Interface).
 
-### Model
+## Model
 
 A _model_ is the root of the abstract syntax tree, and as such the complete description specified by the user.
 It may hold any number of model units as children. These model units may be of different type. For instance, you
@@ -53,13 +55,10 @@ model InsuranceModel {
 }
 ```
 
-### Model unit
+## Model unit
 
 A _model unit_ is a part of the model that can be edited independently of the rest of the model. A model unit is
-always a direct child of a model. The name of a model unit can never be [private](/Intro/Models_and_Model_Units#public)
-(see [Models and Model Units](/Intro/Models_and_Model_Units#public)).
-
-Model units may not extend other units or implement interfaces.
+always a direct child of a model. Model units may not extend other units, or implement interfaces.
 
 ```ts
 // DocuProject/src/defs/language-main.ast#L12-L15
@@ -70,11 +69,11 @@ modelunit Part {
 }
 ```
 
-Model units have one special entry `file-extension`, as shown in the example above. This is an optional
+Model units have one special entry called `file-extension`, as shown in the example above. This is an optional
 indication of the file type that the generated parser will associate with this model unit, i.e. an
-instance of the above model unit will be exported/imported to/from a file with this extension.
+instance of the above model unit will be exported/imported to/from a file with extension '.base'.
 
-### Concept
+## Concept
 
 A _concept_ is the basic element of your language definition. It defines which instances can be present in
 a model created by your users.
@@ -104,16 +103,18 @@ limited BooleanType implements NamedType {
 }
 ```
 
-### Expression Concept
+## Expression Concept
 
-An _expression concept_ is a concept that is an expression. The editor deals with these differently in
+An _expression concept_ is a concept represents an expression. The editor deals with these differently in
 order to give your user a more natural editing experience.
 
-Expression concepts may extend one other concept, and implement multiple interfaces.
+Expression concepts may extend another concept, and implement multiple interfaces.
 
-<!-- embedme DocuProject/src/defs/language-expressions.ast#L10-L18 -->
+<!-- embedme DocuProject/src/defs/language-expressions.ast#L10-L18 removes the comment. -->
 
 ```txt
+// DocuProject/src/defs/language-expressions.ast#L10-L18
+
 abstract expression Literal base DocuExpression {
 }
 expression EuroLiteral base Literal {
@@ -125,24 +126,35 @@ expression NumberLiteral base Literal {
 }
 ```
 
-### Binary Expression Concept
+<Note>
+<svelte:fragment slot="header">Use a Single Root of the Expression AST</svelte:fragment>
+<svelte:fragment slot="content">
+<p>
+It is good practice to have all expression concepts inherit from one single root concept. This make it easy 
+to have any type of expression as a part of the expression that you want to define.</p>
+<p>
+For instance, when defining a bracketed expression, i.e. an expression surrounded by brackets, you can 
+simply use the root expression concept as type of the property that is to be put between the brackets.
+</p>
+</svelte:fragment></Note>
+
+## Binary Expression Concept
 
 A _binary expression concept_ is an expression concept that has two sub expressions, left and right operands,
 and an operator, which in the concrete syntax usually goes in the middle. For example, the expression `4 + 5`
 has as left operand `4`, as operator `+`, and as right operand `5`.
 
-Any concrete binary expression concept needs to have a priority. The priority is used by Freon to balance the
-abstract syntax tree (see [Projectional Editing](/Intro/Projectional_Editing#tree-balancing)). In
-the [second level tutorial](/Developing_a_Language/Definition_Level/Editor_Definition/Other_Options) you can
+Any concrete binary expression concept needs to have a priority. For example, in mathematics the 
+priority of the multiplication is higher than the priority of the plus. The expression 5 + 67 * 8 
+should be read as 5 + (67 * 8), not as (5 + 67) * 8. The priorities are used by Freon to balance the
+abstract syntax tree (see [Projectional Editing](/Background/Projectional_Editing#tree-balancing)). In
+[Reference Shortcuts, Symbols, and Triggers](/Documentation/Defining_an_Editor/Other_Options) you can
 find more information on how to set the operand.
 
 Binary expression concepts may extend one other concept, and implement multiple interfaces.
 
-<!-- embedme DocuProject/src/defs/language-expressions.ast#L23-L43 -->
-
 ```txt
-    value: boolean;
-}
+// DocuProject/src/defs/language-expressions.ast#L26-L46
 
 // Basic binary expressions: plus, minus, multiply, divide
 abstract binary expression BinaryExpression base DocuExpression {
@@ -162,9 +174,12 @@ binary expression MultiplyExpression base BinaryExpression {
     priority = 8;
 }
 
+binary expression DivideExpression base BinaryExpression {
+    priority = 8;
+}
 ```
 
-### Limited Concept
+## Limited Concept
 
 A _limited concept_ is a concept that has a limited number of predefined instances. Actually, it is an extended
 version of an enumeration. All instances become part of the standard library of your language.
@@ -173,22 +188,12 @@ A limited concept must always have a name property (`name: identifier;`), but if
 in the definition then it is automatically created. Furthermore, when a predefined instance does not provide a
 value for the name, the name of the instance is used. In this manner, you can define simple enumerations.
 
-Limited concepts may extend another concept, and implement multiple interfaces.
+Limited concepts may extend another concept, and implement multiple interfaces. Note that the definition of the concept
+includes the definition of the predefined instances. For example, the instances of `PremiumDays` are 
+`Week`, `Month`, `Quarter`, `Semester`, and `Year`.
 
 ```ts
-// DocuProject/src/defs/language-main.ast#L114-L131
-
-limited EuroType implements NamedType {
-    EUR;
-}
-
-/* The concept TypeRef represents a reference to a known type.
- * In the 'language-extras.ast' file there is an example of a
- * concept representing a type declaration.
- */
-concept TypeRef base DocuType  {
-    reference type: NamedType;
-}
+// DocuProject/src/defs/language-main.ast#L126-L143
 
 limited InsuranceTheme {        // limited defined as a simple enumeration
     HomeTheme; HealthTheme; LegalTheme;
@@ -196,6 +201,18 @@ limited InsuranceTheme {        // limited defined as a simple enumeration
 
 limited PremiumDays {           // limited with various options
     // if the 'name' property was not provided, it would have been generated
+    name: identifier;
+    nrOfDays: number;
+    // notations 'name:' and '"name":' are both correct
+    Week = { name: "Week", nrOfDays: 7 }
+    Month = { "name": "Month", nrOfDays: 30 }
+    // the following instance gets the name "Quarter"
+    Quarter = { nrOfDays: 91 }
+    // the following instance gets the name "Semester"
+    Semester = { nrOfDays: 182 }
+    // the following instance gets the name "Year"
+    Year = { nrOfDays: 365 }
+}
 ```
 
 <Note>
@@ -206,14 +223,18 @@ instances of limited concepts.
 </svelte:fragment>
 </Note>
 
-### Interface
+## Interface
 
 An _interface_ is a concept that has no instances. It may extend multiple other interfaces.
 
 ```ts
-// DocuProject/src/defs/language-main.ast#L86-L88
+// DocuProject/src/defs/language-main.ast#L94-L96
 
- * or declared type (i.e. a type declaration that is made on-the-spot).
- */
-abstract concept DocuType {
+interface NamedType {
+    name: identifier;
+}
 ```
+
+The next section will explain the options for concept properties.
+
+<PrevNextSection {prevLink} {nextLink} />

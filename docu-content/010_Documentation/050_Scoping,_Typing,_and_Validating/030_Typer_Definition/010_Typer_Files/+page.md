@@ -53,7 +53,7 @@ but this is not necessary.
 Not all AST nodes need to have a type associated to it. Only those nodes for which you
 need a validation rule, or have another reason to require a type, need to be marked as
 having a type. We refer to those AST nodes as **terms**, so as not to confuse these with
-[`expression concepts`](/Developing_a_Language/Default_Level/Defining_the_Language_Structure),
+[`expression concepts`](/Documentation/Creating_the_Metamodel/Defining_the_Language_Structure),
 which have a different meaning.
 
 You can indicate which AST nodes are terms by the keyword `hasType` followed by all terms in

@@ -151,7 +151,7 @@ property of an action.
 // TODO document expression actions
 
 The challenge posed by editing expressions in a projectional editor are explained
-in [Expressions](/Intro/Projectional_Editing#expressions).
+in [Expressions](/Overview/Projectional_Editing#expressions).
 
 ## Keyboard Shortcuts
 

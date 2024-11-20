@@ -54,11 +54,11 @@ Every model unit in Freon defines an interface.
 The interface determines which elements from the model unit are visible (i.e. can be referred to)
 in other units in the same model.
 
-In a Freon definition of the language structure (the [.ast file](/Intro/A_Language_in_Five_Parts))
+In a Freon definition of the language structure (the [.ast file](/Overview/A_Language_in_Five_Parts))
 concepts and properties can be defined to be **private**.
 Whereas other parts of a model unit can be referenced from another model unit,i.e. the **public** parts, private parts can only be referenced from
 the same model unit.
-The default scoper (the one from the [default level](/Intro/Three_Levels_of_Customization#level1))
+The default scoper (the one from the [default level](/Overview/Three_Levels_of_Customization#level1))
 already takes
 the difference between public and private concepts and properties into account when resolving references.
 

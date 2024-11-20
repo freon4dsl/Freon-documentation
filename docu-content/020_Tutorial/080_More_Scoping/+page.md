@@ -15,7 +15,7 @@ and the projections for the fourth model unit, the _Tests_.
 
 ## The _Test_ model unit metamodel
 
-In the requirements of our DSL in the [introduction](/Tutorial/Intro) of the tutorial, one line says: 
+In the requirements of our DSL in the [introduction](/Tutorial/Overview) of the tutorial, one line says: 
 "... our client company want a means to test the page flow before the actual webpages are produced."
 The _Test_ Model unit is the start to fulfill this requirement. 
 

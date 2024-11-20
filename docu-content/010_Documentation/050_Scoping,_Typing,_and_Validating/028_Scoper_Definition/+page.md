@@ -4,7 +4,7 @@
 
 # The Scoper Definition
 
-For now, the scoper definition does not support our [three-level approach](/Intro/Three_Levels_of_Customization).
+For now, the scoper definition does not support our [three-level approach](/Overview/Three_Levels_of_Customization).
 You can manually code your own scoper on the 3rd level, but it is not possible to combine this with the
 scopers on the 1st and 2nd levels.
 

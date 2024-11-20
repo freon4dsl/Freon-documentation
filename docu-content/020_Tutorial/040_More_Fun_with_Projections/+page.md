@@ -59,7 +59,7 @@ figureNumber={1}
 
 ## More than One Editor
 
-Using Freon you can have multiple views on the same concept. After all, Freon generates a [projectional editor](/Documentation/Intro/Projectional_Editing).
+Using Freon you can have multiple views on the same concept. After all, Freon generates a [projectional editor](/Documentation/Overview/Projectional_Editing).
 
 Remember that the editor definition in the previous lesson, and the one above are called `default`? That is 
 because you can have any number of editor definitions, each with its own name. 

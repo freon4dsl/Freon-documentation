@@ -11,7 +11,7 @@ In the future the documentation will be updated.
 </svelte:fragment>
 </Note>
 
-Please, become acquainted with the [three levels of customization](/Intro/Three_Levels_of_Customization)
+Please, become acquainted with the [three levels of customization](/Overview/Three_Levels_of_Customization)
 used by Freon.
 This section explains the 3rd of these three levels where you can customize Freon in TypeScript.
 
@@ -24,7 +24,7 @@ Third level full adaptability _per concept_ is currently possible for:
 - [Typer](/Developing_a_Language/API_Level/Typer_API)
 
 To add third level adaptability for the scoper, parser and unparser is one of the
-entries in our [wish list](/Intro/Future_Developments).
+entries in our [wish list](/Overview/Future_Developments).
 
 ## Adding your Own Files
 

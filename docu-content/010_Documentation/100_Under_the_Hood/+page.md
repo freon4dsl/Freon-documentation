@@ -1,7 +1,7 @@
 # Under the Hood
 
 Before you dive deeper under the hood of this project, we invite you to read about the
-[philosophy and design guidelines](/Intro/Our_Philosophy) used during the creation of this tool.
+[philosophy and design guidelines](/Overview/Our_Philosophy) used during the creation of this tool.
 
 With these in mind, you are welcome to find out more. This section can be roughly divided into three parts.
 

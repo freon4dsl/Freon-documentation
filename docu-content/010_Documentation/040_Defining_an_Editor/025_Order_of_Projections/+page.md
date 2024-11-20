@@ -11,7 +11,7 @@ to produce better readable error messages by the validator.
 
 ### Three-level definition
 
-As explained in [Three Levels of Customization](/Intro/Three_Levels_of_Customization#levels) the generated editor can be defined at three levels.
+As explained in [Three Levels of Customization](/Overview/Three_Levels_of_Customization#levels) the generated editor can be defined at three levels.
 For each _concept_ in the AST the editor will
 
 1. use the _hand-made projection_, when this is present. Otherwise, the editor will

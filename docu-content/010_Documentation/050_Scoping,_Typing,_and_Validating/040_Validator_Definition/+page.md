@@ -5,7 +5,7 @@ of the concrete syntax, but instead they provide an extra check of the models.
 
 ### Three-level definition
 
-As explained in [Three Levels of Customization](/Intro/Three_Levels_of_Customization#levels)
+As explained in [Three Levels of Customization](/Overview/Three_Levels_of_Customization#levels)
 the generated validator can be defined in three levels.
 For each \*_concept_ in the AST the validator will
 

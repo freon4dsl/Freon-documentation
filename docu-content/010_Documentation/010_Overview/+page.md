@@ -1,8 +1,10 @@
 <script>
     import PrevNextSection from '$lib/tutorial/PrevNextSection.svelte';
 
-    let nextLink='/Documentation/Getting_Started';
+    let nextLink='/Documentation/Overview/Getting_Started';
 </script>
+
+<PrevNextSection {nextLink} />
 
 # Overview
 
@@ -12,16 +14,16 @@ Freon generates an integrated set of editor, scoper, typer, and validator for yo
 from a small set of definitions. Together we call this the work environment for your language.
 
 The core of Freon is a TypeScript/JavaScript framework for building 
-web-based, [projectional](/Documentation/Background/Projectional_Editing)
+web-based, [projectional](/Background/Projectional_Editing)
 editors. Editing expressions in a projectional editor is a well-known challenge. What makes the
 Freon framework unique is the fact that it has built-in support for expressions, so you can
 easily make a projectional editor that allows for a natural manner of editing.
 
-## Freon is a tool for Language Engineers
+## A tool for Language Engineers
 
 We assume that people who want to use Freon know at least the basics of making mini-languages. For instance,
 the terms metamodel, abstract syntax tree, scope, concrete syntax, parsing, etc., should be familiar. 
-When we address the Freon user we call them a **language engineer**. The people that will 
+When we address the Freon user we call him/her a **language engineer**. The people that will 
 be using the generated work environment are simply called **users**.
 
 So welcome, language engineer, to the world of Freon. This documentation is meant for you. It explains how Freon can help

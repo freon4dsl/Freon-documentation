@@ -9,7 +9,7 @@ In the typer definition you provide the information necessary to do type checkin
 
 ### Three-level definition
 
-As explained in [Three Levels of Customization](/Intro/Three_Levels_of_Customization#levels)
+As explained in [Three Levels of Customization](/Overview/Three_Levels_of_Customization#levels)
 the generated typer can be defined in three levels.
 For each _concept_ in the AST the typer will
 

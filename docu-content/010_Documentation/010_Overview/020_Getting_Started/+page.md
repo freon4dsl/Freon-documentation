@@ -3,8 +3,8 @@
     import Figure from "$lib/figures/Figure.svelte";
     import PrevNextSection from '$lib/tutorial/PrevNextSection.svelte';
 
-    let prevLink= '/Documentation/Intro';
-    let nextLink='/Documentation/Developing_a_Language';
+    let prevLink= '/Documentation/Overview';
+    let nextLink='/Documentation/Creating_the_Metamodel';
 </script>
 
 <PrevNextSection {prevLink} {nextLink} />
@@ -25,13 +25,19 @@ In the following explanations the root of the project will be indicated with '~'
 <svelte:fragment slot="header">Use a recent browser version</svelte:fragment>
 <svelte:fragment slot="content">
 Please, use a fairly recent browser, for instance Chrome or Edge, because we cannot
-ensure that the editor functions as it should in older browsers."
+ensure that the editor functions as it should in older browsers.
 </svelte:fragment></Note>
+
+[//]: # (todo give version numbers of browsers)
 
 ## Example Project Startup
 
-The simplest manner to start working with Freon is to clone the example project from GitHub.
-The sources include the definitions for an example language. Clone branch `master` 
+The simplest manner to start working with Freon is start from the example project from GitHub.
+The sources include the definitions for an example language called `Entity`. Do note that this 
+DSL is different from the [running example](Documentation/Overview/Running_example) used 
+in this documentation.
+
+Clone branch `master` 
 from <a href="https://github.com/freon4dsl/Freon-example.git" target="_blank">
   https://github.com/freon4dsl/Freon-example.git</a> in your preferred IDE.
   (For an explanation of the content of the project see
@@ -61,7 +67,8 @@ Open another (bash) terminal, and start the generated editor from it:
   npm run dev
   ```
 
-The last command opens your preferred browser with the generated editor for the language `Entity` 
+The last command opens your preferred browser with the generated editor for 
+the `Entity` language
 on <a href="http://localhost:5000/" target="_blank">http://localhost:5000/</a>.
 
 <Note><svelte:fragment slot="header"> Use Help Menu</svelte:fragment><svelte:fragment slot="content">
@@ -70,13 +77,15 @@ For easier use of the editor, have a look at the key-bindings under the <em>Help
 
 ## Template Project Startup
 
-You can also start by cloning our template project from GitHub. The template
-project provides a shell for the generated editor that enables the user to work with multiple models and
-[model units](/Background/Models_and_Model_Units), but does not include any Freon definition files.
-Clone branch `master` from <a href="https://github.com/freon4dsl/Freon-template" target="_blank">
+You can also start from our template project. The template
+project provides a shell for the generated editor that enables the user to work with multiple models, and
+[model units](/Background/Models_and_Model_Units), but does not include any Freon definition 
+files, i.e. it does not include a language definition. You need to define your own.
+
+To use the template project clone branch `master` from <a href="https://github.com/freon4dsl/Freon-template" target="_blank">
   https://github.com/freon4dsl/Freon-template</a>.
   (For an explanation of the content of the project see
-  [Project_Structure](/Getting_Started/Project_Structure)).
+  [Project Structure](#project-structure-4).)
 
 Next, install all necessary packages by running:
 
@@ -85,18 +94,18 @@ Next, install all necessary packages by running:
   ```
 
 Create a folder for your language in `~/src`, to hold the definition files for your language.
-  We usually call this folders _defs_, but any name will do.
+  We usually call this folders **defs**, but any name will do.
 
 <Note>
 <svelte:fragment slot="header">You can use your own names for <i>defs</i> and <i>frecode</i></svelte:fragment>
 <svelte:fragment slot="content">
   If you do use another name for the <i>defs</i>-folder, adjust 
 the <code>scripts</code> entry in the _package.json_ file. The <code>generate</code>
-  script should refer to your <i>defs</i> folder, as well as the folder where you want the
+  script should refer to your <i>defs</i>-folder, as well as the folder where you want the
   generated code to be stored.
   In the following screenshot, we use <code>~/src/defs</code> and <code>~/src/frecode</code>, respectively.
 
-(todo adjust screenshot of template project)
+[//]: # (todo adjust screenshot of template project)
 
 <Figure
 imageName={'packagejsonadjustment.png'}
@@ -156,7 +165,7 @@ The code in a Freon project under `~/src` is organised into the following subfol
 - **frecode**: the generated source code.
   - **.../config**: code that provides the coupling between all parts of the generated workbench.
     This folder contains one file that will not be overwritten at regeneration: `FreonConfiguration.ts`.
-    Here you can configure any [customization](/Documentation/API_Level) that you want the generated code to take into account.
+    Here you can configure any [customization](/Documentation/Customizations) that you want the generated code to take into account.
   - **.../diagrams**: a number of UML diagrams generated from the language structure including a UML
     class diagram of the AST, an overview of all inheritance in the language, and one diagram per .ast file.
     You all of them both in ordinary HTML and in Markdown format. 
@@ -164,20 +173,20 @@ The code in a Freon project under `~/src` is organised into the following subfol
   - **.../editor**: code for the editor. This folder contains two files that will not be overwritten
     at regeneration: `Custom<yourLanguageName>Actions.ts` and `Custom<yourLanguageName>Projection.ts`.
     (`<yourLanguageName>` will be replaced by the name you have given your language in the .ast files.)
-    These two files are the placeholders for any [customization](/Documentation/API_Level) that you
+    These two files are the placeholders for any [customization](/Documentation/Customizations) that you
     would like to do.
   - **.../language**: code that implements the language structure.
   - **.../reader**: a parser that is able to read [model units](/Background/Models_and_Model_Units)
     from a text string or file.
   - **.../scoper**: code for that determines which elements are visible for a certain element in the user's model.
   - **.../stdlib**: code that implements some standard elements of your language, for instance
-    [limited concepts](/Documentation/Developing_a-Language/Defining_the_Language_Structure).
+    [limited concepts](/Documentation/Creating_the_Metamodel/Defining_the_Language_Structure).
   - **.../typer**: code that that determines which type is associated with a certain element in the
-    user's model. The file `Custom<yourLanguageName>TyperPart.ts` is the placeholder for any [customization](/Documentation/API_Level) that you
+    user's model. The file `Custom<yourLanguageName>TyperPart.ts` is the placeholder for any [customization](/Documentation/Customizations) that you
     would like to do.
   - **.../utils**: a default implementation of a visitor for your user's model.
   - **.../validator**: code that determines whether certain parts of your user's model contain
-    errors. The file `Custom<yourLanguageName>Validator.ts` is the placeholder for any [customization](/Documentation/API_Level) that you
+    errors. The file `Custom<yourLanguageName>Validator.ts` is the placeholder for any [customization](/Documentation/Customizations) that you
     would like to do.
   - **.../writer**: code that is able to write your user's [model units](/Background/Models_and_Model_Units)
     in string format to a file.
@@ -191,30 +200,52 @@ file `.../webapp/config/WebappConfiguration.ts`. This file holds the references 
 <Note>
 <svelte:fragment slot="header">Be careful with handmade changes in <i>frecode</i>.</svelte:fragment>
 <svelte:fragment slot="content">
-The contents of all folders in <b>frecode</b> is divided into files (usually TypeScript classes) 
-that are contained directly in the folder, and files
-that are contained in the subfolder <b>gen</b>. The latter are always removed before regeneration, so be careful
-not to add important code to the <b>gen</b> folder.
-Code that is contained directly in each folder is not changed upon regeneration.
+The contents of all folders in <code>frecode</code> are organized into two types of files: 
+those located directly in the folder (typically TypeScript classes) and those within 
+the <code>gen</code> subfolder. Files in the <code>gen</code> subfolder are 
+always deleted before regeneration, so avoid placing important code 
+In contrast, files directly within the folder remain unchanged during regeneration.
 </svelte:fragment>
 </Note>
 
 ## A Minimal Webapp and Server
 
-For the language environment to function, more is needed than the code for the editor, validator, and so forth.
-In particular, there is a need for a server which can hold and provide stored users models, and for a web application that
-is able to show the editor, errors message, models that are available form the server, and so on.
+To ensure the language environment functions properly, more is required than just 
+the code for the editor, validator, and similar components. Specifically, a server 
+is needed to store and provide user models, along with a web application capable 
+of displaying the editor, error messages, and the models available from the server, 
+among other functionalities.
 
-For both the server, and the web application, we provide a minimal implementation for your convenience. We assume
-that when Freon is used in a larger context, these two parts will be interchanged with
-suitable choices made by the language engineer and team.
+For both the server and the web application, we provide a minimal implementation 
+for your convenience. However, we anticipate that in a broader context where 
+Freon is used, these components will be replaced with appropriate solutions 
+chosen by the language engineer and their team.
 
-## Use of the Freon Generator
+## The Command Line Interface
 
 The Freon commandline tool generates code from the various definition files as described in
 [A Language in Five Parts](/Background/A_Language_in_Five_Parts).
-If you type ‘`freon`’ in a (bash) terminal you will see an overview of the different
+If you type ‘`freon`’ in a (bash) terminal you will see the following overview of the different
 arguments that can be used. For detailed help about a specific command, type: ‘`freon  <command> -h`’.
+
+
+<Note>
+<svelte:fragment slot="header"> Incomplete code</svelte:fragment>
+<svelte:fragment slot="content">
+<p>
+Keep in mind that all commands, except <code>all</code>, when used individually (i.e., without combining 
+them with others), produce code that may not compile correctly. For example, the <code>scoper</code> 
+and <code>validator</code> may depend on the <code>typer</code> and attempt to reference its class, 
+which might not yet be generated. Similarly, the <code>editor</code> may try to include 
+the <code>scoper</code>.
+</p>
+<p>
+To avoid such issues, it is best to start with the <code>all</code> command. Once this 
+has been run, you can use specific commands for individual aspects of your language as needed. 
+This approach ensures correct dependencies while minimizing regeneration time.
+</p>
+</svelte:fragment>
+</Note>
 
 ```bash
 freon -h
@@ -253,17 +284,5 @@ For detailed help about a specific command, use: freon <command> -h
 
 ```
 
-<Note>
-<svelte:fragment slot="header"> Incomplete code</svelte:fragment>
-<svelte:fragment slot="content">
-Note that every command except <b>all</b>, used individually (i.e. without the other commands), generates code that
-does not compile correctly.
-For instance, both the scoper and validator might need to use the typer, therefore the
-code seeks to include the typer class, which might not be generated yet. Likewise, the editor seeks to include
-the scoper.
-The best way to go about is to first use the <b>all</b> command. Next, when you focus on one of the aspects of your
-language, you can use the specific command for that aspect. Thus, you can keep regeneration-time as short as possible.
-</svelte:fragment>
-</Note>
 
 <PrevNextSection {prevLink} {nextLink} />

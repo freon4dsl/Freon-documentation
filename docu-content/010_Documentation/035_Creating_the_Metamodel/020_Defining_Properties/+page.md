@@ -1,3 +1,13 @@
+<script>
+    import Note from "$lib/notes/Note.svelte";
+    import PrevNextSection from '$lib/tutorial/PrevNextSection.svelte';
+
+    let prevLink= '/Documentation/Creating_the_Metamodel/Language_Structure';
+    let nextLink='/Documentation/Defining_an_Editor/Edit_Files';
+</script>
+
+<PrevNextSection {prevLink} {nextLink} />
+
 # Defining Concept Properties
 
 Each of the language structure elements (concepts, interfaces, expressions, ...) may have **Properties**.  
@@ -73,3 +83,5 @@ Because this causes problems in the editor, simple properties may not be optiona
 
    riskAdjustment?: PercentageLiteral;     // an adjustment to the risk of the separate parts, e.g. caused by the combination of the parts
 ```
+
+<PrevNextSection {prevLink} {nextLink} />

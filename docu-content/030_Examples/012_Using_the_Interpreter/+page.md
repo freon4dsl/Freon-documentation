@@ -2,7 +2,7 @@
     import PrevNextSection from '$lib/tutorial/PrevNextSection.svelte';
     import Figure from '$lib/figures/Figure.svelte';
 
-    let prevLink = '/Examples/Intro';
+    let prevLink = '/Examples/Overview';
     let nextLink = '/Examples/Example2';
 </script>
 

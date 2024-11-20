@@ -19,7 +19,7 @@ You, the language engineer, can fine-tune the generated pi-tools at several leve
 We call this manner of fine-tuning: a **stacked architecture**.
 This three-level approach makes it possible to create your language,
 and customize it step-by-step in an agile fashion.
-(Read our [philosophy](/Intro/Our_Philosophy) to understand why we have chosen these levels.)
+(Read our [philosophy](/Overview/Our_Philosophy) to understand why we have chosen these levels.)
 
 Keeping in mind that _Simple things should be simple, complex things should be possible_
 (<a href="https://en.wikipedia.org/wiki/Alan_Kay" target="_blank">Alan Kay</a>),
@@ -59,7 +59,7 @@ can be found in [API Level](/Developing_a_Language/API_Level).
 
 Freon combines definitions at each level into one application, where the third level precedes the second, and
 the second level precedes the first.
-For instance, the generated editor will per [**concept**](/Developing_a_Language/Default_Level/Defining_the_Language_Structure#concept) in the language:
+For instance, the generated editor will per [**concept**](/Documentation/Creating_the_Metamodel/Defining_the_Language_Structure#concept) in the language:
 
 1. use the _hand-made projection_ from the API level, when this is present. If not, the editor will
 2. use the _projection generated from the editor definition_ from the Freon definition Level, when this definition is present.
@@ -82,7 +82,7 @@ will also apply to the scoper, the parser, and the unparser.
 
 Freon generates an integrated set of tools that support the language that you are creating.
 This table gives an overview of these tools, and shows how you can adjust them to your needs.
-See [The Five Definition Files](/Intro/A_Language_in_Five_Parts) for an explanation of the parts
+See [The Five Definition Files](/Overview/A_Language_in_Five_Parts) for an explanation of the parts
 of the language definition.
 
 | Workbench Part                 | Has Default | Level 2 Definition |                                         Level 3 Definition                                          |
