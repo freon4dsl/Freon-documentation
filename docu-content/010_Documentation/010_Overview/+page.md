@@ -6,7 +6,7 @@ as <a href="https://en.wikipedia.org/wiki/Domain-specific*language" target="_bla
 Freon generates an integrated set of editor, scoper, typer, and validator for your mini-language 
 from a small set of definitions. Together we call this the work environment for your language.
 
-The core of Freon is a TypeScript/JavaScript framework for building 
+The core of Freon is a **TypeScript/JavaScript** framework for building 
 web-based, [projectional](/Background/Projectional_Editing)
 editors. Editing expressions in a projectional editor is a well-known challenge. What makes the
 Freon framework unique is the fact that it has built-in support for expressions, so you can

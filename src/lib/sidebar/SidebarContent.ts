@@ -15,11 +15,11 @@ export const documentationToc: TocContentsType =
        ]},
       { name: 'Defining an Editor', path: '/Documentation/Defining_an_Editor',
         content: [
-         { name: 'Edit Files', path: '/Documentation/Defining_an_Editor/Edit_Files'},
          { name: 'Projections', path: '/Documentation/Defining_an_Editor/Projections'},
          { name: 'Order of Projections', path: '/Documentation/Defining_an_Editor/Order_of_Projections'},
          { name: 'Indentation', path: '/Documentation/Defining_an_Editor/Indentation'},
-         { name: 'Other Options', path: '/Documentation/Defining_an_Editor/Other_Options'},
+         { name: 'Reference Shortcuts, Symbols, and Triggers', path: '/Documentation/Defining_an_Editor/Reference_Shortcuts,_Symbols,_and_Triggers'},
+         { name: 'Globals', path: '/Documentation/Defining_an_Editor/Globals'},
          { name: 'Fragments', path: '/Documentation/Defining_an_Editor/Fragments'},
          { name: 'External Components', path: '/Documentation/Defining_an_Editor/External_Components'},
          { name: 'Styling', path: '/Documentation/Defining_an_Editor/Styling'},

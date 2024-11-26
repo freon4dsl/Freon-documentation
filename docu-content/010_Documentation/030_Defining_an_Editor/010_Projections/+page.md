@@ -8,9 +8,10 @@
 In the `.edit` file a _projection_ is defined between angular brackets.
 This is done in a style similar from markdown, what you see looks close to what you get.
 Everything within the square brackets (`[]`), except
-the parts surrounded by `${}`, is taken literally.
+the parts surrounded by `${}`, is taken literally. See also the information 
+about [indentation](/Documentation/Defining_an_Editor/Indentation).
 
-```ts
+```txt
 // DocuProject/src/defs/editor-indentation.edit#L6-L14
 
 Text {
@@ -19,6 +20,7 @@ This is
         literal text
       that is projected in the
                 editor
+           - including all tabs -
   for every concept of type Text.
 ]
 }
@@ -66,14 +68,14 @@ Because you may only use direct properties, the prefix <code>self</code> may be 
 ### Including a Property Projection from Another Editor
 
 Normally, the property that you include will be displayed according to the projection of its type. This projection
-will be found by Freon using the [ordering](/Documentation/Defining_an_Editor/Edit_Files#ordering)
-as defined in the configuration.
+will be found by Freon using the [precedence](/Documentation/Defining_an_Editor#precedence-of-projections-4)
+as defined in the .edit files.
 
 When you specifically want to use another projection, you can use a **named property projection**. In that case,
 Freon will use the projection defined for the concept in the editor with the specified name.
 
 In this example, the projection for `self.parts` will first be searched in the editor named `comments`.
-If it cannot be found, the normal ordering of projections will proceed.
+If it cannot be found, the normal ordering of projections will be used.
 
 ```ts
 // DocuProject/src/defs/editor-specials.edit#L3-L9
@@ -93,7 +95,7 @@ If a property is a list, you can indicate whether it should be projected horizon
 Both keywords are optional. If neither of `vertical` or `horizontal` is present, the property will be displayed as
 a vertical list.
 
-You can also choose to project a list property as a [table](/Documentation/Defining_an_Editor/Projections#tables).
+You can also choose to project a list property as a [table](/Documentation/Defining_an_Editor/Projections#tables-4).
 However, its default projection will always be a list. This is the one that will be generated when a
 projection is not present in the `.edit` files.
 
@@ -145,7 +147,7 @@ Defining a table is a two-step process.
 
 1. Add the keyword `table` to the list property that
    you want to display as a table. Optionally, add one of the keywords `rows` or `columns`.
-2. Add a table-projection to the type of the property. The table-projection defines
+2. Add a table-projection to the type of the elements in the list. The table-projection defines
    the headers of the table and which parts of the list elements are displayed in which row or column.
 
 <Note>
@@ -184,7 +186,7 @@ table [
 <svelte:fragment slot="header">Properties within a table are displayed according to their own projection</svelte:fragment>
 <svelte:fragment slot="content">
 The manner in which each of the properties of a single function are displayed, will be determined
-by their own projections. In this example, `self.parameters` is a list, and will be displayed as another table.
+by their own projections. In this example, <code>self.parameters</code> is a list, and will be displayed as another table.
 The inner table will be row-based, as this is the default.
 </svelte:fragment>
 </Note>
@@ -223,77 +225,3 @@ InsurancePart{
 ```
 
 Note that optional projections for non-optional properties are not allowed.
-
-## Boolean Keyword Projections
-
-The next example shows the special manner in which properties of type **boolean** can be
-projected. The concept `Entity` has a simple property of type boolean called `isCompany`. Normally,
-its value would be displayed according to the boolean keyword projection in the default editor.
-
-```ts
-// DocuProject/src/defs/language-extras.ast#L34-L37
-
-concept Entity {
-    isCompany: boolean;
-    name: identifier;
-    reference baseEntity?: Entity;
-```
-
-```ts
-// DocuProject/src/defs/editor-main-default.edit#L5-L5
-
-global {
-```
-
-By defining that the property must be represented by a **keyword**, we can change the default.
-In the next example, the property `isCompany` will be shown as the keyword `COMPANY`. When the value
-of the property is `true`, the keyword is shown. When the value is `false`, the keyword is not shown.
-
-```ts
-// DocuProject/src/defs/editor-main-default.edit#L57-L59
-
-]}
-
-CalcFunction {
-```
-
-This example would be displayed as one of ...
-
-```
-COMPANY entity PhilipsEnterPrises { // the value of isCompany is true
-  ...
-}
-entity FritsPhilips { // the value of isCompany is false
-  ...
-}
-```
-
-Another way to display boolean properties is to use **two** keywords. Depending on
-the value of the property either the first or second keyword is shown.
-
-```ts
-// DocuProject/src/defs/editor-specials.edit#L11-L13
-
-First Card
-    is still under construction: ${self.isUnderConstruction switch}
-    is approved level1: ${self.isApprovedLevel1 radio}
-```
-
-This would be displayed as one of ...
-
-```
-COMPANY entity PhilipsEnterPrises { // the value of isCompany is true
-  ...
-}
-PERSON entity FritsPhilips { // the value of isCompany is false
-  ...
-}
-```
-
-<Note>
-<svelte:fragment slot="header">Keywords defined within a projection overwrite the standard boolean keywords</svelte:fragment>
-<svelte:fragment slot="content">
-In the default editor you can define standard boolean keywords. These will not be used when either of the two keyword projections
-is present.
-</svelte:fragment>
-</Note>

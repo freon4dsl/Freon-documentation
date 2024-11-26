@@ -40,3 +40,7 @@
 - action:
 - NameSpaces:
 - Namespace Addition
+- named property projection
+- precedence of projections
+- projection set
+- named editor

@@ -6,14 +6,14 @@
 
 ## Model
 
-A _model_ is the root of the abstract syntax tree, and as such the complete description specified by the user.
+A _model_ is the root of the abstract syntax tree.
 It may hold any number of model units as children. These model units may be of different type. For instance, you
 can have model units that define the items in a home automation system, and other model units that define the rules
 that apply in this system.
 
 <Note><svelte:fragment slot="header"> Models are never explicit in an editor</svelte:fragment><svelte:fragment slot="content">
 The model is never shown in an editor as a whole.
-It is always shown in parts: the model units. However, the webapp does 'show' the model and the units, that are
+It is always shown in parts: the model units. However, the provided webapp does 'show' the model and the units, that are
 part of it, in its left panel.
 </svelte:fragment></Note>
 
@@ -28,7 +28,7 @@ model InsuranceModel {
 
 ## Model unit
 
-A _model unit_ is a part of the model that can be edited independently of the rest of the model. A model unit is
+A _model unit_ is a part of the model that can be edited by the user independently of the rest of the model. A model unit is
 always a direct child of a model. Model units may not extend other units, or implement interfaces.
 
 ```ts
@@ -76,12 +76,10 @@ limited BooleanType implements NamedType {
 
 ## Expression Concept
 
-An _expression concept_ is a concept represents an expression. The editor deals with these differently in
+An _expression concept_ is a concept represents an expression. The editor deals differently with these, in
 order to give your user a more natural editing experience.
 
 Expression concepts may extend another concept, and implement multiple interfaces.
-
-<!-- embedme DocuProject/src/defs/language-expressions.ast#L10-L18 removes the comment. -->
 
 ```txt
 // DocuProject/src/defs/language-expressions.ast#L10-L18
@@ -112,7 +110,7 @@ simply use the root expression concept as type of the property that is to be put
 ## Binary Expression Concept
 
 A _binary expression concept_ is an expression concept that has two sub expressions, left and right operands,
-and an operator, which in the concrete syntax usually goes in the middle. For example, the expression `4 + 5`
+and an operator, which in the concrete syntax goes in the middle. For example, the expression `4 + 5`
 has as left operand `4`, as operator `+`, and as right operand `5`.
 
 Any concrete binary expression concept needs to have a priority. For example, in mathematics the 
@@ -120,7 +118,7 @@ priority of the multiplication is higher than the priority of the plus. The expr
 should be read as 5 + (67 * 8), not as (5 + 67) * 8. The priorities are used by Freon to balance the
 abstract syntax tree (see [Projectional Editing](/Background/Projectional_Editing#tree-balancing)). In
 [Reference Shortcuts, Symbols, and Triggers](/Documentation/Defining_an_Editor/Other_Options) you can
-find more information on how to set the operand.
+find more information on how to set the concrete syntax for the operand.
 
 Binary expression concepts may extend one other concept, and implement multiple interfaces.
 
@@ -157,7 +155,7 @@ version of an enumeration. All instances become part of the standard library of 
 
 A limited concept must always have a name property (`name: identifier;`), but if this is not provided
 in the definition then it is automatically created. Furthermore, when a predefined instance does not provide a
-value for the name, the name of the instance is used. In this manner, you can define simple enumerations.
+value for the name, the name given in the .ast file is used. In this manner, you can define simple enumerations.
 
 Limited concepts may extend another concept, and implement multiple interfaces. Note that the definition of the concept
 includes the definition of the predefined instances. For example, the instances of `PremiumDays` are 
