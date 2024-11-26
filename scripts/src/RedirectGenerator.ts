@@ -16,7 +16,7 @@ export class RedirectGenerator {
 			if (stat.isDirectory()) {
 				// todo what if there is an ordinary +page.md file in this folder?
 				// found a category: create a Redirect file
-				const categoryName: string = PathCreator.getFolderName(file);
+				const categoryName: string = PathCreator.createFilePath(contentFolder, folderPath);
 				let outputPath: string = outputFolder + path.sep + categoryName;
 				outputPath = outputPath + path.sep + '+page.server.ts';
 				PathCreator.createDirIfNotExisting(categoryName, outputFolder);

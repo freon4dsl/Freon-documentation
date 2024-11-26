@@ -1,12 +1,6 @@
 <script>
-    import PrevNextSection from '$lib/tutorial/PrevNextSection.svelte';
     import Figure from '$lib/figures/Figure.svelte';
-
-    let prevLink = '/Tutorial/More_Scoping';
-    let nextLink = '/Tutorial/Validating_the_model';
 </script>
-
-<PrevNextSection {prevLink} {nextLink} />
 
 # How to Handle Typing
 

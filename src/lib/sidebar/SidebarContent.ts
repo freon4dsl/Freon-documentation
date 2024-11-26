@@ -3,22 +3,25 @@ import { type CategoryInfoType, type TocContentsType } from '$lib/sidebar/TocCon
 export const documentationToc: TocContentsType = 
    { name: 'Documentation', path: '/Documentation',
      content: [
-      { name: 'Intro', path: '/Documentation/Intro'},
-      { name: 'Getting Started', path: '/Documentation/Getting_Started'},
-      { name: 'Developing a Language', path: '/Documentation/Developing_a_Language',
+      { name: 'Overview', path: '/Documentation/Overview',
         content: [
-         { name: 'Defining the Language Structure', path: '/Documentation/Developing_a_Language/Defining_the_Language_Structure'},
-         { name: 'Defining Concept Properties', path: '/Documentation/Developing_a_Language/Defining_Concept_Properties'},
+         { name: 'Getting Started', path: '/Documentation/Overview/Getting_Started'},
+         { name: 'Running Example', path: '/Documentation/Overview/Running_Example'},
+       ]},
+      { name: 'Creating the Metamodel', path: '/Documentation/Creating_the_Metamodel',
+        content: [
+         { name: 'Language Structure', path: '/Documentation/Creating_the_Metamodel/Language_Structure'},
+         { name: 'Defining Properties', path: '/Documentation/Creating_the_Metamodel/Defining_Properties'},
        ]},
       { name: 'Defining an Editor', path: '/Documentation/Defining_an_Editor',
         content: [
-         { name: 'Editor Definition', path: '/Documentation/Defining_an_Editor/Editor_Definition'},
-         { name: 'Edit Files', path: '/Documentation/Defining_an_Editor/Editor_Definition/Edit_Files'},
-         { name: 'Projections', path: '/Documentation/Defining_an_Editor/Editor_Definition/Projections'},
-         { name: 'Indentation', path: '/Documentation/Defining_an_Editor/Editor_Definition/Indentation'},
-         { name: 'Other Options', path: '/Documentation/Defining_an_Editor/Editor_Definition/Other_Options'},
-         { name: 'Fragments', path: '/Documentation/Defining_an_Editor/Editor_Definition/Fragments'},
-         { name: 'External Components', path: '/Documentation/Defining_an_Editor/Editor_Definition/External_Components'},
+         { name: 'Edit Files', path: '/Documentation/Defining_an_Editor/Edit_Files'},
+         { name: 'Projections', path: '/Documentation/Defining_an_Editor/Projections'},
+         { name: 'Order of Projections', path: '/Documentation/Defining_an_Editor/Order_of_Projections'},
+         { name: 'Indentation', path: '/Documentation/Defining_an_Editor/Indentation'},
+         { name: 'Other Options', path: '/Documentation/Defining_an_Editor/Other_Options'},
+         { name: 'Fragments', path: '/Documentation/Defining_an_Editor/Fragments'},
+         { name: 'External Components', path: '/Documentation/Defining_an_Editor/External_Components'},
          { name: 'Styling', path: '/Documentation/Defining_an_Editor/Styling'},
        ]},
       { name: 'Scoping, Typing, and Validating', path: '/Documentation/Scoping,_Typing,_and_Validating',
@@ -68,7 +71,7 @@ export const documentationToc: TocContentsType =
 export const tutorialToc: TocContentsType = 
    { name: 'Tutorial', path: '/Tutorial',
      content: [
-      { name: 'Intro', path: '/Tutorial/Intro'},
+      { name: 'Overview', path: '/Tutorial/Overview'},
       { name: 'Creating your Metamodel', path: '/Tutorial/Creating_your_Metamodel'},
       { name: 'Making an Editor', path: '/Tutorial/Making_an_Editor'},
       { name: 'More Fun with Projections', path: '/Tutorial/More_Fun_with_Projections'},
@@ -83,7 +86,7 @@ export const tutorialToc: TocContentsType =
 export const examplesToc: TocContentsType = 
    { name: 'Examples', path: '/Examples',
      content: [
-      { name: 'Intro', path: '/Examples/Intro'},
+      { name: 'Overview', path: '/Examples/Overview'},
       { name: 'Using the Interpreter', path: '/Examples/Using_the_Interpreter'},
       { name: 'Special Projections', path: '/Examples/Special_Projections'},
       { name: 'Custom Projections', path: '/Examples/Custom_Projections'},
@@ -99,12 +102,12 @@ export const examplesToc: TocContentsType =
 export const demosToc: TocContentsType = 
    { name: 'Demos', path: '/Demos',
      content: [
-      { name: 'Intro', path: '/Demos/Intro'},
+      { name: 'Overview', path: '/Demos/Overview'},
     ]};
 export const backgroundToc: TocContentsType = 
    { name: 'Background', path: '/Background',
      content: [
-      { name: 'Intro', path: '/Background/Intro'},
+      { name: 'Overview', path: '/Background/Overview'},
       { name: 'Projectional Editing', path: '/Background/Projectional_Editing'},
       { name: 'Models and Model Units', path: '/Background/Models_and_Model_Units'},
       { name: 'A Language in Five Parts', path: '/Background/A_Language_in_Five_Parts'},

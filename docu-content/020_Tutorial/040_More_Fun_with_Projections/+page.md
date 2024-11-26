@@ -1,14 +1,7 @@
 <script>
     import Note from "$lib/notes/Note.svelte";
-    import PrevNextSection from '$lib/tutorial/PrevNextSection.svelte';
     import Figure from "$lib/figures/Figure.svelte";
-
-    let prevLink= '/Tutorial/Making_an_Editor';
-    let nextLink='/Tutorial/Expressions_in_Freon';
 </script>
-
-<PrevNextSection {prevLink} {nextLink} />
-
 
 # More Fun with Projections
 

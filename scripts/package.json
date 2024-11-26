@@ -12,7 +12,7 @@
 		"typerExample": "cd ../code-examples/TyperExample && npm run generate && cd ../../scripts/",
 		"embedme": "embedme --source-root ../code-examples \"../docu-content/**/*.md\"",
 		"embedExamples": "npm run generateExamples && npm run embedme",
-		"md2svelte": "npm run embedme && tsc && node dist/Generator.js",
+		"md2svelte": "tsc && node dist/Generator.js",
 		"buildSite": "npm run embedExamples && npm run md2svelte"
 	}
 }

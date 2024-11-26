@@ -1,12 +1,6 @@
 <script>
     import Figure from "$lib/figures/Figure.svelte";
-    import PrevNextSection from '$lib/tutorial/PrevNextSection.svelte';
-
-    let prevLink= '/Documentation/Getting_Started';
-    let nextLink='/Documentation/Creating_the_Metamodel';
 </script>
-
-<PrevNextSection {prevLink} {nextLink} />
 
 # Example Used Across the Documentation
 

@@ -1,12 +1,6 @@
 <script>
-    import PrevNextSection from '$lib/tutorial/PrevNextSection.svelte';
     import Figure from '$lib/figures/Figure.svelte';
-
-    let prevLink = '/Tutorial/More_Fun_with_Projections';
-    let nextLink = '/Tutorial/Projections_for_Expressions';
 </script>
-
-<PrevNextSection {prevLink} {nextLink} />
 
 # Expressions in Freon
 

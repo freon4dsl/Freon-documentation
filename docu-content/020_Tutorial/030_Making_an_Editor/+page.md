@@ -1,12 +1,7 @@
 <script>
     import PrevNextSection from '$lib/tutorial/PrevNextSection.svelte';
     import Figure from '$lib/figures/Figure.svelte';
-
-    let prevLink= '/Tutorial/Creating_your_Metamodel';
-    let nextLink='/Tutorial/More_Fun_with_Projections';
 </script>
-
-<PrevNextSection {prevLink} {nextLink} />
 
 # Making an Editor for your DSL
 

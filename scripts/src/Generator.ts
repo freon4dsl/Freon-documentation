@@ -28,7 +28,6 @@ export class Generator {
 		const svelteCreator = new Md2Svelte(filler.allCategories, filler.allTocs);
 		svelteCreator.generate(contentFolder, outputFolder);
 
-
 		console.log("Side-nav pages ok, generating redirect typescript files ...")
 		new RedirectGenerator().generate(contentFolder, outputFolder);
 	}

@@ -1,9 +1,5 @@
 <script>
-    import PrevNextSection from '$lib/tutorial/PrevNextSection.svelte';
     import Figure from '$lib/figures/Figure.svelte';
-
-    let prevLink = '/Tutorial/Expressions_in_Freon';
-    let nextLink = '/Tutorial/In_Need_of_Scoping';
 </script>
 
 <PrevNextSection {prevLink} {nextLink} />

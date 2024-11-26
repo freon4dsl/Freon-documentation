@@ -51,9 +51,9 @@ export class Md2Svelte {
 		const level: number = (folder.match(new RegExp("\\" + path.sep, "g")) || []).length;
 		if (level === 2) {
 			// Create and write the layout including a category sidebar
-			const outputPath: string = PathCreator.createFolderPath(ignore, folder);
+			const outputPath: string = PathCreator.createFilePath(ignore, folder);
 			const layoutPath: string = outputPath + path.sep + '+layout.svelte';
-			const categoryName: string = PathCreator.getTocName(folder);
+			const categoryName: string = PathCreator.getTocName(ignore, folder);
 			PathCreator.createDirIfNotExisting(path.dirname(layoutPath), outputFolder);
 			fs.writeFileSync(outputFolder + path.sep + layoutPath, categoryLayoutContent(categoryName));
 		}
@@ -88,36 +88,37 @@ export class Md2Svelte {
 			smartypants: true,
 			remarkPlugins: [remarkExtractHeaders]
 		});
-		const fileReference: string = PathCreator.createName(ignore, path.dirname(filepath));
-		const scriptPart: string = this.createScriptPart(transformed_code.data.headers, fileReference);
+		// find the path of the svelte file that should be created
+		let outputPath: string = PathCreator.createFilePath(ignore, filepath);
+		// find the folder where the svelte file should be created
+		const routeName: string = path.dirname(outputPath);
+
+		// create the script part of the svelte file
+		const scriptPart: string = this.createScriptPart(transformed_code.data.headers, ignore, routeName);
 		let fileContent: string;
 
 		if (scriptPart.length > 0) { // There is something to add
 			const htmlPart: string = this.changeHtags(transformed_code.code);
 			fileContent = this.combineScriptAndCode(scriptPart, htmlPart);
+			// Create and write the SectionStore.ts file
+			const storePath: string = routeName + path.sep + "SectionStore.ts"
+			fs.writeFileSync(outputFolder + path.sep + storePath, storeContent);
+			if (routeName !== '.') { // Do not overwrite the site layout file
+				const level: number = (filepath.match(/\\/g) || []).length;
+				if (level !== 3) { // level 3 indicates a category, do not create another +layout.svelte
+					// Create and write the page layout including a page nav
+					const layoutPath: string = routeName + path.sep + '+page.svelte';
+					fs.writeFileSync(outputFolder + path.sep + layoutPath, pageContent);
+				}
+			}
+			// change name from '+page.svelte' to 'PageContent.svelte'
+			outputPath = routeName + path.sep + 'PageContent.svelte';
 		} else {
 			fileContent = transformed_code.code;
 		}
 
-		let outputPath: string = PathCreator.createFilePath(ignore, filepath);
-		// change name from '+page.md' to 'PageContent.svelte'
-		outputPath = path.dirname(outputPath) + path.sep + 'PageContent.svelte';
-		PathCreator.createDirIfNotExisting(path.dirname(outputPath), outputFolder);
+		PathCreator.createDirIfNotExisting(routeName, outputFolder);
 		fs.writeFileSync(outputFolder + path.sep + outputPath, fileContent);
-
-		if (scriptPart.length > 0) { // There are H2 headers on this page
-			// Create and write the SectionStore.ts file
-			const storePath: string = path.dirname(outputPath) + path.sep + "SectionStore.ts"
-			fs.writeFileSync(outputFolder + path.sep + storePath, storeContent);
-			if (path.dirname(outputPath) !== '.') { // Do not overwrite the site layout file
-				const level: number = (filepath.match(/\\/g) || []).length;
-				if (level !== 3) { // level 3 indicates a category, do not create another +layout.svelte
-					// Create and write the page layout including a page nav
-					const layoutPath: string = path.dirname(outputPath) + path.sep + '+page.svelte';
-					fs.writeFileSync(outputFolder + path.sep + layoutPath, pageContent);
-				}
-			}
-		}
 	}
 
 	/**
@@ -155,7 +156,7 @@ export class Md2Svelte {
 		return result;
 	}
 
-	createScriptPart(headers: unknown, fileReference: string): string {
+	createScriptPart(headers: unknown, ignore: string, filepath: string): string {
 		// console.log('HEADERS: ' + JSON.stringify(headers))
 		let result: string = '';
 		// eslint-disable-next-line
@@ -214,12 +215,37 @@ export class Md2Svelte {
                   });
               });`;
 		// todo add the right links here
-		const next: string = '';
-		const prev: string = '';
-		// find fileReference in allTocs
-		console.log(`fileReference: ${fileReference}`)
+		let next: string = '/';
+		let prev: string = '/';
+		// find filepath in allTocs
 
-		result += `    
+		// find the first entry in the path and get the toc for this category
+		const pathItems: string[] = filepath.split(path.sep);
+		const ww: TocContentsType = this.allTocs.find(xx => xx.name === pathItems[0]);
+
+		// make the filepath the same for both types of path.sep, to be able to compare with the toc
+		filepath = filepath.replace(new RegExp('\\' + path.sep, 'g'),  '/');
+		// console.log("------------- Searching for " + '/' + filepath);
+
+		if (ww !== undefined) {
+			// loop over the toc
+			let loopPrev: string = ww.path;
+			let found: boolean = false;
+			ww.content.forEach(xx => {
+				if (found) {
+					next = xx.path;
+					found = false;
+				}
+				if (xx.path === '/' + filepath) {
+					prev = loopPrev;
+					found = true;
+				}
+				loopPrev = xx.path;
+			});
+			console.log(`prev: ${prev}, this: ${'/' + filepath} next: ${next}`);
+		}
+
+		result += `   
 		import PrevNextSection from '$lib/tutorial/PrevNextSection.svelte';
 		
 		let prevLink= '${prev}';

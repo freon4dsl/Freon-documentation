@@ -1,12 +1,6 @@
 <script>
-    import PrevNextSection from '$lib/tutorial/PrevNextSection.svelte';
     import Figure from '$lib/figures/Figure.svelte';
-
-    let prevLink = '/Examples/Overview';
-    let nextLink = '/Examples/Example2';
 </script>
-
-<PrevNextSection {prevLink} {nextLink} />
 
 # Feedback from an Interpreter
 

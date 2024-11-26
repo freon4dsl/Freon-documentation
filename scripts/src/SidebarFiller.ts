@@ -26,7 +26,7 @@ export class SidebarFiller {
 			const stat = fs.lstatSync(folderPath);
 			if (stat.isDirectory()) {
 				// found a category: create a TocContent entry
-				const name: string = PathCreator.createName(contentFolder, folderPath);
+				const name: string = PathCreator.createShowableName(contentFolder, folderPath);
 				const _path: string = '/' + PathCreator.createFilePath(contentFolder, folderPath);
 				const toc: TocContentsType = new TocContentsType(name, _path, [])
 				// add all subfolders to the result
@@ -35,18 +35,18 @@ export class SidebarFiller {
 				this.allTocs.push(toc);
 				// also create a categoryInfo entry
 				// @ts-expect-error 'PathCreator.getTocName(toc.path)' results in a variable name that has the right type
-				this.allCategories.push({name: name, path: _path, toc: PathCreator.getTocName(toc.path)})
+				this.allCategories.push({name: name, path: _path, toc: PathCreator.getTocNameFromTocPath(toc.path)})
 			}
 		}
 		// write allTocs to an output file
-		this.writeOutput(this.allTocs, this.allCategories, outputFile);
+		this.writeOutput(contentFolder, this.allTocs, this.allCategories, outputFile);
 	}
 
-	private writeOutput(tocs: TocContentsType[], allCategories: CategoryInfoType[], outputFile: string) {
+	private writeOutput(contentFolder: string, tocs: TocContentsType[], allCategories: CategoryInfoType[], outputFile: string) {
 		// create the string for each toc
 		const tocStr: string[] = [];
 		for (const toc of tocs) {
-			const categoryName: string = PathCreator.getTocName(toc.path);
+			const categoryName: string = PathCreator.getTocNameFromTocPath(toc.path);
 			tocStr.push(`export const ${categoryName}: TocContentsType = ${this.tocToString(toc, 1)};`)
 		}
 		// start template
@@ -92,7 +92,7 @@ export const allCategories: CategoryInfoType[] = [
 				content.push(...this.readFolder(folderPath, ignore, 1));
 			} else if (file === '+page.md' && level !== 0) {
 				// console.log("found route: " + '/' + PathCreator.createFilePath(ignore, folderPath))
-				const name: string = PathCreator.createName(ignore, folder);
+				const name: string = PathCreator.createShowableName(ignore, folder);
 				const toc: TocContentsType = new TocContentsType(name, '/' + PathCreator.createFilePath(ignore, folder), [])
 				content.push(toc);
 			}
@@ -115,7 +115,7 @@ export const allCategories: CategoryInfoType[] = [
 			if (stat.isDirectory()) { // ignore files, we only need routes to dirs
 				// Found subcategory: create a TocContent entry
 				// console.log("Found subcategory: " + '/' + PathCreator.createFilePath(ignore, folderPath))
-				const name: string = PathCreator.createName(ignore, folderPath);
+				const name: string = PathCreator.createShowableName(ignore, folderPath);
 				const toc: TocContentsType = new TocContentsType(name, '/' + PathCreator.createFilePath(ignore, folderPath), [])
 				// add all subfolders to the result
 				toc.content.push(...this.readFolder(folderPath, ignore, 0));

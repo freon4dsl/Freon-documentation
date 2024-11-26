@@ -1,10 +1,3 @@
-<script>
-    import PrevNextSection from '$lib/tutorial/PrevNextSection.svelte';
-
-    let nextLink='/Documentation/Overview/Getting_Started';
-</script>
-
-<PrevNextSection {nextLink} />
 
 # Overview
 

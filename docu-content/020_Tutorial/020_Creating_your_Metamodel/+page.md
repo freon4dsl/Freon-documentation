@@ -1,12 +1,6 @@
 <script>
     import Note from '$lib/notes/Note.svelte';
-    import PrevNextSection from '$lib/tutorial/PrevNextSection.svelte';
-
-    let prevLink= '/Tutorial/Overview';
-    let nextLink='/Tutorial/Making_an_Editor';
 </script>
-
-<PrevNextSection {prevLink} {nextLink} />
 
 # Creating your Metamodel
 

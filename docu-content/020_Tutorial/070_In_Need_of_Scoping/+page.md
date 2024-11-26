@@ -1,12 +1,6 @@
 <script>
-    import PrevNextSection from '$lib/tutorial/PrevNextSection.svelte';
     import Figure from '$lib/figures/Figure.svelte';
-
-    let prevLink = '/Tutorial/Projections_for_Expressions';
-    let nextLink = '/Tutorial/More_Scoping';
 </script>
-
-<PrevNextSection {prevLink} {nextLink} />
 
 # In Need of Scoping
 

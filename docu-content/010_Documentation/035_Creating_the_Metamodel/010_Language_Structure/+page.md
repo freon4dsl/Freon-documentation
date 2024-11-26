@@ -1,12 +1,6 @@
 <script>
     import Note from "$lib/notes/Note.svelte";
-    import PrevNextSection from '$lib/tutorial/PrevNextSection.svelte';
-
-    let prevLink= '/Documentation/Overview/Running_Example';
-    let nextLink='/Documentation/Creating_the_Metamodel/Defining_Properties';
 </script>
-
-<PrevNextSection {prevLink} {nextLink} />
 
 # The Language Structure Definition
 

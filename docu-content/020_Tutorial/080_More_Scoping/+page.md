@@ -1,12 +1,6 @@
 <script>
-    import PrevNextSection from '$lib/tutorial/PrevNextSection.svelte';
     import Figure from '$lib/figures/Figure.svelte';
-
-    let prevLink = '/Tutorial/In_Need_of_Scoping';
-    let nextLink = '/Tutorial/How_to_Handle_Typing';
 </script>
-
-<PrevNextSection {prevLink} {nextLink} />
 
 # More scoping
 

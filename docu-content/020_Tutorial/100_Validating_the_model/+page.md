@@ -1,12 +1,6 @@
 <script>
-    import PrevNextSection from '$lib/tutorial/PrevNextSection.svelte';
     import Figure from '$lib/figures/Figure.svelte';
-
-    let prevLink = '/Tutorial/How_to_Handle_Typing';
-    let nextLink = '/Tutorial/Conclusion';
 </script>
-
-<PrevNextSection {prevLink} {nextLink} />
 
 # Validating the model
 
