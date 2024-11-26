@@ -25,7 +25,7 @@ export class Generator {
 
 		console.log('Continuing, generating svelte pages ...');
 		// Walk over the folder with all the markdown files.
-		const svelteCreator = new Md2Svelte(filler.allCategories, filler.allTocs);
+		const svelteCreator = new Md2Svelte(filler.allPaths, filler.allCategories);
 		svelteCreator.generate(contentFolder, outputFolder);
 
 		console.log("Side-nav pages ok, generating redirect typescript files ...")

@@ -4,8 +4,9 @@ import { PathCreator } from './PathCreator.js';
 import { CategoryInfoType, TocContentsType } from './TocContentsType.js';
 
 export class SidebarFiller {
-	allTocs: TocContentsType[] = [];
+	private allTocs: TocContentsType[] = [];
 	allCategories: CategoryInfoType[] = [];
+	allPaths: string[] = []; /* keep track of all paths in order, to be able to add the previous and next links
 
 	/**
 	 * Reads the file structure under 'contentFolder' and generates a nav array in
@@ -28,7 +29,8 @@ export class SidebarFiller {
 				// found a category: create a TocContent entry
 				const name: string = PathCreator.createShowableName(contentFolder, folderPath);
 				const _path: string = '/' + PathCreator.createFilePath(contentFolder, folderPath);
-				const toc: TocContentsType = new TocContentsType(name, _path, [])
+				const toc: TocContentsType = new TocContentsType(name, _path, []);
+				this.allPaths.push(toc.path);
 				// add all subfolders to the result
 				toc.content.push(...this.readSubcategories(folderPath, contentFolder));
 				// add the category to allTocs
@@ -93,7 +95,8 @@ export const allCategories: CategoryInfoType[] = [
 			} else if (file === '+page.md' && level !== 0) {
 				// console.log("found route: " + '/' + PathCreator.createFilePath(ignore, folderPath))
 				const name: string = PathCreator.createShowableName(ignore, folder);
-				const toc: TocContentsType = new TocContentsType(name, '/' + PathCreator.createFilePath(ignore, folder), [])
+				const toc: TocContentsType = new TocContentsType(name, '/' + PathCreator.createFilePath(ignore, folder), []);
+				this.allPaths.push(toc.path);
 				content.push(toc);
 			}
 		}
@@ -116,7 +119,8 @@ export const allCategories: CategoryInfoType[] = [
 				// Found subcategory: create a TocContent entry
 				// console.log("Found subcategory: " + '/' + PathCreator.createFilePath(ignore, folderPath))
 				const name: string = PathCreator.createShowableName(ignore, folderPath);
-				const toc: TocContentsType = new TocContentsType(name, '/' + PathCreator.createFilePath(ignore, folderPath), [])
+				const toc: TocContentsType = new TocContentsType(name, '/' + PathCreator.createFilePath(ignore, folderPath), []);
+				this.allPaths.push(toc.path);
 				// add all subfolders to the result
 				toc.content.push(...this.readFolder(folderPath, ignore, 0));
 				content.push(toc);

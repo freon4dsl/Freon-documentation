@@ -14,12 +14,12 @@ const storeContent: string =
 	export const mySections: Writable<Section[]> = writable<Section[]>([]);`;
 
 export class Md2Svelte {
-	allTocs: TocContentsType[];
+	allPaths: string[];
 	allCategories: CategoryInfoType[];
 
-	constructor(allCategories: CategoryInfoType[], allTocs: TocContentsType[]) {
+	constructor(allPaths: string[], allCategories: CategoryInfoType[]) {
+		this.allPaths = allPaths;
 		this.allCategories = allCategories;
-		this.allTocs = allTocs;
 	}
 
 	generate(contentFolder: string, outputFolder: string) {
@@ -97,6 +97,7 @@ export class Md2Svelte {
 		const scriptPart: string = this.createScriptPart(transformed_code.data.headers, ignore, routeName);
 		let fileContent: string;
 
+		PathCreator.createDirIfNotExisting(routeName, outputFolder);
 		if (scriptPart.length > 0) { // There is something to add
 			const htmlPart: string = this.changeHtags(transformed_code.code);
 			fileContent = this.combineScriptAndCode(scriptPart, htmlPart);
@@ -117,7 +118,6 @@ export class Md2Svelte {
 			fileContent = transformed_code.code;
 		}
 
-		PathCreator.createDirIfNotExisting(routeName, outputFolder);
 		fs.writeFileSync(outputFolder + path.sep + outputPath, fileContent);
 	}
 
@@ -215,32 +215,44 @@ export class Md2Svelte {
                       });
                   });
               });`;
-		// todo add the right links here
-		const next: string = '/';
-		const prev: string = '/';
-		// find filepath in allTocs
-
-		// find the first entry in the path and get the toc for this category
-		const pathItems: string[] = filepath.split(path.sep);
-		const ww: TocContentsType = this.allTocs.find(xx => xx.name === pathItems[0]);
+		let next: string = '';
+		let prev: string = '';
+		// find filepath in allPaths
 
 		// make the filepath the same for both types of path.sep, to be able to compare with the toc
 		filepath = filepath.replace(new RegExp('\\' + path.sep, 'g'),  '/');
-		// console.log("------------- Searching for " + '/' + filepath);
+		filepath = '/' + filepath;
 
-		let prevNextStr: string = `let prevLink= '${prev}';
-    let nextLink= '${next}';`;
-		if (ww !== undefined) {
-			// loop over the toc
-			prevNextStr = this.loopOverToc(ww, '/' + filepath, '')
-		}
-		if (prevNextStr.length === 0) {
-			console.log(`====\nthis: ${'/' + filepath} \nprevNextStr: ${prevNextStr}`);
-		}
+		this.allPaths.forEach((path: string, index: number) => {
+			if (path === filepath) {
+				if (index > 0) {
+					let isCategory: boolean = false;
+					this.allCategories.forEach(cat => {
+						if (this.allPaths[index-1] === cat.path) {
+							isCategory = true;
+						}
+					})
+					if (isCategory) {
+						// use a path before the category, because the category has a redirect script to its first route
+						if (index - 1 > 0) {
+							prev = this.allPaths[index - 2];
+						}
+					} else {
+						prev = this.allPaths[index - 1];
+					}
+				}
+				if (index + 1 < this.allPaths.length) {
+					next = this.allPaths[index + 1];
+				}
+				// console.log(`==> found ${filepath} \n\tprev:${prev} \n\tnext${next}`)
+			}
+		})
+
 		result += `   
 		import PrevNextSection from '$lib/tutorial/PrevNextSection.svelte';
 		
-		${prevNextStr}
+		let prevLink= '${prev}';
+    let nextLink= '${next}';
     `
 		return result;
 	}
@@ -248,27 +260,25 @@ export class Md2Svelte {
 	loopOverToc(toc: TocContentsType, searchPath: string, lastSeen: string): string {
 		let result: string = '';
 		let next: string = '/';
-		let prev: string = '/';
+		let prev: string = lastSeen;
 		let found: boolean = false;
 		toc.content.forEach(cont => {
+			// console.log(`current: ${cont.path}, last seen ${lastSeen}`)
 			if (found) {
 				next = cont.path;
 				found = false;
-				result = `let prevLink= '${prev}';
-    let nextLink= '${next}';`
+				result = `let prevLink= '${prev}';\nlet nextLink= '${next}';`
 			}
 			if (cont.path === searchPath) {
 				prev = lastSeen;
 				found = true;
 			} else if ((searchPath).startsWith(cont.path)) {
-				lastSeen = cont.path;
-				result = this.loopOverToc(cont, searchPath, lastSeen);
+				result = this.loopOverToc(cont, searchPath, cont.path);
 			}
 			lastSeen = cont.path;
 		});
 		if (found) { // it was the last, so make an entry with an empty next link
-			result = `let prevLink= '${prev}';
-    let nextLink= '';`
+			result = `let prevLink= '${prev}';\nlet nextLink= '';`
 		}
 		return result;
 	}
