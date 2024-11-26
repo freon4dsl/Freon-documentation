@@ -73,6 +73,3 @@ imageName={'Tutorial-lesson9-screenshot1.png'}
 caption={'Validation error in grading expression'}
 figureNumber={1}
 />
-
-
-<PrevNextSection {prevLink} {nextLink} />

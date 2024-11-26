@@ -133,13 +133,14 @@ export class Md2Svelte {
 	 * @param code
 	 */
 	combineScriptAndCode(script: string, code: string): string {
-		let innerHtml: string = code.replace(/<script>/, '');
-
 		if (code.includes('</script>')) {
-			innerHtml = innerHtml.replace(/<script>/, "</script>\n\n<PrevNextSection {prevLink} {nextLink} />\n" )
+			// if there was a script section, remove the script start, and add the <<PrevNextSection> after the script end
+
+			let innerHtml: string = code.replace(/<script>/, '');
+			innerHtml = innerHtml.replace(/<\/script>/, "</script>\n\n<PrevNextSection {prevLink} {nextLink} />\n" )
 			return script + innerHtml + "\n\n<PrevNextSection {prevLink} {nextLink} />";
 		} else {
-			return script + '\n\t</script>\n<PrevNextSection {prevLink} {nextLink} />' + innerHtml + "\n\n<PrevNextSection {prevLink} {nextLink} />";
+			return script + '\n\t</script>\n<PrevNextSection {prevLink} {nextLink} />' + code + "\n\n<PrevNextSection {prevLink} {nextLink} />";
 		}
 	}
 
@@ -215,8 +216,8 @@ export class Md2Svelte {
                   });
               });`;
 		// todo add the right links here
-		let next: string = '/';
-		let prev: string = '/';
+		const next: string = '/';
+		const prev: string = '/';
 		// find filepath in allTocs
 
 		// find the first entry in the path and get the toc for this category
@@ -227,30 +228,48 @@ export class Md2Svelte {
 		filepath = filepath.replace(new RegExp('\\' + path.sep, 'g'),  '/');
 		// console.log("------------- Searching for " + '/' + filepath);
 
+		let prevNextStr: string = `let prevLink= '${prev}';
+    let nextLink= '${next}';`;
 		if (ww !== undefined) {
 			// loop over the toc
-			let loopPrev: string = ww.path;
-			let found: boolean = false;
-			ww.content.forEach(xx => {
-				if (found) {
-					next = xx.path;
-					found = false;
-				}
-				if (xx.path === '/' + filepath) {
-					prev = loopPrev;
-					found = true;
-				}
-				loopPrev = xx.path;
-			});
-			console.log(`prev: ${prev}, this: ${'/' + filepath} next: ${next}`);
+			prevNextStr = this.loopOverToc(ww, '/' + filepath, '')
 		}
-
+		if (prevNextStr.length === 0) {
+			console.log(`====\nthis: ${'/' + filepath} \nprevNextStr: ${prevNextStr}`);
+		}
 		result += `   
 		import PrevNextSection from '$lib/tutorial/PrevNextSection.svelte';
 		
-		let prevLink= '${prev}';
-    let nextLink='${next}';
+		${prevNextStr}
     `
+		return result;
+	}
+
+	loopOverToc(toc: TocContentsType, searchPath: string, lastSeen: string): string {
+		let result: string = '';
+		let next: string = '/';
+		let prev: string = '/';
+		let found: boolean = false;
+		toc.content.forEach(cont => {
+			if (found) {
+				next = cont.path;
+				found = false;
+				result = `let prevLink= '${prev}';
+    let nextLink= '${next}';`
+			}
+			if (cont.path === searchPath) {
+				prev = lastSeen;
+				found = true;
+			} else if ((searchPath).startsWith(cont.path)) {
+				lastSeen = cont.path;
+				result = this.loopOverToc(cont, searchPath, lastSeen);
+			}
+			lastSeen = cont.path;
+		});
+		if (found) { // it was the last, so make an entry with an empty next link
+			result = `let prevLink= '${prev}';
+    let nextLink= '';`
+		}
 		return result;
 	}
 }

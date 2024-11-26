@@ -1,5 +1,5 @@
 <script>
-    import PrevNextSection from '$lib/tutorial/PrevNextSection.svelte';
+    
     import Figure from '$lib/figures/Figure.svelte';
 </script>
 
@@ -247,6 +247,3 @@ When you've gotten this far, it might be a good idea to try for yourself what
 happens if you change the projection, for instance, you might switch the order of the lines. 
 But don't forget to get back to 
 the next part of the tutorial, where we will have more fun with defining projections.
-
-
-<PrevNextSection {prevLink} {nextLink} />

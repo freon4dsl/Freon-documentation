@@ -140,5 +140,3 @@ Now regenerate and have a look. You will see that the question names that are av
 Yes, scoping can be this easy!
 
 In the next lesson you will learn more sophisticated stuff. We will introduce the Freon typing system to help your user to create solid models.
-
-<PrevNextSection {prevLink} {nextLink} />

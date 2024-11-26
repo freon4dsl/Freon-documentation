@@ -216,5 +216,3 @@ InDepthMaterial {[
 And try it out! You see, there is so much fun to have with creating projections.
 But do come back for the next lesson where we will tackle the topic of adding 
 expressions to your metamodel, and to your editor definitions.
-
-<PrevNextSection {prevLink} {nextLink} />

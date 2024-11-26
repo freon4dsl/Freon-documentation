@@ -2,8 +2,6 @@
     import Figure from '$lib/figures/Figure.svelte';
 </script>
 
-<PrevNextSection {prevLink} {nextLink} />
-
 # Projections for Expressions
 
 In this lesson you will learn how to define projections for expressions such that you get the full benefit
@@ -128,5 +126,3 @@ Go ahead and play around with what we have created so far. Maybe you notice that
 references to questions from the other pages. That is not exactly what we are hoping for. Our teachers should only be able to
 give grades based on the questions of the current page. This means that we are in need of scoping, which is the topic to be addressed
 in the next lesson.
-
-<PrevNextSection {prevLink} {nextLink} />

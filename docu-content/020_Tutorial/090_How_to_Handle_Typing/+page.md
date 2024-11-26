@@ -93,5 +93,3 @@ ComparisonExpression {
 ```
 
 In the next lesson we will show how to use the typings to validate the grading expressions.
-
-<PrevNextSection {prevLink} {nextLink} />

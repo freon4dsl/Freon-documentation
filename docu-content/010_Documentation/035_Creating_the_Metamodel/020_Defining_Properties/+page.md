@@ -77,5 +77,3 @@ Because this causes problems in the editor, simple properties may not be optiona
 
    riskAdjustment?: PercentageLiteral;     // an adjustment to the risk of the separate parts, e.g. caused by the combination of the parts
 ```
-
-<PrevNextSection {prevLink} {nextLink} />

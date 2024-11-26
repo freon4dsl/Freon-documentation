@@ -29,5 +29,3 @@ imageName={'docu-project-uml.png'}
 caption={'UML diagram of Insurance Project'}
 figureNumber={1}
 />
-
-<PrevNextSection {prevLink} {nextLink} />

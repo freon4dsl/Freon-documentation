@@ -26,5 +26,3 @@ If you have questions that are not answered in this documentation, please get in
 for instance via email at _info AT freon4dsl.dev_.
 
 **Have fun!**
-
-<PrevNextSection {nextLink} />

@@ -3,8 +3,6 @@
     import Figure from "$lib/figures/Figure.svelte";
 </script>
 
-<PrevNextSection {prevLink} {nextLink} />
-
 # Installing and Using Freon
 
 Get ready to use Freon by having <a href="https://nodejs.org/" target="_blank">node.js</a>
@@ -279,6 +277,3 @@ Optional arguments:
 For detailed help about a specific command, use: freon <command> -h
 
 ```
-
-
-<PrevNextSection {prevLink} {nextLink} />

@@ -53,5 +53,3 @@ That's it. Easy, peasy! You don't believe it? Just try it out for yourselves, an
 from that page can be used.
 
 In the following lessons we will learn a few more things about scoping. But first we need to define the last model unit, the _Test_ unit.
-
-<PrevNextSection {prevLink} {nextLink} />
