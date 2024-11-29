@@ -44,3 +44,6 @@
 - precedence of projections
 - projection set
 - named editor
+- symbol
+- trigger
+- fragment

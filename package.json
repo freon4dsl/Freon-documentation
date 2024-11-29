@@ -7,7 +7,7 @@
 		"url": "https://github.com/freon4dsl/Freon-documentation"
 	},
 	"scripts": {
-		"buildSite": "cd ./scripts && npm run buildSite && cd ../ && npm run format",
+		"buildSite": "npm run cleanRoutes && cd ./scripts && npm run buildSite && cd ../ && npm run format",
 		"dev": "vite dev",
 		"build": "vite build",
 		"preview": "vite preview",

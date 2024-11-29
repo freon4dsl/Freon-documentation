@@ -12,7 +12,8 @@ although older versions likely work just as well.
 You could also try, and use other packages managers instead of npm.
 
 There are two ways to start using Freon, either use our
-[Example project](#example-project-startup-2), or use our [Template project](#template-project-startup-3).
+[Example project](/Documentation/Overview/Getting_Started#example-project-startup-2), 
+or use our [Template project](/Documentation/Overview/Getting_Started#template-project-startup-3).
 In the following explanations the root of the project will be indicated with '~'.
 
 <Note>
@@ -28,14 +29,14 @@ ensure that the editor functions as it should in older browsers.
 
 The simplest manner to start working with Freon is start from the example project from GitHub.
 The sources include the definitions for an example language called `Entity`. Do note that this 
-DSL is different from the [running example](Documentation/Overview/Running_example) used 
+DSL is different from the [running example](/Documentation/Overview/Running_Example) used 
 in this documentation.
 
 Clone branch `master` 
 from <a href="https://github.com/freon4dsl/Freon-example.git" target="_blank">
   https://github.com/freon4dsl/Freon-example.git</a> in your preferred IDE.
   (For an explanation of the content of the project see
-  [Project_Structure](/#project-structure-4)).
+  [Project_Structure](/Documentation/Overview/Getting_Started#project-structure-4)).
 
 Next, install all necessary packages by running:
 
@@ -79,7 +80,7 @@ files, i.e. it does not include a language definition. You need to define your o
 To use the template project clone branch `master` from <a href="https://github.com/freon4dsl/Freon-template" target="_blank">
   https://github.com/freon4dsl/Freon-template</a>.
   (For an explanation of the content of the project see
-  [Project Structure](#project-structure-4).)
+  [Project Structure](/Documentation/Overview/Getting_Started#project-structure-4).)
 
 Next, install all necessary packages by running:
 
@@ -144,6 +145,19 @@ Open another (bash) terminal, and start the generated editor from it:
   ```
 
 <Note>
+<svelte:fragment slot="header">Speed up the Development Cycle</svelte:fragment>
+<svelte:fragment slot="content">
+<p>
+When developing a DSL, you often regenerate the Freon editor to reflect the changes made in the
+metamodel, and/or other definitions. In order to speed up your development cycle the <code>dev</code>
+command has the -watch flag set. Furthermore, you can use
+the following as address in the web browser: <code>http://localhost:8000/?model=TestProject</code>, where
+`TestProject` stands for the name of the model that you are using to test your language definition
+and editor with. Thus, the browser responds to any regeneration with opening your test model instantaneously.
+</p>
+</svelte:fragment></Note>
+
+<Note>
 <svelte:fragment slot="header">WebStorm tip</svelte:fragment>
 <svelte:fragment slot="content">
 If you are working with WebStorm, you might consider installing the
@@ -174,7 +188,7 @@ The code in a Freon project under `~/src` is organised into the following subfol
     from a text string or file.
   - **.../scoper**: code for that determines which elements are visible for a certain element in the user's model.
   - **.../stdlib**: code that implements some standard elements of your language, for instance
-    [limited concepts](/Documentation/Creating_the_Metamodel/Defining_the_Language_Structure).
+    [limited concepts](/Documentation/Creating_the_Metamodel/Language_Structure).
   - **.../typer**: code that that determines which type is associated with a certain element in the
     user's model. The file `Custom<yourLanguageName>TyperPart.ts` is the placeholder for any [customization](/Documentation/Customizations) that you
     would like to do.

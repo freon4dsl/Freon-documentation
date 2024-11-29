@@ -1,11 +1,10 @@
 <script>
     import Note from "$lib/notes/Note.svelte";
-     let self;
 </script>
 
 # Projections and Indentation
 
-The indentation you use in a projection is taken into account. Thus, in the following example `literal text` will
+The indentation you use in a projection is taken into account in the display. Thus, in the following example `literal text` will
 appear indented 8 spaces from `This is`.
 
 ```ts
@@ -23,7 +22,7 @@ This is
 ```
 
 However, this is not the complete story. Any whitespace before the line with the least indentation is ignored.
-Thus, you can indent the projection as a whole, without it having any influence on the projected indentation.
+Therefore, you can indent the projection as a whole, without it having any influence on the projected indentation.
 The next example produces the exact same result as the previous.
 
 ```ts
@@ -41,9 +40,9 @@ Text2 {
 }
 ```
 
-In the following example, however, the line with the least indentation is
+In the following example, the line with the least indentation is
 `for every concept of type Text.` Its indentation will define the margin. It will
-not be indented. However,
+not be indented. On the other hand,
 the text `This is` will be indented 10 spaces, `literal text` will be indented 8 spaces, etc.
 
 ```ts
@@ -60,7 +59,7 @@ Text3 {
 }
 ```
 
-In this calculation the indentation of the closing bracket is also considered. Therefore,
+In the determination of the least indent, the indentation of the closing bracket is also considered. Therefore,
 the following example will take the closing bracket as margin, and even the line `for every concept of type Text.`
 will be indented with 3 spaces.
 

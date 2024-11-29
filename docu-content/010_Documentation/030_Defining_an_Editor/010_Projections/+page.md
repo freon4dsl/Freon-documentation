@@ -1,15 +1,15 @@
 <script>
     import Note from "$lib/notes/Note.svelte";
-     let self;
 </script>
 
 # Projections
 
-In the `.edit` file a _projection_ is defined between angular brackets.
-This is done in a style similar from markdown, what you see looks close to what you get.
-Everything within the square brackets (`[]`), except
-the parts surrounded by `${}`, is taken literally. See also the information 
-about [indentation](/Documentation/Defining_an_Editor/Indentation).
+A projection is defined using angular brackets, 
+in a style similar to Markdown. The appearance of the definition 
+closely resembles the resulting output. Everything within square 
+brackets (`[]`), except for parts enclosed in `${}`, is interpreted 
+literally. For more details, refer to the information 
+on [Indentation](/Documentation/Defining_an_Editor/Indentation).
 
 ```txt
 // DocuProject/src/defs/editor-indentation.edit#L6-L14
@@ -20,7 +20,6 @@ This is
         literal text
       that is projected in the
                 editor
-           - including all tabs -
   for every concept of type Text.
 ]
 }
@@ -28,26 +27,26 @@ This is
 
 ## Including Properties
 
-When you define a projection for a concept or interface, you will want to include its properties. For
-this you need to use the special notation `${}`. This tells Freon to include a property, according to the projection
-that is defined for the type of the property.
+When defining a projection for a concept or interface, you will likely need 
+to include its properties. This is done using the special notation `${}`, which 
+instructs Freon to include a property according to the projection defined for its type.
 
-In the following example `self.body` is a property of type `DocuExpression`.
-It will be projected according to the projection for `DocuExpression`, whereas `self.declaredType`
-is a property of type `DocuType`, which is abstract. This property
-will be projected according to the definition for the (non-abstract) subtype of `DocuType` that is
-currently found.
+For example, consider the property `self.body`, which is of type `DocuExpression`. It 
+will be displayed based on the projection defined for `DocuExpression`. 
+Meanwhile, `self.declaredType` is a property of the abstract type `DocuType`. 
+This property will be projected according to the definition of 
+the specific (non-abstract) subtype of `DocuType` encountered at runtime.
 
 ```ts
 // DocuProject/src/defs/editor-main-default.edit#L40-L46
 
-        risk assessment: ${self.statisticalRisk}
-        maximum payout: ${self.maximumPayOut}
-        is approved: ${self.isApproved [JA | NEE]}
-]
-}
-
-InsuranceProduct {[
+Themes: ${themes horizontal separator[, ]}
+Premium: ${advertisedPremium} per ${nrPremiumDays}
+Insured risks:
+    ${parts vertical terminator [;]}
+Calculation
+    [? Risk adjusted by = ${riskAdjustment} ]
+    calculated premium: ${calculation}
 ```
 
 <Note>
@@ -65,68 +64,81 @@ Because you may only use direct properties, the prefix <code>self</code> may be 
 </svelte:fragment>
 </Note>
 
-### Including a Property Projection from Another Editor
+<Note><svelte:fragment slot="header"> One property, one occurrence in the editor</svelte:fragment>
+<svelte:fragment slot="content">
+<p>Unfortunately, it is not possible to show the same property of a concept twice in the same editor.
+The tooling we use to keep the state of the underlying model in sync with the view in the running editor
+does not allow us to do this.</p>
+</svelte:fragment></Note>
 
-Normally, the property that you include will be displayed according to the projection of its type. This projection
-will be found by Freon using the [precedence](/Documentation/Defining_an_Editor#precedence-of-projections-4)
-as defined in the .edit files.
+## Using Named Projections
 
-When you specifically want to use another projection, you can use a **named property projection**. In that case,
-Freon will use the projection defined for the concept in the editor with the specified name.
+By default, a property you include will be displayed using the projection 
+defined for its type. Freon determines this projection based on the 
+precedence specified in the `.edit` files.
 
-In this example, the projection for `self.parts` will first be searched in the editor named `comments`.
-If it cannot be found, the normal ordering of projections will be used.
+If you want to use a specific projection from a different editor,
+you can use a **named property projection**. In this case, Freon 
+will look for the projection in the editor with the specified name.
+
+In the next example, the projection for `self.parts` will first be searched 
+in the editor named `comments`. If it is not found there, 
+Freon will fall back to the standard precedence order of projections.
 
 ```ts
-// DocuProject/src/defs/editor-specials.edit#L3-L9
+// DocuProject/src/defs/editor-fragments.edit#L3-L9
 
 BaseProduct {[
     /* In this projection 'self.parts' is always shown according to the projection */
     /* defined for concept InsurancePart in the editor 'comments'.                 */
-    Base Product for ${self.theme radio} ${self.name replace=SMUI_Dialog buttonLabel = "Change Product Name"}
-        [fragment First wrap=SMUI_Card] [fragment Second wrap=SMUI_Card]
-        ${self.parts:comments replace=SMUI_Accordion multi="multiple"}
+    Base Product for ${self.theme radio} ${self.name }
+        [fragment First] [fragment Second]
+        ${self.parts:comments}
 ]
 ```
 
 ## Lists
 
-If a property is a list, you can indicate whether it should be projected horizontally or vertically.
-Both keywords are optional. If neither of `vertical` or `horizontal` is present, the property will be displayed as
-a vertical list.
+If a property is a list, you can specify whether it should be projected 
+horizontally or vertically. Both options are optional. If 
+neither `vertical` nor `horizontal` is specified, the property 
+will be displayed as a vertical list by default.
 
-You can also choose to project a list property as a [table](/Documentation/Defining_an_Editor/Projections#tables-4).
-However, its default projection will always be a list. This is the one that will be generated when a
-projection is not present in the `.edit` files.
+You can also choose to project a list property 
+as a [table](/Documentation/Defining_an_Editor/Projections#tables-4). 
+However, its default projection will always be a list, which 
+will be used if no projection is defined in the `.edit` files.
 
-In a list, you can add one of the following.
+For a list, you can include the following options:
 
-- A _separator_ string, which will be shown in between all elements.
-- A _terminator_ string, which will be shown after each element.
-- An _initiator_ string, which will be shown before every element of the list.
+- A **separator** string, which will appear between each element.
+- A **terminator** string, which will appear after each element.
+- An **initiator** string, which will appear before each element.
 
-Each is optional. The default is a single space used as separator.
+All of these are optional. The default separator is a single space.
 
-In the following example the list `parts` is displayed vertically with the string `';'` as terminator.
-Whereas, the list `themes` is displayed horizontally with the string `', '` as separator. Finally, the
-list `helpers` is shown as a vertical list without any separator, terminator or initiator. Actually, we
-could omit the keyword `vertical`, because this is the default projection for lists.
+In the following example, the list `parts` is displayed vertically 
+with a `';'` terminator. The list `themes` is displayed horizontally 
+with a `', '` separator. The list `helpers` is shown as a vertical 
+list without any separator, terminator, or initiator. In fact, 
+the `vertical` keyword could be omitted for `helpers`, as it is the 
+default projection for lists.
 
 ```ts
 // DocuProject/src/defs/editor-main-default.edit#L27-L38
 
-        is approved level2: ${self.isApprovedLevel2 inner-switch}
-        is approved level3: ${self.isApprovedLevel3 checkbox}
-        yields profit: ${self.yieldsProfit text [Plenty | Little]}
-        expected nr of use: ${self.nrOfUse}
-        range: ${self.range slider}
-
-
-        ${parts}
 ]}
 
 InsurancePart{
 [
+    Insurance Part ${self.name}
+        risk assessment: ${self.statisticalRisk}
+        maximum payout: ${self.maximumPayOut}
+        is approved: ${self.isApproved [JA | NEE]}
+]
+}
+
+InsuranceProduct {[
 ```
 
 <Note>
@@ -139,16 +151,19 @@ purely determined by the keywords <code>horizontal</code> and <code>vertical</co
 
 ## Tables
 
-If a property is a list, you can choose to project it as a table. Tables can be either row or column based.
-Row based means that each element of the list is displayed in a row. Column based, obviously, means that
-each element is displayed in a single column. The default is row based.
+If a property is a list, you can choose to display it as a table. 
+Tables can be either row-based or column-based. In a row-based table, 
+each element of the list is displayed in a separate row, while 
+in a column-based table, each element is displayed in a single 
+column. The default is row-based.
 
-Defining a table is a two-step process.
+Defining a table involves two steps:
 
-1. Add the keyword `table` to the list property that
-   you want to display as a table. Optionally, add one of the keywords `rows` or `columns`.
-2. Add a table-projection to the type of the elements in the list. The table-projection defines
-   the headers of the table and which parts of the list elements are displayed in which row or column.
+1. Add the keyword `table` to the list property you want to 
+display as a table. Optionally, you can also specify either `rows` or `columns`.
+2. Define a table-projection for the type of the elements 
+in the list. This projection specifies the table headers and 
+3. determines how the elements of the list are arranged in rows or columns.
 
 <Note>
 <svelte:fragment slot="content">
@@ -157,7 +172,8 @@ table projection for both column and row based tables. Freon will swap the entri
 </svelte:fragment>
 </Note>
 
-For example, to project the `parts` property of concept `BaseProduct` as a row based table, you can use the following code.
+For example, to project the `parts` property of concept `BaseProduct` as a row based table, 
+you can use the following code.
 
 ```ts
 // DocuProject/src/defs/editor-tables.edit#L13-L16
@@ -168,7 +184,8 @@ BaseProduct {[
 ]}
 ```
 
-Given the above example, there should also be a projection tagged `table` for the concept `InsurancePart`.
+Given the above example, there should also be a projection tagged `table` for the 
+concept `InsurancePart` (the type of `parts`).
 Below four columns/rows are defined, each with its own header.
 
 ```ts
@@ -176,16 +193,18 @@ Below four columns/rows are defined, each with its own header.
 
 InsurancePart{
 table [
-    Name    | risk               | pay out          | is approved   | action
-    ${name} | ${statisticalRisk} | ${maximumPayOut} | ${isApproved} | [button boxRole="MyTableButton-role"]
+    Name    | risk               | pay out          | is approved
+    ${name} | ${statisticalRisk} | ${maximumPayOut} | ${isApproved}
 ]
 }
 ```
 
+[//]: # (todo the text in the following note is not inaccordance with the example)
+
 <Note>
 <svelte:fragment slot="header">Properties within a table are displayed according to their own projection</svelte:fragment>
 <svelte:fragment slot="content">
-The manner in which each of the properties of a single function are displayed, will be determined
+The manner in which each of the properties in a table are displayed, is determined
 by their own projections. In this example, <code>self.parameters</code> is a list, and will be displayed as another table.
 The inner table will be row-based, as this is the default.
 </svelte:fragment>
@@ -207,21 +226,25 @@ of this property should also be optional. This is indicated by `[?`.
 In the next example both the property `riskAdjustment` and `helpers` are only shown if they are present.
 If they are not present, respectively the text `Risk adjusted by =` or `Helper functions:` is omitted as well.
 
+Note that optional projections for non-optional properties are not allowed.
+
 ```ts
 // DocuProject/src/defs/editor-main-default.edit#L27-L38
 
-        is approved level2: ${self.isApprovedLevel2 inner-switch}
-        is approved level3: ${self.isApprovedLevel3 checkbox}
-        yields profit: ${self.yieldsProfit text [Plenty | Little]}
-        expected nr of use: ${self.nrOfUse}
-        range: ${self.range slider}
-
-
-        ${parts}
 ]}
 
 InsurancePart{
 [
+    Insurance Part ${self.name}
+        risk assessment: ${self.statisticalRisk}
+        maximum payout: ${self.maximumPayOut}
+        is approved: ${self.isApproved [JA | NEE]}
+]
+}
+
+InsuranceProduct {[
 ```
 
-Note that optional projections for non-optional properties are not allowed.
+## Inherited Projections
+
+[//]: # (todo add content for Inherited Projections)

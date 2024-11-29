@@ -2,11 +2,13 @@
     import Note from "$lib/notes/Note.svelte";
 </script>
 
-# Defining Concept Properties
+# Defining Properties
 
 Each of the language structure elements (concepts, interfaces, expressions, etc.) may have **Properties**.  
 Properties can be lists, this is indicated by square brackets after the type name. There are three types
 of properties.
+
+## Simple Properties
 
 **Simple properties** have as type `identifier`, `string`, `number`, or `boolean`, and are
 always contained in the _concept_. Simple properties may also be lists.
@@ -18,6 +20,8 @@ date: string;
 theme: InsuranceTheme;          // the 'kind' of insurance
 parts: InsurancePart[];         // all parts of this product
 ```
+
+## Part Properties
 
 **Parts** have as type one of the _concepts_ (including _expression concepts_ and _limited concepts_)
 or interfaces in the language, and are _contained in the concept_ that holds the property (as in
@@ -33,6 +37,8 @@ the UML composition relationship). Note that simple properties are always consid
 
 // An InsurancePart defines a single aspect of an InsuranceProduct together
 ```
+
+## Reference Properties
 
 **References** also have as type one of the _concepts_ or _interfaces_ in the language, but a reference is not contained
 in its _concept_ (as in the UML association relationship). References are indicated by the keyword

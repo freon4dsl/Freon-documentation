@@ -1,28 +1,25 @@
 <script>
     import Note from "$lib/notes/Note.svelte";
-     let self;
 </script>
 
 # Defining an Editor
 
-The way that editor projects the model units, can be defined in an editor definition file (`.edit` file). 
-For each _concept_ or _interface_ in your language additional information must be given. 
-Combined this defines the [concrete syntax](/Documentation/Terminology) of your language. 
+An editor's behavior in displaying language elements defined in the metamodel is specified 
+through an editor definition file (a `.edit` file). This file allows you to 
+provide additional information for each _concept_ or _interface_ in your language, 
+which together form the [concrete syntax](/Documentation/Terminology) of your language.
 
-Currently, you can define the following three items per
-_concept_ or _interface_.
+Currently, you can define the following three aspects of the concrete syntax for each _concept_ or _interface_:
 
-- A **projection**, which is how the _concept_ is shown in the editor.
-- An optional **trigger**, which is the key or keys your user needs to type to create a
-  new instance of the _concept_.
-- An optional **symbol**, which is only used for **binary expressions**. It is the character or
-  character string that represents the _operator_. When the _symbol_ is not present,
-  the _trigger_ will be used for this purpose.
-
-You cannot create a projection for either a **binary expression concept** or a **limited concept**.
-The editor gives extra [support for expressions](/Overview/Projectional_Editing#expressions), which
-cannot be provided if a user defined projection is present. **Limited concepts** are blocked, because the user of the editor
-can use the instances of the limited concept solely as references.
+- **Projection**: Defines how the _concept_ is visually represented in the editor.
+- **Trigger** (optional): Specifies the key or keys that a user must type to create a new instance of the _concept_.
+- **Symbol** (optional): Used exclusively for binary expressions, it is the character or string that represents 
+the _operator_. If a _symbol_ is not provided, the _trigger_ will serve this purpose.
+ 
+Note that projections cannot be specified for _binary expression concepts_ or _limited concepts_. 
+The editor offers specialized support for binary expressions, which cannot function properly 
+if a user-defined projection is applied. Limited concepts are also restricted 
+from having projections because they are intended for use as references only within the editor.
 
 <Note>
 <svelte:fragment slot="header"> The projection is always the first </svelte:fragment>
@@ -33,30 +30,33 @@ For every concept or interface you have to define the projection before the trig
 
 ## Named Editors or Projection Sets
 
-Editors can be **named**, and you can define multiple editors. A **named editor**
-defines a set of projections that are coordinated to operate together.
-These sets can be switched on and off dynamically, thus changing
-the appearance of the model in the editor.
+Editors can be **named**, allowing you to define multiple editors with coordinated 
+sets of projections. These projection sets work together and can be dynamically 
+toggled, enabling you to change how the model appears in the editor.
 
-For instance, if you define all table projections under the same editor name,
-then your user can switch from viewing objects as lists to viewing them
-as [tables](/Documentation/Defining_an_Editor/Projections#tables).
-Or, in another example, you could have an editor (or projection set) that shows only part of the properties of certain
-concepts, whereas another editor shows all properties. This makes it possible to cater for different types of users.
+For example, if you group all [table projections](/Documentation/Defining_an_Editor/Projections#tables) under 
+a specific editor name, 
+users can switch between viewing objects as lists or as tables. Similarly, 
+you could create one editor (or projection set) that displays only a subset 
+of properties for certain concepts, while another editor shows all properties. 
+This flexibility allows you to accommodate different user needs.
 
-Projections may specifically request that a property is displayed using a projection from a named editor.
-For this see [Including a Property Projection from Another Editor](/Documentation/Defining_an_Editor/Projections#named_projection).
+Projections can also explicitly request that a property be displayed using 
+a projection from a named editor. For more details, 
+refer to [Using Named Projections](/Documentation/Defining_an_Editor/Projections#using-named-projections-3).
 
-## The Default Editor, and Defaults for Every Concept
+## The Default Editor
 
-Because there has to be an editor that can be used as fallback when all other editors are switched off, an
-editor with the name **default** is generated in case it is not provided. If the default editor is provided but incomplete,
-i.e. it does not define a projection for all concepts,
-projections will be generated for the missing concepts. So, upon generation the default editor is always complete.
+Since an editor is required as a fallback when all other editors are disabled, 
+a default editor is automatically generated if one is not provided. If a default 
+editor is supplied but is incomplete — meaning it does not define projections 
+for all concepts — projections for the missing concepts are automatically 
+generated. As a result, the default editor is always complete during generation.
 
-For instance when no projection is provided for the concept `BaseProduct`, the concrete syntax for instances of this concept
-will be using the name of the concepts, and its properties as keywords, and any list property will be shown as a vertical list,
-which is shown more or less by the following grammar rule.
+For example, if no projection is specified for the concept `BaseProduct`, 
+the concrete syntax for instances of this concept will default to using the 
+concept's name and its properties as keywords. Any list property 
+will be displayed as a vertical list, as shown by the following grammar rule.
 
 [//]: # (todo: adjust the example)
 
@@ -65,18 +65,20 @@ which is shown more or less by the following grammar rule.
 
 concept BaseProduct {
     name: identifier;               // internal name
+    theme: InsuranceTheme;          // the 'kind' of insurance
+    parts: InsurancePart[];         // all parts of this product
     isUnderConstruction: boolean;   // defines whether this base product is still 'raw'
+    // The following properties are present to show the different options for displaying booleans.
     isApprovedLevel1: boolean;
     isApprovedLevel2: boolean;
     isApprovedLevel3: boolean;
     yieldsProfit: boolean;
+    // The following properties are present to show the different options for displaying numbers.
     range: number;
     nrOfUse: number;
-    date: string;
-    theme: InsuranceTheme;          // the 'kind' of insurance
-    parts: InsurancePart[];         // all parts of this product
-}
 ```
+
+[//]: # (todo replace below with actual screenshot)
 
 ```txt
 BaseProduct = 'BaseProduct' identifier '{'
@@ -86,22 +88,29 @@ InsurancePart*
 '}' ;
 ```
 
-## Precedence of Projections
+## Editor Precedence
 
-The named editors are ordered; the order can be indicated by adding a **precedence** to the editor. The
-projections are found based on this order. The `default` editor is always the last (i.e. its precedence is 0).
-If a projection for a concept is not present in the editor with the highest precedence,
-then the next editor is searched for a projection for the concept, and so on, till the default editor is reached.
+Named editors are arranged in a specific order, which can be specified by assigning 
+a precedence value to each editor. Projections are resolved following this order. 
+The default editor always has the lowest precedence (0) and is evaluated last.
 
-When you omit the precedence, Freon will assign one based on the order in which the files are read,
-which normally is alphabetically. However, we cannot guarantee any specific order.
+If a projection for a concept is not found in the editor with the highest precedence, 
+the system searches the next editor in the sequence, continuing until it 
+reaches the default editor.
+
+If you do not specify a precedence, Freon assigns one based on the order 
+in which the files are read — typically alphabetically. However, this 
+order is not guaranteed and may vary.
 
 <Note>
 <svelte:fragment slot="header"> Each editor can be defined in multiple files </svelte:fragment>
 <svelte:fragment slot="content">
-Every <code>.edit</code> file that is encountered in the folder that holds your definitions, will be read during the generation.
-When the editor in multiple files has the same name all information will be combined into a single editor. 
-The precedence needs to be added only once, but in case you add it multiple times, the numbers are required to be equal.
+<p>Every <code>.edit</code> file in the folder containing your definitions is read during the 
+generation process. If multiple files define editors with the same name, their information 
+is merged into a single editor.</p>
+
+<p>The precedence value only needs to be specified once. However, if it is defined multiple 
+times, the values must be consistent.</p>
 </svelte:fragment>
 </Note>
 
@@ -115,8 +124,8 @@ editor tables precedence 4
 
 InsurancePart{
 table [
-    Name    | risk               | pay out          | is approved   | action
-    ${name} | ${statisticalRisk} | ${maximumPayOut} | ${isApproved} | [button boxRole="MyTableButton-role"]
+    Name    | risk               | pay out          | is approved
+    ${name} | ${statisticalRisk} | ${maximumPayOut} | ${isApproved}
 ]
 }
 ```
@@ -134,8 +143,9 @@ editor default
 
 global {
     boolean inner-switch [YES | NO] // the strings used to display a boolean value, all booleans will default be displayed as an inner switch control
-    limited radio
-    limited[] checkbox
+//    limited radio
+//    limited[] checkbox
+    // number slider  // you can use the slider control as default projection for numbers, but this will not often be the preferred option
     referenceSeparator [:] // the string that separates the names in a path name, e.g. pack1:cls3:part
     external {
         AnimatedGif,
@@ -152,15 +162,6 @@ Product {[ ${self.product} ]}
 
 BaseProduct {[
     Base Products ${name} for ${theme}
-        is still under construction: ${self.isUnderConstruction switch}
-        is approved level1: ${self.isApprovedLevel1 radio [Sure | NoWay]}
-        is approved level2: ${self.isApprovedLevel2 inner-switch}
-        is approved level3: ${self.isApprovedLevel3 checkbox}
-        yields profit: ${self.yieldsProfit text [Plenty | Little]}
-        expected nr of use: ${self.nrOfUse}
-        range: ${self.range slider}
-
-
         ${parts}
 ]}
 
@@ -200,7 +201,7 @@ Parameter {
      [${name} : ${declaredType}]
 }
 
-// No need for projection for DocuType and its implementors, they
+// No need for projections for DocuType and its implementors, they
 // are only used as references, so their names suffice.
 
 Entity {[

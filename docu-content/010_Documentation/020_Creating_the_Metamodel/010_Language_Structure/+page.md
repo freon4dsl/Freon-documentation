@@ -2,7 +2,7 @@
     import Note from "$lib/notes/Note.svelte";
 </script>
 
-# The Language Structure Elements
+# The Language Structure
 
 ## Model
 
@@ -117,7 +117,7 @@ Any concrete binary expression concept needs to have a priority. For example, in
 priority of the multiplication is higher than the priority of the plus. The expression 5 + 67 * 8 
 should be read as 5 + (67 * 8), not as (5 + 67) * 8. The priorities are used by Freon to balance the
 abstract syntax tree (see [Projectional Editing](/Background/Projectional_Editing#tree-balancing)). In
-[Reference Shortcuts, Symbols, and Triggers](/Documentation/Defining_an_Editor/Other_Options) you can
+[Reference Shortcuts, Symbols, and Triggers](/Documentation/Defining_an_Editor/Reference_Shortcuts,_Symbols,_and_Triggers) you can
 find more information on how to set the concrete syntax for the operand.
 
 Binary expression concepts may extend one other concept, and implement multiple interfaces.

@@ -59,7 +59,7 @@ can be found in [API Level](/Developing_a_Language/API_Level).
 
 Freon combines definitions at each level into one application, where the third level precedes the second, and
 the second level precedes the first.
-For instance, the generated editor will per [**concept**](/Documentation/Creating_the_Metamodel/Defining_the_Language_Structure#concept) in the language:
+For instance, the generated editor will per [**concept**](/Documentation/Creating_the_Metamodel/Language_Structure#concept) in the language:
 
 1. use the _hand-made projection_ from the API level, when this is present. If not, the editor will
 2. use the _projection generated from the editor definition_ from the Freon definition Level, when this definition is present.

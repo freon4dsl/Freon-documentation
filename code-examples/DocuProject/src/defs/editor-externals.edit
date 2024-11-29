@@ -1,11 +1,10 @@
-editor specials
+editor externals
 
-BaseProduct {[
-    /* In this projection 'self.parts' is always shown according to the projection */
-    /* defined for concept InsurancePart in the editor 'comments'.                 */
+BaseProduct {
+[
     Base Product for ${self.theme radio} ${self.name replace=SMUI_Dialog buttonLabel = "Change Product Name"}
         [fragment First wrap=SMUI_Card] [fragment Second wrap=SMUI_Card]
-        ${self.parts:comments replace=SMUI_Accordion multi="multiple"}
+        ${self.parts replace=SMUI_Accordion multi="multiple"}
 ]
     fragment First [
     First Card
@@ -17,7 +16,7 @@ BaseProduct {[
     ]
     fragment Second [
     Second Card
-        [button text="Don't push me!" boxRole="MyButton-role"]
+        [button text="Push me!" boxRole="MyButton-role"]
         yields profit: ${self.yieldsProfit}
         expected nr of use: ${self.nrOfUse slider}
         range: ${self.range}

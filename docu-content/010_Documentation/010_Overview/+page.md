@@ -15,9 +15,16 @@ easily make a projectional editor that allows for a natural manner of editing.
 ## A tool for Language Engineers
 
 We assume that people who want to use Freon know at least the basics of making mini-languages. For instance,
-the terms metamodel, abstract syntax tree, scope, concrete syntax, parsing, etc., should be familiar. 
-When we address the Freon user we call him/her a **language engineer**. The people that will 
+the terms metamodel, abstract syntax tree, scope, concrete syntax, parsing, etc., should be familiar. If you
+are not, please first refer to other sources, for instance the
+book <a href="https://www.manning.com/books/building-user-friendly-dsls" target="_blank">'Building User-Friendly DSLs'</a> written by Meinte Boersma.
+If you just need to refresh your knowledge, refer to [Freon Terminology](/Documentation/Terminology).
+Furthermore, a little knowledge of UML will come in handy, but this is not a true requirement.
+
+To be clear about the distinction, on this site, when we address the Freon user, we call him/her a **language engineer**. The people that will 
 be using the generated work environment are simply called **users**.
+
+## Welcome!
 
 So welcome, language engineer, to the world of Freon. This documentation is meant for you. It explains how Freon can help
 you in creating a language, and building a work environment for it.

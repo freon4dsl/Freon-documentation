@@ -21,13 +21,13 @@ language DocuProject
 ```
 
 The Freon language structure, which describes the abstract syntax tree (AST), consists of
-a single [Model](/Documentation/Creating_the_Metamodel/Defining_the_Language_Structure#Model), 
+a single [Model](/Documentation/Creating_the_Metamodel/Language_Structure#Model), 
 combined with a list of 
-- [Model Units](/Documentation/Creating_the_Metamodel/Defining_the_Language_Structure#Model_Unit),
-- [Concepts](/Documentation/Creating_the_Metamodel/Defining_the_Language_Structure#Concept),
-- [Expression Concepts](/Documentation/Creating_the_Metamodel/Defining_the_Language_Structure#Expression_Concept),
-- [Binary Expression Concepts](/Documentation/Creating_the_Metamodel/Defining_the_Language_Structure#Binary_Expression_Concept),
-- [Limited Concepts](/Documentation/Creating_the_Metamodel/Defining_the_Language_Structure#Limited_Concept), and/or
-- [Interfaces](/Documentation/Creating_the_Metamodel/Defining_the_Language_Structure#Interface).
+- [Model Units](/Documentation/Creating_the_Metamodel/Language_Structure#Model_Unit),
+- [Concepts](/Documentation/Creating_the_Metamodel/Language_Structure#Concept),
+- [Expression Concepts](/Documentation/Creating_the_Metamodel/Language_Structure#Expression_Concept),
+- [Binary Expression Concepts](/Documentation/Creating_the_Metamodel/Language_Structure#Binary_Expression_Concept),
+- [Limited Concepts](/Documentation/Creating_the_Metamodel/Language_Structure#Limited_Concept), and/or
+- [Interfaces](/Documentation/Creating_the_Metamodel/Language_Structure#Interface).
 
 Each of these will be explained in the next section.

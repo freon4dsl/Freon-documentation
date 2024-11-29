@@ -1,14 +1,3 @@
-# Styling the Web Application and the Editor
-
-The web application, including the editor, can be styled using the scss files in the folder `~webapp/style`. There are two sets of
-CSS variables that determine the look of the web application, one for the light theme, and one for the dark theme.
-The latter can be found in the folder `~webapp/style/dark`.
-
-The comments and naming should (hopefully) indicate where each variable is being used.
-
-```css
-// app.scss
-
 // Overall styles applied to the webapp and the editor in both light and dark mode
 
 // linear-progress is included for the progress indicator in the EditorPart component
@@ -82,5 +71,3 @@ body {
   background: blanchedalmond;
   padding: 2px;
 }
-
-```
