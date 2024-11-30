@@ -57,21 +57,21 @@ Furthermore, they may be _abstract_.
 
 concept BaseProduct {
     name: identifier;               // internal name
+    theme: InsuranceTheme;          // the 'kind' of insurance
+    parts: InsurancePart[];         // all parts of this product
     isUnderConstruction: boolean;   // defines whether this base product is still 'raw'
-    isApprovedLevel1: boolean;
-    isApprovedLevel2: boolean;
 ```
 
 ```ts
 // DocuProject/src/defs/language-main.ast#L106-L112
 
+    Percentage;
+}
+
 limited NumberType implements NamedType {
     Number;
 }
 
-limited BooleanType implements NamedType {
-    Boolean;
-}
 ```
 
 ## Expression Concept
@@ -117,7 +117,7 @@ Any concrete binary expression concept needs to have a priority. For example, in
 priority of the multiplication is higher than the priority of the plus. The expression 5 + 67 * 8 
 should be read as 5 + (67 * 8), not as (5 + 67) * 8. The priorities are used by Freon to balance the
 abstract syntax tree (see [Projectional Editing](/Background/Projectional_Editing#tree-balancing)). In
-[Reference Shortcuts, Symbols, and Triggers](/Documentation/Defining_an_Editor/Reference_Shortcuts,_Symbols,_and_Triggers) you can
+[Ease of Editing](/Documentation/Defining_an_Editor/Ease_of_Editing) you can
 find more information on how to set the concrete syntax for the operand.
 
 Binary expression concepts may extend one other concept, and implement multiple interfaces.
@@ -164,6 +164,9 @@ includes the definition of the predefined instances. For example, the instances 
 ```ts
 // DocuProject/src/defs/language-main.ast#L126-L143
 
+    reference type: NamedType;
+}
+
 limited InsuranceTheme {        // limited defined as a simple enumeration
     HomeTheme; HealthTheme; LegalTheme;
 }
@@ -179,9 +182,6 @@ limited PremiumDays {           // limited with various options
     Quarter = { nrOfDays: 91 }
     // the following instance gets the name "Semester"
     Semester = { nrOfDays: 182 }
-    // the following instance gets the name "Year"
-    Year = { nrOfDays: 365 }
-}
 ```
 
 <Note>
@@ -199,9 +199,9 @@ An _interface_ is a concept that has no instances. It may extend multiple other 
 ```ts
 // DocuProject/src/defs/language-main.ast#L94-L96
 
-interface NamedType {
-    name: identifier;
-}
+// Sorry, its not good style to use an interface and a set of separate limited concepts.
+// At least, it is an example of using an interface, and of the fact that limited
+// concepts can implement interfaces.
 ```
 
 The next section will explain the options for concept properties.

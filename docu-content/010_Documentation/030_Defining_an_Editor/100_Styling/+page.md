@@ -1,6 +1,6 @@
 # Styling the Web Application and the Editor
 
-The web application, including the editor, can be styled using the scss files in the folder `~webapp/style`. There are two sets of
+The web application and/or the editor, can be styled using the scss files in the folder `~webapp/style`. There are two sets of
 CSS variables that determine the look of the web application, one for the light theme, and one for the dark theme.
 The latter can be found in the folder `~webapp/style/dark`.
 

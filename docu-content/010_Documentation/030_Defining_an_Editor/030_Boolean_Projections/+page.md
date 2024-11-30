@@ -136,7 +136,7 @@ yields profit: ${self.yieldsProfit text [Plenty | Little]}
 
 The result of this projection is shown in the screenshot below. Note that
 the text used for property `self.isApprovedLevel2` is defined by the global
-boolean projection. See [Global Projections](/Documentation/Global_Projections).
+boolean projection. See [Global Projections](/Documentation/Defining_an_Editor/Global_Projections).
 
 <Figure
 imageName={'Documentation-Boolean-Projections-screenshot2.png'}

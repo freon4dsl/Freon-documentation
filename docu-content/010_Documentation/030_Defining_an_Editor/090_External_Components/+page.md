@@ -14,7 +14,7 @@ manner in which external components are included will remain the same in next ve
 
 In this version of Freon it is possible to include UI components that are not native to Freon. For
 instance, you can define your own components, or use components from a UI component library.
-As Freon is built using the [Svelte](https://svelte.dev/) UI framework, all external components 
+As Freon is built using the <a href="https://svelte.dev/" target="_blank">Svelte</a> UI framework, all external components 
 should either be Svelte components, or components that are wrapped in a Svelte component. 
 
 In general, there are three forms in which an external component can be present in a Freon projection:
@@ -25,10 +25,10 @@ In general, there are three forms in which an external component can be present 
 replaced by an external component. It is up to the language engineer to get and set the value of the property correctly, and to
 get tabbing etc. working.
 
-Especially the two latter cases require knowledge of the Freon [Box Model](/Under_the_Hood/The_Editor_Framework). 
+Especially the two latter cases require knowledge of the Freon [Box Model](/Documentation/Under_the_Hood/The_Editor_Framework). 
 Please, become familiar with that topic first, as below we will refer to the different types of boxes associated with
 the various forms of external components. More information on the API of these box types can be 
-found in [External Component Box Types](/Under_the_Hood/External_Component_Box_Types).
+found in [External Component Box Types](/Documentation/Under_the_Hood/External_Component_Box_Types).
 
 ## More Information and Assistance
 
@@ -180,19 +180,19 @@ the name of the fragment, and `ExternalComponent` is the name of the external co
 or `${self.PROPERTY wrap=ExternalComponent}`, where `self.PROPERTY` is the familiar reference to a property.
 
 The box type associated with a wrapper is dependent upon the type of property or fragment that is being wrapped.
-(See [External Component Box Types](/Under_the_Hood/External_Component_Box_Types).)
+(See [External Component Box Types](/Documentation/Under_the_Hood/External_Component_Box_Types).)
 
 - Fragment: `FragmentWrapperBox`.
 - Property of type string: `StringWrapperBox`. 
 - Property of type number: `NumberWrapperBox`. 
 - Property of type boolean: `BooleanWrapperBox`.
-- [Part property](/Documentation/Creating_the_Metamodel/Defining_properties/#part-properties-3): `PartWrapperBox`.
-- [Part list property](/Documentation/Creating_the_Metamodel/Defining_properties/#part-properties-3): `PartListWrapperBox`.
-- [Reference property](/Documentation/Creating_the_Metamodel/Defining_properties/#part-properties-3): `RefWrapperBox`.
-- [Reference list property](/Documentation/Creating_the_Metamodel/Defining_properties/#part-properties-3): `RefListWrapperBox`.
+- [Part property](/Documentation/Creating_the_Metamodel/Defining_Properties#part-properties-3): `PartWrapperBox`.
+- [Part list property](/Documentation/Creating_the_Metamodel/Defining_Properties#part-properties-3): `PartListWrapperBox`.
+- [Reference property](/Documentation/Creating_the_Metamodel/Defining_Properties#reference-properties-4): `RefWrapperBox`.
+- [Reference list property](/Documentation/Creating_the_Metamodel/Defining_Properties#reference-properties-4): `RefListWrapperBox`.
 
 To display the childBox the external component needs to include the Freon `RenderComponent`, as shown in the next example.
-In this example the component `Card` is imported from the [SMUI](https://sveltematerialui.com/) library of UI components.
+In this example the component `Card` is imported from the <a href="https://sveltematerialui.com/" target="_blank">SMUI</a> library of UI components.
 
 ```txt
 // DocuProject/externals/SMUI_Card_Component.svelte#L30-L34
@@ -213,15 +213,15 @@ The syntax to position the replacement within the projection is `${self.PROPERTY
 where `self.PROPERTY` is the familiar reference to a property and `ExternalComponent` is the name of the external component.
 
 The box type associated with a replacement is dependent upon the type of property that is being replaced.
-(See [External Component Box Types](/Under_the_Hood/External_Component_Box_Types).)
+(See [External Component Box Types](/Documentation/Under_the_Hood/External_Component_Box_Types).)
 
 - Property of type string: `ExternalStringBox`.
 - Property of type number: `ExternalNumberBox`.
 - Property of type boolean: `ExternalBooleanBox`.
-- [Part property](/Documentation/Creating_the_Metamodel/Defining_properties/#part-properties-3): `ExternalPartBox`. 
-- [Part list property](/Documentation/Creating_the_Metamodel/Defining_properties/#part-properties-3): `ExternalPartListBox`.
-- [Reference property](/Documentation/Creating_the_Metamodel/Defining_properties/#part-properties-3): `ExternalRefBox`.
-- [Reference list property](/Documentation/Creating_the_Metamodel/Defining_properties/#part-properties-3): `ExternalRefListBox`.
+- [Part property](/Documentation/Creating_the_Metamodel/Defining_Properties#part-properties-3): `ExternalPartBox`. 
+- [Part list property](/Documentation/Creating_the_Metamodel/Defining_Properties#part-properties-3): `ExternalPartListBox`.
+- [Reference property](/Documentation/Creating_the_Metamodel/Defining_Properties#reference-properties-4): `ExternalRefBox`.
+- [Reference list property](/Documentation/Creating_the_Metamodel/Defining_Properties#reference-properties-4): `ExternalRefListBox`.
 
 Each of the box types provide the following methods, where `<TYPE>` depends on the type of the property being replaced.
 - `getPropertyName(): string`: returns the name of the wrapped property.
@@ -229,7 +229,7 @@ Each of the box types provide the following methods, where `<TYPE>` depends on t
 - `setPropertyValue(newValue: <TYPE>)`: sets the value of the property.
 
 In the following example the `name` property of a `BaseProduct` is being displayed using a dialog component from 
-the [SMUI](https://sveltematerialui.com/) UI library.
+the <a href="https://sveltematerialui.com/" target="_blank">SMUI</a> UI library.
 
 ```txt
 // DocuProject/src/defs/editor-externals.edit#L5-L5
