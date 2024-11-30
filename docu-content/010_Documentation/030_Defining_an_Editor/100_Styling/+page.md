@@ -1,86 +1,86 @@
-# Styling the Web Application and the Editor
+# Styling
 
-The web application and/or the editor, can be styled using the scss files in the folder `~webapp/style`. There are two sets of
-CSS variables that determine the look of the web application, one for the light theme, and one for the dark theme.
-The latter can be found in the folder `~webapp/style/dark`.
+The web application and/or the editor, can be styled using either SCSS or CSS. 
 
-The comments and naming should (hopefully) indicate where each variable is being used.
+# Styling the Web Application
 
-```css
-// app.scss
+The provided [web application](/Documentation/Overview/Getting_Started#a-minimal-webapp-and-server-5)
+is build using the <a href="https://sveltematerialui.com/" target="_blank">SMUI</a> UI library.
+This library uses SCSS, and therefore you need to run the preprocessor provided with SMUI for 
+the styling to take effect. To do so, run the following command. When you do not change the styles,
+a single run will suffice. When you, however, do change the styles, you need to rerun this command.
 
-// Overall styles applied to the webapp and the editor in both light and dark mode
+  ```bash
+  npm run prepare-app   # Needed to generate the runtime CSS files. A single run will suffice.
+  ```
 
-// linear-progress is included for the progress indicator in the EditorPart component
-@use '@material/linear-progress/index' as linear-progress;
-@use '@material/typography/mdc-typography';
+The [example](/Documentation/Overview/Getting_Started#example-project-startup-2) 
+and [template](/Documentation/Overview/Getting_Started#template-project-startup-3) projects both
+contain a folder `style` that holds the SCSS files that are provided with the projects.
+There are two sets of styles that determine the look of the web application and editor, 
+one for the light theme, and one for the dark theme.
+The latter can be found in the folder `style/dark`.
 
-html,
-body {
-  padding: 0;
-  margin: 0;
-}
+The styling for the web application can be found in the following files.
 
-// example of adding icons to a button
+- `_app.scss`: contains all styling common to both dark and light mode.
+- `_app-theme-light.scss`: contains the styling for the light mode.
+- `dark/_app-theme-dark.scss`: contains the styling for the dark mode.
+- `_smui_theme.scss`: the file used in the `npm run prepare-app` command for the light mode. 
+- `dark/_smui_theme.scss`: the file used in the `npm run prepare-app` command for the dark mode.
 
-// Don't forget to include one of these in webapp-starter/public/index.html:
-//<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/font-awesome.min.css" rel="stylesheet" >
-//<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-// , or import them here:
-//@import 'material-icons/iconfont/material-icons.scss';
-// and add the icons to the node modules by adding this line to the package.json:     "material-icons": "^1.13.12"
-.MyButton-role::after {
-  font-family: 'Material Icons', emoji;
-  content: "\e5d2"; // this number is called the icon's code point in Material
-  color: green;
-  font-size: 25px;
-  rotate: 30deg;
-}
+# Styling the Editor
 
-.MyTableButton-role::before {
-  font-family: "Font Awesome 6 Free", emoji;
-  font-weight: 900;
-  //content: 'plus';
-  content: '\\2b'; // this number is called the icon's unicode in Font Awesome
-  color: dodgerblue;
-  font-size: 16px;
-  rotate: 30deg;
-}
+Because the minimal [web application](/Documentation/Overview/Getting_Started#a-minimal-webapp-and-server-5) 
+is provided for your convenience only, the styling of the editor is kept separate from the styling of the web
+application. When you read the `_smui-theme.scss` and `dark/_smui-theme.scss` files, you will notice that 
+both refer to files that are included in the `@freon4dsl/core-svelte` package.
 
-.MyTableButton-role {
-  min-width: 0.5em !important;
-  min-height: 0.5em !important;
-  border-radius: 50% !important;
-}
+```scss
+// style/_smui-theme.scss#L6-L8
 
-// end example of adding icons to a button
-
-// styles for wrapping and replacing native components
-.wrapper {
-  border: 2px groove #666666;
-  border-radius: 8px;
-  background: whitesmoke;
-  padding: 2px;
-}
-.wrapper:focus {
-  background: lightblue;
-}
-
-.replacer {
-  border: 2px groove #666666;
-  border-radius: 8px;
-  background: whitesmoke;
-  padding: 2px;
-}
-.replacer:focus {
-  background: lightblue;
-}
-
-.fragment-component {
-  border: 2px groove #666666;
-  border-radius: 8px;
-  background: blanchedalmond;
-  padding: 2px;
-}
-
+@use '../node_modules/@freon4dsl/core-svelte/dist/styles/freon.css';
+@use '../node_modules/@freon4dsl/core-svelte/dist/styles/freon-light.css';
+@use 'app_theme-light';
 ```
+
+The files from the `@freon4dsl/core-svelte` package define the values for the styles that
+are used within the editor. All styling that determines color has been divided over `freon-light.css`
+and `freon-dark.css`. Other styles are in the file `freon.css`. 
+
+The comments and naming should (hopefully) indicate where each
+style is being used. For example, the following styles are defined for horizontal and vertical lists.
+
+```scss
+// style/freon.css#L50-L66
+
+.list-component-horizontal {
+    white-space: nowrap;
+    display: grid;
+    padding: 0px;
+    border-width: 0pt;
+    border-style: none;
+    margin: 0px;
+    box-sizing: border-box;
+}
+
+.list-component-vertical {
+    padding: 0px;
+    border-width: 0pt;
+    border-style: none;
+    margin: 1px;
+    box-sizing: border-box;
+}
+```
+
+To change any of the styling, copy the files from the `@freon4dsl/core-svelte` package into your
+styles folder and adjust the `@use` statement in both `_smui-theme.scss` files to include your own
+files instead of the packaged ones. Then start changing the styles your own
+copies to your liking, however, take care with the boolean and numeric controls, because they are based on
+Material UI components.
+
+- RadioComponent uses  "--mdc-theme-secondary" for its color, if you want to override this value set "--freon-boolean-radiobox-color".
+- CheckComponent uses  "--mdc-theme-secondary", if you want to override it, use "--freon-boolean-checkbox-color".
+- SwitchComponent uses  "--mdc-theme-primary", if you want to override it, set "--freon-boolean-switch-color".
+- NumericSliderComponent uses  "--mdc-theme-primary", if you want to override it, set "--freon-numeric-slider-color".
+- InnerSwitchComponent uses  "--mdc-theme-primary", if you want to override it, set "--freon-boolean-switch-color".

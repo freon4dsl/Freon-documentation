@@ -2,16 +2,25 @@
     import Note from "$lib/notes/Note.svelte";
 </script>
 
-# The Scoper Definition Files
+# Scope Provider
 
-In the scoper definition you provide the information necessary to determine which names are visible from a certain
-element of your user's model.
+Scoping is about the question of which names are accessible/visible where. In the general case, all names in a
+context are divided into sets, called **namespaces**. These sets do not overlap, but there can be subsets. 
+
+The **scope provider** (or **scoper**, for short) definition provides the information necessary to 
+determine which names are in which set. Any part of the scoper
+definition must be included in a file with the extension `.scope`. All files with this extension in the _defs_ folder 
+(i.e. the folder were you keep your definition files) are combined into one scoper definition.
 
 ## Namespaces
 
-In the scoper definition you can mark a list of concepts to be **namespaces**. Any _namespace_ has its own
-set of visible names. Any namespace shadows the visible names from its surrounding namespace (using lexical scope).
-The default scoper simply regards the model of your user as the only namespace.
+The default scoper simply regards the model of your user as the one and only namespace.
+
+However, in the scoper definition you can mark a list of concepts to be **namespaces**. Every _namespace_ holds its own
+set of visible names. Any namespace shadows the visible names from its surrounding namespace (using lexical scope), 
+which means that if name A is both in the outer, and in the inner namespace, in the inner namespace only the inner
+name is used.
+
 
 ```ts
 // DocuProject/src/defs/scoper-docu.scope#L3-L3
@@ -20,8 +29,10 @@ isnamespace { InsuranceProduct, BaseProduct, CalcFunction, Entity }
 ```
 
 Interfaces can be namespaces as well.
-Any instance of a concept that implements the namespace interface is a
-namespace, but only the properties of the interface will be visible.
+Any instance of a concept that implements this interface will also be regarded to be a
+namespace, but only the names of the properties of the interface will be included.
+
+[//]: # (todo check whether the following stills holds)
 
 <Note>
 <svelte:fragment slot="header"> Each model unit is a namespace.</svelte:fragment>

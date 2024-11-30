@@ -10,7 +10,7 @@ the Freon configuration.
 
 You should let Freon know where it can find your customized validation class by adding an
 instance of your class to the `customValidations` array in
-the file `FreonConfiguration.ts`. You will find this file in `~/picode/config`.
+the file `FreonConfiguration.ts`. You will find this file in `~/frecode/config`.
 It is generated once, and wil not be overwritten on regeneration.
 
 Using the above example class, the configuration should look like this:
@@ -22,14 +22,14 @@ customValidations: EntityCheckerInterface[] = [new CustomEntityModelValidator()]
 
 ## You own Validation Class
 
-As a convenience, Freon generates a file `~/picode/validator/Custom<yourLanguageName>Validator.ts`,
+As a convenience, Freon generates a file `~/frecode/validator/Custom<yourLanguageName>Validator.ts`,
 which will not be overwritten upon regeneration. If you want to use it you can skip steps 1 and 2 in the next
 list.
 
-1.  Create a Typescript file somewhere, for instance in `~/picode/validator`. Note, again,
-    to not add it to the `~/picode/validator/gen` folder, as this will be deleted upon regeneration.
+1.  Create a Typescript file somewhere, for instance in `~/frecode/validator`. Note, again,
+    to not add it to the `~/frecode/validator/gen` folder, as this will be deleted upon regeneration.
 2.  Create a class in this file and let this class implement the generated `<yourLanguageName>CheckerInterface`,
-    which you can find in the `~/picode/validator/gen` folder.
+    which you can find in the `~/frecode/validator/gen` folder.
     Obviously, `<yourLanguageName>` needs to be replaced by the name of your language.
 
         This is the interface to be implemented for the example language called `Entity`.

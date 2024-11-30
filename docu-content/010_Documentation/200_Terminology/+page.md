@@ -47,3 +47,15 @@
 - symbol
 - trigger
 - fragment
+- inference rule
+- terms
+- Type Concepts
+- type provider
+- scope provider
+- conformsto
+- equalsto
+- where-clause
+- valid-identifier-rule
+- not-empty rule
+- is-unique rule
+- type checking rule

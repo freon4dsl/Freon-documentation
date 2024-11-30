@@ -1,13 +1,13 @@
-# PiTyper
+# FreTyper
 
-An object that implements `PiTyper` is answer a set of question concerning the type of a node in the AST.
+An object that implements `FreTyper` is answer a set of question concerning the type of a node in the AST.
 
 If you want to write your own typer you will need to implement this interface.
 
 ```ts
-/* File: core/src/typer/PiTyper.ts */
+/* File: core/src/typer/FreTyper.ts */
 
-export interface PiTyper {
+export interface FreTyper {
 	/**
 	 * Returns the type of 'modelelement' according to the type rules in the Typer Definition
 	 * @param modelelement
@@ -47,13 +47,13 @@ export interface PiTyper {
 /**
  * This interface is being used to implement the three-tier approach.
  * Both the generated and custom type providers should implement this interface.
- * The generated class that implement the PiTyper interface connects all the classes
+ * The generated class that implement the FreTyper interface connects all the classes
  * that implement this interface and returns the correct value to the (external) user.
  *
  * When the implementor of this interface does not provide for a result of one of the methods,
  * this method should return 'null'.
  */
-export interface PiTyperPart {
+export interface FreTyperPart {
 	/**
 	 * Returns the type of 'modelelement' according to the type rules in the Typer Definition.
 	 * @param modelelement

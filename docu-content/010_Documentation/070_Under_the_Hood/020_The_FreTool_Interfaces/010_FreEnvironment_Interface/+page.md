@@ -14,7 +14,7 @@ export interface PiEnvironment {
 	newModel(modelName: string): PiModel;
 
 	scoper: PiScoper;
-	typer: PiTyper;
+	typer: FreTyper;
 	validator: PiValidator;
 	editor: PiEditor;
 	stdlib: PiStdlib;

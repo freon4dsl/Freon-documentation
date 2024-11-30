@@ -13,7 +13,7 @@ each of our AST concepts.
 
 First, we define a type concept that corresponds
 with our type declaration called _GenericType_, and one that corresponds with _UnitOfMeasurement_.
-They are quite similar to their AST counterparts, but note that here we use **PiType** as type for the property.
+They are quite similar to their AST counterparts, but note that here we use **FreType** as type for the property.
 We want to build a structure of type concepts, not of AST nodes!
 
 ```ts

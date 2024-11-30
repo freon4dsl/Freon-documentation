@@ -3,14 +3,14 @@
 The typer can as of now be customized **per concept**. Your new typer needs
 to implement the [FreTyperPart interface](/Under_the_Hood/The_FreTool_Interfaces/FreTyper_Interface).
 
-As a convenience, Freon generates a file `~/picode/typer/Custom<yourLanguageName>TyperPart.ts`,
+As a convenience, Freon generates a file `~/frecode/typer/Custom<yourLanguageName>TyperPart.ts`,
 which will not be overwritten upon regeneration. It already contains a class that implements this interface.
 
 ## Adjusting the Configuration
 
 Next you need to tell Freon to use this new typer by adding an
 instance of your class to the `customTypers` array in
-the file `FreonConfiguration.ts`. You will find this file in `~/picode/config`.
+the file `FreonConfiguration.ts`. You will find this file in `~/frecode/config`.
 It is generated once, and wil not be overwritten on regeneration.
 
 Using the above convenience class, the configuration should look like this:

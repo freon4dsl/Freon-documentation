@@ -46,7 +46,7 @@ table [
 To style these buttons the following SCSS code is added.
 
 ```scss
-// styles/app.scss#L29-L43
+// style/app.scss#L29-L43
 
 .MyTableButton-role::before {
   font-family: "Font Awesome 6 Free", emoji;

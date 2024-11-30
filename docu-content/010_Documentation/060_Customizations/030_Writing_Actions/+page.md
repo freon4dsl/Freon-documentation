@@ -7,12 +7,12 @@
 
 When you have created your own custom projection, this projection is exactly that:
 a projection. Other than the built-in default behavior (held in the file
-`~/picode/editor/<yourLanguageName>DefaultActions.ts`), there are no actions defined yet.
+`~/frecode/editor/<yourLanguageName>DefaultActions.ts`), there are no actions defined yet.
 Actions are necessary to enable the user to change the model and add elements to it.
 The projections only describe what you will see in the editor.
 Actions determine what you can do, how you interact with the editor.
 
-As a convenience, the file `~/picode/editor/Custom<yourLanguageName>Actions.ts` is generated, which is a placeholder
+As a convenience, the file `~/frecode/editor/Custom<yourLanguageName>Actions.ts` is generated, which is a placeholder
 for your own actions written in TypeScript. This file contains four constants for
 different kind of actions. What you need to
 do is to define these constants. Then Freon will merge your actions

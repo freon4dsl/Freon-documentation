@@ -29,13 +29,13 @@ entries in our [wish list](/Overview/Future_Developments).
 ## Adding your Own Files
 
 As a convenience, Freon generates templates for
-your customization in the files `~/picode/editor/Custom<yourLanguageName>Projection.ts`, `~/picode/editor/Custom<yourLanguageName>Actions.ts`, etc
+your customization in the files `~/frecode/editor/Custom<yourLanguageName>Projection.ts`, `~/frecode/editor/Custom<yourLanguageName>Actions.ts`, etc
 (`<yourLanguageName>` is a placeholder for the name of the language as defined in your .ast file). You can use
 these files to add your own special elements.
 
 The custom files can be renamed and/or
 put it in another location, or you can create your own set of custom projection files.
-In that case, you need to adjust the file `~/picode/config/FreonConfiguration`.
+In that case, you need to adjust the file `~/frecode/config/FreonConfiguration`.
 
 ```ts
 // DocuProject/src/config/FreonConfiguration.ts

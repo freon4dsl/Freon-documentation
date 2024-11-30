@@ -1,35 +1,19 @@
-<script>
-    import Note from "$lib/notes/Note.svelte";
-</script>
+# Validator
 
-# The Validator Definition File
+Validation is all about the rules that hold in your language. These rules are not the rules
+of the concrete syntax, but instead they provide an extra check of the model/AST.
 
-The validator definition defines the constraints or rules that should be true in the models build by your users.
-Currently, there are four types of rules.
+The **validator** definition provides the constraints or rules that should be true in the models build by your users. 
+Any part of the validator
+definition must be included in a file with the extension `.valid`. All files with this extension in the _defs_ folder
+(i.e. the folder were you keep your definition files) are combined into one validator definition.
 
-## Valid Identifier Rules
-
-Given a simple property of type _identifier_, a **valid-identifier-rule** can be given. The property complies with the
-rule if it is a valid identifier according to the TypeScript definition.
-
-For a _valid-identifier-rule_ the `validIdentifier` keyword is used followed by an optional simple property. When the
-property is present, this property is checked. When the property is not present, Freon assumes that the
-concept has a simple property named ‘`name`’ of type ‘`identifier`’, and it will check this property.
-
-```ts
-// DocuProject/src/defs/validator-docu.valid#L27-L32
-
-}
-CalcFunction {
-    // typecheck conformsTo (self.body, self.declaredType);
-    isunique name in self.parameters;
-    validIdentifier
-    {
-```
+Currently, there are four types of validation rules.
 
 ## Simple Value Rules
 
-Given a simple property, its value can be limited to certain values.
+Given a [simple property](/Documentation/Creating_the_Metamodel/Defining_Properties#simple-properties-2), 
+its value can be limited to certain values.
 
 ```ts
 // DocuProject/src/defs/validator-extras.valid#L3-L6
@@ -57,6 +41,26 @@ InsuranceProduct {
 }
 ```
 
+## Valid Identifier Rules
+
+Given a simple property of type _identifier_, a **valid-identifier-rule** can be given. The property complies with the
+rule if it is a valid identifier according to the TypeScript definition.
+
+For a _valid-identifier-rule_ the `validIdentifier` keyword is used followed by an optional simple property. When the
+property is present, this property is checked. When the property is not present, Freon assumes that the
+concept has a simple property named ‘`name`’ of type ‘`identifier`’, and it will check this property.
+
+```ts
+// DocuProject/src/defs/validator-docu.valid#L27-L32
+
+}
+CalcFunction {
+    // typecheck conformsTo (self.body, self.declaredType);
+    isunique name in self.parameters;
+    validIdentifier
+    {
+```
+
 ## Type Check Rules
 
 Given the rules in the typer definition, rules can be stated to ensure type compliance.
@@ -78,6 +82,8 @@ MinusExpression  {
 
 The generated error messages can be changed into custom ones. Similar to the editor definition,
 properties can be used in the error message using the syntax `${propName}`.
+
+[//]: # (todo add text about severity)
 
 ```ts
 // DocuProject/src/defs/validator-docu.valid#L28-L36

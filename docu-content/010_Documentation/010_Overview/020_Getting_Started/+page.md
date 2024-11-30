@@ -236,7 +236,6 @@ The Freon commandline tool generates code from the various definition files as d
 If you type ‘`freon`’ in a (bash) terminal you will see the following overview of the different
 arguments that can be used. For detailed help about a specific command, type: ‘`freon  <command> -h`’.
 
-
 <Note>
 <svelte:fragment slot="header"> Incomplete code</svelte:fragment>
 <svelte:fragment slot="content">
