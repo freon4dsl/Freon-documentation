@@ -16,7 +16,7 @@
 		"lint": "prettier --check . && eslint .",
 		"format": "prettier --log-level silent --write ./src",
 		"formatMd": "prettier --log-level silent --write ./docu-content",
-		"cleanRoutes": "rm -rf ./src/Routes/About &&  rm -rf ./src/Routes/Demos && rm -rf ./src/Routes/Documentation && rm -rf ./src/Routes/Examples && rm -rf ./src/Routes/Tutorial"
+		"cleanRoutes": "rm -rf ./src/Routes/About &&  rm -rf ./src/Routes/Demos && rm -rf ./src/Routes/Documentation && rm -rf ./src/Routes/Examples && rm -rf ./src/Routes/Background"
 	},
 	"devDependencies": {
 		"@freon4dsl/core": "1.0.0-beta1",

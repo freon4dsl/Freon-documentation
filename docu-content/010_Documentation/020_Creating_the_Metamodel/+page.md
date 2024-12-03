@@ -5,7 +5,7 @@
 # Creating the Metamodel
 
 The metamodel, or abstract syntax tree (AST), of the language is described in files with the extension `.ast`.
-All files with this extension in the _defs_ folder (i.e. the folder were you keep your definition files)
+All files with this extension in the [_defs_ folder](/Documentation/Overview/Getting_Started#template-project-startup-3) (i.e. the folder were you keep your definition files)
 are combined into one AST definition.
 
 ## Every Language has a Name

@@ -1,0 +1,1 @@
+{"version":3,"file":"Text2BoxProvider.d.ts","sourceRoot":"","sources":["../../../src/editor/gen/Text2BoxProvider.ts"],"names":[],"mappings":"AACA,OAAO,EAAE,GAAG,EAAuB,cAAc,EAAE,oBAAoB,EAAE,MAAM,iBAAiB,CAAC;AAYjG,qBAAa,gBAAiB,SAAQ,cAAc;gBACpC,WAAW,EAAE,oBAAoB;IAO7C,SAAS,CAAC,UAAU,CAAC,cAAc,EAAE,MAAM,GAAG,GAAG;IAqBjD,OAAO,CAAC,cAAc;IAqBtB,OAAO,CAAC,UAAU;CAerB"}

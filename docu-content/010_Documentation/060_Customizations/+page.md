@@ -1,36 +1,93 @@
 <script>
-    import Note from "$lib/notes/Note.svelte";
+    import Figure from "$lib/figures/Figure.svelte";
+    let imageName = 'layered-architecture2.png';
+    let caption = 'The Stacked Architecture';
+    let figureNumber = 1;
+    let imageName2 = 'fall-through.png';
+    let caption2 = 'Projection Lookup for an AST Node';
+    let figureNumber2 = 2;
 </script>
 
-# The API Level
+# Customization
 
-<Note><svelte:fragment slot="header">Parts of this documentation are outdated</svelte:fragment>
-<svelte:fragment slot="content">
-Sorry, Freon Freon is constantly in development, therefore parts of this section are outdated.
-In the future the documentation will be updated.
-</svelte:fragment>
-</Note>
+From the five parts of the language definition, Freon generates a work environment
+containing an editor, a scope provider or scoper, a type provider or typer, a validator,
+a standard library, and some utilities like a parser/deparser.
+These separate components are called **fre-tools**.
+In other parts of the documentation you can find how to fine-tune the generated fre-tools, using the
+file in the [_defs_ folder](/Documentation/Overview/Getting_Started#template-project-startup-3) 
+(i.e. the folder were you keep your definition files).
+(See for instance [Defining_an_editor](/Documentation/Defining_an_Editor).)
+In this part we describe how to make further customizations to the toolset by writing some TypeScript code.
 
-Please, become acquainted with the [three levels of customization](/Overview/Three_Levels_of_Customization)
-used by Freon.
-This section explains the 3rd of these three levels where you can customize Freon in TypeScript.
+## Stacked Architecture
 
-## Customize a Fre-tool
+Customization is possible because of our **stacked architecture**.
+This architecture makes it possible to create your language,
+and customize it step-by-step in an agile fashion.
+(Read our [Guiding Principles](/Background/Guiding_Principles) to understand why we have chosen this architecture.)
+Keeping in mind that _Simple things should be simple, complex things should be possible_
+(<a href="https://en.wikipedia.org/wiki/Alan_Kay" target="_blank">Alan Kay</a>),
+we use the following levels of customization.
 
-Third level full adaptability _per concept_ is currently possible for:
+1. The default level, which is always present.
+2. The definition level, where the fre-tools are being generated based on the input form the definition files (e.g. a `.scope` file).
+3. The customization level, where handwritten TypeScript code can be added, or used to replace parts of the generated code.
 
-- [Editor](/Developing_a_Language/API_Level/Editor_API)
-- [Validator](/Developing_a_Language/API_Level/Validator_API)
-- [Typer](/Developing_a_Language/API_Level/Typer_API)
+It is our aim to provide approximately 80% of the required functionality of the work environment at the first two levels.
 
-To add third level adaptability for the scoper, parser and unparser is one of the
-entries in our [wish list](/Overview/Future_Developments).
+<Figure 
+bind:imageName={imageName} 
+bind:caption={caption}
+bind:figureNumber={figureNumber}
+/>
 
-## Adding your Own Files
+Freon combines the definitions for each tool, together with the customized TypeScript code into one application, 
+where the third level precedes the second, and the second level precedes the first.
+For instance, the generated editor will per [**concept**](/Documentation/Creating_the_Metamodel/Language_Structure#concept) in the language:
+
+1. use the _hand-made projection_ from the Customization level, when this is present. If not, the editor will
+2. use the _projection generated from the editor definition_ from the Freon definition Level, when this definition is present.
+   Finally, when no definition is present, the editor will
+3. use the _default projection_ from the default level, the one generated when no `.edit` definition file is present.
+
+<Figure
+bind:imageName={imageName2}
+bind:caption={caption2}
+bind:figureNumber={figureNumber2}
+/>
+
+This stacking allows the language engineer to start quickly with a working (but somewhat rough) language environment
+and to refine the toolset piece by piece on either the second or the third level. For this purpose,
+the [Command Line Interface](/Documentation/Overview/Getting_Started#the-command-line-interface-8) includes separate commands
+for generating the different fre-tools.
+
+## Customizability of the Fre-tools 
+
+This table gives an overview of the fre-tools, and shows how you can adjust them to your needs.
+
+| Workbench Part                 | Has Default | Level 2 Definition |                                         Level 3 Definition                                         |
+| :----------------------------- |:-----------:|:------------------:|:--------------------------------------------------------------------------------------------------:|
+| language structure             |     no      |        .ast        |                                                 no                                                 |
+| projectional editor            |     yes     |       .edit        |                                                yes                                                 |
+| scope provider                 |     yes     |       .scope       |                                                yes                                                 |
+| validator                      |     yes     |       .valid       |                                                yes                                                 |
+| type provider                  |     yes     |       .type        |                                                yes                                                 |
+| interpreter                    |     no      | none available yet |                                                yes                                                 |  
+| standard library               |     yes     |        .ast        |                                              not yet                                               |
+| parser                         |     yes     |       .edit        | yes (using <a href="https://github.com/dhakehurst/net.akehurst.language" target="_blank">AGL</a>) |
+| unparser                       |     yes     |       .edit        |                                              not yet                                               |
+| json exporter/importer         |     yes     |        .ast        |                                                 no                                                 |
+| visitor pattern implementation |     yes     |        .ast        |                                          can be extended                                           |
+| web application                |     yes     |   none available   |                                     can be changed or replaced                                     |
+
+If you are missing a specific tool or feature, please let us know through info AT freon4dsl.dev.
+
+## Adding TypeScript Files
 
 As a convenience, Freon generates templates for
-your customization in the files `~/frecode/editor/Custom<yourLanguageName>Projection.ts`, `~/frecode/editor/Custom<yourLanguageName>Actions.ts`, etc
-(`<yourLanguageName>` is a placeholder for the name of the language as defined in your .ast file). You can use
+your customization in the files `~/frecode/editor/CustomYourLanguageNameProjection.ts`, `~/frecode/editor/CustomYourLanguageNameActions.ts`, etc.
+(where `YourLanguageName` is a placeholder for the name of the language as defined in your .ast file). You can use
 these files to add your own special elements.
 
 The custom files can be renamed and/or
@@ -75,22 +132,16 @@ export const freonConfiguration = new FreonConfiguration();
 
 ## Replacing a Fre-tool
 
-All parts can be _completely replaced_ at the 3rd level, thereby completely
+All fre-tools can be _completely replaced_ at the 3rd level, thereby completely
 disregarding the default and definition levels.
-This is done by implementing their respective interfaces.
+This is done by implementing their respective [interfaces](/Documentation/Under_the_Hood/FreTool_interfaces).
 
-For the scoper, parser and unparser this is currently the only way to customize.
-
-- [scoper](/Developing_a_Language/API_Level/Scoper_API)
-- [parser](/Developing_a_Language/API_Level/Reader_API)
-
-### Fre-tool Interfaces
-
+For the parser and unparser this is currently the only way to customize.
 More information on the interfaces can be found here:
 
-- [FreScoper](/Under_the_Hood/The_FreTool_Interfaces/FreScoper_Interface)
-- [FreTyper](/Under_the_Hood/The_FreTool_Interfaces/FreTyper_Interface)
-- [FreValidator](/Under_the_Hood/The_FreTool_Interfaces/FreValidator_Interface)
-- [FreReader](/Under_the_Hood/The_FreTool_Interfaces/FreReader_Interface)
-- [FreWriter](/Under_the_Hood/The_FreTool_Interfaces/FreWriter_Interface)
-- [FreStdlib](/Under_the_Hood/The_FreTool_Interfaces/FreStandardlib_Interface)
+- [FreScoper](/Documentation/Under_the_Hood/The_FreTool_Interfaces#frescoper-3)
+- [FreTyper](/Documentation/Under_the_Hood/The_FreTool_Interfaces#fretyper-5)
+- [FreValidator](/Documentation/Under_the_Hood/The_FreTool_Interfaces#frevalidator-4)
+- [FreReader](/Documentation/Under_the_Hood/The_FreTool_Interfaces#frereader-6)
+- [FreWriter](/Documentation/Under_the_Hood/The_FreTool_Interfaces#frewriter-7)
+- [FreStdlib](/Documentation/Under_the_Hood/The_FreTool_Interfaces#frestdlib-8)

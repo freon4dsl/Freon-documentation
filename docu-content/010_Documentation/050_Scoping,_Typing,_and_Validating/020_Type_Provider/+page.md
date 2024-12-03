@@ -15,7 +15,7 @@ can lead to unintended flexibility.
 
 The **type provider** (or **typer**, for short) definition provides the information necessary to
 determine the type of element. Any part of the typer
-definition must be included in a file with the extension `.type`. All files with this extension in the _defs_ folder
+definition must be included in a file with the extension `.type`. All files with this extension in the [_defs_ folder](/Documentation/Overview/Getting_Started#template-project-startup-3)
 (i.e. the folder were you keep your definition files) are combined into one typer definition.
 
 [//]: # (todo check the combination of .type files)

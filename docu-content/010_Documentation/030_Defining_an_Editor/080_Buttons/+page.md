@@ -9,7 +9,7 @@ the following line in one of the projections. Note that there may not be
 a space between the start square bracket `[` and `button`.
 
 ```txt
-// DocuProject/src/defs/editor-fragments.edit#L20-L20
+// DocuProject/src/defs/editor-fragments.edit#L18-L18
 
 expected nr of use: ${self.nrOfUse slider}
 ```

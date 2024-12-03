@@ -9,7 +9,7 @@ context are divided into sets, called **namespaces**. These sets do not overlap,
 
 The **scope provider** (or **scoper**, for short) definition provides the information necessary to 
 determine which names are in which set. Any part of the scoper
-definition must be included in a file with the extension `.scope`. All files with this extension in the _defs_ folder 
+definition must be included in a file with the extension `.scope`. All files with this extension in the [_defs_ folder](/Documentation/Overview/Getting_Started#template-project-startup-3) 
 (i.e. the folder were you keep your definition files) are combined into one scoper definition.
 
 ## Namespaces

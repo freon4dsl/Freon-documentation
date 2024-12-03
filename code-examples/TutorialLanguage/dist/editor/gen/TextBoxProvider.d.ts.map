@@ -1,0 +1,1 @@
+{"version":3,"file":"TextBoxProvider.d.ts","sourceRoot":"","sources":["../../../src/editor/gen/TextBoxProvider.ts"],"names":[],"mappings":"AACA,OAAO,EAAE,GAAG,EAAuB,cAAc,EAAE,oBAAoB,EAAE,MAAM,iBAAiB,CAAC;AAYjG,qBAAa,eAAgB,SAAQ,cAAc;gBACnC,WAAW,EAAE,oBAAoB;IAO7C,SAAS,CAAC,UAAU,CAAC,cAAc,EAAE,MAAM,GAAG,GAAG;IAqBjD,OAAO,CAAC,cAAc;IAoBtB,OAAO,CAAC,UAAU;CAerB"}

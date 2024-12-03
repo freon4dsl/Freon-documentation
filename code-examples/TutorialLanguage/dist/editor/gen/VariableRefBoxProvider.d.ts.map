@@ -1,0 +1,1 @@
+{"version":3,"file":"VariableRefBoxProvider.d.ts","sourceRoot":"","sources":["../../../src/editor/gen/VariableRefBoxProvider.ts"],"names":[],"mappings":"AACA,OAAO,EACH,GAAG,EAGH,cAAc,EACd,oBAAoB,EAGvB,MAAM,iBAAiB,CAAC;AAczB,qBAAa,sBAAuB,SAAQ,cAAc;gBAC1C,WAAW,EAAE,oBAAoB;IAO7C,SAAS,CAAC,UAAU,CAAC,cAAc,EAAE,MAAM,GAAG,GAAG;IAmBjD,OAAO,CAAC,UAAU;CAkErB"}

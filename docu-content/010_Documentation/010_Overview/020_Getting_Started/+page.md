@@ -111,7 +111,7 @@ figureNumber={1}
 
 Create a language definition file which defines the structure of your language. The
 extension of this file must be `.ast`. You can, for instance, copy
-`EntityLanguage.ast` from the Freon example to your own defs-folder. Or, you can follow the
+`EntityLanguage.ast` from the Freon example to your own [_defs_ folder](/Documentation/Overview/Getting_Started#template-project-startup-3). Or, you can follow the
 [tutorial](/Tutorial).
 
 Run the generator and see the generated files appearing in the folder where you
@@ -179,8 +179,8 @@ The code in a Freon project under `~/src` is organised into the following subfol
     You all of them both in ordinary HTML and in Markdown format. 
     In the future we plan to make the generation customizable.
   - **.../editor**: code for the editor. This folder contains two files that will not be overwritten
-    at regeneration: `Custom<yourLanguageName>Actions.ts` and `Custom<yourLanguageName>Projection.ts`.
-    (`<yourLanguageName>` will be replaced by the name you have given your language in the .ast files.)
+    at regeneration: `CustomYourLanguageNameActions.ts` and `CustomYourLanguageNameProjection.ts`.
+    (`YourLanguageName` will be replaced by the name you have given your language in the .ast files.)
     These two files are the placeholders for any [customization](/Documentation/Customizations) that you
     would like to do.
   - **.../language**: code that implements the language structure.
@@ -190,11 +190,11 @@ The code in a Freon project under `~/src` is organised into the following subfol
   - **.../stdlib**: code that implements some standard elements of your language, for instance
     [limited concepts](/Documentation/Creating_the_Metamodel/Language_Structure).
   - **.../typer**: code that that determines which type is associated with a certain element in the
-    user's model. The file `Custom<yourLanguageName>TyperPart.ts` is the placeholder for any [customization](/Documentation/Customizations) that you
+    user's model. The file `CustomYourLanguageNameTyperPart.ts` is the placeholder for any [customization](/Documentation/Customizations) that you
     would like to do.
   - **.../utils**: a default implementation of a visitor for your user's model.
   - **.../validator**: code that determines whether certain parts of your user's model contain
-    errors. The file `Custom<yourLanguageName>Validator.ts` is the placeholder for any [customization](/Documentation/Customizations) that you
+    errors. The file `CustomYourLanguageNameValidator.ts` is the placeholder for any [customization](/Documentation/Customizations) that you
     would like to do.
   - **.../writer**: code that is able to write your user's [model units](/Background/Models_and_Model_Units)
     in string format to a file.
@@ -229,10 +229,28 @@ for your convenience. However, we anticipate that in a broader context where
 Freon is used, these components will be replaced with appropriate solutions 
 chosen by the language engineer and their team.
 
+## The Five Definition Files
+
+A Freon language definition can have five parts:
+
+1. [The language structure](/Documentation/Creating_the_Metamodel), or abstract syntax tree (AST) is defined in files with extension `.ast`.
+2. [The concrete syntax](/Documentation/Defining_an_Editor) of the language (CST), or editor definition, is defined in files with extension `.edit`.
+3. [The scoping](/Documentation/Scoping,_Typing,_and_Validation/Scope_Provider) is defined in files with extension `.scope`.
+4. [The typing](/Documentation/Scoping,_Typing,_and_Validation/Type_Provider) is defined in files with extension `.type`.
+5. [The validation](/Documentation/Scoping,_Typing,_and_Validation/Validator) is defined in files with extension `.valid`.
+
+And yes, you can use multiple files to define one of the parts. For instance, Freon will combine
+multiple .ast files into one AST definition, and multiple .scope files into one scope definition.
+
+## Step-by-step Creation of the Language
+
+There is no need to write all the five definition files right from the start. The only one that is
+mandatory is the language structure (.ast). Freon will generate defaults for all the other elements.
+This is what we call the Default Level of the [three levels of customization](/Documentation/Customization).
+
 ## The Command Line Interface
 
-The Freon commandline tool generates code from the various definition files as described in
-[A Language in Five Parts](/Background/A_Language_in_Five_Parts).
+The Freon commandline tool generates code from the various definition files.
 If you type ‘`freon`’ in a (bash) terminal you will see the following overview of the different
 arguments that can be used. For detailed help about a specific command, type: ‘`freon  <command> -h`’.
 

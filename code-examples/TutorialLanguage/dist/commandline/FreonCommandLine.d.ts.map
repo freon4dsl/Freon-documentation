@@ -1,0 +1,1 @@
+{"version":3,"file":"FreonCommandLine.d.ts","sourceRoot":"","sources":["../../src/commandline/FreonCommandLine.ts"],"names":[],"mappings":"AACA,OAAO,EAEL,iBAAiB,EAClB,MAAM,4BAA4B,CAAC;AAEpC,qBAAa,gBAAiB,SAAQ,iBAAiB;IACrD,OAAO,CAAC,UAAU,CAA2B;;IAS7C,SAAS,CAAC,kBAAkB,IAAI,IAAI;IAQpC,SAAS,CAAC,SAAS,IAAI,OAAO,CAAC,IAAI,CAAC;CAQrC"}

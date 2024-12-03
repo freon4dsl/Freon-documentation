@@ -1,0 +1,1 @@
+{"version":3,"file":"EntityModelActions.d.ts","sourceRoot":"","sources":["../../../src/editor/gen/EntityModelActions.ts"],"names":[],"mappings":"AACA,OAAO,EAAE,kBAAkB,EAAe,+BAA+B,EAAE,eAAe,EAAE,MAAM,iBAAiB,CAAC;AAapH,qBAAa,kBAAmB,YAAW,kBAAkB;IAEzD,uBAAuB,EAAE,+BAA+B,EAAE,CAGnB;IACvC,aAAa,EAAE,eAAe,EAAE,CAAgF;CACnH"}

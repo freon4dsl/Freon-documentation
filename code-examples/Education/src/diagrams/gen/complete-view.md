@@ -1,0 +1,186 @@
+# Class diagram for language Education
+```mermaid
+    %%{init: {'theme': 'forest'} }%%
+    classDiagram
+    direction TD
+    %% other possibilites: LR RL DT TB (same as TD)
+    class FlowRule {
+        
+        + identifier name
+		+ string description
+    }
+    class PageTransition {
+        
+        
+    }
+    class Grade {
+        <<enumeration>>
+        gradeA
+		gradeB
+		gradeC
+		gradeD
+		gradeE
+		gradeF
+    }
+    class GradeList {
+        
+        
+    }
+    class GradeScore {
+        
+        
+    }
+    class ScoreExpression {
+        <<abstract>>
+        
+    }
+    class QuestionReference {
+        
+        
+    }
+    class NrOfCorrectAnswers {
+        
+        
+    }
+    class NumberLiteralExpression {
+        
+        + number value
+    }
+    class BinaryExpression {
+        <<abstract>>
+        
+    }
+    class AndExpression {
+        
+        
+    }
+    class OrExpression {
+        
+        
+    }
+    class ComparisonExpression {
+        <<abstract>>
+        
+    }
+    class LessOrEqualsExpression {
+        
+        
+    }
+    class GreaterOrEqualsExpression {
+        
+        
+    }
+    class LessThenExpression {
+        
+        
+    }
+    class GreaterThenExpression {
+        
+        
+    }
+    class EqualsExpression {
+        
+        
+    }
+    class Page {
+        <<abstract>>
+        + identifier name
+    }
+    class Theory {
+        
+        
+    }
+    class Line {
+        
+        + string content
+    }
+    class Video {
+        
+        + string url
+    }
+    class WorkSheet {
+        
+        
+    }
+    class ExamplePage {
+        
+        
+    }
+    class InDepthMaterial {
+        
+        
+    }
+    class Question {
+        
+        + identifier name
+		+ string content
+    }
+    class NumberConcept {
+        <<abstract>>
+        
+    }
+    class SimpleNumber {
+        
+        + number value
+    }
+    class Fraction {
+        
+        + number numerator
+		+ number denominator
+    }
+    class Scenario {
+        
+        + string description
+    }
+    class Step {
+        
+        
+    }
+
+    ScoreExpression <|-- QuestionReference
+ScoreExpression <|-- NrOfCorrectAnswers
+ScoreExpression <|-- NumberLiteralExpression
+ScoreExpression <|-- BinaryExpression
+BinaryExpression <|-- AndExpression
+BinaryExpression <|-- OrExpression
+BinaryExpression <|-- ComparisonExpression
+ComparisonExpression <|-- LessOrEqualsExpression
+ComparisonExpression <|-- GreaterOrEqualsExpression
+ComparisonExpression <|-- LessThenExpression
+ComparisonExpression <|-- GreaterThenExpression
+ComparisonExpression <|-- EqualsExpression
+Page <|-- Theory
+Page <|-- Video
+Page <|-- WorkSheet
+Page <|-- ExamplePage
+Page <|-- InDepthMaterial
+NumberConcept <|-- SimpleNumber
+NumberConcept <|-- Fraction
+
+        FlowRule *-- "0..*" PageTransition : transitions
+GradeList *-- "0..*" GradeScore : list
+GradeScore *-- "1" ScoreExpression : expr
+BinaryExpression *-- "1" ScoreExpression : left
+
+		BinaryExpression *-- "1" ScoreExpression : right
+Page *-- "0..*" Question : questions
+
+		Page *-- "1" GradeList : grading
+Theory *-- "0..*" Line : content
+ExamplePage *-- "0..*" Line : content
+InDepthMaterial *-- "0..*" Line : content
+Question *-- "1" NumberConcept : correctAnswer
+Scenario *-- "0..*" Step : steps
+
+        FlowRule --> "1" Page : page
+PageTransition --> "1" Grade : condition
+
+		PageTransition --> "1" Page : toPage
+GradeScore --> "1" Grade : grade
+QuestionReference --> "1" Question : question
+Step --> "1" Page : fromPage
+
+		Step --> "1" Page : expectedPage
+
+        
+```

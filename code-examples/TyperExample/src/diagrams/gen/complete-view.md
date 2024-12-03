@@ -1,0 +1,129 @@
+# Class diagram for language XX
+```mermaid
+    %%{init: {'theme': 'forest'} }%%
+    classDiagram
+    direction TD
+    %% other possibilites: LR RL DT TB (same as TD)
+    class ExpWithType {
+        
+        
+    }
+    class TypeUsage {
+        <<abstract>>
+        
+    }
+    class TypeRef {
+        
+        
+    }
+    class TypeDecl {
+        <<abstract>>
+        
+    }
+    class NamedType {
+        
+        + identifier name
+    }
+    class PredefinedType {
+        <<enumeration>>
+        NUMBER
+		BOOLEAN
+		STRING
+		ANY
+		NULL
+    }
+    class GenericType {
+        
+        
+    }
+    class GenericKind {
+        <<enumeration>>
+        Set
+		Sequence
+		Bag
+		Collection
+    }
+    class UnitOfMeasurement {
+        
+        
+    }
+    class UnitKind {
+        <<enumeration>>
+        Meters
+		Grams
+		kWh
+		Hours
+    }
+    class Exp {
+        <<abstract>>
+        
+    }
+    class NumberLiteral {
+        
+        + number xx
+    }
+    class StringLiteral {
+        
+        + string xx
+    }
+    class BooleanLiteral {
+        
+        + boolean xx
+    }
+    class UnitLiteral {
+        
+        
+    }
+    class GenericLiteral {
+        
+        
+    }
+    class NamedExp {
+        
+        
+    }
+    class PlusExp {
+        
+        
+    }
+    class TopType {
+        <<interface>>
+        
+    }
+    TypeUsage <|-- TypeRef
+TypeUsage <|-- TypeDecl
+NamedType <|-- PredefinedType
+TypeDecl <|-- GenericType
+TypeDecl <|-- UnitOfMeasurement
+Exp <|-- NumberLiteral
+Exp <|-- StringLiteral
+Exp <|-- BooleanLiteral
+Exp <|-- UnitLiteral
+Exp <|-- GenericLiteral
+Exp <|-- NamedExp
+Exp <|-- PlusExp
+
+        ExpWithType *-- "1" Exp : expr
+
+		ExpWithType *-- "1" TypeUsage : type
+GenericType *-- "1" TypeUsage : baseType
+UnitLiteral *-- "1" NumberLiteral : inner
+GenericLiteral *-- "0..*" Exp : content
+NamedExp *-- "1" Exp : inner
+
+		NamedExp *-- "1" NamedType : myType
+PlusExp *-- "1" Exp : left
+
+		PlusExp *-- "1" Exp : right
+
+        TypeRef --> "1" NamedType : type
+GenericType --> "1" GenericKind : kind
+UnitOfMeasurement --> "1" PredefinedType : baseType
+
+		UnitOfMeasurement --> "1" UnitKind : unit
+UnitLiteral --> "1" UnitKind : unit
+GenericLiteral --> "1" GenericKind : kind
+
+        NamedType ..|> TopType
+
+```

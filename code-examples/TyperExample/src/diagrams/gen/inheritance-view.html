@@ -1,0 +1,107 @@
+<html>
+<body>
+<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+<script>
+    mermaid.initialize({ startOnLoad: true });
+</script>
+
+<h2 class="title"> Inheritance diagram for language XX </h2>
+<div class="mermaid">
+    %%{init: {'theme': 'forest'} }%%
+    classDiagram
+    direction TD
+    %% other possibilites: LR RL DT TB (same as TD)
+    class TypeRef {
+        
+        
+    }
+    class TypeUsage:::abstract {
+        
+        
+    }
+    class TypeDecl:::abstract {
+        
+        
+    }
+    class PredefinedType:::enumeration {
+        
+        NUMBER
+		BOOLEAN
+		STRING
+		ANY
+		NULL
+    }
+    class NamedType {
+        
+        + identifier name
+    }
+    class GenericType {
+        
+        
+    }
+    class UnitOfMeasurement {
+        
+        
+    }
+    class NumberLiteral {
+        
+        + number xx
+    }
+    class Exp:::abstract {
+        
+        
+    }
+    class StringLiteral {
+        
+        + string xx
+    }
+    class BooleanLiteral {
+        
+        + boolean xx
+    }
+    class UnitLiteral {
+        
+        
+    }
+    class GenericLiteral {
+        
+        
+    }
+    class NamedExp {
+        
+        
+    }
+    class PlusExp {
+        
+        
+    }
+    TypeUsage <|-- TypeRef
+TypeUsage <|-- TypeDecl
+NamedType <|-- PredefinedType
+TypeDecl <|-- GenericType
+TypeDecl <|-- UnitOfMeasurement
+Exp <|-- NumberLiteral
+Exp <|-- StringLiteral
+Exp <|-- BooleanLiteral
+Exp <|-- UnitLiteral
+Exp <|-- GenericLiteral
+Exp <|-- NamedExp
+Exp <|-- PlusExp
+
+</div>
+
+</body>
+</html>
+
+<style>
+    .abstract .classTitle {
+        font-style: italic;
+    }
+    .title {
+        font-family: "Gill Sans MT";
+    }
+    .interface .classTitle {
+        font-style: italic;
+        font-weight: bold;
+    }
+</style>

@@ -5,7 +5,7 @@ of the concrete syntax, but instead they provide an extra check of the model/AST
 
 The **validator** definition provides the constraints or rules that should be true in the models build by your users. 
 Any part of the validator
-definition must be included in a file with the extension `.valid`. All files with this extension in the _defs_ folder
+definition must be included in a file with the extension `.valid`. All files with this extension in the [_defs_ folder](/Documentation/Overview/Getting_Started#template-project-startup-3)
 (i.e. the folder were you keep your definition files) are combined into one validator definition.
 
 Currently, there are four types of validation rules.
