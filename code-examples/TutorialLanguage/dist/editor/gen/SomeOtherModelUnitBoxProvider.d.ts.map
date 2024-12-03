@@ -1,1 +1,0 @@
-{"version":3,"file":"SomeOtherModelUnitBoxProvider.d.ts","sourceRoot":"","sources":["../../../src/editor/gen/SomeOtherModelUnitBoxProvider.ts"],"names":[],"mappings":"AACA,OAAO,EAAE,GAAG,EAAuB,cAAc,EAAE,oBAAoB,EAAE,MAAM,iBAAiB,CAAC;AAYjG,qBAAa,6BAA8B,SAAQ,cAAc;gBACjD,WAAW,EAAE,oBAAoB;IAO7C,SAAS,CAAC,UAAU,CAAC,cAAc,EAAE,MAAM,GAAG,GAAG;IAmBjD,OAAO,CAAC,UAAU;CA+BrB"}

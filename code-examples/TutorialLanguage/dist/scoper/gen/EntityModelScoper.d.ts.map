@@ -1,1 +1,0 @@
-{"version":3,"file":"EntityModelScoper.d.ts","sourceRoot":"","sources":["../../../src/scoper/gen/EntityModelScoper.ts"],"names":[],"mappings":"AACA,OAAO,EAAE,aAAa,EAAa,OAAO,EAAE,YAAY,EAAE,MAAM,iBAAiB,CAAC;AASlF,qBAAa,iBAAkB,SAAQ,aAAa;IAKhD,mBAAmB,CAAC,YAAY,EAAE,OAAO,GAAG,YAAY;IAmBxD,mBAAmB,CAAC,YAAY,EAAE,OAAO,GAAG,OAAO;IAW5C,oBAAoB,CAAC,OAAO,EAAE,OAAO,GAAG,OAAO,EAAE;CAqB3D"}

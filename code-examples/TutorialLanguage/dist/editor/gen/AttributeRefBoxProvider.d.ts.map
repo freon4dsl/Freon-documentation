@@ -1,1 +1,0 @@
-{"version":3,"file":"AttributeRefBoxProvider.d.ts","sourceRoot":"","sources":["../../../src/editor/gen/AttributeRefBoxProvider.ts"],"names":[],"mappings":"AACA,OAAO,EAAE,GAAG,EAAuB,cAAc,EAAE,oBAAoB,EAAoB,MAAM,iBAAiB,CAAC;AAcnH,qBAAa,uBAAwB,SAAQ,cAAc;gBAC3C,WAAW,EAAE,oBAAoB;IAO7C,SAAS,CAAC,UAAU,CAAC,cAAc,EAAE,MAAM,GAAG,GAAG;IAmBjD,OAAO,CAAC,UAAU;CA8DrB"}

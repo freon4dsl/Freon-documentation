@@ -1,1 +1,0 @@
-{"version":3,"file":"VariableBoxProvider.d.ts","sourceRoot":"","sources":["../../../src/editor/gen/VariableBoxProvider.ts"],"names":[],"mappings":"AACA,OAAO,EAAE,GAAG,EAAuB,cAAc,EAAE,oBAAoB,EAAoB,MAAM,iBAAiB,CAAC;AAcnH,qBAAa,mBAAoB,SAAQ,cAAc;gBACvC,WAAW,EAAE,oBAAoB;IAO7C,SAAS,CAAC,UAAU,CAAC,cAAc,EAAE,MAAM,GAAG,GAAG;IAmBjD,OAAO,CAAC,UAAU;CAsCrB"}

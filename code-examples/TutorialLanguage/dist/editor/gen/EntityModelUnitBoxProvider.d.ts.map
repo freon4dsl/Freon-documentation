@@ -1,1 +1,0 @@
-{"version":3,"file":"EntityModelUnitBoxProvider.d.ts","sourceRoot":"","sources":["../../../src/editor/gen/EntityModelUnitBoxProvider.ts"],"names":[],"mappings":"AACA,OAAO,EAAE,GAAG,EAAuB,cAAc,EAAE,oBAAoB,EAAE,MAAM,iBAAiB,CAAC;AAYjG,qBAAa,0BAA2B,SAAQ,cAAc;gBAC9C,WAAW,EAAE,oBAAoB;IAO7C,SAAS,CAAC,UAAU,CAAC,cAAc,EAAE,MAAM,GAAG,GAAG;IAqBjD,OAAO,CAAC,cAAc;IA2CtB,OAAO,CAAC,UAAU;CAoDrB"}

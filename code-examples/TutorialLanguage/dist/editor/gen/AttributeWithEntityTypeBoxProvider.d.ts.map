@@ -1,1 +1,0 @@
-{"version":3,"file":"AttributeWithEntityTypeBoxProvider.d.ts","sourceRoot":"","sources":["../../../src/editor/gen/AttributeWithEntityTypeBoxProvider.ts"],"names":[],"mappings":"AACA,OAAO,EAAE,GAAG,EAAuB,cAAc,EAAE,oBAAoB,EAAoB,MAAM,iBAAiB,CAAC;AAcnH,qBAAa,kCAAmC,SAAQ,cAAc;gBACtD,WAAW,EAAE,oBAAoB;IAO7C,SAAS,CAAC,UAAU,CAAC,cAAc,EAAE,MAAM,GAAG,GAAG;IAmBjD,OAAO,CAAC,UAAU;CAsCrB"}

@@ -1,1 +1,0 @@
-{"version":3,"file":"DummyAction.d.ts","sourceRoot":"","sources":["../../src/commandline/DummyAction.ts"],"names":[],"mappings":"AACA,OAAO,EACL,iBAAiB,EACjB,0BAA0B,EAC3B,MAAM,4BAA4B,CAAC;AAEpC,qBAAa,WAAY,SAAQ,iBAAiB;IAChD,cAAc,EAAE,0BAA0B,CAAC;;IAU3C,SAAS,CAAC,kBAAkB,IAAI,IAAI;IAUpC,SAAS,CAAC,SAAS,IAAI,OAAO,CAAC,IAAI,CAAC;IAO9B,WAAW,IAAI,OAAO,CAAC,MAAM,CAAC;CAGrC"}
