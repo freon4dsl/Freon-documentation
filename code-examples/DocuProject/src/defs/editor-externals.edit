@@ -1,12 +1,12 @@
-editor externals
+editor externals precedence 20
 
 BaseProduct {
 [
     Base Product for ${self.theme radio} ${self.name replace=SMUI_Dialog buttonLabel = "Change Product Name"}
-        [fragment First wrap=SMUI_Card] [fragment Second wrap=SMUI_Card]
+        [fragment FirstCard wrap=SMUI_Card] [fragment SecondCard wrap=SMUI_Card]
         ${self.parts replace=SMUI_Accordion multi="multiple"}
 ]
-    fragment First [
+    fragment FirstCard [
     First Card
         is still under construction: ${self.isUnderConstruction switch}
         is approved level1: ${self.isApprovedLevel1 radio}
@@ -14,7 +14,7 @@ BaseProduct {
         is approved level3: ${self.isApprovedLevel3 checkbox}
         [external=AnimatedGif number="1"]
     ]
-    fragment Second [
+    fragment SecondCard [
     Second Card
         [button text="Push me!" boxRole="MyButton-role"]
         yields profit: ${self.yieldsProfit}
