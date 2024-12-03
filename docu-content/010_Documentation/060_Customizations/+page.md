@@ -25,7 +25,7 @@ In this part we describe how to make further customizations to the toolset by wr
 Customization is possible because of our **stacked architecture**.
 This architecture makes it possible to create your language,
 and customize it step-by-step in an agile fashion.
-(Read our [Guiding Principles](/Background/Guiding_Principles) to understand why we have chosen this architecture.)
+(Read our [Guiding Principles](/Background) to understand why we have chosen this architecture.)
 Keeping in mind that _Simple things should be simple, complex things should be possible_
 (<a href="https://en.wikipedia.org/wiki/Alan_Kay" target="_blank">Alan Kay</a>),
 we use the following levels of customization.

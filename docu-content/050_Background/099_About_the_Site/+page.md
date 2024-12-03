@@ -1,4 +1,4 @@
-# About this site
+# About the Site
 
 - This site is created with <a href="https://kit.svelte.dev" target="_blank">SvelteKit</a>.
 - Code blocks are included

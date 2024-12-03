@@ -8,21 +8,23 @@
     let figureNumber2 = 2;
 </script>
 
-# The name <i>ProjectIt</i> has changed to <i>Freon</i>
+# About the Name <i>Freon</i>
 
-Because the nature of this project has changed from a tool to create a projectional editor to a tool to create a DSL,
-we have decided to change the name of the project. In the future, this tool will be called <i>'Freon'</i>.
+About the origins of the name Freon...
 
-## Why the Name <i>Freon</i>?
+## Previously known as <i>ProjectIt</i>
+
+Freon started out as an experiment, trying to create a projectional editor for the web. At that time it was called _ProjectIt_.
+Because over the years the nature of the project has changed from a tool to create a projectional editor to a tool to create a DSL,
+the name has been changed to _'Freon'_.
 
 The name <i>Freon</i> was chosen, simply because we like it, but also because it is the Frisian word for 'friend'.
 We certainly want Freon to be a developer-, and user-friendly tool. There has been some discussion about how to pronounce
-Freon. A native Frisian speaker has been so kind to provide us with the following sound bite. (Thanks, Meinte!)
+Freon. A native Frisian speaker has been so kind to provide us with a sound bite. (Thanks, Meinte!)
 <audio controls><source src="../../freon - pronunciation.mp3" type="audio/mpeg">Your browser does not support the audio element.</audio>
 
-Besides that, we could not resist the temptation to
-invent yet another reason for this name. If you like, you can read all about the myth of the god of languages,
-who is, of course, named <i>Freon</i>.
+Besides that, we could not resist the temptation to invent yet another reason for this name. 
+If you like, you can read all about the myth of the god of languages, who is, of course, named _Freon_.
 
 ## The Myth of <i>Freon</i>
 

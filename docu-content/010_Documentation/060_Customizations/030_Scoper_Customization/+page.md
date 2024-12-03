@@ -1,4 +1,6 @@
-# Third Level Customization of the Scoper
+# Customization of the Scoper
+
+[//]: # (todo change this code based upon example from Jos)
 
 The scoper can not yet be customized **per concept**. Instead, you can replace the whole
 scoper by one create yourself.

@@ -163,21 +163,3 @@ export interface KeyboardShortcutBehavior extends FreBehavior {
 
 To attach the behavior to one or more boxes, these box roles are added to the `activeInBoxRoles`
 property of an action.
-//TODO: describe the optional properties
-
-## Custom Actions
-
-// TODO document custom actions
-
-## Expressions and Binary Expressions
-
-// TODO document expression actions
-
-The challenge posed by editing expressions in a projectional editor are explained
-in [Expressions](/Overview/Projectional_Editing#expressions).
-
-## Keyboard Shortcuts
-
-// TODO document keyboard actions
-
-A keyboard shortcut specifies an action that is triggered by special keys, like e.g. Ctrl-A.
