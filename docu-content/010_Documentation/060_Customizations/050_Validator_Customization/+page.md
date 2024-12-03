@@ -50,6 +50,28 @@ The result of the above should look something like this:
 
 ```ts
 // TutorialLanguage/src/validator/CustomEntityModelValidator.ts#L9-L42
+
+
+    /**
+     * Example of a custom validation. Every EntityFunction with name 'determine' is considered incorrect.
+     * @param modelelement
+     */
+    public execBeforeEntityFunction(modelelement: EntityFunction): boolean {
+        if (modelelement.name == "determine") {
+            this.errorList.push(
+                new FreError(
+                    `"determine" is a terrible name for a Function`,
+                    modelelement,
+                    modelelement.name,
+                    FreErrorSeverity.Error
+                )
+            );
+            return true;
+        }
+        return false;
+    }
+}
+
 ```
 
 In this example only nodes of type `EntityFunction` are checked. If the name of the node equals `determine` than an error is

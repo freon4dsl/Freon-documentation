@@ -11,7 +11,7 @@ a space between the start square bracket `[` and `button`.
 ```txt
 // DocuProject/src/defs/editor-fragments.edit#L18-L18
 
-expected nr of use: ${self.nrOfUse slider}
+[button text="Push me!" boxRole="MyButton-role"]
 ```
 
 The **text** is the text that will be shown on the button. The **boxRole** is the manner in which the button is coupled to an action.

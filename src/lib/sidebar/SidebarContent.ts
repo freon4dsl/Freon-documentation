@@ -25,7 +25,6 @@ export const documentationToc: TocContentsType =
          { name: 'Global Projections', path: '/Documentation/Defining_an_Editor/Global_Projections'},
          { name: 'Buttons', path: '/Documentation/Defining_an_Editor/Buttons'},
          { name: 'Fragments', path: '/Documentation/Defining_an_Editor/Fragments'},
-         { name: 'External Components', path: '/Documentation/Defining_an_Editor/External_Components'},
          { name: 'Styling', path: '/Documentation/Defining_an_Editor/Styling'},
          { name: 'The Parser Projection', path: '/Documentation/Defining_an_Editor/The_Parser_Projection'},
        ]},
@@ -38,6 +37,7 @@ export const documentationToc: TocContentsType =
       { name: 'Customizations', path: '/Documentation/Customizations',
         content: [
          { name: 'Editor Customization', path: '/Documentation/Customizations/Editor_Customization'},
+         { name: 'External Components', path: '/Documentation/Customizations/External_Components'},
          { name: 'Scoper Customization', path: '/Documentation/Customizations/Scoper_Customization'},
          { name: 'Typer Customization', path: '/Documentation/Customizations/Typer_Customization'},
          { name: 'Validator Customization', path: '/Documentation/Customizations/Validator_Customization'},

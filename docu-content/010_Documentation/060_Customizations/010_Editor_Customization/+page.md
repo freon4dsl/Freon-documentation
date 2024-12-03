@@ -5,14 +5,12 @@
 
 # Editor Customization
 
-Editor customization is done by implementing one or both of two interfaces:
-[`FreProjection`](/Documentation/Under_the_Hood/The_Editor_Interfaces#freprojection-2) and
-[`FreCombinedActions`](/Documentation/Under_the_Hood/The_Editor_Interfaces#freaction-3). But
+Editor customization can be done by adding projections, actions, and/or external Svelte components. But
 before you dive into all this, we suggest that you become familiar with the information on the Box model,
 as explained in the [Freon Editor Framework](/Documentation/Under_the_Hood/The_Editor_Framework).
 
 
-## Box Providers 
+## The Generated Box Providers 
 
 The generated editor is implemented by a set of **box providers**. Every box provider is capable of returning the
 box for a specific type of AST node. For instance, the generated box provider for the `EuroLiteral` 
@@ -73,14 +71,14 @@ the predefined method `createDefaultExpressionBox`, which returns the correct bo
 ## Writing a Custom Projection
 
 Writing a custom projection does not require the implementation of a complete box provider. Instead,
-a custom projection (set) is basically a series of methods that return a box
-object for an AST node. Each of the methods need to be registered. This is done in the property `nodeTypeToBoxMethod`.
+a custom projection (set) is basically a series of methods that each return a box
+object for an AST node. Every custom method need to be registered. This is done in the property `nodeTypeToBoxMethod`.
 
 In the below example, a copy is taken of the `getDefault` method above, which is adjusted to display an SVG Euro symbol instead of the
  string 'EUR'. Note that the method is registered to be used for concepts of type `EuroLiteral`.
 
 ```ts
-// DocuProject/src/editor/CustomInsuranceModelProjection.ts#L14-L69
+// DocuProject/src/editor/CustomInsuranceModelProjection.ts#L24-L79
 
 const euroIcon = "M640 789.333333c-106.88 0-199.68-60.586667-245.973333-149.333333H640v-85.333333H366.293333c-2.133333-13.866667-3.626667-28.16-3.626666-42.666667s1.493333-28.8 3.626666-42.666667H640v-85.333333H394.026667c46.293333-88.746667 138.88-149.333333 245.973333-149.333333 68.906667 0 131.84 25.173333 180.266667 66.773333L896 226.133333A382.72 382.72 0 0 0 640 128c-167.04 0-308.906667 106.88-361.6 256H128v85.333333h130.56c-1.706667 14.08-2.56 28.16-2.56 42.666667 0 14.506667 0.853333 28.586667 2.56 42.666667H128v85.333333h150.4c52.693333 149.12 194.56 256 361.6 256 98.346667 0 188.16-37.333333 256-98.133333l-75.733333-75.52A275.818667 275.818667 0 0 1 640 789.333333z"
 
@@ -109,28 +107,28 @@ export class CustomInsuranceModelProjection implements FreProjection {
     // BOX_FOR_CONCEPT(node: NAME_OF_CONCEPT) : Box { ... }
     EuroLiteralWithSVG(node: EuroLiteral): Box {
         return createDefaultExpressionBox(
-          node,
-          [
-              BoxFactory.horizontalLayout(
-                node,
-                "EuroLiteral-hlist-line-0",
-                "",
-                [
-                    new SvgBox(node, "euro-icon", euroIcon, {
-                        viewPortWidth: 20,
-                        viewPortHeight: 20,
-                        viewBoxWidth: 1024,
-                        viewBoxHeight: 1024,
-                        selectable: false
-                    }),
-                    BoxUtil.numberBox(node, "euros", NumberDisplay.SELECT),
-                    BoxUtil.labelBox(node, ",", "top-1-line-0-item-2"),
-                    BoxUtil.numberBox(node, "cents", NumberDisplay.SELECT),
-                ],
-                { selectable: false },
-              ),
-          ],
-          { selectable: false },
+            node,
+            [
+                BoxFactory.horizontalLayout(
+                    node,
+                    "EuroLiteral-hlist-line-0",
+                    "",
+                    [
+                        new SvgBox(node, "euro-icon", euroIcon, {
+                            viewPortWidth: 20,
+                            viewPortHeight: 20,
+                            viewBoxWidth: 1024,
+                            viewBoxHeight: 1024,
+                            selectable: false
+                        }),
+                        BoxUtil.numberBox(node, "euros", NumberDisplay.SELECT),
+                        BoxUtil.labelBox(node, ",", "top-1-line-0-item-2"),
+                        BoxUtil.numberBox(node, "cents", NumberDisplay.SELECT),
+                    ],
+                    { selectable: false },
+                ),
+            ],
+            { selectable: false },
         );
     }
 
@@ -138,13 +136,6 @@ export class CustomInsuranceModelProjection implements FreProjection {
 }
 
 ```
-
-<Note>
-<svelte:fragment slot="header">Just One Custom Projection File Allowed</svelte:fragment>
-<svelte:fragment slot="content">
-Note that currently, all methods for various concepts that defined a custom projection must be included in one, single
-class. This will likely be extended in future versions.
-</svelte:fragment></Note>
 
 [//]: # (todo decide whether we should mention that custom table projections are not yet taken into account)
 
@@ -165,14 +156,29 @@ Actions are necessary to enable the user to change the model and add elements to
 The projections only describe what you will see in the editor.
 Actions determine what you can do, how you interact with the editor.
 
-As a convenience, the file `~/frecode/editor/CustomYourLanguageNameActions.ts` is generated, which is a placeholder
-for your own actions written in TypeScript. This file contains two constants for
-different kind of actions. When you define these constants, Freon will merge your actions
-with the default actions. If a trigger for an action is identical to a default one,
-your custom actions take precedence.
+As a convenience, the file `~/frecode/editor/CustomYourLanguageNameActions.ts` is 
+generated, which is a placeholder for your own actions written in TypeScript. This 
+file contains two constants for different kind of actions. The constant 
+`MANUAL_CUSTOM_ACTIONS` is an array that contains all actions to be performed 
+on normal concepts. Actions on binary expressions should be added to the array 
+`MANUAL_BINARY_EXPRESSION_ACTIONS`. When you define these constants, Freon will 
+merge your actions with the default actions.
+
+Any `CustomAction` must implement the [`FreCustomAction`](/Documentation/Under_the_Hood/Core_Interfaces#frecustomaction-4) 
+interface. An easy way to create it, is using the predefined method `FreCustomAction.create()`, which 
+takes a partial `CustomAction` object as parameter. The most important properties of the `CustomAction` 
+object are the action itself, and the box roles, indicating where the action could be activated.
+
+In the example below two actions are added, one for the button that was added to the `BaseProduct` projection in
+[Buttons](/Documentation/Defining_an_Editor/Buttons#adding-buttons-1), and one for the buttons that were added 
+to the table projection
+of `InsurancePart` concepts in [Icon Buttons](/Documentation/Defining_an_Editor/Buttons#icon-buttons-2).
+The first was defined with the box role "MyButton-role", the second with "MyTableButton-role". The implementation of
+the action is here a simple alert with a message to the user.
+
 
 ```ts
-// DocuProject/src/editor/CustomInsuranceModelActions.ts#L13-L24
+// DocuProject/src/editor/CustomInsuranceModelActions.ts#L19-L82
 
 export class CustomInsuranceModelActions implements FreCombinedActions {
     binaryExpressionActions: FreCreateBinaryExpressionAction[] = MANUAL_BINARY_EXPRESSION_ACTIONS;
@@ -185,52 +191,26 @@ export const MANUAL_BINARY_EXPRESSION_ACTIONS: FreCreateBinaryExpressionAction[]
 
 export const MANUAL_CUSTOM_ACTIONS: FreCustomAction[] = [
     // Add your own custom behavior here
+    FreCustomAction.create({
+        activeInBoxRoles: ["MyButton-role"],
+        action: (box: Box, trigger: FreTriggerType, ed: FreEditor): FreNode | null => {
+            // do something
+            const thisNode: FreNode = box.node;
+            // const thisParent: FreNode = box.element.freOwner();
+            alert("You shouldn't have pushed the button with role 'MyButton-role' on element " + thisNode.freId() + ".\nPunishment awaits !!!!!!!!!!");
+            return null;
+        },
+    }),
+    FreCustomAction.create({
+        activeInBoxRoles: ["MyTableButton-role"],
+        action: (box: Box, trigger: FreTriggerType, ed: FreEditor): FreNode | null => {
+            // do something
+            const thisNode: FreNode = box.node;
+            // const thisParent: FreNode = box.element.freOwner();
+            alert("You shouldn't have pushed the button with role 'MyTableButton-role' on element " + thisNode.freId() + ".\nPunishment awaits !!!!!!!!!!");
+            return null;
+        },
+    }),
 ];
+
 ```
-
-## Creation of New Elements
-
-Now, let's start with adding an element, e.g. adding a new `property` to an
-`Entity`.
-
-From [Actions](/Documentation/Under_the_Hood/The_Editor_Framework#defining-actions) you will have learned
-that an `AliasBox` is a predefined box where the user can type text to trigger some action.
-Thus, we add an `AliasBox` to the projection of the property list.
-Note the role of the box: _end-of-property-list_.
-
-```ts
-// TutorialLanguage/src/editor/CustomEntityModelProjection.ts#L141-L146
-```
-
-Then we create the actual action and attach it to the role of the `AliasBox`. Note that the projection
-and action
-are defined in two different files, respectively `CustomEntityModelProjections.ts` and `CustomEntityModelActions.ts`.
-
-```ts
-// TutorialLanguage/src/editor/CustomEntityModelActions.ts#L40-L51
-```
-
-The numbers in the comments indicate what happens here:
-
-1. The action is attached to each box with the role "end-of-property-list".
-2. The action will be triggered when the user types `"attribute"` inside the `AliasBox`.
-3. The executable code for the action. It creates a new `AttributeWithLimitedType` and attaches is to `entity`
-4. The focus of the editor is returned to the `Box` with the role `"Attribute-name"`
-   within the entity. This ensures that the user can immediately start typing the name of the entity after it has been created.
-
-There can be many boxes with the same role in the editor, as long as their model element is different.
-This way, the above action is available for each attribute list in each entity.
-
-<!--- // TODO: describe the optional properties --->
-
-## Custom Actions
-
-// TODO document other custom actions
-
-## Expressions and Binary Expressions
-
-// TODO Advanced expression editing.
-
-## Keyboard Shortcuts
-
-// TODO A keyboard shortcut specifies an action that is triggered by special keys, like e.g. Ctrl-A.

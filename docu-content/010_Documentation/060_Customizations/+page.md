@@ -83,7 +83,7 @@ This table gives an overview of the fre-tools, and shows how you can adjust them
 
 If you are missing a specific tool or feature, please let us know through info AT freon4dsl.dev.
 
-## Adding TypeScript Files
+## Adding A Fre-tool
 
 As a convenience, Freon generates templates for
 your customization in the files `~/frecode/editor/CustomYourLanguageNameProjection.ts`, `~/frecode/editor/CustomYourLanguageNameActions.ts`, etc.
