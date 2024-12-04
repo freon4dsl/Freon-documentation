@@ -1,32 +1,6 @@
-# Generic Types: an Example Typer Definition
+# The Metamodel Definition of the Example Language
 
-This example shows how generic types and unit of measurements can be defined.
-
-## The Example Language
-
-The language is very simple, its units consists of lists of _expression_ - _declared type_ pairs. Ultimately, we want to compare the declared
-type with the type of the expression. Below is an example of a model unit of this language.
-
-```text
-UnitA correctExps
-
-12 : NUMBER;
-"string" : STRING;
-2345: NUMBER;
-"this is a large string": STRING;
-true : BOOLEAN;
-false: BOOLEAN;
-
-Set{ true, true, false } : Set<BOOLEAN>;
-Bag { Set { 12, 13, 14 }, Set { 12, 13, 14, 15, 16 } } : Bag<Set<NUMBER>>;
-
-124 Meters : Meters<NUMBER>;
-45 kWh : kWh<NUMBER>;
-```
-
-## The Structure Definition of the Example Language
-
-To explain the type definition, we first need a structure definition of the example language.
+To explain the type definition, we first need the metamodel of the example language.
 Below is the complete .ast file. But first, let's explain some highlights.
 
 Every type in the list of _expression_ - _declared type_ pairs is an instance of the AST
@@ -90,7 +64,7 @@ expression GenericLiteral base Exp {
 }
 ```
 
-## The complete Structure Definition
+## The Complete AST Definition
 
 ```ts
 // TyperExample/src/defs/projectY.ast
