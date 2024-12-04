@@ -90,10 +90,10 @@ export const examplesToc: TocContentsType =
       { name: 'External Components', path: '/Examples/External_Components'},
       { name: 'Including Freon in Your Website', path: '/Examples/Including_Freon_in_Your_Website'},
     ]};
-export const demosToc: TocContentsType = 
-   { name: 'Demos', path: '/Demos',
+export const demoToc: TocContentsType = 
+   { name: 'Demo', path: '/Demo',
      content: [
-      { name: 'Overview', path: '/Demos/Overview'},
+      { name: 'Overview', path: '/Demo/Overview'},
     ]};
 export const lionWebToc: TocContentsType = 
    { name: 'LionWeb', path: '/LionWeb',
@@ -114,7 +114,7 @@ export const allCategories: CategoryInfoType[] = [
 	{name: 'Documentation', path: '/Documentation', toc: documentationToc},
 		{name: 'Tutorial', path: '/Tutorial', toc: tutorialToc},
 		{name: 'Examples', path: '/Examples', toc: examplesToc},
-		{name: 'Demos', path: '/Demos', toc: demosToc},
+		{name: 'Demo', path: '/Demo', toc: demoToc},
 		{name: 'LionWeb', path: '/LionWeb', toc: lionWebToc},
 		{name: 'Background', path: '/Background', toc: backgroundToc}
 ];

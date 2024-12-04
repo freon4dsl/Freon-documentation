@@ -12,7 +12,7 @@
 					<li>Together, as well as separate, they are the authors of a number of books on software development.</li>
 				</ul>
 				<li>
-					More about our company, and the services we offer can be found at <a href="https://www.openmodeling.nl">www.openmodeling.nl</a>
+					More about our company, and the services we offer can be found at <a href="https://www.openmodeling.nl" target="_blank">www.openmodeling.nl</a>
 				</li>
 			</ul>
 		</div>
