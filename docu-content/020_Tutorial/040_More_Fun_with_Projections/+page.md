@@ -52,7 +52,7 @@ figureNumber={1}
 
 ## More than One Editor
 
-Using Freon you can have multiple views on the same concept. After all, Freon generates a [projectional editor](/Documentation/Overview/Projectional_Editing).
+Using Freon you can have multiple views on the same concept. After all, Freon generates a [projectional editor](/Background/Projectional_Editing).
 
 Remember that the editor definition in the previous lesson, and the one above are called `default`? That is 
 because you can have any number of editor definitions, each with its own name. 
@@ -63,7 +63,7 @@ different appearance than the default, or multiple concepts that need to be disp
 
 When an editor definition does not have a projection for a certain concept, it falls back to the projection in one of the other
 editor definitions. Which projection is chosen for a certain concept, is determined by a fixed algorithm. 
-If you want to know more about this algorithm, read [TODO](link to part of the documentation).
+If you want to know more about this algorithm, read [Editor Precedence](/Documentation/Defining_an_Editor#editor-precedence-4).
 
 <Note><svelte:fragment slot="header"> One property, one occurrence in the editor</svelte:fragment>
 <svelte:fragment slot="content">
@@ -144,7 +144,8 @@ name will be added to the menu. That way, you are able to switch on and off any 
 
 ## Using a Specific Editor
 
-We already mentioned that there is a specific [algorithm](link to part of the documentation) to determine which projection is shown in the generated editor.
+We already mentioned that there is a specific [algorithm](/Documentation/Defining_an_Editor#editor-precedence-4) to 
+determine which projection is shown in the generated editor.
 However, there is a way to circumvent this. Sometimes you want to use a very specific way to display a concept. You can indicate
 that by stating the name of the concept, as well as the name of the editor definition, using the syntax `[=>ConceptName:editor-name]`,
 for example `[=>Page:footing]`.

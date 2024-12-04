@@ -74,7 +74,7 @@ For easier use of the editor, have a look at the key-bindings under the <em>Help
 
 You can also start from our template project. The template
 project provides a shell for the generated editor that enables the user to work with multiple models, and
-[model units](/Background/Models_and_Model_Units), but does not include any Freon definition 
+[model units](/Background#models-and-model-units-4), but does not include any Freon definition 
 files, i.e. it does not include a language definition. You need to define your own.
 
 To use the template project clone branch `master` from <a href="https://github.com/freon4dsl/Freon-template" target="_blank">
@@ -184,7 +184,7 @@ The code in a Freon project under `~/src` is organised into the following subfol
     These two files are the placeholders for any [customization](/Documentation/Customizations) that you
     would like to do.
   - **.../language**: code that implements the language structure.
-  - **.../reader**: a parser that is able to read [model units](/Background/Models_and_Model_Units)
+  - **.../reader**: a parser that is able to read [model units](/Background#models-and-model-units-4)
     from a text string or file.
   - **.../scoper**: code for that determines which elements are visible for a certain element in the user's model.
   - **.../stdlib**: code that implements some standard elements of your language, for instance
@@ -196,7 +196,7 @@ The code in a Freon project under `~/src` is organised into the following subfol
   - **.../validator**: code that determines whether certain parts of your user's model contain
     errors. The file `CustomYourLanguageNameValidator.ts` is the placeholder for any [customization](/Documentation/Customizations) that you
     would like to do.
-  - **.../writer**: code that is able to write your user's [model units](/Background/Models_and_Model_Units)
+  - **.../writer**: code that is able to write your user's [model units](/Background#models-and-model-units-4)
     in string format to a file.
 - **webapp**: source code for the web-application used for all generated languages. Noteworthy is the 
 file `.../webapp/config/WebappConfiguration.ts`. This file holds the references to the generated language
@@ -235,9 +235,9 @@ A Freon language definition can have five parts:
 
 1. [The language structure](/Documentation/Creating_the_Metamodel), or abstract syntax tree (AST) is defined in files with extension `.ast`.
 2. [The concrete syntax](/Documentation/Defining_an_Editor) of the language (CST), or editor definition, is defined in files with extension `.edit`.
-3. [The scoping](/Documentation/Scoping,_Typing,_and_Validation/Scope_Provider) is defined in files with extension `.scope`.
-4. [The typing](/Documentation/Scoping,_Typing,_and_Validation/Type_Provider) is defined in files with extension `.type`.
-5. [The validation](/Documentation/Scoping,_Typing,_and_Validation/Validator) is defined in files with extension `.valid`.
+3. [The scoping](/Documentation/Scoping,_Typing,_and_Validating/Scope_Provider) is defined in files with extension `.scope`.
+4. [The typing](/Documentation/Scoping,_Typing,_and_Validating/Type_Provider) is defined in files with extension `.type`.
+5. [The validation](/Documentation/Scoping,_Typing,_and_Validating/Validator) is defined in files with extension `.valid`.
 
 And yes, you can use multiple files to define one of the parts. For instance, Freon will combine
 multiple .ast files into one AST definition, and multiple .scope files into one scope definition.
@@ -246,7 +246,7 @@ multiple .ast files into one AST definition, and multiple .scope files into one 
 
 There is no need to write all the five definition files right from the start. The only one that is
 mandatory is the language structure (.ast). Freon will generate defaults for all the other elements.
-This is what we call the Default Level of the [three levels of customization](/Documentation/Customization).
+This is what we call the Default Level of the [three levels of customization](/Documentation/Customizations).
 
 ## The Command Line Interface
 

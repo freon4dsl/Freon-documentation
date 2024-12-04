@@ -1,7 +1,7 @@
 # Boxes
 
 A Box is an abstract class describing the features that are common for all boxes.
-As explained in the [editor framework](/Documentation/Under_the_Hood/The_Editor_Framework),
+As explained in the [editor framework](/Documentation/Under_the_Hood/Editor_Framework),
 each box has a mandatory model element and role. The following predefined boxes are available.
 
 | Primitive Boxes | Grouping Boxes      |

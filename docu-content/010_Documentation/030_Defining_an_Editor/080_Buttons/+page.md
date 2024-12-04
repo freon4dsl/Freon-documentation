@@ -15,12 +15,12 @@ a space between the start square bracket `[` and `button`.
 ```
 
 The **text** is the text that will be shown on the button. The **boxRole** is the manner in which the button is coupled to an action.
-For this you need to create a [custom action](/Documentation/Customizations/Writing_Actions). 
+For this you need to create a [custom action](/Documentation/Customizations/Editor_Customization#writing-custom-actions-4). 
 
 Note that in the custom action you need to specify the
 exact same **boxRole** as the one that has been supplied with the button in the .edit file.
 When implementing this custom action, you can use `box.node` to get the node in the ast associated with the button.
-For more information see [Writing_Actions](/Documentation/Customizations/Writing_Actions).
+For more information see [Writing_Actions](/Documentation/Customizations/Editor_Customization#writing-custom-actions-4).
 
 Note that we are still working on exposing the in-built actions in the editor core.
 

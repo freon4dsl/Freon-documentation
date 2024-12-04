@@ -11,7 +11,7 @@ If you want to know how to use it, see [Editor Customization](/Documentation/Cus
 ## The AST, the Box Tree, and the DOM
 
 The internal representation of any model written in a DSL is a tree of instances of TypeScript classes, 
-the Abstract Syntax Tree (AST). All AST classes implement the core interface [`FreNode`](/Documentation/Under_the_hood/Core_Interfaces).
+the Abstract Syntax Tree (AST). All AST classes implement the core interface [`FreNode`](/Documentation/Under_the_Hood/Core_Interfaces).
 Because the visual representation in the editor can differ from the AST, every visual element is represented 
 by another TypeScript class called **Box**. 
 All boxes that are used to show a certain projection set or editor view, form another tree, called the **Box Tree**. In fact,
@@ -37,7 +37,7 @@ The layout of every visible element in the editor is based on _boxes_. A box is 
 in the editor. Every AST node is projected in a box. A box can contain any number of child boxes.
 
 The framework provides many types of predefined boxes. See
-[Predefined Boxes](/Documentation/Under_the_Hood/The_Editor_Framework/Predefined_Boxes) for an overview.
+[Predefined Boxes](/Documentation/Under_the_Hood/Editor_Framework/Predefined_Boxes) for an overview.
 These boxes can be used to build a projection.
 
 Let's look at a small example to start with. Figure 1 shows the projection of the concept `StringLiteral`. This is mapped to a horizontal list
@@ -51,7 +51,7 @@ caption='Mapping a StringLiteral'
 figureNumber={1}
 />
 
-In TypeScript, using the [predefined boxes](/Documentation/Under_the_Hood/The_Editor_Framework/Predefined_Boxes), this projection might look something like:
+In TypeScript, using the [predefined boxes](/Documentation/Under_the_Hood/Editor_Framework/Predefined_Boxes), this projection might look something like:
 
 ```ts
 new HorizontalListBox([new LabelBox('"'), new TextBox(stringLiteral.value), new LabelBox('"')]);

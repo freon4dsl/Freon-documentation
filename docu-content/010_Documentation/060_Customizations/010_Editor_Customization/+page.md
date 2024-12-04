@@ -7,7 +7,7 @@
 
 Editor customization can be done by adding projections, actions, and/or external Svelte components. But
 before you dive into all this, we suggest that you become familiar with the information on the Box model,
-as explained in the [Freon Editor Framework](/Documentation/Under_the_Hood/The_Editor_Framework).
+as explained in the [Freon Editor Framework](/Documentation/Under_the_Hood/Editor_Framework).
 
 
 ## The Generated Box Providers 
@@ -64,7 +64,7 @@ concept contains the following to methods.
 
 The first method shows that any custom projection is always handled first. The second method is an 
 example of a method that returns a Box based on the current content of `this._node`. Note that the implementation replies on 
-heavily on a number of [predefined box types](/Documentation/Under_the_Hood/The_Editor_Framework/Predefined_Boxes), as well as on
+heavily on a number of [predefined box types](/Documentation/Under_the_Hood/Editor_Framework/Predefined_Boxes), as well as on
 the predefined method `createDefaultExpressionBox`, which returns the correct box for a (non-binary) expression concept.
 
 

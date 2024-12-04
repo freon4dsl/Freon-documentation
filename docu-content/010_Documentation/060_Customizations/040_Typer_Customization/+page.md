@@ -1,7 +1,7 @@
 # Customization of the Typer
 
 The typer can be customized **per concept**. Your new typer needs
-to implement the [FreTyper interface](/Documentation/Under_the_Hood/The_FreTool_Interfaces#fretyper-5).
+to implement the [FreTyper interface](/Documentation/Under_the_Hood/FreTool_Interfaces#fretyper-5).
 
 As a convenience, Freon generates a file `~/frecode/typer/CustomYourLanguageNameTyperPart.ts`,
 which will not be overwritten upon regeneration. It already contains a class that implements this interface.

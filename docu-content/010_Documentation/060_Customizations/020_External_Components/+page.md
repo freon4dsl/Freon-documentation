@@ -25,10 +25,10 @@ In general, there are three forms in which an external component can be present 
 replaced by an external component. It is up to the language engineer to get and set the value of the property correctly, and to
 get tabbing etc. working.
 
-Especially the two latter cases require knowledge of the Freon [Box Model](/Documentation/Documentation/Under_the_Hood/The_Editor_Framework). 
+Especially the two latter cases require knowledge of the Freon [Box Model](/Documentation/Under_the_Hood/Editor_Framework). 
 Please, become familiar with that topic first, as below we will refer to the different types of boxes associated with
 the various forms of external components. More information on the API of these box types can be 
-found in [External Component Box Types](/Documentation/Documentation/Under_the_Hood/External_Component_Box_Types).
+found in [External Component Box Types](/Documentation/Under_the_Hood/Editor_Framework/External_Component_Box_Types).
 
 ## More Information and Assistance
 
@@ -58,7 +58,7 @@ In the next example a simple animated gif component is added to the fragment pro
     is approved level3: ${self.isApprovedLevel3 checkbox}
     [external=AnimatedGif number="1"]
 ]
-fragment Second [
+fragment SecondCard [
 ```
 
 <Figure
@@ -180,7 +180,7 @@ the name of the fragment, and `ExternalComponent` is the name of the external co
 or `${self.PROPERTY wrap=ExternalComponent}`, where `self.PROPERTY` is the familiar reference to a property.
 
 The box type associated with a wrapper is dependent upon the type of property or fragment that is being wrapped.
-(See [External Component Box Types](/Documentation/Documentation/Under_the_Hood/External_Component_Box_Types).)
+(See [External Component Box Types](/Documentation/Under_the_Hood/Editor_Framework/External_Component_Box_Types).)
 
 - Fragment: `FragmentWrapperBox`.
 - Property of type string: `StringWrapperBox`. 
@@ -213,7 +213,7 @@ The syntax to position the replacement within the projection is `${self.PROPERTY
 where `self.PROPERTY` is the familiar reference to a property and `ExternalComponent` is the name of the external component.
 
 The box type associated with a replacement is dependent upon the type of property that is being replaced.
-(See [External Component Box Types](/Documentation/Documentation/Under_the_Hood/External_Component_Box_Types).)
+(See [External Component Box Types](/Documentation/Under_the_Hood/Editor_Framework/External_Component_Box_Types).)
 
 - Property of type string: `ExternalStringBox`.
 - Property of type number: `ExternalNumberBox`.

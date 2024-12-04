@@ -61,5 +61,5 @@ these names (in the example above ".") can be set.
 ## Adding Names of External Components
 
 Freon offers the possibility to include Svelte components that are defined outside of Freon. These components
-are called [_external_](/Documentation/Defining_an_Editor/External_Components). All names of external components 
+are called [_external_](/Documentation/Customizations/External_Components). All names of external components 
 need to be declared in the `global` section.

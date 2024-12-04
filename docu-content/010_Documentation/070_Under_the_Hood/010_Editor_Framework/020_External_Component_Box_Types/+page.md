@@ -13,9 +13,9 @@ manner in which external components are included will remain the same in next ve
 </svelte:fragment></Note>
 
 In this version of Freon it is possible to include UI components that are not native to Freon. 
-See [External Components](/Documentation/Defining_an_Editor/External_Components).
+See [External Components](/Documentation/Customizations/External_Components).
 
-The use of external components requires knowledge of the Freon [Box Model](/Documentation/Under_the_Hood/The_Editor_Framework). 
+The use of external components requires knowledge of the Freon [Box Model](/Documentation/Under_the_Hood/Editor_Framework). 
 In this section we explain the API for the various forms of external components.
 
 ## Simple additions

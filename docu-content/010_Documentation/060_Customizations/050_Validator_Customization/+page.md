@@ -1,7 +1,7 @@
 # Customization of the Validator
 
 The validator can be adjusted by adding a single Typescript class. This class should implement
-the generated [checker interface](/Documentation/Under_the_Hood/The_FreTool_Interfaces#frevalidator-4) of the validator, 
+the generated [checker interface](/Documentation/Under_the_Hood/FreTool_Interfaces#frevalidator-4) of the validator, 
 adding checks per node of the AST that is visited.  
 
 ## The Checker Interface
@@ -34,7 +34,7 @@ which will not be overwritten upon regeneration. This validator should implement
 You can give a custom implementation for any of the methods of the default worker. This method will 
 override the (empty) default implementation.
 Any validation errors should be pushed onto the `errorList` attribute. Note that each error must implement the
-[FreError](/Documentation/Under_the_Hood/The_FreTool_Interfaces/FreValidator_Interface#FreError) interface.
+[FreError](/Documentation/Under_the_Hood/FreTool_Interfaces#frevalidator-4) interface.
 
 The result of the above could look something like the following. In this example only nodes of 
 type `EntityFunction` are checked. If the name of the node equals `determine` than an error is

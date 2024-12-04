@@ -134,14 +134,14 @@ export const freonConfiguration = new FreonConfiguration();
 
 All fre-tools can be _completely replaced_ at the 3rd level, thereby completely
 disregarding the default and definition levels.
-This is done by implementing their respective [interfaces](/Documentation/Under_the_Hood/FreTool_interfaces).
+This is done by implementing their respective [interfaces](/Documentation/Under_the_Hood/FreTool_Interfaces).
 
 For the parser and unparser this is currently the only way to customize.
 More information on the interfaces can be found here:
 
-- [FreScoper](/Documentation/Under_the_Hood/The_FreTool_Interfaces#frescoper-3)
-- [FreTyper](/Documentation/Under_the_Hood/The_FreTool_Interfaces#fretyper-5)
-- [FreValidator](/Documentation/Under_the_Hood/The_FreTool_Interfaces#frevalidator-4)
-- [FreReader](/Documentation/Under_the_Hood/The_FreTool_Interfaces#frereader-6)
-- [FreWriter](/Documentation/Under_the_Hood/The_FreTool_Interfaces#frewriter-7)
-- [FreStdlib](/Documentation/Under_the_Hood/The_FreTool_Interfaces#frestdlib-8)
+- [FreScoper](/Documentation/Under_the_Hood/FreTool_Interfaces#frescoper-3)
+- [FreTyper](/Documentation/Under_the_Hood/FreTool_Interfaces#fretyper-5)
+- [FreValidator](/Documentation/Under_the_Hood/FreTool_Interfaces#frevalidator-4)
+- [FreReader](/Documentation/Under_the_Hood/FreTool_Interfaces#frereader-6)
+- [FreWriter](/Documentation/Under_the_Hood/FreTool_Interfaces#frewriter-7)
+- [FreStdlib](/Documentation/Under_the_Hood/FreTool_Interfaces#frestdlib-8)

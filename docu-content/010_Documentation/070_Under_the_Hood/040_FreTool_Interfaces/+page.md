@@ -349,4 +349,4 @@ export interface FreStdlib {
 
 
 The second series of interfaces are those that define parts of the
-[Freon Editor Framework](/Documentation/Under_the_Hood/The_Editor_Framework).
+[Freon Editor Framework](/Documentation/Under_the_Hood/Editor_Framework).
