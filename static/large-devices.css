@@ -24,31 +24,17 @@
 
     /* Styles for the landing page that are different for different screen sizes */
     /* Styles for landing-top section */
-    .landing-intro {
+    .landing-name {
         white-space: wrap;
-    }
-    .landing-intro {
-        margin-right: 2rem;
     }
     .landing-spacer {
         min-width: 0.3rem;
     }
+    .landing-h2 {
+        margin-left: 2rem;
+    }
     .landing-text {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-    }
-    /* Styles for hero section */
-    .landing-hero {
-        display: flex;
-        justify-content: space-between;
-    }
-    .landing-hero-right {
-        text-align: right;
-        padding-right: 5rem;
-    }
-    .landing-hero-left {
-        max-width: 50%;
+        margin: 2rem;
     }
     /* Styles for button grid */
     .landing-enter-buttons-grid {
@@ -99,5 +85,16 @@
     }
     .main-menu-small-img {
         display: none;
+    }
+    /*****************/
+    .landing-herosection {
+        background-position-x: 98%;
+        background-position-y: 99%;
+    }
+    .landing-herosection h1 {
+        text-align: center;
+    }
+    .landing-herosection h2 {
+        text-align: center;
     }
 }

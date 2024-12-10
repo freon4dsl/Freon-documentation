@@ -173,7 +173,7 @@ li {
 .landing-started a {
 	color: var(--theme-colors-accent);
 }
-.landing img {
+.landing-herosection img {
 	border-radius: 5px 5px 0 0;
 	box-sizing: border-box;
 	max-width: 100%;
@@ -183,35 +183,28 @@ li {
 .landing-freon-name {
 	color: var(--theme-colors-accent);
 }
-.landing h1 {
+.landing-herosection h1 {
 	margin: 4rem 4rem 1rem 2rem;
 }
-.landing h2 {
+.landing-herosection h2 {
 	margin: 1rem 4rem 2rem 2rem;
-	text-align: center;
 }
-/* Styles for landing-top section */
-.landing-top {
+/* Styles for landing-name section */
+.landing-name {
 	display: inline-block;
 	padding-left: 1rem;
 	padding-right: 1rem;
-}
-.landing-intro {
-	display: inline-block;
 	text-align: left;
 	box-shadow: 3px 3px 3px lightgrey;
 	background-color: var(--theme-colors-color2);
 	border-radius: 5px;
-	padding-left: 1rem;
-	padding-right: 1rem;
+	margin-left: 1rem;
 }
-.landing-intro-child {
-	display: inline-block;
+.landing-name-child {
 	padding: 0.5rem 0.5rem;
-	vertical-align: middle;
 }
 .landing-name-logo {
-	display : flex;
+	display: flex;
 	flex-direction: row;
 	align-items: center;
 	max-height: 6rem;
@@ -225,24 +218,18 @@ li {
 .landing-started {
 	font-size: 2em;
 	font-weight: bolder;
-	text-align: right;
-	display: inline-block;
+	text-align: center;
 	padding: 0.5rem 0.5rem;
-	vertical-align: middle;
+	margin-bottom: 1.7rem;
 }
 .landing-arrow {
 	color: var(--theme-colors-accent);
 }
-/* Styles for hero section */
-.landing-hero {
-	margin-top: 1rem;
-}
-.landing-hero-left {
-	padding: 1rem;
-}
-.landing-hero-right {
-	position: relative;
-	padding: 1rem;
+/* Styles for background image on landing page */
+.landing-herosection {
+	background-image: url('images/landing-page/wordcloud-tree-small.png');
+	background-repeat: no-repeat;
+	margin-bottom: 2rem;
 }
 /* Styles for testimonial section */
 .landing-card {
@@ -301,6 +288,7 @@ li {
 	text-align: left;
 	list-style: none;
 	padding: 0.5rem;
+	border: 1px solid var(--theme-colors-bg_app_bar);
 }
 .landing-sub-info-text {
 	list-style: none;
@@ -323,6 +311,9 @@ li {
 }
 .landing-link {
 	color: var(--theme-colors-color);
+}
+.landing-audio-control {
+	width: 100%;
 }
 /* end styles for landing page */
 

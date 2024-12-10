@@ -26,9 +26,6 @@
         column-gap: 20px;
         row-gap: 20px;
     }
-    .landing-hero-right {
-        text-align: center;
-    }
     /* end styles for landing page */
 
     /* Styles for categories */
@@ -70,5 +67,23 @@
     .main-menu-small-img {
         max-width: 0.5rem;
         max-height: 0.5rem;
+    }
+    /*****************/
+    .landing-herosection {
+        background-size: 250px;
+        background-position-x: 100%;
+        background-position-y: 99%;
+    }
+    .landing-herosection h1 {
+        text-align: center;
+    }
+    .landing-herosection h2 {
+        text-align: center;
+    }
+    .landing-h2 {
+        margin-left: 1rem;
+    }
+    .landing-text {
+        margin: 1rem;
     }
 }
