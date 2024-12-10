@@ -222,9 +222,6 @@ li {
 .landing-image-holder {
 	display: inline-block;
 }
-.landing-audio-control {
-	width: 100px;
-}
 .landing-started {
 	font-size: 2em;
 	font-weight: bolder;

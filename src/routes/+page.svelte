@@ -52,48 +52,52 @@
 				<section class="landing-hero">
 					<!-- To make sure the image comes before the text on small devices, it is placed here. -->
 					<div class="landing-hero-right small-screen">
-						<img src="./images/landing-page-picture.png" alt="An (abstract syntax) Tree" />
+						<img src="images/landing-page/landing-page-picture-test.png" alt="Word Cloud Tree" style="width:100%;">
 					</div>
-					<div class="landing-hero-left">
-						<h3>Introducing <span class="landing-freon-name">Freon</span>, the ultimate Language Workbench for the web!</h3>
-						<p>
-							Freon empowers you to effortlessly create custom web-enabled mini-languages, or
-							<a href="https://en.wikipedia.org/wiki/Domain-specific*language" target="_blank"><b>Domain Specific Languages (DSLs)</b></a>,
-							tailored to your unique needs. With just a small set of definitions, Freon generates a fully integrated toolkit for your
-							language, including a seamless editor, scoper, typer, and validator — all designed to elevate your language creation process.
-						</p>
-						<p>
-							One of Freon’s standout features is its <a href="/Intro/Projectional_Editing"><b>projectional editor</b></a>, a revolutionary
-							approach to language editing that’s miles ahead of traditional editors. Unlike standard editors, projectional editing offers
-							dynamic, visual structuring and precision, making it easier than ever to build and refine DSLs right in any browser.
-						</p>
-						<h3>Key Benefits:</h3>
-						<ul>
-							<li>
-								<b>Personalized Language Support</b>: Tailor your editor to interpret and respond to the specific syntax, logic, and
-								commands of your own domain language, making backend integration smoother and more powerful.
-							</li>
-							<li>
-								<b>Simplified Content Management</b>: With a custom editor, adding and managing backend content becomes streamlined and
-								efficient, cutting down on coding time while reducing errors.
-							</li>
-							<li>
-								<b>Flexibility and Control</b>: Easily build, test, and adapt your editor to align with your evolving backend needs, so you
-								stay agile and future-ready.
-							</li>
-							<li>
-								<b>Boosted Productivity</b>: Enjoy the convenience of a tool that speaks your language – literally. Create, and edit content
-								faster, without needing to compromise on the complexity or specificity of your backend requirements.
-							</li>
-						</ul>
-						<p>
-							Unlock the power of custom mini-languages with Freon and see how projectional editing can redefine the way you create and
-							manage DSLs!
-						</p>
+
+					<div class="container large-screen">
+						<img src="images/landing-page/landing-page-picture-test.png" alt="Word Cloud Tree" style="width:100%;">
+						<div class="top-left">
+							<h3>Introducing <span class="landing-freon-name">Freon</span>, the ultimate Language Workbench for the web!</h3>
+							<p>
+								Freon empowers you to effortlessly create custom web-enabled mini-languages, or
+								<a href="https://en.wikipedia.org/wiki/Domain-specific*language" target="_blank"><b>Domain Specific Languages (DSLs)</b></a>,
+								tailored to your unique needs. With just a small set of definitions, Freon generates a fully integrated toolkit for your
+								language, including a seamless editor, scoper, typer, and validator — all designed to elevate your language creation process.
+							</p>
+							<p class='top-left-second'>
+								One of Freon’s standout features is its <a href="/Intro/Projectional_Editing"><b>projectional editor</b></a>, a revolutionary
+								approach to language editing that’s miles ahead of traditional editors. Unlike standard editors, projectional editing offers
+								dynamic, visual structuring and precision, making it easier than ever to build and refine DSLs right in any browser.
+							</p>
+						</div>
+						<div class="bottom-right">
+							<h3>Key Benefits:</h3>
+							<ul>
+								<li>
+									<b>Personalized Language Support</b>: Tailor your editor to interpret and respond to the specific syntax, logic, and
+									commands of your own domain language, making backend integration smoother and more powerful.
+								</li>
+								<li>
+									<b>Simplified Content Management</b>: With a custom editor, adding and managing backend content becomes streamlined and
+									efficient, cutting down on coding time while reducing errors.
+								</li>
+								<li>
+									<b>Flexibility and Control</b>: Easily build, test, and adapt your editor to align with your evolving backend needs, so you
+									stay agile and future-ready.
+								</li>
+								<li>
+									<b>Boosted Productivity</b>: Enjoy the convenience of a tool that speaks your language – literally. Create, and edit content
+									faster, without needing to compromise on the complexity or specificity of your backend requirements.
+								</li>
+							</ul>
+							<p>
+								Unlock the power of custom mini-languages with Freon and see how projectional editing can redefine the way you create and
+								manage DSLs!
+							</p>
+						</div>
 					</div>
-					<div class="landing-hero-right large-screen">
-						<img src="./images/landing-page-picture.png" alt="An (abstract syntax) Tree" />
-					</div>
+
 				</section>
 
 				<section>
@@ -173,3 +177,33 @@
 		</div>
 	</main>
 </ThemeContext>
+
+<style>
+  /* Container holding the image and the text */
+  .container {
+      position: relative;
+      text-align: center;
+      width: 100vw;
+      margin: auto;
+      padding: 5rem;
+  }
+  /* Top left text */
+  .top-left {
+      position: absolute;
+      top: 8px;
+      left: 16px;
+      text-align: left;
+      max-width: 55%;
+  }
+  /* Bottom right text */
+  .bottom-right {
+      position: absolute;
+      bottom: 45px;
+      right: 16px;
+      text-align: left;
+      max-width: 70%;
+  }
+	.top-left-second {
+			max-width: 85%;
+	}
+</style>
