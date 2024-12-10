@@ -1,6 +1,6 @@
 # Welcome, Language Engineer!
 
-Freon is a Language Workbench, a tool for creating mini-languages,which are also known 
+Freon is a Language Workbench, a tool for creating mini-languages, which are also known 
 as <a href="https://en.wikipedia.org/wiki/Domain-specific*language" target="_blank">Domain Specific Languages (DSLs)</a>.
 Freon generates an integrated set of editor, scoper, typer, and validator for your mini-language 
 from a small set of definitions. Together we call this the work environment for your language.

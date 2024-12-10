@@ -8,7 +8,8 @@
   from <a href="https://prismjs.com/" target="_blank">Prism</a>,
   using the Visual Studio Code themes.
 - The 'OOPS' icon on our 404 page comes
-  from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>.
+  from <a href="https://www.flaticon.com/" title="Flaticon" target="_blank">www.flaticon.com</a>.
+- The word cloud was created using <a href="https://www.wordclouds.com/" target="_blank">www.wordclouds.com</a>.
 
 All the rest, including any errors, can be contributed to the creators of Freon: Jos Warmer and Anneke Kleppe (see <a
 href="https://www.openmodeling.nl/" title="Openmodeling">www.openmodeling.nl</a>).
