@@ -69,7 +69,7 @@ immediately. That is something we like to add in a next version of Freon. In the
 you must select `Validate` from the Edit menu to activate the validator. But then it shows you...
 
 <Figure
-imageName={'Tutorial-lesson9-screenshot1.png'}
+imageName={'tutorial/Tutorial-lesson9-screenshot1.png'}
 caption={'Validation error in grading expression'}
 figureNumber={1}
 />

@@ -157,7 +157,7 @@ export class XX extends MobxModelElementImpl implements FreModel {
         if (oldUnit.freOwnerDescriptor().owner !== this) {
             return false;
         }
-        // we must store the interface in the same place as the old unit, which info is held in FreContainer()
+        // we must store the interface in the same place as the unused unit, which info is held in FreContainer()
         if (oldUnit.freLanguageConcept() === "XXunit" && oldUnit.freOwnerDescriptor().propertyName === "units") {
             const index = this.units.indexOf(oldUnit as XXunit);
             this.units.splice(index, 1, newUnit as XXunit);

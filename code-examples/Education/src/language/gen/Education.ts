@@ -190,7 +190,7 @@ export class Education extends MobxModelElementImpl implements FreModel {
         if (oldUnit.freOwnerDescriptor().owner !== this) {
             return false;
         }
-        // we must store the interface in the same place as the old unit, which info is held in FreContainer()
+        // we must store the interface in the same place as the unused unit, which info is held in FreContainer()
         if (oldUnit.freLanguageConcept() === "Topic" && oldUnit.freOwnerDescriptor().propertyName === "topic") {
             AST.changeNamed("removeUnit", () => {
                 const index = this.topic.indexOf(oldUnit as Topic);

@@ -37,7 +37,7 @@ range: ${self.range slider}
 Which results in the following.
 
 <Figure
-imageName={'Documentation-Number-Projections-screenshot1.png'}
+imageName={'documentation/Documentation-Number-Projections-screenshot1.png'}
 caption={'A number slider control'}
 figureNumber={1}
 />

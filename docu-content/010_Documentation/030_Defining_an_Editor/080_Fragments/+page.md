@@ -63,7 +63,7 @@ BaseProduct {
 [
     Base Product for ${self.theme radio} ${self.name }
         [fragment First] [fragment Second]
-        ${self.parts:comments}
+        ${self.parts}
 ]
     fragment First [
     First Card
@@ -88,7 +88,7 @@ In this example we have styled the fragment boxes with a light yellow background
 The styled editor looks like this.
 
 <Figure
-imageName={'Documentation-Fragments-screenshot1.png'}
+imageName={'documentation/Documentation-Fragments-screenshot1.png'}
 caption={'Two fragments side by side'}
 figureNumber={1}
 />

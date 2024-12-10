@@ -25,7 +25,7 @@ To simplify this expression helpers function may be defined. Each of these is ca
 The following figure shows a UML class diagram of the concepts in the language.
 
 <Figure 
-imageName={'docu-project-uml.png'} 
+imageName={'documentation/docu-project-uml.png'} 
 caption={'UML diagram of Insurance Project'}
 figureNumber={1}
 />

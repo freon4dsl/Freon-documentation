@@ -11,7 +11,7 @@ officia deserunt mollit anim id est laborum."
 
 ================ this is how to include a figure
 <Figure
-imageName={'Tutorial-lesson10-screenshot1.png'}
+imageName={'examples/Tutorial-lesson10-screenshot1.png'}
 caption={'Validation error in grading expression'}
 figureNumber={1}
 />

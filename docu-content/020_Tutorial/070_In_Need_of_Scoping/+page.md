@@ -23,7 +23,7 @@ In the figure the name 'Peter' would be accessible/visible
 in (from smallest to largest) set8, set 4, set2, and set1. But it would not be accessible/visible in set3, set5, set6, and set7.
 
 <Figure
-imageName={'Tutorial-lesson6-namespaces.png'}
+imageName={'tutorial/Tutorial-lesson6-namespaces.png'}
 caption={'Simple View on Namespaces'}
 figureNumber={1}
 />

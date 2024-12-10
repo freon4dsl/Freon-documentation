@@ -1,11 +1,5 @@
 <script>
     import Figure from "$lib/figures/Figure.svelte";
-    let imageName = 'layered-architecture2.png';
-    let caption = 'The Stacked Architecture';
-    let figureNumber = 1;
-    let imageName2 = 'fall-through.png';
-    let caption2 = 'Projection Lookup for an AST Node';
-    let figureNumber2 = 2;
 </script>
 
 # Customization
@@ -37,9 +31,9 @@ we use the following levels of customization.
 It is our aim to provide approximately 80% of the required functionality of the work environment at the first two levels.
 
 <Figure 
-bind:imageName={imageName} 
-bind:caption={caption}
-bind:figureNumber={figureNumber}
+imageName={'documentation/layered-architecture2.png'} 
+caption={'The Stacked Architecture'}
+figureNumber={1}
 />
 
 Freon combines the definitions for each tool, together with the customized TypeScript code into one application, 
@@ -52,9 +46,9 @@ For instance, the generated editor will per [**concept**](/Documentation/Creatin
 3. use the _default projection_ from the default level, the one generated when no `.edit` definition file is present.
 
 <Figure
-bind:imageName={imageName2}
-bind:caption={caption2}
-bind:figureNumber={figureNumber2}
+imageName={'documentation/fall-through.png'}
+caption={'Projection Lookup for an AST Node'}
+figureNumber={2}
 />
 
 This stacking allows the language engineer to start quickly with a working (but somewhat rough) language environment

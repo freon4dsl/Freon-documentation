@@ -45,7 +45,7 @@ BaseProduct {[
 And the result looks like this.
 
 <Figure
-imageName={'Documentation-Limited-Projections-screenshot1.png'}
+imageName={'documentation/Documentation-Limited-Projections-screenshot1.png'}
 caption={'A control for a single value of limited type'}
 figureNumber={1}
 />
@@ -76,7 +76,7 @@ InsuranceProduct {[
 And the result is the following.
 
 <Figure
-imageName={'Documentation-Limited-Projections-screenshot2.png'}
+imageName={'documentation/Documentation-Limited-Projections-screenshot2.png'}
 caption={'A control for a multivalued property of limited type'}
 figureNumber={2}
 />

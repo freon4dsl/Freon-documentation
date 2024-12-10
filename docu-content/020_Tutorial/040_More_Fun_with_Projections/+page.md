@@ -45,7 +45,7 @@ Yes, generate the editor and try it! Note that to see this definition in action 
 icon in the top bar, and select 'StartFlow' from the list of model units. It looks like this.
 
 <Figure
-imageName={'Tutorial-lesson3-screenshot1.png'}
+imageName={'tutorial/Tutorial-lesson3-screenshot1.png'}
 caption={'Editor after adding projections for the Flow model unit'}
 figureNumber={1}
 />
@@ -133,7 +133,7 @@ named 'StartFlow again', and ... Yes, there is a table. Feel free to change `row
 to `columns` to see what changes.
 
 <Figure
-imageName={'Tutorial-lesson3-screenshot2.png'}
+imageName={'tutorial/Tutorial-lesson3-screenshot2.png'}
 caption={'Editor after adding projections for the Flow model unit'}
 figureNumber={2}
 />

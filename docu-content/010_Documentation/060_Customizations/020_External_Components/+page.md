@@ -62,7 +62,7 @@ fragment SecondCard [
 ```
 
 <Figure
-imageName={'Documentation-Externals-screenshot1.png'}
+imageName={'documentation/Documentation-Externals-screenshot1.png'}
 caption={'Adding an animated gif'}
 figureNumber={1}
 />
@@ -238,7 +238,7 @@ Base Product for ${self.theme radio} ${self.name replace=SMUI_Dialog buttonLabel
 ```
 
 <Figure
-imageName={'Documentation-Externals-screenshot2.png'}
+imageName={'documentation/Documentation-Externals-screenshot2.png'}
 caption={'Replacing a string property with a dialog'}
 figureNumber={1}
 />

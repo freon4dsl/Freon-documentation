@@ -50,7 +50,7 @@ InsurancePart{
 ```
 
 <Figure
-imageName={'Documentation-Boolean-Projections-screenshot1.png'}
+imageName={'documentation/Documentation-Boolean-Projections-screenshot1.png'}
 caption={'Displaying different strings for boolean values'}
 figureNumber={1}
 />
@@ -139,7 +139,7 @@ the text used for property `self.isApprovedLevel2` is defined by the global
 boolean projection. See [Global Projections](/Documentation/Defining_an_Editor/Global_Projections).
 
 <Figure
-imageName={'Documentation-Boolean-Projections-screenshot2.png'}
+imageName={'documentation/Documentation-Boolean-Projections-screenshot2.png'}
 caption={'Different boolean controls'}
 figureNumber={2}
 />

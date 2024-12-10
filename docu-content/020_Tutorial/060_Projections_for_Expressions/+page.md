@@ -114,7 +114,7 @@ EqualsExpression {
 Upon generation, you will see the following. Expressions that really look like expressions.
 
 <Figure
-imageName={'Tutorial-lesson5-screenshot1.png'}
+imageName={'tutorial/Tutorial-lesson5-screenshot1.png'}
 caption={'Editor after projections for expressions'}
 figureNumber={1}
 />

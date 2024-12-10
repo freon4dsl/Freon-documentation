@@ -103,7 +103,7 @@ the <code>scripts</code> entry in the _package.json_ file. The <code>generate</c
 [//]: # (todo adjust screenshot of template project)
 
 <Figure
-imageName={'packagejsonadjustment.png'}
+imageName='documentation/packagejsonadjustment.png'
 caption={'Screenshot of package.json'}
 figureNumber={1}
 />

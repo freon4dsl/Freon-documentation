@@ -12,7 +12,7 @@ In Freon types are normal concepts, but usually types are not projected. They, n
 in .edit files. So, why are they important? Let's look at the screenshot below.
 
 <Figure
-imageName={'Tutorial-lesson8-screenshot1.png'}
+imageName={'tutorial/Tutorial-lesson8-screenshot1.png'}
 caption={'Undetected errors in grading expressions'}
 figureNumber={1}
 />

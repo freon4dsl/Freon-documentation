@@ -107,7 +107,7 @@ Then open yet another model called 'lesson6'. (We changed the metamodel, and the
 If you go the side panel and open 'TestB', you will see the following. (Todo; check this, maybe create two models for this lesson)
 
 <Figure
-imageName={'Tutorial-lesson7-screenshot1.png'}
+imageName={'tutorial/Tutorial-lesson7-screenshot1.png'}
 caption={'No scoping in the Test model unit'}
 figureNumber={1}
 />

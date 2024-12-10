@@ -68,7 +68,7 @@ To style these buttons the following SCSS code is added.
 This is displayed as follows.
 
 <Figure
-imageName={'Documentation-Buttons-screenshot1.png'}
+imageName={'documentation/Documentation-Buttons-screenshot1.png'}
 caption={'Showing a button in each table row'}
 figureNumber={1}
 />

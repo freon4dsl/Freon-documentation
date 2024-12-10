@@ -1,11 +1,5 @@
 <script>
     import Figure from "$lib/figures/Figure.svelte";
-    let imageName = 'writing-child.png';
-    let caption = 'Is this Freon?';
-    let figureNumber = 1;
-    let imageName2 = 'tower-of-babel.png';
-    let caption2 = 'Tower of Babel';
-    let figureNumber2 = 2;
 </script>
 
 # About the Name <i>Freon</i>
@@ -48,8 +42,9 @@ he and his friends used these instead of the psychic communication as their spec
 of communicating.
 
 <Figure
-bind:imageName={imageName}
-bind:caption={caption}
+imageName={'background/writing-child.png'}
+caption={'Is this Freon?'}
+figureNumber={1}
 />
 
 After a few ages, in which Freon grew up just a little but his human friends came and went,
@@ -114,9 +109,9 @@ was not strong enough to take the weight of the building, and the whole thing co
 Many human lives were lost.
 
 <Figure
-bind:imageName={imageName2}
-bind:caption={caption2}
-bind:figureNumber={figureNumber2}
+imageName={'background/tower-of-babel.png'}
+caption={'Tower of Babel'}
+figureNumber={2}
 />
 
 This disaster naturally was brought to the attention of Freon's father. He sent out his

@@ -46,7 +46,7 @@ that the quotes are not part of the AST. They are part of the concrete syntax us
 of the AST.
 
 <Figure 
-imageName='mapping-example-stringliteral.svg'
+imageName='documentation/mapping-example-stringliteral.svg'
 caption='Mapping a StringLiteral'
 figureNumber={1}
 />
@@ -67,7 +67,7 @@ In the following figure the roles are shown above the boxes in green.
 
 <Figure
 caption='Mapping a StringLiteral with Roles'
-imageName='mapping-example-stringliteral-with-roles.svg'
+imageName='documentation/mapping-example-stringliteral-with-roles.svg'
 figureNumber={2}
 />
 

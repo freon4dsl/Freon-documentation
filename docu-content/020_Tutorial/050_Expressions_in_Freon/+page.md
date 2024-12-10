@@ -196,7 +196,7 @@ Generate again, and this is (part of) what you will see. Not especially pretty, 
 lesson you will learn how to project expressions.
 
 <Figure
-imageName={'Tutorial-lesson4-screenshot1.png'}
+imageName={'tutorial/Tutorial-lesson4-screenshot1.png'}
 caption={'Editor after adding grading to the metamodel'}
 figureNumber={1}
 />
