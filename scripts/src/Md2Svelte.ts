@@ -71,9 +71,13 @@ export class Md2Svelte {
 					result = false;
 				}
 			} else {
-				this.transformFile(folderPath, ignore, outputFolder).then((r) => {
-					return r;
-				});
+				if (path.extname(folderPath) !== '.md') {
+					console.log("Skipping non markdown file: " + folderPath)
+				} else {
+					this.transformFile(folderPath, ignore, outputFolder).then((r) => {
+						return r;
+					});
+				}
 			}
 		}
 		return result;
