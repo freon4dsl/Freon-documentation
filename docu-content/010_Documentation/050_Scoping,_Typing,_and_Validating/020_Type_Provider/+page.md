@@ -172,7 +172,7 @@ instead you will need to use an <i>equalsto</i> entry.
 
 In a condition of a `where-clause` you may use `conformsto`. In that case, invocation of the rule will produce the cartesian product of
 all super concepts of the properties in the conditions. For an
-example, see [Typer Example](/Examples/Example_Typer_Definition).
+example, see [Typer Example](/Examples/Generic_Types).
 
 <Note>
 <svelte:fragment slot="content">

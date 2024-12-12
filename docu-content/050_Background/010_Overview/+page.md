@@ -1,4 +1,13 @@
-# Guiding Principles
+# A bit of Background
+
+It took a few years to create Freon, but more importantly it took a lot of experience: experience with building software 
+in general, experience with creating languages like UML and OCL, experience with creating a large number of DSLs,
+experience with the tools available for building DSLs. In short, Freon is the result of a lifetime of experience,
+and with that, the lessons learned.
+
+A few of these lessons are explained below to give you an insight in the motives and guiding principles behind Freon.
+
+## Design Philosophy
 
 The design philosophy that we follow in Freon can best be described by the following quote from
 the well-known graphical user interface designer Alan Kay.

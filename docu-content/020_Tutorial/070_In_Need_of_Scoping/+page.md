@@ -11,7 +11,7 @@ to only the questions that are on that page. For this, we need to define scope r
 
 O my, you might think, this is a really difficult subject. But, with Freon 
 we adhere to the philosophy that "_Simple things should be simple, complex things should be possible._" (Read our 
-[Guiding Principles](/Background) to find out more.) And in essence, scoping is not difficult at all.
+[Background](/Background) to find out more.) And in essence, scoping is not difficult at all.
 
 Scoping is about the question of which names are accessible/visible where. In the general case, all names in a 
 context are divided into sets. These sets do not overlap, but there are subsets of larger sets, as shown in the next figure. 

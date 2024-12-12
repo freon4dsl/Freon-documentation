@@ -26,7 +26,7 @@
 				</div>
 
 				<div>
-<!--	Without an extra div the margin-left for landing-name does not work				-->
+					<!--	Without an extra div the margin-left for landing-name does not work				-->
 					<div class="landing-name">
 						<div class="landing-name-child">
 							<div class="landing-name-logo">
@@ -50,14 +50,15 @@
 				</div>
 			</section>
 
-			<section >
+			<section>
 				<div class="landing-text">
 					<div>
 						<p>
 							Freon is a workbench that empowers you to effortlessly create custom web-enabled mini-languages, or
 							<a href="https://en.wikipedia.org/wiki/Domain-specific*language" target="_blank"><b>Domain Specific Languages (DSLs)</b></a>,
 							tailored to your unique needs. With just a small set of definitions, Freon generates a fully integrated toolkit for your
-							language, including a seamless editor, scope provider, type provider, and validator — all designed to elevate your language creation process.
+							language, including a seamless editor, scope provider, type provider, and validator — all designed to elevate your language
+							creation process.
 						</p>
 						<p>
 							One of Freon’s standout features is its <a href="/Intro/Projectional_Editing"><b>projectional editor</b></a>, a revolutionary
@@ -94,7 +95,7 @@
 			</section>
 
 			<section>
-				<h2 class='landing-h2'>Testimonial</h2>
+				<h2 class="landing-h2">Testimonial</h2>
 				<div class="landing-card">
 					<div class="landing-testimonial">
 						<div class="landing-testimonial-top">
@@ -172,7 +173,7 @@
 
 <style>
 	.landing-text {
-      margin: 2rem;
-      /*margin-left: 1rem; for small devices */
+		margin: 2rem;
+		/*margin-left: 1rem; for small devices */
 	}
 </style>

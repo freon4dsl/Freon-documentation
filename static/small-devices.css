@@ -9,6 +9,9 @@
     .large-screen {
         display: none;
     }
+    table, thead, tbody, th, td, tr {
+        display: block;
+    }
     /* Styles for the app bar that are different for different screen sizes */
     .app-bar-small {
         display: flex;

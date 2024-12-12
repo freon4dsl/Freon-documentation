@@ -1,7 +1,7 @@
 # Under the Hood
 
 Before you dive deeper under the hood of this project, we invite you to read about the
-[Guiding Principles](/Background) used during the creation of this tool.
+[Background](/Background) used during the creation of this tool.
 
 This section can be roughly divided into three parts.
 

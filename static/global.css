@@ -136,8 +136,14 @@ table {
 	margin: auto;
 	border: 1px var(--theme-colors-divider) solid;
 	border-collapse: collapse;
-	width: 90%;
+	width: 100%;
+	table-layout: fixed;
 }
+
+/*tr td:nth-child(1) { width: 1px; }*/
+/*tr td:nth-child(2) { width: 50px; }*/
+/*tr th:nth-child(1) { width: 1px; }*/
+/*tr th:nth-child(2) { width: 50px; }*/
 
 th {
 	padding: 10px;
@@ -150,6 +156,7 @@ td {
 	padding: 10px;
 	text-align: left;
 	border: 1px var(--theme-colors-divider) solid;
+	width: fit-content;
 }
 
 a {

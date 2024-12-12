@@ -3,8 +3,8 @@
 This step-by-step guide will teach you everything you need to know to easily build your own domain specific language (DSL).
 You will learn how to create the set of tools, editor, validator, interpreter, etc., which will enable your end-users to use your DSL efficiently.
 
-You can also consult the documentation, or — if you’re impatient to start hacking on your machine 
-locally — [create a project](/Documentation/Overview/Getting_Started#example-project-startup-2).
+You can also consult the documentation, or - if you’re impatient to start hacking on your machine 
+locally - [create a project](/Documentation/Overview/Getting_Started#example-project-startup-2).
 
 We assume that you are interested in DSLs, and are therefore familiar with terms
 like metamodel, abstract syntax, and model, as well as abbreviations like AST. If you

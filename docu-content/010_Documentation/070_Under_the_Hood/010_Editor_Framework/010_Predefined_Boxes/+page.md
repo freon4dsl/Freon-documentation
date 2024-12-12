@@ -18,6 +18,8 @@ All box types have a corresponding Component that renders the box in the browser
 with <a href="https://svelte.dev" target="_blank">Svelte</a>. In the source code the box implementations reside in
 the package `core`, whereas the components reside in `core-svelte`.
 
+[//]: # (todo add the new box types here)
+
 ## Primitive Boxes
 
 Primitive Boxes do not have other boxes as content. A primitive box is used to project a simple AST node in the editor.
