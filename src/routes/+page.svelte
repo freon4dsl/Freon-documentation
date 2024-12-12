@@ -12,7 +12,7 @@
 				<h1>Introducing Freon</h1>
 				<h2>The ultimate Language Workbench for the web!</h2>
 				<div class="landing-started">
-					<a href="/Documentation/Getting_Started"
+					<a href="/Documentation/Overview/Getting_Started"
 						>Get Started
 						<span class="landing-arrow">
 							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" height="28px"
@@ -113,7 +113,7 @@
 			</section>
 
 			<section class="landing-enter-buttons-grid">
-				<a href="/Documentation/Getting_Started" class="landing-enter-button">
+				<a href="/Documentation/Overview/Getting_Started" class="landing-enter-button">
 					<h3>Getting Started</h3>
 					<p>
 						Want to get started immediately... this is the place to go. We show you how to set up your project with a few commands and
