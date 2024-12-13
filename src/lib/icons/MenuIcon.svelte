@@ -4,8 +4,8 @@
 <script lang="ts">
 	export let height: number = 24;
 	export let width: number = 24;
-	export let fill: string = 'var(--color5)';
-	export let background: string = 'var(--color5)';
+	export let fill: string = 'var(--color1)';
+	export let background: string = 'var(--color6)';
 </script>
 
 <svg xmlns="http://www.w3.org/2000/svg" width="{width}px" height="{height}px" viewBox="0 0 {width} {height}" {fill}>

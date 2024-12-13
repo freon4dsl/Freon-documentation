@@ -28,7 +28,7 @@
 	<div class="app-bar-small">
 		<!-- this button is shown only when the viewport is small -->
 		<!-- it is used to open the left panel which shows the navigator -->
-		<Tooltip tip="Hide/show content tree" bottom>
+		<Tooltip tip="Hide/show content" bottom>
 			<button
 				class="app-bar-button"
 				on:click={() => {

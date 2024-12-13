@@ -58,6 +58,9 @@
         background: none;
         border: solid 1px var(--color1);
     }
+    .toc-details {
+        border-bottom: solid 1px var(--color-accent);
+    }
     /* end styles for small pages */
     .main-menu-small-expand-button {
         background: none;

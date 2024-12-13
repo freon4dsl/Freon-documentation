@@ -35,7 +35,7 @@
         padding: 0.2rem 0.2rem;
     }
     .landing-arrow {
-        color: var(--theme-colors-accent);
+        color: var(--color-accent);
     }
     .landing-spacer {
         min-width: 0;
@@ -81,7 +81,7 @@
         margin-top: 8px;
         display: flex;
         flex-direction: row;
-        border-bottom: solid 1px var(--theme-colors-accent);
+        border-bottom: solid 1px var(--color-accent);
         margin-bottom: 4px;
     }
     .page-toc-small-title {
@@ -89,12 +89,15 @@
     }
     .page-toc-small-expand-button {
         background: none;
-        border: solid 1px var(--theme-colors-bg_color);
+        border: solid 1px var(--color1);
+    }
+    .toc-details {
+        border-bottom: solid 1px var(--color-accent);
     }
     /* end styles for small pages */
     .main-menu-small-expand-button {
         background: none;
-        border: var(--theme-colors-bg_app_bar);
+        border: var(--color1);
         padding: 0;
     }
     .main-menu-small-img {
