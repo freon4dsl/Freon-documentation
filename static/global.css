@@ -5,98 +5,38 @@
 * {
 	box-sizing: border-box;
 }
+
 :root {
-	/* the following css properties are present in order for the text completion during development to function */
-	/* they are overwritten by the THEME values in 'themePresets.ts' */
-	--theme-colors-color: #342B09; /* Primary text color */
-	--theme-colors-color2: #FDE281; /* Primary text color */
-	--theme-colors-color3: #FCCB1A; /* Primary text color */
-	--theme-colors-inverse_color: #FFFDF5; /* Text color on non_normal background */
-	--theme-colors-bg_app_bar: #342B09; /* Color of header and footer */
-	--theme-colors-bg_color: #FFFDF5; /* Background color */
-	--theme-colors-bg_panel: #FFFDF5; /* Dialog background color */
-	--theme-colors-divider: #342B09; /* Dialog Title background color */
-	--theme-colors-primary: #342B09; /* Dialog primary button text color */
-	--theme-colors-list_divider: #342B09; /* Color of lines between columns in the error list */
-	--theme-colors-slider: #342B09; /* Color of lines between views */
-	--theme-colors-accent: #c94117; /* Color to get attention to an element */
-	--theme-colors-primary_button_text: black; /* Color of primary buttons in dialogs */
-	--theme-colors-secondary_button_text: grey; /* Color of non-primary buttons in dialogs */
-	--theme-colors-text_app_bar: 'white'; /* Color of header and footer text */
+	/* the theme colors */
+	--theme-colors-FRE_LIGHT: #FFFDF5;
+	--theme-colors-FRE_YELLOW: #FDE281;
+	--theme-colors-FRE_ORANGE: #FCCB1A;
+	--theme-colors-FRE_BEIGE: #B08A03;
+	--theme-colors-FRE_BROWN: #342B09;
+	--theme-colors-FRE_DARKER: #1E1905;
+	--theme-colors-FRE_ACCENT: #c94117;
+	--theme-colors-FRE_LINK: #DE6B48;
+	/* Other settings */
 
-	/* Projectional Editor "globals" */
-	--theme-colors-bg_editor: white; /* The background color of the editor */
-	--theme-colors-text_editor: #342B09; /* The color of the text, unless set otherwise by the projection */
-	--theme-fonts-size_editor: 14px; /* The font size of the text, unless set otherwise by the projection */
-	--theme-fonts-style_editor: italic; /* The font size of the text, unless set otherwise by the projection */
-	--theme-fonts-weight_editor: normal; /* The font size of the text, unless set otherwise by the projection */
-	--theme-fonts-family_editor: 'Arial'; /* The font size of the text, unless set otherwise by the projection */
-	/* TextBox */
-	--theme-colors-bg_empty_before_text_box: #f4f4f4;
-	--theme-colors-bg_text_box: white;
-	--theme-colors-color_text_box: #342B09;
-	--theme-colors-color_empty_before_text_box: #342B09;
-	/* AliasBox && SelectBox */
-	--theme-colors-bg_empty_before_alias_box: #f4f4f4;
-	--theme-colors-bg_alias_box: white;
-	--theme-colors-color_alias_box: #342B09;
-	/* Dropdown */
-	--theme-colors-bg_dropdown_component: #f4f4f4;
-	--theme-colors-border_dropdown_component: #342B09;
-	--theme-colors-color_dropdownitem_component: #342B09;
-	--theme-colors-border_dropdownitem_component: #342B09;
-	/* Selectable */
-	--theme-colors-bg_selected: rgba(211, 227, 253, 255);
-	--theme-colors-border_selected: #342B09;
 	/* Freon sizes */
-	--pi-header-height: 36px;
-	--pi-footer-height: 20px;
-	--pi-menu-height: 24px;
-	--pi-statusbar-height: 24px;
+	--column-width: 62rem;
+	--max-image-width: 54rem; /* --column-width minus some padding */
+	--fre-header-height: 36px;
+	--fre-footer-height: 20px;
 
-	/* Freon font sizes */
-	--pi-header-font-size: 20px;
-	--pi-button-font-size: 12px;
-	--pi-error-font-size: 14px;
-	--pi-menuitem-font-size: 14px;
-
-	/* other colors */
-	--pi-selected-background-color: rgba(211, 227, 253, 255);
-	--pi-selected-color: red; /* to be done */
-	--pi-popup-border: none;
-	--pi-popup-background: #fff;
-	--pi-popup-box-shadow: 0 0 0px 0 rgba(0, 0, 0, 0.5);
-	--pi-list-background-color: white;
-
-	/* fonts, etc */
+	/* Fonts, etc */
 	--font-family: Roboto, Helvetica, sans-serif;
+	--font-mono: 'Fira Mono', monospace;
 	--heading-font-family: var(--font-family);
 	--button-font-family: var(--font-family);
 	--code-font-family: 'Roboto Mono', Menlo, Consolas, monospace;
 
-	/* added for documentation to theme variables from Freon */
-	--theme-colors-button_color: white;
-	--theme-colors-button_bg_color: rgba(0, 0, 139, 1); /* #342B09 with opacity 1 */
-	--theme-colors-button_active: rgba(0, 0, 139, 0.7); /* #342B09 with opacity .7 */
-	--theme-colors-button_hover: rgba(0, 0, 139, 0.8); /* #342B09 with opacity .8 */
-	--theme-colors-ripple_color: #c199f9;
-	--theme-colors-tooltip_color: white;
-	--theme-colors-tooltip_background: red;
-	--theme-colors-note_background: var(--theme-colors-color2);
-	--theme-colors-figure_background: cornsilk;
-	--theme-colors-table_background: cornsilk;
-	--theme-colors-table_heading: #8ed4c6;
-	--theme-colors-link: #DE6B48;
-	--theme-colors-link_hover: #B08A03;
-	--theme-colors-active: #FDE281; /* active leaf/branch in nav tree */
-	--font-mono: 'Fira Mono', monospace;
-	--column-width: 62rem;
-	--max-image-width: 54rem; /* --column-width minus some padding */
-	--column-margin-top: 1rem;
+	/* Freon font sizes */
+	--fre-header-font-size: 20px;
 }
 
 html {
-	scroll-padding-top: var(--pi-header-height);
+	scroll-padding-top: var(--fre-header-height);
 }
 html,
 body {
@@ -106,12 +46,42 @@ body {
 }
 
 body {
-	color: var(--theme-colors-color);
+	/* the default light settings */
+	--color1: var(--theme-colors-FRE_LIGHT);
+	--color2: var(--theme-colors-FRE_YELLOW);
+	--color3: var(--theme-colors-FRE_ORANGE);
+	--color4: var(--theme-colors-FRE_BEIGE);
+	--color5: var(--theme-colors-FRE_BROWN);
+	--color6: var(--theme-colors-FRE_DARKER);
+	--color-accent: var(--theme-colors-FRE_ACCENT);
+	--color-link: var(--theme-colors-FRE_LINK);
+	--color-button-active: rgba(var(--color5), 0.7); /* --theme-colors-FRE_BROWN with opacity .7 */
+	--color-button-hover: rgba(var(--color5), 0.8); /* --theme-colors-FRE_BROWN with opacity .8 */
+
+	/* other settings */
+	color: var(--color6);
+	background: var(--color1);
 	margin: 0;
 	box-sizing: border-box;
 	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
 }
 
+body.dark {
+	/* the dark settings */
+	--color1: var(--theme-colors-FRE_DARKER);
+	--color2: var(--theme-colors-FRE_BROWN);
+	--color3: var(--theme-colors-FRE_BEIGE);
+	--color4: var(--theme-colors-FRE_ORANGE);
+	--color5: var(--theme-colors-FRE_YELLOW);
+	--color6: var(--theme-colors-FRE_LIGHT);
+	--color-accent: var(--theme-colors-FRE_ACCENT);
+	--color-link: var(--theme-colors-FRE_LINK);
+	--color-button-active: rgba(var(--color5), 0.7); /* --theme-colors-FRE_YELLOW with opacity .7 */
+	--color-button-hover: rgba(var(--color5), 0.8); /* --theme-colors-FRE_YELLOW with opacity .8 */
+}
+@media (prefers-color-scheme: dark) {
+
+}
 h1  {
 	font-weight: bold;
 	font-size: xxx-large;
@@ -123,7 +93,7 @@ h2  {
 blockquote {
 	margin: 0;
 	padding: 2px 8px;
-	background: var(--theme-colors-bg_color);
+	background: var(--color1);
 	box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
 }
 
@@ -132,53 +102,49 @@ img {
 }
 
 table {
-	background: var(--theme-colors-table_background);
+	background: var(--color2);
 	margin: auto;
-	border: 1px var(--theme-colors-divider) solid;
+	border: 1px var(--color6) solid;
 	border-collapse: collapse;
 	width: 100%;
 	table-layout: fixed;
 }
 
-/*tr td:nth-child(1) { width: 1px; }*/
-/*tr td:nth-child(2) { width: 50px; }*/
-/*tr th:nth-child(1) { width: 1px; }*/
-/*tr th:nth-child(2) { width: 50px; }*/
-
 th {
 	padding: 10px;
 	text-align: left;
-	border: 1px var(--theme-colors-divider) solid;
-	background-color: var(--theme-colors-table_heading);
+	border: 1px var(--color6) solid;
+	background-color: var(--color5);
+	color: var(--color1)
 }
 
 td {
 	padding: 10px;
 	text-align: left;
-	border: 1px var(--theme-colors-divider) solid;
+	border: 1px var(--color6) solid;
 	width: fit-content;
 }
 
 a {
-	color: var(--theme-colors-link);
+	color: var(--color-link);
 	text-decoration: none;
 }
 a:hover {
-	color: var(--theme-colors-link_hover);
+	color: var(--color4);
 }
 li {
 	padding: 0.2rem;
 }
 .main-window {
-	margin-top: var(--pi-header-height);
-	margin-bottom: var(--pi-footer-height);
+	margin-top: var(--fre-header-height);
+	margin-bottom: var(--fre-footer-height);
 	position: absolute;
 	width: 100%;
-	background: var(--theme-colors-bg_color);
+	background: var(--color1);
 }
 /* Styles for the landing page */
 .landing-started a {
-	color: var(--theme-colors-accent);
+	color: var(--color-accent);
 }
 .landing-herosection img {
 	border-radius: 5px 5px 0 0;
@@ -188,7 +154,7 @@ li {
 	width: auto;
 }
 .landing-freon-name {
-	color: var(--theme-colors-accent);
+	color: var(--color-accent);
 }
 .landing-herosection h1 {
 	margin: 4rem 4rem 1rem 2rem;
@@ -202,8 +168,9 @@ li {
 	padding-left: 1rem;
 	padding-right: 1rem;
 	text-align: left;
-	box-shadow: 3px 3px 3px lightgrey;
-	background-color: var(--theme-colors-color2);
+	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+	background-color: var(--theme-colors-FRE_YELLOW);
+	color: var(--theme-colors-FRE_BROWN);
 	border-radius: 5px;
 	margin-left: 1rem;
 }
@@ -230,7 +197,7 @@ li {
 	margin-bottom: 1.7rem;
 }
 .landing-arrow {
-	color: var(--theme-colors-accent);
+	color: var(--color-accent);
 }
 /* Styles for background image on landing page */
 .landing-herosection {
@@ -246,7 +213,8 @@ li {
 	border-radius: 5px; /* 5px rounded corners */
 	max-width: 80%;
 	margin: auto;
-	background-color: var(--theme-colors-color2);
+	background-color: var(--theme-colors-FRE_YELLOW);
+	color: var(--theme-colors-FRE_BROWN);
 }
 .landing-card:hover {
 	box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2); /* On mouse-over, add a deeper shadow */
@@ -272,22 +240,22 @@ li {
 	padding: 2rem;
 }
 .landing-enter-button {
-	background-color: var(--theme-colors-bg_app_bar);
-	color: var(--theme-colors-inverse_color);
+	background-color: var(--color5);
+	color: var(--color1);
 	text-align: left;
 	font-size: 1.1rem;
 	padding-left: 10px;
 	padding-right: 10px;
 }
 .landing-enter-button a {
-	color: var(--theme-colors-inverse_color); /* todo check whether we need these two */
+	color: var(--color1); 
 }
 .landing-enter-button a:visited {
-	color: var(--theme-colors-inverse_color);
+	color: var(--color5);
 }
 /* Styles for the footer */
 .landing-openmodeling-info {
-	color: var(--theme-colors-color);
+	color: var(--color5);
 	text-align: center;
 	font-size: 0.9rem;
 }
@@ -295,7 +263,7 @@ li {
 	text-align: left;
 	list-style: none;
 	padding: 0.5rem;
-	border: 1px solid var(--theme-colors-bg_app_bar);
+	border: 1px solid var(--color5);
 }
 .landing-sub-info-text {
 	list-style: none;
@@ -306,18 +274,18 @@ li {
 .landing-footer {
 	padding-bottom: 4px;
 	text-align: center;
-	background: var(--theme-colors-bg_color);
+	background: var(--color1);
 	color: #eeeeee;
 	width: 100%;
 	display: flex;
 	flex-direction: column;
 }
 .landing-copyright {
-	color: var(--theme-colors-color);
+	color: var(--color5);
 	font-size: 0.7rem;
 }
 .landing-link {
-	color: var(--theme-colors-color);
+	color: var(--color5);
 }
 .landing-audio-control {
 	width: 100%;
@@ -325,10 +293,10 @@ li {
 /* end styles for landing page */
 
 /* Styles for every page */
-
 .page-container {
 	box-sizing: border-box;
-	color: var(--theme-colors-color);
+	color: var(--color6);
+	height: 100vh;
  }
 .page-toc-title {
 	padding-left: 1rem;
@@ -341,29 +309,23 @@ li {
 	flex-direction: column;
 }
 .page-visible  {
-	border-left: solid 4px var(--theme-colors-accent);
+	border-left: solid 4px var(--color-accent);
 	padding-left: 2px;
-	color: var(--theme-colors-color);
+	color: var(--color6);
 }
 .page-nonvisible  {
 	padding-left: 6px;
-	color: var(--theme-colors-color);
+	color: var(--color6);
 }
 .page-toc-text {
 	margin: 3px;
 	padding: 0px 5px 5px 5px;
 	cursor: pointer;
 	white-space: nowrap;
-	color: var(--theme-colors-color);
+	color: var(--color6);
 	font-weight: 320;
 }
 /* end styles for every page */
-/* styles for About */
-.about-content {
-	width: 100%;
-	max-width: var(--column-width);
-	margin: var(--column-margin-top) auto 0 auto;
-}
 
 /* Styles for the code blocks with a copy button */
 pre {
@@ -395,7 +357,7 @@ pre:hover .copy-prompt-img {
 	display: none;
 }
 
-/* Styles for the Previous and Next section in the Tutorial */
+/* Styles for the Previous and Next directions  */
 .prev-next {
 	display: flex;
 }

@@ -49,19 +49,19 @@
         margin-top: 8px;
         display: flex;
         flex-direction: row;
-        border-bottom: solid 1px var(--theme-colors-accent);
+        border-bottom: solid 1px var(--color-accent);
     }
     .page-toc-small-title {
         flex: 1;
     }
     .page-toc-small-expand-button {
         background: none;
-        border: solid 1px var(--theme-colors-bg_color);
+        border: solid 1px var(--color1);
     }
     /* end styles for small pages */
     .main-menu-small-expand-button {
         background: none;
-        border: var(--theme-colors-bg_app_bar);
+        border: var(--color5);
         padding: 0;
     }
     .main-menu-small-img {

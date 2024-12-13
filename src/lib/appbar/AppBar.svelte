@@ -81,11 +81,11 @@
 <style>
 	.app-bar-button {
 		position: relative;
-		border: solid 1px var(--theme-colors-bg_app_bar);
+		border: solid 1px var(--color6);
 		padding: 0;
 	}
 	.button-content {
-		background-color: var(--theme-colors-bg_app_bar);
+		background-color: var(--color6);
 	}
 	.main-menu {
 		display: flex;
@@ -100,10 +100,10 @@
 		display: flex;
 		align-items: center;
 		padding: 0 4px 0 6px;
-		height: var(--pi-header-height);
-		color: var(--theme-colors-text_app_bar);
-		background: var(--theme-colors-bg_app_bar);
-		font-size: var(--pi-header-font-size);
+		height: var(--fre-header-height);
+		color: var(--color1);
+		background: var(--color6);
+		font-size: var(--fre-header-font-size);
 		line-height: 1;
 		min-width: inherit;
 		position: fixed;
@@ -117,6 +117,6 @@
 		margin-left: 0.5rem;
 		white-space: nowrap;
 		text-align: left;
-		color: var(--theme-colors-inverse_color);
+		color: var(--color1);
 	}
 </style>

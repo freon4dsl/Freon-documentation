@@ -253,7 +253,7 @@ export class Md2Svelte {
 		})
 
 		result += `   
-		import PrevNextSection from '$lib/tutorial/PrevNextSection.svelte';
+		import PrevNextSection from '$lib/prevNext/PrevNextSection.svelte';
 		
 		let prevLink= '${prev}';
     let nextLink= '${next}';

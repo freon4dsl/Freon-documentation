@@ -94,8 +94,9 @@ export const themePresets = [
 			/* Tables */
 			note_background: FRE_COLOR2,
 			figure_background: 'cornsilk',
-			table_background: 'cornsilk',
-			table_heading: '#8ed4c6',
+			table_background: FRE_COLOR2,
+			table_heading: FRE_DARK,
+			table_header_text: FRE_LIGHT,
 			block_quote_background: 'cornsilk'
 		},
 		fonts: {
@@ -185,8 +186,9 @@ export const themePresets = [
 			/* Tables */
 			note_background: '#C199F93C',
 			figure_background: 'cornsilk',
-			table_background: '#715d0a',
-			table_heading: '#096552',
+			table_background: FRE_COLOR4,
+			table_heading: FRE_LIGHT,
+			table_header_text: FRE_DARK,
 			block_quote_background: '#ab8a06'
 		},
 		fonts: {

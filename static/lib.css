@@ -14,37 +14,37 @@
     height: 36px;
     width: 115px;
     font-size: 0.875rem;
-    color: var(--theme-colors-button_color);
-    background-color: var(--theme-colors-button_bg_color);
+    color: var(--color1);
+    background-color: var(--color5);
     border-radius: 0.2rem;
 }
 .rippleButton.materialStyle:hover,
 .rippleButton.materialStyle:focus {
     outline: none;
-    background-color: var(--theme-colors-button_hover);
+    background-color: var(--color-button-hover);
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
 }
 .rippleButton.materialStyle:active {
     outline: none;
-    background-color: var(--theme-colors-button_active);
+    background-color: var(--color-button-active);
     box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
 }
 .rippleButton.iconStyle {
     height: 24px;
     width: 24px;
-    color: var(--theme-colors-button_color);
-    background-color: var(--theme-colors-button_bg_color);
+    color: var(--color1);
+    background-color: var(--color5);
     border-radius: 2rem;
 }
 .rippleButton.iconStyle:hover,
 .rippleButton.iconStyle:focus {
     outline: none;
-    background-color: var(--theme-colors-button_hover);
+    background-color: var(--color-button-hover);
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
 }
 .rippleButton.iconStyle:active {
     outline: none;
-    background-color: var(--theme-colors-button_active);
+    background-color: var(--color-button-active);
     box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
 }
 .rippleButton span {
@@ -68,7 +68,7 @@
 }
 /* Styles for component Figure */
 .figure {
-    background-color: var(--theme-colors-figure_background);
+    background-color: var(--color1);
     margin: 20px 20px 20px 20px;
     padding: 20px 20px 20px 20px;
     border-radius: 3px;
@@ -82,9 +82,9 @@
 .page-footer {
     padding: 4px;
     text-align: center;
-    background: var(--theme-colors-bg_app_bar);
+    background: var(--color5);
     color: #eeeeee;
-    height: var(--pi-footer-height);
+    height: var(--fre-footer-height);
     width: 100%;
     position: fixed;
     left: 0px;
@@ -92,13 +92,13 @@
     z-index: 20;
 }
 .copyright {
-    color: var(--theme-colors-inverse_color);
+    color: var(--color5);
     font-size: 11px;
     position: relative;
     bottom: 6px;
 }
 .link {
-    color: var(--theme-colors-inverse_color);
+    color: var(--color5);
 }
 /* Styles for Tooltip */
  .tooltip {
@@ -171,7 +171,7 @@
     border-style: solid;
     /* The border-color is used to transform the content into an arrow. We set one side to color, and the rest to transparent.
             If all sides were color, you would end up with a colored square box. We set the bottom border color. */
-    border-color: transparent transparent var(--theme-colors-tooltip_background) transparent;
+    border-color: transparent transparent var(--color6) transparent;
 }
 .tooltip.right::after {
     content: ' ';
@@ -181,7 +181,7 @@
     margin-top: -5px;
     border-width: 5px;
     border-style: solid;
-    border-color: transparent var(--theme-colors-tooltip_background) transparent transparent;
+    border-color: transparent var(--color6) transparent transparent;
 }
 .tooltip.left::after {
     content: ' ';
@@ -191,7 +191,7 @@
     margin-top: -5px;
     border-width: 5px;
     border-style: solid;
-    border-color: transparent transparent transparent var(--theme-colors-tooltip_background);
+    border-color: transparent transparent transparent var(--color6);
 }
 .tooltip.top::after {
     content: ' ';
@@ -201,17 +201,17 @@
     margin-left: -5px;
     border-width: 5px;
     border-style: solid;
-    border-color: transparent transparent var(--theme-colors-tooltip_background) transparent;
+    border-color: transparent transparent var(--color6) transparent;
 }
 /* Styles for component Note */
 .note {
-    background: var(--theme-colors-note_background);
+    background: var(--color-accent);
     margin: 20px 20px 20px 20px;
     border-radius: 3px;
     box-shadow: 2px 2px 6px rgb(255 255 255 / 25%);
     padding: 0em 0.5em 0.7em 0.5em;
     overflow-x: auto;
-    color: var(--theme-colors-color);
+    color: var(--color6);
 }
 .note-icon {
     position: relative;
@@ -228,7 +228,7 @@
 .side-bar-expand-button {
     margin-right: 32px;
     background: none;
-    border: solid 1px var(--theme-colors-bg_color);
+    border: solid 1px var(--color1);
 }
 .img-container {
     display: flex;
@@ -240,7 +240,7 @@
     max-height: 1rem;
 }
 .popover-menu {
-    background-color: var(--theme-colors-bg_color);
+    background-color: var(--color1);
     overflow: auto;
 }
 .sub-menu {
@@ -248,10 +248,10 @@
 }
 [popover] {
     position: relative;
-    border: solid 1px var(--theme-colors-accent);
+    border: solid 1px var(--color-accent);
     border-radius: 3px;
-    box-shadow: var(--pi-popup-box-shadow);
-    inset: var(--pi-header-height) 10px auto 10px;
+    box-shadow: var(--fre-popup-box-shadow);
+    inset: var(--fre-header-height) 10px auto 10px;
     padding: 4px;
     width: calc(100vw - 20px);
     & nav {
@@ -261,8 +261,8 @@
         font-weight: bold;
         gap: 4px;
         & .img-container {
-            border-top: solid 1px var(--theme-colors-accent);
-            /*border-bottom: solid 1px var(--theme-colors-accent);*/
+            border-top: solid 1px var(--color-accent);
+            /*border-bottom: solid 1px var(--color-accent);*/
         }
         margin-bottom: 20px;
     }
@@ -273,13 +273,13 @@
     backdrop-filter: blur(2px);
 }
 .close-button {
-    border: solid 1px var(--theme-colors-bg_color);
+    border: solid 1px var(--color1);
     padding: 0;
     position: absolute;
     inset: 4px 4px auto auto;
 }
 .menu-item {
-    color: var(--theme-colors-color);
+    color: var(--color6);
 
     margin: 0px 4px 0px 8px;
     padding: 8px 0px 8px 4px;
@@ -291,12 +291,12 @@
 }
 .breadcrumb a {
     display: inline-block;
-    color: var(--theme-colors-accent);
+    color: var(--color-accent);
     text-decoration: none;
 }
 
 .breadcrumb .label {
-    color: var(--theme-colors-color);
+    color: var(--color5);
 }
 /* Styles for component SidebarEntry */
 .side-bar-entry {
@@ -306,18 +306,18 @@
     white-space: nowrap;
 }
 .side-bar-entry.active a {
-    background: var(--theme-colors-active);
+    background: var(--color2);
     padding: 0.1rem 0.3rem 0.1rem 0.3rem;
     margin-left: -0.3rem;
 }
 .leafText {
-    color: var(--theme-colors-color);
+    color: var(--color5);
     font-size: 0.9rem;
     text-decoration: none;
     transition: color 0.2s linear;
 }
 .leafText:hover {
-    color: var(--theme-colors-accent);
+    color: var(--color-accent);
 }
 /* Styles for component Sidebar */
 .sidebar-ul {

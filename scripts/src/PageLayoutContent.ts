@@ -71,24 +71,22 @@ return	`<script lang="ts">
   import Footer from '$lib/footer/Footer.svelte';
   import { ${contentName} } from '$lib/sidebar/SidebarContent.js';
   import AppBar from '$lib/appbar/AppBar.svelte';
-  import ThemeContext from '$lib/theming/ThemeContext.svelte';
 </script>
 
-<ThemeContext>
-  <main class="main-window">
-    <AppBar />
-    <div class="content-box">
-      <div class="page-container">
-        <section class="page-side-nav">
-          <Sidebar tocContent={${contentName}} />
-        </section>
 
-        <section class="page-content-container">
-          <slot />
-        </section>
-      </div>
+<main class="main-window">
+  <AppBar />
+  <div class="content-box">
+    <div class="page-container">
+      <section class="page-side-nav">
+        <Sidebar tocContent={${contentName}} />
+      </section>
+
+      <section class="page-content-container">
+        <slot />
+      </section>
     </div>
-    <Footer />
-  </main>
-</ThemeContext>`;
+  </div>
+  <Footer />
+</main>`;
 }

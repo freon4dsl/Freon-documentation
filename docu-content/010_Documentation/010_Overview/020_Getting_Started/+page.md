@@ -128,7 +128,7 @@ Adjust the configuration of the web application by changing two lines in the fil
 /**
  * The one and only reference to the actual language for which this editor runs
  */
-import {EducationEnvironment} from "@freon4dsl/samples-edu-tutorial";
+import {EducationEnvironment} from "@freon4dsl/samples-edu-prevNext";
 WebappConfigurator.getInstance().setEditorEnvironment(EducationEnvironment.getInstance());
 ```
 

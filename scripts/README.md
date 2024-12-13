@@ -49,3 +49,9 @@ This command switches to the scripts folder and let runs the same command from t
 5. Based on the folder structure with the numbers in the folder names, information is generated on the content of the navigation menus.  This information is written to the file  '/src/lib/sidebar/SidebarContent.ts'. (SidebarFiller.ts)
 
 6. For the direct subfolders in the 'docuContent', which represent the categories in the website and do not have a '+page.md' directly placed within,  a redirect script is generated. This script redirects the page to the Intro subfolder. E.g for category 'Documentation' the redirect takes you to '/Documentation/Intro'.
+
+## Testing
+
+1. testing of prefered darkmode In Chrome DevTools, you can emulate prefers-color-scheme and other media features in the rendering tab. <a href="https://developer.chrome.com/docs/devtools/rendering/"> link</a>
+   If you prefer Firefox DevTools, it has prefers-color-scheme buttons right in the CSS inspector.
+2. testing of different sizes of screens: ctrl-shift-M
