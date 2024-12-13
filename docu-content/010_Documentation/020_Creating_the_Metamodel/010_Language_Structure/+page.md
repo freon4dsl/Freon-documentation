@@ -17,7 +17,7 @@ It is always shown in parts: the model units. However, the provided webapp does 
 part of it, in its left panel.
 </svelte:fragment></Note>
 
-```ts
+```txt
 // DocuProject/src/defs/language-main.ast#L7-L10
 
 model InsuranceModel {
@@ -31,7 +31,7 @@ model InsuranceModel {
 A _model unit_ is a part of the model that can be edited by the user independently of the rest of the model. A model unit is
 always a direct child of a model. Model units may not extend other units, or implement interfaces.
 
-```ts
+```txt
 // DocuProject/src/defs/language-main.ast#L12-L15
 
 modelunit Part {
@@ -52,7 +52,7 @@ a model created by your users.
 Concepts may extend one other concept using the keyword `base`, and implement multiple interfaces.
 Furthermore, they may be _abstract_.
 
-```ts
+```txt
 // DocuProject/src/defs/language-main.ast#L24-L28
 
 concept BaseProduct {
@@ -62,7 +62,7 @@ concept BaseProduct {
     isUnderConstruction: boolean;   // defines whether this base product is still 'raw'
 ```
 
-```ts
+```txt
 // DocuProject/src/defs/language-main.ast#L106-L112
 
     Percentage;
@@ -161,7 +161,7 @@ Limited concepts may extend another concept, and implement multiple interfaces. 
 includes the definition of the predefined instances. For example, the instances of `PremiumDays` are 
 `Week`, `Month`, `Quarter`, `Semester`, and `Year`.
 
-```ts
+```txt
 // DocuProject/src/defs/language-main.ast#L126-L143
 
     reference type: NamedType;
@@ -196,7 +196,7 @@ instances of limited concepts.
 
 An _interface_ is a concept that has no instances. It may extend multiple other interfaces.
 
-```ts
+```txt
 // DocuProject/src/defs/language-main.ast#L94-L96
 
 // Sorry, its not good style to use an interface and a set of separate limited concepts.

@@ -84,7 +84,7 @@ into **model units**. Each model may contain units of multiple types, either an 
 shows how to define model units. Here,
 an _InsuranceModel_ consists of a list of _Parts_ and a list of _Products_.
 
-```ts
+```txt
 // DocuProject/src/defs/language-main.ast#L7-L20
 
 model InsuranceModel {

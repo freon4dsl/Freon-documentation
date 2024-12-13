@@ -37,7 +37,7 @@ Meanwhile, `self.declaredType` is a property of the abstract type `DocuType`.
 This property will be projected according to the definition of 
 the specific (non-abstract) subtype of `DocuType` encountered at runtime.
 
-```ts
+```txt
 // DocuProject/src/defs/editor-main-default.edit#L40-L46
 
 Themes: ${themes horizontal separator[, ]}
@@ -85,7 +85,7 @@ In the next example, the projection for `self.parts` will first be searched
 in the editor named `comments`. If it is not found there, 
 Freon will fall back to the standard precedence order of projections.
 
-```ts
+```txt
 // DocuProject/src/defs/editor-fragments.edit#L3-L9
 
 BaseProduct {[
@@ -124,7 +124,7 @@ list without any separator, terminator, or initiator. In fact,
 the `vertical` keyword could be omitted for `helpers`, as it is the 
 default projection for lists.
 
-```ts
+```txt
 // DocuProject/src/defs/editor-main-default.edit#L27-L38
 
 ]}
@@ -175,7 +175,7 @@ table projection for both column and row based tables. Freon will swap the entri
 For example, to project the `parts` property of concept `BaseProduct` as a row based table, 
 you can use the following code.
 
-```ts
+```txt
 // DocuProject/src/defs/editor-tables.edit#L13-L16
 
 BaseProduct {[
@@ -188,7 +188,7 @@ Given the above example, there should also be a projection tagged `table` for th
 concept `InsurancePart` (the type of `parts`).
 Below four columns/rows are defined, each with its own header.
 
-```ts
+```txt
 // DocuProject/src/defs/editor-tables.edit#L6-L11
 
 InsurancePart{
@@ -228,7 +228,7 @@ If they are not present, respectively the text `Risk adjusted by =` or `Helper f
 
 Note that optional projections for non-optional properties are not allowed.
 
-```ts
+```txt
 // DocuProject/src/defs/editor-main-default.edit#L27-L38
 
 ]}

@@ -21,7 +21,7 @@ In the example below, the user will view
 every boolean property as an inner-switch button with the string `YES` for the value `true`, 
 and `NO` for the value `false`.
 
-```ts
+```txt
 // DocuProject/src/defs/editor-main-default.edit#L5-L18
 
 global {

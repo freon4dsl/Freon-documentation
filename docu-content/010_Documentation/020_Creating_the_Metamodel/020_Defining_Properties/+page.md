@@ -13,7 +13,7 @@ of properties.
 **Simple properties** have as type `identifier`, `string`, `number`, or `boolean`, and are
 always contained in the _concept_. Simple properties may also be lists.
 
-```ts
+```txt
 // DocuProject/src/defs/language-main.ast#L33-L35
 
 date: string;
@@ -27,7 +27,7 @@ parts: InsurancePart[];         // all parts of this product
 or interfaces in the language, and are _contained in the concept_ that holds the property (as in
 the UML composition relationship). Note that simple properties are always considered to be parts.
 
-```ts
+```txt
 // DocuProject/src/defs/language-main.ast#L33-L38
 
     date: string;
@@ -49,7 +49,7 @@ References are always by name, therefore the referred concept must have a `name`
 In the following example the concept `InsuranceProduct` holds a list of references to `InsuranceParts`. The
 concept `InsurancePart` has a property `name: identifier`.
 
-```ts
+```txt
 // DocuProject/src/defs/language-main.ast#L42-L48
 
     name: identifier;                       // internal name
@@ -61,7 +61,7 @@ concept `InsurancePart` has a property `name: identifier`.
 // An InsuranceProduct is a combination of insured events, defined in InsuranceParts,
 ```
 
-```ts
+```txt
 // DocuProject/src/defs/language-main.ast#L33-L34
 
 date: string;
@@ -75,7 +75,7 @@ Lists are always considered to be optional, i.e. they maybe empty, - there is no
 
 Because this causes problems in the editor, simple properties may not be optional at the moment.
 
-```ts
+```txt
 // DocuProject/src/defs/language-main.ast#L57-L59
 
    reference basedOn: BaseProduct[];       // the BaseProducts from which the parts are taken

@@ -10,7 +10,7 @@ if a user-defined projection is applied.
 You can, however, indicate the string to be used as operand. This string is called the **symbol**.
 It is defined in the `.edit` file, as shown below.
 
-```ts
+```txt
 // DocuProject/src/defs/editor-expressions-default.edit#L18-L29
 
 MinusExpression  {
