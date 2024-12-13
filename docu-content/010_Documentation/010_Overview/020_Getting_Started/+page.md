@@ -47,7 +47,7 @@ Next, install all necessary packages by running:
 Run the generator and see the generated files appearing in the folder ~/src/frecode:
 
   ```bash
-  npm run generate
+  npm generate
   ```
 
 Start the server (note that anything that is saved in the editor will be stored in ~/modelstore):

@@ -7,7 +7,7 @@ const FRE_DARK1 = '#1E1905';
 const FRE_ACCENT = '#c94117';
 
 /* todo select only the values that are being used, and remove others */
-export const themePresets = [
+export const themePresetsOLD = [
 	{
 		name: 'light',
 		colors: {

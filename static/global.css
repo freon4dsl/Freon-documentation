@@ -7,7 +7,7 @@
 }
 
 :root {
-	/* the theme colors */
+	/* The theme colors */
 	--theme-colors-FRE_LIGHT: #FFFDF5;
 	--theme-colors-FRE_YELLOW: #FDE281;
 	--theme-colors-FRE_ORANGE: #FCCB1A;
@@ -16,6 +16,7 @@
 	--theme-colors-FRE_DARKER: #1E1905;
 	--theme-colors-FRE_ACCENT: #c94117;
 	--theme-colors-FRE_LINK: #DE6B48;
+
 	/* Other settings */
 
 	/* Freon sizes */
@@ -46,7 +47,7 @@ body {
 }
 
 body {
-	/* the default light settings */
+	/* The default light settings */
 	--color1: var(--theme-colors-FRE_LIGHT);
 	--color2: var(--theme-colors-FRE_YELLOW);
 	--color3: var(--theme-colors-FRE_ORANGE);
@@ -58,7 +59,7 @@ body {
 	--color-button-active: rgba(var(--color5), 0.7); /* --theme-colors-FRE_BROWN with opacity .7 */
 	--color-button-hover: rgba(var(--color5), 0.8); /* --theme-colors-FRE_BROWN with opacity .8 */
 
-	/* other settings */
+	/* Other settings */
 	color: var(--color6);
 	background: var(--color1);
 	margin: 0;
@@ -67,7 +68,7 @@ body {
 }
 
 body.dark {
-	/* the dark settings */
+	/* The dark settings */
 	--color1: var(--theme-colors-FRE_DARKER);
 	--color2: var(--theme-colors-FRE_BROWN);
 	--color3: var(--theme-colors-FRE_BEIGE);
