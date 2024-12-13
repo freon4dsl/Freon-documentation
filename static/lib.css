@@ -82,7 +82,7 @@
 .page-footer {
     padding: 4px;
     text-align: center;
-    background: var(--color5);
+    background: var(--color6);
     color: #eeeeee;
     height: var(--fre-footer-height);
     width: 100%;
@@ -92,13 +92,13 @@
     z-index: 20;
 }
 .copyright {
-    color: var(--color5);
+    color: var(--color1);
     font-size: 11px;
     position: relative;
     bottom: 6px;
 }
 .link {
-    color: var(--color5);
+    color: var(--color1);
 }
 /* Styles for Tooltip */
  .tooltip {
@@ -291,12 +291,12 @@
 }
 .breadcrumb a {
     display: inline-block;
-    color: var(--color-accent);
+    color: var(--color5);
     text-decoration: none;
 }
 
 .breadcrumb .label {
-    color: var(--color5);
+    color: var(--color-accent);
 }
 /* Styles for component SidebarEntry */
 .side-bar-entry {
@@ -311,7 +311,7 @@
     margin-left: -0.3rem;
 }
 .leafText {
-    color: var(--color5);
+    color: var(--color6);
     font-size: 0.9rem;
     text-decoration: none;
     transition: color 0.2s linear;
