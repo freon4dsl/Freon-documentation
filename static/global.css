@@ -82,8 +82,10 @@ body.dark {
 	--color-button-active: rgba(var(--color5), 0.7); /* --theme-colors-FRE_YELLOW with opacity .7 */
 	--color-button-hover: rgba(var(--color5), 0.8); /* --theme-colors-FRE_YELLOW with opacity .8 */
 }
-@media (prefers-color-scheme: dark) {
 
+iframe {
+	height: 20rem;
+	width: 100%;
 }
 h1  {
 	font-weight: bold;
