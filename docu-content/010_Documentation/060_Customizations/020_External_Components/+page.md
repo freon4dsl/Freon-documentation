@@ -49,7 +49,7 @@ default editor. The box type associated with a simple addition is `ExternalSimpl
 
 In the next example a simple animated gif component is added to the fragment projection.
 
-```txt
+```freon
 // DocuProject/src/defs/editor-externals.edit#L11-L17
 
     is still under construction: ${self.isUnderConstruction switch}
@@ -79,7 +79,7 @@ in order for the component to fit in the Freon framework. The parameters are the
 following, where `BOXTYPE` is the type of the box associated 
 with the external component.
 
-```txt
+```ts
     export let box: BOXTYPE;
     export let editor: FreEditor;
 ```
@@ -94,7 +94,7 @@ The methods are:
 In the simple additions example the parameter is a number, which is used to choose the image source from a list. 
 The source of the AnimatedGif Svelte component is the following. 
 
-```txt
+```svelte
 // DocuProject/externals/ShowAnimatedGif.svelte
 
 <script lang="ts">
@@ -194,7 +194,7 @@ The box type associated with a wrapper is dependent upon the type of property or
 To display the childBox the external component needs to include the Freon `RenderComponent`, as shown in the next example.
 In this example the component `Card` is imported from the <a href="https://sveltematerialui.com/" target="_blank">SMUI</a> library of UI components.
 
-```txt
+```svelte
 // DocuProject/externals/SMUI_Card_Component.svelte#L30-L34
 
 <span class="card-container">
@@ -231,7 +231,7 @@ Each of the box types provide the following methods, where `<TYPE>` depends on t
 In the following example the `name` property of a `BaseProduct` is being displayed using a dialog component from 
 the <a href="https://sveltematerialui.com/" target="_blank">SMUI</a> UI library.
 
-```txt
+```freon
 // DocuProject/src/defs/editor-externals.edit#L5-L5
 
 Base Product for ${self.theme radio} ${self.name replace=SMUI_Dialog buttonLabel = "Change Product Name"}

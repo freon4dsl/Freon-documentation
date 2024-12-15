@@ -17,17 +17,17 @@ slider button the actual value of the property is shown.
 
 For the sake of the example, we have added two number properties to the concept `BaseProduct`.
 
-```txt
+```freon
 // DocuProject/src/defs/language-main.ast#L34-L36
 
-// The following properties are present to show the different options for displaying numbers.
 range: number;
 nrOfUse: number;
+// The previoud two properties are present to show the different options for displaying numbers.
 ```
 
 The added properties are displayed like this.
 
-```txt
+```freon
 // DocuProject/src/defs/editor-main-controls.edit#L12-L13
 
 expected nr of use: ${self.nrOfUse}

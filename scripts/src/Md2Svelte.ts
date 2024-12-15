@@ -1,11 +1,14 @@
 import * as fs from 'fs';
 import * as path from 'path';
-import { compile } from 'mdsvex';
 import { remarkExtractHeaders } from './remark-extract-headers.js';
 import { categoryLayoutContent, pageContent } from './PageLayoutContent.js';
 import { PathCreator } from './PathCreator.js';
 import { CategoryInfoType, TocContentsType } from './TocContentsType.js';
+import { compile } from 'mdsvex';
+import { setupFreon } from "./prism-freon.js"
 
+// Setup the Freon language for code highlighting
+setupFreon()
 
 const storeContent: string =
 	`import { writable, type Writable } from 'svelte/store';

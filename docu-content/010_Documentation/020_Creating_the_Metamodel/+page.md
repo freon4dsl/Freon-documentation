@@ -13,7 +13,7 @@ are combined into one AST definition.
 Every AST file must start with the declaration of the name of your language. This name is used
 to create the name of a number of generated TypeScript classes.
 
-```ts
+```freon
 // DocuProject/src/defs/language-main.ast#L1-L2
 
 language DocuProject

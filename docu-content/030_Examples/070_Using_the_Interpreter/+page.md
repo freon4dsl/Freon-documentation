@@ -18,7 +18,7 @@ figureNumber={1}
 ================
 
 ================ this is how to include source code
-```txt
+```freon
 // Education/lesson9-defs/edu.valid#L1-L11
 
 validator EduValidator for language Education

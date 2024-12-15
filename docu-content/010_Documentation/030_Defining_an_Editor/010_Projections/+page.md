@@ -11,7 +11,7 @@ brackets (`[]`), except for parts enclosed in `${}`, is interpreted
 literally. For more details, refer to the information 
 on [Indentation](/Documentation/Defining_an_Editor/Indentation).
 
-```txt
+```freon
 // DocuProject/src/defs/editor-indentation.edit#L6-L14
 
 Text {
@@ -37,7 +37,7 @@ Meanwhile, `self.declaredType` is a property of the abstract type `DocuType`.
 This property will be projected according to the definition of 
 the specific (non-abstract) subtype of `DocuType` encountered at runtime.
 
-```ts
+```freon
 // DocuProject/src/defs/editor-main-default.edit#L40-L46
 
 Themes: ${themes horizontal separator[, ]}
@@ -85,16 +85,15 @@ In the next example, the projection for `self.parts` will first be searched
 in the editor named `comments`. If it is not found there, 
 Freon will fall back to the standard precedence order of projections.
 
-```ts
-// DocuProject/src/defs/editor-fragments.edit#L3-L9
+```freon
+// DocuProject/src/defs/editor-named-proj.edit#L3-L8
 
 BaseProduct {[
     /* In this projection 'self.parts' is always shown according to the projection */
     /* defined for concept InsurancePart in the editor 'comments'.                 */
-    Base Product for ${self.theme radio} ${self.name }
-        [fragment First] [fragment Second]
+    Base Products ${self.name} for ${self.theme}
         ${self.parts:comments}
-]
+]}
 ```
 
 ## Lists
@@ -124,21 +123,21 @@ list without any separator, terminator, or initiator. In fact,
 the `vertical` keyword could be omitted for `helpers`, as it is the 
 default projection for lists.
 
-```ts
-// DocuProject/src/defs/editor-main-default.edit#L27-L38
-
-]}
-
-InsurancePart{
-[
-    Insurance Part ${self.name}
-        risk assessment: ${self.statisticalRisk}
-        maximum payout: ${self.maximumPayOut}
-        is approved: ${self.isApproved [JA | NEE]}
-]
-}
+```freon
+// DocuProject/src/defs/editor-main-default.edit#L38-L49
 
 InsuranceProduct {[
+    Insurance Product ${name} ( public name: ${productName} ) USES ${basedOn horizontal separator[, ]}
+        Themes: ${themes horizontal separator[, ]}
+        Premium: ${advertisedPremium} per ${nrPremiumDays}
+        Insured risks:
+            ${parts vertical terminator [;]}
+        Calculation
+            [? Risk adjusted by = ${riskAdjustment} ]
+            calculated premium: ${calculation}
+        [?Helper functions:
+            ${helpers vertical}]
+]}
 ```
 
 <Note>
@@ -175,7 +174,7 @@ table projection for both column and row based tables. Freon will swap the entri
 For example, to project the `parts` property of concept `BaseProduct` as a row based table, 
 you can use the following code.
 
-```ts
+```freon
 // DocuProject/src/defs/editor-tables.edit#L13-L16
 
 BaseProduct {[
@@ -188,7 +187,7 @@ Given the above example, there should also be a projection tagged `table` for th
 concept `InsurancePart` (the type of `parts`).
 Below four columns/rows are defined, each with its own header.
 
-```ts
+```freon
 // DocuProject/src/defs/editor-tables.edit#L6-L11
 
 InsurancePart{
@@ -228,7 +227,7 @@ If they are not present, respectively the text `Risk adjusted by =` or `Helper f
 
 Note that optional projections for non-optional properties are not allowed.
 
-```ts
+```freon
 // DocuProject/src/defs/editor-main-default.edit#L27-L38
 
 ]}

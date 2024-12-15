@@ -12,7 +12,7 @@ At last, your patience is rewarded. In this step of the tutorial we are going to
 Let's create a file called `edu-main.edit` in the `src/defs` folder,
 and define a default editor for this model unit. Please, enter the following line.
 
-```txt
+```freon
 // Education/lesson2-defs/edu-topics.edit#L3-L3
 
 editor default
@@ -51,7 +51,7 @@ The projection for _Topic_ consists of four parts.
 - The last part of the definition gives the projection of the `pages` property, which is a list. By adding the keyword `vertical`
   we tell Freon to project the list vertically.
 
-```txt
+```freon
 // Education/lesson2-defs/edu-topics.edit#L3-L16
 
 editor default
@@ -82,7 +82,7 @@ above definition: `terminator[== END OF LINE]`. It means that
 after every element of the list the string '== END OF LINE' character is projected.
 Note that the line of dashes will also appear in the editor.
 
-```txt
+```freon
 Theory {[
     ----------------------------------------------------
     Theory
@@ -100,7 +100,7 @@ the character or string before the element.
 
 Here are some examples of how you can tweak the display.
 
-```txt
+```freon
     Theory
         ${self.contents vertical separator [.]}
 
@@ -120,7 +120,7 @@ Remember that we defined the concept `Page` to be abstract, and there were a lot
 we can build inherited projection definitions as well. We have defined the projection for the abstract concept `Page` as follows.
 It's nothing fancy, but you could do more, if you like.
 
-```txt
+```freon
 // Education/lesson2-defs/edu-topics.edit#L14-L16
 
 Page {[
@@ -132,7 +132,7 @@ Now look at how we incorporate this projection in the projection of one of `Page
 that we will include the default projection of _Page_ right there.
 Note that we can use inherited properties, like `questions`, as expected in the projection.
 
-```txt
+```freon
 // Education/lesson2-defs/edu-topics.edit#L18-L25
 
 Theory {[
@@ -148,7 +148,7 @@ Theory {[
 Now we can almost finish the projection for this model unit by adding the following lines. Each concept
 that inherits from `Page` is defined, as well as the `questions` and `content` parts of `Page`. 
 
-```txt
+```freon
 // Education/lesson2-defs/edu-topics.edit#L27-L76
 
 Video {[
@@ -208,10 +208,13 @@ Line {
 Last thing to learn in this lesson is how we can make editing easier for the user. Remember that we needed a concept for numeric fractions?
 Its called `Fraction`, and it is formed by combining two numbers, a numerator and a denominator. This is how the concept is defined in the .ast file.
 
-```txt
+```freon
 // Education/lesson2-defs/edu-topics.ast#L53-L56
 
-
+concept Fraction base NumberConcept {
+    numerator: number;
+    denominator: number;
+}
 ```
 
 In Freon the user must first choose the Fraction option from a dropdown menu before he/she can enter any number. To avoid
@@ -222,7 +225,7 @@ For the Fraction concept we defined the trigger to be a forwards slash. If the u
 where the possibilities are either a _SimpleNumber_ or a _Fraction_, entering the '/' will produce a _Fraction_ instance. So, the
 last two projections are defined as follows.
 
-```txt
+```freon
 // Education/lesson2-defs/edu-topics.edit#L78-L85
 
 SimpleNumber {

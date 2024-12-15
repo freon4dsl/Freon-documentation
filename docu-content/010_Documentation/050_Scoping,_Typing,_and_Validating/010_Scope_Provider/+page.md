@@ -22,7 +22,7 @@ which means that if name A is both in the outer, and in the inner namespace, in 
 name is used.
 
 
-```ts
+```freon
 // DocuProject/src/defs/scoper-docu.scope#L3-L3
 
 isnamespace { InsuranceProduct, BaseProduct, CalcFunction, Entity }
@@ -50,7 +50,7 @@ By indicating an addition to a namespace you can, for instance, support inherita
 super type of the `Entity` concept. The names visible in the `baseEntity`
 are included in the namespace by defining the namespace-addition.
 
-```ts
+```freon
 // DocuProject/src/defs/language-extras.ast#L34-L38
 
 concept Entity {
@@ -60,7 +60,7 @@ concept Entity {
 }
 ```
 
-```ts
+```freon
 // DocuProject/src/defs/scoper-docu.scope#L13-L15
 
 Entity {
@@ -74,7 +74,7 @@ You can also indicate that a different namespace altogether should be used. In t
 the elements visible in
 an `AttributeRef` are determined based on the type of its container, i.e. the type of its parent in the AST.
 
-```ts
+```freon
 // DocuProject/src/defs/scoper-docu.scope#L9-L11
 
 AttributeRef {

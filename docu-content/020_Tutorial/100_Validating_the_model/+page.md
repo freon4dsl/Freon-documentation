@@ -18,7 +18,7 @@ defined? Let's take the `AndExpression` concept. It has a left, and a right hand
 be Boolean. It will be no surprise that we can define the rules for `OrExpression`s in the same way. 
 Thus, we add another file, called `edu.valid`, and add the following definitions to it.
 
-```txt
+```freon
 // Education/lesson9-defs/edu.valid#L1-L11
 
 validator EduValidator for language Education
@@ -38,7 +38,7 @@ Now what about instances of `LessOrEqualsExpression`, and the other
 comparison expressions? They also have a left, and a right hand side, but for them, it
  is important that the types on both sides are the same. We define that as follows.
 
-```txt
+```freon
 // Education/lesson9-defs/edu.valid#L13-L31
 
 LessOrEqualsExpression {

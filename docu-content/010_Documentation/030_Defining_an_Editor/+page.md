@@ -4,15 +4,13 @@
 
 # Defining an Editor
 
-An editor's behavior in displaying language elements defined in the metamodel is specified 
-through an editor definition file (a `.edit` file). This file allows you to 
-provide additional information for each _concept_ or _interface_ in your language, 
-which together form the [concrete syntax](/Documentation/Terminology) of your language.
+An editor's behavior is specified 
+through an editor definition file (a `.edit` file). 
+You can define the following three aspects for each _concept_ or _interface_:
 
-Currently, you can define the following three aspects of the concrete syntax for each _concept_ or _interface_:
-
-- **Projection**: Defines how the _concept_ is visually represented in the editor.
-- **Trigger** (optional): Specifies the key or keys that a user must type to create a new instance of the _concept_.
+- **Projection**: Defines how the _concept_ is visually represented in the editor. This is also called the [concrete syntax](/Documentation/Terminology).
+- **Trigger** (optional): Specifies the key or keys that a user must type to create a new instance of the _concept_ and that
+the user will see in a dropdown menu.
 - **Symbol** (optional): Used exclusively for binary expressions, it is the character or string that represents 
 the _operator_. If a _symbol_ is not provided, the _trigger_ will serve this purpose.
  
@@ -30,19 +28,22 @@ For every concept or interface you have to define the projection before the trig
 
 ## Named Editors or Projection Sets
 
-Editors can be **named**, allowing you to define multiple editors with coordinated 
-sets of projections. These projection sets work together and can be dynamically 
-toggled, enabling you to change how the model appears in the editor.
+You can define multiple projections for the same concept and switch between these
+different projections in the editor. This allows you to adapt the editor to
+a specific task or point of view.
+
+Editors are **named**, allowing you to define multiple editors with coordinated 
+sets of projections. 
 
 For example, if you group all [table projections](/Documentation/Defining_an_Editor/Projections#tables) under 
-a specific editor name, 
+a specific named editor, 
 users can switch between viewing objects as lists or as tables. Similarly, 
 you could create one editor (or projection set) that displays only a subset 
 of properties for certain concepts, while another editor shows all properties. 
 This flexibility allows you to accommodate different user needs.
 
-Projections can also explicitly request that a property be displayed using 
-a projection from a named editor. For more details, 
+Projections can also explicitly specify that a property must be displayed using 
+a projection from a specific named editor. For more details, 
 refer to [Using Named Projections](/Documentation/Defining_an_Editor/Projections#using-named-projections-3).
 
 ## The Default Editor
@@ -60,7 +61,7 @@ will be displayed as a vertical list, as shown by the following grammar rule.
 
 [//]: # (todo: adjust the example)
 
-```txt
+```freon
 // DocuProject/src/defs/language-main.ast#L24-L36
 
 concept BaseProduct {
@@ -73,9 +74,9 @@ concept BaseProduct {
     isApprovedLevel2: boolean;
     isApprovedLevel3: boolean;
     yieldsProfit: boolean;
-    // The following properties are present to show the different options for displaying numbers.
     range: number;
     nrOfUse: number;
+    // The previoud two properties are present to show the different options for displaying numbers.
 ```
 
 [//]: # (todo replace below with actual screenshot)
@@ -114,7 +115,7 @@ times, the values must be consistent.</p>
 </svelte:fragment>
 </Note>
 
-```txt
+```freon
 // DocuProject/src/defs/editor-tables.edit#L1-L11
 
 /* This file contains the table definition in a separate editor / projection group.
@@ -134,7 +135,7 @@ table [
 
 A complete .edit file could look like this.
 
-```txt
+```freon
 // DocuProject/src/defs/editor-main-default.edit#L1-L80
 
 /* This file contains the default editor definition. */

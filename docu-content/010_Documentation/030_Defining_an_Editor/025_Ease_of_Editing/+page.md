@@ -16,7 +16,7 @@ process to be performed as one. This can be useful, especially when dealing with
 
 Our running example provides the expression concept `InsurancePartRef`.
 
-```ts
+```freon
 // DocuProject/src/defs/language-expressions.ast#L54-L57
 
 // Expression used to refer to the insurance parts of a product
@@ -27,7 +27,7 @@ expression InsurancePartRef base DocuExpression {
 
 For this concept the following projection is defined.
 
-```ts
+```freon
 // DocuProject/src/defs/editor-expressions-default.edit#L35-L38
 
 InsurancePartRef {
@@ -47,7 +47,7 @@ The character or string of characters is called a **trigger**.
 
 The example shows a trigger for entering a function call expression.
 
-```ts
+```freon
 // DocuProject/src/defs/editor-expressions-default.edit#L30-L34
 
 FunctionCallExpression {

@@ -8,34 +8,30 @@ Each of the language structure elements (concepts, interfaces, expressions, etc.
 Properties can be lists, this is indicated by square brackets after the type name. There are three types
 of properties.
 
-## Simple Properties
+## Primitive Properties
 
-**Simple properties** have as type `identifier`, `string`, `number`, or `boolean`, and are
-always contained in the _concept_. Simple properties may also be lists.
+**Primitive properties** have as type `identifier`, `string`, `number`, or `boolean`, and are
+always contained in the _concept_. Primitive properties may also be lists.
 
-```ts
-// DocuProject/src/defs/language-main.ast#L33-L35
+```freon
+// DocuProject/src/defs/language-main.ast#L33-L34
 
-date: string;
-theme: InsuranceTheme;          // the 'kind' of insurance
-parts: InsurancePart[];         // all parts of this product
+yieldsProfit: boolean;
+range: number;
 ```
 
 ## Part Properties
 
 **Parts** have as type one of the _concepts_ (including _expression concepts_ and _limited concepts_)
 or interfaces in the language, and are _contained in the concept_ that holds the property (as in
-the UML composition relationship). Note that simple properties are always considered to be parts.
+the UML composition relationship). Parts are also called children.
+In the example below `body` and `parameters` are parts. 
 
-```ts
-// DocuProject/src/defs/language-main.ast#L33-L38
+```freon
+// DocuProject/src/defs/language-main.ast#L72-L73
 
-    date: string;
-    theme: InsuranceTheme;          // the 'kind' of insurance
-    parts: InsurancePart[];         // all parts of this product
-}
-
-// An InsurancePart defines a single aspect of an InsuranceProduct together
+body: DocuExpression;               // the actual calculation definition
+parameters: Parameter[];            // any parameters
 ```
 
 ## Reference Properties
@@ -46,26 +42,25 @@ _reference_ in front of the definition.
 
 References are always by name, therefore the referred concept must have a `name` property of type `identifier`.
 
-In the following example the concept `InsuranceProduct` holds a list of references to `InsuranceParts`. The
-concept `InsurancePart` has a property `name: identifier`.
+In the following example the concept `InsuranceProduct` holds a list of references to `InsuranceParts`. x
 
-```ts
-// DocuProject/src/defs/language-main.ast#L42-L48
+```freon
+// DocuProject/src/defs/language-main.ast#L53-L59
 
+concept InsuranceProduct {
     name: identifier;                       // internal name
-    isApproved: boolean = false;            // indication of approval status
-    statisticalRisk: PercentageLiteral;     // the statistical risk known for this event
-    maximumPayOut: EuroLiteral;             // maximum payout in case the insured event happens
-}
-
-// An InsuranceProduct is a combination of insured events, defined in InsuranceParts,
+    productName: string;                    // name by which this product is known to the public
+    themes: InsuranceTheme[];               // the 'kind' of insurance
+    advertisedPremium: EuroLiteral;         // the premium as known to the public
+    nrPremiumDays: PremiumDays;             // the number of days for which the advertised premium is calculated
+    reference parts: InsurancePart[];       // optionally, known parts can be included by reference
 ```
+The concept `InsurancePart` has a property `name: identifier`.
+```freon
+// DocuProject/src/defs/language-main.ast#L44-L45
 
-```ts
-// DocuProject/src/defs/language-main.ast#L33-L34
-
-date: string;
-theme: InsuranceTheme;          // the 'kind' of insurance
+concept InsurancePart {
+    name: identifier;                       // internal name
 ```
 
 ## Optional Properties
@@ -73,12 +68,10 @@ theme: InsuranceTheme;          // the 'kind' of insurance
 Properties may be optional. This is indicated using a question mark after the property name.
 Lists are always considered to be optional, i.e. they maybe empty, - there is no need for the question mark there.
 
-Because this causes problems in the editor, simple properties may not be optional at the moment.
+Primitive properties may not be optional at the moment, but we plan to change this in the future.
 
-```ts
-// DocuProject/src/defs/language-main.ast#L57-L59
+```freon
+// DocuProject/src/defs/language-main.ast#L70-L70
 
-   reference basedOn: BaseProduct[];       // the BaseProducts from which the parts are taken
-
-   riskAdjustment?: PercentageLiteral;     // an adjustment to the risk of the separate parts, e.g. caused by the combination of the parts
+description?: Description;          // an optional description
 ```
