@@ -11,7 +11,7 @@ export function setupFreon() {
 		'builtin': [
 			/\b(?:boolean|string|identifier|number|error|warning)\b/,
 		],
-		'boolean': [{
+		'class-name': [{
 				pattern: /(\bconcept\s+)\w+\b/,
 				lookbehind: true
 			},
