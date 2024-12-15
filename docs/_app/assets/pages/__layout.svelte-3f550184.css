@@ -164,13 +164,13 @@ footer.svelte-1hxqcuo {
 	bottom: 0px;
 }
 .copyright.svelte-1hxqcuo {
-	color: var(--theme-colors-inverse_color);
+	color: var(--color6);
 	font-size: 11px;
 	position: relative;
 	bottom: 6px;
 }
 .link.svelte-1hxqcuo {
-	color: var(--theme-colors-inverse_color);
+	color: var(--color6);
 }
 button.svelte-22yhnm {
 	border: none;

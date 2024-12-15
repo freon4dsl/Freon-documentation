@@ -79,7 +79,7 @@ limited NumberType implements NamedType {
 An _expression concept_ is a concept represents an expression. The editor deals differently with these, in
 order to give your user a more natural editing experience.
 
-An expression concept may one other concept, and/or implement multiple interfaces.
+Expression concepts may extend another concept, and implement multiple interfaces.
 
 ```freon
 // DocuProject/src/defs/language-expressions.ast#L10-L18

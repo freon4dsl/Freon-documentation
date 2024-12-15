@@ -19,6 +19,6 @@ On May 31, 2023, we gave a presentation and demonstration for the <a href="https
 Both were recorded. You can find them below.
 
 
-| The presentation                                                                                                                 | The demonstration |
-|----------------------------------------------------------------------------------------------------------------------------------| ----------- |
-| <iframe width="500" height="345" src="https://www.youtube.com/embed/Eb9WGZyL92w" title='The presentation for MDENet, May 2023'/> | <iframe width="500" height="345" src="https://www.youtube.com/embed/pdQaCfRkgA8" title='The demo for MDENet, May 2023'/> |
+| The presentation                                                                                                                               | The demonstration |
+|------------------------------------------------------------------------------------------------------------------------------------------------| ----------- |
+| <iframe src="https://www.youtube.com/embed/Eb9WGZyL92w" title='The presentation for MDENet, May 2023'/> | <iframe src="https://www.youtube.com/embed/pdQaCfRkgA8" title='The demo for MDENet, May 2023'/> |

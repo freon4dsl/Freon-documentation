@@ -18,7 +18,7 @@
         align-items: center;
         padding: 0 4px 0 6px;
         flex: 1;
-        height: var(--pi-header-height);
+        height: var(--fre-header-height);
     }
     /* end styles for the app bar */
 
@@ -61,10 +61,10 @@
         left: 2rem;
         padding: 0.5rem 1rem 1rem 0.5rem;
         width: 17rem;
-        border: var(--theme-colors-list_divider) 1px solid;
+        border: var(--color6) 1px solid;
         overflow-y: auto;
-        background-color: var(--theme-colors-bg_color);
-        height: calc(100vh - var(--pi-footer-height) - var(--top-margin));
+        background-color: var(--color1);
+        height: calc(100vh - var(--fre-footer-height) - var(--top-margin));
     }
     .page-toc {
         --top-margin: 3rem;
@@ -72,10 +72,8 @@
         top: var(--top-margin);
         right: 2rem;
         width: 20rem;
-        /*border: var(--theme-colors-list_divider) 1px solid;*/
-        height: calc(100vh - var(--pi-footer-height) - var(--top-margin));
+        height: calc(100vh - var(--fre-footer-height) - var(--top-margin));
         transition:color 0.2s linear;
-        /*background-color: var(--theme-colors-bg_color);*/
     }
     .page-toc-small {
         display: none;

@@ -4,7 +4,7 @@
 <script lang="ts">
 	export let height: number = 24;
 	export let width: number = 24;
-	export let fill: string = 'var(--theme-colors-inverse_color)';
+	export let fill: string = 'var(--color1)';
 </script>
 
 <svg

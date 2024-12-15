@@ -5,8 +5,8 @@
 	export let bottom = false;
 	export let left = false;
 	export let active = false;
-	export let color = 'var(--theme-colors-tooltip_color)';
-	export let bgColor = 'var(--theme-colors-tooltip_background)';
+	export let color = 'var(--color-accent)';
+	export let bgColor = 'var(--color5)';
 	let style = `background-color: ${bgColor}; color: ${color}; font-size: 0.7rem;`;
 </script>
 

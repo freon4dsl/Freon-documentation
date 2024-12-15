@@ -23,4 +23,4 @@
 		<feGaussianBlur in="SourceGraphic" stdDeviation={rippleBlur} />
 	</filter>
 </defs>
-<circle style="fill: var(--theme-colors-ripple-color);" cx={x} cy={y} r={$rippleSize} opacity={$rippleOpacity} filter="url(#f1)" />
+<circle style="fill: var(--color-button-active);" cx={x} cy={y} r={$rippleSize} opacity={$rippleOpacity} filter="url(#f1)" />

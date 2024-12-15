@@ -16,7 +16,7 @@ with our type declaration called _GenericType_, and one that corresponds with _U
 They are quite similar to their AST counterparts, but note that here we use **FreType** as type for the property.
 We want to build a structure of type concepts, not of AST nodes!
 
-```ts
+```txt
 // TyperExample/src/defs/projectY.type#L6-L14
 
 type TT_GenericType {
@@ -35,7 +35,7 @@ type TT_MeasurementType {
 Next, we associate the AST nodes with the type concepts, using infertype rules. When invoked, these rules will create a new instance of
 the type concepts.
 
-```ts
+```txt
 // TyperExample/src/defs/projectY.type#L34-L46
 
 GenericType {
@@ -58,7 +58,7 @@ UnitOfMeasurement {
 To be able to compare the types of expressions and of type declarations,
 we need to state the _equalsto_ and/or _conformsto_ rules.
 
-```ts
+```txt
 // TyperExample/src/defs/projectY.type#L91-L118
 
 TT_GenericType {
@@ -93,7 +93,7 @@ TT_MeasurementType {
 
 ## The Complete Typer Definition
 
-```ts
+```txt
 // TyperExample/src/defs/projectY.type
 
 typer

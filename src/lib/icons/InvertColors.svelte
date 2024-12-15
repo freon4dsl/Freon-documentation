@@ -4,12 +4,12 @@
 <script lang="ts">
 	export let height: number = 24;
 	export let width: number = 24;
-	export let fill: string = 'var(--theme-colors-inverse_color)';
+	export let fill: string = 'var(--color1)';
 </script>
 
 <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" {width} {height} viewBox="0 0 24 24" {fill}>
 	<g>
-		<path d="M0,0h24v24H0V0z" fill="var(--theme-colors-bg_app_bar)" />
+		<path d="M0,0h24v24H0V0z" fill="var(--color6)" />
 	</g>
 	<g>
 		<path
