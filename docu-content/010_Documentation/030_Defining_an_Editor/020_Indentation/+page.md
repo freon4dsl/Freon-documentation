@@ -22,11 +22,11 @@ This is
 ```
 
 However, this is not the complete story. Any whitespace before the line with the least indentation is ignored.
-Therefore, you can indent the projection as a whole, without it having any influence on the projected indentation.
+Therefore, you can indent the projection as a whole, without it having any influence on the projection.
 The next example produces the exact same result as the previous.
 
 ```proto
-// DocuProject/src/defs/editor-indentation.edit#L16-L25
+// DocuProject/src/defs/editor-indentation.edit#L16-L24
 
 Text2 {
             [
@@ -41,8 +41,8 @@ Text2 {
 ```
 
 In the following example, the line with the least indentation is
-`for every concept of type Text.` Its indentation will define the margin. It will
-not be indented. On the other hand,
+`for every concept of type Text.` 
+It will not be indented. On the other hand,
 the text `This is` will be indented 10 spaces, `literal text` will be indented 8 spaces, etc.
 
 ```proto

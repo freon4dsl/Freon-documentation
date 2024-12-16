@@ -31,43 +31,30 @@ When defining a projection for a concept or interface, you will likely need
 to include its properties. This is done using the special notation `${}`, which 
 instructs Freon to include a property according to the projection defined for its type.
 
-For example, given the following metamodel:
+For example, given the following concept:
 ```proto
-// DocuProject/src/defs/language-main.ast#L22-L32
+// DocuProject/src/defs/language-main.ast#L24-L27
 
-// A BaseProduct defines all the different elements ('parts') that can be
-// used to create a marketable InsuranceProduct.
 concept BaseProduct {
     name: identifier;               // internal name
     theme: InsuranceTheme;          // the 'kind' of insurance
     parts: InsurancePart[];         // all parts of this product
-    isUnderConstruction: boolean;   // defines whether this base product is still 'raw'
-    // The following properties are present to show the different options for displaying booleans.
-    isApprovedLevel1: boolean;
-    isApprovedLevel2: boolean;
-    isApprovedLevel3: boolean;
 ```
 
-consider the property `self.body`, which is of type `DocuExpression`. It 
-will be displayed based on the projection defined for `DocuExpression`. 
-Meanwhile, `self.declaredType` is a property of the abstract type `DocuType`. 
-This property will be projected according to the definition of 
-the specific (non-abstract) subtype of `DocuType` encountered at runtime.
+The property `self.name` or `name`, is of type `identifier`.
+It will be displayed based as aa editable textbox. 
+Meanwhile, `self.parts` or `parts` is a property of the type list of `InsurancePart`. 
+This property will be projected as a horizontal list (the default for multi-values properties)
+and each part in the list will be displayed according to the projection defined for 
+`InsurancePart`.
 
 ```proto
-// DocuProject/src/defs/editor-main-default.edit#L40-L50
+// DocuProject/src/defs/editor-main-default.edit#L24-L27
 
-        Themes: ${themes horizontal separator[, ]}
-        Premium: ${advertisedPremium} per ${nrPremiumDays}
-        Insured risks:
-            ${parts vertical terminator [;]}
-        Calculation
-            [? Risk adjusted by = ${riskAdjustment} ]
-            calculated premium: ${calculation}
-        [?Helper functions:
-            ${helpers vertical}]
+BaseProduct {[
+    Base Products ${name} for ${theme}
+        ${parts}
 ]}
-
 ```
 
 <Note>
@@ -102,7 +89,7 @@ If you want to use a specific projection from a different editor,
 you can use a **named property projection**. In this case, Freon 
 will look for the projection in the editor with the specified name.
 
-In the next example, the projection for `self.parts` will first be searched 
+In the next example, the projection for `self.parts:comments` will first be searched 
 in the editor named `comments`. If it is not found there, 
 Freon will fall back to the standard precedence order of projections.
 
@@ -119,15 +106,13 @@ BaseProduct {[
 
 ## Lists
 
-If a property is a list, you can specify whether it should be projected 
+For a property of type list, you can specify whether it should be projected 
 horizontally or vertically. Both options are optional. If 
 neither `vertical` nor `horizontal` is specified, the property 
 will be displayed as a vertical list by default.
 
 You can also choose to project a list property 
-as a [table](/Documentation/Defining_an_Editor/Projections#tables-4). 
-However, its default projection will always be a list, which 
-will be used if no projection is defined in the `.edit` files.
+as a [table](/Documentation/Defining_an_Editor/Projections#tables-4).
 
 For a list, you can include the following options:
 
@@ -188,11 +173,12 @@ in the list. This projection specifies the table headers and
 <Note>
 <svelte:fragment slot="content">
 Note that you only need to include one
-table projection for both column and row based tables. Freon will swap the entries when needed.
+table projection for the elements for both column and row based tables.
+Freon will swap the entries when needed.
 </svelte:fragment>
 </Note>
 
-For example, to project the `parts` property of concept `BaseProduct` as a row based table, 
+To project the `parts` property of concept `BaseProduct` as a row based table, 
 you can use the following code.
 
 ```proto
@@ -224,16 +210,16 @@ table [
 <Note>
 <svelte:fragment slot="header">Properties within a table are displayed according to their own projection</svelte:fragment>
 <svelte:fragment slot="content">
-The manner in which each of the properties in a table are displayed, is determined
-by their own projections. In this example, <code>self.parameters</code> is a list, and will be displayed as another table.
-The inner table will be row-based, as this is the default.
+Each of the properties in a table is displayed using its own projection.
+In this example, <code>name</code> is a string, and will be displayed as an editable text.
+Note that the properties can be lists themselves, which can be displayed as lists or tables.
 </svelte:fragment>
 </Note>
 
 <Note>
 <svelte:fragment slot="header">Whitespace in headers is ignored</svelte:fragment>
 <svelte:fragment slot="content">
-The whitespace between the headers is not needed. However, for clarity, it is probably
+The whitespace between the headers is not needed. However, for clarity, it is
 good style to align the column/row-separators.
 </svelte:fragment>
 </Note>
@@ -249,20 +235,20 @@ If they are not present, respectively the text `Risk adjusted by =` or `Helper f
 Note that optional projections for non-optional properties are not allowed.
 
 ```proto
-// DocuProject/src/defs/editor-main-default.edit#L27-L38
-
-]}
-
-InsurancePart{
-[
-    Insurance Part ${self.name}
-        risk assessment: ${self.statisticalRisk}
-        maximum payout: ${self.maximumPayOut}
-        is approved: ${self.isApproved [JA | NEE]}
-]
-}
+// DocuProject/src/defs/editor-main-default.edit#L38-L49
 
 InsuranceProduct {[
+    Insurance Product ${name} ( public name: ${productName} ) USES ${basedOn horizontal separator[, ]}
+        Themes: ${themes horizontal separator[, ]}
+        Premium: ${advertisedPremium} per ${nrPremiumDays}
+        Insured risks:
+            ${parts vertical terminator [;]}
+        Calculation
+            [? Risk adjusted by = ${riskAdjustment} ]
+            calculated premium: ${calculation}
+        [?Helper functions:
+            ${helpers vertical}]
+]}
 ```
 
 ## Inherited Projections
