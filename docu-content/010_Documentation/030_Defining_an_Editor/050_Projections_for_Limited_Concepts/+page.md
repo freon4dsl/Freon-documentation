@@ -10,7 +10,7 @@ limited concept are options. When the property is a list of limited values, it c
 
 The example that is used in the documentation defines the limited concept `InsuranceTheme` as a simple enumeration.
 
-```txt
+```proto
 // DocuProject/src/defs/language-main.ast#L129-L131
 
 limited InsuranceTheme {        // limited defined as a simple enumeration
@@ -25,7 +25,7 @@ as a list in `InsurancePart`.
 
 The metamodel for `BaseProduct` is the following.
 
-```txt
+```proto
 // DocuProject/src/defs/language-main.ast#L24-L26
 
 concept BaseProduct {
@@ -35,7 +35,7 @@ concept BaseProduct {
 
 We combine this metamodel with the following projection.
 
-```txt
+```proto
 // DocuProject/src/defs/editor-main-controls.edit#L5-L6
 
 BaseProduct {[
@@ -54,7 +54,7 @@ figureNumber={1}
 
 The metamodel for `InsuranceProduct` is the following.
 
-```txt
+```proto
 // DocuProject/src/defs/language-main.ast#L53-L56
 
 concept InsuranceProduct {
@@ -65,7 +65,7 @@ concept InsuranceProduct {
 
 Again, we combine this metamodel with a projection.
 
-```txt
+```proto
 // DocuProject/src/defs/editor-main-controls.edit#L19-L21
 
 InsuranceProduct {[

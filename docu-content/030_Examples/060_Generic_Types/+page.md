@@ -7,7 +7,7 @@ This example shows how generic types and unit of measurements can be defined.
 The language is very simple, its units consists of lists of _expression_ - _declared type_ pairs. Ultimately, we want to compare the declared
 type with the type of the expression. Below is an example of a model unit of this language.
 
-```text
+```txt
 UnitA correctExps
 
 12 : NUMBER;

@@ -22,7 +22,7 @@ In the next example, the concept `InsurancePart` has a simple property of type b
 called `isApproved`. In the projection for `isApproved` the strings `JA` and `NEE` will be shown for,
 respectively, true and false.
 
-```txt
+```proto
 // DocuProject/src/defs/language-main.ast#L41-L49
 
 // An InsurancePart defines a single aspect of an InsuranceProduct together
@@ -36,7 +36,7 @@ concept InsurancePart {
 }
 ```
 
-```txt
+```proto
 // DocuProject/src/defs/editor-main-default.edit#L28-L35
 
 
@@ -66,7 +66,7 @@ of the property is `true`, the keyword is shown. When the value is `false`, the 
 
 [//]: # (todo make a model and a screenshot)
 
-```txt
+```proto
 // DocuProject/src/defs/editor-main-default.edit#L67-L69
 
 
@@ -76,7 +76,7 @@ Entity {[
 
 This example would be displayed as one of ...
 
-```
+```txt
 COMPANY entity PhilipsEnterPrises { // the value of isCompany is true
   ...
 }
@@ -111,7 +111,7 @@ definition is taken. If that is also not present then the default is `true` and 
 
 For the sake of the example, we have added a number of boolean properties to the concept `BaseProduct`.
 
-```txt
+```freon
 // DocuProject/src/defs/language-main.ast#L28-L33
 
 isUnderConstruction: boolean;   // defines whether this base product is still 'raw'
@@ -124,7 +124,7 @@ yieldsProfit: boolean;
 
 Each of the added properties is displayed differently.
 
-```txt
+```freon
 // DocuProject/src/defs/editor-main-controls.edit#L7-L11
 
 is still under construction: ${self.isUnderConstruction switch}

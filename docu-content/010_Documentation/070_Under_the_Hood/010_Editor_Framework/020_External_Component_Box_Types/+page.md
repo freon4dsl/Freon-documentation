@@ -50,7 +50,7 @@ Note that the childBox itself may be a vertical or horizontal layout containing 
 
 Example:
 
-```
+```proto
 MyConcept {
     [
         Here is a fragment [fragment XX wrap = SMUI_Card]
@@ -216,7 +216,7 @@ get tabbing etc. working.
 
    Example:
 
-```
+```freon
     global {
         external {
             AnimatedGif,
@@ -235,7 +235,7 @@ get tabbing etc. working.
 
         Example:
 
-```
+```ts
 setCustomComponents([
    {component: ShowAnimatedGif, knownAs: "AnimatedGif"},
    {component: SMUI_Card_Component, knownAs: "SMUI_Card"},
@@ -258,7 +258,7 @@ method can be used to find the value of the parameter that was included in the .
 External projections may be nested.
 Example:
 
-```
+```freon
 external SMUI_Card [
     This Card is showing animated gif number 1.
         [external=AnimatedGif number="1"]

@@ -11,7 +11,7 @@ a very special place.
 In this lesson we introduce expressions by adding grading rules to each `Topic`. Therefore, we need to change the metamodel.
 Open the file `edu-topics.ast` and add one line to the `Page` concept.
 
-```txt
+```proto
 // Education/lesson4-defs/edu-topics.ast#L10-L14
 
 abstract concept Page {
@@ -24,7 +24,7 @@ abstract concept Page {
 Of course, we are going to define the `GradeScore` concept, but for this we create a new file called `edu-scoring.ast`.
 Add the following lines to it.
 
-```txt
+```proto
 // Education/lesson4-defs/edu-scoring.ast#L1-L6
 
 language Education
@@ -63,7 +63,7 @@ So, what do we have here.
 
 This is how we define the first three concepts of the above list.
 
-```txt
+```proto
 // Education/lesson4-defs/edu-scoring.ast#L8-L28
 
 ///////////////////////////////////
@@ -100,7 +100,7 @@ Freon adds loads of extra stuff to handle binary expressions. All we have to do 
 the concept is a binary expression concept. Look at how we define the two binary expressions for
 the boolean **AND** and **OR**.
 
-```txt
+```proto
 // Education/lesson4-defs/edu-scoring.ast#L30-L44
 
 ///////////////////////////////////
@@ -142,7 +142,7 @@ a low number means low priority.
 What is left of the requirements for our expressions are the `=` and `>` signs. But let's
 not be stingy, and create expression concepts for `<`, `>=`, and `<=` as well.
 
-```txt
+```proto
 // Education/lesson4-defs/edu-scoring.ast#L46-L70
 
 ///////////////////////////////////
@@ -180,7 +180,7 @@ Yep, as so often occurs, we forgot one tiny thing: the editor definition for `Pa
 not mention the new `grading` property, thus it will not be shown. Let's address that right now. We'll change the `Page` projection
 in `page-footing.edit` to the following.
 
-```txt
+```proto
 // Education/lesson4-defs/page-footing.edit#L5-L11
 
 Page {[

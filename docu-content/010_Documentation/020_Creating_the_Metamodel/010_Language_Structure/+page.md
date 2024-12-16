@@ -17,7 +17,7 @@ It is always shown in parts: the model units. However, the provided webapp does 
 part of it, in its left panel.
 </svelte:fragment></Note>
 
-```txt
+```proto
 // DocuProject/src/defs/language-main.ast#L7-L10
 
 model InsuranceModel {
@@ -31,7 +31,7 @@ model InsuranceModel {
 A _model unit_ is a part of the model that can be edited by the user independently of the rest of the model. A model unit is
 always a direct child of a model. Model units may not extend other units, or implement interfaces.
 
-```txt
+```proto
 // DocuProject/src/defs/language-main.ast#L12-L15
 
 modelunit Part {
@@ -52,7 +52,7 @@ a model created by your users.
 Concepts may extend one other concept using the keyword `base`, and implement multiple interfaces.
 Furthermore, they may be _abstract_.
 
-```txt
+```proto
 // DocuProject/src/defs/language-main.ast#L24-L28
 
 concept BaseProduct {
@@ -62,7 +62,7 @@ concept BaseProduct {
     isUnderConstruction: boolean;   // defines whether this base product is still 'raw'
 ```
 
-```txt
+```proto
 // DocuProject/src/defs/language-main.ast#L106-L112
 
     Percentage;
@@ -81,7 +81,7 @@ order to give your user a more natural editing experience.
 
 Expression concepts may extend another concept, and implement multiple interfaces.
 
-```txt
+```proto
 // DocuProject/src/defs/language-expressions.ast#L10-L18
 
 abstract expression Literal base DocuExpression {
@@ -109,20 +109,20 @@ simply use the root expression concept as type of the property that is to be put
 
 ## Binary Expression Concept
 
-A _binary expression concept_ is an expression concept that has two sub expressions, left and right operands,
-and an operator, which in the concrete syntax goes in the middle. For example, the expression `4 + 5`
+A _binary expression concept_ is an expression concept that has two sub expressions, `left` and `right` operands,
+and an operator, which in the concrete syntax is shown in the middle. For example, the expression `4 + 5`
 has as left operand `4`, as operator `+`, and as right operand `5`.
 
 Any concrete binary expression concept needs to have a priority. For example, in mathematics the 
-priority of the multiplication is higher than the priority of the plus. The expression 5 + 67 * 8 
-should be read as 5 + (67 * 8), not as (5 + 67) * 8. The priorities are used by Freon to balance the
+priority of the multiplication is higher than the priority of the plus. The expression 5 + 67 \* 8 
+should be read as 5 + (67 \* 8), not as (5 + 67) \* 8. The priorities are used by Freon to balance the
 abstract syntax tree (see [Projectional Editing](/Background/Projectional_Editing#tree-balancing)). In
 [Ease of Editing](/Documentation/Defining_an_Editor/Ease_of_Editing) you can
 find more information on how to set the concrete syntax for the operand.
 
 Binary expression concepts may extend one other concept, and implement multiple interfaces.
 
-```txt
+```proto
 // DocuProject/src/defs/language-expressions.ast#L26-L46
 
 // Basic binary expressions: plus, minus, multiply, divide
@@ -161,11 +161,8 @@ Limited concepts may extend another concept, and implement multiple interfaces. 
 includes the definition of the predefined instances. For example, the instances of `PremiumDays` are 
 `Week`, `Month`, `Quarter`, `Semester`, and `Year`.
 
-```txt
-// DocuProject/src/defs/language-main.ast#L126-L143
-
-    reference type: NamedType;
-}
+```proto
+// DocuProject/src/defs/language-main.ast#L129-L146
 
 limited InsuranceTheme {        // limited defined as a simple enumeration
     HomeTheme; HealthTheme; LegalTheme;
@@ -182,6 +179,9 @@ limited PremiumDays {           // limited with various options
     Quarter = { nrOfDays: 91 }
     // the following instance gets the name "Semester"
     Semester = { nrOfDays: 182 }
+    // the following instance gets the name "Year"
+    Year = { nrOfDays: 365 }
+}
 ```
 
 <Note>
@@ -196,12 +196,13 @@ instances of limited concepts.
 
 An _interface_ is a concept that has no instances. It may extend multiple other interfaces.
 
-```txt
-// DocuProject/src/defs/language-main.ast#L94-L96
+```proto
+// DocuProject/src/defs/language-main.ast#L96-L99
 
-// Sorry, its not good style to use an interface and a set of separate limited concepts.
-// At least, it is an example of using an interface, and of the fact that limited
 // concepts can implement interfaces.
+interface NamedType {
+    name: identifier;
+}
 ```
 
 The next section will explain the options for concept properties.
