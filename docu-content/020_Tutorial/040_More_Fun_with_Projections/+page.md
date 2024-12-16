@@ -13,7 +13,7 @@ We are going to create tables!
 We almost forgot to make an editor definition for the _Flow_ model unit. We are going to create a file called `edu-flow-edit`,
 and add the following lines to it. You should be familiar with everything in these projections by now.
 
-```freon
+```proto
 // Education/lesson3-defs/edu-flow.edit
 
 /* This file contains the default editor definition. */
@@ -78,7 +78,7 @@ Let's create a second editor definition for the _Flow_ model unit, one that disp
 the list of _PageTransitions_ in the _FlowRule_ as a table.
 We are going to name this editor definition `rules_as_table`. It goes into the file `edu-flow-table.edit`.
 
-```freon
+```proto
 // Education/lesson3-defs/edu-flow-table.edit#L3-L3
 
 editor rules_as_table
@@ -90,7 +90,7 @@ that we are going to display the list `${self.transitions}` as a table, we remov
 Furthermore, we want the elements in the list to be displayed one element per row, thus
 the keyword `rows` is added. It won't be a surprise that you can also display one element per column using the keyword `columns`.
 
-```freon
+```proto
 // Education/lesson3-defs/edu-flow-table.edit#L5-L12
 
 FlowRule {[
@@ -116,7 +116,7 @@ Headers are not obligatory, you can create a table without headers, if you like.
 Finally, we define the content of the table cells by indicating which property of the _PageTransition_ should go where. Again the bar
 indicates the transition from one table cell to the next table cell.
 
-```freon
+```proto
 // Education/lesson3-defs/edu-flow-table.edit#L14-L17
 
 PageTransition { table [
@@ -153,7 +153,7 @@ for example `[=>Page:footing]`.
 We want to see this feature in action! But before we can use the `footing` editor definition, we need to create it. 
 Add a file called `page-footing.edit`, and copy the following lines into it.
 
-```freon
+```proto
 // Education/lesson3-defs/page-footing.edit#L3-L8
 
 editor footing
@@ -166,7 +166,7 @@ Page {[
 
 Now we are ready to specify a specific editor. Let's rewrite the `edu-topics.edit` file as follows.
 
-```freon
+```proto
 // Education/lesson3-defs/edu-topics.edit#L17-L60
 
 

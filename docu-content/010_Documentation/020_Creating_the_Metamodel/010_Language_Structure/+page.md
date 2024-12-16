@@ -17,7 +17,7 @@ It is always shown in parts: the model units. However, the provided webapp does 
 part of it, in its left panel.
 </svelte:fragment></Note>
 
-```freon
+```proto
 // DocuProject/src/defs/language-main.ast#L7-L10
 
 model InsuranceModel {
@@ -31,7 +31,7 @@ model InsuranceModel {
 A _model unit_ is a part of the model that can be edited by the user independently of the rest of the model. A model unit is
 always a direct child of a model. Model units may not extend other units, or implement interfaces.
 
-```freon
+```proto
 // DocuProject/src/defs/language-main.ast#L12-L15
 
 modelunit Part {
@@ -52,7 +52,7 @@ a model created by your users.
 Concepts may extend one other concept using the keyword `base`, and implement multiple interfaces.
 Furthermore, they may be _abstract_.
 
-```freon
+```proto
 // DocuProject/src/defs/language-main.ast#L24-L28
 
 concept BaseProduct {
@@ -62,7 +62,7 @@ concept BaseProduct {
     isUnderConstruction: boolean;   // defines whether this base product is still 'raw'
 ```
 
-```freon
+```proto
 // DocuProject/src/defs/language-main.ast#L106-L112
 
     Percentage;
@@ -81,7 +81,7 @@ order to give your user a more natural editing experience.
 
 Expression concepts may extend another concept, and implement multiple interfaces.
 
-```freon
+```proto
 // DocuProject/src/defs/language-expressions.ast#L10-L18
 
 abstract expression Literal base DocuExpression {
@@ -122,7 +122,7 @@ find more information on how to set the concrete syntax for the operand.
 
 Binary expression concepts may extend one other concept, and implement multiple interfaces.
 
-```freon
+```proto
 // DocuProject/src/defs/language-expressions.ast#L26-L46
 
 // Basic binary expressions: plus, minus, multiply, divide
@@ -161,7 +161,7 @@ Limited concepts may extend another concept, and implement multiple interfaces. 
 includes the definition of the predefined instances. For example, the instances of `PremiumDays` are 
 `Week`, `Month`, `Quarter`, `Semester`, and `Year`.
 
-```freon
+```proto
 // DocuProject/src/defs/language-main.ast#L129-L146
 
 limited InsuranceTheme {        // limited defined as a simple enumeration
@@ -196,7 +196,7 @@ instances of limited concepts.
 
 An _interface_ is a concept that has no instances. It may extend multiple other interfaces.
 
-```freon
+```proto
 // DocuProject/src/defs/language-main.ast#L96-L99
 
 // concepts can implement interfaces.

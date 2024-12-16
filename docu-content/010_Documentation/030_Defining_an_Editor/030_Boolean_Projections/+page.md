@@ -22,7 +22,7 @@ In the next example, the concept `InsurancePart` has a simple property of type b
 called `isApproved`. In the projection for `isApproved` the strings `JA` and `NEE` will be shown for,
 respectively, true and false.
 
-```freon
+```proto
 // DocuProject/src/defs/language-main.ast#L41-L49
 
 // An InsurancePart defines a single aspect of an InsuranceProduct together
@@ -36,7 +36,7 @@ concept InsurancePart {
 }
 ```
 
-```freon
+```proto
 // DocuProject/src/defs/editor-main-default.edit#L28-L35
 
 
@@ -66,7 +66,7 @@ of the property is `true`, the keyword is shown. When the value is `false`, the 
 
 [//]: # (todo make a model and a screenshot)
 
-```freon
+```proto
 // DocuProject/src/defs/editor-main-default.edit#L67-L69
 
 
@@ -76,7 +76,7 @@ Entity {[
 
 This example would be displayed as one of ...
 
-```
+```txt
 COMPANY entity PhilipsEnterPrises { // the value of isCompany is true
   ...
 }

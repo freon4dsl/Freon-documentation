@@ -15,7 +15,7 @@ Currently, there are four types of validation rules.
 Given a [simple property](/Documentation/Creating_the_Metamodel/Defining_Properties#simple-properties-2), 
 its value can be limited to certain values.
 
-```freon
+```proto
 // DocuProject/src/defs/validator-extras.valid#L3-L6
 
 EntityAttribute {
@@ -31,7 +31,7 @@ Given a list property, a **not-empty rule** can be stated. The list complies wit
 An **is-unique rule** is another rule that can be stated for a list property. The list
 complies when the value of the property is unique within the list.
 
-```freon
+```proto
 // DocuProject/src/defs/validator-docu.valid#L3-L7
 
 InsuranceProduct {
@@ -50,7 +50,7 @@ For a _valid-identifier-rule_ the `validIdentifier` keyword is used followed by 
 property is present, this property is checked. When the property is not present, Freon assumes that the
 concept has a simple property named ‘`name`’ of type ‘`identifier`’, and it will check this property.
 
-```freon
+```proto
 // DocuProject/src/defs/validator-docu.valid#L27-L32
 
 }

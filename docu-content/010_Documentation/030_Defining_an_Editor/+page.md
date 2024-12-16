@@ -61,7 +61,7 @@ will be displayed as a vertical list, as shown by the following grammar rule.
 
 [//]: # (todo: adjust the example)
 
-```freon
+```proto
 // DocuProject/src/defs/language-main.ast#L24-L36
 
 concept BaseProduct {
@@ -115,7 +115,7 @@ times, the values must be consistent.</p>
 </svelte:fragment>
 </Note>
 
-```freon
+```proto
 // DocuProject/src/defs/editor-tables.edit#L1-L11
 
 /* This file contains the table definition in a separate editor / projection group.
@@ -135,7 +135,7 @@ table [
 
 A complete .edit file could look like this.
 
-```freon
+```proto
 // DocuProject/src/defs/editor-main-default.edit#L1-L80
 
 /* This file contains the default editor definition. */

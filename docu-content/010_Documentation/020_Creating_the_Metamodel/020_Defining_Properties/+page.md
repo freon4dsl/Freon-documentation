@@ -13,7 +13,7 @@ of properties.
 **Primitive properties** have as type `identifier`, `string`, `number`, or `boolean`, and are
 always contained in the _concept_. Primitive properties may also be lists.
 
-```freon
+```proto
 // DocuProject/src/defs/language-main.ast#L33-L34
 
 yieldsProfit: boolean;
@@ -27,7 +27,7 @@ or interfaces in the language, and are _contained in the concept_ that holds the
 the UML composition relationship). Parts are also called children.
 In the example below `body` and `parameters` are parts. 
 
-```freon
+```proto
 // DocuProject/src/defs/language-main.ast#L72-L73
 
 body: DocuExpression;               // the actual calculation definition
@@ -44,7 +44,7 @@ References are always by name, therefore the referred concept must have a `name`
 
 In the following example the concept `InsuranceProduct` holds a list of references to `InsuranceParts`. x
 
-```freon
+```proto
 // DocuProject/src/defs/language-main.ast#L53-L59
 
 concept InsuranceProduct {
@@ -56,7 +56,7 @@ concept InsuranceProduct {
     reference parts: InsurancePart[];       // optionally, known parts can be included by reference
 ```
 The concept `InsurancePart` has a property `name: identifier`.
-```freon
+```proto
 // DocuProject/src/defs/language-main.ast#L44-L45
 
 concept InsurancePart {
@@ -70,7 +70,7 @@ Lists are always considered to be optional, i.e. they maybe empty, - there is no
 
 Primitive properties may not be optional at the moment, but we plan to change this in the future.
 
-```freon
+```proto
 // DocuProject/src/defs/language-main.ast#L70-L70
 
 description?: Description;          // an optional description

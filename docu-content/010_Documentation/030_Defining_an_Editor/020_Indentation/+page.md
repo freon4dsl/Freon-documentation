@@ -7,7 +7,7 @@
 The indentation you use in a projection is taken into account in the display. Thus, in the following example `literal text` will
 appear indented 8 spaces from `This is`.
 
-```freon
+```proto
 // DocuProject/src/defs/editor-indentation.edit#L6-L14
 
 Text {
@@ -25,7 +25,7 @@ However, this is not the complete story. Any whitespace before the line with the
 Therefore, you can indent the projection as a whole, without it having any influence on the projected indentation.
 The next example produces the exact same result as the previous.
 
-```freon
+```proto
 // DocuProject/src/defs/editor-indentation.edit#L16-L25
 
 Text2 {
@@ -45,7 +45,7 @@ In the following example, the line with the least indentation is
 not be indented. On the other hand,
 the text `This is` will be indented 10 spaces, `literal text` will be indented 8 spaces, etc.
 
-```freon
+```proto
 // DocuProject/src/defs/editor-indentation.edit#L27-L35
 
 Text3 {
@@ -63,7 +63,7 @@ In the determination of the least indent, the indentation of the closing bracket
 the following example will take the closing bracket as margin, and even the line `for every concept of type Text.`
 will be indented with 3 spaces.
 
-```freon
+```proto
 // DocuProject/src/defs/editor-indentation.edit#L37-L45
 
 Text4 {

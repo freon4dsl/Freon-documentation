@@ -44,7 +44,7 @@ To indicate which AST concepts are considered to be types in your language,
 the keyword `isType` is used, followed by all types in your language between curly brackets, 
 and separated by commas.
 
-```freon
+```proto
 // DocuProject/src/defs/typer-docu.type#L4-L4
 
 istype { NamedType }
@@ -55,7 +55,7 @@ The properties may only be instances of other type concepts, or references to li
 `base` in the next example is an instance of the interface `FreType`, whereas the property `kind` refers to
 the limited concept `GenericKind`.
 
-```freon
+```proto
 // DocuProject/src/defs/typer-docu.type#L6-L9
 
 type GenericType {

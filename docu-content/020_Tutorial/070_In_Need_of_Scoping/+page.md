@@ -40,7 +40,7 @@ First, we need to think about our DSL. Which names need to be kept from being se
 names of questions that are visible in all pages, also in others than the one on which the names are defined. This means that 
 the concept `Page` is a likely candidate to be a name space. Knowing this, we add the following lines to the `edu.scope` file.
 
-```freon
+```proto
 // Education/lesson6-defs/edu.scope
 
 scoper EducationScoper for language Education

@@ -8,7 +8,7 @@ It is possible to add an extra button to any projection. To do so add
 the following line in one of the projections. Note that there may not be
 a space between the start square bracket `[` and `button`.
 
-```freon
+```proto
 // DocuProject/src/defs/editor-fragments.edit#L18-L18
 
 [button text="Push me!" boxRole="MyButton-role"]

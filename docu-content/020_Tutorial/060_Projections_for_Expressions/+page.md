@@ -20,7 +20,7 @@ GradeD: Answer to questionY is correct OR Answer to questionZ is correct AND the
 
 Thus, the projection needs to be defined like this.
 
-```freon
+```proto
 // Education/lesson5-defs/edu-scoring.edit#L1-L6
 
 editor default
@@ -36,7 +36,7 @@ GradeScore {[
 The next thing to tackle is the `Answer to questionY is correct`-part. We represented this in the metamodel by the
 concept `QuestionReference`, so the projection needs to be like this.
 
-```freon
+```proto
 // Education/lesson5-defs/edu-scoring.edit#L11-L14
 
 QuestionReference {
@@ -59,7 +59,7 @@ selected that fits as content of the property `question`.
 We also add the next lines. These should not hold any surprises for you. You have already learned a lot from the previous lessons! Note that
 we suffice with a constant text string for the `NrOfCorrectAnswers` concept.
 
-```freon
+```proto
 // Education/lesson5-defs/edu-scoring.edit#L16-L22
 
 
@@ -76,7 +76,7 @@ NumberLiteralExpression {
 Creating projections for binary expressions is no rocket science. All you have to do is tell Freon which symbol to use as 
 operand.
 
-```freon
+```proto
 // Education/lesson5-defs/edu-scoring.edit#L24-L53
 
 

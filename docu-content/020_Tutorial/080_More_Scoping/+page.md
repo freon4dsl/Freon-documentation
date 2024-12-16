@@ -21,7 +21,7 @@ the next page to show should be 'Theory102'.
 In the test we want to be able to give specific answers to the questions on the current page, and we need to express the follow-up page.
 So we add the following to the file 'edu-tests.ast'. All should be familiar by now.
 
-```freon
+```proto
 // Education/lesson7-defs/edu-tests.ast
 
 language Education
@@ -62,7 +62,7 @@ concept Answer {
 
 We also build the projections, and again, nothing should be strange for you at the moment.
 
-```freon
+```proto
 // Education/lesson7-defs/edu-tests.edit
 
 editor default
@@ -123,7 +123,7 @@ let Freon know that these are the names to be used in a `Step` instance, we use 
 A namespace addition adds names to a namespace as long as these names can be directly reached from the namespace object. For instance, in this example we can use
 the `fromPage` property, but here is no way to refer to other scenarios.
 
-```freon
+```proto
 // Education/lesson7-defs/edu.scope
 
 scoper EducationScoper for language Education

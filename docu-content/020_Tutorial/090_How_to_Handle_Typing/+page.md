@@ -30,7 +30,7 @@ which is a simple enumeration. We have also added an `ANY` instance, which repre
 can conform to, like `Object`. There is no reason for this yet, we just want to be prepared for extensions.
 We add the following to our `edu-main.ast` file.
 
-```freon
+```proto
 // Education/lesson8-defs/edu-main.ast#L19-L27
 
 interface Type {
@@ -56,7 +56,7 @@ Let's create yet another file, called `edu-scoring.type`, and add
 the following lines to it. They mean that all instances of the concept `Type` are types, and 
 that all instances of `ScoreExpression` have a type.
 
-```freon
+```proto
 // Education/lesson8-defs/edu-scoring.type#L1-L5
 
 typer
@@ -69,7 +69,7 @@ hastype { ScoreExpression }
 But what about the NrOfCorrectAnswers concept? How do we express which type to associate with instances of this concept?
 And what about the other concepts that inherit from `ScoreExpression`? Let's not beat around the bush. This is how.
 
-```freon
+```proto
 // Education/lesson8-defs/edu-scoring.type#L7-L24
 
 QuestionReference {

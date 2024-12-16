@@ -7,7 +7,7 @@ import { CategoryInfoType, TocContentsType } from './TocContentsType.js';
 import { compile } from 'mdsvex';
 import { setupFreon } from "./prism-freon.js"
 
-// Setup the Freon language for code highlighting
+// Setup the Freon language for code highlighting with Prism
 setupFreon()
 
 const storeContent: string =
@@ -89,7 +89,10 @@ export class Md2Svelte {
 	private async transformFile(filepath: string, ignore: string, outputFolder: string) {
 		// For each file, create a Svelte file containing the content from the markdown,
 		// and a page content (nav) on the side.
-		const markdown: string = fs.readFileSync(filepath, 'utf8');
+		// Because embedme only works for known file types, we use the file type "```proto" in the markdown,
+		// but replace it with "```freon" before transforming it to Svelte.
+		// This way Prism sees the correct file type: freon.
+		const markdown: string = fs.readFileSync(filepath, 'utf8').replaceAll("```proto", "```freon");
 		const transformed_code = await compile(markdown, {
 			extensions: ['.md'],
 			smartypants: true,

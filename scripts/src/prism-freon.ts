@@ -1,5 +1,8 @@
 import Prism from "prismjs"
 
+/**
+ * Freon language definition for Prism code highlighting.
+ */
 export function setupFreon() {
 	Prism.languages.freon = {
 		'comment': [

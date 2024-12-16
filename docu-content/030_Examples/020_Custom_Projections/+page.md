@@ -4,7 +4,7 @@
 
 ### global booleans
 
-```
+```proto
 global {
      boolean [YES | NO] // the strings used to display a boolean value
 
@@ -16,7 +16,7 @@ global {
 
 see DocuProject/editor-main-default.edit
 
-```
+```proto
 
 BaseProduct {[
     yields profit: ${self.yieldsProfit text [Plenty | Little]}
@@ -25,7 +25,7 @@ BaseProduct {[
 
 - radio button, with or without text
 
-```
+```proto
 BaseProduct {[
         is approved level1: ${self.isApprovedLevel1 radio [Sure | NoWay]}
         is approved level2: ${self.isApprovedLevel2 inner-switch}
@@ -42,4 +42,3 @@ BaseProduct {[
 ## Include the editor in your own website
 
 ## External Svelte Components
-```
