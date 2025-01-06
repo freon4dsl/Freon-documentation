@@ -219,14 +219,12 @@ table [
 }
 ```
 
-[//]: # (todo the text in the following note is not inaccordance with the example)
-
 <Note>
 <svelte:fragment slot="header">Properties within a table are displayed according to their own projection</svelte:fragment>
 <svelte:fragment slot="content">
 The manner in which each of the properties in a table are displayed, is determined
-by their own projections. In this example, <code>self.parameters</code> is a list, and will be displayed as another table.
-The inner table will be row-based, as this is the default.
+by their own projections. In this example, <code>maximumPayout</code> is a <code>EuroLiteral</code>, and will be displayed as such.
+Note that the inner projection may also be a table.
 </svelte:fragment>
 </Note>
 

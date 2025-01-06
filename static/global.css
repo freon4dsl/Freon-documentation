@@ -59,6 +59,7 @@ body {
 	--color-link: var(--theme-colors-FRE_ACCENT);
 	--color-button-active: rgba(var(--color5), 0.7); /* --theme-colors-FRE_BROWN with opacity .7 */
 	--color-button-hover: rgba(var(--color5), 0.8); /* --theme-colors-FRE_BROWN with opacity .8 */
+	--color-popup-box-shadow: 0 0 0px 0 rgba(0, 0, 0, 0.5);
 
 	/* Other settings */
 	color: var(--color6);
@@ -80,6 +81,7 @@ body.dark {
 	--color-link: var(--theme-colors-FRE_LINK);
 	--color-button-active: rgba(var(--color5), 0.7); /* --theme-colors-FRE_YELLOW with opacity .7 */
 	--color-button-hover: rgba(var(--color5), 0.8); /* --theme-colors-FRE_YELLOW with opacity .8 */
+	--color-popup-box-shadow: 0 0 0px 0 rgba(0, 0, 0, 0.5);
 }
 
 iframe {
@@ -146,48 +148,6 @@ li {
 	width: 100%;
 	background: var(--color1);
 }
-/* Styles for the app bar */
-.app-bar-button {
-	position: relative;
-	border: solid 1px var(--color6);
-	padding: 0;
-}
-.app-bar-button-content {
-	background-color: var(--color6);
-}
-.app-bar-main-menu {
-	display: flex;
-	align-content: space-between;
-	margin-top: 6px;
-}
-.app-bar-linkLogo {
-	margin-right: 8px;
-	margin-left: 8px;
-}
-.app-bar {
-	display: flex;
-	align-items: center;
-	padding: 0 4px 0 6px;
-	height: var(--fre-header-height);
-	color: var(--color1);
-	background: var(--color6);
-	font-size: var(--fre-header-font-size);
-	line-height: 1;
-	min-width: inherit;
-	position: fixed;
-	left: 0;
-	top: 0;
-	right: 0;
-	z-index: 20;
-}
-.title {
-	flex: 1;
-	margin-left: 0.5rem;
-	white-space: nowrap;
-	text-align: left;
-	color: var(--color1);
-}
-
 /* Styles for the landing page */
 .landing-started a {
 	color: var(--color-accent);

@@ -7,7 +7,7 @@
 In order to provide examples in this section of the website, we have created an example DSL called
 _Insurance_. This example is consistently applied across all pages in this section of the website.
 Therefore, it is good to know up front what this DSL is all about. You can find the complete sources
-of the DSL on the samples directory in the `master` branch of our GitHub project 
+of the DSL in the samples directory in the `master` branch of our GitHub project 
 at <a href="https://github.com/freon4dsl/Freon" target="_blank">
 https://github.com/freon4dsl/Freon</a>.
 

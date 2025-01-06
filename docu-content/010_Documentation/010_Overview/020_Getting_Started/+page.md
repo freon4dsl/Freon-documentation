@@ -23,8 +23,6 @@ Please, use a recent version of a browser like Chrome or Edge, because we cannot
 ensure that the editor functions as it should in older browsers.
 </svelte:fragment></Note>
 
-[//]: # (todo give version numbers of browsers)
-
 ## Example Project Startup
 
 The simplest manner to start working with Freon is start from the example project from GitHub.
