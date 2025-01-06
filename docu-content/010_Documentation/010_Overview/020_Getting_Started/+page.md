@@ -19,7 +19,7 @@ In the following explanations the root of the project will be indicated with '~'
 <Note>
 <svelte:fragment slot="header">Use a recent browser version</svelte:fragment>
 <svelte:fragment slot="content">
-Please, use a fairly recent browser, for instance Chrome or Edge, because we cannot
+Please, use a recent version of a browser like Chrome or Edge, because we cannot
 ensure that the editor functions as it should in older browsers.
 </svelte:fragment></Note>
 
@@ -47,7 +47,7 @@ Next, install all necessary packages by running:
 Run the generator and see the generated files appearing in the folder ~/src/frecode:
 
   ```bash
-  npm generate
+  npm run generate
   ```
 
 Start the server (note that anything that is saved in the editor will be stored in ~/modelstore):
@@ -73,11 +73,10 @@ For easier use of the editor, have a look at the key-bindings under the <em>Help
 ## Template Project Startup
 
 You can also start from our template project. The template
-project provides a shell for the generated editor that enables the user to work with multiple models, and
-[model units](/Background#models-and-model-units-4), but does not include any Freon definition 
-files, i.e. it does not include a language definition. You need to define your own.
+project provides everything, except a language definition.
+You need to define your own.
 
-To use the template project clone branch `master` from <a href="https://github.com/freon4dsl/Freon-template" target="_blank">
+To use the template project clone branch `main` from <a href="https://github.com/freon4dsl/Freon-template" target="_blank">
   https://github.com/freon4dsl/Freon-template</a>.
   (For an explanation of the content of the project see
   [Project Structure](/Documentation/Overview/Getting_Started#project-structure-4).)
@@ -128,8 +127,8 @@ Adjust the configuration of the web application by changing two lines in the fil
 /**
  * The one and only reference to the actual language for which this editor runs
  */
-import {EducationEnvironment} from "@freon4dsl/samples-edu-prevNext";
-WebappConfigurator.getInstance().setEditorEnvironment(EducationEnvironment.getInstance());
+import { EntityModelEnvironment } from "./frecode/config/gen/EntityModelEnvironment.js";
+WebappConfigurator.getInstance().setEditorEnvironment(EntityModelEnvironment.getInstance());
 ```
 
 Start the server (note that anything that is saved in the editor will be stored in `~/modelstore`):
@@ -151,8 +150,8 @@ Open another (bash) terminal, and start the generated editor from it:
 When developing a DSL, you often regenerate the Freon editor to reflect the changes made in the
 metamodel, and/or other definitions. In order to speed up your development cycle the <code>dev</code>
 command has the -watch flag set. Furthermore, you can use
-the following as address in the web browser: <code>http://localhost:8000/?model=TestProject</code>, where
-`TestProject` stands for the name of the model that you are using to test your language definition
+the following as address in the web browser: <code>http://localhost:8000/?model=TestModel</code>, where
+`TestModel` stands for the name of the model that you are using to test your language definition
 and editor with. Thus, the browser responds to any regeneration with opening your test model instantaneously.
 </p>
 </svelte:fragment></Note>
@@ -171,6 +170,7 @@ The code in a Freon project under `~/src` is organised into the following subfol
 
 - **defs**: the language definition files.
 - **frecode**: the generated source code.
+  - **.../commandline**: code that provides commandline access to models in the language.
   - **.../config**: code that provides the coupling between all parts of the generated workbench.
     This folder contains one file that will not be overwritten at regeneration: `FreonConfiguration.ts`.
     Here you can configure any [customization](/Documentation/Customizations) that you want the generated code to take into account.
@@ -183,6 +183,7 @@ The code in a Freon project under `~/src` is organised into the following subfol
     (`YourLanguageName` will be replaced by the name you have given your language in the .ast files.)
     These two files are the placeholders for any [customization](/Documentation/Customizations) that you
     would like to do.
+  - **.../interpreter**: code that implements an interpreter [interpreter](/Examples/Using_the_Interpreter) for the language.
   - **.../language**: code that implements the language structure.
   - **.../reader**: a parser that is able to read [model units](/Background#models-and-model-units-4)
     from a text string or file.
@@ -208,7 +209,7 @@ file `.../webapp/config/WebappConfiguration.ts`. This file holds the references 
 <Note>
 <svelte:fragment slot="header">Be careful with handmade changes in <i>frecode</i>.</svelte:fragment>
 <svelte:fragment slot="content">
-The contents of all folders in <code>frecode</code> are organized into two types of files: 
+The contents of all folders in <code>frecode</code> is organized into two types of files: 
 those located directly in the folder (typically TypeScript classes) and those within 
 the <code>gen</code> subfolder. Files in the <code>gen</code> subfolder are 
 always deleted before regeneration, so avoid placing important code 
@@ -218,26 +219,24 @@ In contrast, files directly within the folder remain unchanged during regenerati
 
 ## A Minimal Webapp and Server
 
-To ensure the language environment functions properly, more is required than just 
-the code for the editor, validator, and similar components. Specifically, a server 
-is needed to store and provide user models, along with a web application capable 
-of displaying the editor, error messages, and the models available from the server, 
-among other functionalities.
+The Freon projectional web editor needs to be embedded in an application to work propertly.
+It also needs a server that allows to store and retrioeve the models the user creates in the editor.
 
-For both the server and the web application, we provide a minimal implementation 
-for your convenience. However, we anticipate that in a broader context where 
-Freon is used, these components will be replaced with appropriate solutions 
-chosen by the language engineer and their team.
+For both the server we provide a minimal implementation for your convenience.
+We also provide a complete application to embed the Freon editor. 
+
+However, we anticipate that in the context where Freon is used, these components usually
+need to be replaced with appropriate solutions that are for the company or organization where it is being used.
 
 ## The Five Definition Files
 
 A Freon language definition can have five parts:
 
-1. [The language structure](/Documentation/Creating_the_Metamodel), or abstract syntax tree (AST) is defined in files with extension `.ast`.
-2. [The concrete syntax](/Documentation/Defining_an_Editor) of the language (CST), or editor definition, is defined in files with extension `.edit`.
-3. [The scoping](/Documentation/Scoping,_Typing,_and_Validating/Scope_Provider) is defined in files with extension `.scope`.
-4. [The typing](/Documentation/Scoping,_Typing,_and_Validating/Type_Provider) is defined in files with extension `.type`.
-5. [The validation](/Documentation/Scoping,_Typing,_and_Validating/Validator) is defined in files with extension `.valid`.
+1. [The Ast file](/Documentation/Creating_the_Metamodel): the abstract syntax tree (AST) or meta-model is defined in files with extension `.ast`.
+2. [The Edit file](/Documentation/Defining_an_Editor): the concrete syntax (CST), or editor definition, is defined in files with extension `.edit`.
+3. [The Scope file](/Documentation/Scoping,_Typing,_and_Validating/Scope_Provider): the scope rules are defined in files with extension `.scope`.
+4. [The Type file](/Documentation/Scoping,_Typing,_and_Validating/Type_Provider): the typing rules are defined in files with extension `.type`.
+5. [The Validation file:](/Documentation/Scoping,_Typing,_and_Validating/Validator): the validation rules are defined in files with extension `.valid`.
 
 And yes, you can use multiple files to define one of the parts. For instance, Freon will combine
 multiple .ast files into one AST definition, and multiple .scope files into one scope definition.

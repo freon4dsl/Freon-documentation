@@ -44,7 +44,7 @@ To indicate which AST concepts are considered to be types in your language,
 the keyword `isType` is used, followed by all types in your language between curly brackets, 
 and separated by commas.
 
-```txt
+```proto
 // DocuProject/src/defs/typer-docu.type#L4-L4
 
 istype { NamedType }
@@ -55,7 +55,7 @@ The properties may only be instances of other type concepts, or references to li
 `base` in the next example is an instance of the interface `FreType`, whereas the property `kind` refers to
 the limited concept `GenericKind`.
 
-```txt
+```proto
 // DocuProject/src/defs/typer-docu.type#L6-L9
 
 type GenericType {
@@ -78,7 +78,7 @@ which have a different meaning.
 You can indicate which AST nodes are terms by the keyword `hasType` followed by all terms in
 your language between curly brackets, and separated by commas.
 
-```txt
+```freon
 // DocuProject/src/defs/typer-docu.type#L12-L12
 
 hastype { DocuExpression, DocuType, CalcFunction, Parameter, RiskRef, PayoutRef }
@@ -93,7 +93,7 @@ The following example gives an inference rule that states that the type of calcu
 value of its attribute `declaredType`. This value is an instance of `DocuType`, which indeed was declared to
 represent a type by the above declaration. First, we show the metamodel definition.
 
-```txt
+```freon
 // DocuProject/src/defs/language-main.ast#L68-L74
 
 concept CalcFunction {
@@ -107,7 +107,7 @@ concept CalcFunction {
 
 And, the typer definition looks like this.
 
-```txt
+```freon
 // DocuProject/src/defs/typer-docu.type#L18-L20
 
 CalcFunction {
@@ -129,7 +129,7 @@ present, the type of the AST node is the _type concept_ generated for this AST n
 In an inference rule, as in other definition files, it is possible to use
 the predefined instances of a **limited concept**.
 
-```txt
+```freon
 // DocuProject/src/defs/typer-docu.type#L27-L29
 
 RiskAdjustmentRef {
@@ -144,7 +144,7 @@ are considered equal or conforming. Each rule can have two entries: the **confor
 the **equalsto** entries. Within these entries it is also possible to use the predefined
 instances of a limited concept.
 
-```txt
+```freon
 // DocuProject/src/defs/typer-docu.type#L81-L89
 
 // Which types are 'equal' to each other?
@@ -187,7 +187,7 @@ explosion of newly created type concept instances.
 Conformance and other rules can also be defined to apply to **any** concept. Obviously, this means that
 any instance of any concept conforms to the given value.
 
-```txt
+```freon
 // TyperExample/src/defs/projectY.type#L21-L28
 
     conformsto PredefinedType:ANY; // PredefinedType:ANY is the least specific type

@@ -16,7 +16,7 @@ in the familiar manner between the square brackets (`[]`).
 
 The next example defines two fragments called (rather unimaginative) `First` and `Second`.
 
-```txt
+```proto
 // DocuProject/src/defs/editor-fragments.edit#L8-L24
 
 ]
@@ -56,7 +56,7 @@ Ensure there is no space between the opening square bracket (`[`) and the keywor
 Thus, the complete example is the following. Note that the concept's projection is closed before the
 fragments are defined.
 
-```txt
+```proto
 // DocuProject/src/defs/editor-fragments.edit#L3-L24
 
 BaseProduct {

@@ -25,7 +25,7 @@ a site group, with all sub topics, flows, and tests that regard that topic.
 
 Create the file `edu-main.ast` in the `src/defs` folder, and add the following code.
 
-```txt
+```proto
 // Education/lesson1-defs/edu-main.ast#L1-L10
 
 language Education
@@ -44,7 +44,7 @@ If you are impatient, and already tried to generate the editor, you will have no
 that there are errors in our input. We need to define the concepts Topic,
 Flow, Test, and SiteGroup. All four are model units, so we define them as such.
 
-```txt
+```proto
 modelunit Topic {
 
 }
@@ -79,7 +79,7 @@ that we want multiple instances of the type: a list.
 
 Likewise, we define references to the flows and the tests that are part of this site group.
 
-```txt
+```proto
 // Education/lesson1-defs/edu-main.ast#L11-L17
 
 modelunit SiteGroup {
@@ -103,7 +103,7 @@ useful as well, we give it the type `string`, because it should be able to conta
 We are building a model of a website, thus the concept **Page** should definitely be present.
 Each Topic will have a number of pages. The result for now is the code below.
 
-```txt
+```proto
 // Education/lesson1-defs/edu-topics.ast#L3-L8
 
 modelunit Topic {
@@ -123,7 +123,7 @@ include stuff that is more interesting for the kids as well, for instance some v
 There should also be pages with examples, and pages with assignments. So it is a good
 idea to make the **Page** concept abstract, and have a number of concepts that inherit from it.
 
-```txt
+```proto
 // Education/lesson1-defs/edu-topics.ast#L10-L39
 
 abstract concept Page {
@@ -173,7 +173,7 @@ But let's not forget to add a definition for the concept **Question**. Freon wil
 do not define all the concepts that you are using. And, because we are dealing with mathematics, we need to
 create a concept that represents fractions. A simple number will not be sufficient.
 
-```txt
+```proto
 // Education/lesson1-defs/edu-topics.ast#L41-L57
 
     name: identifier;
@@ -225,7 +225,7 @@ description of the flow between the pages.
 Let's create a second file called `edu-flow.ast`. This file will contain the part of the metamodel that handles
 **Flows**.
 
-```txt
+```proto
 // Education/lesson1-defs/edu-flow.ast#L1-L6
 
 language Education
@@ -242,7 +242,7 @@ working on. The flow rule will determine which page to show next, using a set of
 A page transition is simply a condition coupled to another page. If the condition is fulfilled, then that
 page will be the next in the flow.
 
-```txt
+```proto
 // Education/lesson1-defs/edu-flow.ast#L8-L18
 
 concept FlowRule {
@@ -262,7 +262,7 @@ But how to define the condition for a page transition? Well, we'll take the easy
 In Freon terminology that is a **limited concept**, which is a slightly more extensive notion than the old-fashioned
 enumeration (see todo link to documentation).
 
-```txt
+```proto
 // Education/lesson1-defs/edu-flow.ast#L20-L27
 
 limited Grade {
