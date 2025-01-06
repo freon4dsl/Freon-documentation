@@ -37,6 +37,7 @@ For example, given the following concept:
 
 concept BaseProduct {
     name: identifier;               // internal name
+    isUnderConstruction: boolean;   // defines whether this base product is still 'raw'
     theme: InsuranceTheme;          // the 'kind' of insurance
     parts: InsurancePart[];         // all parts of this product
 ```
@@ -205,14 +206,18 @@ table [
 }
 ```
 
-[//]: # (todo the text in the following note is not inaccordance with the example)
-
 <Note>
 <svelte:fragment slot="header">Properties within a table are displayed according to their own projection</svelte:fragment>
 <svelte:fragment slot="content">
+The manner in which each of the properties in a table are displayed, is determined
+by their own projections. In this example, <code>maximumPayout</code> is a <code>EuroLiteral</code>, and will be displayed as such.
+Note that the inner projection may also be a table.
+
+TODO Jos
 Each of the properties in a table is displayed using its own projection.
 In this example, <code>name</code> is a string, and will be displayed as an editable text.
 Note that the properties can be lists themselves, which can be displayed as lists or tables.
+
 </svelte:fragment>
 </Note>
 
@@ -253,4 +258,39 @@ InsuranceProduct {[
 
 ## Inherited Projections
 
-[//]: # (todo add content for Inherited Projections)
+As concepts may inherit from other concepts, so can the projection definition of a super concept be used in the projection definition of a child concept.
+To indicate the inclusion the syntax `[=> SUPER]` is used, where `SUPER` is the name of the super concept.
+
+For instance, in the UML metamodel both `AssociationClass` and `Class` inherit from the abstract `Classifier`. When building an editor for the UML metamodel,
+one may define the projections as follows. The entries for `attributes`, `operations`, and `states` will appear for both child concepts.
+
+```proto
+Classifier {
+        [
+        [?<attributes>  ${self.attributes vertical terminator [;] }]
+        [?<operations>  ${self.operations vertical terminator [;] }]
+        [?<states>      ${self.states     vertical separator [;] }]
+        ]
+}
+
+AssociationClass {
+        [
+        [?${self.visibility}] <associationclass> ${self.name}
+        ${self.end1} <-> ${self.end2}
+        
+        [=> Classifier ]
+        <endassociationclass>
+        ]
+}
+
+Class {
+    [
+    [?${visibility}] ${self.isAbstract [<abstract>]} <class> ${self.name}
+    [?<specializes>  ${self.generalizations horizontal separator [, ] }]
+    [?<implements>   ${self.interfaces      horizontal separator [, ] }]
+    
+    [=> Classifier]
+    <endclass>
+    ]
+}
+```

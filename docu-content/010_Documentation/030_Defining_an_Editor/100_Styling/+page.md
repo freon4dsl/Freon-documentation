@@ -75,7 +75,7 @@ style is being used. For example, the following styles are defined for horizonta
 
 To change any of the styling, copy the files from the `@freon4dsl/core-svelte` package into your
 styles folder and adjust the `@use` statement in both `_smui-theme.scss` files to include your own
-files instead of the packaged ones. Then start changing the styles your own
+files instead of the packaged ones. Then start changing the styles in your own
 copies to your liking, however, take care with the boolean and numeric controls, because they are based on
 Material UI components.
 

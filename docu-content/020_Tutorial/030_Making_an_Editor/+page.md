@@ -109,7 +109,6 @@ Here are some examples of how you can tweak the display.
 
     Theory
         ${self.content vertical initiator [Line]}
-]}
 ```
 
 Go ahead and try the different options. 

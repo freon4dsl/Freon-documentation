@@ -31,6 +31,7 @@ This command switches to the scripts folder and let runs the same command from t
 1. The first step of generating the documentation website is to use Freon for generating the examples needed in the web pages.
 
 2. The second step of generating the documentation website is to use 'embedme' to embed all example code within the markdown files. This tool needs to run before anything else is done with the markdown.
+Note that this tools needs all line separators in CRLF (Windows) format. You can use the Webstorm command 'File/File Properties/Line Separators' to change them if needed.
 
 3. Next, the references to other markdown files in the markdown files are checked to see whether they all refer to a valid page. If there any invalid links the generation will halt. Errors and warnings will be logged in '/srcipts/Link_Check.txt'.  (LinkChecker.ts)
 

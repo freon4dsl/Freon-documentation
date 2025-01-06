@@ -17,7 +17,6 @@
 	--theme-colors-FRE_DARKER: #1E1905;
 	--theme-colors-FRE_ACCENT: #c94117;
 	--theme-colors-FRE_LINK: #DE6B48;
-	--theme-colors-FRE_ACCENT2: #0247FE;
 
 	/* Other settings */
 
@@ -60,6 +59,7 @@ body {
 	--color-link: var(--theme-colors-FRE_ACCENT);
 	--color-button-active: rgba(var(--color5), 0.7); /* --theme-colors-FRE_BROWN with opacity .7 */
 	--color-button-hover: rgba(var(--color5), 0.8); /* --theme-colors-FRE_BROWN with opacity .8 */
+	--color-popup-box-shadow: 0 0 0px 0 rgba(0, 0, 0, 0.5);
 
 	/* Other settings */
 	color: var(--color6);
@@ -81,6 +81,7 @@ body.dark {
 	--color-link: var(--theme-colors-FRE_LINK);
 	--color-button-active: rgba(var(--color5), 0.7); /* --theme-colors-FRE_YELLOW with opacity .7 */
 	--color-button-hover: rgba(var(--color5), 0.8); /* --theme-colors-FRE_YELLOW with opacity .8 */
+	--color-popup-box-shadow: 0 0 0px 0 rgba(0, 0, 0, 0.5);
 }
 
 iframe {

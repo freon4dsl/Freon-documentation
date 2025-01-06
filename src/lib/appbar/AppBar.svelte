@@ -35,7 +35,7 @@
 					$popoverElem.togglePopover();
 				}}
 			>
-				<span class="button-content">
+				<span class="app-bar-button-content">
 					<MenuIcon />
 				</span>
 			</button>
@@ -45,7 +45,7 @@
 	</div>
 
 	<div class="app-bar-large">
-		<a href="https://www.freon4dsl.dev" class="linkLogo">
+		<a href="https://www.freon4dsl.dev" class="app-bar-linkLogo">
 			<Tooltip tip="home" bottom>
 				<img src="/freonlogo.png" alt="Freon Logo" height="24" />
 			</Tooltip>
@@ -53,9 +53,9 @@
 		<a href="/" class="title">
 			<div>Freon</div>
 		</a>
-		<nav class="main-menu">
+		<nav class="app-bar-main-menu">
 			{#each allCategories as cat, index}
-				<a href={cat.path} class="linkLogo">
+				<a href={cat.path} class="app-bar-linkLogo">
 					<h6>{cat.name}</h6>
 				</a>
 				<button class="main-menu-small-expand-button" on:click={() => expandClick(index)}>
@@ -65,58 +65,15 @@
 		</nav>
 	</div>
 
-	<span class="linkLogo">
-		<Tooltip tip="dark mode" bottom>
+	<span class="app-bar-linkLogo">
+		<Tooltip tip="light/dark mode" bottom>
 			<ThemeToggle />
 		</Tooltip>
 	</span>
 
-	<a target="_blank" href="https://github.com/freon4dsl/Freon4dsl.git" class="linkLogo">
+	<a target="_blank" href="https://github.com/freon4dsl/Freon4dsl.git" class="app-bar-linkLogo">
 		<Tooltip tip="github source" bottom>
 			<GithubLogo />
 		</Tooltip>
 	</a>
 </div>
-
-<style>
-	.app-bar-button {
-		position: relative;
-		border: solid 1px var(--color6);
-		padding: 0;
-	}
-	.button-content {
-		background-color: var(--color6);
-	}
-	.main-menu {
-		display: flex;
-		align-content: space-between;
-		margin-top: 6px;
-	}
-	.linkLogo {
-		margin-right: 8px;
-		margin-left: 8px;
-	}
-	.app-bar {
-		display: flex;
-		align-items: center;
-		padding: 0 4px 0 6px;
-		height: var(--fre-header-height);
-		color: var(--color1);
-		background: var(--color6);
-		font-size: var(--fre-header-font-size);
-		line-height: 1;
-		min-width: inherit;
-		position: fixed;
-		left: 0;
-		top: 0;
-		right: 0;
-		z-index: 20;
-	}
-	.title {
-		flex: 1;
-		margin-left: 0.5rem;
-		white-space: nowrap;
-		text-align: left;
-		color: var(--color1);
-	}
-</style>

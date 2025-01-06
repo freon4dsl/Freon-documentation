@@ -19,46 +19,6 @@ concept contains the following to methods.
 ```ts
 // DocuProject/src/editor/gen/EuroLiteralBoxProvider.ts#L22-L62
 
-    protected getContent(projectionName: string): Box {
-        // console.log("GET CONTENT " + this._node?.freId() + ' ' +  this._node?.freLanguageConcept() + ' ' + projectionName);
-        // see if we need to use a custom projection
-        if (!this.knownBoxProjections.includes(projectionName) && !this.knownTableProjections.includes(projectionName)) {
-            const BOX: Box = this.mainHandler.executeCustomProjection(this._node, projectionName);
-            if (!!BOX) {
-                // found one, so return it
-                return BOX;
-            }
-        } else {
-            // select the box to return based on the projectionName
-            if (projectionName === "default") {
-                return this.getDefault();
-            }
-        }
-        // in all other cases, return the default
-        return this.getDefault();
-    }
-
-    private getDefault(): Box {
-        return createDefaultExpressionBox(
-            this._node as EuroLiteral,
-            [
-                BoxFactory.horizontalLayout(
-                    this._node as EuroLiteral,
-                    "EuroLiteral-hlist-line-0",
-                    "",
-                    [
-                        BoxUtil.labelBox(this._node as EuroLiteral, "EUR", "top-1-line-0-item-0"),
-                        BoxUtil.numberBox(this._node as EuroLiteral, "euros", NumberDisplay.SELECT),
-                        BoxUtil.labelBox(this._node as EuroLiteral, ",", "top-1-line-0-item-2"),
-                        BoxUtil.numberBox(this._node as EuroLiteral, "cents", NumberDisplay.SELECT),
-                    ],
-                    { selectable: false },
-                ),
-            ],
-            { selectable: false },
-        );
-    }
-}
 
 ```
 
@@ -73,6 +33,8 @@ the predefined method `createDefaultExpressionBox`, which returns the correct bo
 Writing a custom projection does not require the implementation of a complete box provider. Instead,
 a custom projection (set) is basically a series of methods that each return a box
 object for an AST node. Every custom method need to be registered. This is done in the property `nodeTypeToBoxMethod`.
+
+Sorry, but custom table projections are not yet taken into account.
 
 In the below example, a copy is taken of the `getDefault` method above, which is adjusted to display an SVG Euro symbol instead of the
  string 'EUR'. Note that the method is registered to be used for concepts of type `EuroLiteral`.
@@ -136,8 +98,6 @@ export class CustomInsuranceModelProjection implements FreProjection {
 }
 
 ```
-
-[//]: # (todo decide whether we should mention that custom table projections are not yet taken into account)
 
 <Note><svelte:fragment slot="header">Use another filename and/or location</svelte:fragment>
 <svelte:fragment slot="content">

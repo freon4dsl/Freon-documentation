@@ -23,8 +23,6 @@ Please, use a recent version of a browser like Chrome or Edge, because we cannot
 ensure that the editor functions as it should in older browsers.
 </svelte:fragment></Note>
 
-[//]: # (todo give version numbers of browsers)
-
 ## Example Project Startup
 
 The simplest manner to start working with Freon is start from the example project from GitHub.
@@ -98,8 +96,6 @@ the <code>scripts</code> entry in the _package.json_ file. The <code>generate</c
   script should refer to your <i>defs</i>-folder, as well as the folder where you want the
   generated code to be stored.
   In the following screenshot, we use <code>~/src/defs</code> and <code>~/src/frecode</code>, respectively.
-
-[//]: # (todo adjust screenshot of template project)
 
 <Figure
 imageName='documentation/packagejsonadjustment.png'

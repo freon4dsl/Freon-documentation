@@ -57,9 +57,9 @@ Furthermore, they may be _abstract_.
 
 concept BaseProduct {
     name: identifier;               // internal name
+    isUnderConstruction: boolean;   // defines whether this base product is still 'raw'
     theme: InsuranceTheme;          // the 'kind' of insurance
     parts: InsurancePart[];         // all parts of this product
-    isUnderConstruction: boolean;   // defines whether this base product is still 'raw'
 ```
 
 ```proto

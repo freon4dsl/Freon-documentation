@@ -12,9 +12,7 @@ part of the visitor pattern, adding an error list.
 ```ts
 // CustomizationsProject/src/validator/gen/EntityModelValidator.ts#L15-L17
 
-export interface EntityModelCheckerInterface extends EntityModelWorker {
-    errorList: FreError[];
-}
+
 ```
 
 The worker defines two methods for each concept in the language, as shown in the next example.
@@ -22,8 +20,7 @@ The worker defines two methods for each concept in the language, as shown in the
 ```ts
 // CustomizationsProject/src/utils/gen/EntityModelWorker.ts#L56-L57
 
-execBeforeEntity(modelelement: Entity): boolean;
-execAfterEntity(modelelement: Entity): boolean;
+
 ```
 
 ## The Validation Class

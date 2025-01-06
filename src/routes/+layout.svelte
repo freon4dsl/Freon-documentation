@@ -8,17 +8,17 @@
 			if (localStorage.getItem('darkMode') === 'enabled') {
 				window.document.body.classList.add('dark');
 				$darkMode = true;
-				console.log(`darkMode from layout LOCAL: ${$darkMode}`)
+				console.log(`darkMode from layout LOCAL: ${$darkMode}`);
 			}
 			// if no local storage preference available, look at the global preference
 		} else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
 			window.document.body.classList.add('dark');
 			$darkMode = true;
-			console.log(`darkMode from layout GLOBAL: ${$darkMode}`)
+			console.log(`darkMode from layout GLOBAL: ${$darkMode}`);
 		}
 
 		// default is 'light', i.e. darkMode === false
-	})
+	});
 </script>
 
 <div>

@@ -21,7 +21,7 @@
 		<a href={nextLink} class="prev-next-a">
 			<p>Next</p>
 			{#if $darkMode}
-				<img src="/icons/right_arrow_white.png" alt="Arrow left" style="width:24px" />
+				<img src="/icons/right_arrow_white.svg" alt="Arrow left" style="width:24px" />
 			{:else}
 				<img src="/icons/right_arrow_icon.svg" alt="Arrow right" style="width:24px" />
 			{/if}

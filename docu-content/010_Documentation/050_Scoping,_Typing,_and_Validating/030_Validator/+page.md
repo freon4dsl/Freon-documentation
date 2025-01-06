@@ -82,8 +82,8 @@ MinusExpression  {
 
 The generated error messages can be changed into custom ones. Similar to the editor definition,
 properties can be used in the error message using the syntax `${propName}`.
-
-[//]: # (todo add text about severity)
+The severity of the error may or may not be indicated. The possible values are "error", "warning", 
+"hint", "improvement", "todo", and "info". It defaults to "todo".
 
 ```freon
 // DocuProject/src/defs/validator-docu.valid#L28-L36

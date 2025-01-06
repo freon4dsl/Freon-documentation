@@ -1,66 +1,72 @@
-/* Original by Taylor Buckner, based on [VS Codes Dark+](https://github.com/VS Codes Dark+) */
-:root {
-	/* all colors are put in variables, to be able to switch from light to dark theme */
-	--code-color-grey: #d4d4d4;
-	--code-color-purple: #c586c0;
-	--code-color-light-marroon: #ce9178;
-	--code-color-blue: #569cd6;
-	--code-color-light-blue: #9cdcfe;
-	--code-color-light-green: #b5cea8;
-	--code-color-dark-green: #6a9955;
-	--code-color-red: #db4c69;
-	--code-color-grey-green: #dcdcaa;
-	--code-color-light-red: #d16969;
-	--code-color-aqua: #4ec9b0;
-	--code-color-black: #312700;
-	--code-color-dark-blue: #264f78;
-	--code-color-beige: #d7ba7d;
-	--code-color-dark-grey: #808080;
-	--code-color-light-yellow: #f7ebc6;
-	--code-color-dark-yellow: #f7d87c;
-}
+/* Dark mode original by Taylor Buckner, based on [VS Codes Dark+](https://github.com/VS Codes Dark+)
+   Light mode original from Armand Philippot (https://github.com/ArmandPhilippot), based on Coldark
+   Previous light mode original by Andrew Lock (https://andrewlock.net)
+ */
 
+/* All colors are put in variables, to be able to switch from light to dark theme */
 body {
 	/* The default light settings */
-	--code-color: var(--code-color-black);
-	--code-background1: var(--code-color-dark-grey);
-	--code-background: #fdfdfd;
-	--token-operator: #6b4d2d;
-	--token-not-pre: #c92c2c;
-	--token-constant: var(--code-color-light-blue);
-	--token-comment: #7D8B99;
-	--token-number: #c92c2c;
-	--token-string: #2f9c0a;
-	--token-keyword: #1990b8;
-	--token-function: #1b38c4;
-	--token-regex: var(--code-color-light-red);
-	--token-classname: #237009;
-	--token-selector: #2f9c0a;
-	--token-punctuation: #5F6364;
-	--line-highlight: var(--code-color-dark-yellow);
-	--line-highlight-shadow: var(--code-color-light-yellow);
+	/* settings below are from Coldark-cold theme */
+	--code-color: #111b27;
+	--code-background: #e3eaf2;
+	--code-block-background: #e3eaf2;
+	--token-operator: #a04900;
+	--token-not-pre: #e3eaf2;
+	--token-constant: #755f00;
+	--token-comment: #6a9955;
+	--token-number: #755f00;
+	--token-string: #116b00;
+	--token-keyword: #a04900;
+	--token-function: #7c00aa;
+	--token-regex: #af00af;
+	--token-classname: #005a8e;
+	--token-selector: #116b00;
+	--token-punctuation: #111b27;
+	--line-highlight: #3c526d;
+	--line-highlight-shadow: #8da1b9;
+	--code-inline-background: var(--color1);  /* same background as normal text */
+	/* settings below are from Andrew Lock */
+	/*--code-color: #393A34;*/
+	/*--code-background: #C1DEF1;*/
+	/*--code-block-background: white;*/
+	/*--token-operator: #393A34;*/
+	/*--token-not-pre: #393A34;*/
+	/*--token-constant: #36acaa;*/
+	/*--token-comment: #008000;*/
+	/*--token-number: #36acaa;*/
+	/*--token-string: #A31515;*/
+	/*--token-keyword: #0000ff;*/
+	/*--token-function: #393A34;*/
+	/*--token-regex: #ff0000;*/
+	/*--token-classname: #2B91AF;*/
+	/*--token-selector: #800000;*/
+	/*--token-punctuation: #393A34;*/
+	/*--line-highlight: rgba(193, 222, 241, 0.2);*/
+	/*--line-highlight-shadow: linear-gradient(to right, rgba(193, 222, 241, 0.2) 70%, rgba(221, 222, 241, 0));*/
+	/*--code-inline-background: #dddddd;*/
 }
+
 
 body.dark {
 	/* The dark settings */
-	--code-color: var(--code-color-grey);
-	--code-background1: var(--code-color-dark-blue);
-	--code-background: var(--code-color-black);
-	--token-operator: var(--code-color-blue);
-	--token-not-pre: var(--code-color-red);
-	--token-constant: var(--code-color-light-blue);
-	--token-comment: var(--code-color-dark-green);
-	--token-number: var(--code-color-light-green);
-	--token-string: var(--code-color-light-marroon);
-	--token-keyword: var(--code-color-purple);
-	--token-function: var(--code-color-grey-green);
-	--token-regex: var(--code-color-light-red);
-	--token-classname: var(--code-color-aqua);
-	--token-selector: var(--code-color-beige);
-	--token-punctuation: var(--code-color-dark-grey);
-	--line-highlight: var(--code-color-light-yellow);
-	--line-highlight-shadow: var(--code-color-dark-yellow);
-	--code-inline-background: var(--code-color-dark-grey);
+	--code-color: #d4d4d4;
+	--code-background: #1e1e1e;
+	--code-block-background: #264F78;
+	--token-operator: #569cd6;
+	--token-not-pre: #db4c69;
+	--token-constant: #9cdcfe;
+	--token-comment: #6a9955;
+	--token-number: #b5cea8;
+	--token-string: #ce9178;
+	--token-keyword: #c586c0;
+	--token-function: #dcdcaa;
+	--token-regex: #d16969;
+	--token-classname: #4ec9b0;
+	--token-selector: #d7ba7d;
+	--token-punctuation: #808080;
+	--line-highlight: #f7ebc6;
+	--line-highlight-shadow: #f7d87c;
+	--code-inline-background: #808080;
 }
 
 /* code blocks within a paragraph need to stand out more */
@@ -94,7 +100,7 @@ code[class*='language-']::selection,
 pre[class*='language-'] *::selection,
 code[class*='language-'] *::selection {
 	text-shadow: none;
-	background: var(--code-background1);
+	background: var(--code-block-background);
 }
 
 @media print {

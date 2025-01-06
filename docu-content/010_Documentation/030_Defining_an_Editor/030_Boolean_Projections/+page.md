@@ -64,8 +64,6 @@ representing `false`.
 In the next example, the property `isCompany` will be shown as the keyword `COMPANY`. When the value
 of the property is `true`, the keyword is shown. When the value is `false`, the keyword is not shown.
 
-[//]: # (todo make a model and a screenshot)
-
 ```proto
 // DocuProject/src/defs/editor-main-default.edit#L67-L69
 
@@ -111,18 +109,28 @@ definition is taken. If that is also not present then the default is `true` and 
 
 For the sake of the example, we have added a number of boolean properties to the concept `BaseProduct`.
 
-```freon
-// DocuProject/src/defs/language-main.ast#L28-L33
+```proto
+// DocuProject/src/defs/language-main.ast#L24-L39
 
-isUnderConstruction: boolean;   // defines whether this base product is still 'raw'
-// The following properties are present to show the different options for displaying booleans.
-isApprovedLevel1: boolean;
-isApprovedLevel2: boolean;
-isApprovedLevel3: boolean;
-yieldsProfit: boolean;
+concept BaseProduct {
+    name: identifier;               // internal name
+    isUnderConstruction: boolean;   // defines whether this base product is still 'raw'
+    theme: InsuranceTheme;          // the 'kind' of insurance
+    parts: InsurancePart[];         // all parts of this product
+    // The following properties are present to show the different options for displaying booleans.
+    isApprovedLevel1: boolean;
+    isApprovedLevel2: boolean;
+    isApprovedLevel3: boolean;
+    yieldsProfit: boolean;
+    range: number;
+    nrOfUse: number;
+    // The previoud two properties are present to show the different options for displaying numbers.
+    // The following property is present to show the use of an external DatePicker component.
+    date: string;
+}
 ```
 
-Each of the added properties is displayed differently.
+Each of the boolean properties is displayed differently.
 
 ```freon
 // DocuProject/src/defs/editor-main-controls.edit#L7-L11
