@@ -34,6 +34,8 @@ Writing a custom projection does not require the implementation of a complete bo
 a custom projection (set) is basically a series of methods that each return a box
 object for an AST node. Every custom method need to be registered. This is done in the property `nodeTypeToBoxMethod`.
 
+Sorry, but custom table projections are not yet taken into account.
+
 In the below example, a copy is taken of the `getDefault` method above, which is adjusted to display an SVG Euro symbol instead of the
  string 'EUR'. Note that the method is registered to be used for concepts of type `EuroLiteral`.
 
@@ -96,8 +98,6 @@ export class CustomInsuranceModelProjection implements FreProjection {
 }
 
 ```
-
-[//]: # (todo decide whether we should mention that custom table projections are not yet taken into account)
 
 <Note><svelte:fragment slot="header">Use another filename and/or location</svelte:fragment>
 <svelte:fragment slot="content">

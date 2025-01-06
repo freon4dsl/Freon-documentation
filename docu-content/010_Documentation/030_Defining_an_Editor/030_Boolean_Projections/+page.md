@@ -64,8 +64,6 @@ representing `false`.
 In the next example, the property `isCompany` will be shown as the keyword `COMPANY`. When the value
 of the property is `true`, the keyword is shown. When the value is `false`, the keyword is not shown.
 
-[//]: # (todo make a model and a screenshot)
-
 ```proto
 // DocuProject/src/defs/editor-main-default.edit#L67-L69
 

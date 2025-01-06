@@ -97,8 +97,6 @@ the <code>scripts</code> entry in the _package.json_ file. The <code>generate</c
   generated code to be stored.
   In the following screenshot, we use <code>~/src/defs</code> and <code>~/src/frecode</code>, respectively.
 
-[//]: # (todo adjust screenshot of template project)
-
 <Figure
 imageName='documentation/packagejsonadjustment.png'
 caption={'Screenshot of package.json'}

@@ -1,5 +1,6 @@
 <script>
     import Note from "$lib/notes/Note.svelte";
+    import Figure from "$lib/figures/Figure.svelte";
 </script>
 
 # Defining an Editor
@@ -54,40 +55,28 @@ editor is supplied but is incomplete — meaning it does not define projections
 for all concepts — projections for the missing concepts are automatically 
 generated. As a result, the default editor is always complete during generation.
 
-For example, if no projection is specified for the concept `BaseProduct`, 
-the concrete syntax for instances of this concept will default to using the 
-concept's name and its properties as keywords. Any list property 
-will be displayed as a vertical list, as shown by the following grammar rule.
+The generated default will show the concept's name and all of its properties in the order given in the .ast file.
+Any list property will be displayed as a vertical list.
 
-[//]: # (todo: adjust the example)
+For example, if no projection is specified for the concepts `InsurancePart`, `PercentageLiteral`, and `EuroLiteral` 
+instances of `InsurancePart` will be shown as follows.
 
 ```proto
-// DocuProject/src/defs/language-main.ast#L24-L36
+// DocuProject/src/defs/language-main.ast#L44-L49
 
-concept BaseProduct {
-    name: identifier;               // internal name
-    isUnderConstruction: boolean;   // defines whether this base product is still 'raw'
-    theme: InsuranceTheme;          // the 'kind' of insurance
-    parts: InsurancePart[];         // all parts of this product
-    // The following properties are present to show the different options for displaying booleans.
-    isApprovedLevel1: boolean;
-    isApprovedLevel2: boolean;
-    isApprovedLevel3: boolean;
-    yieldsProfit: boolean;
-    range: number;
-    nrOfUse: number;
-    // The previoud two properties are present to show the different options for displaying numbers.
+concept InsurancePart {
+    name: identifier;                       // internal name
+    isApproved: boolean = false;            // indication of approval status
+    statisticalRisk: PercentageLiteral;     // the statistical risk known for this event
+    maximumPayOut: EuroLiteral;             // maximum payout in case the insured event happens
+}
 ```
 
-[//]: # (todo replace below with actual screenshot)
-
-```txt
-BaseProduct = 'BaseProduct' identifier '{'
-'parts'
-InsurancePart*
-'theme' InsuranceTheme
-'}' ;
-```
+<Figure
+imageName={'documentation/Defining-an-Editor-Screenshot.png'}
+caption={'Generated Default Projection'}
+figureNumber={1}
+/>
 
 ## Editor Precedence
 

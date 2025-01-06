@@ -252,10 +252,8 @@ The setup for including external components needs some care.
 2. You must let the Freon generator know which external projections there are. This done in the `global` section of the
    default editor. See [Global Projections](/Documentation/Defining_an_Editor/Global_Projections).
 3. You must let the Freon runtime know which external projections there are. This is done using the `setCustomComponents()` method
-    from the '@freon4dsl/core-svelte' package. This method should be called in the `starter.ts` file before starting the actual application. Note that 
+    from the '@freon4dsl/core-svelte' package. This method should be called in the `~src/starter.ts` file before starting the actual application. Note that 
 the names of the component should be equal to the names used in step 2.
-
-[//]: # (todo check whether it is actully the starter.ts file in the template project)
 
 The following is an example of the use of this method.
 
@@ -267,6 +265,15 @@ setCustomComponents([
    {component: SMUI_Dialog, knownAs: "SMUI_Dialog"},
    {component: DatePicker, knownAs: "DatePicker"}
 ]);
+
+/**
+ * Now start the app ...
+ */
+const app = new FreonLayout({
+	target: document.body,
+});
+
+export default app;
 ```
 
 ## Nesting
