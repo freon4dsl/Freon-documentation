@@ -265,4 +265,39 @@ InsuranceProduct {[
 
 ## Inherited Projections
 
-[//]: # (todo add content for Inherited Projections)
+As concepts may inherit from other concepts, so can the projection definition of a super concept be used in the projection definition of a child concept.
+To indicate the inclusion the syntax `[=> SUPER]` is used, where `SUPER` is the name of the super concept.
+
+For instance, in the UML metamodel both `AssociationClass` and `Class` inherit from the abstract `Classifier`. When building an editor for the UML metamodel,
+one may define the projections as follows. The entries for `attributes`, `operations`, and `states` will appear for both child concepts.
+
+```proto
+Classifier {
+        [
+        [?<attributes>  ${self.attributes vertical terminator [;] }]
+        [?<operations>  ${self.operations vertical terminator [;] }]
+        [?<states>      ${self.states     vertical separator [;] }]
+        ]
+}
+
+AssociationClass {
+        [
+        [?${self.visibility}] <associationclass> ${self.name}
+        ${self.end1} <-> ${self.end2}
+        
+        [=> Classifier ]
+        <endassociationclass>
+        ]
+}
+
+Class {
+    [
+    [?${visibility}] ${self.isAbstract [<abstract>]} <class> ${self.name}
+    [?<specializes>  ${self.generalizations horizontal separator [, ] }]
+    [?<implements>   ${self.interfaces      horizontal separator [, ] }]
+    
+    [=> Classifier]
+    <endclass>
+    ]
+}
+```
