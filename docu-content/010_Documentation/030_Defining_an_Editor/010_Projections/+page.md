@@ -86,15 +86,14 @@ in the editor named `comments`. If it is not found there,
 Freon will fall back to the standard precedence order of projections.
 
 ```txt
-// DocuProject/src/defs/editor-fragments.edit#L3-L9
+// DocuProject/src/defs/editor-named-proj.edit#L3-L8
 
 BaseProduct {[
     /* In this projection 'self.parts' is always shown according to the projection */
     /* defined for concept InsurancePart in the editor 'comments'.                 */
-    Base Product for ${self.theme radio} ${self.name }
-        [fragment First] [fragment Second]
+    Base Products ${self.name} for ${self.theme}
         ${self.parts:comments}
-]
+]}
 ```
 
 ## Lists
@@ -125,20 +124,20 @@ the `vertical` keyword could be omitted for `helpers`, as it is the
 default projection for lists.
 
 ```txt
-// DocuProject/src/defs/editor-main-default.edit#L27-L38
-
-]}
-
-InsurancePart{
-[
-    Insurance Part ${self.name}
-        risk assessment: ${self.statisticalRisk}
-        maximum payout: ${self.maximumPayOut}
-        is approved: ${self.isApproved [JA | NEE]}
-]
-}
+// DocuProject/src/defs/editor-main-default.edit#L38-L49
 
 InsuranceProduct {[
+    Insurance Product ${name} ( public name: ${productName} ) USES ${basedOn horizontal separator[, ]}
+        Themes: ${themes horizontal separator[, ]}
+        Premium: ${advertisedPremium} per ${nrPremiumDays}
+        Insured risks:
+            ${parts vertical terminator [;]}
+        Calculation
+            [? Risk adjusted by = ${riskAdjustment} ]
+            calculated premium: ${calculation}
+        [?Helper functions:
+            ${helpers vertical}]
+]}
 ```
 
 <Note>

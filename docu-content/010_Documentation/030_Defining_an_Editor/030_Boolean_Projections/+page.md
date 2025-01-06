@@ -112,17 +112,27 @@ definition is taken. If that is also not present then the default is `true` and 
 For the sake of the example, we have added a number of boolean properties to the concept `BaseProduct`.
 
 ```txt
-// DocuProject/src/defs/language-main.ast#L28-L33
+// DocuProject/src/defs/language-main.ast#L24-L39
 
-isUnderConstruction: boolean;   // defines whether this base product is still 'raw'
-// The following properties are present to show the different options for displaying booleans.
-isApprovedLevel1: boolean;
-isApprovedLevel2: boolean;
-isApprovedLevel3: boolean;
-yieldsProfit: boolean;
+concept BaseProduct {
+    name: identifier;               // internal name
+    isUnderConstruction: boolean;   // defines whether this base product is still 'raw'
+    theme: InsuranceTheme;          // the 'kind' of insurance
+    parts: InsurancePart[];         // all parts of this product
+    // The following properties are present to show the different options for displaying booleans.
+    isApprovedLevel1: boolean;
+    isApprovedLevel2: boolean;
+    isApprovedLevel3: boolean;
+    yieldsProfit: boolean;
+    // The following properties are present to show the different options for displaying numbers.
+    range: number;
+    nrOfUse: number;
+    // The following property is present to show the use of an external DatePicker component.
+    date: string;
+}
 ```
 
-Each of the added properties is displayed differently.
+Each of the boolean properties is displayed differently.
 
 ```txt
 // DocuProject/src/defs/editor-main-controls.edit#L7-L11

@@ -7,7 +7,7 @@ the live <a href='/DocuProjectDemo?model=ShowCase' target='_blank'>demo</a>.
 
 To show how a Freon editor might look like, without all kinds of customizations, or a change of CSS styling, we prepared
 a demo. The language that was explained in the [documentation](/Documentation/Overview/Running_Example) is used in this example.
-It will be no surprise that you cannot use a number of the File menu options
+It will be no surprise that you cannot use a number of the File menu options.
 Use this link to <a href='/DocuProjectDemo?model=ShowCase' target='_blank'><b>START THE DEMO</b></a> in a new web page.
 
 [//]: # (todo get the demo to use external boxes and use the latest version of Freon to create it)

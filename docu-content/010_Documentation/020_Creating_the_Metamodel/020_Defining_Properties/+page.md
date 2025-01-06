@@ -14,11 +14,10 @@ of properties.
 always contained in the _concept_. Simple properties may also be lists.
 
 ```txt
-// DocuProject/src/defs/language-main.ast#L33-L35
+// DocuProject/src/defs/language-main.ast#L25-L26
 
-date: string;
-theme: InsuranceTheme;          // the 'kind' of insurance
-parts: InsurancePart[];         // all parts of this product
+name: identifier;               // internal name
+isUnderConstruction: boolean;   // defines whether this base product is still 'raw'
 ```
 
 ## Part Properties
@@ -28,14 +27,10 @@ or interfaces in the language, and are _contained in the concept_ that holds the
 the UML composition relationship). Note that simple properties are always considered to be parts.
 
 ```txt
-// DocuProject/src/defs/language-main.ast#L33-L38
+// DocuProject/src/defs/language-main.ast#L27-L28
 
-    date: string;
-    theme: InsuranceTheme;          // the 'kind' of insurance
-    parts: InsurancePart[];         // all parts of this product
-}
-
-// An InsurancePart defines a single aspect of an InsuranceProduct together
+theme: InsuranceTheme;          // the 'kind' of insurance
+parts: InsurancePart[];         // all parts of this product
 ```
 
 ## Reference Properties
@@ -50,22 +45,32 @@ In the following example the concept `InsuranceProduct` holds a list of referenc
 concept `InsurancePart` has a property `name: identifier`.
 
 ```txt
-// DocuProject/src/defs/language-main.ast#L42-L48
+// DocuProject/src/defs/language-main.ast#L53-L65
 
+concept InsuranceProduct {
+    name: identifier;                       // internal name
+    productName: string;                    // name by which this product is known to the public
+    themes: InsuranceTheme[];               // the 'kind' of insurance
+    advertisedPremium: EuroLiteral;         // the premium as known to the public
+    nrPremiumDays: PremiumDays;             // the number of days for which the advertised premium is calculated
+    reference parts: InsurancePart[];       // optionally, known parts can be included by reference
+    reference basedOn: BaseProduct[];       // the BaseProducts from which the parts are taken
+
+    riskAdjustment?: PercentageLiteral;     // an adjustment to the risk of the separate parts, e.g. caused by the combination of the parts
+    calculation: DocuExpression;            // the premium as calculated based on the parts
+    helpers: CalcFunction[];                // helper functions used to calculate the premium
+}
+```
+
+```txt
+// DocuProject/src/defs/language-main.ast#L44-L49
+
+concept InsurancePart {
     name: identifier;                       // internal name
     isApproved: boolean = false;            // indication of approval status
     statisticalRisk: PercentageLiteral;     // the statistical risk known for this event
     maximumPayOut: EuroLiteral;             // maximum payout in case the insured event happens
 }
-
-// An InsuranceProduct is a combination of insured events, defined in InsuranceParts,
-```
-
-```txt
-// DocuProject/src/defs/language-main.ast#L33-L34
-
-date: string;
-theme: InsuranceTheme;          // the 'kind' of insurance
 ```
 
 ## Optional Properties
@@ -76,9 +81,13 @@ Lists are always considered to be optional, i.e. they maybe empty, - there is no
 Because this causes problems in the editor, simple properties may not be optional at the moment.
 
 ```txt
-// DocuProject/src/defs/language-main.ast#L57-L59
+// DocuProject/src/defs/language-main.ast#L68-L74
 
-   reference basedOn: BaseProduct[];       // the BaseProducts from which the parts are taken
-
-   riskAdjustment?: PercentageLiteral;     // an adjustment to the risk of the separate parts, e.g. caused by the combination of the parts
+concept CalcFunction {
+    name: identifier;                   // the name
+    description?: Description;          // an optional description
+    declaredType : DocuType;            // the type
+    body: DocuExpression;               // the actual calculation definition
+    parameters: Parameter[];            // any parameters
+}
 ```

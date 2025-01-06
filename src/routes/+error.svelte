@@ -1,4 +1,4 @@
-<div class='error-page'>
+<div class="error-page">
 	<img src="/icons/oops-emoji-icon.png" alt="oops-emoji-icon" width="200" height="200" />
 	<h1>Oops, something went wrong.</h1>
 	<p>
@@ -9,7 +9,7 @@
 
 <style>
 	.error-page {
-			text-align: center;
-			margin-top: 4rem;
+		text-align: center;
+		margin-top: 4rem;
 	}
 </style>
