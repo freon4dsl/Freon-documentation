@@ -16,9 +16,8 @@ always contained in the _concept_. Primitive properties may also be lists.
 ```proto
 // DocuProject/src/defs/language-main.ast#L25-L26
 
-date: string;
-theme: InsuranceTheme;          // the 'kind' of insurance
-parts: InsurancePart[];         // all parts of this product
+name: identifier;               // internal name
+isUnderConstruction: boolean;   // defines whether this base product is still 'raw'
 ```
 
 ## Part Properties
@@ -31,12 +30,8 @@ In the example below `body` and `parameters` are parts.
 ```proto
 // DocuProject/src/defs/language-main.ast#L72-L73
 
-    date: string;
-    theme: InsuranceTheme;          // the 'kind' of insurance
-    parts: InsurancePart[];         // all parts of this product
-}
-
-// An InsurancePart defines a single aspect of an InsuranceProduct together
+body: DocuExpression;               // the actual calculation definition
+parameters: Parameter[];            // any parameters
 ```
 
 ## Reference Properties
@@ -52,12 +47,19 @@ In the following example the concept `InsuranceProduct` holds a list of referenc
 ```proto
 // DocuProject/src/defs/language-main.ast#L53-L65
 
+concept InsuranceProduct {
     name: identifier;                       // internal name
     productName: string;                    // name by which this product is known to the public
     themes: InsuranceTheme[];               // the 'kind' of insurance
     advertisedPremium: EuroLiteral;         // the premium as known to the public
     nrPremiumDays: PremiumDays;             // the number of days for which the advertised premium is calculated
     reference parts: InsurancePart[];       // optionally, known parts can be included by reference
+    reference basedOn: BaseProduct[];       // the BaseProducts from which the parts are taken
+
+    riskAdjustment?: PercentageLiteral;     // an adjustment to the risk of the separate parts, e.g. caused by the combination of the parts
+    calculation: DocuExpression;            // the premium as calculated based on the parts
+    helpers: CalcFunction[];                // helper functions used to calculate the premium
+}
 ```
 
 The concept `InsurancePart` has a property `name: identifier`.
@@ -79,7 +81,5 @@ Primitive properties may not be optional at the moment, but we plan to change th
 ```proto
 // DocuProject/src/defs/language-main.ast#L70-L70
 
-   reference basedOn: BaseProduct[];       // the BaseProducts from which the parts are taken
-
-   riskAdjustment?: PercentageLiteral;     // an adjustment to the risk of the separate parts, e.g. caused by the combination of the parts
+description?: Description;          // an optional description
 ```

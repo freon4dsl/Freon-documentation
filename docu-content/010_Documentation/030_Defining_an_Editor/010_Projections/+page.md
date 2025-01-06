@@ -39,9 +39,9 @@ For example, given the following metamodel:
 // used to create a marketable InsuranceProduct.
 concept BaseProduct {
     name: identifier;               // internal name
+    isUnderConstruction: boolean;   // defines whether this base product is still 'raw'
     theme: InsuranceTheme;          // the 'kind' of insurance
     parts: InsurancePart[];         // all parts of this product
-    isUnderConstruction: boolean;   // defines whether this base product is still 'raw'
     // The following properties are present to show the different options for displaying booleans.
     isApprovedLevel1: boolean;
     isApprovedLevel2: boolean;
@@ -112,10 +112,9 @@ Freon will fall back to the standard precedence order of projections.
 BaseProduct {[
     /* In this projection 'self.parts' is always shown according to the projection */
     /* defined for concept InsurancePart in the editor 'comments'.                 */
-    Base Product for ${self.theme radio} ${self.name }
-        [fragment First] [fragment Second]
+    Base Products ${self.name} for ${self.theme}
         ${self.parts:comments}
-]
+]}
 ```
 
 ## Lists
@@ -149,6 +148,17 @@ default projection for lists.
 // DocuProject/src/defs/editor-main-default.edit#L38-L49
 
 InsuranceProduct {[
+    Insurance Product ${name} ( public name: ${productName} ) USES ${basedOn horizontal separator[, ]}
+        Themes: ${themes horizontal separator[, ]}
+        Premium: ${advertisedPremium} per ${nrPremiumDays}
+        Insured risks:
+            ${parts vertical terminator [;]}
+        Calculation
+            [? Risk adjusted by = ${riskAdjustment} ]
+            calculated premium: ${calculation}
+        [?Helper functions:
+            ${helpers vertical}]
+]}
 ```
 
 <Note>

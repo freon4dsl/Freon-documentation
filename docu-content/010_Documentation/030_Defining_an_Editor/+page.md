@@ -66,9 +66,9 @@ will be displayed as a vertical list, as shown by the following grammar rule.
 
 concept BaseProduct {
     name: identifier;               // internal name
+    isUnderConstruction: boolean;   // defines whether this base product is still 'raw'
     theme: InsuranceTheme;          // the 'kind' of insurance
     parts: InsurancePart[];         // all parts of this product
-    isUnderConstruction: boolean;   // defines whether this base product is still 'raw'
     // The following properties are present to show the different options for displaying booleans.
     isApprovedLevel1: boolean;
     isApprovedLevel2: boolean;

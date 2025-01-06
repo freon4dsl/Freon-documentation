@@ -10,15 +10,7 @@ and a type reference, that holds a reference to another AST node.
 ```proto
 // TyperExample/src/defs/projectY.ast#L18-L26
 
-abstract concept TypeUsage { // to be used wherever a type can be used, either a referred type of or declared type is correct
-}
 
-concept TypeRef base TypeUsage  {
-    reference type: NamedType;
-}
-
-abstract concept TypeDecl base TypeUsage {
-}
 ```
 
 There are also two options for a type declaration, a generic type, and a unit of measurement. For this example,

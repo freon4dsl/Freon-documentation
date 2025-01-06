@@ -106,12 +106,7 @@ Each Topic will have a number of pages. The result for now is the code below.
 ```proto
 // Education/lesson1-defs/edu-topics.ast#L3-L8
 
-modelunit Topic {
-    name: identifier;
-    reference main: SiteGroup;
-    description: string;
-    pages: Page[];
-}
+
 ```
 
 So far, so good!
@@ -126,35 +121,6 @@ idea to make the **Page** concept abstract, and have a number of concepts that i
 ```proto
 // Education/lesson1-defs/edu-topics.ast#L10-L39
 
-abstract concept Page {
-    name: identifier;
-    questions: Question[];
-}
-
-concept Theory base Page {
-    /* For the sake of the example this is simplified.
-    Should be formatted text including pictures, etc. */
-    content: Line[];
-}
-
-concept Line { // todo use MultiLine Component
-    content: string;
-}
-
-concept Video base Page {
-    url: string;
-}
-
-concept WorkSheet base Page {
-}
-
-concept ExamplePage base Page {
-    content: Line[];
-}
-
-concept InDepthMaterial base Page {
-    content: Line[];
-}
 
 ```
 
@@ -176,22 +142,6 @@ create a concept that represents fractions. A simple number will not be sufficie
 ```proto
 // Education/lesson1-defs/edu-topics.ast#L41-L57
 
-    name: identifier;
-    content: string;
-    correctAnswer: NumberConcept;
-}
-
-abstract concept NumberConcept {
-}
-
-concept SimpleNumber base NumberConcept {
-    value: number;
-}
-
-concept Fraction base NumberConcept {
-    numerator: number;
-    denominator: number;
-}
 
 ```
 
