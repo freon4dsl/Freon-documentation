@@ -19,7 +19,7 @@ concept Theory base Page {
     content: Line[];
 }
 
-concept Line { // todo use MultiLine Component
+concept Line {
     content: string;
 }
 

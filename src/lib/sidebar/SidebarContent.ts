@@ -101,7 +101,7 @@ export const examplesToc: TocContentsType = {
 			name: 'Generic Types',
 			path: '/Examples/Generic_Types',
 			content: [
-				{ name: 'Example Structure', path: '/Examples/Generic_Types/Example_Structure' },
+				{ name: 'Example Metamodel', path: '/Examples/Generic_Types/Example_Metamodel' },
 				{ name: 'Example Typer Definition', path: '/Examples/Generic_Types/Example_Typer_Definition' }
 			]
 		},

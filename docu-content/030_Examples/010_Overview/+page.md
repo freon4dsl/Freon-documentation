@@ -15,10 +15,10 @@ for information on how to install the examples on your computer.
 
 The following examples are planned, and, hopefully, will be available soon.
 
-- [Projection Fragments](/Examples/Projection_Fragments) How to create and use fragments in your projections.
-- [Editor Styling](/Examples/Editor_Styling) How to style the generated editor.
-- [Custom Projections](/Examples/Custom_Projections) How to build custom projections.
-- [Custom Actions](/Examples/Custom_Actions) How to create custom actions.
-- [Custom Scoping](/Examples/Custom_Scoping) How to adjust the scope provider.
-- [Custom Validation](/Examples/Custom_Validation) How to create cutom validation rules.
-- [Include Freon in your website](/Examples/Including_Freon_in_Your_Website) How to proceed when you want to include Freon in another webpage.
+- **Projection Fragments** How to create and use fragments in your projections.
+- **Editor Styling** How to style the generated editor.
+- **Custom Projections** How to build custom projections.
+- **Custom Actions** How to create custom actions.
+- **Custom Scoping** How to adjust the scope provider.
+- **Custom Validation** How to create cutom validation rules.
+- **Include Freon in your website** How to proceed when you want to include Freon in another webpage.
