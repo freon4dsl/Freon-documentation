@@ -9,7 +9,7 @@
 	{#if !!prevLink && prevLink.length > 0}
 		<a href={prevLink} class="prev-next-a">
 			{#if $darkMode}
-				<img src="/icons/left_arrow_white.png" alt="Arrow left" style="width:24px" />
+				<img src="/icons/left_arrow_white.svg" alt="Arrow left" style="width:24px" />
 			{:else}
 				<img src="/icons/left_arrow_icon.svg" alt="Arrow left" style="width:24px" />
 			{/if}
