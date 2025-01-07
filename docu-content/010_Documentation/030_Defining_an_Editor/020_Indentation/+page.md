@@ -33,7 +33,6 @@ Text2 {
             This is
                     literal text
                   that is projected in the
-
                             editor
               for every concept of type Text.
             ]
@@ -46,7 +45,7 @@ It will not be indented. On the other hand,
 the text `This is` will be indented 10 spaces, `literal text` will be indented 8 spaces, etc.
 
 ```proto
-// DocuProject/src/defs/editor-indentation.edit#L27-L35
+// DocuProject/src/defs/editor-indentation.edit#L26-L34
 
 Text3 {
     [
@@ -64,7 +63,7 @@ the following example will take the closing bracket as margin, and even the line
 will be indented with 3 spaces.
 
 ```proto
-// DocuProject/src/defs/editor-indentation.edit#L37-L45
+// DocuProject/src/defs/editor-indentation.edit#L36-L44
 
 Text4 {
     [

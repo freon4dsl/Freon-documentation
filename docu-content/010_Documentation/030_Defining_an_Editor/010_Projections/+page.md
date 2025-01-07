@@ -33,7 +33,7 @@ instructs Freon to include a property according to the projection defined for it
 
 For example, given the following concept:
 ```proto
-// DocuProject/src/defs/language-main.ast#L24-L27
+// DocuProject/src/defs/language-main.ast#L24-L28
 
 concept BaseProduct {
     name: identifier;               // internal name
@@ -75,10 +75,11 @@ Because you may only use direct properties, the prefix <code>self</code> may be 
 
 <Note><svelte:fragment slot="header"> One property, one occurrence in the editor</svelte:fragment>
 <svelte:fragment slot="content">
-<p>Unfortunately, it is not possible to show the same property of a concept twice in the same editor.
+Unfortunately, it is not possible to show the same property of a concept twice in the same editor.
 The tooling we use to keep the state of the underlying model in sync with the view in the running editor
-does not allow us to do this.</p>
-</svelte:fragment></Note>
+does not allow us to do this.
+</svelte:fragment>
+</Note>
 
 ## Using Named Projections
 
@@ -209,15 +210,10 @@ table [
 <Note>
 <svelte:fragment slot="header">Properties within a table are displayed according to their own projection</svelte:fragment>
 <svelte:fragment slot="content">
-The manner in which each of the properties in a table are displayed, is determined
-by their own projections. In this example, <code>maximumPayout</code> is a <code>EuroLiteral</code>, and will be displayed as such.
-Note that the inner projection may also be a table.
-
-TODO Jos
 Each of the properties in a table is displayed using its own projection.
-In this example, <code>name</code> is a string, and will be displayed as an editable text.
+In this example, <code>name</code> is a string, and will be displayed as an editable text,
+and <code>maximumPayout</code> is a <code>EuroLiteral</code>
 Note that the properties can be lists themselves, which can be displayed as lists or tables.
-
 </svelte:fragment>
 </Note>
 
