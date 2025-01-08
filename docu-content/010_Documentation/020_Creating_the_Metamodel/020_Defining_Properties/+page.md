@@ -42,7 +42,7 @@ _reference_ in front of the definition.
 
 References are always by name, therefore the referred concept must have a `name` property of type `identifier`.
 
-In the following example the concept `InsuranceProduct` holds a list of references to `InsuranceParts`. x
+In the following example the concept `InsuranceProduct` holds a list of references to `InsuranceParts` in the property `parts`.
 
 ```proto
 // DocuProject/src/defs/language-main.ast#L53-L65

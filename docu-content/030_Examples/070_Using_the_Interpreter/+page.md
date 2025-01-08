@@ -6,33 +6,42 @@
 
 # Feedback from an Interpreter
 
-"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit
-in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
-officia deserunt mollit anim id est laborum."
+Freon includes an interpreter framework which makes it easy to write an interpreter for a language.
 
-================ this is how to include a figure
+## What is an Interpreter
+
+Most articles on interpreters you will find start by describing lexers and parsers
+and as a final step evaluation.
+Forget about lexers, parsers, those are ponly needed when you start with plain text.
+In Freon we have the AST of our model already available and do not need to parse text to get this AST.
+
+The interpreter in Freon helps to calculate something based on the AST of the model.
+The general way to build an inbterpreter is as follows:
+
+```freon
+Select the start node you want to evaluate
+   If the node has children/parts
+      Evaluate the parts 
+      Evaluate the node, using the evaluation of the parts
+   Else if the node is a leaf
+      Evaluate the node
+```
+
+Take the following AST as an example.
 <Figure
-imageName={'examples/Tutorial-lesson10-screenshot1.png'}
-caption={'Validation error in grading expression'}
+imageName={'interpreter/plus-tree.png'}
+caption={'AST for Plus Expression'}
 figureNumber={1}
 />
-================
+Let's evaluate the node.
 
-================ this is how to include source code
-```freon
-// Education/lesson9-defs/edu.valid#L1-L11
+```ts
+// Interpreter/plus.ts#L1-L6
 
-validator EduValidator for language Education
 
-AndExpression {
-    typecheck equalsType( self.left, PrimitiveType:Boolean );
-    typecheck equalsType( self.right, PrimitiveType:Boolean );
-}
-
-OrExpression {
-    typecheck equalsType( self.left, PrimitiveType:Boolean );
-    typecheck equalsType( self.right, PrimitiveType:Boolean );
+function evaluate(node): number {
+	const leftValue = evaluate(node.left)
+	const rightValue = evaluate(node.right)
+	return leftValue + rightValue
 }
 ```
-================

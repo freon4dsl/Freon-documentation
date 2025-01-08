@@ -132,7 +132,7 @@ concept BaseProduct {
 
 Each of the boolean properties is displayed differently.
 
-```freon
+```proto
 // DocuProject/src/defs/editor-main-controls.edit#L7-L11
 
 is still under construction: ${self.isUnderConstruction switch}
