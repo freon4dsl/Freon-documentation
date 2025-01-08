@@ -79,9 +79,9 @@ new BooleanControlBox(node, 'role', getBoolean, setBoolean);
 
 A `ButtonBox` is a box that shows a button with the given text as label.
 
-````ts
+```ts
 new ButtonBox(node, "Text-on-button", 'role');
-````
+```
 
 ### EmptyLineBox
 

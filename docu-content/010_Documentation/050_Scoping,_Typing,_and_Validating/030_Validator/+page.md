@@ -70,7 +70,7 @@ conforms to the type of the second.
 
 In type checking rules it is possible to use predefined instances of a limited concept.
 
-```freon
+```proto
 // DocuProject/src/defs/validator-docu.valid#L10-L12
 
 MinusExpression  {
@@ -85,7 +85,7 @@ properties can be used in the error message using the syntax `${propName}`.
 The severity of the error may or may not be indicated. The possible values are "error", "warning", 
 "hint", "improvement", "todo", and "info". It defaults to "todo".
 
-```freon
+```proto
 // DocuProject/src/defs/validator-docu.valid#L28-L36
 
 CalcFunction {

@@ -216,7 +216,7 @@ get tabbing etc. working.
 
    Example:
 
-```freon
+```proto
     global {
         external {
             AnimatedGif,
@@ -258,7 +258,7 @@ method can be used to find the value of the parameter that was included in the .
 External projections may be nested.
 Example:
 
-```freon
+```proto
 external SMUI_Card [
     This Card is showing animated gif number 1.
         [external=AnimatedGif number="1"]

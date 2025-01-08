@@ -25,7 +25,7 @@ There are also two options for a type declaration, a generic type, and a unit of
 we have used the names of the generic types from the Object Constraint Language: Set, Bag, Sequence, and Collection.
 Note that these declarations are part of the AST. They are not type concepts themselves.
 
-```freon
+```proto
 // TyperExample/src/defs/projectY.ast#L37-L47
 
 concept GenericType base TypeDecl {
@@ -44,7 +44,7 @@ limited UnitKind { Meters; Grams; kWh; Hours; }
 The definitions of the expressions in the example language are straightforward. There are literal expressions for
 strings, booleans, and number, as well as generic literals and unit literals.
 
-```freon
+```proto
 // TyperExample/src/defs/projectY.ast#L61-L75
 
 expression BooleanLiteral base Exp {
@@ -66,7 +66,7 @@ expression GenericLiteral base Exp {
 
 ## The Complete AST Definition
 
-```freon
+```proto
 // TyperExample/src/defs/projectY.ast
 
 language projectY

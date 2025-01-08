@@ -94,7 +94,7 @@ The methods are:
 In the simple additions example the parameter is a number, which is used to choose the image source from a list. 
 The source of the AnimatedGif Svelte component is the following. 
 
-```svelte
+```ts
 // DocuProject/externals/ShowAnimatedGif.svelte
 
 <script lang="ts">
@@ -281,7 +281,7 @@ export default app;
 External projections may be nested.
 Example:
 
-```freon
+```proto
 external SMUI_Card [
     This Card is showing animated gif number 1.
         [external=AnimatedGif number="1"]

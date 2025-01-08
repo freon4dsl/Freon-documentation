@@ -32,7 +32,7 @@ You can add an icon before or after the text using CSS or SCSS. The text for the
 
 As an example, buttons are added to a table definition.
 
-```freon
+```proto
 // DocuProject/src/defs/editor-tables-with-button.edit#L6-L11
 
 InsurancePart{

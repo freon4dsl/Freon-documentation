@@ -18,7 +18,7 @@ In Freon we have the AST of our model already available and do not need to parse
 The interpreter in Freon helps to calculate something based on the AST of the model.
 The general way to build an inbterpreter is as follows:
 
-```freon
+```proto
 Select the start node you want to evaluate
    If the node has children/parts
       Evaluate the parts 
@@ -36,8 +36,7 @@ figureNumber={1}
 Let's evaluate the node.
 
 ```ts
-// Interpreter/plus.ts#L1-L6
-
+// Interpreter/plus.ts#L2-L6
 
 function evaluate(node): number {
 	const leftValue = evaluate(node.left)
