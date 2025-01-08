@@ -92,7 +92,7 @@ export class Md2Svelte {
 		// Because embedme only works for known file types, we use the file type "```proto" in the markdown,
 		// but replace it with "```freon" before transforming it to Svelte.
 		// This way Prism sees the correct file type: freon.
-		const markdown: string = fs.readFileSync(filepath, 'utf8').replaceAll("```proto svelte", "```svelte").replaceAll("```proto", "```freon");
+		const markdown: string = fs.readFileSync(filepath, 'utf8').replaceAll("```proto", "```freon").replaceAll("```swift", "```svelte");
 		const transformed_code = await compile(markdown, {
 			extensions: ['.md'],
 			smartypants: true,

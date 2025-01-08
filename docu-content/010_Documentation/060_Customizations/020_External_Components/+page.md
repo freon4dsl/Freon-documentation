@@ -94,7 +94,7 @@ The methods are:
 In the simple additions example the parameter is a number, which is used to choose the image source from a list. 
 The source of the AnimatedGif Svelte component is the following. 
 
-```proto svelte
+```swift
 // DocuProject/externals/ShowAnimatedGif.svelte
 
 <script lang="ts">
@@ -194,7 +194,7 @@ The box type associated with a wrapper is dependent upon the type of property or
 To display the childBox the external component needs to include the Freon `RenderComponent`, as shown in the next example.
 In this example the component `Card` is imported from the <a href="https://sveltematerialui.com/" target="_blank">SMUI</a> library of UI components.
 
-```svelte
+```swift
 // DocuProject/externals/SMUI_Card_Component.svelte#L30-L34
 
 <span class="card-container">
