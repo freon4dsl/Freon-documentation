@@ -94,7 +94,7 @@ The methods are:
 In the simple additions example the parameter is a number, which is used to choose the image source from a list. 
 The source of the AnimatedGif Svelte component is the following. 
 
-```ts
+```proto svelte
 // DocuProject/externals/ShowAnimatedGif.svelte
 
 <script lang="ts">

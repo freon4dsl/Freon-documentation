@@ -17,6 +17,9 @@ export function setupFreon() {
 		'class-name': [{
 				pattern: /(\bconcept\s+)\w+\b/,
 				lookbehind: true
+			},{
+				pattern: /\b\w+(?=\s*{)\b/,
+				greedy: true
 			},
 			{
 				pattern: /(?<=:\s*)\w+\b/
@@ -33,7 +36,7 @@ export function setupFreon() {
 			/\b(?:notEmpty|validIdentifier|message|severity|isunique|in)\b/,
 			/\b(?:typecheck|equalsto|conformsto|where|type|hastype|istype|infertype|typeof)\b/,
 			/\b(?:scope|isnamespace|container|namespace_addition)\b/,
-			/\b(?:editor|button|text|boxRole|table|default|external|referenceSeparator|global|priority|replace|wrap|symbol|referenceShortcut|trigger|fragment)\b/,
+			/\b(?:editor|button|text|boxRole|table|default|external|referenceShortcut|global|priority|replace|wrap|symbol|referenceShortcut|trigger|fragment)\b/,
 			/\b(?:reference|concept|modelunit|interface|limited|base|implements|binary|expression|model|abstract)\b/
 		],
 		'keyword2': /\b(?:NaN|notEmpty|validIdentifier|message|severity|isunique|in|typecheck|equalsto|conformsto|where|scope|isnamespace|container|namespace_addition|type|hastype|istype|infertype|typeof|editor|table|default|external|referenceSeparator|global|concept|modelunit|interface|limited|base|implements|binary|expression|model|abstract|priority|symbol|referenceShortcut)\b/,
