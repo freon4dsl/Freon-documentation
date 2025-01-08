@@ -128,7 +128,6 @@ export interface FreBehavior {
 	 * Optional callback function that returns whether the trigger is applicable for the specific box.
 	 */
 	isApplicable?: (box: Box) => boolean;
-	// TODO add comments here and in the source code
 	boxRoleToSelect?: string;
 	caretPosition?: FreCaret;
 	referenceShortcut?: ReferenceShortcut;

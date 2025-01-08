@@ -172,7 +172,7 @@ binary expression EqualsExpression base ComparisonExpression {
 }
 ```
 
-Now, let Freon generate the editor again, and open the model `lesson4` (todo check name). Note that we are opening 
+Now, let Freon generate the editor again, and open the model `lesson4`. Note that we are opening 
 another model, because we have added concept to the metamodel. The new model contains instances of the new concepts.
 
 `%@$#&*!!!`, so much work, and nothing has changed!

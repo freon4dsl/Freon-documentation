@@ -32,11 +32,13 @@ export interface FreProjection {
 Implementing this interface should return a _Box_ for each `element` in the AST.
 Freon includes boxes of various types (textual, tabular, horizontal or vertical collections, etc.)
 to define this projection.
-The box model is further described in the xref:../framework/editor-framework[editor framework].
+The box model is further described in the [editor framework](/Documentation/Under_the_Hood/Editor_Framework#projection-layout-based-on-boxes-3).
 
 ## FreAction
 
-An object that implements `FreCombinedActions` <!--- TODO -->
+An object that implements `FreCombinedActions` 
+
+[//]: # (todo write this)
 
 ```ts
 /* File: core/src/editor/FreCombinedActions.ts */
@@ -50,7 +52,9 @@ export interface FreCombinedActions {
 
 ## FreExpression
 
-An object that implements `FreExpression` // TODO
+An object that implements `FreExpression` 
+
+[//]: # (todo write this)
 
 ```ts
 /* File: core/src/language/FreExpression.ts */
@@ -60,11 +64,11 @@ export interface FreExpression extends FreElement {}
 
 ## FreBinaryExpression
 
-An object that implements `FreBinaryExpression` can be a node in the model AST. It represents
+An object that implements `FreBinaryExpression` is a node in the model AST. It represents
 an expression that has exactly two operands, which are usually written to the left and right of
 the operator symbol. For example, '4+5'.
 
-This interface extends the xref:expression-interface[`FreExpression`] interface.
+This interface extends the [`FreExpression`](/Documentation/Under_the_Hood/Editor_Interfaces#freexpression-4) interface.
 
 ```ts
 /* File: core/src/language/FreBinaryExpression.ts */
@@ -82,7 +86,6 @@ export interface FreBinaryExpression extends FreExpression {
 }
  */
 ```
-
 
 In both series the following two interfaces are used:
 

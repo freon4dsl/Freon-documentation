@@ -73,21 +73,13 @@ export const examplesToc: TocContentsType =
    { name: 'Examples', path: '/Examples',
      content: [
       { name: 'Overview', path: '/Examples/Overview'},
-      { name: 'Projection Fragments', path: '/Examples/Projection_Fragments'},
-      { name: 'Custom Projections', path: '/Examples/Custom_Projections'},
-      { name: 'Editor Styling', path: '/Examples/Editor_Styling'},
-      { name: 'Custom Actions', path: '/Examples/Custom_Actions'},
-      { name: 'External Components', path: '/Examples/External_Components'},
+      { name: 'Using the Interpreter', path: '/Examples/Using_the_Interpreter'},
       { name: 'Generic Types', path: '/Examples/Generic_Types',
         content: [
-         { name: 'Example Structure', path: '/Examples/Generic_Types/Example_Structure'},
+         { name: 'Example Metamodel', path: '/Examples/Generic_Types/Example_Metamodel'},
          { name: 'Example Typer Definition', path: '/Examples/Generic_Types/Example_Typer_Definition'},
        ]},
-      { name: 'Using the Interpreter', path: '/Examples/Using_the_Interpreter'},
-      { name: 'Custom Scoping', path: '/Examples/Custom_Scoping'},
-      { name: 'Custom Typing', path: '/Examples/Custom_Typing'},
-      { name: 'Custom Validation', path: '/Examples/Custom_Validation'},
-      { name: 'Including Freon in Your Website', path: '/Examples/Including_Freon_in_Your_Website'},
+      { name: 'External Components', path: '/Examples/External_Components'},
     ]};
 export const demoToc: TocContentsType = 
    { name: 'Demo', path: '/Demo',

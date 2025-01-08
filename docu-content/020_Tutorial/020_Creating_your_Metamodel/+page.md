@@ -5,8 +5,8 @@
 # Creating your Metamodel
 
 From this point onwards we assume that you have a Freon project in your
-favorite IDE, either by creating one through TODO, or by cloning this GitHub
-project TODO.
+favorite IDE, either by cloning the [Example project](/Documentation/Overview/Getting_Started#example-project-startup-2),
+or our [Template project](/Documentation/Overview/Getting_Started#template-project-startup-3).
 
 ## Defining the model and model units
 
@@ -94,7 +94,7 @@ modelunit SiteGroup {
 ## The _Topic_ model unit
 
 To avoid having very large files, you can divide your language definition into as many files as you like.
-As long as the file extension is `.ast`, and the language has the same name (todo check the latter), the file
+As long as the file extension is `.ast`, the file
 will be taken into account as part of your language metamodel.
 
 So, let's create another file to store the metamodel for the _Topic_ model unit. Like the _SiteGroup_ model 
@@ -137,7 +137,7 @@ concept Theory base Page {
     content: Line[];
 }
 
-concept Line { // todo use MultiLine Component
+concept Line {
     content: string;
 }
 
@@ -200,14 +200,16 @@ we wil not get any further into defining the content of each page type. Let's ju
 there is some content. We will be representing this as lines of text.
 
 If you like, you could generate the editor for our DSL, and try it out. Use the following command in the terminal
-window of your IDE (you can exchange npm for the package manager of your choice). (todo check if the model works with only this model unit defined.)
+window of your IDE (you can exchange npm for the package manager of your choice).
 
 ```bash
 npm run build
 ```
 
-In the GitHub project (todo link) we have provided an example model named 'lesson1'.
-Before you open the editor, start the server. (todo check if this is the right command)
+In the GitHub project we have provided an example model named 'lesson1'.
+Before you open the editor, start the server.
+
+[//]: # (todo make 'GitHub project' above a link)
 
 ```bash
 npm run start
@@ -259,8 +261,8 @@ concept PageTransition { /* E.g. Grade A => show pageA, Grade F => show pageC */
 ```
 
 But how to define the condition for a page transition? Well, we'll take the easy road for now, and make it an enumeration.
-In Freon terminology that is a **limited concept**, which is a slightly more extensive notion than the old-fashioned
-enumeration (see todo link to documentation).
+In Freon terminology that is a [limited concept](/Documentation/Creating_the_Metamodel/Language_Structure#limited-concept-7), 
+which is a slightly more extensive notion than the old-fashioned enumeration.
 
 ```proto
 // Education/lesson1-defs/edu-flow.ast#L20-L27
