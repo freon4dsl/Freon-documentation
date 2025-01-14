@@ -79,7 +79,13 @@ export const examplesToc: TocContentsType =
          { name: 'Example Metamodel', path: '/Examples/Generic_Types/Example_Metamodel'},
          { name: 'Example Typer Definition', path: '/Examples/Generic_Types/Example_Typer_Definition'},
        ]},
-      { name: 'External Components', path: '/Examples/External_Components'},
+      { name: 'External Components', path: '/Examples/External_Components',
+        content: [
+         { name: 'An Icon Component', path: '/Examples/External_Components/An_Icon_Component'},
+         { name: 'A Wrapper with a Button', path: '/Examples/External_Components/A_Wrapper_with_a_Button'},
+         { name: 'Replacing a Part List', path: '/Examples/External_Components/Replacing_a_Part_List'},
+         { name: 'A Complex Table', path: '/Examples/External_Components/A_Complex_Table'},
+       ]},
     ]};
 export const demoToc: TocContentsType = 
    { name: 'Demo', path: '/Demo',

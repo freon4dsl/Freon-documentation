@@ -25,6 +25,8 @@ ensure that the editor functions as it should in older browsers.
 
 ## Example Project Startup
 
+[//]: # (todo add info on starter.ts)
+
 The simplest manner to start working with Freon is start from the example project from GitHub.
 The sources include the definitions for an example language called `Entity`. Do note that this 
 DSL is different from the [running example](/Documentation/Overview/Running_Example) used 

@@ -45,7 +45,7 @@ Note that the childBox itself may be a vertical or horizontal layout containing 
     definition. It must be beneath the projection (the bit between `[]` brackets).
 - BoxType: `FragmentWrapperBox`.
 - Interface:
-  - `getChildBox(): Box`
+  - `childBox: Box`
     - Use this method and the `RenderComponent` to show the childBox in the external component.
 
 Example:
@@ -68,7 +68,7 @@ A property projection may be wrapped in an external component, or the external c
 projection. In the latter case it is up to the language engineer to get and set the value correctly, and to
 get tabbing etc. working.
 
-## Wrapping property projections of Primitive type
+## Wrapping Property Projections of Primitive type
 
 - Syntax: `${self.name wrap=SMUI_Dialog}`
 - BoxType: `StringWrapperBox`, `NumberWrapperBox`, or `BooleanWrapperBox`
@@ -78,13 +78,13 @@ get tabbing etc. working.
   - `getPropertyValue(): string`
     - Returns the value of the wrapped property. Type is `string` in case of an ExternalStringBox,
       `number` or `boolean` for the other box types.
-  - `getChildBox(): Box`
+  - `childBox: Box`
     - Returns the projection for the property. Use this method and the `RenderComponent` to
       show the property projection in the external component. Note that when a list is wrapped, this method returns
       a single Box that holds the native projection for the complete list, i.e. a horizontal list, vertical list, or
       table projection.
 
-## Wrapping property projections of Part List type
+## Wrapping Property Projections of Part List type
 
 - Syntax: `${self.parts wrap=SMUI_Accordion}`
 - BoxType: `PartListWrapperBox`
@@ -93,14 +93,14 @@ get tabbing etc. working.
     - Returns the name of the wrapped property.
   - `getPropertyValue(): FreNode[]`
     - Returns the value of the wrapped property. You need to cast the returned value to the required type.
-  - `getChildBox(): Box`
+  - `childBox: Box`
     - Returns the projection for the property. Use this method and the `RenderComponent` to
       show the property projection in the external component. Note that this method returns
       a single Box that holds the native projection for the complete list, i.e. a horizontal
       list, vertical list, or table projection.
 - Example:
 
-## Wrapping property projections of Reference List type
+## Wrapping Property Projections of Reference List type
 
 - Syntax: `${self.parts wrap=SMUI_Accordion}`
 - BoxType: `RefListWrapperBox`
@@ -109,14 +109,14 @@ get tabbing etc. working.
     - Returns the name of the wrapped property.
   - `getPropertyValue(): FreNodeReference[]`
     - Type is `string` in case of an ExternalStringBox, `number` or `boolean` for the other box types.
-  - `getChildBox(): Box`
+  - `childBox: Box`
     - Returns the projection for the property. Use this method and the `RenderComponent` to
       show the property projection in the external component. Note that this method returns
       a single Box that holds the native projection for the complete list, i.e. a horizontal
       list, vertical list, or table projection.
 - Example:
 
-## Wrapping property projections of Part type
+## Wrapping Property Projections of Part type
 
 - Syntax: `${self.part wrap=SMUI_Dialog}`
 - BoxType: `PartWrapperBox`
@@ -125,11 +125,11 @@ get tabbing etc. working.
     - Returns the name of the wrapped property.
   - `getPropertyValue(): FreNode`
     - Returns the value of the wrapped property. You need to cast the returned value to the required type.
-  - `getChildBox(): Box`
+  - `childBox: Box`
     - Returns the projection for the property. Use this method and the `RenderComponent` to
       show the property projection in the external component.
 
-## Wrapping property projections of Reference type
+## Wrapping Property Projections of Reference type
 
 - Syntax: `${self.reference wrap=SMUI_Dialog}`
 - BoxType: `RefWrapperBox`
@@ -138,7 +138,7 @@ get tabbing etc. working.
     - Returns the name of the wrapped property.
   - `getPropertyValue(): FreNodeReference`
     - Returns the value of the wrapped property.
-  - `getChildBox(): Box`
+  - `childBox: Box`
     - Returns the projection for the property. Use this method and the `RenderComponent` to
       show the property projection in the external component.
 
