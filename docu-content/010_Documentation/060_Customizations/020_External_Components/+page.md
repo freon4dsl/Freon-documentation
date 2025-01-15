@@ -7,9 +7,9 @@
 
 <Note><svelte:fragment slot="header">External components are experimental</svelte:fragment>
 <svelte:fragment slot="content">
-<p>Using external components in the Freon editor is an experimental feature. There are no guarantees
-that the editor will function correctly with every component library. Neither can we guarantee that the 
-manner in which external components are included will remain the same in next versions of Freon.</p>
+<p>The use of external components in the Freon editor is experimental. 
+Compatibility with every library isn’t guaranteed, and future versions 
+of Freon may alter how external components are included. Proceed with this in mind.</p>
 </svelte:fragment></Note>
 
 In this version of Freon it is possible to include UI components that are not native to Freon. For
