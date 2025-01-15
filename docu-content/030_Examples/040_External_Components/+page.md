@@ -4,43 +4,39 @@
 
 # Using External Svelte Components
 
-The webpage of the Freon editor is based on <a href="https://svelte.dev/" target="_blank">Svelte</a> components. 
-Freon has a number of native component available,
-each of which is coupled to one of the box types in the [editor framework](/Documentation/Under_the_Hood/Editor_Framework).
-You can change how these components look considerably by changing the [styling](/Documentation/Defining_an_Editor/Styling). 
-However, sometimes you want the editor to have a completely different look. You can make this happen by adding your own 
-Svelte components, either from a Library, or homemade. Please, also read the information 
-on [customization using external components](/Documentation/Customizations/External_Components).
+Freon offers a variety of native <a href="https://svelte.dev/" target="_blank">Svelte</a> components, each 
+associated with one of the box types in
+the [editor framework](/Documentation/Under_the_Hood/Editor_Framework). You can significantly modify the appearance
+of these components by adjusting the [styling](/Documentation/Defining_an_Editor/Styling).
+However, you can give the editor a completely different look, or add custom functionality, 
+by incorporating your own Svelte components, either from a library or custom-made. For an introduction, please refer
+to [customization using external components](/Documentation/Customizations/External_Components).
 
-In this example we will show you how to add icons, and buttons, how to use an Accordion component from a library, and 
-how to create a very specific table component. Because we already are using 
-the <a href="https://sveltematerialui.com/" target="_blank">SMUI</a> UI library from the complimentary web application, this 
-is the library that we will use in this example. But of course you are free to make your own choices for the HTML library 
-and the CSS styling tools.
+In this extended example, you’ll learn how to use external Svelte components to customize the Freon editor.
+We will demonstrate how to add icons and buttons, use an Accordion component from a library, and create
+a sorted table component. Since we are already utilizing
+the <a href="https://sveltematerialui.com/" target="_blank">SMUI</a> UI library in the complementary web application,
+we'll be using this library in our example. However, you're free to choose your own HTML library and CSS styling tools.
 
-The sources for this example are available from GitHub. When you have checked out the source code and are following this 
-example in your own IDE, you might notice that upon regeneration the browser sometimes shows an empty page. The reason 
-is that the browser is quicker than the regeneration process. (In the console of the browser development tools you will see
-the message `Uncaught SyntaxError: Unexpected end of input (at bundle.js:54779:24)`.) Don't worry, simply reload 
-the page, and everything will be fine.
+The source code for this example is available on GitHub, 
+see [Getting Started](/Documentation/Overview/Getting_Started#example-project-startup-2). Choose the language called CourseSchedule.
+When you're following along with your own IDE, you may
+notice that after regeneration, the browser sometimes displays an empty page. This happens because the browser's refresh is often
+faster than the regeneration process. (In the browser's development tools console, you'll see the
+message `Uncaught SyntaxError: Unexpected end of input`.) Don't worry—just reload the page, and everything will work fine.
 
 [//]: # (todo correct link to GitHub page and which sources ar in which step)
 
-## The Language Used
+## The CourseSchedule Language
 
-There can not be a Freon editor without a DSL, so first we must explain the language used in the example. Because our 
-focus is not on the language but on the editor, we have kept the language small and simple. 
-
-The DSL revolves about the
+The CourseSchedule DSL revolves about the
 scheduling of training courses for adults. The main concepts are courses, rooms, and teachers, and there is a simplified
-notion of time. There are 10 time slots in a week, from Monday morning to Friday afternoon. Teachers and rooms have an
-availability. Rooms have equipment, like kitchen utensils for cooking courses, and teachers have competences, which means
-they are capable of giving a certain training course.
+notion of time. There are 10 time slots in a week, from Monday morning to Friday afternoon. 
 
 The following is the metamodel, which by now you should be able to understand without problems.
 
 ```proto
-// CourseSchedule/step1/main.ast
+// CourseSchedule/phase1/main.ast
 
 language CourseSchedule
 
@@ -75,13 +71,13 @@ modelunit Building {
 
 /* model unit Schedule */
 concept Slot {
-    time: TimeSlot;
+    time: TimeStamp;
     reference teacher: Person;
     reference room: Room;
     reference course: Course;
 }
 
-limited TimeSlot {
+limited TimeStamp {
     day: number; // 1 = Monday, 2 = Tuesday, etc
     part: number; // 1 indicates morning, 2 indicates afternoon
     MondayMorning = { day: 1, part: 1 }
@@ -100,7 +96,7 @@ limited TimeSlot {
 concept Person {
     name: identifier;
     fullName: string;
-    availability: TimeSlot[];
+    availability: TimeStamp[];
     reference competence: Course[];
 }
 
@@ -125,7 +121,7 @@ We will make the name and phone number information of a teacher into a fragment,
 competences of a teacher in a list of checkboxes, and clean up the rest a little bit.
 
 ```proto
-// CourseSchedule/step1/main.edit
+// CourseSchedule/phase1/main.edit
 
 editor default
 

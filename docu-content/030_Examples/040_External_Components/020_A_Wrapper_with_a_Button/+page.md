@@ -4,76 +4,61 @@
 
 # A Wrapper with a Button
 
-In this part we will add a component that takes a native Freon component
-as an internal or child component. Such an external component is called a wrapper.
-We will be using components from the <a href="https://sveltematerialui.com/" target="_blank">SMUI</a> UI library.
-Note that we are still using Svelte version 4 and SMUI version 7. Unfortunately, the latest versions 
-came too late for us to incorporate them. It is on our todo list, though.
+In this part of the example, we'll walk through the steps to create a custom wrapper component in Freon.
+This component will wrap a native Freon component, using
+the <a href="https://sveltematerialui.com/" target="_blank">SMUI</a> (Svelte Material UI) library.
+Our example will show how to combine a person’s phone number
+with a special button that can trigger actions using the stored information.
+Here, a person's phone number is shown in a snackbar notification, but you could do all sorts of things, like sending
+the number to an external system that is able to set up a phone call,
+or to a system that checks the number against another database. Let your imagination run free.
 
-This example shows how to get the information from the AST, and use it
-for whatever purpose seems useful. Here, we will simply take a person's phone number, and show it 
-in yet another component, but you could send the number to an external system that is able to set up a phone call,
-or a system that checks the number against another database. Let your imagination run free.
+*Note: This guide assumes Svelte version 4 and SMUI version 7. Updates to newer versions
+will follow in subsequent releases.*
 
-Start by creating a Svelte component, and name it `PhoneButton.svelte`.
+Let's dive into the steps!
 
-## Create the Svelte Component
+## Step 1: Create the Svelte Component
 
-There's a lot going on in this component, so let's break it down. Every Svelte component has three parts: 
-the script, the HTML, and the style part. Take a look at each part separately.
+We will create a new Svelte component called `PhoneButton.svelte`, which will act as a 
+wrapper for a phone number and provide a button to trigger actions. Take a look at the 
+three key parts: **Script**, **HTML**, and **CSS**.
 
 ### The Script Part
 
-As explained, in the script part of the component there are the two mandatory parameters: `box` and `editor`. As 
-the type of the box we are using
-`NumberWrapperBox`, which, as the name indicates, is capable of wrapping the box for a node of
-type `number`. The interface of the `NumberWrapperBox` offers three methods (see
-[Wrapping Property Projections of Primitive type](/Documentation/Under_the_Hood/Editor_Framework/External_Component_Box_Types#wrapping-property-projections-of-primitive-type-5)).
-You can get the name of the property that is wrapped in your external component, its current value, 
-and you can get the wrapped box.
+In the script section, we declare the two mandatory parameters: `box` and `editor`. The 
+`box` is of type `NumberWrapperBox`, which is capable of wrapping a number node. 
+(See [Wrapping Property Projections of Primitive type](/Documentation/Under_the_Hood/Editor_Framework/External_Component_Box_Types#wrapping-property-projections-of-primitive-type-5) for more on the interface of
+the `NumberWrapperBox`.)
 
 ```ts
-// CourseSchedule/step3/PhoneButton.svelte#L8-L9
+// CourseSchedule/phase3/PhoneButton.svelte#L8-L9
 
 export let box: NumberWrapperBox;
 export let editor: FreEditor;
 ```
 
-Next, there are four functions that together make sure that the editor is updated correctly 
-whenever the underlying AST
-(e.g. by adding, or removing nodes) or box model (e.g. by selecting a different view) changes.
+We also define four functions that together make sure that the editor is updated correctly
+whenever the underlying AST (e.g. by adding, or removing nodes) or box model (e.g. by 
+selecting a different view) changes.
 
-The first of the four is a function that is called when the editor wants to set the focus
-to this component. It could, for instance, be implemented by redirecting the focus to an HTML element
-in the component. Here we redirect the focus to the child box.
+First, we define the `setFocus` function to handle focus changes within the component, and a `refresh` function to update the values when the underlying model changes:
 
 ```ts
-// CourseSchedule/step3/PhoneButton.svelte#L16-L18
+// CourseSchedule/phase3/PhoneButton.svelte#L16-L21
 
 async function setFocus(): Promise<void> {
     box.childBox.setFocus();
 }
-```
-
-The second is a function that should refresh any values used within the component that are dependent upon
-the AST node. Because only you as maker of this component know which these values are,
-you need to provide your own implementation of this function. It is called when the box is dirty, 
-and refreshes the corresponding component. Here we do not show values from the AST other than the value
-in the wrapped box, and this takes care of its own, so we do not implement this function.
-
-```ts
-// CourseSchedule/step3/PhoneButton.svelte#L19-L21
-
 const refresh = (why?: string): void => {
     // do whatever needs to be done to refresh the elements that show information from the model
 };
 ```
 
-For the focus and refresh functions to work they must be communicated to the box. This is done in 
-both the `onMount` and `afterUpdate` functions, which are built-in Svelte functions.
+Make sure these functions are passed to the box using the `onMount` and `afterUpdate` lifecycle hooks:
 
 ```ts
-// CourseSchedule/step3/PhoneButton.svelte#L22-L29
+// CourseSchedule/phase3/PhoneButton.svelte#L22-L29
 
 onMount(() => {
     box.setFocus = setFocus;
@@ -87,14 +72,18 @@ afterUpdate(() => {
 
 ### The HTML Part
 
-The actual HTML in the component consists of a div with the wrapped box, together with an icon button.
+The HTML section of the component consists of a wrapper `div` that contains the phone number 
+and an `IconButton` from the SMUI library.
+
 The wrapped box cannot be included directly, as it is a box, not a component. Freon offers a component
 that is able to render any box known to the Freon framework. It takes the box and the editor parameters, 
 which is the reason these parameters are mandatory. This component is called `RenderComponent` and must 
 be imported from the Freon core-svelte package.
 
+We set up the button to open a snackbar notification when clicked:
+
 ```ts
-// CourseSchedule/step3/PhoneButton.svelte#L33-L36
+// CourseSchedule/phase3/PhoneButton.svelte#L33-L36
 
 <div class="wrapper">
     Phone number: <RenderComponent box={box.childBox} editor="{editor}"/>
@@ -102,13 +91,11 @@ be imported from the Freon core-svelte package.
 </div>
 ```
 
-The `on:click` method of the icon button increases a `clicked` variable,
-and opens a snackbar. The latter is defined by the following HTML. In it, the value of the phone number 
-is taken from the box using `box.getPropertyValue()`. Note that `IconButton`, `Snackbar`, `Actions`, and `Label` 
-must be imported from the SMUI library, so don't forget to update the dependencies section of your `package.json`.
+Next, we define the `Snackbar` element from SMUI, which will show a message when the phone 
+button is clicked. The message includes the value of the phone number:
 
 ```ts
-// CourseSchedule/step3/PhoneButton.svelte#L38-L43
+// CourseSchedule/phase3/PhoneButton.svelte#L38-L43
 
 <Snackbar bind:this={snackbarWithClose}>
     <Label>This person has been called on number {box.getPropertyValue()}.</Label>
@@ -125,7 +112,7 @@ of the SMUI components is all done using the <a href="https://sveltematerialui.c
 which is already set up because it is also used for the surrounding web application.
 
 ```ts
-// CourseSchedule/step3/PhoneButton.svelte#L45-L52
+// CourseSchedule/phase3/PhoneButton.svelte#L45-L52
 
 <style>
     .wrapper {
@@ -139,10 +126,10 @@ which is already set up because it is also used for the surrounding web applicat
 
 ### The Complete Component
 
-The complete Svelte component is the following.
+Here's the complete `PhoneButton.svelte` component:
 
 ```ts
-// CourseSchedule/step3/PhoneButton.svelte
+// CourseSchedule/phase3/PhoneButton.svelte
 
 <script lang="ts">
     import IconButton from "@smui/icon-button";
@@ -199,13 +186,14 @@ The complete Svelte component is the following.
 
 ```
 
-## Add the Component to the Global Section
+## Step 2: Add to the Global Section
 
-Again, we must let the Freon code generator know that the component exists, so we adjust 
-the [`global` section](/Documentation/Defining_an_Editor/Global_Projections) of the default editor.
+To make the Freon code generator aware of our new component, we need to modify 
+the [`global`](/Documentation/Defining_an_Editor/Global_Projections) section of the default editor configuration. Add 
+the `PhoneButton` component here:
 
 ```proto
-// CourseSchedule/step3/main.edit#L3-L8
+// CourseSchedule/phase3/main.edit#L3-L8
 
 global {
     external {
@@ -215,12 +203,14 @@ global {
 }
 ```
 
-## Include the Component in the Projection
+## Step 3: Include in the Projection
 
-To include the new component in the projection we augment the phone number property with the text `wrap=PhoneButton`.
+Next, we need to include the `PhoneButton` in the projection for the `Person` model. 
+To do this, we modify the phone number property in the `externals.edit` file, 
+adding the `wrap=PhoneButton` directive:
 
 ```proto
-// CourseSchedule/step3/externals.edit
+// CourseSchedule/phase3/externals.edit
 
 editor externals
 
@@ -237,13 +227,14 @@ ${self.phone wrap=PhoneButton}
 
 ```
 
-## Adjust the Starter
+## Step 4: Register in the Starter Code
 
-Now all that is left to do is to let the Freon editor know how to instantiate the new component.
-We add a line to `setCustomComponents` in the starter code.
+Finally, we need to let the Freon editor know how to instantiate our new `PhoneButton` 
+component. We do this by adding the component to the `setCustomComponents` function 
+in the starter code:
 
 ```ts
-// CourseSchedule/step3/starter.ts#L21-L24
+// CourseSchedule/phase3/starter.ts#L21-L24
 
 setCustomComponents([
     { component: PersonIcon, knownAs: "PersonIcon" },
@@ -251,12 +242,22 @@ setCustomComponents([
 ]);
 ```
 
-## The result
+## Final Result
 
-When all is done, the editor should look like this.
+Once everything is set up, your Freon editor will look like this, with the added phone number button that opens a snackbar notification when clicked:
 
 <Figure
 imageName={'examples/CourseSchedule/Screenshot-step3.png'}
 caption={'Editor with added Phone Button'}
 figureNumber={1}
 />
+
+### Conclusion
+
+You’ve now successfully added a custom wrapper component to the Freon editor! 
+This component wraps the phone number and includes a button that opens a 
+snackbar with the phone number displayed. With this knowledge, you can 
+start creating more complex components that integrate seamlessly with the Freon editor!
+
+Next, you are going to learn how to replace the component that renders a list.
+

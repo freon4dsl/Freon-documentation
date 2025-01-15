@@ -4,51 +4,49 @@
 
 # An Icon Component
 
-To improve the look of the staff model unit, we are going to add an icon to each person. 
-Let's create a Svelte component that does just that, and name it `PersonIcon.svelte`.
+In this part of the example, we will guide you through the process of enhancing the look of 
+the `Staff` model by adding an icon to each person. We will create a 
+custom Svelte component named `PersonIcon.svelte`, and integrate it into the editor. 
+Let's get started!
 
-## Create the Svelte Component
+## Step 1: Create the Svelte Component
 
-Freon must be able to make the coupling between this component and
-the [box model](/Documentation/Under_the_Hood/Editor_Framework#the-ast-the-box-tree-and-the-dom-2).
-Our newly made component must be connected to a box. Therefore, there must be a parameter named `box` in the
-Svelte component. The type of the parameter should be one of
-the [external box types](/Documentation/Under_the_Hood/Editor_Framework/External_Component_Box_Types).
-Here, we are using the simplest of them, the
-`ExternalSimpleBox`. Note that the parameter `editor: FreEditor` is also mandatory. When the component
+To begin, we need to create a new Svelte component that will represent the icon for each 
+person. Let's call it `PersonIcon.svelte`. This component must be linked to the box model 
+of the Freon editor. In Freon, each external component must be associated with a box, 
+and the `PersonIcon` component will be tied to a box type called `ExternalSimpleBox`.
+The parameter `editor: FreEditor` is also mandatory. When the component
 is instantiated by the Freon editor both parameters will get a value.
 
-The complete Svelte component is the following.
+The complete Svelte component should look like this:
 
 ```ts
-// CourseSchedule/step2/PersonIcon.svelte
+// CourseSchedule/phase2/PersonIcon.svelte
 
 <script lang="ts">
     import {ExternalSimpleBox, FreEditor} from "@freon4dsl/core";
 
-    // Freon expects both of these to be present, even if they are not used.
+		// Declare the 'box' and 'editor' parameters as required by Freon
     export let box: ExternalSimpleBox;
     export let editor: FreEditor;
 
 </script>
 
+<!-- Display the icon with an image -->
 <img src='./icons8-person-94.png' alt="Icon showing Person" height="30px"/>
 
 ```
 
-## Add the Component to the Global Section
+## Step 2: Add to the Global Section
 
-The Freon code generator must know that there is an external component.
-This is done by making changes to the .edit files. First, we let the generator know that 
-there is an external component. This is done in 
-the [`global`](/Documentation/Defining_an_Editor/Global_Projections) section of the default editor.
-Note that we can give it any name we like, because the coupling 
-between this name and the actual component is done separately 
-(see [Adjust the Starter](/Examples/External_Components/An_Icon_Component#adjust-the-starter-5). 
-However, to keep things simple, we use the same name here.
+The next step is to inform the Freon code generator about the new external 
+component. We can achieve this by modifying the [`global`](/Documentation/Defining_an_Editor/Global_Projections)  section 
+of the default editor configuration.
+
+In the `main.edit` file, add the following code to declare the `PersonIcon` component:
 
 ```proto
-// CourseSchedule/step2/main.edit#L3-L7
+// CourseSchedule/phase2/main.edit#L3-L7
 
 global {
     external {
@@ -57,20 +55,22 @@ global {
 }
 ```
 
-## Include the Component in the Projection
+This tells the editor that `PersonIcon` is an external component. You can name it 
+anything you like, but for simplicity, we will use `PersonIcon`.
 
-To include the new component we add `[external=PersonIcon]` to the projection for Person. 
-Note that we use the name from the `global` section.
-To be able to see the differences between the native editor and 
+## Step3: Include in the Projection
+
+To include the new component, we need to reference it in the editor's projection for 
+the `Person` concept. The way to do this is by adding `[external=PersonIcon]` to the projection.
+To be able to see the differences in the browser between the native editor and 
 the one with external components we have decided to add the adjusted projection to a new 
 editor (projection set). The icon is included in the fragment that shows the
 name and phone number details.
-
-Note that every fragment for the same concept must have a unique name. Therefore, we 
+Every fragment for the same concept must have a unique name. Therefore, we 
 name this fragment `nameAndIcon`.
 
 ```proto
-// CourseSchedule/step2/externals.edit
+// CourseSchedule/phase2/externals.edit
 
 editor externals
 
@@ -87,15 +87,16 @@ Phone number: ${self.phone}
 
 ```
 
-## Adjust the Starter
+## Step4: Register in the Starter Code
 
-The final move is to let the Freon editor know how to instantiate the new component.
-This is done by adding a call to the function `setCustomComponents` to the 
-code that starts up the application. It is here that the coupling is made
-between this name used in the .edit files and the actual component.
+Now, we need to ensure the Freon editor knows how to instantiate our custom component. 
+This is done by calling the `setCustomComponents` function in the application’s startup code.
+
+In your `starter.ts` file, import the `PersonIcon` component and add it to 
+the `setCustomComponents` function like this:
 
 ```ts
-// CourseSchedule/step2/starter.ts
+// CourseSchedule/phase2/starter.ts
 
 import {FreonLayout, WebappConfigurator} from "@freon4dsl/webapp-lib";
 import {ServerCommunication} from "@freon4dsl/core";
@@ -131,10 +132,22 @@ export default app;
 
 ```
 
-When all is done, the editor should look like this.
+## Final Result
+
+Once all the steps are completed, your editor will look like this, with each person 
+displaying their details alongside the newly added icon:
 
 <Figure
 imageName={'examples/CourseSchedule/Screenshot-step2.png'}
 caption={'Editor with added Icon'}
 figureNumber={1}
 />
+
+### Conclusion:
+You’ve successfully added an icon to the `Staff` model in the Freon editor! 
+By following these steps, you've created a custom Svelte component, integrated 
+it into the Freon editor, and made it available in your projections. 
+
+Next, you are going to learn how to get the information from the AST model, and use it
+in your external components.
+

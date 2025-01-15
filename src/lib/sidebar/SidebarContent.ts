@@ -84,7 +84,7 @@ export const examplesToc: TocContentsType =
          { name: 'An Icon Component', path: '/Examples/External_Components/An_Icon_Component'},
          { name: 'A Wrapper with a Button', path: '/Examples/External_Components/A_Wrapper_with_a_Button'},
          { name: 'Replacing a Part List', path: '/Examples/External_Components/Replacing_a_Part_List'},
-         { name: 'A Complex Table', path: '/Examples/External_Components/A_Complex_Table'},
+         { name: 'A Sorted Table', path: '/Examples/External_Components/A_Sorted_Table'},
        ]},
     ]};
 export const demoToc: TocContentsType = 
