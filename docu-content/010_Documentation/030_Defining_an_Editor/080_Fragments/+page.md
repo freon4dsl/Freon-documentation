@@ -15,6 +15,7 @@ with the keyword `fragment`, followed by the name of the fragment. The content i
 in the familiar manner between the square brackets (`[]`). 
 
 The next example defines two fragments called (rather unimaginative) `First` and `Second`.
+Note that every fragment for the same concept must have a unique name.
 
 ```proto
 // DocuProject/src/defs/editor-fragments.edit#L8-L24

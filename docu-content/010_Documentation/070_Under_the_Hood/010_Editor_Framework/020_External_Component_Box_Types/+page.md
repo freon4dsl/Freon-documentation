@@ -7,9 +7,9 @@
 
 <Note><svelte:fragment slot="header">External components are experimental</svelte:fragment>
 <svelte:fragment slot="content">
-<p>Using external components in the Freon editor is an experimental feature. There are no guarantees
-that the editor will function correctly with every component library. Neither can we guarantee that the 
-manner in which external components are included will remain the same in next versions of Freon.</p>
+<p>The use of external components in the Freon editor is experimental. 
+Compatibility with every library isn’t guaranteed, and future versions 
+of Freon may alter how external components are included. Proceed with this in mind.</p>
 </svelte:fragment></Note>
 
 In this version of Freon it is possible to include UI components that are not native to Freon. 
@@ -18,7 +18,7 @@ See [External Components](/Documentation/Customizations/External_Components).
 The use of external components requires knowledge of the Freon [Box Model](/Documentation/Under_the_Hood/Editor_Framework). 
 In this section we explain the API for the various forms of external components.
 
-## Simple additions
+## Simple Additions
 
 Simple additions have no link to the model (the AST). They may appear anywhere in the projection.
 However, because they are present in the projection of a certain node, they are coupled to this node.
@@ -33,7 +33,7 @@ default editor.
 - Interface:
   - No specific interface.
 
-## Fragment wrappers
+## Fragment Wrappers
 
 Fragment wrappers may appear anywhere in a projection. Fragment wrappers wrap a single projection. This is the `childBox`.
 Note that the childBox itself may be a vertical or horizontal layout containing many other elements.
@@ -45,7 +45,7 @@ Note that the childBox itself may be a vertical or horizontal layout containing 
     definition. It must be beneath the projection (the bit between `[]` brackets).
 - BoxType: `FragmentWrapperBox`.
 - Interface:
-  - `getChildBox(): Box`
+  - `childBox: Box`
     - Use this method and the `RenderComponent` to show the childBox in the external component.
 
 Example:
@@ -68,7 +68,7 @@ A property projection may be wrapped in an external component, or the external c
 projection. In the latter case it is up to the language engineer to get and set the value correctly, and to
 get tabbing etc. working.
 
-## Wrapping property projections of Primitive type
+## Wrapping Property Projections of Primitive Type
 
 - Syntax: `${self.name wrap=SMUI_Dialog}`
 - BoxType: `StringWrapperBox`, `NumberWrapperBox`, or `BooleanWrapperBox`
@@ -78,13 +78,13 @@ get tabbing etc. working.
   - `getPropertyValue(): string`
     - Returns the value of the wrapped property. Type is `string` in case of an ExternalStringBox,
       `number` or `boolean` for the other box types.
-  - `getChildBox(): Box`
+  - `childBox: Box`
     - Returns the projection for the property. Use this method and the `RenderComponent` to
       show the property projection in the external component. Note that when a list is wrapped, this method returns
       a single Box that holds the native projection for the complete list, i.e. a horizontal list, vertical list, or
       table projection.
 
-## Wrapping property projections of Part List type
+## Wrapping Property Projections of Part List Type
 
 - Syntax: `${self.parts wrap=SMUI_Accordion}`
 - BoxType: `PartListWrapperBox`
@@ -93,14 +93,14 @@ get tabbing etc. working.
     - Returns the name of the wrapped property.
   - `getPropertyValue(): FreNode[]`
     - Returns the value of the wrapped property. You need to cast the returned value to the required type.
-  - `getChildBox(): Box`
+  - `childBox: Box`
     - Returns the projection for the property. Use this method and the `RenderComponent` to
       show the property projection in the external component. Note that this method returns
       a single Box that holds the native projection for the complete list, i.e. a horizontal
       list, vertical list, or table projection.
 - Example:
 
-## Wrapping property projections of Reference List type
+## Wrapping Property Projections of Reference List Type
 
 - Syntax: `${self.parts wrap=SMUI_Accordion}`
 - BoxType: `RefListWrapperBox`
@@ -109,14 +109,14 @@ get tabbing etc. working.
     - Returns the name of the wrapped property.
   - `getPropertyValue(): FreNodeReference[]`
     - Type is `string` in case of an ExternalStringBox, `number` or `boolean` for the other box types.
-  - `getChildBox(): Box`
+  - `childBox: Box`
     - Returns the projection for the property. Use this method and the `RenderComponent` to
       show the property projection in the external component. Note that this method returns
       a single Box that holds the native projection for the complete list, i.e. a horizontal
       list, vertical list, or table projection.
 - Example:
 
-## Wrapping property projections of Part type
+## Wrapping Property Projections of Part Type
 
 - Syntax: `${self.part wrap=SMUI_Dialog}`
 - BoxType: `PartWrapperBox`
@@ -125,11 +125,11 @@ get tabbing etc. working.
     - Returns the name of the wrapped property.
   - `getPropertyValue(): FreNode`
     - Returns the value of the wrapped property. You need to cast the returned value to the required type.
-  - `getChildBox(): Box`
+  - `childBox: Box`
     - Returns the projection for the property. Use this method and the `RenderComponent` to
       show the property projection in the external component.
 
-## Wrapping property projections of Reference type
+## Wrapping Property Projections of Reference Type
 
 - Syntax: `${self.reference wrap=SMUI_Dialog}`
 - BoxType: `RefWrapperBox`
@@ -138,73 +138,73 @@ get tabbing etc. working.
     - Returns the name of the wrapped property.
   - `getPropertyValue(): FreNodeReference`
     - Returns the value of the wrapped property.
-  - `getChildBox(): Box`
+  - `childBox: Box`
     - Returns the projection for the property. Use this method and the `RenderComponent` to
       show the property projection in the external component.
 
-## Replacing property projections of Primitive type
+## Replacing Property Projections of Primitive Type
 
 - Syntax: `${self.name replace=SMUI_Dialog}`
 - BoxType: `ExternalStringBox`, `ExternalNumberBox`, or `ExternalBooleanBox`
 - Interface:
   - `getPropertyName(): string`
-    - Returns the name of the wrapped property.
+    - Returns the name of the replaced property.
   - `getPropertyValue(): string`
-    - Returns the value of the wrapped property.
+    - Returns the value of the replaced property.
       Type is `string` in case of an `ExternalStringBox`, `number` or `boolean` for the other box types.
   - `setPropertyValue(newValue: string)`
     - Sets the value of the property.
-      Type is `string` in case of an `ExternalStringBox`, `number` or `boolean` for the other box types.
+      Type is `string` in case of an `ExternalStringBox`, `number` or `boolean` for the other box Types.
 
-## Replacing property projections of Part List type
+## Replacing Property Projections of Part List Type
 
 - Syntax: `${self.parts replace=SMUI_Accordion}`
 - BoxType: `ExternalPartListBox`
 - Interface:
   - `getPropertyName(): string`
-    - Returns the name of the wrapped property.
+    - Returns the name of the replaced property.
   - `getPropertyValue(): FreNode[]`
-    - Returns the value of the wrapped property. You need to cast the returned value to the required type.
+    - Returns the value of the replaced property. You need to cast the returned value to the required type.
   - `setPropertyValue(newValue: FreNode[])`
     - Sets the value of the property.
-  - `getChildren(): Box[]`
+  - `children: Box[]`
     - Returns a list of boxes that hold the projection for every item in the list.
 
-## Replacing property projections of Reference List type
+## Replacing Property Projections of Reference List Type
 
 - Syntax: `${self.parts replace=SMUI_Accordion}`
 - BoxType: `ExternalRefListBox`
 - Interface:
   - `getPropertyName(): string`
-    - Returns the name of the wrapped property.
+    - Returns the name of the replaced property.
   - `getPropertyValue(): FreNodeReference[]`
-    - Returns the value of the wrapped property. You need to cast the returned value to the required type.
+    - Returns the value of the replaced property. You need to cast the returned value to the required type.
   - `setPropertyValue(newValue: FreNodeReference[])`
     - Sets the value of the property.
-  - `getChildren(): Box[]`
+  - `children: Box[]`
     - Returns a list of boxes that hold the projection for every item in the list.
 
-## Replacing property projections of Part type
+## Replacing Property Projections of Part Type
 
 - Syntax: `${self.part replace=SMUI_Dialog}`
 - BoxType: `ExternalPartBox`
 - Interface:
   - `getPropertyName(): string`
-    - Returns the name of the wrapped property.
+    - Returns the name of the replaced property.
   - `getPropertyValue(): FreNode`
-    - Returns the value of the wrapped property. You need to cast the returned value to the required type.
+    - Returns the value of the replaced property. You need to cast the returned value to the required type.
   - `setPropertyValue(newValue: FreNode)`
     - Sets the value of the property.
 
-## Replacing property projections of Reference type
+## Replacing Property Projections of Reference Type
 
 - Syntax: `${self.reference replace=SMUI_Dialog}`
 - BoxType: `ExternalRefBox`
 - Interface:
   - `getPropertyName(): string`
-    - Returns the name of the wrapped property.
+    - Returns the name of the replaced property.
   - `getPropertyValue(): FreNodeReference`
-    - Returns the value of the wrapped property.
+    - Returns the value of the replaced property.
   - `setPropertyValue(newValue: FreNodeReference)`
     - Sets the value of the property.
 

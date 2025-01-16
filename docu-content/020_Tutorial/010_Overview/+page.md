@@ -62,3 +62,9 @@ mentioned. If you change these entries you can place the language definition fil
 In this tutorial we will make a number of Freon definition files. Note that the extension of the 
 file (for instance, `.ast`, `.valid`) is important, but the name is not. All metamodel definitions 
 need to be in a `.ast` file, all editor definitions in a `.edit` file, etc.
+
+Note that, when you have checked out the source code and are following this
+example in your own IDE, you might notice that upon regeneration the browser sometimes shows an empty page. The reason
+is that the browser is quicker than the regeneration process. (In the console of the browser development tools you will see
+the message `Uncaught SyntaxError: Unexpected end of input (at bundle.js:54779:24)`.) Don't worry, simply reload
+the page, and everything will be fine.

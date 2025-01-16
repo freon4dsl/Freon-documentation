@@ -7,9 +7,9 @@
 
 <Note><svelte:fragment slot="header">External components are experimental</svelte:fragment>
 <svelte:fragment slot="content">
-<p>Using external components in the Freon editor is an experimental feature. There are no guarantees
-that the editor will function correctly with every component library. Neither can we guarantee that the 
-manner in which external components are included will remain the same in next versions of Freon.</p>
+<p>The use of external components in the Freon editor is experimental. 
+Compatibility with every library isn’t guaranteed, and future versions 
+of Freon may alter how external components are included. Proceed with this in mind.</p>
 </svelte:fragment></Note>
 
 In this version of Freon it is possible to include UI components that are not native to Freon. For
@@ -50,15 +50,15 @@ default editor. The box type associated with a simple addition is `ExternalSimpl
 In the next example a simple animated gif component is added to the fragment projection.
 
 ```proto
-// DocuProject/src/defs/editor-externals.edit#L11-L17
+// DocuProject/src/defs/editor-externals.edit#L10-L16
 
+First Card
     is still under construction: ${self.isUnderConstruction switch}
     is approved level1: ${self.isApprovedLevel1 radio}
     is approved level2: ${self.isApprovedLevel2 inner-switch}
     is approved level3: ${self.isApprovedLevel3 checkbox}
     [external=AnimatedGif number="1"]
 ]
-fragment SecondCard [
 ```
 
 <Figure
@@ -172,7 +172,7 @@ An external component may wrap a Freon projection, either a property projection 
 a [fragment projection](/Documentation/Defining_an_Editor/Fragments).
 Wrappers may appear anywhere in a projection. 
 The wrapped projection is called the `childBox` of the external component, and can be accessed 
-through the method `getChildBox(): Box`.
+through the method `childBox: Box`.
 Note that the childBox itself may be a vertical or horizontal layout containing many other elements.
 
 The syntax to position the wrapper within the projection is either `[fragment NAME wrap=ExternalComponent]`, where `NAME` is
@@ -192,7 +192,7 @@ The box type associated with a wrapper is dependent upon the type of property or
 - [Reference list property](/Documentation/Creating_the_Metamodel/Defining_Properties#reference-properties-4): `RefListWrapperBox`.
 
 To display the childBox the external component needs to include the Freon `RenderComponent`, as shown in the next example.
-In this example the component `Card` is imported from the <a href="https://sveltematerialui.com/" target="_blank">SMUI</a> library of UI components.
+In this example a fragment is wrapped in a `Card` component, which is imported from the <a href="https://sveltematerialui.com/" target="_blank">SMUI</a> library of UI components.
 
 ```swift
 // DocuProject/externals/SMUI_Card_Component.svelte#L30-L34
@@ -202,6 +202,12 @@ In this example the component `Card` is imported from the <a href="https://svelt
         <RenderComponent box={box.childBox} editor={editor} />
     </Card>
 </span>
+```
+
+```proto
+// DocuProject/src/defs/editor-externals.edit#L6-L6
+
+[fragment FirstCard wrap=SMUI_Card] [fragment SecondCard wrap=SMUI_Card]
 ```
 
 ## Replacing a Freon Projection
@@ -247,8 +253,8 @@ figureNumber={1}
 
 The setup for including external components needs some care.
 
-1. Of course, as first step you need to create your Svelte components. Be sure to which type of box your component will be
-   linked. Use the box interface to get and set any model values.
+1. Of course, as first step you need to create your Svelte components. Notice which type of box your component will be
+   linked to. Use the interface of this box to get and set any model (AST) values.
 2. You must let the Freon generator know which external projections there are. This done in the `global` section of the
    default editor. See [Global Projections](/Documentation/Defining_an_Editor/Global_Projections).
 3. You must let the Freon runtime know which external projections there are. This is done using the `setCustomComponents()` method
