@@ -26,7 +26,7 @@ export let box: ExternalPartListBox;
 export let editor: FreEditor;
 
 let panelOpen: boolean[] = [];      // List of booleans to indicate which panel is open (true) and closed (false).
-let multiplePar: string = 'multiple';   // Indicates whether multiple panels may be open at the same time.
+let multiplePar: boolean = false;   // Indicates whether multiple panels may be open at the same time.
 
 /*
     Sets all panels in the state 'closed',
@@ -34,8 +34,8 @@ let multiplePar: string = 'multiple';   // Indicates whether multiple panels may
  */
 function initialize() {
     let param: string = box.findParam("multi");
-    if (param !== null && param !== undefined && param.length > 0) {
-        multiplePar = param;
+    if (param === "multiple") {
+        multiplePar = true;
     }
     panelOpen = [];
     for (let i = 0; i < box.children.length; i++) {
@@ -113,7 +113,7 @@ not on styling, therefore it is kept to a minimum.
 
 In the `Accordion` component we loop over the children of the box, using both the child box and its index in the list.
 We create a `Panel` for each childBox, setting it to `open` based the value in `panelOpen[index]`.
-Take a look at the header of each `Panel`. It has the obvious icon buttons that enable it to open and close, but it also contains
+Take a look at the header of each `Panel`, which contains
 information from the AST model. Every box is associated with the AST node that it represents. This AST node can be accessed
 using `childBox.node`, which returns an object of type `FreNode`. Also, every AST node knows its meta type, i.e. the
 concept from the .edit file that is used to instantiate the node. We can access this name using
@@ -130,17 +130,14 @@ the `removePerson` function for that specific element in the list. The native Fr
 `RenderComponent` as in the `PhoneButton.svelte` component.
 
 ```ts
-// CourseSchedule/phase4/StaffAccordion.svelte#L87-L109
+// CourseSchedule/phase4/StaffAccordion.svelte#L78-L96
 
+<div style="display: flex; align-items: flex-end;">
     <Accordion multiple="{multiplePar}">
         {#each box.children as childBox, index}
             <Panel bind:open={panelOpen[index]}>
                 <Header>
                     {childBox.node.freLanguageConcept()} {childBox.node["name"]}
-                    <IconButton slot="icon" toggle pressed={panelOpen[index]} on:click={() => setHidden(index)}>
-                        <Icon class="material-icons" on>expand_less</Icon>
-                        <Icon class="material-icons">expand_more</Icon>
-                    </IconButton>
                 </Header>
                 <Content>
                     <div style="display: flex; align-items: flex-end;">
@@ -154,7 +151,6 @@ the `removePerson` function for that specific element in the list. The native Fr
 
     <IconButton class="material-icons" on:click={() => addPerson()}>add</IconButton>
 </div>
-
 ```
 
 ### The Complete Component
@@ -166,7 +162,7 @@ Now that we've defined the script and HTML sections, here's the full component:
 
 <script lang="ts">
     import Accordion, {Panel, Header, Content} from '@smui-extra/accordion';
-    import IconButton, { Icon } from '@smui/icon-button';
+    import IconButton from '@smui/icon-button';
     import {AST, ExternalPartListBox, FreEditor, FreNodeReference} from "@freon4dsl/core";
     import {RenderComponent} from "@freon4dsl/core-svelte";
     import {afterUpdate, onMount} from "svelte";
@@ -178,7 +174,7 @@ Now that we've defined the script and HTML sections, here's the full component:
     export let editor: FreEditor;
 
     let panelOpen: boolean[] = [];      // List of booleans to indicate which panel is open (true) and closed (false).
-    let multiplePar: string = 'multiple';   // Indicates whether multiple panels may be open at the same time.
+    let multiplePar: boolean = false;   // Indicates whether multiple panels may be open at the same time.
 
     /*
         Sets all panels in the state 'closed',
@@ -186,8 +182,8 @@ Now that we've defined the script and HTML sections, here's the full component:
      */
     function initialize() {
         let param: string = box.findParam("multi");
-        if (param !== null && param !== undefined && param.length > 0) {
-            multiplePar = param;
+        if (param === "multiple") {
+            multiplePar = true;
         }
         panelOpen = [];
         for (let i = 0; i < box.children.length; i++) {
@@ -237,14 +233,6 @@ Now that we've defined the script and HTML sections, here's the full component:
         });
     }
 
-    /*
-        Sets the panel at index to its opposite state: from closed to open and vice versa.
-     */
-    function setHidden(index) {
-        box.children[index].isVisible = !box.children[index].isVisible;
-        panelOpen[index] = !panelOpen[index];
-    }
-
     // Run the initialization
     initialize();
 </script>
@@ -255,10 +243,6 @@ Now that we've defined the script and HTML sections, here's the full component:
             <Panel bind:open={panelOpen[index]}>
                 <Header>
                     {childBox.node.freLanguageConcept()} {childBox.node["name"]}
-                    <IconButton slot="icon" toggle pressed={panelOpen[index]} on:click={() => setHidden(index)}>
-                        <Icon class="material-icons" on>expand_less</Icon>
-                        <Icon class="material-icons">expand_more</Icon>
-                    </IconButton>
                 </Header>
                 <Content>
                     <div style="display: flex; align-items: flex-end;">
