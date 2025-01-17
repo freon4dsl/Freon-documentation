@@ -9,8 +9,8 @@ import {
 	isNullOrUndefined,
 	type ModelUnitIdentifier
 } from '@freon4dsl/core';
-import HealthJson from './DocuProject/HealthAll.json';
-import HomeJson from './DocuProject/Home.json';
+import HealthJson from './Insurance/HealthAll.json';
+import HomeJson from './Insurance/Home.json';
 
 const modelName: string = 'ShowCase';
 const unitNames: ModelUnitIdentifier[] = [

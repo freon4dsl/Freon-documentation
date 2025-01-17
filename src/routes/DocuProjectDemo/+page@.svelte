@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { FreonLayout, WebappConfigurator } from '@freon4dsl/webapp-lib';
-	import { InsuranceModelEnvironment } from '$lib/demo/docu-project-packaged.mjs';
+	import { InsuranceModelEnvironment } from '$lib/demo/insurance-packaged.mjs';
 	import { MockServer } from '$lib/demo/MockServer';
 
 	// @ts-expect-error InsuranceModelEnvironment imported from .mjs file which does not include the FreEnvironment interface

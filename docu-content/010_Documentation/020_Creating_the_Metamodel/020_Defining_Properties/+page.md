@@ -14,7 +14,7 @@ of properties.
 always contained in the _concept_. Primitive properties may also be lists.
 
 ```proto
-// DocuProject/src/defs/language-main.ast#L25-L26
+// Insurance/src/defs/language-main.ast#L25-L26
 
 name: identifier;               // internal name
 isUnderConstruction: boolean;   // defines whether this base product is still 'raw'
@@ -28,7 +28,7 @@ the UML composition relationship). Parts are also called children.
 In the example below `body` and `parameters` are parts. 
 
 ```proto
-// DocuProject/src/defs/language-main.ast#L72-L73
+// Insurance/src/defs/language-main.ast#L72-L73
 
 body: DocuExpression;               // the actual calculation definition
 parameters: Parameter[];            // any parameters
@@ -45,7 +45,7 @@ References are always by name, therefore the referred concept must have a `name`
 In the following example the concept `InsuranceProduct` holds a list of references to `InsuranceParts` in the property `parts`.
 
 ```proto
-// DocuProject/src/defs/language-main.ast#L53-L65
+// Insurance/src/defs/language-main.ast#L53-L65
 
 concept InsuranceProduct {
     name: identifier;                       // internal name
@@ -65,7 +65,7 @@ concept InsuranceProduct {
 The concept `InsurancePart` has a property `name: identifier`.
 
 ```proto
-// DocuProject/src/defs/language-main.ast#L44-L45
+// Insurance/src/defs/language-main.ast#L44-L45
 
 concept InsurancePart {
     name: identifier;                       // internal name
@@ -79,7 +79,7 @@ Lists are always considered to be optional, i.e. they maybe empty, - there is no
 Primitive properties may not be optional at the moment, but we plan to change this in the future.
 
 ```proto
-// DocuProject/src/defs/language-main.ast#L70-L70
+// Insurance/src/defs/language-main.ast#L70-L70
 
 description?: Description;          // an optional description
 ```

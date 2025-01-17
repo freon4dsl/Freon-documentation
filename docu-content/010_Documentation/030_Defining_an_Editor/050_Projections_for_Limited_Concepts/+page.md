@@ -11,7 +11,7 @@ limited concept are options. When the property is a list of limited values, it c
 The example that is used in the documentation defines the limited concept `InsuranceTheme` as a simple enumeration.
 
 ```proto
-// DocuProject/src/defs/language-main.ast#L129-L131
+// Insurance/src/defs/language-main.ast#L129-L131
 
 limited InsuranceTheme {        // limited defined as a simple enumeration
     HomeTheme; HealthTheme; LegalTheme;
@@ -26,7 +26,7 @@ as a list in `InsurancePart`.
 The metamodel for `BaseProduct` is the following.
 
 ```proto
-// DocuProject/src/defs/language-main.ast#L24-L39
+// Insurance/src/defs/language-main.ast#L24-L39
 
 concept BaseProduct {
     name: identifier;               // internal name
@@ -49,7 +49,7 @@ concept BaseProduct {
 We combine this metamodel with the following projection.
 
 ```proto
-// DocuProject/src/defs/editor-main-controls.edit#L5-L17
+// Insurance/src/defs/editor-main-controls.edit#L5-L17
 
 BaseProduct {[
     Base Products ${name} for ${theme radio}
@@ -79,7 +79,7 @@ figureNumber={1}
 The metamodel for `InsuranceProduct` is the following.
 
 ```proto
-// DocuProject/src/defs/language-main.ast#L53-L65
+// Insurance/src/defs/language-main.ast#L53-L65
 
 concept InsuranceProduct {
     name: identifier;                       // internal name
@@ -99,7 +99,7 @@ concept InsuranceProduct {
 Again, we combine this metamodel with a projection.
 
 ```proto
-// DocuProject/src/defs/editor-main-controls.edit#L19-L30
+// Insurance/src/defs/editor-main-controls.edit#L19-L30
 
 InsuranceProduct {[
     Insurance Product ${name} ( public name: ${productName} ) USES ${basedOn horizontal separator[, ]}

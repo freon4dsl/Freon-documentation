@@ -18,7 +18,7 @@ The next example defines two fragments called (rather unimaginative) `First` and
 Note that every fragment for the same concept must have a unique name.
 
 ```proto
-// DocuProject/src/defs/editor-fragments.edit#L8-L24
+// Insurance/src/defs/editor-fragments.edit#L8-L24
 
 ]
     fragment First [
@@ -58,7 +58,7 @@ Thus, the complete example is the following. Note that the concept's projection 
 fragments are defined.
 
 ```proto
-// DocuProject/src/defs/editor-fragments.edit#L3-L24
+// Insurance/src/defs/editor-fragments.edit#L3-L24
 
 BaseProduct {
 [

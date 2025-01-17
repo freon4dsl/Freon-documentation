@@ -22,7 +22,7 @@ every boolean property as an inner-switch button with the string `YES` for the v
 and `NO` for the value `false`.
 
 ```ts
-// DocuProject/src/defs/editor-main-default.edit#L5-L18
+// Insurance/src/defs/editor-main-default.edit#L5-L18
 
 global {
     boolean inner-switch [YES | NO] // the strings used to display a boolean value, all booleans will default be displayed as an inner switch control

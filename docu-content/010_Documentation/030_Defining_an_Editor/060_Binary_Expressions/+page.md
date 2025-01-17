@@ -11,7 +11,7 @@ You can, however, indicate the string to be used as operand. This string is call
 It is defined in the `.edit` file, as shown below.
 
 ```proto
-// DocuProject/src/defs/editor-expressions-default.edit#L18-L29
+// Insurance/src/defs/editor-expressions-default.edit#L18-L29
 
 MinusExpression  {
     symbol = "-"

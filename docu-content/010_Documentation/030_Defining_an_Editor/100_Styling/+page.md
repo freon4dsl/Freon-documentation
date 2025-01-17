@@ -37,7 +37,7 @@ application. When you read the `_smui-theme.scss` and `dark/_smui-theme.scss` fi
 both refer to files that are included in the `@freon4dsl/core-svelte` package.
 
 ```scss
-// style/_smui-theme.scss#L6-L8
+// Styling/_smui-theme.scss#L6-L8
 
 @use '../node_modules/@freon4dsl/core-svelte/dist/styles/freon.css';
 @use '../node_modules/@freon4dsl/core-svelte/dist/styles/freon-light.css';
@@ -52,7 +52,7 @@ The comments and naming should (hopefully) indicate where each
 style is being used. For example, the following styles are defined for horizontal and vertical lists.
 
 ```scss
-// style/freon.css#L50-L66
+// Styling/freon.css#L50-L66
 
 .list-component-horizontal {
     white-space: nowrap;

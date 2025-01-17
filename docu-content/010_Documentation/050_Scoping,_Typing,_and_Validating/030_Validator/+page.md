@@ -16,7 +16,7 @@ Given a [simple property](/Documentation/Creating_the_Metamodel/Defining_Propert
 its value can be limited to certain values.
 
 ```proto
-// DocuProject/src/defs/validator-extras.valid#L3-L6
+// Insurance/src/defs/validator-extras.valid#L3-L6
 
 EntityAttribute {
     self.numVal >= 12;       // in .ast file: "numVal: number;"
@@ -32,7 +32,7 @@ An **is-unique rule** is another rule that can be stated for a list property. Th
 complies when the value of the property is unique within the list.
 
 ```proto
-// DocuProject/src/defs/validator-docu.valid#L3-L7
+// Insurance/src/defs/validator-docu.valid#L3-L7
 
 InsuranceProduct {
     notEmpty self.parts;
@@ -51,7 +51,7 @@ property is present, this property is checked. When the property is not present,
 concept has a simple property named ‘`name`’ of type ‘`identifier`’, and it will check this property.
 
 ```proto
-// DocuProject/src/defs/validator-docu.valid#L27-L32
+// Insurance/src/defs/validator-docu.valid#L27-L32
 
 }
 CalcFunction {
@@ -71,7 +71,7 @@ conforms to the type of the second.
 In type checking rules it is possible to use predefined instances of a limited concept.
 
 ```proto
-// DocuProject/src/defs/validator-docu.valid#L10-L12
+// Insurance/src/defs/validator-docu.valid#L10-L12
 
 MinusExpression  {
     typecheck equalsType( self.left, self.right );
@@ -86,7 +86,7 @@ The severity of the error may or may not be indicated. The possible values are "
 "hint", "improvement", "todo", and "info". It defaults to "todo".
 
 ```proto
-// DocuProject/src/defs/validator-docu.valid#L28-L36
+// Insurance/src/defs/validator-docu.valid#L28-L36
 
 CalcFunction {
     // typecheck conformsTo (self.body, self.declaredType);

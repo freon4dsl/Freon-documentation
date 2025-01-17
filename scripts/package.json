@@ -7,7 +7,7 @@
 	},
 	"scripts": {
 		"generateExamples": "npm run docuProject && npm run tutorial",
-		"docuProject": "cd ../code-examples/DocuProject && npm run generate && cd ../../scripts/",
+		"docuProject": "cd ../code-examples/Insurance && npm run generate && cd ../../scripts/",
 		"tutorial": "cd ../code-examples/CustomizationsProject && npm run generate && cd ../../scripts/",
 		"typerExample": "cd ../code-examples/TyperExample && npm run generate && cd ../../scripts/",
 		"embedme": "embedme --source-root ../code-examples \"../docu-content/**/*.md\"",

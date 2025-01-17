@@ -14,9 +14,9 @@ Every AST file must start with the declaration of the name of your language. Thi
 to create the name of a number of generated TypeScript classes.
 
 ```proto
-// DocuProject/src/defs/language-main.ast#L1-L2
+// Insurance/src/defs/language-main.ast#L1-L2
 
-language DocuProject
+language InsuranceModel
 
 ```
 
