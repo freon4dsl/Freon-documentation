@@ -23,7 +23,7 @@ called `isApproved`. In the projection for `isApproved` the strings `JA` and `NE
 respectively, true and false.
 
 ```proto
-// DocuProject/src/defs/language-main.ast#L41-L49
+// Insurance/src/defs/language-main.ast#L41-L49
 
 // An InsurancePart defines a single aspect of an InsuranceProduct together
 // with the statistical risk of the event happening, and the maximum payout
@@ -37,7 +37,7 @@ concept InsurancePart {
 ```
 
 ```proto
-// DocuProject/src/defs/editor-main-default.edit#L28-L35
+// Insurance/src/defs/editor-main-default.edit#L28-L35
 
 
 InsurancePart{
@@ -65,7 +65,7 @@ In the next example, the property `isCompany` will be shown as the keyword `COMP
 of the property is `true`, the keyword is shown. When the value is `false`, the keyword is not shown.
 
 ```proto
-// DocuProject/src/defs/editor-main-default.edit#L67-L69
+// Insurance/src/defs/editor-main-default.edit#L67-L69
 
 
 Entity {[
@@ -110,7 +110,7 @@ definition is taken. If that is also not present then the default is `true` and 
 For the sake of the example, we have added a number of boolean properties to the concept `BaseProduct`.
 
 ```proto
-// DocuProject/src/defs/language-main.ast#L24-L39
+// Insurance/src/defs/language-main.ast#L24-L39
 
 concept BaseProduct {
     name: identifier;               // internal name
@@ -133,7 +133,7 @@ concept BaseProduct {
 Each of the boolean properties is displayed differently.
 
 ```freon
-// DocuProject/src/defs/editor-main-controls.edit#L7-L11
+// Insurance/src/defs/editor-main-controls.edit#L7-L11
 
 is still under construction: ${self.isUnderConstruction switch}
 is approved level1: ${self.isApprovedLevel1 radio [Sure | NoWay]}

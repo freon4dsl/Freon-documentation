@@ -43,7 +43,7 @@ the keyword `isType` is used, followed by all types in your language between cur
 and separated by commas.
 
 ```proto
-// DocuProject/src/defs/typer-docu.type#L4-L4
+// Insurance/src/defs/typer-docu.type#L4-L4
 
 istype { NamedType }
 ```
@@ -54,7 +54,7 @@ The properties may only be instances of other type concepts, or references to li
 the limited concept `GenericKind`.
 
 ```proto
-// DocuProject/src/defs/typer-docu.type#L6-L9
+// Insurance/src/defs/typer-docu.type#L6-L9
 
 type GenericType {
     base: FreType;
@@ -77,7 +77,7 @@ You can indicate which AST nodes are terms by the keyword `hasType` followed by 
 your language between curly brackets, and separated by commas.
 
 ```freon
-// DocuProject/src/defs/typer-docu.type#L12-L12
+// Insurance/src/defs/typer-docu.type#L12-L12
 
 hastype { DocuExpression, DocuType, CalcFunction, Parameter, RiskRef, PayoutRef }
 ```
@@ -92,7 +92,7 @@ value of its attribute `declaredType`. This value is an instance of `DocuType`, 
 represent a type by the above declaration. First, we show the metamodel definition.
 
 ```freon
-// DocuProject/src/defs/language-main.ast#L68-L74
+// Insurance/src/defs/language-main.ast#L68-L74
 
 concept CalcFunction {
     name: identifier;                   // the name
@@ -106,7 +106,7 @@ concept CalcFunction {
 And, the typer definition looks like this.
 
 ```freon
-// DocuProject/src/defs/typer-docu.type#L18-L20
+// Insurance/src/defs/typer-docu.type#L18-L20
 
 CalcFunction {
     infertype self.declaredType;
@@ -128,7 +128,7 @@ In an inference rule, as in other definition files, it is possible to use
 the predefined instances of a **limited concept**.
 
 ```freon
-// DocuProject/src/defs/typer-docu.type#L27-L29
+// Insurance/src/defs/typer-docu.type#L27-L29
 
 RiskAdjustmentRef {
     infertype PercentageType:Percentage;
@@ -143,7 +143,7 @@ the **equalsto** entries. Within these entries it is also possible to use the pr
 instances of a limited concept.
 
 ```freon
-// DocuProject/src/defs/typer-docu.type#L81-L89
+// Insurance/src/defs/typer-docu.type#L81-L89
 
 // Which types are 'equal' to each other?
 NamedType {

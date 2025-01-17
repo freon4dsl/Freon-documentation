@@ -18,7 +18,7 @@ part of it, in its left panel.
 </svelte:fragment></Note>
 
 ```proto
-// DocuProject/src/defs/language-main.ast#L7-L10
+// Insurance/src/defs/language-main.ast#L7-L10
 
 model InsuranceModel {
     parts: Part[];              // units that hold partial definitions of insurance products
@@ -32,7 +32,7 @@ A _model unit_ is a part of the model that can be edited by the user independent
 always a direct child of a model. Model units may not extend other units, or implement interfaces.
 
 ```proto
-// DocuProject/src/defs/language-main.ast#L12-L15
+// Insurance/src/defs/language-main.ast#L12-L15
 
 modelunit Part {
     part: BaseProduct;          // one collection of partial insurance products
@@ -53,7 +53,7 @@ Concepts may extend one other concept using the keyword `base`, and implement mu
 Furthermore, they may be _abstract_.
 
 ```proto
-// DocuProject/src/defs/language-main.ast#L24-L28
+// Insurance/src/defs/language-main.ast#L24-L28
 
 concept BaseProduct {
     name: identifier;               // internal name
@@ -63,7 +63,7 @@ concept BaseProduct {
 ```
 
 ```proto
-// DocuProject/src/defs/language-main.ast#L106-L112
+// Insurance/src/defs/language-main.ast#L106-L112
 
     Percentage;
 }
@@ -82,7 +82,7 @@ order to give your user a more natural editing experience.
 Expression concepts may extend another concept, and implement multiple interfaces.
 
 ```proto
-// DocuProject/src/defs/language-expressions.ast#L10-L18
+// Insurance/src/defs/language-expressions.ast#L10-L18
 
 abstract expression Literal base DocuExpression {
 }
@@ -123,7 +123,7 @@ find more information on how to set the concrete syntax for the operand.
 Binary expression concepts may extend one other concept, and implement multiple interfaces.
 
 ```proto
-// DocuProject/src/defs/language-expressions.ast#L26-L46
+// Insurance/src/defs/language-expressions.ast#L26-L46
 
 // Basic binary expressions: plus, minus, multiply, divide
 abstract binary expression BinaryExpression base DocuExpression {
@@ -162,7 +162,7 @@ includes the definition of the predefined instances. For example, the instances 
 `Week`, `Month`, `Quarter`, `Semester`, and `Year`.
 
 ```proto
-// DocuProject/src/defs/language-main.ast#L129-L146
+// Insurance/src/defs/language-main.ast#L129-L146
 
 limited InsuranceTheme {        // limited defined as a simple enumeration
     HomeTheme; HealthTheme; LegalTheme;
@@ -197,7 +197,7 @@ instances of limited concepts.
 An _interface_ is a concept that has no instances. It may extend multiple other interfaces.
 
 ```proto
-// DocuProject/src/defs/language-main.ast#L96-L99
+// Insurance/src/defs/language-main.ast#L96-L99
 
 // concepts can implement interfaces.
 interface NamedType {

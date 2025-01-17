@@ -9,7 +9,7 @@ the following line in one of the projections. Note that there may not be
 a space between the start square bracket `[` and `button`.
 
 ```proto
-// DocuProject/src/defs/editor-fragments.edit#L18-L18
+// Insurance/src/defs/editor-fragments.edit#L18-L18
 
 [button text="Push me!" boxRole="MyButton-role"]
 ```
@@ -33,7 +33,7 @@ You can add an icon before or after the text using CSS or SCSS. The text for the
 As an example, buttons are added to a table definition.
 
 ```freon
-// DocuProject/src/defs/editor-tables-with-button.edit#L6-L11
+// Insurance/src/defs/editor-tables-with-button.edit#L6-L11
 
 InsurancePart{
 table [
@@ -46,7 +46,7 @@ table [
 To style these buttons the following SCSS code is added.
 
 ```scss
-// style/app.scss#L29-L43
+// Styling/app.scss#L29-L43
 
 .MyTableButton-role::before {
   font-family: "Font Awesome 6 Free", emoji;

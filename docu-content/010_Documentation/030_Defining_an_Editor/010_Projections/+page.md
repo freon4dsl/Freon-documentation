@@ -12,7 +12,7 @@ literally, including the indentation. For more details, refer to the information
 on [Indentation](/Documentation/Defining_an_Editor/Indentation).
 
 ```proto
-// DocuProject/src/defs/editor-indentation.edit#L6-L14
+// Insurance/src/defs/editor-indentation.edit#L6-L14
 
 Text {
 [
@@ -33,7 +33,7 @@ instructs Freon to include a property according to the projection defined for it
 
 For example, given the following metamodel:
 ```proto
-// DocuProject/src/defs/language-main.ast#L22-L32
+// Insurance/src/defs/language-main.ast#L22-L32
 
 // A BaseProduct defines all the different elements ('parts') that can be
 // used to create a marketable InsuranceProduct.
@@ -55,7 +55,7 @@ This property will be projected according to the definition of
 the specific (non-abstract) subtype of `DocuType` encountered at runtime.
 
 ```proto
-// DocuProject/src/defs/editor-main-default.edit#L40-L50
+// Insurance/src/defs/editor-main-default.edit#L40-L50
 
         Themes: ${themes horizontal separator[, ]}
         Premium: ${advertisedPremium} per ${nrPremiumDays}
@@ -107,7 +107,7 @@ in the editor named `comments`. If it is not found there,
 Freon will fall back to the standard precedence order of projections.
 
 ```proto
-// DocuProject/src/defs/editor-named-proj.edit#L3-L8
+// Insurance/src/defs/editor-named-proj.edit#L3-L8
 
 BaseProduct {[
     /* In this projection 'self.parts' is always shown according to the projection */
@@ -145,7 +145,7 @@ the `vertical` keyword could be omitted for `helpers`, as it is the
 default projection for lists.
 
 ```proto
-// DocuProject/src/defs/editor-main-default.edit#L38-L49
+// Insurance/src/defs/editor-main-default.edit#L38-L49
 
 InsuranceProduct {[
     Insurance Product ${name} ( public name: ${productName} ) USES ${basedOn horizontal separator[, ]}
@@ -196,7 +196,7 @@ For example, to project the `parts` property of concept `BaseProduct` as a row b
 you can use the following code.
 
 ```proto
-// DocuProject/src/defs/editor-tables.edit#L13-L16
+// Insurance/src/defs/editor-tables.edit#L13-L16
 
 BaseProduct {[
     Base Products ${name} for ${theme}
@@ -209,7 +209,7 @@ concept `InsurancePart` (the type of `parts`).
 Below four columns/rows are defined, each with its own header.
 
 ```proto
-// DocuProject/src/defs/editor-tables.edit#L6-L11
+// Insurance/src/defs/editor-tables.edit#L6-L11
 
 InsurancePart{
 table [
@@ -247,7 +247,7 @@ If they are not present, respectively the text `Risk adjusted by =` or `Helper f
 Note that optional projections for non-optional properties are not allowed.
 
 ```proto
-// DocuProject/src/defs/editor-main-default.edit#L27-L38
+// Insurance/src/defs/editor-main-default.edit#L27-L38
 
 ]}
 

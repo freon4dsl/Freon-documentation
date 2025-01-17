@@ -23,7 +23,7 @@ name is used.
 
 
 ```proto
-// DocuProject/src/defs/scoper-docu.scope#L3-L3
+// Insurance/src/defs/scoper-docu.scope#L3-L3
 
 isnamespace { InsuranceProduct, BaseProduct, CalcFunction, Entity }
 ```
@@ -50,7 +50,7 @@ super type of the `Entity` concept. The names visible in the `baseEntity`
 are included in the namespace by defining the namespace-addition.
 
 ```proto
-// DocuProject/src/defs/language-extras.ast#L34-L38
+// Insurance/src/defs/language-extras.ast#L34-L38
 
 concept Entity {
     isCompany: boolean;
@@ -60,7 +60,7 @@ concept Entity {
 ```
 
 ```proto
-// DocuProject/src/defs/scoper-docu.scope#L13-L15
+// Insurance/src/defs/scoper-docu.scope#L13-L15
 
 Entity {
     namespace_addition = self.baseEntity;
@@ -74,7 +74,7 @@ the elements visible in
 an `AttributeRef` are determined based on the type of its container, i.e. the type of its parent in the AST.
 
 ```proto
-// DocuProject/src/defs/scoper-docu.scope#L9-L11
+// Insurance/src/defs/scoper-docu.scope#L9-L11
 
 AttributeRef {
 	scope = typeof( container );

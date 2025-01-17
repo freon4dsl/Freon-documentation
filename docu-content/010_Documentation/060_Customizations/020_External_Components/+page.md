@@ -50,7 +50,7 @@ default editor. The box type associated with a simple addition is `ExternalSimpl
 In the next example a simple animated gif component is added to the fragment projection.
 
 ```proto
-// DocuProject/src/defs/editor-externals.edit#L10-L16
+// Insurance/src/defs/editor-externals.edit#L10-L16
 
 First Card
     is still under construction: ${self.isUnderConstruction switch}
@@ -95,7 +95,7 @@ In the simple additions example the parameter is a number, which is used to choo
 The source of the AnimatedGif Svelte component is the following. 
 
 ```svelte
-// DocuProject/externals/ShowAnimatedGif.svelte
+// Insurance/externals/ShowAnimatedGif.svelte
 
 <script lang="ts">
 
@@ -195,7 +195,7 @@ To display the childBox the external component needs to include the Freon `Rende
 In this example a fragment is wrapped in a `Card` component, which is imported from the <a href="https://sveltematerialui.com/" target="_blank">SMUI</a> library of UI components.
 
 ```svelte
-// DocuProject/externals/SMUI_Card_Component.svelte#L30-L34
+// Insurance/externals/SMUI_Card_Component.svelte#L30-L34
 
 <span class="card-container">
     <Card>
@@ -205,7 +205,7 @@ In this example a fragment is wrapped in a `Card` component, which is imported f
 ```
 
 ```proto
-// DocuProject/src/defs/editor-externals.edit#L6-L6
+// Insurance/src/defs/editor-externals.edit#L6-L6
 
 [fragment FirstCard wrap=SMUI_Card] [fragment SecondCard wrap=SMUI_Card]
 ```
@@ -238,7 +238,7 @@ In the following example the `name` property of a `BaseProduct` is being display
 the <a href="https://sveltematerialui.com/" target="_blank">SMUI</a> UI library.
 
 ```proto
-// DocuProject/src/defs/editor-externals.edit#L5-L5
+// Insurance/src/defs/editor-externals.edit#L5-L5
 
 Base Product for ${self.theme radio} ${self.name replace=SMUI_Dialog buttonLabel = "Change Product Name"}
 ```

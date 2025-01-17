@@ -62,7 +62,7 @@ For example, if no projection is specified for the concepts `InsurancePart`, `Pe
 instances of `InsurancePart` will be shown as follows.
 
 ```proto
-// DocuProject/src/defs/language-main.ast#L44-L49
+// Insurance/src/defs/language-main.ast#L44-L49
 
 concept InsurancePart {
     name: identifier;                       // internal name
@@ -105,7 +105,7 @@ times, the values must be consistent.</p>
 </Note>
 
 ```proto
-// DocuProject/src/defs/editor-tables.edit#L1-L11
+// Insurance/src/defs/editor-tables.edit#L1-L11
 
 /* This file contains the table definition in a separate editor / projection group.
 This enables the user to switch tables on and off. */
@@ -125,7 +125,7 @@ table [
 A complete .edit file could look like this.
 
 ```proto
-// DocuProject/src/defs/editor-main-default.edit#L1-L80
+// Insurance/src/defs/editor-main-default.edit#L1-L80
 
 /* This file contains the default editor definition. */
 

@@ -85,7 +85,7 @@ shows how to define model units. Here,
 an _InsuranceModel_ consists of a list of _Parts_ and a list of _Products_.
 
 ```proto
-// DocuProject/src/defs/language-main.ast#L7-L20
+// Insurance/src/defs/language-main.ast#L7-L20
 
 model InsuranceModel {
     parts: Part[];              // units that hold partial definitions of insurance products
