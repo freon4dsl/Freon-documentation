@@ -68,7 +68,7 @@ A property projection may be wrapped in an external component, or the external c
 projection. In the latter case it is up to the language engineer to get and set the value correctly, and to
 get tabbing etc. working.
 
-## Wrapping Property Projections of Primitive Type
+## Wrapping Primitive Properties
 
 - Syntax: `${self.name wrap=SMUI_Dialog}`
 - BoxType: `StringWrapperBox`, `NumberWrapperBox`, or `BooleanWrapperBox`
@@ -84,7 +84,7 @@ get tabbing etc. working.
       a single Box that holds the native projection for the complete list, i.e. a horizontal list, vertical list, or
       table projection.
 
-## Wrapping Property Projections of Part List Type
+## Wrapping Part List Properties
 
 - Syntax: `${self.parts wrap=SMUI_Accordion}`
 - BoxType: `PartListWrapperBox`
@@ -100,7 +100,7 @@ get tabbing etc. working.
       list, vertical list, or table projection.
 - Example:
 
-## Wrapping Property Projections of Reference List Type
+## Wrapping Reference List Properties
 
 - Syntax: `${self.parts wrap=SMUI_Accordion}`
 - BoxType: `RefListWrapperBox`
@@ -116,7 +116,7 @@ get tabbing etc. working.
       list, vertical list, or table projection.
 - Example:
 
-## Wrapping Property Projections of Part Type
+## Wrapping Part Properties
 
 - Syntax: `${self.part wrap=SMUI_Dialog}`
 - BoxType: `PartWrapperBox`
@@ -129,7 +129,7 @@ get tabbing etc. working.
     - Returns the projection for the property. Use this method and the `RenderComponent` to
       show the property projection in the external component.
 
-## Wrapping Property Projections of Reference Type
+## Wrapping Reference Properties
 
 - Syntax: `${self.reference wrap=SMUI_Dialog}`
 - BoxType: `RefWrapperBox`
@@ -142,7 +142,7 @@ get tabbing etc. working.
     - Returns the projection for the property. Use this method and the `RenderComponent` to
       show the property projection in the external component.
 
-## Replacing Property Projections of Primitive Type
+## Replacing Primitive Properties
 
 - Syntax: `${self.name replace=SMUI_Dialog}`
 - BoxType: `ExternalStringBox`, `ExternalNumberBox`, or `ExternalBooleanBox`
@@ -156,7 +156,7 @@ get tabbing etc. working.
     - Sets the value of the property.
       Type is `string` in case of an `ExternalStringBox`, `number` or `boolean` for the other box Types.
 
-## Replacing Property Projections of Part List Type
+## Replacing Part List Properties
 
 - Syntax: `${self.parts replace=SMUI_Accordion}`
 - BoxType: `ExternalPartListBox`
@@ -170,7 +170,7 @@ get tabbing etc. working.
   - `children: Box[]`
     - Returns a list of boxes that hold the projection for every item in the list.
 
-## Replacing Property Projections of Reference List Type
+## Replacing Reference List Properties
 
 - Syntax: `${self.parts replace=SMUI_Accordion}`
 - BoxType: `ExternalRefListBox`
@@ -184,7 +184,7 @@ get tabbing etc. working.
   - `children: Box[]`
     - Returns a list of boxes that hold the projection for every item in the list.
 
-## Replacing Property Projections of Part Type
+## Replacing Part Properties
 
 - Syntax: `${self.part replace=SMUI_Dialog}`
 - BoxType: `ExternalPartBox`
@@ -196,7 +196,7 @@ get tabbing etc. working.
   - `setPropertyValue(newValue: FreNode)`
     - Sets the value of the property.
 
-## Replacing Property Projections of Reference Type
+## Replacing Reference Properties
 
 - Syntax: `${self.reference replace=SMUI_Dialog}`
 - BoxType: `ExternalRefBox`
@@ -245,7 +245,7 @@ setCustomComponents([
 ]);
 ```
 
-## Parameters to the external components
+## External Component Parameters
 
 You can set parameters to an external component in the .edit file. These are simple key-value pairs, both key
 and value are strings. There can be a list of parameters.
