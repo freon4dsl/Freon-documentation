@@ -134,7 +134,7 @@ Writing an interpreter is done by overriding functions from the generated superc
 All other generated files are just there to make the interpreter framework do its work.
 Let's take a look at the current;ly empty interpreter:
 ```ts
-// Expressions/src/freon/interpreter-generated/ExpressionsInterpreter.ts#L1-L17
+// Expressions/src/custom/interpreter-generated/ExpressionsInterpreter.ts#L1-L17
 
 // Generated my Freon once, will NEVER be overwritten.
 import { IMainInterpreter } from '@freon4dsl/core';
@@ -166,7 +166,7 @@ as we will see later on.
 
 For a `NumberLiteralExpression` this is done as follows:
 ```ts
-// Expressions/src/freon/interpreter/ExpressionsInterpreter.ts#L36-L38
+// Expressions/src/custom/interpreter/ExpressionsInterpreter.ts#L36-L38
 
 override evalNumberLiteralExpression(node: NumberLiteralExpression, ctx: InterpreterContext): RtObject {
     return new RtNumber(node.value);
@@ -212,7 +212,7 @@ Every node in the AST is evaluated within a certain context, represented by the 
 If we refer to a paremeter in the body of a function, we need to know the value of the parameter. This is done thtough the cointext as follows:
 
 ```ts
-// Expressions/src/freon/interpreter/ExpressionsInterpreter.ts#L56-L65
+// Expressions/src/custom/interpreter/ExpressionsInterpreter.ts#L56-L65
 
 override evalFunctionCallExpression(node: FunctionCallExpression, ctx: InterpreterContext): RtObject {
     const calledFunction = node.$calledFunction;
@@ -238,7 +238,7 @@ If we come across a `ParameterRef` inside the evaluation of the function body,
 this evaluation can simply lookup the value of the parameter: 
 
 ```ts
-// Expressions/src/freon/interpreter/ExpressionsInterpreter.ts#L71-L73
+// Expressions/src/custom/interpreter/ExpressionsInterpreter.ts#L71-L73
 
 override evalParameterRef(node: ParameterRef, ctx: InterpreterContext): RtObject {
     return ctx.find(node.$parameter);

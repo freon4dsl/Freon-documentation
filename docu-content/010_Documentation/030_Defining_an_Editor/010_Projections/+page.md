@@ -249,20 +249,20 @@ If they are not present, respectively the text `Risk adjusted by =` or `Helper f
 Note that optional projections for non-optional properties are not allowed.
 
 ```proto
-// Insurance/src/defs/editor-main-default.edit#L38-49
-
-]}
-
-InsurancePart{
-[
-    Insurance Part ${self.name}
-        risk assessment: ${self.statisticalRisk}
-        maximum payout: ${self.maximumPayOut}
-        is approved: ${self.isApproved [JA | NEE]}
-]
-}
+// Insurance/src/defs/editor-main-default.edit#L38-L49
 
 InsuranceProduct {[
+    Insurance Product ${name} ( public name: ${productName} ) USES ${basedOn horizontal separator[, ]}
+        Themes: ${themes horizontal separator[, ]}
+        Premium: ${advertisedPremium} per ${nrPremiumDays}
+        Insured risks:
+            ${parts vertical terminator [;]}
+        Calculation
+            [? Risk adjusted by = ${riskAdjustment} ]
+            calculated premium: ${calculation}
+        [?Helper functions:
+            ${helpers vertical}]
+]}
 ```
 
 ## Inherited Projections
