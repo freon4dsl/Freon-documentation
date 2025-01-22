@@ -50,7 +50,7 @@ body {
 body.dark {
 	/* The dark settings */
 	--code-color: #d4d4d4;
-	--code-background: #1e1e1e;
+	--code-background: #15314c;
 	--code-block-background: #264F78;
 	--token-operator: #569cd6;
 	--token-not-pre: #db4c69;
@@ -66,12 +66,14 @@ body.dark {
 	--token-punctuation: #808080;
 	--line-highlight: #f7ebc6;
 	--line-highlight-shadow: #f7d87c;
-	--code-inline-background: #808080;
+	--code-inline-background: var(--color1);
 }
 
 /* code blocks within a paragraph need to stand out more */
 p code {
 	background-color: var(--code-inline-background);
+	/*font-family: 'Source Code Pro', Menlo, Monaco, Consolas, 'Andale Mono', 'Ubuntu Mono', 'Courier New', monospace;*/
+	font-family: 'Source Sans 3', Menlo, Monaco, Consolas, 'Andale Mono', 'Ubuntu Mono', 'Courier New', monospace;
 }
 
 pre[class*='language-'],

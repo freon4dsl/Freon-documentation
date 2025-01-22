@@ -51,7 +51,7 @@
     /* Styles for categories */
     .page-main {
         margin-left: 19rem; 	/* width of page-side-nav + left of page-side-nav */
-        margin-right: 22rem; 	/* width of page-toc + right of page-toc */
+        margin-right: 15rem; 	/* width of page-toc + right of page-toc */
         padding: 2rem;
     }
     .page-side-nav {
@@ -71,7 +71,7 @@
         position: fixed;
         top: var(--top-margin);
         right: 2rem;
-        width: 20rem;
+        width: 15rem;
         height: calc(100vh - var(--fre-footer-height) - var(--top-margin));
         transition:color 0.2s linear;
     }
