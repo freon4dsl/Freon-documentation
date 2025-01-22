@@ -55,8 +55,10 @@ This property will be projected according to the definition of
 the specific (non-abstract) subtype of `DocuType` encountered at runtime.
 
 ```proto
-// Insurance/src/defs/editor-main-default.edit#L40-L50
-// TODO: DocuProject/src/defs/editor-main-default.edit#L24-L27
+// Insurance/src/defs/editor-main-default.edit#L38-L49
+
+InsuranceProduct {[
+    Insurance Product ${name} ( public name: ${productName} ) USES ${basedOn horizontal separator[, ]}
         Themes: ${themes horizontal separator[, ]}
         Premium: ${advertisedPremium} per ${nrPremiumDays}
         Insured risks:
@@ -67,7 +69,6 @@ the specific (non-abstract) subtype of `DocuType` encountered at runtime.
         [?Helper functions:
             ${helpers vertical}]
 ]}
-
 ```
 
 <Note>
@@ -248,8 +249,8 @@ If they are not present, respectively the text `Risk adjusted by =` or `Helper f
 Note that optional projections for non-optional properties are not allowed.
 
 ```proto
-// Insurance/src/defs/editor-main-default.edit#L27-L38
-// TODO: DocuProject/src/defs/editor-main-default.edit#L38-L49
+// Insurance/src/defs/editor-main-default.edit#L38-49
+
 ]}
 
 InsurancePart{

@@ -26,19 +26,18 @@ Therefore, you can indent the projection as a whole, without it having any influ
 The next example produces the exact same result as the previous.
 
 ```proto
-// Insurance/src/defs/editor-indentation.edit#L16-L25
-// TODO: DocuProject/src/defs/editor-indentation.edit#L16-L24
+// Insurance/src/defs/editor-indentation.edit#L16-L24
 
 Text2 {
             [
             This is
                     literal text
                   that is projected in the
-
                             editor
               for every concept of type Text.
             ]
 }
+
 ```
 
 In the following example, the line with the least indentation is
@@ -47,8 +46,7 @@ It will not be indented. On the other hand,
 the text `This is` will be indented 10 spaces, `literal text` will be indented 8 spaces, etc.
 
 ```proto
-// Insurance/src/defs/editor-indentation.edit#L27-L35
-// TODO: DocuProject/src/defs/editor-indentation.edit#L26-L34
+// Insurance/src/defs/editor-indentation.edit#L26-L34
 
 Text3 {
     [
@@ -67,8 +65,7 @@ will be indented with 3 spaces.
 
 ```proto
 // Insurance/src/defs/editor-indentation.edit#L37-L45
-// TODO: DocuProject/src/defs/editor-indentation.edit#L36-L44
-Text4 {
+
     [
                  This is
                literal text
@@ -77,6 +74,7 @@ Text4 {
        for every concept of type Text.
     ]
 }
+
 ```
 
 <Note>
