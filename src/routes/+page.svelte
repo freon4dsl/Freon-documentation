@@ -101,11 +101,28 @@
 						<div class="landing-testimonial-child"><img src="freonlogo.png" alt="Company Logo" style="width:40px" /></div>
 					</div>
 					<p>
-						"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-						enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-						in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-						sunt in culpa qui officia deserunt mollit anim id est laborum."
+						TriRadial Solutions is using Freon for the DSL in or Clinical Research Coordinator (CRC) product. CRCs are the front-line staff
+						that perform clinical trials for drugs and other health products. See XXX for an explanation of the product and some samples of
+						the product UI. A DSL platform that is optimized for the Web is the void in today’s DSL technology. Having built DSLs using
+						primitive tools like parsers and language servers as well as high-end tools like MPS, our assessment is that Freon is well on
+						the way to being the ideal balance between these extremes. The path for integration with the LionWeb project positions Freon for
+						even the most complex projects. Key features of Freon that we used:
 					</p>
+					<ul>
+						<li>Its DSL language for CRC DSL</li>
+						<li>Its DSL editor framework for the entry of the DSL</li>
+						<li>Its interpreter framework to run simulations of the scheduling</li>
+						<li>Its storage framework to load and save the data.</li>
+					</ul>
+
+					<p>
+						The Freon team has been wonderfully responsive to us when we were getting started and as we’ve made ever more advanced requests
+						for new features. We would highly recommend using Freon on a DSL project and would be happy to speak with anyone looking to
+						discuss our experience with Freon.
+					</p>
+					<a href="404">
+						<p>Learn more...</p>
+					</a>
 				</div>
 			</div>
 		</section>
