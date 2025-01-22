@@ -16,13 +16,17 @@
 		"lint": "prettier --check . && eslint .",
 		"format": "prettier --log-level silent --write ./src",
 		"formatMd": "prettier --log-level silent --write ./docu-content",
-		"cleanRoutes": "rm -rf ./src/Routes/About &&  rm -rf ./src/Routes/Demos && rm -rf ./src/Routes/Documentation && rm -rf ./src/Routes/Examples && rm -rf ./src/Routes/Background"
+		"cleanRoutes": "rm -rf ./src/Routes/About &&  rm -rf ./src/Routes/Demos && rm -rf ./src/Routes/Documentation && rm -rf ./src/Routes/Examples && rm -rf ./src/Routes/Background",
+		"publish-local": "npm publish --registry http://localhost:4873",
+		"unpublish-local": "npm unpublish --force --registry http://localhost:4873",
+		"republish-local": "npm run unpublish-local && npm run publish-local",
+		"install-local": "npm install --registry http://localhost:4873"
 	},
 	"devDependencies": {
-		"@freon4dsl/core": "1.0.0-beta1",
-		"@freon4dsl/core-svelte": "1.0.0-beta1",
-		"@freon4dsl/meta": "1.0.0-beta1",
-		"@freon4dsl/webapp-lib": "^1.0.0-beta1",
+		"@freon4dsl/core": "1.0.0-beta3",
+		"@freon4dsl/core-svelte": "1.0.0-beta3",
+		"@freon4dsl/meta": "1.0.0-beta3",
+		"@freon4dsl/webapp-lib": "^1.0.0-beta3",
 		"@prettier/sync": "^0.5.2",
 		"@sveltejs/adapter-static": "^3.0.6",
 		"@sveltejs/kit": "^2.8.0",
@@ -53,6 +57,7 @@
 		"@fontsource/fira-mono": "^5.1.0",
 		"svelte-intersection-observer": "^1.0.0",
 		"@lukeed/uuid": "^2.0.1",
-		"copy-to-clipboard": "^3.3.3"
+		"copy-to-clipboard": "^3.3.3",
+		"@sveltejs/adapter-auto": "4.0.0"
 	}
 }
