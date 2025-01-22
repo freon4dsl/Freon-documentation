@@ -12,8 +12,9 @@
 		"typerExample": "cd ../code-examples/TyperExample && npm run generate && cd ../../scripts/",
 		"embedme": "embedme --source-root ../code-examples \"../docu-content/**/*.md\"",
 		"embedExamples": "npm run generateExamples && npm run embedme",
+		"install-examples": "tsc && node dist/InstallCodeExamples.js",
 		"md2svelte": "tsc && node dist/Generator.js",
-		"buildSite": "npm run embedExamples && npm run md2svelte",
+		"buildSite": "npm run install-examples && npm run embedExamples && npm run md2svelte",
 		"install-local": "npm install --registry http://localhost:4873"
 	},
 	"devDependencies": {
