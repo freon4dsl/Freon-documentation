@@ -2,17 +2,4 @@ language Education
 
 modelunit Test {
     name: identifier;
-    scenarios: Scenario[];
-    reference topic: Topic;
-    reference flow: Flow;
-}
-
-concept Scenario {
-    description: string;
-    steps: Step[]; /* Note that the order is of importance */
-}
-
-concept Step {
-    reference fromPage: Page;
-    reference expectedPage: Page;
 }
