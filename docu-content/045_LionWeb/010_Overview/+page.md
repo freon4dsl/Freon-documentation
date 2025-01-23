@@ -14,7 +14,8 @@ Thhese packages support a wide range of functionality like:
 - model diff
 - model validation
 - -etc.
-Thre is also a lionweb-repository package that implements a LionWeb server using the LionWeb protocol.
+
+- There also is a `lionweb-repository` package that implements a LionWeb server using the LionWeb protocol.
 
 
 ## Freon and LionWeb
@@ -25,6 +26,7 @@ Freon uses LionWeb in various ways:
 - Optionally convert the Freon language definition (the .ast files) to a LionWeb language definition
 in LionWeb JSON format. 
 - Optionally use the LionWeb server protocol to store models in the lionweb-repository.
+  This option is still experimental, as we need to do more testing.
  
 This allows other tools access not only to the models, but also to the languages that are defined in Freon.
 It also means that there is no lock-in when using Freon.

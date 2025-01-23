@@ -28,7 +28,7 @@ execAfterEntity(modelelement: Entity): boolean;
 
 ## The Validation Class
 
-As a convenience, Freon generates a file `~/frecode/validator/CustomYourLanguageNameValidator.ts`,
+As a convenience, Freon generates a file `~/freon/validator/CustomYourLanguageNameValidator.ts`,
 which will not be overwritten upon regeneration. This validator should implement the checker interface.
 
 You can give a custom implementation for any of the methods of the default worker. This method will 

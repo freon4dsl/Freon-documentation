@@ -120,7 +120,7 @@
 						for new features. We would highly recommend using Freon on a DSL project and would be happy to speak with anyone looking to
 						discuss our experience with Freon.
 					</p>
-					<a href="404">
+					<a href="/Background/Testimonial">
 						<p>Learn more...</p>
 					</a>
 				</div>
@@ -168,7 +168,7 @@
 				</p>
 				<p>Learn more...</p>
 			</a>
-			<a href="/GuidingPrinciples" class="landing-enter-button"
+			<a href="/Background/Overview" class="landing-enter-button"
 				><h3>Guiding Principles</h3>
 				<p>
 					<span class="landing-freon-name">Freon</span> was created using a lifetime of experience with software development, especially with

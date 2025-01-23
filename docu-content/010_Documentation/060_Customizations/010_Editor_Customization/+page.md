@@ -141,8 +141,8 @@ export class CustomInsuranceModelProjection implements FreProjection {
 
 <Note><svelte:fragment slot="header">Use another filename and/or location</svelte:fragment>
 <svelte:fragment slot="content">
-You can rename the file <code>~/frecode/editor/CustomYourLanguageNameProjection.ts</code>, and/or put it in another location.
-In that case, you need to adjust the file <code>~/frecode/config/FreonConfiguration</code>. 
+You can rename the file <code>~/freon/editor/CustomYourLanguageNameProjection.ts</code>, and/or put it in another location.
+In that case, you need to adjust the file <code>~/freon/config/FreonConfiguration</code>. 
 See <a href="/Documentation/Customizations#adding-typeScript-files-4">Adding TypeScript Files</a>.
 </svelte:fragment>
 </Note>
@@ -156,7 +156,7 @@ Actions are necessary to enable the user to change the model and add elements to
 The projections only describe what you will see in the editor.
 Actions determine what you can do, how you interact with the editor.
 
-As a convenience, the file `~/frecode/editor/CustomYourLanguageNameActions.ts` is 
+As a convenience, the file `~/freon/editor/CustomYourLanguageNameActions.ts` is 
 generated, which is a placeholder for your own actions written in TypeScript. This 
 file contains two constants for different kind of actions. The constant 
 `MANUAL_CUSTOM_ACTIONS` is an array that contains all actions to be performed 

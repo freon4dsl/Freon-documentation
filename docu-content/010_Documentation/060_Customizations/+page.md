@@ -86,7 +86,7 @@ If you are missing a specific tool or feature, please let us know through info A
 ## Adding A Fre-tool
 
 As a convenience, Freon generates templates for
-your customization in the files `~/frecode/editor/CustomYourLanguageNameProjection.ts`, `~/frecode/editor/CustomYourLanguageNameActions.ts`, etc.
+your customization in the files `~/freon/editor/CustomYourLanguageNameProjection.ts`, `~/freon/editor/CustomYourLanguageNameActions.ts`, etc.
 (where `YourLanguageName` is a placeholder for the name of the language as defined in your .ast file). You can use
 these files to add your own special elements.
 

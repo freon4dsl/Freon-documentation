@@ -138,8 +138,8 @@ RiskAdjustmentRef {
 ## Type Equals and Type Conformance Rules
 
 The last section in the type definition is where rules are given that state which types
-are considered equal or conforming. Each rule can have two entries: the **conformsto** and
-the **equalsto** entries. Within these entries it is also possible to use the predefined
+are considered equal or conforming. Each rule can have two entries: the `conformsto` and
+the `equalsto` entries. Within these entries it is also possible to use the predefined
 instances of a limited concept.
 
 ```proto
@@ -156,25 +156,25 @@ NamedType {
 }
 ```
 
-The **where-clause** in the above example can be used when a type has some structure. For every property
-in the type concept a condition is given. If all conditions evaluate to true then the `where-clause` results in true.
+The `where` clause in the above example can be used when a type has some structure. For every property
+in the type concept a condition is given. If all conditions evaluate to true then the `where` clause results in true.
 
 <Note>
 <svelte:fragment slot="content">
 Type concept instances can not be compared based on their identity,
-instead you will need to use an <i>equalsto</i> entry.
+instead you will need to use an <code>equalsto</code> entry.
 </svelte:fragment>
 </Note>
 
-## Use of **conformst**
+## Use of **conformsto**
 
-In a condition of a `where-clause` you may use `conformsto`. In that case, invocation of the rule will produce the cartesian product of
+In a condition of a `where` clause you may use `conformsto`. In that case, invocation of the rule will produce the cartesian product of
 all super concepts of the properties in the conditions. For an
 example, see [Typer Example](/Examples/Generic_Types).
 
 <Note>
 <svelte:fragment slot="content">
-Be careful with the use of <b>conformsto</b> within where-clauses because this can lead to an 
+Be careful with the use of <code>conformsto</code> within <code>where</code> clauses because this can lead to an 
 explosion of newly created type concept instances.
 </svelte:fragment>
 </Note>

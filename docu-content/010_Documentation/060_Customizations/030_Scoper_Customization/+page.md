@@ -10,7 +10,7 @@ The new scoper needs to implement the following interface.
 
 Furthermore, you need to tell Freon to use this new scoper instead of the generated one. You do this by
 changing the line that initializes the scoper in the class `YourLanguageNameEnvironment`. You can find it
-in `~/frecode/environment/`. Obviously,
+in `~/freon/environment/`. Obviously,
 you need to exchange `YourLanguageName` by the name of the language that you are creating.
 
 Suppose the class `YourScoper`
