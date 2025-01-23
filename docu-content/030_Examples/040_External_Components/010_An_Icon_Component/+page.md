@@ -21,7 +21,7 @@ is instantiated by the Freon editor both parameters will get a value.
 The complete Svelte component should look like this:
 
 ```ts
-// CourseSchedule/phase2/PersonIcon.svelte
+// CourseSchedule/phase2/src/external/PersonIcon.svelte
 
 <script lang="ts">
     import {ExternalSimpleBox, FreEditor} from "@freon4dsl/core";
@@ -46,7 +46,7 @@ of the default editor configuration.
 In the `main.edit` file, add the following code to declare the `PersonIcon` component:
 
 ```proto
-// CourseSchedule/phase2/main.edit#L3-L7
+// CourseSchedule/phase2/defs/main.edit#L3-L7
 
 global {
     external {
@@ -70,7 +70,7 @@ Every fragment for the same concept must have a unique name. Therefore, we
 name this fragment `nameAndIcon`.
 
 ```proto
-// CourseSchedule/phase2/externals.edit
+// CourseSchedule/phase2/defs/externals.edit
 
 editor externals
 

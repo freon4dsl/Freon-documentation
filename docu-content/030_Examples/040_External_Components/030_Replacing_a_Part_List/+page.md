@@ -18,7 +18,7 @@ replace the default projection of the `teachers` property in the `Staff` model u
 Begin by defining the component's parameters and the necessary state management functions:
 
 ```ts
-// CourseSchedule/phase4/StaffAccordion.svelte#L9-L55
+// CourseSchedule/phase4/src/external/StaffAccordion.svelte#L9-L55
 
 // This component replaces the component for "teachers: Person[];" from model unit "Staff".
 // This property is a parts list, therefore the external box to use is an ExternalPartListBox.
@@ -83,7 +83,7 @@ The rest of the implementation of both functions is straightforward. We get the 
 the box using `Box.getPropertyValue()`, and change it.
 
 ```ts
-// CourseSchedule/phase4/StaffAccordion.svelte#L57-L72
+// CourseSchedule/phase4/src/external/StaffAccordion.svelte#L57-L72
 
 const addPerson = () => {
     // Note that you need to put any changes to the actual model in a 'AST.change or AST.changeNamed',
@@ -130,7 +130,7 @@ the `removePerson` function for that specific element in the list. The native Fr
 `RenderComponent` as in the `PhoneButton.svelte` component.
 
 ```ts
-// CourseSchedule/phase4/StaffAccordion.svelte#L78-L96
+// CourseSchedule/phase4/src/external/StaffAccordion.svelte#L78-L96
 
 <div style="display: flex; align-items: flex-end;">
     <Accordion multiple="{multiplePar}">
@@ -158,7 +158,7 @@ the `removePerson` function for that specific element in the list. The native Fr
 Now that we've defined the script and HTML sections, here's the full component:
 
 ```ts
-// CourseSchedule/phase4/StaffAccordion.svelte
+// CourseSchedule/phase4/src/external/StaffAccordion.svelte
 
 <script lang="ts">
     import Accordion, {Panel, Header, Content} from '@smui-extra/accordion';
@@ -270,7 +270,7 @@ value are strings. There are no checks on any types or values.
 In your `.edit` file:
 
 ```proto
-// CourseSchedule/phase4/externals.edit#L14-L18
+// CourseSchedule/phase4/defs/externals.edit#L14-L18
 
 Staff {[
 Staff in the category: ${self.name}
@@ -287,7 +287,7 @@ section of your editor's definition and ensure it's recognized as a custom compo
 In the `global` section of the `main.edit` file:
 
 ```proto
-// CourseSchedule/phase4/main.edit#L3-L9
+// CourseSchedule/phase4/defs/main.edit#L3-L9
 
 global {
     external {

@@ -17,7 +17,7 @@ box for a specific type of AST node. For instance, the generated box provider fo
 concept contains the following to methods.
 
 ```ts
-// Insurance/src/custom/editor/gen/EuroLiteralBoxProvider.ts#L22-L62
+// Insurance/src/freon/editor/gen/EuroLiteralBoxProvider.ts#L22-L62
 
     protected getContent(projectionName: string): Box {
         // console.log("GET CONTENT " + this._node?.freId() + ' ' +  this._node?.freLanguageConcept() + ' ' + projectionName);

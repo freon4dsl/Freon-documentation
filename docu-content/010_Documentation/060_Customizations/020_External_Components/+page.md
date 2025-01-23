@@ -95,7 +95,7 @@ In the simple additions example the parameter is a number, which is used to choo
 The source of the AnimatedGif Svelte component is the following. 
 
 ```swift
-// Insurance/src/externals/ShowAnimatedGif.svelte
+// Insurance/src/external/ShowAnimatedGif.svelte
 
 <script lang="ts">
 
@@ -195,7 +195,7 @@ To display the childBox the external component needs to include the Freon `Rende
 In this example a fragment is wrapped in a `Card` component, which is imported from the <a href="https://sveltematerialui.com/" target="_blank">SMUI</a> library of UI components.
 
 ```swift
-// Insurance/src/externals/SMUI_Card_Component.svelte#L30-L34
+// Insurance/src/external/SMUI_Card_Component.svelte#L30-L34
 
 <span class="card-container">
     <Card>

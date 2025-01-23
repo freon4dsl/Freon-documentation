@@ -32,7 +32,7 @@ In the script section, we declare the two mandatory parameters: `box` and `edito
 the `NumberWrapperBox`.)
 
 ```ts
-// CourseSchedule/phase3/PhoneButton.svelte#L8-L9
+// CourseSchedule/phase3/src/external/PhoneButton.svelte#L8-L9
 
 export let box: NumberWrapperBox;
 export let editor: FreEditor;
@@ -45,7 +45,7 @@ selecting a different view) changes.
 First, we define the `setFocus` function to handle focus changes within the component, and a `refresh` function to update the values when the underlying model changes:
 
 ```ts
-// CourseSchedule/phase3/PhoneButton.svelte#L16-L21
+// CourseSchedule/phase3/src/external/PhoneButton.svelte#L16-L21
 
 async function setFocus(): Promise<void> {
     box.childBox.setFocus();
@@ -58,7 +58,7 @@ const refresh = (why?: string): void => {
 Make sure these functions are passed to the box using the `onMount` and `afterUpdate` lifecycle hooks:
 
 ```ts
-// CourseSchedule/phase3/PhoneButton.svelte#L22-L29
+// CourseSchedule/phase3/src/external/PhoneButton.svelte#L22-L29
 
 onMount(() => {
     box.setFocus = setFocus;
@@ -83,7 +83,7 @@ be imported from the Freon core-svelte package.
 We set up the button to open a snackbar notification when clicked:
 
 ```ts
-// CourseSchedule/phase3/PhoneButton.svelte#L33-L36
+// CourseSchedule/phase3/src/external/PhoneButton.svelte#L33-L36
 
 <div class="wrapper">
     Phone number: <RenderComponent box={box.childBox} editor="{editor}"/>
@@ -95,7 +95,7 @@ Next, we define the `Snackbar` element from SMUI, which will show a message when
 button is clicked. The message includes the value of the phone number:
 
 ```ts
-// CourseSchedule/phase3/PhoneButton.svelte#L38-L43
+// CourseSchedule/phase3/src/external/PhoneButton.svelte#L38-L43
 
 <Snackbar bind:this={snackbarWithClose}>
     <Label>This person has been called on number {box.getPropertyValue()}.</Label>
@@ -112,7 +112,7 @@ of the SMUI components is all done using the <a href="https://sveltematerialui.c
 which is already set up because it is also used for the surrounding web application.
 
 ```ts
-// CourseSchedule/phase3/PhoneButton.svelte#L45-L52
+// CourseSchedule/phase3/src/external/PhoneButton.svelte#L45-L52
 
 <style>
     .wrapper {
@@ -129,7 +129,7 @@ which is already set up because it is also used for the surrounding web applicat
 Here's the complete `PhoneButton.svelte` component:
 
 ```ts
-// CourseSchedule/phase3/PhoneButton.svelte
+// CourseSchedule/phase3/src/external/PhoneButton.svelte
 
 <script lang="ts">
     import IconButton from "@smui/icon-button";
@@ -193,7 +193,7 @@ the [`global`](/Documentation/Defining_an_Editor/Global_Projections) section of 
 the `PhoneButton` component here:
 
 ```proto
-// CourseSchedule/phase3/main.edit#L3-L8
+// CourseSchedule/phase3/defs/main.edit#L3-L8
 
 global {
     external {
@@ -210,7 +210,7 @@ To do this, we modify the phone number property in the `externals.edit` file,
 adding the `wrap=PhoneButton` directive:
 
 ```proto
-// CourseSchedule/phase3/externals.edit
+// CourseSchedule/phase3/defs/externals.edit
 
 editor externals
 

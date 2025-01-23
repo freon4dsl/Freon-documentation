@@ -36,7 +36,7 @@ notion of time. There are 10 time slots in a week, from Monday morning to Friday
 The following is the metamodel, which by now you should be able to understand without problems.
 
 ```proto
-// CourseSchedule/phase1/main.ast
+// CourseSchedule/phase1/defs/main.ast
 
 language CourseSchedule
 
@@ -96,6 +96,7 @@ limited TimeStamp {
 concept Person {
     name: identifier;
     fullName: string;
+    phone: number;
     availability: TimeStamp[];
     reference competence: Course[];
 }
@@ -121,7 +122,7 @@ We will make the name and phone number information of a teacher into a fragment,
 competences of a teacher in a list of checkboxes, and clean up the rest a little bit.
 
 ```proto
-// CourseSchedule/phase1/main.edit
+// CourseSchedule/phase1/defs/main.edit
 
 editor default
 

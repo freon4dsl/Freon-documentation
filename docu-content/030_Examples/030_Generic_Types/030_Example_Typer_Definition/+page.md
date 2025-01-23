@@ -20,12 +20,12 @@ We want to build a structure of type concepts, not of AST nodes!
 // TyperExample/src/defs/projectY.type#L6-L14
 
 type TT_GenericType {
-    base: PiType;
+    base: FreType;
     kind: GenericKind;
 }
 
 type TT_MeasurementType {
-    base: PiType;
+    base: FreType;
     unit: UnitKind;
 }
 ```
@@ -102,12 +102,12 @@ typer
 istype { TopType }
 
 type TT_GenericType {
-    base: PiType;
+    base: FreType;
     kind: GenericKind;
 }
 
 type TT_MeasurementType {
-    base: PiType;
+    base: FreType;
     unit: UnitKind;
 }
 

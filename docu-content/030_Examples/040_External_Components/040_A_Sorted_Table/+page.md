@@ -11,7 +11,7 @@ to sort the list of time slots in a schedule based on the time stamp in each slo
 As a reminder, here are the AST definitions of Schedule, Slot and TimeSlot.
 
 ```ts
-// CourseSchedule/phase5/main.ast#L10-L14
+// CourseSchedule/phase5/defs/main.ast#L10-L14
 
 modelunit Schedule {
     name: identifier;
@@ -21,7 +21,7 @@ modelunit Schedule {
 ```
 
 ```ts
-// CourseSchedule/phase5/main.ast#L33-L53
+// CourseSchedule/phase5/defs/main.ast#L33-L53
 
 concept Slot {
     time: TimeStamp;
@@ -61,7 +61,7 @@ and sorts them based on the `TimeStamp`. While sorting the list, in order to lat
 box for each `Slot`, we remember which child box is associated with a `Slot` in the variable `slotToBoxMap`.
 
 ```ts
-// CourseSchedule/phase5/Schedule.svelte#L56-L156
+// CourseSchedule/phase5/src/external/Schedule.svelte#L56-L156
 
 function sortSlots(startVal: Slot[]) {
     for (let i = 0; i < 10 ; i++) {
@@ -171,7 +171,7 @@ the given time stamp. We did not bother with creating the function to remove a `
 one in the `StaffAccordion`.
 
 ```ts
-// CourseSchedule/phase5/Schedule.svelte#L158-L165
+// CourseSchedule/phase5/src/external/Schedule.svelte#L158-L165
 
 const addSlot = (timeStamp: TimeStamp) => {
     // Note that you need to put any changes to the actual model in a 'AST.change' or 'AST.changeNamed',
@@ -186,7 +186,7 @@ const addSlot = (timeStamp: TimeStamp) => {
 Then there are two variables that make live easier in the HTML part.
 
 ```ts
-// CourseSchedule/phase5/Schedule.svelte#L40-L54
+// CourseSchedule/phase5/src/external/Schedule.svelte#L40-L54
 
 let dayTitle: string[] = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday' ];
 
@@ -214,7 +214,7 @@ Have a look at the headers first, each of which hold the name of a day. Because,
 headers with the texts `Morning` and `Afternoon`, the first header cell is left empty.
 
 ```ts
-// CourseSchedule/phase5/Schedule.svelte#L174-L179
+// CourseSchedule/phase5/src/external/Schedule.svelte#L174-L179
 
 <tr class="demo-header-row">
     <th class="demo-header-cell">--</th>
@@ -234,7 +234,7 @@ Freon `RenderComponent`. We add some `divs` to the lot to be able to style every
 The row for the afternoons is almost identical, but takes the last five of the sorted slots.
 
 ```ts
-// CourseSchedule/phase5/Schedule.svelte#L182-L203
+// CourseSchedule/phase5/src/external/Schedule.svelte#L182-L203
 
 <tr class="demo-row">
     <td class="demo-header-cell">Morning</td>
@@ -266,7 +266,7 @@ Again, the first cell is left empty, because that is the column with the headers
 to the function that adds a slot.
 
 ```ts
-// CourseSchedule/phase5/Schedule.svelte#L204-L213
+// CourseSchedule/phase5/src/external/Schedule.svelte#L204-L213
 
 <tr>
     <td class="demo-btn-cell"></td>
@@ -289,7 +289,7 @@ because the table already makes clear what the time stamp of each slot is, we ad
 projection for the `Slot` itself to not show `${self.time}`.
 
 ```proto
-// CourseSchedule/phase5/externals.edit#L20-L31
+// CourseSchedule/phase5/defs/externals.edit#L20-L31
 
 Schedule {[
 Schedule ${self.name}
@@ -340,7 +340,7 @@ are happy to provide any assistance you need.
 For reference, here is the full implementation of the `Schedule.svelte` component:
 
 ```ts
-// CourseSchedule/phase5/Schedule.svelte
+// CourseSchedule/phase5/src/external/Schedule.svelte
 
 <script lang="ts">
     import {afterUpdate, onMount} from "svelte";
