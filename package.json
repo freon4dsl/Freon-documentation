@@ -8,6 +8,7 @@
 	},
 	"scripts": {
 		"buildSite": "npm run cleanRoutes && cd ./scripts && npm run buildSite && cd ../ && npm run format",
+		"clean": "rm -r ./code-examples/*/src/freon",
 		"dev": "vite dev",
 		"build": "vite build",
 		"preview": "vite preview",
