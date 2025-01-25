@@ -30,7 +30,7 @@
 		"@freon4dsl/webapp-lib": "^1.0.0-beta3",
 		"@prettier/sync": "^0.5.2",
 		"@sveltejs/adapter-static": "^3.0.6",
-		"@sveltejs/kit": "^2.8.0",
+		"@sveltejs/kit": "^2.8.5",
 		"@sveltejs/vite-plugin-svelte": "3.1.2",
 		"@types/eslint": "^9.6.1",
 		"@types/cookie": "^1.0.0",
