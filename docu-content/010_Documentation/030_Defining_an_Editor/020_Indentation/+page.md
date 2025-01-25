@@ -37,7 +37,6 @@ Text2 {
               for every concept of type Text.
             ]
 }
-
 ```
 
 In the following example, the line with the least indentation is

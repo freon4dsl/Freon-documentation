@@ -7,7 +7,7 @@ for information on how to install the examples on your computer.
 
 ## Currently Available
 
-- [Interpreter](/Examples/Using_the_Interpreter) How to build an interpreter that uses the Freon AST.
+- [Building an Interpreter](/Examples/Building_an_Interpreter) How to build an interpreter that uses the Freon AST.
 - [Generic Types](/Examples/Generic_Types) How to create a language with generic types.
 - [Using Svelte Components from a Library](/Examples/External_Components) How to include custom components in the editor.
 

@@ -234,12 +234,22 @@ component. We do this by adding the component to the `setCustomComponents` funct
 in the starter code:
 
 ```ts
-// CourseSchedule/phase3/starter.ts#L21-L24
+// CourseSchedule/phase3/src/external/externals.ts
 
-setCustomComponents([
-    { component: PersonIcon, knownAs: "PersonIcon" },
-    { component: PhoneButton, knownAs: "PhoneButton" }
-]);
+import {setCustomComponents} from "@freon4dsl/core-svelte";
+import PersonIcon from "./PersonIcon.svelte";
+import PhoneButton from "./PhoneButton.svelte";
+
+/**
+ * Configure the external components used, so Freon can find them.
+ */
+export function configureExternals() {
+    setCustomComponents([
+        { component: PersonIcon, knownAs: "PersonIcon" },
+        { component: PhoneButton, knownAs: "PhoneButton" },
+    ]);
+}
+
 ```
 
 ## Final Result

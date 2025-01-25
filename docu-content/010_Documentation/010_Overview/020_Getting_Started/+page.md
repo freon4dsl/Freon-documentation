@@ -9,14 +9,41 @@ Get ready to use Freon by having <a href="https://nodejs.org/" target="_blank">n
 and <a href="https://yarnpkg.com/" target="_blank">npm</a>
 installed. We are typically using the latest versions of all,
 although older versions likely work just as well.
-You could also try, and use other packages managers instead of npm.
+You could also try other packages managers instead of npm.
 
-There best way to start using Freon is to use the command
+## Creating a Project
+
+The best way to create a Freon project is to use the command:
+
 ```bash
-npm create freon@latest
+  npm create freon@latest
 ```
-Youn can then select any of the languages used in this documentation,
-or select the StarterLanguage for an empty language project. 
+
+You will be asked to select any of the languages used in this documentation,
+or the `StarterLanguage` for an empty language project.
+The project will be located in the `./DSL-name` directory , where `DSL-name` is the name of
+the language you have chosen. It will also install all required packages (`npm install`), and
+run the Freon generator, generating code in `src/freon` (`npm run build`):
+
+## Opening and Using the Editor
+
+To start working with the Freon editor, first start the file server (any parts 
+of the model that are saved in the editor will be stored by the server in `~/modelstore`):
+
+```bash
+  npm run server
+```
+
+Next, open another (bash) terminal, and start the generated editor from it:
+
+```bash
+  npm run prepare-app   # Generates the runtime CSS files. A single run will suffice.
+  npm run dev           # Builds and serves the page with the Freon editor.
+```
+
+The last command shows a URL that you can open in your preferred browser. The web page contains the 
+generated editor for the language in your project.
+
 <Note>
 <svelte:fragment slot="header">Use a recent browser version</svelte:fragment>
 <svelte:fragment slot="content">
@@ -24,61 +51,39 @@ Please, use a recent version of a browser like Chrome or Edge, because we cannot
 ensure that the editor functions as it should in older browsers.
 </svelte:fragment></Note>
 
-## Example Project Startup
-
-[//]: # (todo add info on starter.ts)
-The `npm create freon@latest` command create a project and runs the following commands for you:
-```bash
-npm install
-npm run generate
-```
-The first command installs all required packages.
-The second command runs the Freon generator, generating code in `src/freon`
-
-To start the Freon editor, first start the server
-(note that anything that is saved in the editor will be stored by the server in ~/modelstore):
-
-  ```bash
-  npm run server
-  ```
-
-Open another (bash) terminal, and start the generated editor from it:
-```bash
-npm run prepare-app   # Needed to generate the runtime CSS files. A single run will suffice.
-npm run dev
-```
-
-The last command opens your preferred browser with the generated editor for 
-the language in your project.
-
 <Note><svelte:fragment slot="header"> Use Help Menu</svelte:fragment><svelte:fragment slot="content">
 For easier use of the editor, have a look at the key-bindings under the <em>Help</em> menu.
 </svelte:fragment></Note>
 
-Now that everything is running, you can go to the `src/defs` folder and change the Freon definition files.
-After chnage the files in `src/defs` youi need to re-run the generator,
-amnd yoi will see the newly generated files appearing in the folder where you
-  decided to store the generated code (`~/src/freon`):
+## Changing the DSL
+
+Now that everything is running, you can go to the `src/defs` folder, and change the Freon definition files.
+After changing the files in `src/defs` you need to re-run the generator, 
+and you will see the newly generated files appearing in the `~/src/freon` folder. The following command 
+re-runs the generator, and compiles the newly generated files:
 
 ```bash
-    npm run generate
+  npm run build
 ```
 
+In order to speed up your development cycle the <code>npm run dev</code>
+command has the -watch flag set, so the webpage in the browser should be updated as well.
+
 <Note>
-<svelte:fragment slot="header">Speed up the Development Cycle</svelte:fragment>
+<svelte:fragment slot="header">Speedy Development Cycle</svelte:fragment>
 <svelte:fragment slot="content">
 <p>
 When developing a DSL, you often regenerate the Freon editor to reflect the changes made in the
-metamodel (.ast files), and/or other definitions. In order to speed up your development cycle the <code>npm run dev</code>
-command has the -watch flag set. Furthermore, you can use
-the following as address in the web browser: <code>http://localhost:8000/?model=TestModel</code>, where
+metamodel (.ast files), and/or other definitions. Beside the -watch flag being set, your development 
+cycle can also be made more expedient by using
+the following as address in the web browser: <code>http://localhost:8080/?model=TestModel</code>, where
 `TestModel` stands for the name of the model that you are using to test your language definition
 and editor with. Thus, the browser responds to any regeneration with opening your test model instantaneously.
 </p>
 </svelte:fragment></Note>
 
 <Note>
-<svelte:fragment slot="header">WebStorm tip</svelte:fragment>
+<svelte:fragment slot="header">WebStorm Tip</svelte:fragment>
 <svelte:fragment slot="content">
 If you are working with WebStorm, you might consider installing the
 plugin <a href="https://plugins.jetbrains.com/plugin/7677-awesome-console" target="_blank">Awesome Console</a>.
@@ -120,7 +125,7 @@ The code in a Freon project under `~/src` is organised into the following subfol
     would like to do.
   - **.../writer**: code that is able to write your user's [model units](/Background#models-and-model-units-4)
     in string format to a file.
-- **external**: the external Svelte components and the code to plug these into Freon.
+- **external**: any external Svelte components and the code to plug these into Freon.
 - **style**: All CSS and SCSS file for [styling Freon](/Documentation/Defining_an_Editor/Styling).
 - **starter.ts**: the startup code for the web editor
 - **logger.ts**: Code to turn logging on or off, used for debugging.
@@ -143,7 +148,7 @@ In contrast, files directly within the folder remain unchanged during regenerati
 
 ## A Minimal Webapp and Server
 
-The Freon projectional web editor needs to be embedded in an application to work propertly.
+The Freon projectional web editor needs to be embedded in an application to work properly.
 It also needs a server that allows to store and retrieve the models the user creates in the editor.
 
 For the server we provide a minimal implementation for your convenience.
@@ -158,7 +163,7 @@ Note that Freon can optionally use the [LionWeb repository](/LionWeb/Overview).
 
 A Freon language definition can have five parts:
 
-1. [The Ast file](/Documentation/Creating_the_Metamodel): the abstract syntax tree (AST) or meta-model is defined in files with extension `.ast`.
+1. [The AST file](/Documentation/Creating_the_Metamodel): the abstract syntax tree (AST) or metamodel is defined in files with extension `.ast`.
 2. [The Edit file](/Documentation/Defining_an_Editor): the concrete syntax (CST), or editor definition, is defined in files with extension `.edit`.
 3. [The Scope file](/Documentation/Scoping,_Typing,_and_Validating/Scope_Provider): the scope rules are defined in files with extension `.scope`.
 4. [The Type file](/Documentation/Scoping,_Typing,_and_Validating/Type_Provider): the typing rules are defined in files with extension `.type`.

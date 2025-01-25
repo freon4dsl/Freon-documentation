@@ -28,7 +28,7 @@ Create the website and browse through it.
 # Install dependencies
 npm install
 
-# Get the code, which will be included in the content, from a number of example projects 
+# Get the code, which will be embedded in the content, from a number of example projects 
 npm install-examples
 
 # create the website from the Markdown content
@@ -40,6 +40,9 @@ npm run build
 # preview the website
 npm run preview
 ```
+
+> Note: sometimes you need to set the line separators to CRLF - Windows to get the embedded code
+> correctly into the pages.
 
 During development the latter two commands can be exchanged by the following command. 
 

@@ -92,43 +92,23 @@ Phone number: ${self.phone}
 Now, we need to ensure the Freon editor knows how to instantiate our custom component. 
 This is done by calling the `setCustomComponents` function in the application’s startup code.
 
-In your `starter.ts` file, import the `PersonIcon` component and add it to 
+In your `externals.ts` file, import the `PersonIcon` component and add it to 
 the `setCustomComponents` function like this:
 
 ```ts
-// CourseSchedule/phase2/starter.ts
+// CourseSchedule/phase2/src/external/externals.ts
 
-import {FreonLayout, WebappConfigurator} from "@freon4dsl/webapp-lib";
-import {ServerCommunication} from "@freon4dsl/core";
 import {setCustomComponents} from "@freon4dsl/core-svelte";
-import PersonIcon from "./customComponents/forCourseSchedule/PersonIcon.svelte";
+import PersonIcon from "./PersonIcon.svelte";
 
 /**
- * The one and only reference to the actual language for which this editor runs
+ * Configure the external components used, so Freon can find them.
  */
-import {CourseScheduleEnvironment} from "@freon4dsl/samples-course-schedule";
-WebappConfigurator.getInstance().setEditorEnvironment(CourseScheduleEnvironment.getInstance());
-
-/**
- * The one and only reference to the server on which the models are stored
- */
-WebappConfigurator.getInstance().setServerCommunication(ServerCommunication.getInstance());
-
-/**
- * Make the external components known to Freon before starting the app!
- */
-setCustomComponents([
-    { component: PersonIcon, knownAs: "PersonIcon" }
-]);
-
-/**
- * Now start the app ...
- */
-const app = new FreonLayout({
-    target: document.body,
-});
-
-export default app;
+export function configureExternals() {
+    setCustomComponents([
+        { component: PersonIcon, knownAs: "PersonIcon" },
+    ]);
+}
 
 ```
 

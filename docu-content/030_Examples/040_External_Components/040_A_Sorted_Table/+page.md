@@ -343,11 +343,11 @@ For reference, here is the full implementation of the `Schedule.svelte` componen
 // CourseSchedule/phase5/src/external/Schedule.svelte
 
 <script lang="ts">
+    import IconButton from "@smui/icon-button";
     import {afterUpdate, onMount} from "svelte";
     import {Box, ExternalPartListBox, FreEditor, FreNode, FreNodeReference, AST} from "@freon4dsl/core";
     import {RenderComponent} from "@freon4dsl/core-svelte";
-    import {Slot, TimeStamp} from "@freon4dsl/samples-course-schedule";
-    import IconButton from "@smui/icon-button";
+    import {Slot, TimeStamp} from "../freon/language/gen/index.js";
 
     // This component replaces the component for "timeSlots: Slot[];" from model unit "Schedule".
     // This property is a parts list, therefore the external box to use is an ExternalPartListBox.

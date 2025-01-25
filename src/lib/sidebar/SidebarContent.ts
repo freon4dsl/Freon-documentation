@@ -73,14 +73,20 @@ export const examplesToc: TocContentsType =
    { name: 'Examples', path: '/Examples',
      content: [
       { name: 'Overview', path: '/Examples/Overview'},
-      { name: 'Using the Interpreter', path: '/Examples/Using_the_Interpreter'},
+      { name: 'Building an Interpreter', path: '/Examples/Building_an_Interpreter',
+        content: [
+         { name: 'The Expressions DSL', path: '/Examples/Building_an_Interpreter/The_Expressions_DSL'},
+         { name: 'Understanding the Framework', path: '/Examples/Building_an_Interpreter/Understanding_the_Framework'},
+         { name: 'Writing the Interpreter', path: '/Examples/Building_an_Interpreter/Writing_the_Interpreter'},
+       ]},
       { name: 'Generic Types', path: '/Examples/Generic_Types',
         content: [
-         { name: 'Example Metamodel', path: '/Examples/Generic_Types/Example_Metamodel'},
-         { name: 'Example Typer Definition', path: '/Examples/Generic_Types/Example_Typer_Definition'},
+         { name: 'The TyperExample DSL', path: '/Examples/Generic_Types/The_TyperExample_DSL'},
+         { name: 'The Typer Definition', path: '/Examples/Generic_Types/The_Typer_Definition'},
        ]},
       { name: 'External Components', path: '/Examples/External_Components',
         content: [
+         { name: 'The CourseSchedule DSL', path: '/Examples/External_Components/The_CourseSchedule_DSL'},
          { name: 'An Icon Component', path: '/Examples/External_Components/An_Icon_Component'},
          { name: 'A Wrapper with a Button', path: '/Examples/External_Components/A_Wrapper_with_a_Button'},
          { name: 'Replacing a Part List', path: '/Examples/External_Components/Replacing_a_Part_List'},
@@ -101,6 +107,7 @@ export const backgroundToc: TocContentsType =
    { name: 'Background', path: '/Background',
      content: [
       { name: 'Overview', path: '/Background/Overview'},
+      { name: 'Testimonial', path: '/Background/Testimonial'},
       { name: 'Projectional Editing', path: '/Background/Projectional_Editing'},
       { name: 'About the Name', path: '/Background/About_the_Name'},
       { name: 'About the Authors', path: '/Background/About_the_Authors'},

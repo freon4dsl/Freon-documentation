@@ -166,7 +166,7 @@ Now that we've defined the script and HTML sections, here's the full component:
     import {AST, ExternalPartListBox, FreEditor, FreNodeReference} from "@freon4dsl/core";
     import {RenderComponent} from "@freon4dsl/core-svelte";
     import {afterUpdate, onMount} from "svelte";
-    import {Person} from "@freon4dsl/samples-course-schedule";
+    import {Person} from "../freon/language/gen/index.js";
 
     // This component replaces the component for "teachers: Person[];" from model unit "Staff".
     // This property is a parts list, therefore the external box to use is an ExternalPartListBox.
@@ -298,17 +298,19 @@ global {
 }
 ```
 
-In the starter code, register `StaffAccordion` as a custom component. Don't forget to
+In the `externals.ts`, register `StaffAccordion` as a custom component. Don't forget to
 update your `package.json` file to include any library components.
 
 ```ts
-// CourseSchedule/phase4/starter.ts#L22-L26
+// CourseSchedule/phase4/src/external/externals.ts#L9-L15
 
-setCustomComponents([
-    { component: PersonIcon, knownAs: "PersonIcon" },
-    { component: PhoneButton, knownAs: "PhoneButton" },
-    { component: StaffAccordion, knownAs: "StaffAccordion" }
-]);
+export function configureExternals() {
+    setCustomComponents([
+        { component: PersonIcon, knownAs: "PersonIcon" },
+        { component: PhoneButton, knownAs: "PhoneButton" },
+        { component: StaffAccordion, knownAs: "StaffAccordion" },
+    ]);
+}
 ```
 
 ## Final Result
