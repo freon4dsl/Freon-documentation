@@ -32,18 +32,21 @@ So you might see that we have a bit of task before us to satisfy this client's n
 This tutorial is split into 9 lessons. Each lesson has a dedicated subject, but it will 
 build upon the previous lessons. So the best way is to work through them in the given order.
 
-The easiest way to follow this tutorial is to create your own project in the IDE of your 
-choice by cloning our [template project](/Documentation/Overview/Getting_Started#template-project-startup-3). This way 
-you can recreate the project, and toy with many of the options.
+The easiest way to follow this tutorial is to use the create project command, and choose the language `Education`.
+This way you can recreate the project, and toy with many of the options.
 
-Alternatively you can clone the sources for this tutorial on GitHub: <a href="https://github.com/freon4dsl/Freon-example" target="_blank">
-https://github.com/freon4dsl/Freon-example</a>. This project is broken up into the same number of parts, 
-so you won't be bothered by any of the details that are not yet explained, when going through the parts one by one.
-You can find all definition files for lesson&nbsp1 in the folder named `lesson1-defs`, and likewise for all other lessons. Empty
-the `src/defs` folder (see <a href='#where-do-the-files-go-4'>Where do the files go?</a>) for every lesson, and copy in the files 
-for the lesson you are about to follow. You can also find 
+```bash
+  npm create freon@latest
+```
+
+In the `Education` project you will find all definition files needed for one of the lessons in a separate folder,
+so you won't be bothered by any of the details that are not yet explained, when going through the lessons one by one.
+For instance, you can find all definition files for lesson&nbsp3 in the folder named `lesson3-defs`, and likewise for all other lessons. 
+The files for lesson1 are present in the `src/defs` folder (see <a href='#where-do-the-files-go-4'>Where do the files go?</a>) at the start.
+Empty this folder before the next lesson, and copy in the files for the lesson you are about to follow. You can also find 
 a number of models that fit the language(s) from the lessons in the **modelstore** folder. (For an explanation of the content of the project see
-[Project_Structure](/Documentation/Overview/Getting_Started#project_structure-4).)
+[Project_Structure](/Documentation/Overview/Getting_Started#project_structure-4).) Use the model called `Lesson1` for lessons 1 till 3, 
+the model `Lesson4` for lessons 4 and 5, and `Lesson6`for the rest of the lessons.
 
 For some hints on how to use the editor, click on the question mark on the top bar of the editor.
 
@@ -63,8 +66,8 @@ In this tutorial we will make a number of Freon definition files. Note that the 
 file (for instance, `.ast`, `.valid`) is important, but the name is not. All metamodel definitions 
 need to be in a `.ast` file, all editor definitions in a `.edit` file, etc.
 
-Note that, when you have checked out the source code and are following this
+When you have checked out the source code and are following this
 example in your own IDE, you might notice that upon regeneration the browser sometimes shows an empty page. The reason
 is that the browser is quicker than the regeneration process. (In the console of the browser development tools you will see
-the message `Uncaught SyntaxError: Unexpected end of input (at bundle.js:54779:24)`.) Don't worry, simply reload
+the message `Uncaught SyntaxError: Unexpected end of input`.) Don't worry, simply reload
 the page, and everything will be fine.
