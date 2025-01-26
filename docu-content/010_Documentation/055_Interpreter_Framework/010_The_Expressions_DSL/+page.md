@@ -1,13 +1,9 @@
-<script>
-    import Note from "$lib/notes/Note.svelte";
-    import Figure from "$lib/figures/Figure.svelte";
-</script>
-
 # The Expressions DSL
 
-We use the following simple DSL as the example, which is defined with a single
+Before explaining the interpreter framwework, we take a look at the following simple DSL, which will be used as an example.
+It is defined with a single
 model unit called `ExpressionUnit` that contains both function definitions and expressions.
-You can take a look at this language by
+You can check out this language by
 creating a new Freon project with `npm create Freon` and then selecting the `Expressions` language.
 
 ```proto
