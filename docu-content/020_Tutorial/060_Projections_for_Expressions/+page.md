@@ -46,7 +46,7 @@ QuestionReference {
 ```
 
 In lesson 2 [Making an Editor](/Tutorial/Making_an_Editor) we already encountered the **trigger**, a means to make editing easier for your user.
-Here we do something ever more sophisticated. We use a **reference shortcut**.
+Here we do something even more sophisticated. We use a **reference shortcut**.
 
 To understand what it does, you need know that when a question reference is added, not one, but two nodes must be added to the AST.
 The first is an instance of `QuestionReference`, the second (the child of this instance) is an instance of the core type `FreNodeReference`.

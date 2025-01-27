@@ -2,14 +2,14 @@
 
 This example shows how to create an interpreter.
 
-## The Education DSL
+## The Computer Aided Learning DSL
 
 The language used in this extended example is the one that is in depth explained in the [tutorial](/Tutorial/Overview).
 Remember from the requirements for this DSL that our hypothetical client wants a means to test the page flow.
 We are going to build an interpreter to do just that.
 
 To follow the example use the `npm create freon@latest` command and choose the language called `Education`. Empty the
-`/src/defs` folder and copy in all def files for Lesson 9. Build the project (`npm run build`).
+`/src/defs` folder, then copy in all def files for Lesson 9. Build the project (`npm run build`).
 
 ## Values for the Literals
 
@@ -20,10 +20,8 @@ Because this is the easiest manner, we are going to build the evaluation from th
 implement the evaluation functions for the literal expressions, i.e. `SimpleNumber`, `NumberLiteralExpression`, and `Fraction`.
 
 ```ts
-// Education/src/interpreter/EducationInterpreter.ts#L210-L220
+// Education/src/interpreter/EducationInterpreter.ts#L206-L218
 
-override evalSimpleNumber(node: SimpleNumber, ctx: InterpreterContext): RtObject {
-    return new RtNumber(node.value)
 }
 
 override evalNumberLiteralExpression(node: NumberLiteralExpression, ctx: InterpreterContext): RtObject {
@@ -33,6 +31,10 @@ override evalNumberLiteralExpression(node: NumberLiteralExpression, ctx: Interpr
 override evalFraction(node: Fraction, ctx: InterpreterContext): RtObject {
     return new RtFraction(new RtNumber(node.numerator), new RtNumber(node.denominator))
 }
+
+///////////////// COMPARISON EXPRESSIONS
+
+override evalEqualsExpression(node: EqualsExpression, ctx: InterpreterContext): RtObject {
 ```
 
 As you see, the first two functions simply return a runtime object of type `RtNumber` which holds the current `value`
@@ -75,17 +77,57 @@ export function isRtFraction(object: any): object is RtFraction {
 
 ```
 
-Because we do not actually need the result of a fraction, we need to simply compare it with the
-fraction in the test, the only function we need to define is the `equals` function.
+What makes things easy is that we do not actually need the result of a fraction, that 
+is, if the fraction is 6/3, we do not need the number 2. All we have to do, when 
+building the test for our customer, is to compare one fraction with another.
+Therefore, the only function we need to define for the `RtFraction` class is the `equals` function.
 
-## The Comparison Expressions
+## Values for Binary Expressions
+
+The next step is to create the evaluation functions for the binary expressions. They 
+are all similar, so here we focus on the evaluation of an `OrExpression`. 
 
 ```ts
-// Education/src/interpreter/EducationInterpreter.ts#L236-L240
+// Education/src/interpreter/EducationInterpreter.ts#L234-L238
 
-override evalOrExpression(node: OrExpression, ctx: InterpreterContext): RtObject {
-    const left = main.evaluate(node.left, ctx) as RtBoolean
-    const right = main.evaluate(node.right, ctx) as RtBoolean
-    return left.or(right)
 }
+
+override evalGreaterThenExpression(node: GreaterThenExpression, ctx: InterpreterContext): RtObject {
+    const left = main.evaluate(node.left, ctx) as RtNumber
+    const right = main.evaluate(node.right, ctx) as RtNumber
+```
+
+First we evaluate the
+left and right hand side of the expression. Note that we use the `main` interpreter from the file 
+`MainEducationInterpreter.ts`. The `main` interpreter is able to obtain the runtime value for
+any node type. Next we use the predefined `or` function of the class
+`RtBoolean`, which is defined as follows.
+
+```ts
+export class RtBoolean extends RtObject {
+	static readonly TRUE = new RtBoolean(true);
+	static readonly FALSE = new RtBoolean(false);
+
+	static of(bool: boolean): RtBoolean {
+		return bool ? RtBoolean.TRUE : RtBoolean.FALSE;
+	}
+
+	or(other: RtBoolean): RtBoolean {
+		return RtBoolean.of(this._value || other.asBoolean());
+	}
+    ...  
+}		
+```
+
+The other comparison expressions, like `AndExpression`, and `EqualsExpression`, are implemented
+in a similar fashion. For example, this is the implementation of the `GreaterOrEqualsExpression`:
+
+```ts
+// Education/src/interpreter/EducationInterpreter.ts#L246-L250
+
+}
+
+override evalLessThenExpression(node: LessThenExpression, ctx: InterpreterContext): RtObject {
+    const left = main.evaluate(node.left, ctx) as RtNumber
+    const right = main.evaluate(node.right, ctx) as RtNumber
 ```

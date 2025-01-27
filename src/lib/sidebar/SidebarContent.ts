@@ -34,6 +34,11 @@ export const documentationToc: TocContentsType =
          { name: 'Type Provider', path: '/Documentation/Scoping,_Typing,_and_Validating/Type_Provider'},
          { name: 'Validator', path: '/Documentation/Scoping,_Typing,_and_Validating/Validator'},
        ]},
+      { name: 'Interpreter Framework', path: '/Documentation/Interpreter_Framework',
+        content: [
+         { name: 'The Expressions DSL', path: '/Documentation/Interpreter_Framework/The_Expressions_DSL'},
+         { name: 'Understanding the Framework', path: '/Documentation/Interpreter_Framework/Understanding_the_Framework'},
+       ]},
       { name: 'Customizations', path: '/Documentation/Customizations',
         content: [
          { name: 'Editor Customization', path: '/Documentation/Customizations/Editor_Customization'},
@@ -75,9 +80,8 @@ export const examplesToc: TocContentsType =
       { name: 'Overview', path: '/Examples/Overview'},
       { name: 'Building an Interpreter', path: '/Examples/Building_an_Interpreter',
         content: [
-         { name: 'The Expressions DSL', path: '/Examples/Building_an_Interpreter/The_Expressions_DSL'},
-         { name: 'Understanding the Framework', path: '/Examples/Building_an_Interpreter/Understanding_the_Framework'},
-         { name: 'Writing the Interpreter', path: '/Examples/Building_an_Interpreter/Writing_the_Interpreter'},
+         { name: 'More Evaluation Functions', path: '/Examples/Building_an_Interpreter/More_Evaluation_Functions'},
+         { name: 'Using the Context', path: '/Examples/Building_an_Interpreter/Using_the_Context'},
        ]},
       { name: 'Generic Types', path: '/Examples/Generic_Types',
         content: [

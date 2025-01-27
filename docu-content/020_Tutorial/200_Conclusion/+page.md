@@ -11,7 +11,9 @@ you can have a browse through the [documentation](/Documentation/Overview), wher
 in this tutorial are explained in depth. Or you could dive deeper into the Computer Aided Learning DSL, by 
 extending the DSL with more ideas. Below you will find a [list of suggestions](/Tutorial/Conclusion#ideas-to-extend-the-dsl3) for extending the language.
 Another option is to have a look at the list of [examples](/Examples/Overview) included on this site. Each example 
-takes a deeper dive into a specific part of Freon. Or check out [LionWeb](/LionWeb/Overview),
+takes a deeper dive into a specific part of Freon. Specially, [Building an Interpreter](/Examples/Building_an_Interpreter) is interesting 
+because it builds upon the Computer Aided Learning DSL.
+You could also check out the [LionWeb](/LionWeb/Overview) section,
 to know more about model and language interchange formats between various tools for language engineering. 
 
 If you are really into Freon, you could also join the team of contributors. 
