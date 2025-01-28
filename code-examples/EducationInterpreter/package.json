@@ -1,5 +1,5 @@
 {
-	"name": "@freon4dsl/education",
+	"name": "@freon4dsl/education-interpreter",
 	"version": "0.7.0-beta",
 	"license": "MIT",
 	"type": "module",
