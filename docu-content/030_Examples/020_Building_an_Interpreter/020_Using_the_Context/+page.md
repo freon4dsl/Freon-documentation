@@ -68,8 +68,4 @@ override evalStep(node: Step, ctx: InterpreterContext): RtObject {
     }
     return new RtPage(transition.$toPage)
 }
-
-static evalPage(node: Page, ctx: InterpreterContext): RtObject {
-    // Find grade for given answers
-    console.log(`evalPage.node ${node?.name}`)
 ```
