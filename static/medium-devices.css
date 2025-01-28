@@ -1,0 +1,92 @@
+/* Medium devices (landscape tablets and small laptops, 769px and up) */
+@media only screen and (min-width: 769px) and (max-width: 1082px) {
+    :root {
+        font-size: 1rem;
+    }
+    .small-screen {
+        display: inline-block;
+    }
+    .large-screen {
+        display: none;
+    }
+    /* Styles for the app bar that are different for different screen sizes */
+    .app-bar-small {
+        display: none;
+    }
+    .app-bar-large {
+        display: flex;
+        align-items: center;
+        padding: 0 4px 0 6px;
+        flex: 1;
+    }
+    /* end styles for the app bar */
+    /* Styles for button grid */
+    .landing-enter-buttons-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        column-gap: 20px;
+        row-gap: 20px;
+    }
+    /* end styles for landing page */
+
+    /* Styles for categories */
+    .page-side-nav {
+        display: none;
+    }
+    .page-main {
+        margin-left: 0; 	/* width of page-side-nav + left of page-side-nav */
+        margin-right: 0; 	/* width of page-toc + right of page-toc */
+        padding: 1rem;
+    }
+    .page-toc {
+        display: none;
+    }
+    /* styles for small pages */
+    .page-toc-small-img {
+        max-width: 1rem;
+        max-height: 1rem;
+    }
+    .page-toc-small {
+        margin-top: 8px;
+        display: flex;
+        flex-direction: row;
+        border-bottom: solid 1px var(--color-accent);
+    }
+    .page-toc-small-title {
+        flex: 1;
+    }
+    .page-toc-small-expand-button {
+        background: none;
+        border: solid 1px var(--color1);
+    }
+    .toc-details {
+        border-bottom: solid 1px var(--color-accent);
+    }
+    /* end styles for small pages */
+    .main-menu-small-expand-button {
+        background: none;
+        border: var(--color5);
+        padding: 0;
+    }
+    .main-menu-small-img {
+        max-width: 0.5rem;
+        max-height: 0.5rem;
+    }
+    /*****************/
+    .landing-herosection {
+        background-size: 250px;
+        background-position-x: 100%;
+        background-position-y: 99%;
+    }
+    .landing-herosection h1 {
+        text-align: center;
+    }
+    .landing-herosection h2 {
+        text-align: center;
+    }
+    .landing-h2 {
+        margin-left: 1rem;
+    }
+    .landing-text {
+        margin: 1rem;
+    }
+}

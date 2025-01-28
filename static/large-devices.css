@@ -1,0 +1,98 @@
+/* Large devices (laptops/desktops, 1083px and up) */
+@media only screen and (min-width: 1083px) {
+    :root {
+        font-size: 1.0rem;
+    }
+    .small-screen {
+        display: none;
+    }
+    .large-screen {
+        display: inline-block;
+    }
+    /* Styles for the app bar that are different for different screen sizes */
+    .app-bar-small {
+        display: none;
+    }
+    .app-bar-large {
+        display: flex;
+        align-items: center;
+        padding: 0 4px 0 6px;
+        flex: 1;
+        height: var(--fre-header-height);
+    }
+    /* end styles for the app bar */
+
+    /* Styles for the landing page that are different for different screen sizes */
+    /* Styles for landing-top section */
+    .landing-name {
+        white-space: wrap;
+    }
+    .landing-spacer {
+        min-width: 0.3rem;
+    }
+    .landing-h2 {
+        margin-left: 2rem;
+    }
+    .landing-text {
+        margin: 2rem;
+    }
+    /* Styles for button grid */
+    .landing-enter-buttons-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        column-gap: 50px;
+        row-gap: 50px;
+    }
+    /* Styles for the footer */
+    .landing-info-text {
+        margin: 0.6rem 5rem 0 5rem;
+    }
+    /* end styles for landing page */
+
+    /* Styles for categories */
+    .page-main {
+        margin-left: 19rem; 	/* width of page-side-nav + left of page-side-nav */
+        margin-right: 15rem; 	/* width of page-toc + right of page-toc */
+        padding: 2rem;
+    }
+    .page-side-nav {
+        --top-margin: 3rem;
+        position: fixed;
+        top: var(--top-margin);
+        left: 2rem;
+        padding: 0.5rem 1rem 1rem 0.5rem;
+        width: 17rem;
+        border: var(--color6) 1px solid;
+        overflow-y: auto;
+        background-color: var(--color1);
+        height: calc(100vh - var(--fre-footer-height) - var(--top-margin));
+    }
+    .page-toc {
+        --top-margin: 3rem;
+        position: fixed;
+        top: var(--top-margin);
+        right: 2rem;
+        width: 15rem;
+        height: calc(100vh - var(--fre-footer-height) - var(--top-margin));
+        transition:color 0.2s linear;
+    }
+    .page-toc-small {
+        display: none;
+    }
+    .main-menu-small-expand-button {
+        display: none;
+    }
+    .main-menu-small-img {
+        display: none;
+    }
+    /*****************/
+    .landing-herosection {
+        background-position-x: 98%;
+        background-position-y: 99%;
+    }
+    .landing-herosection h1 {
+        text-align: center;
+    }
+    .landing-herosection h2 {
+        text-align: center;
+    }
+}

@@ -1,99 +1,79 @@
+<script lang="ts">
+	import ThemeToggle from '$lib/theming/ThemeToggle.svelte';
+	import MenuIcon from '$lib/icons/MenuIcon.svelte';
+	import GithubLogo from '$lib/icons/GithubLogo.svelte';
+	import Tooltip from '../buttons/Tooltip.svelte';
+	import { popoverElem } from '$lib/Store.js';
+	import PopoverMenu from '$lib/appbar/PopoverMenu.svelte';
+	import PopoverCategoryMenu from '$lib/appbar/PopoverCategoryMenu.svelte';
+	import { allCategories } from '$lib/sidebar/SidebarContent.js';
+	import { SvelteComponent } from 'svelte';
+
+	let catMenu: SvelteComponent[] = [];
+
+	function expandClick(index: number) {
+		catMenu[index].openContent();
+	}
+</script>
+
 <!-- The AppBar is always shown at the top of the viewport -->
 <!-- TODO add search mechanism -->
 
+<PopoverMenu />
+{#each allCategories as cat, index}
+	<PopoverCategoryMenu id="category-{index}" content={cat.toc} bind:this={catMenu[index]} />
+{/each}
+
 <div class="app-bar">
-	{#if $miniWindow}
+	<div class="app-bar-small">
 		<!-- this button is shown only when the viewport is small -->
 		<!-- it is used to open the left panel which shows the navigator -->
-		<!-- the title is also smaller in a small viewport		-->
-		<Tooltip tip="Hide/show content tree" bottom>
-		<Button on:click={() => {$leftPanelVisible = !$leftPanelVisible;}} icon={true}>
-			<MenuIcon />
-		</Button>
+		<Tooltip tip="Hide/show content" bottom>
+			<button
+				class="app-bar-button"
+				on:click={() => {
+					$popoverElem.togglePopover();
+				}}
+			>
+				<span class="app-bar-button-content">
+					<MenuIcon />
+				</span>
+			</button>
 		</Tooltip>
 
-		<div class="title">PI Documentation</div>
-	{:else}
-		<div class="title">ProjectIt Documentation (version {versionNumber})</div>
-	{/if}
+		<div class="title">Freon</div>
+	</div>
 
-	<span class='linkLogo'>
-		<Tooltip tip="dark mode" bottom>
+	<div class="app-bar-large">
+		<a href="https://www.freon4dsl.dev" class="app-bar-linkLogo">
+			<Tooltip tip="home" bottom>
+				<img src="/freonlogo.png" alt="Freon Logo" height="24" />
+			</Tooltip>
+		</a>
+		<a href="/" class="title">
+			<div>Freon</div>
+		</a>
+		<nav class="app-bar-main-menu">
+			{#each allCategories as cat, index}
+				<a href={cat.path} class="app-bar-linkLogo">
+					<h6>{cat.name}</h6>
+				</a>
+				<button class="main-menu-small-expand-button" on:click={() => expandClick(index)}>
+					<img class="main-menu-small-img" src="/icons/down-chevron-white.png" alt="arrow down" />
+				</button>
+			{/each}
+		</nav>
+	</div>
+
+	<span class="app-bar-linkLogo">
+		<Tooltip tip="light/dark mode" bottom>
 			<ThemeToggle />
 		</Tooltip>
 	</span>
 
-	<a target="_blank" href="https://github.com/projectit-org/ProjectIt" alt="ProjectIt on GitHub" class='linkLogo'>
+	<a target="_blank" href="https://github.com/freon4dsl/Freon4dsl.git" class="app-bar-linkLogo">
 		<Tooltip tip="github source" bottom>
 			<GithubLogo />
 		</Tooltip>
 	</a>
-
-	{#if !$miniWindow}
-		<!-- TODO change images for dark mode -->
-		<!-- normally, the brand icon is shown-->
-
-		<a target="_blank" href="https://www.projectit.org" class='linkLogo'>
-<!--			// use global var ==> hack instead of using svg for projectit logo-->
-			<Tooltip tip="home" bottom>
-			{#if $darkMode}
-				<img src="/projectit-logo.png"  style="color:red" alt="ProjectIt Logo" height='24'>
-			{:else}
-				<img src="/projectit-logo-inverse-colors.png"  style="color:red" alt="ProjectIt Logo" height='24'>
-			{/if}
-			</Tooltip>
-		</a>
-
-	{/if}
-
 </div>
-
-<script lang="ts">
-	import { miniWindow, leftPanelVisible, versionNumber } from '../Store';
-	import ThemeToggle from '../theming/ThemeToggle.svelte';
-	import MenuIcon from '../icons/MenuIcon.svelte';
-	import Button from '../buttons/Button.svelte';
-	import GithubLogo from '../icons/GithubLogo.svelte';
-	import { darkMode } from '../Store';
-	import Tooltip from '../buttons/Tooltip.svelte';
-
-</script>
-
-<style>
-		.linkLogo {
-        margin-right: 8px;
-        margin-left: 8px;
-		}
-	.app-bar {
-		display: flex;
-		align-items: center;
-		height: var(--pi-header-height);
-		color: var(--theme-colors-text_app_bar);
-		background: var(--theme-colors-bg_app_bar);
-		font-size: var(--pi-header-font-size);
-		line-height: 1;
-		min-width: inherit;
-		padding: 0 4px 0 6px;
-		position: fixed;
-		left: 0;
-		top: 0;
-		right: 0;
-		z-index: 20;
-	}
-	.title {
-		flex: 1;
-		margin-left: 0.5rem;
-		white-space: nowrap;
-		text-align: center;
-		color: var(--theme-colors-inverse_color);
-	}
-
-	img{
-		max-width: 180px;
-		max-height: calc(var(--pi-header-height) - 5px);
-		margin-top: 3px;
-		margin-bottom: 3px;
-		margin-left: auto;
-		margin-right: 10px;
-	}
-</style>

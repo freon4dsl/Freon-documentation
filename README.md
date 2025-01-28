@@ -1,32 +1,61 @@
-# ProjectIt Documentation
+# Freon Documentation
 
-This project contains the sources for all documentation on [ProjectIt](https://github.com/projectit-org/ProjectIt). It is powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
+This project contains the sources for all documentation on [Freon](https://github.com/freon4dsl/Freon4dsl). It uses SvelteKit. 
 
-## Creating a documentation website
-
-Create the website using (either npm or yarn will work) and browse through it.
-
-```bash
-# Install dependencies
-yarn install
-
-# create the content for navigation tree, check the internal links, and include the code fragments
-yarn prepare
-
-# create the website in the directory 'docs'
-yarn run build
-
-# preview the website
-yarn run preview
-```
-> Note: preview should _not_ be used to serve your website in production.
 ## Developing
 
 During development, you can use the following commands.
+
 ```bash
+# Install dependencies
+npm install
+
+# create the website from the Markdown content
+npm run buildSite
+
 # create the website and serve it on localhost:3000
-yarn run dev
+npm run dev
 
 # or start the server and open the app in a new browser tab
-yarn run dev -- --open
+npm run dev -- --open
 ```
+
+## Creating a documentation website
+
+Create the website and browse through it.
+
+```bash
+# Install dependencies
+npm install
+
+# Get the code, which will be embedded in the content, from a number of example projects 
+npm install-examples
+
+# create the website from the Markdown content
+npm run buildSite
+
+# create the website in the directory 'docs'
+npm run build
+
+# preview the website
+npm run preview
+```
+
+> Note: sometimes you need to set the line separators to CRLF - Windows to get the embedded code
+> correctly into the pages.
+
+During development the latter two commands can be exchanged by the following command. 
+
+```bash
+# build and serve the website
+npm run dev
+```
+
+> Note: preview should *not* be used to serve your website in production.
+
+## Publishing
+
+In de docs folder:
+
+- Check whether the .nojekyll file is there, to avoid GitHub from doing stuff that breaks the site.
+- Check whether the CNAME file with www.freon4dsl.dev is there
