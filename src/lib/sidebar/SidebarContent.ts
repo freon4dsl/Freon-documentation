@@ -80,8 +80,9 @@ export const examplesToc: TocContentsType =
       { name: 'Overview', path: '/Examples/Overview'},
       { name: 'Building an Interpreter', path: '/Examples/Building_an_Interpreter',
         content: [
-         { name: 'More Evaluation Functions', path: '/Examples/Building_an_Interpreter/More_Evaluation_Functions'},
+         { name: 'Basic Evaluation Functions', path: '/Examples/Building_an_Interpreter/Basic_Evaluation_Functions'},
          { name: 'Using the Context', path: '/Examples/Building_an_Interpreter/Using_the_Context'},
+         { name: 'Finishing the Test', path: '/Examples/Building_an_Interpreter/Finishing_the_Test'},
        ]},
       { name: 'Generic Types', path: '/Examples/Generic_Types',
         content: [

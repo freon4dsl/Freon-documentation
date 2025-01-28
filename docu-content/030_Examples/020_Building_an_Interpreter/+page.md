@@ -1,3 +1,7 @@
+<script>
+    import Note from "$lib/notes/Note.svelte";
+</script>
+
 # Building an Interpreter
 
 This example shows how to create an interpreter.
@@ -5,11 +9,22 @@ This example shows how to create an interpreter.
 ## The Computer Aided Learning DSL
 
 The language used in this extended example is the one that is in depth explained in the [tutorial](/Tutorial/Overview).
-Remember from the requirements for this DSL that our hypothetical client wants a means to test the page flow.
+When you take another look at the requirements for this DSL, you see that our hypothetical client wants a means to test the page flow.
 We are going to build an interpreter to do just that.
 
-To follow the example use the `npm create freon@latest` command and choose the language called `Education`. Empty the
-`/src/defs` folder, then copy in all def files for Lesson 9. Build the project (`npm run build`).
+To follow the example use the `npm create freon@latest` command and choose the language called `EducationInterpreter`. 
+Build the project (`npm run build`). Start the editor and select the model named 'Model4Interpreter', which is 
+basically the same as the model called 'Lesson6' that was used in the tutorial. Open the model unit 'TestB' and run the 
+interpreter from the `Edit` menu on the complete test (i.e. by selecting the test as current node).
+
+<Note>
+<svelte:fragment slot="header">The selected node is the one that is interpreted</svelte:fragment>
+<svelte:fragment slot="content">
+When running the interpreter from the <code>Edit</code> menu, the interpreter will try to evaluate 
+the currently selected node. You will see a different result in the Interpreter tab for different nodes.
+Often the interpretation cannot be done completely, because some context is needed. It is up to the 
+creator of the interpreter to augment this.
+</svelte:fragment></Note>
 
 ## Values for the Literals
 
@@ -20,8 +35,12 @@ Because this is the easiest manner, we are going to build the evaluation from th
 implement the evaluation functions for the literal expressions, i.e. `SimpleNumber`, `NumberLiteralExpression`, and `Fraction`.
 
 ```ts
-// Education/src/interpreter/EducationInterpreter.ts#L206-L218
+// EducationInterpreter/src/custom/interpreter/EducationInterpreter.ts#L216-L228
 
+/////////////////// Literals
+
+override evalSimpleNumber(node: SimpleNumber, ctx: InterpreterContext): RtObject {
+    return new RtNumber(node.value)
 }
 
 override evalNumberLiteralExpression(node: NumberLiteralExpression, ctx: InterpreterContext): RtObject {
@@ -31,17 +50,13 @@ override evalNumberLiteralExpression(node: NumberLiteralExpression, ctx: Interpr
 override evalFraction(node: Fraction, ctx: InterpreterContext): RtObject {
     return new RtFraction(new RtNumber(node.numerator), new RtNumber(node.denominator))
 }
-
-///////////////// COMPARISON EXPRESSIONS
-
-override evalEqualsExpression(node: EqualsExpression, ctx: InterpreterContext): RtObject {
 ```
 
 As you see, the first two functions simply return a runtime object of type `RtNumber` which holds the current `value`
 of the node. The third function returns a runtime object of type `RtFraction`, which is defined as follows:
 
 ```ts
-// Education/src/interpreter/runtime/RtFraction.ts
+// EducationInterpreter/src/custom/interpreter/runtime/RtFraction.ts
 
 import { RtBoolean, RtNumber, RtObject } from "@freon4dsl/core";
 
@@ -88,13 +103,13 @@ The next step is to create the evaluation functions for the binary expressions. 
 are all similar, so here we focus on the evaluation of an `OrExpression`. 
 
 ```ts
-// Education/src/interpreter/EducationInterpreter.ts#L234-L238
+// EducationInterpreter/src/custom/interpreter/EducationInterpreter.ts#L244-L248
 
+override evalOrExpression(node: OrExpression, ctx: InterpreterContext): RtObject {
+    const left = main.evaluate(node.left, ctx) as RtBoolean
+    const right = main.evaluate(node.right, ctx) as RtBoolean
+    return left.or(right)
 }
-
-override evalGreaterThenExpression(node: GreaterThenExpression, ctx: InterpreterContext): RtObject {
-    const left = main.evaluate(node.left, ctx) as RtNumber
-    const right = main.evaluate(node.right, ctx) as RtNumber
 ```
 
 First we evaluate the
@@ -123,11 +138,11 @@ The other comparison expressions, like `AndExpression`, and `EqualsExpression`, 
 in a similar fashion. For example, this is the implementation of the `GreaterOrEqualsExpression`:
 
 ```ts
-// Education/src/interpreter/EducationInterpreter.ts#L246-L250
+// EducationInterpreter/src/custom/interpreter/EducationInterpreter.ts#L256-L260
 
-}
-
-override evalLessThenExpression(node: LessThenExpression, ctx: InterpreterContext): RtObject {
+override evalGreaterOrEqualsExpression(node: GreaterOrEqualsExpression, ctx: InterpreterContext): RtObject {
     const left = main.evaluate(node.left, ctx) as RtNumber
     const right = main.evaluate(node.right, ctx) as RtNumber
+    return RtBoolean.of(left.value >= right.value)
+}
 ```

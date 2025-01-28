@@ -2,7 +2,7 @@
     import Note from "$lib/notes/Note.svelte";
 </script>
 
-# More Evaluation Functions
+# More Basic Evaluation Functions
 
 With the simplest evaluation functions done, we can turn to the actual test that needs to be done.
 
@@ -53,10 +53,10 @@ should be `true`, because a last step does not have a next page and therefore do
 restrictions on the correctness of the step. The evaluation function is implemented as follows:
 
 ```ts
-// Education/src/interpreter/EducationInterpreter.ts#L204-L206
+// EducationInterpreter/src/custom/interpreter/EducationInterpreter.ts#L212-L214
 
-override evalSimpleNumber(node: SimpleNumber, ctx: InterpreterContext): RtObject {
-    return new RtNumber(node.value)
+override evalLastStep(node: LastStep, ctx: InterpreterContext): RtObject {
+    return RtBoolean.TRUE
 }
 ```
 
@@ -68,17 +68,17 @@ from the question, but because `question` is defined in the .ast file as a refer
 to obtain its value and check whether the reference was found. 
 
 ```ts
-// Education/src/interpreter/EducationInterpreter.ts#L194-L202
+// EducationInterpreter/src/custom/interpreter/EducationInterpreter.ts#L202-L210
 
+override evalAnswer(node: Answer, ctx: InterpreterContext): RtObject {
+    console.log(`evalAnswer.node ${node?.$question.content}`)
+    const actualAnswer = main.evaluate(node.value, ctx)
+    if (node.question.referred !== undefined && node.question.referred !== null) {
+        const expectedAnswer = main.evaluate(node.question.referred.correctAnswer, ctx)
+        return actualAnswer.equals(expectedAnswer)
     }
     return new RtError("evalAnswer: question not found")
 }
-
-override evalLastStep(node: LastStep, ctx: InterpreterContext): RtObject {
-    return RtBoolean.TRUE
-}
-
-/////////////////// Literals
 ```
 
 ## Evaluation of Page
@@ -102,12 +102,17 @@ functions for the concrete children of `Page`: `Theory`, `Video`, `WorkSheet`, `
 and `InDepthMaterial`, so these are the ones that we will implement.
 
 ```ts
-// Education/src/interpreter/EducationInterpreter.ts#L144-L172
+// EducationInterpreter/src/custom/interpreter/EducationInterpreter.ts#L153-L182
 
+static evalPage(node: Page, ctx: InterpreterContext): RtObject {
+    // Find grade for given answers
+    console.log(`Evaluating Page ${node?.name}`)
+    for (const score of node.grading) {
         const scoreValue = main.evaluate(score.expr, ctx)
         if (isRtBoolean(scoreValue)) {
             if (scoreValue.asBoolean()) {
-                return new RtGrade(score.grade.referred)
+                console.log(`Evaluating Page returning ${score.$grade?.name}`)
+                return new RtGrade(score.$grade)
             }
         }
     }
@@ -129,10 +134,6 @@ override evalInDepthMaterial(node: InDepthMaterial, ctx: InterpreterContext): Rt
 override evalExamplePage(node: ExamplePage, ctx: InterpreterContext): RtObject {
     return EducationInterpreter.evalPage(node, ctx)
 }
-
-override evalQuestionReference(node: QuestionReference, ctx: InterpreterContext): RtObject {
-    const question = node?.question?.referred
-    if (question === undefined || question === null) {
 ```
 
 ## Evaluation of ScoreExpressions
@@ -157,11 +158,11 @@ context. Note, that we have to remember to put this value in the context somewhe
 [//]: # (todo check the above statement)
 
 ```ts
-// Education/src/interpreter/EducationInterpreter.ts#L188-L190
+// EducationInterpreter/src/custom/interpreter/EducationInterpreter.ts#L198-L200
 
-override evalAnswer(node: Answer, ctx: InterpreterContext): RtObject {
-    console.log(`evalAnswer.node ${node?.$question.content}`)
-    const actualAnswer = main.evaluate(node.value, ctx)
+override evalNrOfCorrectAnswers(node: NrOfCorrectAnswers, ctx: InterpreterContext): RtObject {
+    return ctx.find("NR_OF_CORRECT_ANSWERS")
+}
 ```
 
 The implementation of the evaluation of a `QuestionReference` is a bit more complicated. Remember what it looks like in the model:
@@ -176,20 +177,20 @@ just need to evaluate `question.correctAnswer`. The answer given by the pupil is
 and should be found in the context.
 
 ```ts
-// Education/src/interpreter/EducationInterpreter.ts#L174-L186
+// EducationInterpreter/src/custom/interpreter/EducationInterpreter.ts#L184-L196
 
+override evalQuestionReference(node: QuestionReference, ctx: InterpreterContext): RtObject {
+    const question = node?.question?.referred
+    if (question === undefined || question === null) {
+        throw new RtError("evalQuestionReference: Question is not found")
     }
     const expected = main.evaluate(question.correctAnswer, ctx)
     const givenAnswer = ctx.find(question)
     if (givenAnswer === undefined || givenAnswer === null) {
         throw new RtError(`evalQuestionReference: Question '${question.content}' does not have a result value`)
     }
-    console.log(`evalQuestionReference for '${question.content}' is '${givenAnswer}', expected ${expected}`)
+    console.log(`evalQuestionReference for '${question.content}', given answer is '${givenAnswer}', expected '${expected}'`)
     return givenAnswer.equals(expected)
-}
-
-override evalNrOfCorrectAnswers(node: NrOfCorrectAnswers, ctx: InterpreterContext): RtObject {
-    return ctx.find("NR_OF_CORRECT_ANSWERS")
 }
 ```
 
@@ -197,29 +198,28 @@ override evalNrOfCorrectAnswers(node: NrOfCorrectAnswers, ctx: InterpreterContex
 
 Now we can return to the `evalPage` function. We know how to determine the runtime value of a single ScoreExpression,
 but how do we determine the runtime value of the complete page? We have chosen to go over all grades and see for which 
-the score expression returns true. The first one that we find will be the page's grade. 
+the score expression returns true. The first one that we find will be the page's grade. But wait, there is no runtime
+object that represents a grade. We could return an M1 object (of type `Grade`), but we want to make a clear distinction
+between the M1 and M0 levels. So we make a new runtime class: `RtGrade`.
 
 ```ts
-// Education/src/interpreter/EducationInterpreter.ts#L144-L156
+// EducationInterpreter/src/custom/interpreter/EducationInterpreter.ts#L153-L166
 
+static evalPage(node: Page, ctx: InterpreterContext): RtObject {
+    // Find grade for given answers
+    console.log(`Evaluating Page ${node?.name}`)
+    for (const score of node.grading) {
         const scoreValue = main.evaluate(score.expr, ctx)
         if (isRtBoolean(scoreValue)) {
             if (scoreValue.asBoolean()) {
-                return new RtGrade(score.grade.referred)
+                console.log(`Evaluating Page returning ${score.$grade?.name}`)
+                return new RtGrade(score.$grade)
             }
         }
     }
     return new RtError(`No grade found for current answers in page ${node.name}`)
 }
-
-override evalTheory(node: Theory, ctx: InterpreterContext): RtObject {
-    return EducationInterpreter.evalPage(node, ctx)
-}
 ```
-
-But wait, there is no runtime
-object that represents a grade. We could return an M1 object (of type `Grade`), but we want to make a clear distinction
-between the M1 and M0 levels. So we make a new runtime class: `RtGrade`.
 
 <Note>
 <svelte:fragment slot="header">Meta Levels</svelte:fragment>
@@ -244,7 +244,7 @@ For Java this is the execution of a Java program.
 
 
 ```ts
-// Education/src/interpreter/runtime/RtGrade.ts
+// EducationInterpreter/src/custom/interpreter/runtime/RtGrade.ts
 
 import { RtBoolean, RtObject } from "@freon4dsl/core";
 import { Grade } from "../../language/gen/index.js";

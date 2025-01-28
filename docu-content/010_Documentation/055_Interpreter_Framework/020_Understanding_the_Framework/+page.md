@@ -124,6 +124,15 @@ Which is exactly what we need.
 
 ## Running the Interpreter
 
+<Note>
+<svelte:fragment slot="header">The selected node is the one that is interpreted</svelte:fragment>
+<svelte:fragment slot="content">
+When running the interpreter from the <code>Edit</code> menu, the interpreter will try to evaluate 
+the currently selected node. You will see a different result in the Interpreter tab for different nodes.
+Often the interpretation cannot be done completely, because some context is needed. It is up to the 
+creator of the interpreter to augment this.
+</svelte:fragment></Note>
+
 The following shows the result of running the interpreter for our Expressions example. The model 
 has one function `range` and two expressions. When running the interpreter from the `Edit` menu 
 in the Freon editor, a trace of the evaluation is shown in the Interpreter tab.
