@@ -46,7 +46,7 @@ The files for lesson1 are present in the `src/defs` folder (see <a href='#where-
 Empty this folder before the next lesson, and copy in the files for the lesson you are about to follow. You can also find 
 a number of models that fit the language(s) from the lessons in the **modelstore** folder. (For an explanation of the content of the project see
 [Project_Structure](/Documentation/Overview/Getting_Started#project_structure-4).) Use the model called `Lesson1` for lessons 1 till 3, 
-the model `Lesson4` for lessons 4 and 5, and `Lesson6`for the rest of the lessons.
+the model `Lesson4` for lessons 4 and 5, and `Lesson6` for the rest of the lessons.
 
 For some hints on how to use the editor, click on the question mark on the top bar of the editor.
 

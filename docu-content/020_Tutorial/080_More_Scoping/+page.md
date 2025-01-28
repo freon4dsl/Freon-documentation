@@ -36,7 +36,6 @@ modelunit Test {
 concept Scenario {
     description: string;
     testFlow: TestFlow[];
-    steps: Step[]; /* Note that the order is of importance */
 }
 
 concept TestFlow {
