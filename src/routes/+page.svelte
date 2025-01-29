@@ -97,8 +97,8 @@
 			<div class="landing-card">
 				<div class="landing-testimonial">
 					<div class="landing-testimonial-top">
-						<div class="landing-testimonial-child"><h4><b>By Mike Vogel, Triradial</b></h4></div>
-						<div class="landing-testimonial-child"><img src="freonlogo.png" alt="Company Logo" style="width:40px" /></div>
+						<div class="landing-testimonial-child"><h4><b>By Mike Vogel, Triradial Solutions</b></h4></div>
+						<div class="landing-testimonial-child"><img src="icons/TriRadial_Logo2024.webp" alt="TriRadial Logo" style="width:100px" /></div>
 					</div>
 					<p>
 						TriRadial Solutions is using Freon for the DSL in or Clinical Research Coordinator (CRC) product. CRCs are the front-line staff
