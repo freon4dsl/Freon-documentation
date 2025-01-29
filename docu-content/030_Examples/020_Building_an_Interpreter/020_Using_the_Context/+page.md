@@ -31,6 +31,7 @@ Let's take a step-by-step look at how this is implemented.
 ```ts
 // EducationInterpreter/src/custom/interpreter/EducationInterpreter.ts#L113-L126
 
+// Put the page for this step in the context
 const newCtx = new InterpreterContext(ctx)
 
 // Find the nr of correct answers and add it to the context
@@ -44,7 +45,6 @@ for (const answer of node.answerSeries) {
         nrOfCorrectAnswers++
     }
 }
-newCtx.set("NR_OF_CORRECT_ANSWERS", new RtNumber(nrOfCorrectAnswers))
 ```
 
 In this example we see that contexts may be nested. A new context is created 
@@ -68,8 +68,8 @@ Now we have enough information to determine the grade of the `fromPage``:
 ```ts
 // EducationInterpreter/src/custom/interpreter/EducationInterpreter.ts#L128-L129
 
+
 // Find the grade for the given answers
-const grade = main.evaluate(currentPage, newCtx) as RtGrade
 ```
 
 Note that we use the context with the stored value for `NR_OF_CORRECT_ANSWERS`,
@@ -88,6 +88,7 @@ From the flow we obtain the rule for the current page, and from that we get the 
 ```ts
 // EducationInterpreter/src/custom/interpreter/EducationInterpreter.ts#L131-L147
 
+
 //  Find rule for current page
 const currentFlow = ctx.find("CURRENT_FLOW") as RtFlow
 if (isNullOrUndefined(currentFlow)) {
@@ -104,7 +105,6 @@ if (isNullOrUndefined(pageRule)) {
 const transition = pageRule.transitions.find((trans) => trans.$condition === (grade as RtGrade).grade)
 if (isNullOrUndefined(transition)) {
     return new RtError(`No transition found for grade ${grade.grade} on page ${currentPage.name} in ${currentFlow.flow.name}`)
-}
 ```
 
 Now all that is left to do is to return the found page:
