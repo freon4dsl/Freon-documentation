@@ -50,50 +50,30 @@
 
 		<section>
 			<div class="landing-text">
-				<div>
-					<p>
-						Freon is a workbench that empowers you to effortlessly create custom web-enabled mini-languages, or
-						<a href="https://en.wikipedia.org/wiki/Domain-specific*language" target="_blank"><b>Domain Specific Languages (DSLs)</b></a>,
-						tailored to your unique needs. With just a small set of definitions, Freon generates a fully integrated toolkit for your
-						language, including a seamless editor, scope provider, type provider, and validator — all designed to elevate your language
-						creation process.
-					</p>
-					<p>
-						One of Freon’s standout features is its <a href="/Intro/Projectional_Editing"><b>projectional editor</b></a>, a revolutionary
-						approach to language editing that’s miles ahead of traditional editors. Unlike standard editors, projectional editing offers
-						dynamic, visual structuring and precision, making it easier than ever to build and refine DSLs right in any browser.
-					</p>
-				</div>
-				<div>
-					<h3>Key Benefits:</h3>
-					<ul>
-						<li>
-							<b>Personalized Language Support</b>: Tailor your editor to interpret and respond to the specific syntax, logic, and commands
-							of your own domain language, making backend integration smoother and more powerful.
-						</li>
-						<li>
-							<b>Simplified Content Management</b>: With a custom editor, adding and managing backend content becomes streamlined and
-							efficient, cutting down on coding time while reducing errors.
-						</li>
-						<li>
-							<b>Flexibility and Control</b>: Easily build, test, and adapt your editor to align with your evolving backend needs, so you
-							stay agile and future-ready.
-						</li>
-						<li>
-							<b>Boosted Productivity</b>: Enjoy the convenience of a tool that speaks your language – literally. Create, and edit content
-							faster, without needing to compromise on the complexity or specificity of your backend requirements.
-						</li>
-					</ul>
-					<p>
-						Unlock the power of custom mini-languages with Freon and see how projectional editing can redefine the way you create and manage
-						DSLs!
-					</p>
-				</div>
+				<p>Freon is an advanced language workbench that simplifies the creation of domain-specific languages
+					(DSLs) through a web-based framework. With Freon, language engineers can define a language's structure,
+					editor, scoper, typer, and validator—all from a concise set of definitions. By leveraging the power
+					of projectional editing, Freon enables a smooth and intuitive development process, making it easier
+					to build custom editing environments for specialized languages.</p>
+
+				<p>Whether you're developing a DSL for a niche domain or designing a specialized tool for your
+					organization, Freon provides the flexibility and scalability you need to quickly bring your
+					ideas to life. Start creating your own custom language workbench with Freon today, and take
+					advantage of its open-source framework and growing set of features to stay ahead in the world
+					of web-based language development.</p>
+				<p>At the heart of Freon lies a robust framework accompanied by five specialized generators, each dedicated to a crucial aspect of your language's work environment:</p>
+				<ul>
+				<li>Language Structure: Define the core concepts, properties, and relationships inherent to your language.</li>
+				<li>Editor: Customize the visual representation and editing commands, ensuring a user-friendly interface.</li>
+					<li>Scoper: Establish rules for name resolution, managing references within your language models.</li>
+				<li>Typer: Determine the types associated with language elements, enforcing consistency and correctness.</li>
+				<li>Validator: Set validation rules to ensure models adhere to defined constraints, providing real-time feedback.</li>
+				</ul>
+				<p>Join us in shaping the future of DSL development by exploring Freon today!</p>
 			</div>
 		</section>
 
 		<section>
-			<h2 class="landing-h2">Testimonial</h2>
 			<div class="landing-card">
 				<div class="landing-testimonial">
 					<div class="landing-testimonial-top">
