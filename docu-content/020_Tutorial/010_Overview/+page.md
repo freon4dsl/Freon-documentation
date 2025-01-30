@@ -58,8 +58,8 @@ Look at the scripts for `generate `and `clean-gen`. There you find the folder `s
 mentioned. If you change these entries you can place the language definition files anywhere you like.
 
 ```
-"generate": "freon -v all -d src/defs -o src/",
-"clean-gen": "freon clean-it -d src/defs -o src/",
+"generate": "freon -v all -d src/defs -o src/freon",
+"clean-gen": "freon clean-it -d src/defs -o src/freon",
 ```
 
 In this tutorial we will make a number of Freon definition files. Note that the extension of the 

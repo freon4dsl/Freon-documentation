@@ -13,10 +13,9 @@ These packages support a wide range of functionality like:
 - (de)serialization between in-memory models and JSON format
 - model diff
 - model validation
-- -etc.
+- etc.
 
-- There also is a `lionweb-repository` package that implements a LionWeb server
-  for model storage using the LionWeb server protocol.
+There also is a `lionweb-repository` package that implements a LionWeb server for model storage using the LionWeb server protocol.
 
 
 ## Freon and LionWeb
@@ -55,8 +54,8 @@ WebappConfigurator.getInstance().setServerCommunication(LionWebRepositoryCommuni
   in LionWeb JSON format. 
 - This is done by the following command:
 ```bash
-- freon lionweb-it -d src/defs -o src/freon
+freon lionweb-it -d src/defs -o src/freon
 ```
 This will create a file `src/freon/lionweb/<LanguageName>.json` containing the LionWeb
-definition for `<langaugeName>`.
+definition for `<languageName>`.
 Note that this is a beta feature.

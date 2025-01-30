@@ -7,29 +7,13 @@
 	<AppBar />
 	<div class="content-box">
 		<section class="landing-herosection">
-			<h1>Introducing Freon</h1>
-			<h2>The ultimate Language Workbench for the web!</h2>
-			<div class="landing-started">
-				<a href="/Documentation/Overview/Getting_Started"
-					>Get Started
-					<span class="landing-arrow">
-						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" height="28px"
-							><!--!Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path
-								fill="currentColor"
-								d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"
-							/></svg
-						>
-					</span>
-				</a>
-			</div>
-
 			<div>
 				<!--	Without an extra div the margin-left for landing-name does not work				-->
 				<div class="landing-name">
 					<div class="landing-name-child">
 						<div class="landing-name-logo">
 							<div class="landing-image-holder"><img src="freonlogo.png" alt="Freon Logo" style="width:50px; margin-top: 10px;" /></div>
-							<h1>Freon</h1>
+							<h1 class="landing-name-text">Freon</h1>
 						</div>
 					</div>
 
@@ -46,28 +30,49 @@
 					</div>
 				</div>
 			</div>
+
+			<h1 class="landing-name-text">Introducing Freon</h1>
+			<h2>The ultimate Language Workbench for the Web!</h2>
+			<div class="landing-started">
+				<a href="/Documentation/Overview/Getting_Started"
+					>Getting Started
+					<span class="landing-arrow">
+						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 412" height="28px"
+							><!--!Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path
+								fill="currentColor"
+								d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"
+							/></svg
+						>
+					</span>
+				</a>
+			</div>
 		</section>
 
 		<section>
 			<div class="landing-text">
-				<p>Freon is an advanced language workbench that simplifies the creation of domain-specific languages
-					(DSLs) through a web-based framework. With Freon, language engineers can define a language's structure,
-					editor, scoper, typer, and validator—all from a concise set of definitions. By leveraging the power
-					of projectional editing, Freon enables a smooth and intuitive development process, making it easier
-					to build custom editing environments for specialized languages.</p>
+				<p class="see-me">
+					Freon is an advanced language workbench that simplifies the creation of domain-specific languages (DSLs) through a web-based
+					framework. With Freon, language engineers can define a language's structure, editor, scoper, typer, and validator—all from a
+					concise set of definitions. By leveraging the power of projectional editing, Freon enables a smooth and intuitive development
+					process, making it easier to build custom editing environments for specialized languages.
+				</p>
 
-				<p>Whether you're developing a DSL for a niche domain or designing a specialized tool for your
-					organization, Freon provides the flexibility and scalability you need to quickly bring your
-					ideas to life. Start creating your own custom language workbench with Freon today, and take
-					advantage of its open-source framework and growing set of features to stay ahead in the world
-					of web-based language development.</p>
-				<p>At the heart of Freon lies a robust framework accompanied by five specialized generators, each dedicated to a crucial aspect of your language's work environment:</p>
+				<p class="see-me">
+					Whether you're developing a DSL for a niche domain or designing a specialized tool for your organization, Freon provides the
+					flexibility and scalability you need to quickly bring your ideas to life. Start creating your own custom language workbench with
+					Freon today, and take advantage of its open-source framework and growing set of features to stay ahead in the world of web-based
+					language development.
+				</p>
+				<p>
+					At the heart of Freon lies a robust framework accompanied by five specialized generators, each dedicated to a crucial aspect of
+					your language's work environment:
+				</p>
 				<ul>
-				<li>Language Structure: Define the core concepts, properties, and relationships inherent to your language.</li>
-				<li>Editor: Customize the visual representation and editing commands, ensuring a user-friendly interface.</li>
+					<li>Language Structure: Define the core concepts, properties, and relationships inherent to your language.</li>
+					<li>Editor: Customize the visual representation and editing commands, ensuring a user-friendly interface.</li>
 					<li>Scoper: Establish rules for name resolution, managing references within your language models.</li>
-				<li>Typer: Determine the types associated with language elements, enforcing consistency and correctness.</li>
-				<li>Validator: Set validation rules to ensure models adhere to defined constraints, providing real-time feedback.</li>
+					<li>Typer: Determine the types associated with language elements, enforcing consistency and correctness.</li>
+					<li>Validator: Set validation rules to ensure models adhere to defined constraints, providing real-time feedback.</li>
 				</ul>
 				<p>Join us in shaping the future of DSL development by exploring Freon today!</p>
 			</div>

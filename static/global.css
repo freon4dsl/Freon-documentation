@@ -98,6 +98,11 @@ h1  {
 	font-weight: bold;
 	font-size: xx-large;
 }
+.landing-name-text  {
+	font-weight: bold;
+	font-size: xxx-large;
+}
+
 h2  {
 	font-weight: bold;
 	font-size: x-large;
@@ -155,6 +160,9 @@ li {
 	background: var(--color1);
 }
 /* Styles for the landing page */
+.see-me {
+	font-size: 1.1rem;
+}
 .landing-started a {
 	color: var(--color-accent);
 }
@@ -169,7 +177,7 @@ li {
 	color: var(--color-accent);
 }
 .landing-herosection h1 {
-	margin: 4rem 4rem 1rem 2rem;
+	margin: 2rem 2rem 1rem 2rem;
 }
 .landing-herosection h2 {
 	margin: 1rem 4rem 2rem 2rem;
@@ -184,10 +192,13 @@ li {
 	background-color: var(--theme-colors-FRE_YELLOW);
 	color: var(--theme-colors-FRE_BROWN);
 	border-radius: 5px;
-	margin-left: 1rem;
+	margin-left: 2rem;
+	margin-bottom: 2rem;
+	padding-top: 1rem;
+	padding-bottom: 1em;
 }
 .landing-name-child {
-	padding: 0.5rem 0.5rem;
+	padding: 0.2rem 0.2rem 0.2rem 0.2rem;
 }
 .landing-name-logo {
 	display: flex;
@@ -215,7 +226,11 @@ li {
 .landing-herosection {
 	background-image: url('images/landing-page/wordcloud-tree-small.png');
 	background-repeat: no-repeat;
+	background-position-x: right;
+	background-position-y: top;
 	margin-bottom: 2rem;
+	margin-top: 2rem;
+	margin-right: 2rem;
 }
 /* Styles for testimonial section */
 .landing-card {
@@ -255,7 +270,7 @@ li {
 	background-color: var(--color5);
 	color: var(--color1);
 	text-align: left;
-	font-size: 1.1rem;
+	font-size: 1.0rem;
 	padding-left: 10px;
 	padding-right: 10px;
 }

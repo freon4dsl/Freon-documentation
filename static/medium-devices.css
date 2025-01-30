@@ -74,14 +74,17 @@
     /*****************/
     .landing-herosection {
         background-size: 250px;
-        background-position-x: 100%;
-        background-position-y: 99%;
+        background-position-x: right;
+        background-position-y: top;
+        margin-bottom: 1rem;
+        margin-top: 1rem;
+        margin-right: 1rem;
     }
     .landing-herosection h1 {
-        text-align: center;
+        text-align: left;
     }
     .landing-herosection h2 {
-        text-align: center;
+        text-align: left;
     }
     .landing-h2 {
         margin-left: 1rem;

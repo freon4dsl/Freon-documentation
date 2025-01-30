@@ -1,4 +1,4 @@
-# A bit of Background
+# A Bit of Background
 
 It took a few years to create Freon, but more importantly it took a lot of experience: experience with building software 
 in general, experience with creating languages like UML and OCL, experience with creating a large number of DSLs,
