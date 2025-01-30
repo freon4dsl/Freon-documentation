@@ -1,4 +1,4 @@
-# LionWeb Connection
+# LionWeb Integration
 
 ## LionWeb
 The LionWeb initiative (see [LionWeb @ Github](https://github.com/LionWeb-io)) aims to make language engineering
