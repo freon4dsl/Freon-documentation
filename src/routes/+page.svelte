@@ -12,8 +12,8 @@
 				<div class="landing-name">
 					<div class="landing-name-child">
 						<div class="landing-name-logo">
-							<div class="landing-image-holder"><img src="freonlogo.png" alt="Freon Logo" style="width:50px; margin-top: 10px;" /></div>
-							<h1 class="landing-name-text">Freon</h1>
+							<div class="landing-image-holder"><img src="freonlogo.png" alt="Freon Logo" style="width:70px; margin-top: 10px;" /></div>
+							<p class="landing-name-text-logo">Freon</p>
 						</div>
 					</div>
 
@@ -48,7 +48,7 @@
 			</div>
 		</section>
 
-		<section>
+		<section class="landing-main-text">
 			<div class="landing-text">
 				<p class="see-me">
 					Freon is an advanced language workbench that simplifies the creation of domain-specific languages (DSLs) through a web-based
@@ -82,7 +82,7 @@
 			<div class="landing-card">
 				<div class="landing-testimonial">
 					<div class="landing-testimonial-top">
-						<div class="landing-testimonial-child"><h4><b>By Mike Vogel, Triradial Solutions</b></h4></div>
+						<div class="landing-testimonial-child"><h2><b>By Mike Vogel, Triradial Solutions</b></h2></div>
 						<div class="landing-testimonial-child">
 							<img src="icons/TriRadial_Logo2024.webp" alt="TriRadial Logo" style="width:100px" />
 						</div>
@@ -107,7 +107,7 @@
 						for new features. We would highly recommend using Freon on a DSL project and would be happy to speak with anyone looking to
 						discuss our experience with Freon.
 					</p>
-					<a href="/Background/Testimonial">
+					<a href="/Background/Testimonial" class=".landing-testimonial-more">
 						<p>Learn more...</p>
 					</a>
 				</div>
@@ -125,8 +125,8 @@
 			<a href="/Documentation" class="landing-enter-button"
 				><h3>Documentation</h3>
 				<p>
-					In this section you can find the full documentation of all features of <span class="landing-freon-name">Freon</span>. The
-					explanation uses small examples to enlighten each feature. Larger comprehensive examples cna be found in the Examples section.
+					In this section you can find the full documentation of all features of Freon. The explanation uses small examples to enlighten
+					each feature. Larger comprehensive examples cna be found in the Examples section.
 				</p>
 				<p>Learn more...</p>
 			</a>
@@ -158,9 +158,9 @@
 			<a href="/Background/Overview" class="landing-enter-button"
 				><h3>Guiding Principles</h3>
 				<p>
-					<span class="landing-freon-name">Freon</span> was created using a lifetime of experience with software development, especially with
-					developing softare languages. All this experience has let to a number of great guiding principles for software development, which are
-					being used in the development of this tool. We happily share our insights with you.
+					Freon was created using a lifetime of experience with software development, especially with developing softare languages. All this
+					experience has let to a number of great guiding principles for software development, which are being used in the development of
+					this tool. We happily share our insights with you.
 				</p>
 				<p>Learn more...</p>
 			</a>

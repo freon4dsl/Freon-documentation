@@ -139,6 +139,9 @@
     position: relative;
     bottom: 6px;
 }
+.copyright a {
+    color: var(--color3)
+}
 .link {
     color: var(--color1);
 }

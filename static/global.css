@@ -20,6 +20,19 @@
 	--theme-colors-FRE_CODE: green;			
 	--theme-colors-FRE_CODE_DARK: #74bf74;
 
+	--theme-colors-FRE_LIGHT: #FFFDF5;
+	--theme-colors-FRE_YELLOW: #ffedac;
+	--theme-colors-FRE_ORANGE: #fbd547;
+	--theme-colors-FRE_BEIGE: #B08A03;
+	--theme-colors-FRE_BEIGE2: #bc9403;
+	--theme-colors-FRE_BROWN: #342B09;
+	--theme-colors-FRE_DARKER: #1E1905;
+	--theme-colors-FRE_ACCENT: #c94117;
+	--theme-colors-FRE_LINK: #DE6B48;
+	--theme-colors-FRE_LINK_DARK: #fb9371;
+	--theme-colors-FRE_CODE: green;
+	--theme-colors-FRE_CODE_DARK: #74bf74;
+
 	/* Other settings */
 
 	/* Freon sizes */
@@ -63,7 +76,7 @@ body {
 	--color-link: var(--theme-colors-FRE_ACCENT);
 	--color-code: var(--theme-colors-FRE_CODE);
 	--color-button-active: rgba(var(--color5), 0.7); /* --theme-colors-FRE_BROWN with opacity .7 */
-	--color-button-hover: rgba(var(--color5), 0.8); /* --theme-colors-FRE_BROWN with opacity .8 */
+	--color-button-hover:rgba(var(--color5), 0.8); /* --theme-colors-FRE_BROWN with opacity .8 */
 	--color-popup-box-shadow: 0 0 0px 0 rgba(0, 0, 0, 0.5);
 
 	/* Other settings */
@@ -79,11 +92,11 @@ body.dark {
 	--color1: var(--theme-colors-FRE_DARKER);
 	--color2: var(--theme-colors-FRE_BROWN);
 	--color3: var(--theme-colors-FRE_BEIGE);
-	--color4: var(--theme-colors-FRE_BEIGE);
+	--color4: var(--theme-colors-FRE_ORANGE);
 	--color5: var(--theme-colors-FRE_YELLOW);
 	--color6: var(--theme-colors-FRE_LIGHT);
 	--color-accent: var(--theme-colors-FRE_ACCENT);
-	--color-link: var(--theme-colors-FRE_LINK);
+	--color-link: var(--theme-colors-FRE_LINK_DARK);
 	--color-code: var(--theme-colors-FRE_CODE_DARK);
 	--color-button-active: rgba(var(--color5), 0.7); /* --theme-colors-FRE_YELLOW with opacity .7 */
 	--color-button-hover: rgba(var(--color5), 0.8); /* --theme-colors-FRE_YELLOW with opacity .8 */
@@ -102,7 +115,11 @@ h1  {
 	font-weight: bold;
 	font-size: xxx-large;
 }
-
+.landing-name-text-logo{
+	font-weight: bold;
+	font-size: xx-large;
+	margin-block-end:1rem;
+}
 h2  {
 	font-weight: bold;
 	font-size: x-large;
@@ -149,6 +166,13 @@ a {
 a:hover {
 	color: var(--color4);
 }
+.landing-enter-buttons-grid a:hover {
+	color: var(--color5);
+}
+.landing-testimonial a:hover {
+	color: var(--theme-colors-FRE_BROWN);
+}
+
 li {
 	padding: 0.2rem;
 }
@@ -161,10 +185,10 @@ li {
 }
 /* Styles for the landing page */
 .see-me {
-	font-size: 1.1rem;
+	/*font-size: 1.1rem;*/
 }
 .landing-started a {
-	color: var(--color-accent);
+	color: var(--color-link);
 }
 .landing-herosection img {
 	border-radius: 5px 5px 0 0;
@@ -193,12 +217,10 @@ li {
 	color: var(--theme-colors-FRE_BROWN);
 	border-radius: 5px;
 	margin-left: 2rem;
-	margin-bottom: 2rem;
-	padding-top: 1rem;
 	padding-bottom: 1em;
+	/*white-space: nowrap;*/
 }
 .landing-name-child {
-	padding: 0.2rem 0.2rem 0.2rem 0.2rem;
 }
 .landing-name-logo {
 	display: flex;
@@ -211,16 +233,27 @@ li {
 }
 .landing-image-holder {
 	display: inline-block;
+	float: left;
+	margin-right: 1rem;
+}
+.landing-main-text {
+	border: var(--color3);
+	border-style: solid;
+	margin: 2rem;
 }
 .landing-started {
+	margin: 0rem;
 	font-size: 2em;
 	font-weight: bolder;
 	text-align: center;
 	padding: 0.5rem 0.5rem;
-	margin-bottom: 1.7rem;
+	/*margin-bottom: 1.7rem;*/
+	float: right;
+	border: var(--color3);
+	border-style: solid;
 }
 .landing-arrow {
-	color: var(--color-accent);
+	color: var(--color-link);
 }
 /* Styles for background image on landing page */
 .landing-herosection {
@@ -261,13 +294,16 @@ li {
 	padding: 0.5rem 0.5rem;
 	text-align: right;
 }
+.landing-testimonial-more:hover {
+	color: var()
+}
 /* Styles for button grid */
 .landing-enter-buttons-grid {
 	display: inline-grid;
 	padding: 2rem;
 }
 .landing-enter-button {
-	background-color: var(--color5);
+	background-color: var(--color-link);
 	color: var(--color1);
 	text-align: left;
 	font-size: 1.0rem;

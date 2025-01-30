@@ -8,12 +8,12 @@ body {
 	/* The default light settings */
 	/* settings below are from Coldark-cold theme */
 	--code-color: #111b27;
-	--code-background: #e3eaf2;
+	--code-background: transparent;
 	--code-block-background: #e3eaf2;
 	--token-operator: #a04900;
 	--token-not-pre: #e3eaf2;
 	--token-constant: #755f00;
-	--token-comment: #6a9955;
+	--token-comment: rgb(161, 161, 161);
 	--token-number: #755f00;
 	--token-string: #116b00;
 	--token-keyword: #a04900;
@@ -50,12 +50,12 @@ body {
 body.dark {
 	/* The dark settings */
 	--code-color: #d4d4d4;
-	--code-background: #15314c;
+	--code-background: transparent;
 	--code-block-background: #264F78;
 	--token-operator: #569cd6;
 	--token-not-pre: #db4c69;
 	--token-constant: #9cdcfe;
-	--token-comment: #6a9955;
+	--token-comment: rgba(236, 236, 236, 0.75);
 	--token-number: #b5cea8;
 	--token-string: #ce9178;
 	--token-keyword: #c586c0;
@@ -113,6 +113,10 @@ code[class*='language-'] *::selection {
 }
 
 pre[class*='language-'] {
+	border-style: solid;
+	border-width: thin;
+	border-color: var(--color-code);
+	border-color: var(--token-comment);
 	padding: 1em;
 	margin: 0.5em 0;
 	overflow: auto;
