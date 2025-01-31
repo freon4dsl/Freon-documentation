@@ -1,0 +1,438 @@
+@import 'small-devices.css';
+@import 'medium-devices.css';
+@import 'large-devices.css';
+@import 'lib.css';
+* {
+	box-sizing: border-box;
+}
+
+:root {
+	/* The theme colors */
+	--theme-colors-FRE_LIGHT: #FFFDF5;
+	--theme-colors-FRE_YELLOW: #FDE281;
+	--theme-colors-FRE_ORANGE: #FCCB1A;
+	--theme-colors-FRE_BEIGE: #B08A03;
+	--theme-colors-FRE_BEIGE2: #bc9403;
+	--theme-colors-FRE_BROWN: #342B09;
+	--theme-colors-FRE_DARKER: #1E1905;
+	--theme-colors-FRE_ACCENT: #c94117;
+	--theme-colors-FRE_LINK: #DE6B48;
+	--theme-colors-FRE_CODE: green;			
+	--theme-colors-FRE_CODE_DARK: #74bf74;
+
+	--theme-colors-FRE_LIGHT: #FFFDF5;
+	--theme-colors-FRE_YELLOW: #ffedac;
+	--theme-colors-FRE_ORANGE: #fbd547;
+	--theme-colors-FRE_BEIGE: #B08A03;
+	--theme-colors-FRE_BEIGE2: #bc9403;
+	--theme-colors-FRE_BROWN: #342B09;
+	--theme-colors-FRE_DARKER: #1E1905;
+	--theme-colors-FRE_ACCENT: #c94117;
+	--theme-colors-FRE_LINK: #DE6B48;
+	--theme-colors-FRE_LINK_DARK: #fb9371;
+	--theme-colors-FRE_CODE: green;
+	--theme-colors-FRE_CODE_DARK: #74bf74;
+
+	/* Other settings */
+
+	/* Freon sizes */
+	--column-width: 62rem;
+	--max-image-width: 54rem; /* --column-width minus some padding */
+	--fre-header-height: 36px;
+	--fre-footer-height: 20px;
+
+	/* Fonts, etc */
+	--font-family: Roboto, Helvetica, sans-serif;
+	/*--font-mono: 'Source Code Pro', monospace;*/
+	--font-mono: 'Source Sans 3', monospace;
+	--heading-font-family: var(--font-family);
+	--button-font-family: var(--font-family);
+	/*--code-font-family: 'Source Code Pro', Menlo, Consolas, monospace;*/
+	--code-font-family: 'Source Sans 3', Menlo, Consolas, monospace;
+
+	/* Freon font sizes */
+	--fre-header-font-size: 20px;
+}
+
+html {
+	scroll-padding-top: var(--fre-header-height);
+}
+html,
+body {
+	position: relative;
+	width: 100%;
+	height: 100%;
+}
+
+body {
+	/* The default light settings */
+	--color1: var(--theme-colors-FRE_LIGHT);
+	--color2: var(--theme-colors-FRE_YELLOW);
+	--color3: var(--theme-colors-FRE_ORANGE);
+	--color4: var(--theme-colors-FRE_BEIGE);
+	--color5: var(--theme-colors-FRE_BROWN);
+	--color6: var(--theme-colors-FRE_DARKER);
+	--color-accent: var(--theme-colors-FRE_ACCENT);
+	--color-link: var(--theme-colors-FRE_ACCENT);
+	--color-code: var(--theme-colors-FRE_CODE);
+	--color-button-active: rgba(var(--color5), 0.7); /* --theme-colors-FRE_BROWN with opacity .7 */
+	--color-button-hover:rgba(var(--color5), 0.8); /* --theme-colors-FRE_BROWN with opacity .8 */
+	--color-popup-box-shadow: 0 0 0px 0 rgba(0, 0, 0, 0.5);
+
+	/* Other settings */
+	color: var(--color6);
+	background: var(--color1);
+	margin: 0;
+	box-sizing: border-box;
+	font-family: 'Source Sans 3', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
+}
+
+body.dark {
+	/* The dark settings */
+	--color1: var(--theme-colors-FRE_DARKER);
+	--color2: var(--theme-colors-FRE_BROWN);
+	--color3: var(--theme-colors-FRE_BEIGE);
+	--color4: var(--theme-colors-FRE_ORANGE);
+	--color5: var(--theme-colors-FRE_YELLOW);
+	--color6: var(--theme-colors-FRE_LIGHT);
+	--color-accent: var(--theme-colors-FRE_ACCENT);
+	--color-link: var(--theme-colors-FRE_LINK_DARK);
+	--color-code: var(--theme-colors-FRE_CODE_DARK);
+	--color-button-active: rgba(var(--color5), 0.7); /* --theme-colors-FRE_YELLOW with opacity .7 */
+	--color-button-hover: rgba(var(--color5), 0.8); /* --theme-colors-FRE_YELLOW with opacity .8 */
+	--color-popup-box-shadow: 0 0 0px 0 rgba(0, 0, 0, 0.5);
+}
+
+iframe {
+	height: 20rem;
+	width: 100%;
+}
+h1  {
+	font-weight: bold;
+	font-size: xx-large;
+}
+.landing-name-text  {
+	font-weight: bold;
+	font-size: xxx-large;
+}
+.landing-name-text-logo{
+	font-weight: bold;
+	font-size: xx-large;
+	margin-block-end:1rem;
+}
+h2  {
+	font-weight: bold;
+	font-size: x-large;
+}
+blockquote {
+	margin: 0;
+	padding: 2px 8px;
+	background: var(--color1);
+	box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+img {
+	max-width: var(--max-image-width);
+}
+
+table {
+	background: var(--color2);
+	margin: auto;
+	border: 1px var(--color6) solid;
+	border-collapse: collapse;
+	width: 100%;
+	table-layout: fixed;
+}
+
+th {
+	padding: 10px;
+	text-align: left;
+	border: 1px var(--color6) solid;
+	background-color: var(--color5);
+	color: var(--color1)
+}
+
+td {
+	padding: 10px;
+	text-align: left;
+	border: 1px var(--color6) solid;
+	width: fit-content;
+}
+
+a {
+	color: var(--color-link);
+	text-decoration: none;
+}
+a:hover {
+	color: var(--color4);
+}
+.landing-enter-buttons-grid a:hover {
+	color: var(--color5);
+}
+.landing-testimonial a:hover {
+	color: var(--theme-colors-FRE_BROWN);
+}
+
+li {
+	padding: 0.2rem;
+}
+.main-window {
+	margin-top: var(--fre-header-height);
+	margin-bottom: var(--fre-footer-height);
+	position: absolute;
+	width: 100%;
+	background: var(--color1);
+}
+/* Styles for the landing page */
+.see-me {
+	/*font-size: 1.1rem;*/
+}
+.landing-started a {
+	color: var(--color-link);
+}
+.landing-herosection img {
+	border-radius: 5px 5px 0 0;
+	box-sizing: border-box;
+	max-width: 100%;
+	height: auto;
+	width: auto;
+}
+.landing-freon-name {
+	color: var(--color-accent);
+}
+.landing-herosection h1 {
+	margin: 2rem 2rem 1rem 2rem;
+}
+.landing-herosection h2 {
+	margin: 1rem 4rem 2rem 2rem;
+}
+/* Styles for landing-name section */
+.landing-name {
+	display: inline-block;
+	padding-left: 1rem;
+	padding-right: 1rem;
+	text-align: left;
+	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+	background-color: var(--theme-colors-FRE_YELLOW);
+	color: var(--theme-colors-FRE_BROWN);
+	border-radius: 5px;
+	margin-left: 2rem;
+	padding-bottom: 1em;
+	/*white-space: nowrap;*/
+}
+.landing-name-child {
+}
+.landing-name-logo {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	max-height: 6rem;
+}
+.landing-name-logo h1 {
+	margin: inherit;
+}
+.landing-image-holder {
+	display: inline-block;
+	float: left;
+	margin-right: 1rem;
+}
+.landing-main-text {
+	border: var(--color3);
+	border-style: solid;
+	margin: 2rem;
+}
+.landing-started {
+	margin: 0rem;
+	font-size: 2em;
+	font-weight: bolder;
+	text-align: center;
+	padding: 0.5rem 0.5rem;
+	/*margin-bottom: 1.7rem;*/
+	float: right;
+	border: var(--color3);
+	border-style: solid;
+}
+.landing-arrow {
+	color: var(--color-link);
+}
+/* Styles for background image on landing page */
+.landing-herosection {
+	background-image: url('images/landing-page/wordcloud-tree-small.png');
+	background-repeat: no-repeat;
+	background-position-x: right;
+	background-position-y: top;
+	margin-bottom: 2rem;
+	margin-top: 2rem;
+	margin-right: 2rem;
+}
+/* Styles for testimonial section */
+.landing-card {
+	/* Add shadows to create the "card" effect */
+	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+	transition: 0.3s;
+	border-radius: 5px; /* 5px rounded corners */
+	max-width: 80%;
+	margin: auto;
+	background-color: var(--theme-colors-FRE_YELLOW);
+	color: var(--theme-colors-FRE_BROWN);
+}
+.landing-card:hover {
+	box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2); /* On mouse-over, add a deeper shadow */
+}
+.landing-testimonial {
+	padding: 2px 16px; /* Add some padding inside the card container */
+}
+.landing-testimonial-top {
+	justify-content: space-between;
+	align-content: center;
+	display: flex;
+	flex-direction: row;
+}
+.landing-testimonial-child {
+	display: inline-block;
+	/*border: 1px solid red;*/
+	padding: 0.5rem 0.5rem;
+	text-align: right;
+}
+.landing-testimonial-more:hover {
+	color: var()
+}
+/* Styles for button grid */
+.landing-enter-buttons-grid {
+	display: inline-grid;
+	padding: 2rem;
+}
+.landing-enter-button {
+	background-color: var(--color-link);
+	color: var(--color1);
+	text-align: left;
+	font-size: 1.0rem;
+	padding-left: 10px;
+	padding-right: 10px;
+}
+.landing-enter-button a {
+	color: var(--color1); 
+}
+.landing-enter-button a:visited {
+	color: var(--color5);
+}
+/* Styles for the footer */
+.landing-openmodeling-info {
+	color: var(--color5);
+	text-align: center;
+	font-size: 0.9rem;
+}
+.landing-info-text {
+	text-align: left;
+	list-style: none;
+	padding: 0.5rem;
+	border: 1px solid var(--color5);
+}
+.landing-sub-info-text {
+	list-style: none;
+}
+.landing-info-text li {
+	padding: 0.2rem;
+}
+.landing-footer {
+	padding-bottom: 4px;
+	text-align: center;
+	background: var(--color1);
+	color: #eeeeee;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+}
+.landing-copyright {
+	color: var(--color5);
+	font-size: 0.7rem;
+}
+.landing-link {
+	color: var(--color5);
+}
+.landing-audio-control {
+	width: 100%;
+}
+/* end styles for landing page */
+
+/* Styles for every page */
+.page-container {
+	box-sizing: border-box;
+	color: var(--color6);
+	height: 100vh;
+ }
+.page-toc-title {
+	padding-left: 1rem;
+	font-weight: 550;
+}
+.page-ul {
+	padding-left: 1rem;
+	list-style: none;
+	display: flex;
+	flex-direction: column;
+}
+.page-visible  {
+	border-left: solid 4px var(--color-accent);
+	padding-left: 2px;
+	color: var(--color6);
+}
+.page-nonvisible  {
+	padding-left: 6px;
+	color: var(--color6);
+}
+.page-toc-text {
+	margin: 3px;
+	padding: 0px 5px 5px 5px;
+	cursor: pointer;
+	white-space: nowrap;
+	color: var(--color6);
+	font-weight: 320;
+}
+/* end styles for every page */
+
+/* Styles for the code blocks with a copy button */
+pre {
+	position: relative;
+}
+.copy-prompt {
+	position: absolute;
+	right: 0.5rem;
+	top: 0.5rem;
+	margin: 0;
+	padding: 0;
+	display: inline-block;
+}
+.copy-prompt-img {
+	width: 54px;
+	max-width: 1rem;
+	max-height: 1rem;
+	display: block;
+}
+.copy-prompt-p {
+	display: none;
+	margin: 0;
+	cursor: pointer;
+}
+pre:hover .copy-prompt-p {
+	display: block;
+}
+pre:hover .copy-prompt-img {
+	display: none;
+}
+
+/* Styles for the Previous and Next directions  */
+.prev-next {
+	display: flex;
+}
+.prev-next-spacer {
+	flex: 1;
+}
+.prev-next-a {
+	display: flex;
+}
+code {
+	font-family: 'Source Sans 3';
+	/*font-family: 'Source Code Pro';*/
+	/*font-size: 0.93rem;*/
+	color: var(--color-code);
+}
