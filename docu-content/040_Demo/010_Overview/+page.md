@@ -1,14 +1,21 @@
 # Welcome to the Demo
 
 On this page you can find links to some of the presentations that were given about Freon. But most importantly you can start
-the live <a href='/DocuProjectDemo?model=ShowCase' target='_blank'>demo</a>.
+the live 
+_demo is coming soon_.
+[//]: # (<a href='/DocuProjectDemo?model=ShowCase' target='_blank'>demo</a>)
+
 
 ## Live DEMO
 
 To show how a Freon editor might look like, without all kinds of customizations, or a change of CSS styling, we prepared
 a demo. The language that was explained in the [documentation](/Documentation/Overview/Running_Example) is used in this example.
 It will be no surprise that you cannot use a number of the File menu options.
-Use this link to <a href='/DocuProjectDemo?model=ShowCase' target='_blank'><b>START THE DEMO</b></a> in a new web page.
+Use this link to
+_demo is coming soon_
+in a new web page.
+
+[//]: # (<a href='/DocuProjectDemo?model=ShowCase' target='_blank'><b>START THE DEMO</b></a>)
 
 [//]: # (todo get the demo to use external boxes and use the latest version of Freon to create it)
 [//]: # (todo extend the MockServer)
