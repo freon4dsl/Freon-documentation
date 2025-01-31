@@ -15,6 +15,7 @@
 .app-bar-linkLogo {
     margin-right: 8px;
     margin-left: 8px;
+    color: var(--color2)
 }
 .app-bar {
     display: flex;
@@ -137,6 +138,9 @@
     font-size: 11px;
     position: relative;
     bottom: 6px;
+}
+.copyright a {
+    color: var(--color3)
 }
 .link {
     color: var(--color1);

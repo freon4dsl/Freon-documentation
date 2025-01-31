@@ -50,7 +50,7 @@
 
     /* Styles for categories */
     .page-main {
-        margin-left: 19rem; 	/* width of page-side-nav + left of page-side-nav */
+        margin-left: 18rem; 	/* width of page-side-nav + left of page-side-nav */
         margin-right: 15rem; 	/* width of page-toc + right of page-toc */
         padding: 2rem;
     }
@@ -58,7 +58,7 @@
         --top-margin: 3rem;
         position: fixed;
         top: var(--top-margin);
-        left: 2rem;
+        left: 1rem;
         padding: 0.5rem 1rem 1rem 0.5rem;
         width: 17rem;
         border: var(--color6) 1px solid;
@@ -86,13 +86,16 @@
     }
     /*****************/
     .landing-herosection {
-        background-position-x: 98%;
-        background-position-y: 99%;
+        background-position-x: right;
+        background-position-y: top;
+        margin-bottom: 2rem;
+        margin-top: 2rem;
+        margin-right: 2rem;
     }
     .landing-herosection h1 {
-        text-align: center;
+        text-align: left;
     }
     .landing-herosection h2 {
-        text-align: center;
+        text-align: left;
     }
 }
