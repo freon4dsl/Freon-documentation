@@ -1,8 +1,8 @@
-import {writable} from 'svelte/store';
+import { type Writable, writable } from 'svelte/store';
 
 // info about Freon
-export const versionNumber = "0.5.0";
+export const versionNumber: string = '1.0';
 
-export const miniWindow = writable<boolean>(false);
+export const popoverElem: Writable<HTMLDivElement> = writable<HTMLDivElement>(undefined);
 
-export const leftPanelVisible = writable<boolean>(false);
+export const darkMode: Writable<boolean> = writable<boolean>(false);

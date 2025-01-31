@@ -1,14 +1,28 @@
 {
-  "private": true,
-  "name": "navTree",
-  "bin": {
-    "navTree": "dist/_NavTreeFiller.js"
-  },
-  "scripts": {
-    "generateDocuProject": "cd ../code-example/ && yarn build && cd ../scripts/",
-    "navTree": "tsc && node dist/_NavTreeFiller.js",
-    "adocToMd": "tsc && node dist/AdocToMd.js",
-    "checkLinks": "tsc && node dist/LinkChecker.js",
-    "build": "yarn generateDocuProject && tsc && node dist/LinkChecker.js && node dist/_NavTreeFiller.js"
-  }
+	"private": true,
+	"name": "navtree",
+	"type": "module",
+	"bin": {
+		"navTree": "dist/NavTreeFiller.js"
+	},
+	"scripts": {
+		"generateExamples": "npm run insuranceProject && npm run customizations && npm run expressions && npm run education",
+		"insuranceProject": "cd ../code-examples/Insurance && npm run generate && cd ../../scripts/",
+		"customizations": "cd ../code-examples/CustomizationsProject && npm run generate && cd ../../scripts/",
+		"education": "cd ../code-examples/EducationInterpreter && npm run generate && cd ../../scripts/",
+		"expressions": "cd ../code-examples/Expressions && npm run generate && cd ../../scripts/",
+		"typerExample": "cd ../code-examples/TyperExample && npm run generate && cd ../../scripts/",
+		"embedme": "embedme --source-root ../code-examples \"../docu-content/**/*.md\"",
+		"embedExamples": "npm run generateExamples && npm run embedme",
+		"install-examples": "tsc && node dist/InstallCodeExamples.js",
+		"md2svelte": "tsc && node dist/Generator.js",
+		"buildSite": "npm run embedExamples && npm run md2svelte",
+		"install-local": "npm install --registry http://localhost:4873"
+	},
+	"devDependencies": {
+		"@types/prismjs": "1.26.5"
+	},
+	"dependencies": {
+		"prismjs": "1.29.0"
+	}
 }

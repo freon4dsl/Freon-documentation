@@ -1,0 +1,16 @@
+{
+	"name": "@freon4dsl/education",
+	"version": "0.7.0-beta",
+	"license": "MIT",
+	"type": "module",
+	"main": "dist/index.js",
+	"module": "dist/index.mjs",
+	"types": "dist/index.d.ts",
+	"scripts": {
+		"generate": "freon all -d src/defs -o src/freon/",
+		"clean-gen": "freon clean-it -d src/defs -o src/freon/"
+	},
+	"dependencies": {
+		"@freon4dsl/meta": "1.0.0-beta3"
+	}
+}

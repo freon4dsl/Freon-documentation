@@ -1,41 +1,65 @@
 {
-  "name": "projectItDocumentation",
-  "version": "0.3.0",
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/joswarmer/ProjectItDocumentation.git"
-  },
-  "scripts": {
-    "dev": "svelte-kit dev",
-    "build": "svelte-kit build",
-    "preview": "svelte-kit preview",
-    "check": "svelte-check --tsconfig ./tsconfig.json",
-    "check:watch": "svelte-check --tsconfig ./tsconfig.json --watch",
-    "link-check": "find src/routes -name '*.md' -exec yarn markdown-link-check {};",
-    "prepare": "cd scripts && yarn build && cd .. && yarn embedme --source-root code-example/src \"src/routes/**/*.md\""
-  },
-  "devDependencies": {
-    "@smui/button": "^5.0.0-beta.7",
-    "@smui/drawer": "^5.0.0-beta.7",
-    "@smui/list": "^5.0.0-beta.7",
-    "@smui/tooltip": "^5.0.0-beta.7",
-    "@sveltejs/adapter-static": "^1.0.0-next.28",
-    "@sveltejs/kit": "1.0.0-next.266",
-    "@types/cookie": "^0.4.1",
-    "embedme": "^1.22.0",
-    "prettier": "^2.4.1",
-    "prettier-plugin-svelte": "^2.4.0",
-    "svelte": "^3.34.0",
-    "svelte-check": "^2.2.6",
-    "svelte-preprocess": "^4.9.4",
-    "mdsvex": "^0.9.8",
-    "tslib": "^2.3.1",
-    "typescript": "^4.4.3"
-  },
-  "type": "module",
-  "dependencies": {
-    "@fontsource/fira-mono": "^4.5.0",
-    "@lukeed/uuid": "^2.0.0"
-  }
+	"name": "FreonDocumentation",
+	"version": "0.7.0",
+	"license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/freon4dsl/Freon-documentation"
+	},
+	"scripts": {
+		"install-examples": "cd ./scripts && npm run install-examples && cd ../",
+		"buildSite": "npm run cleanRoutes && cd ./scripts && npm run buildSite && cd ../ && npm run format",
+		"clean": "rm -r ./code-examples/*/src/freon ./code-examples/*/src/custom ./code-examples/*/src/defs ./code-examples/*/src/external",
+		"dev": "vite dev",
+		"build": "vite build",
+		"preview": "vite preview",
+		"check": "svelte-kit sync && svelte-check --tsconfig tsconfig.json",
+		"check:watch": "svelte-kit sync && svelte-check --tsconfig tsconfig.json --watch",
+		"lint": "prettier --check . && eslint .",
+		"format": "prettier --log-level silent --write ./src",
+		"formatMd": "prettier --log-level silent --write ./docu-content",
+		"cleanRoutes": "rm -rf ./src/Routes/About &&  rm -rf ./src/Routes/Demos && rm -rf ./src/Routes/Documentation && rm -rf ./src/Routes/Examples && rm -rf ./src/Routes/Background",
+		"publish-local": "npm publish --registry http://localhost:4873",
+		"unpublish-local": "npm unpublish --force --registry http://localhost:4873",
+		"republish-local": "npm run unpublish-local && npm run publish-local",
+		"install-local": "npm install --registry http://localhost:4873"
+	},
+	"devDependencies": {
+		"@freon4dsl/core": "1.0.0-beta3",
+		"@freon4dsl/core-svelte": "1.0.0-beta3",
+		"@freon4dsl/meta": "1.0.0-beta3",
+		"@freon4dsl/webapp-lib": "^1.0.0-beta3",
+		"@prettier/sync": "^0.5.2",
+		"@sveltejs/adapter-static": "^3.0.6",
+		"@sveltejs/kit": "^2.8.5",
+		"@sveltejs/vite-plugin-svelte": "3.1.2",
+		"@types/eslint": "^9.6.1",
+		"@types/cookie": "^1.0.0",
+		"@types/node": "^22.9.0",
+		"embedme": "^1.22.1",
+		"eslint": "^9.14.0",
+		"eslint-plugin-svelte": "^2.46.0",
+		"eslint-config-prettier": "^9.1.0",
+		"globals": "^15.12.0",
+		"mdsvex": "^0.12.3",
+		"prettier": "^3.3.3",
+		"prettier-plugin-svelte": "^3.2.7",
+		"svelte": "4.2.19",
+		"svelte-check": "^4.0.6",
+		"svelte-preprocess": "^6.0.3",
+		"tslib": "^2.8.1",
+		"typescript": "^5.6.3",
+		"typescript-eslint": "^8.13.0",
+		"vite": "^5.4.10",
+		"mdast-util-to-string": "^4.0.0",
+		"unist-util-visit": "^5.0.0"
+	},
+	"type": "module",
+	"dependencies": {
+		"@fontsource/fira-mono": "^5.1.0",
+		"svelte-intersection-observer": "^1.0.0",
+		"@lukeed/uuid": "^2.0.1",
+		"copy-to-clipboard": "^3.3.3",
+		"@sveltejs/adapter-auto": "4.0.0"
+	}
 }
