@@ -109,7 +109,7 @@ The code in a Freon project under `~/src` is organised into the following subfol
     (`YourLanguageName` will be replaced by the name you have given your language in the .ast files.)
     These two files are the placeholders for any [customization](/Documentation/Customizations) that you
     would like to do.
-  - **.../interpreter**: code that implements an interpreter [interpreter](/Examples/Using_the_Interpreter) for the language.
+  - **.../interpreter**: code that implements an interpreter [interpreter](/Examples/Building_an_Interpreter) for the language.
   - **.../language**: code that implements the language structure.
   - **.../reader**: a parser that is able to read [model units](/Background#models-and-model-units-4)
     from a text string or file.

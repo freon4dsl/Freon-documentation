@@ -1,7 +1,7 @@
 # LionWeb Integration
 
 ## LionWeb
-The LionWeb initiative (see [LionWeb @ Github](https://github.com/LionWeb-io)) aims to make language engineering
+The LionWeb initiative (see <a target="_blank" href="https://github.com/LionWeb-io">LionWeb @ Github</a>) aims to make language engineering
 tools interoperable on the web.
 LionWeb does this by specifying
 - how language definitions and models can be interchanged in a well-defined JSON format.
@@ -34,7 +34,7 @@ Freon stores models in LionWeb JSON format on the server, allowing other tools t
 Optionally use the LionWeb server protocol to store models in the lionweb-repository.
 This option is still in beta, as we want to do more testing.
 
-- To run the lionweb-repository see the [github page](https://github.com/LionWeb-io/lionweb-repository).
+- To run the lionweb-repository see the github page<a target="_blank" href="https://github.com/LionWeb-io/lionweb-repository">https://github.com/LionWeb-io/lionweb-repository</a>.
 Once the lionweb-repository is running, the following two lines in `starter.ts`
 
 ```ts
