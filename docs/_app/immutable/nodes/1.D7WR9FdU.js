@@ -1,0 +1,3 @@
+import{s as i,e as r,b as h,m as l,h as c,i as m,n as o,g as p}from"../chunks/scheduler.CIEH-92L.js";import{S as d,i as g}from"../chunks/index.HLF2pGCU.js";function u(a){let e,s=`<img src="/icons/oops-emoji-icon.png" alt="oops-emoji-icon" width="200" height="200"/> <h1>Oops, something went wrong.</h1> <p>Maybe you would like to go back to the
+		<a href="/"><b>main content</b></a>.</p>`;return{c(){e=r("div"),e.innerHTML=s,this.h()},l(t){e=h(t,"DIV",{class:!0,"data-svelte-h":!0}),l(e)!=="svelte-1xixh2a"&&(e.innerHTML=s),this.h()},h(){c(e,"class","error-page svelte-zya3wh")},m(t,n){m(t,e,n)},p:o,i:o,o,d(t){t&&p(e)}}}class _ extends d{constructor(e){super(),g(this,e,null,u,i,{})}}export{_ as component};
+//# sourceMappingURL=1.D7WR9FdU.js.map

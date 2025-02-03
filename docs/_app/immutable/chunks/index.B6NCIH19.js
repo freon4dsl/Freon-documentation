@@ -1,0 +1,2 @@
+import{n as c}from"./scheduler.CIEH-92L.js";const t=typeof window<"u";let f=t?()=>window.performance.now():()=>Date.now(),s=t?n=>requestAnimationFrame(n):c;const o=new Set;function i(n){o.forEach(e=>{e.c(n)||(o.delete(e),e.f())}),o.size!==0&&s(i)}function u(n){let e;return o.size===0&&s(i),{promise:new Promise(r=>{o.add(e={c:n,f:r})}),abort(){o.delete(e)}}}function w(n){return--n*n*((1.70158+1)*n+1.70158)+1}function d(n){const e=n-1;return e*e*e+1}export{w as b,d as c,u as l,f as n,s as r};
+//# sourceMappingURL=index.B6NCIH19.js.map
