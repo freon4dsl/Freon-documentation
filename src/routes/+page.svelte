@@ -78,47 +78,6 @@
 			</div>
 		</section>
 
-		<section>
-			<div class="landing-card">
-				<div class="landing-testimonial">
-					<div class="landing-testimonial-top">
-						<div class="landing-testimonial-child"><h2><b>By Mike Vogel, TriRadial Solutions</b></h2></div>
-						<div class="landing-testimonial-child">
-							<a target="_blank" href="https://www.triradial.com/">
-								<img src="icons/TriRadial_Logo2024.webp" alt="TriRadial Logo" style="width:100px" />
-							</a>
-						</div>
-					</div>
-					<p>
-						<a target="_blank" href="https://www.triradial.com/">TriRadial Solutions</a> used Freon for the DSL that is the basis of our
-						Clinical Research Coordinator (CRC) product. CRCs are the front-line staff that perform clinical trials for drugs and other
-						health products. See
-						<a href="/Background/Testimonial" class=".landing-testimonial-more">CRCHub Application</a>
-						for an explanation of the product and some samples of the product UI. A DSL platform that is optimized for the Web is the void in
-						today’s DSL technology. Having built DSLs using primitive tools like parsers and language servers as well as high-end tools like
-						MPS, our assessment is that Freon is well on the way to being the ideal balance between these extremes. Freon’s break through is
-						its Web-first architecture which allowed us to seamlessly integrate the DSL technology with a modern web application. The path for
-						integration with the LionWeb project positions Freon for even the most complex projects. Key features of Freon that we used:
-					</p>
-					<ul>
-						<li>Its DSL language for CRC DSL</li>
-						<li>Its DSL editor framework for the entry of the DSL</li>
-						<li>Its interpreter framework to run simulations of the scheduling</li>
-						<li>Its storage framework to load and save the data.</li>
-					</ul>
-
-					<p>
-						The Freon team has been wonderfully responsive to us when we were getting started and as we’ve made ever more advanced requests
-						for new features. We would highly recommend using Freon on a DSL project and would be happy to speak with anyone looking to
-						discuss our experience with Freon.
-					</p>
-					<a href="/Background/Testimonial" class=".landing-testimonial-more">
-						<p>Learn more...</p>
-					</a>
-				</div>
-			</div>
-		</section>
-
 		<section class="landing-enter-buttons-grid">
 			<a href="/Documentation/Overview/Getting_Started" class="landing-enter-button">
 				<h3>Getting Started</h3>
@@ -169,6 +128,47 @@
 				</p>
 				<p>Learn more...</p>
 			</a>
+		</section>
+
+		<section>
+			<div class="landing-card">
+				<div class="landing-testimonial">
+					<div class="landing-testimonial-top">
+						<div class="landing-testimonial-child"><h2><b>By Mike Vogel, TriRadial Solutions</b></h2></div>
+						<div class="landing-testimonial-child">
+							<a target="_blank" href="https://www.triradial.com/">
+								<img src="icons/TriRadial_Logo2024.webp" alt="TriRadial Logo" style="width:100px" />
+							</a>
+						</div>
+					</div>
+					<p>
+						<a target="_blank" href="https://www.triradial.com/">TriRadial Solutions</a> used Freon for the DSL that is the basis of our
+						Clinical Research Coordinator (CRC) product. CRCs are the front-line staff that perform clinical trials for drugs and other
+						health products. See
+						<a href="/Background/Testimonial" class=".landing-testimonial-more">CRCHub Application</a>
+						for an explanation of the product and some samples of the product UI. A DSL platform that is optimized for the Web is the void in
+						today’s DSL technology. Having built DSLs using primitive tools like parsers and language servers as well as high-end tools like
+						MPS, our assessment is that Freon is well on the way to being the ideal balance between these extremes. Freon’s break through is
+						its Web-first architecture which allowed us to seamlessly integrate the DSL technology with a modern web application. The path for
+						integration with the LionWeb project positions Freon for even the most complex projects. Key features of Freon that we used:
+					</p>
+					<ul>
+						<li>Its DSL language for CRC DSL</li>
+						<li>Its DSL editor framework for the entry of the DSL</li>
+						<li>Its interpreter framework to run simulations of the scheduling</li>
+						<li>Its storage framework to load and save the data.</li>
+					</ul>
+
+					<p>
+						The Freon team has been wonderfully responsive to us when we were getting started and as we’ve made ever more advanced requests
+						for new features. We would highly recommend using Freon on a DSL project and would be happy to speak with anyone looking to
+						discuss our experience with Freon.
+					</p>
+					<a href="/Background/Testimonial" class=".landing-testimonial-more">
+						<p>Learn more...</p>
+					</a>
+				</div>
+			</div>
 		</section>
 
 		<LandingPageFooter />
