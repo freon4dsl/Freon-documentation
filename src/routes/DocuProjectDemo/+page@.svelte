@@ -1,12 +1,5 @@
 <script lang="ts">
-	import { FreonLayout, WebappConfigurator } from '@freon4dsl/webapp-lib';
-	import { InsuranceModelEnvironment } from '$lib/demo/insurance-packaged.mjs';
-	import { MockServer } from '$lib/demo/MockServer';
-
-	// @ts-expect-error InsuranceModelEnvironment imported from .mjs file which does not include the FreEnvironment interface
-	WebappConfigurator.getInstance().setEditorEnvironment(InsuranceModelEnvironment.getInstance());
-	WebappConfigurator.getInstance().setServerCommunication(new MockServer());
-	// todo WebappConfigurator.getInstance().isDemo = true;
+	import * as app from '$lib/demo/insurance-packaged.mjs';
 </script>
 
 <svelte:head>
@@ -30,9 +23,7 @@
 	<link rel="stylesheet" href="/demo-site-dark.css" media="screen and (prefers-color-scheme: dark)" />
 </svelte:head>
 
-<div class="demo">
-	<FreonLayout />
-</div>
+<div class="demo"></div>
 
 <style>
 	/*@import '/demo-global.css';*/
