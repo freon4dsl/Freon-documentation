@@ -1,6 +1,6 @@
 {
 	"name": "FreonDocumentation",
-	"version": "0.7.0",
+	"version": "1.0.0",
 	"license": "MIT",
 	"repository": {
 		"type": "git",
@@ -25,10 +25,10 @@
 		"install-local": "npm install --registry http://localhost:4873"
 	},
 	"devDependencies": {
-		"@freon4dsl/core": "1.0.0-beta3",
-		"@freon4dsl/core-svelte": "1.0.0-beta3",
-		"@freon4dsl/meta": "1.0.0-beta3",
-		"@freon4dsl/webapp-lib": "^1.0.0-beta3",
+		"@freon4dsl/core": "1.0.0",
+		"@freon4dsl/core-svelte": "1.0.0",
+		"@freon4dsl/meta": "1.0.0",
+		"@freon4dsl/webapp-lib": "^1.0.0",
 		"@prettier/sync": "^0.5.2",
 		"@sveltejs/adapter-static": "^3.0.6",
 		"@sveltejs/kit": "^2.8.5",
