@@ -24,7 +24,8 @@
 						<div class="landing-name-logo">
 							Pronunciation:
 							<audio controls class="landing-name-child landing-audio-control">
-								<source src="../freon - pronunciation.mp3" type="audio/mpeg" />Your browser does not support the audio element.
+								<source src="../freon - pronunciation.mp3" type="audio/mpeg" />
+								Your browser does not support the audio element.
 							</audio>
 						</div>
 					</div>
@@ -74,6 +75,21 @@
 					<li>Typer: Determine the types associated with language elements, enforcing consistency and correctness.</li>
 					<li>Validator: Set validation rules to ensure models adhere to defined constraints, providing real-time feedback.</li>
 				</ul>
+				The latest release adds new features:
+				<ul>
+					<li>
+						The option to <i>plugin your own Svelte components</i> in the editor giving maximum flexibility in how the editor looks like to the
+						end user.
+					</li>
+					<li>An interpreter framework, to quickly create an interpreter for your language.</li>
+					<li>
+						LionWeb integration, ensuring that there is no tool lock-in when using Freon. All the languages and models are readable and
+						processable by any LionWeb enabled tool.
+					</li>
+					li>
+				</ul>
+				ul>
+
 				<p>Join us in shaping the future of DSL development by exploring Freon today!</p>
 			</div>
 		</section>
@@ -111,7 +127,7 @@
 				</p>
 				<p>Learn more...</p>
 			</a>
-			<a href="/Demos" class="landing-enter-button"
+			<a href="/Demo" class="landing-enter-button"
 				><h3>Demos, videos, etc</h3>
 				<p>
 					There are a number of demos and videos available on this site. They cover different topics, like how to use the tool, why it was
