@@ -1,0 +1,122 @@
+/* Small devices (portrait tablets and phones, 768px and down) */
+@media only screen and (max-width: 768px) {
+    :root {
+        font-size: 0.8rem;
+    }
+    .small-screen {
+        display: inline-block;
+    }
+    .large-screen {
+        display: none;
+    }
+    table, thead, tbody, th, td, tr {
+        display: block;
+    }
+    /* Styles for the app bar that are different for different screen sizes */
+    .app-bar-small {
+        display: flex;
+        align-items: center;
+        padding: 0 4px 0 6px;
+        flex: 1;
+    }
+    .app-bar-large {
+        display: none;
+    }
+    /* end styles for the app bar */
+
+    /* Styles for the landing page that are different for different screen sizes */
+    /* Styles for landing-top section */
+    .landing-name {
+        white-space: wrap;
+        margin-right: 0.5rem;
+        margin-left: 0.5rem;
+    }
+    .landing-name-child {
+        padding: 0.2rem 0.2rem;
+    }
+    .landing-arrow {
+        color: var(--color-accent);
+    }
+    .landing-spacer {
+        min-width: 0;
+    }
+    .landing-h2 {
+        margin-left: 1rem;
+    }
+    .landing-text {
+        margin: 1rem;
+    }
+    /* Styles for button grid */
+    .landing-enter-buttons-grid {
+        grid-template-columns: repeat(1, minmax(0, 1fr));
+        column-gap: 20px;
+        row-gap: 20px;
+    }
+    /* Styles for the footer */
+    .landing-info-text {
+        margin: 0;
+    }
+    /* end styles for landing page */
+
+    /* Style for the categories */
+
+    .page-side-nav {
+        display: none;
+    }
+
+    .page-main {
+        margin-left: 0; 	/* width of page-side-nav + left of page-side-nav */
+        margin-right: 0; 	/* width of page-toc + right of page-toc */
+        padding: 1rem;
+    }
+    .page-toc {
+        display: none;
+    }
+    /* styles for small pages */
+    .page-toc-small-img {
+        max-width: 1rem;
+        max-height: 1rem;
+    }
+    .page-toc-small {
+        margin-top: 8px;
+        display: flex;
+        flex-direction: row;
+        border-bottom: solid 1px var(--color-accent);
+        margin-bottom: 4px;
+    }
+    .page-toc-small-title {
+        flex: 1;
+    }
+    .page-toc-small-expand-button {
+        background: none;
+        border: solid 1px var(--color1);
+    }
+    .toc-details {
+        border-bottom: solid 1px var(--color-accent);
+    }
+    /* end styles for small pages */
+    .main-menu-small-expand-button {
+        background: none;
+        border: var(--color1);
+        padding: 0;
+    }
+    .main-menu-small-img {
+        max-width: 0.5rem;
+        max-height: 0.5rem;
+    }
+    /*****************/
+    .landing-herosection {
+        background-size: 150px;
+        background-position-x: right;
+        background-position-y: top;
+        margin-bottom: 1rem;
+        margin-top: 1rem;
+        margin-right: 1rem;
+    }
+    .landing-herosection h1 {
+        text-align: left;
+    }
+    .landing-herosection h2 {
+        text-align: left;
+    }
+}
