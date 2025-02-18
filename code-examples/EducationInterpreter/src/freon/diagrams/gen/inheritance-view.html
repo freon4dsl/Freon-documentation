@@ -1,0 +1,148 @@
+<html>
+<body>
+<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+<script>
+    mermaid.initialize({ startOnLoad: true });
+</script>
+
+<h2 class="title"> Inheritance diagram for language Education </h2>
+<div class="mermaid">
+    %%{init: {'theme': 'forest'} }%%
+    classDiagram
+    direction TD
+    %% other possibilites: LR RL DT TB (same as TD)
+    class QuestionReference {
+        
+        
+    }
+    class ScoreExpression:::abstract {
+        
+        
+    }
+    class NrOfCorrectAnswers {
+        
+        
+    }
+    class NumberLiteralExpression {
+        
+        + number value
+    }
+    class BinaryExpression:::abstract {
+        
+        
+    }
+    class AndExpression {
+        
+        
+    }
+    class OrExpression {
+        
+        
+    }
+    class ComparisonExpression:::abstract {
+        
+        
+    }
+    class LessOrEqualsExpression {
+        
+        
+    }
+    class GreaterOrEqualsExpression {
+        
+        
+    }
+    class LessThenExpression {
+        
+        
+    }
+    class GreaterThenExpression {
+        
+        
+    }
+    class EqualsExpression {
+        
+        
+    }
+    class LastStep {
+        
+        
+    }
+    class Step {
+        
+        
+    }
+    class Theory {
+        
+        
+    }
+    class Page:::abstract {
+        
+        + identifier name
+    }
+    class Video {
+        
+        + string url
+    }
+    class WorkSheet {
+        
+        
+    }
+    class ExamplePage {
+        
+        
+    }
+    class InDepthMaterial {
+        
+        
+    }
+    class SimpleNumber {
+        
+        + number value
+    }
+    class NumberConcept:::abstract {
+        
+        
+    }
+    class Fraction {
+        
+        + number numerator
+		+ number denominator
+    }
+    ScoreExpression <|-- QuestionReference
+ScoreExpression <|-- NrOfCorrectAnswers
+ScoreExpression <|-- NumberLiteralExpression
+ScoreExpression <|-- BinaryExpression
+BinaryExpression <|-- AndExpression
+BinaryExpression <|-- OrExpression
+BinaryExpression <|-- ComparisonExpression
+ComparisonExpression <|-- LessOrEqualsExpression
+ComparisonExpression <|-- GreaterOrEqualsExpression
+ComparisonExpression <|-- LessThenExpression
+ComparisonExpression <|-- GreaterThenExpression
+ComparisonExpression <|-- EqualsExpression
+Step <|-- LastStep
+Page <|-- Theory
+Page <|-- Video
+Page <|-- WorkSheet
+Page <|-- ExamplePage
+Page <|-- InDepthMaterial
+NumberConcept <|-- SimpleNumber
+NumberConcept <|-- Fraction
+
+</div>
+
+</body>
+</html>
+
+<style>
+    .abstract .classTitle {
+        font-style: italic;
+    }
+    .title {
+        font-family: "Gill Sans MT";
+    }
+    .interface .classTitle {
+        font-style: italic;
+        font-weight: bold;
+    }
+</style>

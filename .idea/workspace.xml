@@ -1,0 +1,994 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="d520f677-285a-4820-9c51-1fee37e11a43" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/docs/+page.svelte" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/.nojekyll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/Background/About_the_Authors/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/Background/About_the_Name/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/Background/About_the_Site/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/Background/Overview/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/Background/Projectional_Editing/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/Background/Testimonial/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/Background/__data.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/Background/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/CNAME" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/Demo/Overview/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/Demo/__data.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/Demo/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/DocuProjectDemo/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/Documentation/CommandLine/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/Documentation/Creating_the_Metamodel/Defining_Properties/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/Documentation/Creating_the_Metamodel/Language_Structure/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/Documentation/Creating_the_Metamodel/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/Documentation/Customizations/Editor_Customization/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/Documentation/Customizations/External_Components/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/Documentation/Customizations/Other_Customizations/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/Documentation/Customizations/Scoper_Customization/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/Documentation/Customizations/Typer_Customization/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/Documentation/Customizations/Validator_Customization/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/Documentation/Customizations/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/Documentation/Defining_an_Editor/Binary_Expressions/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/Documentation/Defining_an_Editor/Boolean_Projections/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/Documentation/Defining_an_Editor/Buttons/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/Documentation/Defining_an_Editor/Ease_of_Editing/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/Documentation/Defining_an_Editor/Fragments/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/Documentation/Defining_an_Editor/Global_Projections/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/Documentation/Defining_an_Editor/Indentation/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/Documentation/Defining_an_Editor/Number_Projections/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/Documentation/Defining_an_Editor/Projections/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/Documentation/Defining_an_Editor/Projections_for_Limited_Concepts/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/Documentation/Defining_an_Editor/Styling/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/Documentation/Defining_an_Editor/The_Parser_Projection/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/Documentation/Defining_an_Editor/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/Documentation/Interpreter_Framework/The_Expressions_DSL/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/Documentation/Interpreter_Framework/Understanding_the_Framework/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/Documentation/Interpreter_Framework/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/Documentation/Overview/Getting_Started/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/Documentation/Overview/Running_Example/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/Documentation/Overview/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/Documentation/Scoping,_Typing,_and_Validating/Scope_Provider/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/Documentation/Scoping,_Typing,_and_Validating/Type_Provider/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/Documentation/Scoping,_Typing,_and_Validating/Validator/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/Documentation/Scoping,_Typing,_and_Validating/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/Documentation/Terminology/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/Documentation/Under_the_Hood/Core_Interfaces/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/Documentation/Under_the_Hood/Editor_Framework/External_Component_Box_Types/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/Documentation/Under_the_Hood/Editor_Framework/Predefined_Boxes/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/Documentation/Under_the_Hood/Editor_Framework/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/Documentation/Under_the_Hood/Editor_Interfaces/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/Documentation/Under_the_Hood/FreTool_Interfaces/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/Documentation/Under_the_Hood/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/Documentation/__data.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/Documentation/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/Examples/Building_an_Interpreter/Basic_Evaluation_Functions/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/Examples/Building_an_Interpreter/Finishing_the_Test/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/Examples/Building_an_Interpreter/Using_the_Context/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/Examples/Building_an_Interpreter/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/Examples/External_Components/A_Sorted_Table/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/Examples/External_Components/A_Wrapper_with_a_Button/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/Examples/External_Components/An_Icon_Component/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/Examples/External_Components/Replacing_a_Part_List/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/Examples/External_Components/The_CourseSchedule_DSL/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/Examples/External_Components/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/Examples/Generic_Types/The_TyperExample_DSL/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/Examples/Generic_Types/The_Typer_Definition/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/Examples/Generic_Types/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/Examples/Overview/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/Examples/__data.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/Examples/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/LionWeb/Overview/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/LionWeb/__data.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/LionWeb/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/Tutorial/Conclusion/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/Tutorial/Creating_your_Metamodel/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/Tutorial/Expressions_in_Freon/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/Tutorial/How_to_Handle_Typing/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/Tutorial/In_Need_of_Scoping/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/Tutorial/Making_an_Editor/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/Tutorial/More_Fun_with_Projections/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/Tutorial/More_Scoping/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/Tutorial/Overview/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/Tutorial/Projections_for_Expressions/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/Tutorial/Validating_the_model/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/Tutorial/__data.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/Tutorial/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/env.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/assets/1.B1UqMun1.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/assets/8.B74jjYAm.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/assets/_error.B1UqMun1.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/assets/_page.B74jjYAm.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/chunks/AppBar.IfyxQR4e.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/chunks/AppBar.IfyxQR4e.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/chunks/Figure.DKZMymJr.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/chunks/Figure.DKZMymJr.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/chunks/Footer.CiWIXn8j.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/chunks/Footer.CiWIXn8j.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/chunks/Note.BZaOCr5b.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/chunks/Note.BZaOCr5b.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/chunks/Store.BHIIOPSA.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/chunks/Store.BHIIOPSA.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/chunks/entry.CV5Hz3Wx.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/chunks/entry.CV5Hz3Wx.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/chunks/index.B9cI0ado.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/chunks/index.B9cI0ado.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/chunks/index.Bm95Nbrf.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/chunks/index.Bm95Nbrf.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/chunks/index.DunYcI8q.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/chunks/index.DunYcI8q.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/chunks/scheduler.Cra-n4xf.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/chunks/scheduler.Cra-n4xf.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/chunks/stores.Bq7jfj-I.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/chunks/stores.Bq7jfj-I.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/entry/app.JFy7iFuk.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/entry/app.JFy7iFuk.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/entry/start.BD6p-oZg.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/entry/start.BD6p-oZg.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/nodes/0.omEVldql.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/nodes/0.omEVldql.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/nodes/1.IfOQVqwx.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/nodes/1.IfOQVqwx.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/nodes/10.BRjW3PYx.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/nodes/10.BRjW3PYx.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/nodes/11.hENICXa2.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/nodes/11.hENICXa2.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/nodes/12.BCRsqd9u.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/nodes/12.BCRsqd9u.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/nodes/13.RuUY4uFJ.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/nodes/13.RuUY4uFJ.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/nodes/14.CYj3vx8y.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/nodes/14.CYj3vx8y.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/nodes/15.D1bxEeit.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/nodes/15.D1bxEeit.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/nodes/17.0xdSkLu0.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/nodes/17.0xdSkLu0.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/nodes/18.Br3xcRIJ.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/nodes/18.Br3xcRIJ.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/nodes/2.CguBrsJX.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/nodes/2.CguBrsJX.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/nodes/20.BDT2bJF6.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/nodes/20.BDT2bJF6.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/nodes/21.CLQdavSV.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/nodes/21.CLQdavSV.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/nodes/22.D10MUm23.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/nodes/22.D10MUm23.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/nodes/23.kZOQh1_C.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/nodes/23.kZOQh1_C.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/nodes/24.DDil3FF3.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/nodes/24.DDil3FF3.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/nodes/25.okM3Sa51.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/nodes/25.okM3Sa51.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/nodes/26.CBbNncBc.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/nodes/26.CBbNncBc.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/nodes/27.DJFqykiS.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/nodes/27.DJFqykiS.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/nodes/28.BcggV5Bw.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/nodes/28.BcggV5Bw.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/nodes/29.DJifNpF2.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/nodes/29.DJifNpF2.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/nodes/3.BAhCqdaC.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/nodes/3.BAhCqdaC.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/nodes/30.Fbd-yJsu.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/nodes/30.Fbd-yJsu.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/nodes/31.4Wcfviru.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/nodes/31.4Wcfviru.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/nodes/32.CM1R0zvO.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/nodes/32.CM1R0zvO.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/nodes/33.BteU0qTa.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/nodes/33.BteU0qTa.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/nodes/34.SX9cCoKu.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/nodes/34.SX9cCoKu.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/nodes/35.BzfnFIAX.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/nodes/35.BzfnFIAX.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/nodes/36.8sF4I909.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/nodes/36.8sF4I909.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/nodes/37.C_5EcAOM.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/nodes/37.C_5EcAOM.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/nodes/38.CyLp2AtR.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/nodes/38.CyLp2AtR.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/nodes/39.msSvLJ2P.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/nodes/39.msSvLJ2P.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/nodes/4.BT5pSoXv.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/nodes/4.BT5pSoXv.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/nodes/40.BbacKT4X.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/nodes/40.BbacKT4X.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/nodes/41.BSFp6BNS.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/nodes/41.BSFp6BNS.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/nodes/42.Df1KLBaA.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/nodes/42.Df1KLBaA.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/nodes/43.CTsiyG8n.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/nodes/43.CTsiyG8n.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/nodes/44.Bt59uXdq.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/nodes/44.Bt59uXdq.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/nodes/45.Cr2huMM7.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/nodes/45.Cr2huMM7.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/nodes/46.CXAKLO1r.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/nodes/46.CXAKLO1r.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/nodes/47.CN1WC2-q.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/nodes/47.CN1WC2-q.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/nodes/48.C_ujiryQ.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/nodes/48.C_ujiryQ.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/nodes/49.BGOVfrbx.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/nodes/49.BGOVfrbx.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/nodes/5.D79D5O_V.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/nodes/5.D79D5O_V.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/nodes/50.Bk1AlQo4.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/nodes/50.Bk1AlQo4.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/nodes/51.C6U8GCCF.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/nodes/51.C6U8GCCF.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/nodes/52.DqmtDagB.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/nodes/52.DqmtDagB.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/nodes/53.C0sdTRUv.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/nodes/53.C0sdTRUv.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/nodes/54.HrGtWCtY.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/nodes/54.HrGtWCtY.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/nodes/55.BjAHI16D.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/nodes/55.BjAHI16D.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/nodes/56.BnlL6o5m.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/nodes/56.BnlL6o5m.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/nodes/57.BdtzFpLn.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/nodes/57.BdtzFpLn.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/nodes/58.BvX6FQTE.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/nodes/58.BvX6FQTE.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/nodes/59.Bj5y-tpY.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/nodes/59.Bj5y-tpY.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/nodes/6.h-wOQrpe.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/nodes/6.h-wOQrpe.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/nodes/60.OBGXQjbW.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/nodes/60.OBGXQjbW.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/nodes/61.b_1Rm-yu.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/nodes/61.b_1Rm-yu.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/nodes/63.C_IIgPqb.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/nodes/63.C_IIgPqb.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/nodes/64.lVWwuT8R.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/nodes/64.lVWwuT8R.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/nodes/65.D0Z48BhM.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/nodes/65.D0Z48BhM.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/nodes/66.CHkT8Py6.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/nodes/66.CHkT8Py6.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/nodes/67.DMpnSblH.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/nodes/67.DMpnSblH.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/nodes/68.ayzyrwtG.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/nodes/68.ayzyrwtG.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/nodes/69.DIiiUZCW.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/nodes/69.DIiiUZCW.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/nodes/7.DTFEAasY.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/nodes/7.DTFEAasY.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/nodes/70.Dpgq5Fpk.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/nodes/70.Dpgq5Fpk.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/nodes/71.vDkSHZf7.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/nodes/71.vDkSHZf7.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/nodes/72.nbi55NK8.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/nodes/72.nbi55NK8.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/nodes/73.DwLTC3Ku.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/nodes/73.DwLTC3Ku.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/nodes/74.zFpsE0EJ.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/nodes/74.zFpsE0EJ.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/nodes/75.CGflV9I6.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/nodes/75.CGflV9I6.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/nodes/76.ZP0c1kyP.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/nodes/76.ZP0c1kyP.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/nodes/78.DZm0ZlRa.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/nodes/78.DZm0ZlRa.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/nodes/8.XbgsWt4K.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/nodes/8.XbgsWt4K.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/nodes/80.CpEhtVQy.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/nodes/80.CpEhtVQy.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/nodes/81.CXEphVHP.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/nodes/81.CXEphVHP.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/nodes/82.Cd-hnzeG.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/nodes/82.Cd-hnzeG.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/nodes/83.BGMO5euf.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/nodes/83.BGMO5euf.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/nodes/84.3qeagx3i.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/nodes/84.3qeagx3i.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/nodes/85.8U-GNZen.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/nodes/85.8U-GNZen.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/nodes/86.BtfvS2Wa.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/nodes/86.BtfvS2Wa.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/nodes/87.DNM-XLXI.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/nodes/87.DNM-XLXI.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/nodes/88.TXA_e8Nh.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/nodes/88.TXA_e8Nh.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/nodes/89.B-pVK1qS.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/nodes/89.B-pVK1qS.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/nodes/90.D6ObBuzV.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/immutable/nodes/90.D6ObBuzV.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/_app/version.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/cats-kittens.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/demo-global.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/demo-site-dark.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/demo-site.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/favicon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/freon - pronunciation.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/freonlogo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/global.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/icons/TriRadial_Logo2024.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/icons/close-icon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/icons/copy-icon.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/icons/down-arrow.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/icons/down-chevron-white.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/icons/left_arrow_icon.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/icons/left_arrow_white.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/icons/oops-emoji-icon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/icons/right_arrow_icon.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/icons/right_arrow_white.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/icons/smile.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/icons/upload.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/images/background/CRCHubUI1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/images/background/CRCHubUI2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/images/background/expressions-problem.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/images/background/projection-overview.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/images/background/tower-of-babel.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/images/background/writing-child.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/images/cats-kittens.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/images/documentation/Defining-an-Editor-Screenshot.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/images/documentation/Documentation-Boolean-Projections-screenshot1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/images/documentation/Documentation-Boolean-Projections-screenshot2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/images/documentation/Documentation-Buttons-screenshot1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/images/documentation/Documentation-Externals-screenshot1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/images/documentation/Documentation-Externals-screenshot2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/images/documentation/Documentation-Fragments-screenshot1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/images/documentation/Documentation-Limited-Projections-screenshot1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/images/documentation/Documentation-Limited-Projections-screenshot2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/images/documentation/Documentation-Number-Projections-screenshot1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/images/documentation/docu-project-uml.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/images/documentation/fall-through.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/images/documentation/layered-architecture2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/images/documentation/mapping-example-stringliteral-with-roles.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/images/documentation/mapping-example-stringliteral.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/images/examples/CourseSchedule/Screenshot-step1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/images/examples/CourseSchedule/Screenshot-step2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/images/examples/CourseSchedule/Screenshot-step3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/images/examples/CourseSchedule/Screenshot-step4a.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/images/examples/CourseSchedule/Screenshot-step4b.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/images/examples/CourseSchedule/Screenshot-step5.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/images/examples/Interpreter/Interpreter-result.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/images/examples/Interpreter/TestB.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/images/interpreter/Untitled.afdesign" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/images/interpreter/example-model.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/images/interpreter/model-output.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/images/interpreter/plus-tree.afdesign" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/images/interpreter/plus-tree.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/images/landing-page/wordcloud-tree-small.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/images/tutorial/Tutorial-lesson2-screenshot1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/images/tutorial/Tutorial-lesson2-screenshot2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/images/tutorial/Tutorial-lesson3-screenshot1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/images/tutorial/Tutorial-lesson3-screenshot2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/images/tutorial/Tutorial-lesson4-screenshot1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/images/tutorial/Tutorial-lesson5-screenshot1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/images/tutorial/Tutorial-lesson6-namespaces.afdesign" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/images/tutorial/Tutorial-lesson6-namespaces.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/images/tutorial/Tutorial-lesson7-screenshot1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/images/tutorial/Tutorial-lesson8-screenshot1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/images/tutorial/Tutorial-lesson9-screenshot1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/large-devices.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/lib.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/medium-devices.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/prism-vsc-dark-and-light.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/small-devices.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/unused/Landingpage-image2.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/unused/Landingpage-image4.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/unused/TEMP/copy-icon.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/unused/TEMP/projection-overview.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/unused/TEMP/search.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/unused/Tutorial-lesson10-screenshot1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/unused/Tutorial-lesson3-screenshot3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/unused/behavior-example-stringliteral-with-roles.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/unused/copy-icon.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/unused/demo-uml.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/unused/demomodelname-with-style.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/unused/demomodelname.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/unused/editing-expressions.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/unused/example-uml-diagram.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/unused/freon-command-line-options.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/unused/landing-page-picture-test.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/unused/landing-page-picture.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/unused/packagejson.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/unused/packagejsonadjustment.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/unused/prism-vs.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/unused/prism-vsc-dark-plus-OLD.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/unused/prism-vsc-dark-plus-original.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/unused/projection-server-connect.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/unused/three-levels.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/unused/webappconfiguration.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/unused/wordcloud-tree.webp" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ChangesViewManager">
+    <option name="groupingKeys">
+      <option value="directory" />
+    </option>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="TypeScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;joswarmer&quot;
+  }
+}</component>
+  <component name="GitToolBoxStore">
+    <option name="projectConfigVersion" value="5" />
+    <option name="recentBranches">
+      <RecentBranches>
+        <option name="branchesForRepo">
+          <list>
+            <RecentBranchesForRepo>
+              <option name="branches">
+                <list>
+                  <RecentBranch>
+                    <option name="branchName" value="master" />
+                    <option name="lastUsedInstant" value="1686639608" />
+                  </RecentBranch>
+                  <RecentBranch>
+                    <option name="branchName" value="additions0.5.0" />
+                    <option name="lastUsedInstant" value="1686562803" />
+                  </RecentBranch>
+                  <RecentBranch>
+                    <option name="branchName" value="development" />
+                    <option name="lastUsedInstant" value="1677156619" />
+                  </RecentBranch>
+                </list>
+              </option>
+              <option name="repositoryRootUrl" value="file://$PROJECT_DIR$" />
+            </RecentBranchesForRepo>
+          </list>
+        </option>
+      </RecentBranches>
+    </option>
+  </component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;git@github.com:freon4dsl/Freon-documentation.git&quot;,
+    &quot;accountId&quot;: &quot;cb9b075f-c27b-4bcc-8a4c-4f9e5a821e2b&quot;
+  }
+}</component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="PackageJsonUpdateNotifier">
+    <dismissed value="$PROJECT_DIR$/package.json" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 8
+}</component>
+  <component name="ProjectId" id="2M8kMZoV9ggvXxVGXQ04yMGl7jZ" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+    <option name="showMembers" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;release-1.0.0&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/jos/projects/freon/Freon-documentation/static&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;/Users/jos/projects/freon/Freon-documentation/node_modules/prettier&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.sourceCode&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/Users/jos/projects/freon/Freon-documentation/node_modules/typescript/lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/static" />
+      <recent name="$PROJECT_DIR$/static/images" />
+      <recent name="$PROJECT_DIR$/src/lib/demo" />
+      <recent name="$PROJECT_DIR$/static/images/background" />
+      <recent name="$PROJECT_DIR$/static/images/tutorial" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/docs" />
+      <recent name="$PROJECT_DIR$/src/lib/demo" />
+      <recent name="$PROJECT_DIR$/docs-version-0.5.0" />
+      <recent name="$PROJECT_DIR$/code-examples/Education" />
+      <recent name="$PROJECT_DIR$/code-examples/CourseSchedule" />
+    </key>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-d6986cc7102b-822845ee3bb5-JavaScript-WS-243.23654.157" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="d520f677-285a-4820-9c51-1fee37e11a43" name="Changes" comment="" />
+      <created>1677156549467</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1677156549467</updated>
+      <workItem from="1677156550647" duration="1241000" />
+      <workItem from="1686562736664" duration="6158000" />
+    </task>
+    <task id="LOCAL-00001" summary="Add todo for open model at startup">
+      <created>1677158286526</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1677158286526</updated>
+    </task>
+    <task id="LOCAL-00011" summary="improvements for prism">
+      <option name="closed" value="true" />
+      <created>1736333589190</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1736333589190</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Fix ```svelte =&gt; ```swift">
+      <option name="closed" value="true" />
+      <created>1736333965475</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1736333965475</updated>
+    </task>
+    <task id="LOCAL-00013" summary="fix line numbers">
+      <option name="closed" value="true" />
+      <created>1737538367932</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1737538367932</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Interpreter example">
+      <option name="closed" value="true" />
+      <created>1737538406880</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1737538406880</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Interpreter example">
+      <option name="closed" value="true" />
+      <created>1737538425744</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1737538425744</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Lionweb documentation">
+      <option name="closed" value="true" />
+      <created>1737540678599</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1737540678599</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Adjust title text">
+      <option name="closed" value="true" />
+      <created>1737545621382</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1737545621382</updated>
+    </task>
+    <task id="LOCAL-00018" summary="Styling changes">
+      <option name="closed" value="true" />
+      <created>1737545645363</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1737545645363</updated>
+    </task>
+    <task id="LOCAL-00019" summary="Remove unused">
+      <option name="closed" value="true" />
+      <created>1737562637434</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1737562637434</updated>
+    </task>
+    <task id="LOCAL-00020" summary="Cleanup code examples">
+      <option name="closed" value="true" />
+      <created>1737562713481</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1737562713481</updated>
+    </task>
+    <task id="LOCAL-00021" summary="Update inclusions">
+      <option name="closed" value="true" />
+      <created>1737562762701</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1737562762701</updated>
+    </task>
+    <task id="LOCAL-00022" summary="Add script to install code examples from freon-create-languages">
+      <option name="closed" value="true" />
+      <created>1737562812705</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1737562812705</updated>
+    </task>
+    <task id="LOCAL-00023" summary="Improve tsconfig">
+      <option name="closed" value="true" />
+      <created>1737562829310</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1737562829310</updated>
+    </task>
+    <task id="LOCAL-00024" summary="Add testimonial">
+      <option name="closed" value="true" />
+      <created>1737562861741</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1737562861741</updated>
+    </task>
+    <task id="LOCAL-00025" summary="cleanup package">
+      <option name="closed" value="true" />
+      <created>1737562876016</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1737562876016</updated>
+    </task>
+    <task id="LOCAL-00026" summary="Turn off Server Side Rendering SSR">
+      <option name="closed" value="true" />
+      <created>1737563014086</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1737563014086</updated>
+    </task>
+    <task id="LOCAL-00027" summary="better .gitignore">
+      <option name="closed" value="true" />
+      <created>1737563091219</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1737563091219</updated>
+    </task>
+    <task id="LOCAL-00028" summary="Cleanup freon code projects">
+      <option name="closed" value="true" />
+      <created>1737631520267</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1737631520267</updated>
+    </task>
+    <task id="LOCAL-00029" summary="Update pathnames to code examples">
+      <option name="closed" value="true" />
+      <created>1737631722724</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1737631722724</updated>
+    </task>
+    <task id="LOCAL-00030" summary="Build stuff">
+      <option name="closed" value="true" />
+      <created>1737631744516</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1737631744516</updated>
+    </task>
+    <task id="LOCAL-00031" summary="Update inclusions">
+      <option name="closed" value="true" />
+      <created>1737632533962</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1737632533962</updated>
+    </task>
+    <task id="LOCAL-00032" summary="Update inclusions">
+      <option name="closed" value="true" />
+      <created>1737632542466</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1737632542466</updated>
+    </task>
+    <task id="LOCAL-00033" summary="Update inclusions">
+      <option name="closed" value="true" />
+      <created>1737632554602</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1737632554602</updated>
+    </task>
+    <task id="LOCAL-00034" summary="Add clean">
+      <option name="closed" value="true" />
+      <created>1737632570361</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1737632570361</updated>
+    </task>
+    <task id="LOCAL-00035" summary="Update to new project structure, add testimonial page">
+      <option name="closed" value="true" />
+      <created>1737651192319</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1737651192320</updated>
+    </task>
+    <task id="LOCAL-00036" summary="Add command line explanation (short)">
+      <option name="closed" value="true" />
+      <created>1738160699438</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1738160699438</updated>
+    </task>
+    <task id="LOCAL-00037" summary="More LionWeb info.">
+      <option name="closed" value="true" />
+      <created>1738160772657</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1738160772657</updated>
+    </task>
+    <task id="LOCAL-00038" summary="Interpreter inclusions updated">
+      <option name="closed" value="true" />
+      <created>1738160790847</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1738160790847</updated>
+    </task>
+    <task id="LOCAL-00039" summary="Updates">
+      <option name="closed" value="true" />
+      <created>1738160808054</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1738160808054</updated>
+    </task>
+    <task id="LOCAL-00040" summary="Improve layout">
+      <option name="closed" value="true" />
+      <created>1738228516040</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1738228516040</updated>
+    </task>
+    <task id="LOCAL-00041" summary="Improve layout">
+      <option name="closed" value="true" />
+      <created>1738244242763</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1738244242763</updated>
+    </task>
+    <task id="LOCAL-00042" summary="Improve text">
+      <option name="closed" value="true" />
+      <created>1738246372025</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1738246372025</updated>
+    </task>
+    <task id="LOCAL-00043" summary="Fix broken links">
+      <option name="closed" value="true" />
+      <created>1738327573364</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1738327573364</updated>
+    </task>
+    <task id="LOCAL-00044" summary="Testimonial added">
+      <option name="closed" value="true" />
+      <created>1738327587645</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1738327587645</updated>
+    </task>
+    <task id="LOCAL-00045" summary="Make images fit the page width">
+      <option name="closed" value="true" />
+      <created>1738327607262</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1738327607262</updated>
+    </task>
+    <task id="LOCAL-00046" summary="Temporaryly no demo link.">
+      <option name="closed" value="true" />
+      <created>1738336692668</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1738336692668</updated>
+    </task>
+    <task id="LOCAL-00047" summary="Save version 0.5.0 docs">
+      <option name="closed" value="true" />
+      <created>1738336732928</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1738336732928</updated>
+    </task>
+    <task id="LOCAL-00048" summary="remove old docs">
+      <option name="closed" value="true" />
+      <created>1738336760324</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1738336760324</updated>
+    </task>
+    <task id="LOCAL-00049" summary="Commit newly generated doc site">
+      <option name="closed" value="true" />
+      <created>1738336965124</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1738336965124</updated>
+    </task>
+    <task id="LOCAL-00050" summary="Commit newly generated doc site">
+      <option name="closed" value="true" />
+      <created>1738337598780</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1738337598781</updated>
+    </task>
+    <task id="LOCAL-00051" summary="Commit newly generated doc site">
+      <option name="closed" value="true" />
+      <created>1738337812691</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1738337812691</updated>
+    </task>
+    <task id="LOCAL-00052" summary="Extra option">
+      <option name="closed" value="true" />
+      <created>1738338557408</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1738338557408</updated>
+    </task>
+    <task id="LOCAL-00053" summary="Change landing page">
+      <option name="closed" value="true" />
+      <created>1738567726151</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1738567726151</updated>
+    </task>
+    <task id="LOCAL-00054" summary="Change landing page">
+      <option name="closed" value="true" />
+      <created>1738567780466</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1738567780466</updated>
+    </task>
+    <task id="LOCAL-00055" summary="Update version to 1.0.0">
+      <option name="closed" value="true" />
+      <created>1738567967416</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1738567967416</updated>
+    </task>
+    <task id="LOCAL-00056" summary="New demo">
+      <option name="closed" value="true" />
+      <created>1738744847008</created>
+      <option name="number" value="00056" />
+      <option name="presentableId" value="LOCAL-00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1738744847008</updated>
+    </task>
+    <task id="LOCAL-00057" summary="New docs">
+      <option name="closed" value="true" />
+      <created>1738744919261</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1738744919261</updated>
+    </task>
+    <task id="LOCAL-00058" summary="Typo on landing page and added new features on landing page">
+      <option name="closed" value="true" />
+      <created>1739887726158</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1739887726158</updated>
+    </task>
+    <option name="localTasksCounter" value="59" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="OPEN_GENERIC_TABS">
+      <map>
+        <entry key="e3d8b4c8-c01c-4122-90f9-6d66ea6476f2" value="TOOL_WINDOW" />
+      </map>
+    </option>
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+        <entry key="e3d8b4c8-c01c-4122-90f9-6d66ea6476f2">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
+    <MESSAGE value="Cleanup freon code projects" />
+    <MESSAGE value="Update pathnames to code examples" />
+    <MESSAGE value="Build stuff" />
+    <MESSAGE value="Add clean" />
+    <MESSAGE value="Update to new project structure, add testimonial page" />
+    <MESSAGE value="Add command line explanation (short)" />
+    <MESSAGE value="More LionWeb info." />
+    <MESSAGE value="Interpreter inclusions updated" />
+    <MESSAGE value="Update inclusions" />
+    <MESSAGE value="Updates" />
+    <MESSAGE value="Improve layout" />
+    <MESSAGE value="Improve text" />
+    <MESSAGE value="Fix broken links" />
+    <MESSAGE value="Testimonial added" />
+    <MESSAGE value="Make images fit the page width" />
+    <MESSAGE value="Temporaryly no demo link." />
+    <MESSAGE value="Save version 0.5.0 docs" />
+    <MESSAGE value="remove old docs" />
+    <MESSAGE value="Commit newly generated doc site" />
+    <MESSAGE value="Extra option" />
+    <MESSAGE value="Change landing page" />
+    <MESSAGE value="Update version to 1.0.0" />
+    <MESSAGE value="New demo" />
+    <MESSAGE value="New docs" />
+    <MESSAGE value="Typo on landing page and added new features on landing page" />
+    <option name="LAST_COMMIT_MESSAGE" value="Typo on landing page and added new features on landing page" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/routes/DocuProjectDemo/docu-project-packaged.mjs</url>
+          <line>58</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>

@@ -1,0 +1,22 @@
+validator Expressions for language Expressions
+
+Function {
+    typecheck conformsTo (self.body, self.declaredType);
+    isunique name in self.parameters;
+    validIdentifier ;
+}
+MultiplyExpression {
+    typecheck equalsType( self.left, Type:Integer );
+    typecheck equalsType( self.right, Type:Integer );
+    typecheck conformsTo( self.left, self.right );
+}
+PlusExpression {
+    typecheck equalsType( self.left, Type:Integer );
+    typecheck equalsType( self.right, Type:Integer );
+    typecheck conformsTo( self.left, self.right );
+}
+DivideExpression {
+    typecheck equalsType( self.left, Type:Integer );
+    typecheck equalsType( self.right, Type:Integer );
+}
+

@@ -1,0 +1,64 @@
+language Expressions
+
+model Expressions {
+    name: identifier;
+    units: ExpressionUnit[];
+}
+
+modelunit ExpressionUnit {
+    functions: Function[];
+    expressions: Expression[];
+}
+
+limited Type { String; Integer; Boolean; ANY; }
+
+abstract expression Expression { }
+
+expression NumberLiteralExpression base Expression {
+    value: number;
+}
+
+abstract binary expression BinaryExpression base Expression {
+    left: Expression;
+    right: Expression;
+}
+
+binary expression MultiplyExpression base BinaryExpression {
+    priority = 8;
+}
+
+binary expression PlusExpression base BinaryExpression {
+    priority = 4;
+}
+
+binary expression MinusExpression base BinaryExpression {
+    priority = 4;
+}
+
+binary expression DivideExpression base BinaryExpression {
+    priority = 8;
+}
+
+concept Function {
+    name: identifier;
+    body: Expression;
+    parameters: Parameter[];
+    reference declaredType : Type;
+}
+
+concept Parameter {
+    name: identifier;
+    reference declaredType: Type;
+}
+
+expression ParameterRef base Expression {
+    reference parameter: Parameter;
+}
+
+expression FunctionCallExpression base Expression {
+    reference calledFunction: Function;
+    arguments: Expression[];
+}
+
+
+

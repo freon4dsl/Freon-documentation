@@ -1,0 +1,55 @@
+editor default
+
+ExpressionUnit {
+    [
+    Functions:
+        ${functions}
+    Expressions
+        ${expressions}
+    ]
+}
+
+Parameter {
+    [var ${name} : ${declaredType}]
+}
+
+ParameterRef { 
+    [${parameter}]
+    referenceShortcut = ${parameter}
+}
+
+NumberLiteralExpression {
+        [${self.value}]
+}
+
+PlusExpression {
+    symbol = "+"
+}
+
+MinusExpression {
+    symbol = "-"
+}
+
+MultiplyExpression {
+    symbol = "*"
+}
+
+DivideExpression {
+    symbol = "/"
+}
+
+FunctionCallExpression {
+    [
+       ${self.calledFunction} ( ${arguments horizontal} )
+    ]
+    referenceShortcut = ${calledFunction}
+}
+
+Function { 
+    [
+        function ${name} ( ${parameters} ): ${declaredType}
+        {
+            ${body}
+        }
+    ]
+}

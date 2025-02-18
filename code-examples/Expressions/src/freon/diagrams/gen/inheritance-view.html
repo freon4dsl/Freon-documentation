@@ -1,0 +1,75 @@
+<html>
+<body>
+<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+<script>
+    mermaid.initialize({ startOnLoad: true });
+</script>
+
+<h2 class="title"> Inheritance diagram for language Expressions </h2>
+<div class="mermaid">
+    %%{init: {'theme': 'forest'} }%%
+    classDiagram
+    direction TD
+    %% other possibilites: LR RL DT TB (same as TD)
+    class NumberLiteralExpression {
+        
+        + number value
+    }
+    class Expression:::abstract {
+        
+        
+    }
+    class BinaryExpression:::abstract {
+        
+        
+    }
+    class MultiplyExpression {
+        
+        
+    }
+    class PlusExpression {
+        
+        
+    }
+    class MinusExpression {
+        
+        
+    }
+    class DivideExpression {
+        
+        
+    }
+    class ParameterRef {
+        
+        
+    }
+    class FunctionCallExpression {
+        
+        
+    }
+    Expression <|-- NumberLiteralExpression
+Expression <|-- BinaryExpression
+BinaryExpression <|-- MultiplyExpression
+BinaryExpression <|-- PlusExpression
+BinaryExpression <|-- MinusExpression
+BinaryExpression <|-- DivideExpression
+Expression <|-- ParameterRef
+Expression <|-- FunctionCallExpression
+
+</div>
+
+</body>
+</html>
+
+<style>
+    .abstract .classTitle {
+        font-style: italic;
+    }
+    .title {
+        font-family: "Gill Sans MT";
+    }
+    .interface .classTitle {
+        font-style: italic;
+        font-weight: bold;
+    }
+</style>
