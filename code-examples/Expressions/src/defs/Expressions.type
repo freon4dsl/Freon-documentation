@@ -1,0 +1,48 @@
+typer
+
+// 'BaseType' is the root of the type hierarchy
+istype { Type }
+
+// Which concepts have a type?
+hastype { Expression, Parameter, Function }
+
+anytype {
+    conformsto Type:ANY;
+    equalsto Type:ANY;
+}
+
+Function {
+    infertype self.declaredType;
+}
+
+NumberLiteralExpression {
+    infertype Type:Integer;
+}
+
+MultiplyExpression {
+    infertype self.left;
+}
+
+PlusExpression {
+    infertype self.left;
+}
+
+MinusExpression {
+    infertype self.left;
+}
+
+DivideExpression {
+    infertype self.left;
+}
+
+FunctionCallExpression {
+    infertype self.calledFunction;
+}
+
+Parameter {
+    infertype self.declaredType;
+}
+
+ParameterRef   {
+    infertype self.parameter.declaredType;
+}

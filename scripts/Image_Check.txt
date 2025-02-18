@@ -1,0 +1,8 @@
+Found 6 unused images:
+	Not used: cats-kittens.gif.
+	Not used: interpreter/Untitled.afdesign.
+	Not used: interpreter/example-model.png.
+	Not used: interpreter/plus-tree.afdesign.
+	Not used: landing-page/wordcloud-tree-small.png.
+	Not used: tutorial/Tutorial-lesson6-namespaces.afdesign.
+Total errors: 0, total warnings: 6.
