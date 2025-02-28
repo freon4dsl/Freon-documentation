@@ -10,6 +10,7 @@ for information on how to install the examples on your computer.
 - [Building an Interpreter](/Examples/Building_an_Interpreter) How to build an interpreter that uses the Freon AST.
 - [Generic Types](/Examples/Generic_Types) How to create a language with generic types.
 - [Using Svelte Components from a Library](/Examples/External_Components) How to include custom components in the editor.
+- [Website Integration](/Examples/Website_Integration) How to proceed when you want to include Freon in another webpage.
 
 ## Upcoming 
 
@@ -21,4 +22,3 @@ The following examples are planned, and, hopefully, will be available soon.
 - **Custom Actions** How to create custom actions.
 - **Custom Scoping** How to adjust the scope provider.
 - **Custom Validation** How to create cutom validation rules.
-- **Include Freon in your website** How to proceed when you want to include Freon in another webpage.
