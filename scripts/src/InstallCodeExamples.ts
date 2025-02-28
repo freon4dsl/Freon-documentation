@@ -10,4 +10,9 @@ import { execSync } from 'node:child_process';
 		await execSync(`npx degit -v ${langRepo}/src/ ../code-examples/${languageName}/src/ --force`, { stdio: 'inherit' });
 		await execSync(`npx degit -v ${langRepo}/extra/ ../code-examples/${languageName}/ --force`, { stdio: 'inherit' });
 	}
+	for (const languageName of ['IntegrationExample']) {
+		console.log(`Copying ${languageName}`);
+		const langRepo = `https://github.com/freon4dsl/IntegrationExample/packages/webapp`;
+		await execSync(`npx degit -v ${langRepo} ../code-examples/${languageName}/webapp/ --force`, { stdio: 'inherit' });
+	}
 }
