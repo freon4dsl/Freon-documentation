@@ -31,20 +31,7 @@ Let's take a step-by-step look at how this is implemented.
 ```ts
 // EducationInterpreter/src/custom/interpreter/EducationInterpreter.ts#L113-L126
 
-// Put the page for this step in the context
-const newCtx = new InterpreterContext(ctx)
 
-// Find the nr of correct answers and add it to the context
-let nrOfCorrectAnswers = 0
-for (const answer of node.answerSeries) {
-    const actualAnswer = main.evaluate(answer.value, newCtx)
-    // Store the actual answer with the question.
-    newCtx.set(answer.$question, actualAnswer)
-    const expectedAnswer = main.evaluate(answer.$question.correctAnswer, newCtx)
-    if (actualAnswer.equals(expectedAnswer)) {
-        nrOfCorrectAnswers++
-    }
-}
 ```
 
 In this example we see that contexts may be nested. A new context is created 
@@ -56,7 +43,7 @@ in the context:
 ```ts
 // EducationInterpreter/src/custom/interpreter/EducationInterpreter.ts#L190-L190
 
-const givenAnswer = ctx.find(question)
+
 ```
 
 During the loop we increase the number of correct answers, which is also stored in the context.
@@ -69,7 +56,6 @@ Now we have enough information to determine the grade of the `fromPage``:
 // EducationInterpreter/src/custom/interpreter/EducationInterpreter.ts#L128-L129
 
 
-// Find the grade for the given answers
 ```
 
 Note that we use the context with the stored value for `NR_OF_CORRECT_ANSWERS`,
@@ -89,22 +75,6 @@ From the flow we obtain the rule for the current page, and from that we get the 
 // EducationInterpreter/src/custom/interpreter/EducationInterpreter.ts#L131-L147
 
 
-//  Find rule for current page
-const currentFlow = ctx.find("CURRENT_FLOW") as RtFlow
-if (isNullOrUndefined(currentFlow)) {
-    return new RtError(`No flow found for page ${currentPage.name}`)
-}
-
-const pageRule: FlowRule = currentFlow.flow.rules.find((rule) => rule.$page === currentPage)
-if (isNullOrUndefined(pageRule)) {
-    return new RtError(`No rules found for page ${currentPage.name} in ${currentFlow.flow.name}`)
-}
-
-// Find the page to which the application should switch based on the calculated grade,
-// and return it as the result of evaluating this step
-const transition = pageRule.transitions.find((trans) => trans.$condition === (grade as RtGrade).grade)
-if (isNullOrUndefined(transition)) {
-    return new RtError(`No transition found for grade ${grade.grade} on page ${currentPage.name} in ${currentFlow.flow.name}`)
 ```
 
 Now all that is left to do is to return the found page:
@@ -112,5 +82,5 @@ Now all that is left to do is to return the found page:
 ```ts
 // EducationInterpreter/src/custom/interpreter/EducationInterpreter.ts#L150-L150
 
-return new RtPage(transition.$toPage)
+
 ```

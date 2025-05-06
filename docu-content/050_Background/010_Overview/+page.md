@@ -87,20 +87,7 @@ an _InsuranceModel_ consists of a list of _Parts_ and a list of _Products_.
 ```proto
 // Insurance/src/defs/language-main.ast#L7-L20
 
-model InsuranceModel {
-    parts: Part[];              // units that hold partial definitions of insurance products
-    products: Product[];        // units that hold sellable insurance products
-}
 
-modelunit Part {
-    part: BaseProduct;          // one collection of partial insurance products
-    file-extension = "base";    // the file extension used by the parser
-}
-
-modelunit Product {
-    product: InsuranceProduct;  // one collection of sellable insurance products
-    file-extension = "prod";    // the file extension used by the parser
-}
 ```
 
 The notion of model units has been around for some time. Actually, we have

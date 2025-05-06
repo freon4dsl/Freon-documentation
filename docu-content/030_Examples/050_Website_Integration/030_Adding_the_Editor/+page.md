@@ -18,7 +18,7 @@ the `showUnit` function is merely administration to keep some of the state varia
 ```ts
 // IntegrationExample/webapp/src/lib/language/WebappConfigurator.ts#L158-L158
 
-this.editorEnvironment.editor.rootElement = newUnit;
+
 ```
 
 But wait, we are forgetting the styling.
@@ -38,9 +38,6 @@ the main css file.
 ```scss
 // IntegrationExample/webapp/src/app.css#L5-L8
 
-@import '../static/freon.css';
-@import '../static/freon-dark.css';
-@import '../static/freon-light.css';
 
 ```
 
@@ -49,12 +46,7 @@ Furthermore, in the css for the dark mode every entry has been prefixed with `.d
 ```scss
 // IntegrationExample/webapp/static/freon-dark.css#L7-L12
 
-.dark .freon-component {
-    color: whitesmoke;
-    background-color: darkslategray;
-    --md-sys-color-primary: whitesmoke;
-    --md-sys-color-on-surface-variant: whitesmoke; /* color for the one that is not checked */
-}
+
 ```
 
 ## The Result

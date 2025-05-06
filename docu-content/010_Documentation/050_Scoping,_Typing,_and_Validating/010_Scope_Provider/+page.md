@@ -25,7 +25,7 @@ name is used.
 ```proto
 // Insurance/src/defs/scoper-docu.scope#L3-L3
 
-isnamespace { InsuranceProduct, BaseProduct, CalcFunction, Entity }
+
 ```
 
 Interfaces can be namespaces as well.
@@ -52,19 +52,13 @@ are included in the namespace by defining the namespace-addition.
 ```proto
 // Insurance/src/defs/language-extras.ast#L34-L38
 
-concept Entity {
-    isCompany: boolean;
-    name: identifier;
-    reference baseEntity?: Entity;
-}
+
 ```
 
 ```proto
 // Insurance/src/defs/scoper-docu.scope#L13-L15
 
-Entity {
-    namespace_addition = self.baseEntity;
-}
+
 ```
 
 ## Alternative Scopes
@@ -76,7 +70,5 @@ an `AttributeRef` are determined based on the type of its container, i.e. the ty
 ```proto
 // Insurance/src/defs/scoper-docu.scope#L9-L11
 
-AttributeRef {
-	scope = typeof( container );
-}
+
 ```

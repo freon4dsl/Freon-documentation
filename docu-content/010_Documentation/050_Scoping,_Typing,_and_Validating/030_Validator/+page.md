@@ -18,10 +18,7 @@ its value can be limited to certain values.
 ```proto
 // Insurance/src/defs/validator-extras.valid#L3-L6
 
-EntityAttribute {
-    self.numVal >= 12;       // in .ast file: "numVal: number;"
-    self.numVal <= 30;
-}
+
 ```
 
 ## List Rules
@@ -34,11 +31,7 @@ complies when the value of the property is unique within the list.
 ```proto
 // Insurance/src/defs/validator-docu.valid#L3-L7
 
-InsuranceProduct {
-    notEmpty self.parts;
-    isunique name in self.parts;
-    isunique name in self.helpers;
-}
+
 ```
 
 ## Valid Identifier Rules
@@ -53,12 +46,7 @@ concept has a simple property named ‘`name`’ of type ‘`identifier`’, and
 ```proto
 // Insurance/src/defs/validator-docu.valid#L27-L32
 
-}
-CalcFunction {
-    // typecheck conformsTo (self.body, self.declaredType);
-    isunique name in self.parameters;
-    validIdentifier
-    {
+
 ```
 
 ## Type Check Rules
@@ -73,9 +61,7 @@ In type checking rules it is possible to use predefined instances of a limited c
 ```proto
 // Insurance/src/defs/validator-docu.valid#L10-L12
 
-MinusExpression  {
-    typecheck equalsType( self.left, self.right );
-}
+
 ```
 
 ## Custom Messages
@@ -88,15 +74,7 @@ The severity of the error may or may not be indicated. The possible values are "
 ```proto
 // Insurance/src/defs/validator-docu.valid#L28-L36
 
-CalcFunction {
-    // typecheck conformsTo (self.body, self.declaredType);
-    isunique name in self.parameters;
-    validIdentifier
-    {
-        message: "El nombre '${self.name}' no es un identificador correcto.",
-        severity: error
-    };
-}
+
 ```
 
 # The Default Validation Rules

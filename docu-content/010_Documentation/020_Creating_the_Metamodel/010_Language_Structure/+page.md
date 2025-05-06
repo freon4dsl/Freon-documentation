@@ -20,10 +20,7 @@ part of it, in its left panel.
 ```proto
 // Insurance/src/defs/language-main.ast#L7-L10
 
-model InsuranceModel {
-    parts: Part[];              // units that hold partial definitions of insurance products
-    products: Product[];        // units that hold sellable insurance products
-}
+
 ```
 
 ## Model unit
@@ -34,10 +31,7 @@ always a direct child of a model. Model units may not extend other units, or imp
 ```proto
 // Insurance/src/defs/language-main.ast#L12-L15
 
-modelunit Part {
-    part: BaseProduct;          // one collection of partial insurance products
-    file-extension = "base";    // the file extension used by the parser
-}
+
 ```
 
 Model units have one special entry called `file-extension`, as shown in the example above. This is an optional
@@ -55,22 +49,12 @@ Furthermore, they may be _abstract_.
 ```proto
 // Insurance/src/defs/language-main.ast#L24-L28
 
-concept BaseProduct {
-    name: identifier;               // internal name
-    isUnderConstruction: boolean;   // defines whether this base product is still 'raw'
-    theme: InsuranceTheme;          // the 'kind' of insurance
-    parts: InsurancePart[];         // all parts of this product
+
 ```
 
 ```proto
 // Insurance/src/defs/language-main.ast#L106-L112
 
-    Percentage;
-}
-
-limited NumberType implements NamedType {
-    Number;
-}
 
 ```
 
@@ -84,15 +68,7 @@ Expression concepts may extend another concept, and implement multiple interface
 ```proto
 // Insurance/src/defs/language-expressions.ast#L10-L18
 
-abstract expression Literal base DocuExpression {
-}
-expression EuroLiteral base Literal {
-    euros: number;
-    cents: number;
-}
-expression NumberLiteral base Literal {
-    value: number;
-}
+
 ```
 
 <Note>
@@ -125,27 +101,7 @@ Binary expression concepts may extend one other concept, and implement multiple 
 ```proto
 // Insurance/src/defs/language-expressions.ast#L26-L46
 
-// Basic binary expressions: plus, minus, multiply, divide
-abstract binary expression BinaryExpression base DocuExpression {
-    left: DocuExpression;
-    right: DocuExpression;
-}
 
-binary expression PlusExpression base BinaryExpression {
-    priority = 4;
-}
-
-binary expression MinusExpression base BinaryExpression {
-    priority = 4;
-}
-
-binary expression MultiplyExpression base BinaryExpression {
-    priority = 8;
-}
-
-binary expression DivideExpression base BinaryExpression {
-    priority = 8;
-}
 ```
 
 ## Limited Concept
@@ -164,24 +120,7 @@ includes the definition of the predefined instances. For example, the instances 
 ```proto
 // Insurance/src/defs/language-main.ast#L129-L146
 
-limited InsuranceTheme {        // limited defined as a simple enumeration
-    HomeTheme; HealthTheme; LegalTheme;
-}
 
-limited PremiumDays {           // limited with various options
-    // if the 'name' property was not provided, it would have been generated
-    name: identifier;
-    nrOfDays: number;
-    // notations 'name:' and '"name":' are both correct
-    Week = { name: "Week", nrOfDays: 7 }
-    Month = { "name": "Month", nrOfDays: 30 }
-    // the following instance gets the name "Quarter"
-    Quarter = { nrOfDays: 91 }
-    // the following instance gets the name "Semester"
-    Semester = { nrOfDays: 182 }
-    // the following instance gets the name "Year"
-    Year = { nrOfDays: 365 }
-}
 ```
 
 <Note>
@@ -199,10 +138,7 @@ An _interface_ is a concept that has no instances. It may extend multiple other 
 ```proto
 // Insurance/src/defs/language-main.ast#L96-L99
 
-// concepts can implement interfaces.
-interface NamedType {
-    name: identifier;
-}
+
 ```
 
 The next section will explain the options for concept properties.

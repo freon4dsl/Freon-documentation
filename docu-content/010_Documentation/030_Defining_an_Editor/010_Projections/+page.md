@@ -14,15 +14,7 @@ on [Indentation](/Documentation/Defining_an_Editor/Indentation).
 ```proto
 // Insurance/src/defs/editor-indentation.edit#L6-L14
 
-Text {
-[
-This is
-        literal text
-      that is projected in the
-                editor
-  for every concept of type Text.
-]
-}
+
 ```
 
 ## Including Properties
@@ -35,17 +27,7 @@ For example, given the following metamodel:
 ```proto
 // Insurance/src/defs/language-main.ast#L22-L32
 
-// A BaseProduct defines all the different elements ('parts') that can be
-// used to create a marketable InsuranceProduct.
-concept BaseProduct {
-    name: identifier;               // internal name
-    isUnderConstruction: boolean;   // defines whether this base product is still 'raw'
-    theme: InsuranceTheme;          // the 'kind' of insurance
-    parts: InsurancePart[];         // all parts of this product
-    // The following properties are present to show the different options for displaying booleans.
-    isApprovedLevel1: boolean;
-    isApprovedLevel2: boolean;
-    isApprovedLevel3: boolean;
+
 ```
 
 consider the property `self.body`, which is of type `DocuExpression`. It 
@@ -57,18 +39,7 @@ the specific (non-abstract) subtype of `DocuType` encountered at runtime.
 ```proto
 // Insurance/src/defs/editor-main-default.edit#L38-L49
 
-InsuranceProduct {[
-    Insurance Product ${name} ( public name: ${productName} ) USES ${basedOn horizontal separator[, ]}
-        Themes: ${themes horizontal separator[, ]}
-        Premium: ${advertisedPremium} per ${nrPremiumDays}
-        Insured risks:
-            ${parts vertical terminator [;]}
-        Calculation
-            [? Risk adjusted by = ${riskAdjustment} ]
-            calculated premium: ${calculation}
-        [?Helper functions:
-            ${helpers vertical}]
-]}
+
 ```
 
 <Note>
@@ -111,12 +82,7 @@ Freon will fall back to the standard precedence order of projections.
 ```proto
 // Insurance/src/defs/editor-named-proj.edit#L3-L8
 
-BaseProduct {[
-    /* In this projection 'self.parts' is always shown according to the projection */
-    /* defined for concept InsurancePart in the editor 'comments'.                 */
-    Base Products ${self.name} for ${self.theme}
-        ${self.parts:comments}
-]}
+
 ```
 
 ## Lists
@@ -147,18 +113,7 @@ default projection for lists.
 ```proto
 // Insurance/src/defs/editor-main-default.edit#L38-L49
 
-InsuranceProduct {[
-    Insurance Product ${name} ( public name: ${productName} ) USES ${basedOn horizontal separator[, ]}
-        Themes: ${themes horizontal separator[, ]}
-        Premium: ${advertisedPremium} per ${nrPremiumDays}
-        Insured risks:
-            ${parts vertical terminator [;]}
-        Calculation
-            [? Risk adjusted by = ${riskAdjustment} ]
-            calculated premium: ${calculation}
-        [?Helper functions:
-            ${helpers vertical}]
-]}
+
 ```
 
 <Note>
@@ -199,10 +154,7 @@ you can use the following code.
 ```proto
 // Insurance/src/defs/editor-tables.edit#L13-L16
 
-BaseProduct {[
-    Base Products ${name} for ${theme}
-        ${parts table rows}
-]}
+
 ```
 
 Given the above example, there should also be a projection tagged `table` for the 
@@ -212,12 +164,7 @@ Below four columns/rows are defined, each with its own header.
 ```proto
 // Insurance/src/defs/editor-tables.edit#L6-L11
 
-InsurancePart{
-table [
-    Name    | risk               | pay out          | is approved
-    ${name} | ${statisticalRisk} | ${maximumPayOut} | ${isApproved}
-]
-}
+
 ```
 
 <Note>
@@ -251,18 +198,7 @@ Note that optional projections for non-optional properties are not allowed.
 ```proto
 // Insurance/src/defs/editor-main-default.edit#L38-L49
 
-InsuranceProduct {[
-    Insurance Product ${name} ( public name: ${productName} ) USES ${basedOn horizontal separator[, ]}
-        Themes: ${themes horizontal separator[, ]}
-        Premium: ${advertisedPremium} per ${nrPremiumDays}
-        Insured risks:
-            ${parts vertical terminator [;]}
-        Calculation
-            [? Risk adjusted by = ${riskAdjustment} ]
-            calculated premium: ${calculation}
-        [?Helper functions:
-            ${helpers vertical}]
-]}
+
 ```
 
 ## Inherited Projections

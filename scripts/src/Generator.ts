@@ -40,6 +40,7 @@ export class Generator {
 
 		console.log("Generating redirect typescript files ...")
 		new RedirectGenerator().generate(contentFolder, outputFolder);
+		console.log("FINISHED genrating")
 	}
 }
 

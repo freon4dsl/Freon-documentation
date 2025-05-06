@@ -24,7 +24,7 @@ So we add the following to the file 'edu-tests.ast'. All should be familiar by n
 ```proto
 // Education/lesson7-defs/edu-tests.ast
 
-language Education
+anguage Education
 
 modelunit Test {
     name: identifier;
@@ -64,7 +64,7 @@ We also build the projections, and again, nothing should be strange for you at t
 ```proto
 // Education/lesson7-defs/edu-tests.edit
 
-editor default
+ditor default
 
 Test {[
     Test ${self.name}
@@ -125,7 +125,7 @@ the `fromPage` property, but here is no way to refer to other scenarios.
 ```proto
 // Education/lesson7-defs/edu.scope
 
-scoper EducationScoper for language Education
+coper EducationScoper for language Education
 
 isnamespace { Page, Step }
 

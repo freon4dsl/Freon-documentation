@@ -10,15 +10,7 @@ and a type reference, that holds a reference to another AST node.
 ```proto
 // TyperExample/src/defs/projectY.ast#L18-L26
 
-abstract concept TypeUsage { // to be used wherever a type can be used, either a referred type of or declared type is correct
-}
 
-concept TypeRef base TypeUsage  {
-    reference type: NamedType;
-}
-
-abstract concept TypeDecl base TypeUsage {
-}
 ```
 
 There are also two options for a type declaration, a generic type, and a unit of measurement. For this example,
@@ -28,17 +20,7 @@ Note that these declarations are part of the AST. They are not type concepts the
 ```proto
 // TyperExample/src/defs/projectY.ast#L37-L47
 
-concept GenericType base TypeDecl {
-    baseType: TypeUsage;
-    kind: GenericKind; // is it a set, sequence, bag, or anything else
-}
-limited GenericKind { Set; Sequence; Bag; Collection; }
 
-concept UnitOfMeasurement base TypeDecl {
-    reference baseType: PredefinedType; // is always NUMBER!!
-    unit: UnitKind; // is it measured in km, kWh, grams, or anything else
-}
-limited UnitKind { Meters; Grams; kWh; Hours; }
 ```
 
 The definitions of the expressions in the example language are straightforward. There are literal expressions for
@@ -47,21 +29,7 @@ strings, booleans, and number, as well as generic literals and unit literals.
 ```proto
 // TyperExample/src/defs/projectY.ast#L61-L75
 
-expression BooleanLiteral base Exp {
-    xx: boolean;
-}
 
-expression UnitLiteral base Exp {
-    // 62 kilogram, or 112 miles
-    inner: NumberLiteral;
-    unit: UnitKind;
-}
-
-expression GenericLiteral base Exp {
-    // Set{ 12, 14, 16, 18 }
-    content: Exp[];
-    kind: GenericKind;
-}
 ```
 
 ## The Complete AST Definition
@@ -69,7 +37,7 @@ expression GenericLiteral base Exp {
 ```proto
 // TyperExample/src/defs/projectY.ast
 
-language projectY
+anguage projectY
 
 model XX {
     units: XXunit[];

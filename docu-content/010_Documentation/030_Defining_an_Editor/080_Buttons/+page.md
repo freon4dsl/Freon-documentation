@@ -11,7 +11,7 @@ a space between the start square bracket `[` and `button`.
 ```proto
 // Insurance/src/defs/editor-fragments.edit#L18-L18
 
-[button text="Push me!" boxRole="MyButton-role"]
+
 ```
 
 The **text** is the text that will be shown on the button. The **boxRole** is the manner in which the button is coupled to an action.
@@ -35,12 +35,7 @@ As an example, buttons are added to a table definition.
 ```proto
 // Insurance/src/defs/editor-tables-with-button.edit#L6-L11
 
-InsurancePart{
-table [
-    Name    | risk               | pay out          | is approved   | action
-    ${name} | ${statisticalRisk} | ${maximumPayOut} | ${isApproved} | [button boxRole="MyTableButton-role"]
-]
-}
+
 ```
 
 To style these buttons the following SCSS code is added.

@@ -14,11 +14,7 @@ Open the file `edu-topics.ast` and add one line to the `Page` concept.
 ```proto
 // Education/lesson4-defs/edu-topics.ast#L10-L14
 
-abstract concept Page {
-    name: identifier;
-    questions: Question[];
-    grading: GradeScore[]; /* concept from 'edu-scoring.ast' */
-}
+
 ```
 
 Of course, we are going to define the `GradeScore` concept, but for this we create a new file called `edu-scoring.ast`.
@@ -27,12 +23,77 @@ Add the following lines to it.
 ```proto
 // Education/lesson4-defs/edu-scoring.ast#L1-L6
 
-language Education
+anguage Education
 
 concept GradeScore {
     grade: Grade;
     expr: ScoreExpression;
 }
+
+///////////////////////////////////
+/// Expressions
+//////////////////////////////////
+abstract expression ScoreExpression {
+}
+
+/* The value of a question reference is the answer given to the
+given question */
+expression QuestionReference base ScoreExpression {
+    reference question: Question;
+}
+
+/* The value of NrOfCorrectAnswers is the total number of correct
+answers on a page. */
+expression NrOfCorrectAnswers base ScoreExpression {
+}
+
+/* The value of a NumberLiteralExpression is simply a number, like '24' */
+expression NumberLiteralExpression base ScoreExpression {
+    value: number;
+}
+
+///////////////////////////////////
+/// Boolean AND and OR
+//////////////////////////////////
+abstract binary expression BinaryExpression base ScoreExpression {
+    left: ScoreExpression;
+    right: ScoreExpression;
+}
+
+binary expression AndExpression base BinaryExpression {
+    priority = 1;
+}
+
+binary expression OrExpression base BinaryExpression {
+    priority = 1;
+}
+
+///////////////////////////////////
+/// Comparisons: <=, >=, >, <, ===
+//////////////////////////////////
+abstract binary expression ComparisonExpression base BinaryExpression {
+}
+
+binary expression LessOrEqualsExpression base ComparisonExpression {
+    priority = 2;
+}
+
+binary expression GreaterOrEqualsExpression base ComparisonExpression {
+    priority = 2;
+}
+
+binary expression LessThenExpression base ComparisonExpression {
+    priority = 2;
+}
+
+binary expression GreaterThenExpression base ComparisonExpression {
+    priority = 2;
+}
+
+binary expression EqualsExpression base ComparisonExpression {
+    priority = 2;
+}
+
 ```
 
 Yes, the concept `ScoreExpression` represents our expression. To get an idea of
@@ -66,27 +127,7 @@ This is how we define the first three concepts of the above list.
 ```proto
 // Education/lesson4-defs/edu-scoring.ast#L8-L28
 
-///////////////////////////////////
-/// Expressions
-//////////////////////////////////
-abstract expression ScoreExpression {
-}
 
-/* The value of a question reference is the answer given to the
-given question */
-expression QuestionReference base ScoreExpression {
-    reference question: Question;
-}
-
-/* The value of NrOfCorrectAnswers is the total number of correct
-answers on a page. */
-expression NrOfCorrectAnswers base ScoreExpression {
-}
-
-/* The value of a NumberLiteralExpression is simply a number, like '24' */
-expression NumberLiteralExpression base ScoreExpression {
-    value: number;
-}
 ```
 
 Instead of the keyword `concept`, we use the keyword `expression` to let Freon know that instances
@@ -103,21 +144,7 @@ the boolean **AND** and **OR**.
 ```proto
 // Education/lesson4-defs/edu-scoring.ast#L30-L44
 
-///////////////////////////////////
-/// Boolean AND and OR
-//////////////////////////////////
-abstract binary expression BinaryExpression base ScoreExpression {
-    left: ScoreExpression;
-    right: ScoreExpression;
-}
 
-binary expression AndExpression base BinaryExpression {
-    priority = 1;
-}
-
-binary expression OrExpression base BinaryExpression {
-    priority = 1;
-}
 ```
 
 Here it comes in handy that there is a single base parent for
@@ -145,31 +172,7 @@ not be stingy, and create expression concepts for `<`, `>=`, and `<=` as well.
 ```proto
 // Education/lesson4-defs/edu-scoring.ast#L46-L70
 
-///////////////////////////////////
-/// Comparisons: <=, >=, >, <, ===
-//////////////////////////////////
-abstract binary expression ComparisonExpression base BinaryExpression {
-}
 
-binary expression LessOrEqualsExpression base ComparisonExpression {
-    priority = 2;
-}
-
-binary expression GreaterOrEqualsExpression base ComparisonExpression {
-    priority = 2;
-}
-
-binary expression LessThenExpression base ComparisonExpression {
-    priority = 2;
-}
-
-binary expression GreaterThenExpression base ComparisonExpression {
-    priority = 2;
-}
-
-binary expression EqualsExpression base ComparisonExpression {
-    priority = 2;
-}
 ```
 
 Now, let Freon generate the editor again, and open the model `lesson4`. Note that we are opening 
@@ -183,13 +186,7 @@ in `page-footing.edit` to the following.
 ```proto
 // Education/lesson4-defs/page-footing.edit#L5-L11
 
-Page {[
-    Questions:
-        ${self.questions vertical}
 
-    Score
-        ${self.grading vertical}
-]}
 ```
 
 Generate again, and this is (part of) what you will see. Not especially pretty, but we have our expressions. In the next

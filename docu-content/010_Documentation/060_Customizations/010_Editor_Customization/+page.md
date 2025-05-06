@@ -19,46 +19,6 @@ concept contains the following to methods.
 ```ts
 // Insurance/src/freon/editor/gen/EuroLiteralBoxProvider.ts#L22-L62
 
-    protected getContent(projectionName: string): Box {
-        // console.log("GET CONTENT " + this._node?.freId() + ' ' +  this._node?.freLanguageConcept() + ' ' + projectionName);
-        // see if we need to use a custom projection
-        if (!this.knownBoxProjections.includes(projectionName) && !this.knownTableProjections.includes(projectionName)) {
-            const BOX: Box = this.mainHandler.executeCustomProjection(this._node, projectionName);
-            if (!!BOX) {
-                // found one, so return it
-                return BOX;
-            }
-        } else {
-            // select the box to return based on the projectionName
-            if (projectionName === "default") {
-                return this.getDefault();
-            }
-        }
-        // in all other cases, return the default
-        return this.getDefault();
-    }
-
-    private getDefault(): Box {
-        return createDefaultExpressionBox(
-            this._node as EuroLiteral,
-            [
-                BoxFactory.horizontalLayout(
-                    this._node as EuroLiteral,
-                    "EuroLiteral-hlist-line-0",
-                    "",
-                    [
-                        BoxUtil.labelBox(this._node as EuroLiteral, "EUR", "top-1-line-0-item-0"),
-                        BoxUtil.numberBox(this._node as EuroLiteral, "euros", NumberDisplay.SELECT),
-                        BoxUtil.labelBox(this._node as EuroLiteral, ",", "top-1-line-0-item-2"),
-                        BoxUtil.numberBox(this._node as EuroLiteral, "cents", NumberDisplay.SELECT),
-                    ],
-                    { selectable: false },
-                ),
-            ],
-            { selectable: false },
-        );
-    }
-}
 
 ```
 
@@ -82,60 +42,6 @@ In the below example, a copy is taken of the `getDefault` method above, which is
 ```ts
 // Insurance/src/custom/editor/CustomInsuranceModelProjection.ts#L24-L79
 
-const euroIcon = "M640 789.333333c-106.88 0-199.68-60.586667-245.973333-149.333333H640v-85.333333H366.293333c-2.133333-13.866667-3.626667-28.16-3.626666-42.666667s1.493333-28.8 3.626666-42.666667H640v-85.333333H394.026667c46.293333-88.746667 138.88-149.333333 245.973333-149.333333 68.906667 0 131.84 25.173333 180.266667 66.773333L896 226.133333A382.72 382.72 0 0 0 640 128c-167.04 0-308.906667 106.88-361.6 256H128v85.333333h130.56c-1.706667 14.08-2.56 28.16-2.56 42.666667 0 14.506667 0.853333 28.586667 2.56 42.666667H128v85.333333h150.4c52.693333 149.12 194.56 256 361.6 256 98.346667 0 188.16-37.333333 256-98.133333l-75.733333-75.52A275.818667 275.818667 0 0 1 640 789.333333z"
-
-/**
- * Class CustomInsuranceModelProjection provides an entry point for the language engineer to
- * define custom build additions to the editor.
- * These are merged with the custom build additions and other definition-based editor parts
- * in a three-way manner. For each modelelement,
- * (1) if a custom build creator/behavior is present, this is used,
- * (2) if a creator/behavior based on one of the editor definition is present, this is used,
- * (3) if neither (1) nor (2) yields a result, the default is used.
- */
-export class CustomInsuranceModelProjection implements FreProjection {
-    name: string = "Euro-symbol";
-    nodeTypeToBoxMethod: Map<string, (node: FreNode) => Box> = new Map<string, (node: FreNode) => Box>([
-        // register your custom box methods here
-        ['EuroLiteral', this.EuroLiteralWithSVG],
-    ]);
-    nodeTypeToTableDefinition: Map<string, () => FreTableDefinition> = new Map<string, () => FreTableDefinition>([
-        // register your custom table definition methods here
-        // ['NAME_OF_CONCEPT', this.TABLE_DEFINITION_FOR_CONCEPT],
-    ]);
-
-    // add your custom methods here
-
-    // BOX_FOR_CONCEPT(node: NAME_OF_CONCEPT) : Box { ... }
-    EuroLiteralWithSVG(node: EuroLiteral): Box {
-        return createDefaultExpressionBox(
-            node,
-            [
-                BoxFactory.horizontalLayout(
-                    node,
-                    "EuroLiteral-hlist-line-0",
-                    "",
-                    [
-                        new SvgBox(node, "euro-icon", euroIcon, {
-                            viewPortWidth: 20,
-                            viewPortHeight: 20,
-                            viewBoxWidth: 1024,
-                            viewBoxHeight: 1024,
-                            selectable: false
-                        }),
-                        BoxUtil.numberBox(node, "euros", NumberDisplay.SELECT),
-                        BoxUtil.labelBox(node, ",", "top-1-line-0-item-2"),
-                        BoxUtil.numberBox(node, "cents", NumberDisplay.SELECT),
-                    ],
-                    { selectable: false },
-                ),
-            ],
-            { selectable: false },
-        );
-    }
-
-    // TABLE_DEFINITION_FOR_CONCEPT() : FreTableDefinition { ... }
-}
 
 ```
 
@@ -180,37 +86,5 @@ the action is here a simple alert with a message to the user.
 ```ts
 // Insurance/src/custom/editor/CustomInsuranceModelActions.ts#L19-L82
 
-export class CustomInsuranceModelActions implements FreCombinedActions {
-    binaryExpressionActions: FreCreateBinaryExpressionAction[] = MANUAL_BINARY_EXPRESSION_ACTIONS;
-    customActions: FreCustomAction[] = MANUAL_CUSTOM_ACTIONS;
-}
-
-export const MANUAL_BINARY_EXPRESSION_ACTIONS: FreCreateBinaryExpressionAction[] = [
-    // Add your own custom binary expression actions here
-];
-
-export const MANUAL_CUSTOM_ACTIONS: FreCustomAction[] = [
-    // Add your own custom behavior here
-    FreCustomAction.create({
-        activeInBoxRoles: ["MyButton-role"],
-        action: (box: Box, trigger: FreTriggerType, ed: FreEditor): FreNode | null => {
-            // do something
-            const thisNode: FreNode = box.node;
-            // const thisParent: FreNode = box.element.freOwner();
-            alert("You shouldn't have pushed the button with role 'MyButton-role' on element " + thisNode.freId() + ".\nPunishment awaits !!!!!!!!!!");
-            return null;
-        },
-    }),
-    FreCustomAction.create({
-        activeInBoxRoles: ["MyTableButton-role"],
-        action: (box: Box, trigger: FreTriggerType, ed: FreEditor): FreNode | null => {
-            // do something
-            const thisNode: FreNode = box.node;
-            // const thisParent: FreNode = box.element.freOwner();
-            alert("You shouldn't have pushed the button with role 'MyTableButton-role' on element " + thisNode.freId() + ".\nPunishment awaits !!!!!!!!!!");
-            return null;
-        },
-    }),
-];
 
 ```

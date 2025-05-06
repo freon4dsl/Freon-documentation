@@ -17,7 +17,7 @@ To include information from the DSL we use a Svelte state variable called `langI
 ```ts
 // IntegrationExample/webapp/src/lib/stores/LanguageInfo.svelte.ts
 
-export interface LanguageInfo {
+port interface LanguageInfo {
   // name of the language
   name: string;
   // names of all model unit types
@@ -59,7 +59,7 @@ use the `configureExternals` and `configureLoggers` functions from the DSL, as w
 ```ts
 // IntegrationExample/webapp/src/hooks.client.ts
 
-/*
+*
  * This files contains all initialization that needs to be done ONCE at the startup of the Freon application
  */
 import {
@@ -93,16 +93,7 @@ implementation as parameters. The `InMemoryModel` handles creation, saving, etc.
 ```ts
 // IntegrationExample/webapp/src/lib/language/WebappConfigurator.ts#L45-L54
 
-setEnvironment(
-    editorEnvironment: FreEnvironment,
-    serverCommunication: IServerCommunication,
-): void {
-    // LOGGER.log('setEnvironment')
-    this.editorEnvironment = editorEnvironment;
-    this.serverCommunication = serverCommunication;
-    WebappConfigurator.initialize(editorEnvironment);
-    this.modelStore = new InMemoryModel(editorEnvironment, serverCommunication);
-}
+
 ```
 
 Finally, the `initialize` function fills the Svelte state variable `langInfo` with the values that we need.
@@ -119,39 +110,7 @@ Note also that you need to start the `FreUndoManager` for undo/redo handling to 
 ```ts
 // IntegrationExample/webapp/src/lib/language/WebappConfigurator.ts#L60-L92
 
-static initialize(editorEnvironment: FreEnvironment): void {
-    let langEnv: FreEnvironment = editorEnvironment;
-    // the language name
-    langInfo.name = langEnv.languageName;
 
-    // the names of the unit types
-    langInfo.unitTypes = FreLanguage.getInstance().getUnitNames();
-
-    // the names of the projections / views
-    const proj: FreProjectionHandler = langEnv.editor.projection;
-    let nameList: string[] = !!proj ? proj.projectionNames() : ["default"];
-    // remove any old values
-    langInfo.projectionNames.splice(0, langInfo.projectionNames.length);
-    // push the right ones
-    langInfo.projectionNames.push(...nameList);
-    replaceProjectionsShown(nameList);
-
-    // the file extensions for all unit types
-    // because 'langEnv.fileExtensions.values()' is not an Array but an IterableIterator,
-    // we transfer the value to a tmp array.
-    const tmp: string[] = [];
-    for (const val of langEnv.fileExtensions.values()) {
-        tmp.push(val);
-    }
-    langInfo.fileExtensions = tmp;
-
-    // let the editor know how to set the user message,
-    // we do this by assigning our own method to the editor's method
-    // langEnv.editor.setUserMessage = setUserMessage;
-
-    // start the undo manager
-    FreUndoManager.getInstance();
-}
 ```
 
 ## Unit Types in Model Drawer
@@ -166,31 +125,7 @@ in [Including Model Information](/Examples/Website_Integration/Including_Model_I
 ```ts
 // IntegrationExample/webapp/src/lib/main-app/ModelInfo.svelte#L66-L90
 
-<Listgroup>
-    {#each langInfo.unitTypes as unitType}
-        <Heading tag="h5" class="pl-2">{unitType}</Heading>
-        <ListgroupItem class="gap-2 text-base font-semibold">
-            <Listgroup>
-                {#each myUnits as unit, index}
-                    {#if unit.freLanguageConcept() === unitType}
-                        <div class="flex justify-between">
-                            {unit.name}
-                            <DotsHorizontalOutline class="dots-menu1 inline dark:text-white"/>
-                        </div>
-                        <Dropdown triggeredBy=".dots-menu1">
-                            <DropdownItem onclick={() => (openUnit(index))}>Open</DropdownItem>
-                            <DropdownItem onclick={() => (saveUnit(index))}>Save</DropdownItem>
-                            <DropdownItem onclick={() => (renameUnit(index))}>Rename</DropdownItem>
-                            <DropdownItem onclick={() => (deleteUnit(index))}>Delete</DropdownItem>
-                            <DropdownItem slot="footer" onclick={() => (exportUnit(index))}>Export</DropdownItem>
-                        </Dropdown>
-                    {/if}
-                {/each}
-            </Listgroup>
-        </ListgroupItem>
-    {/each}
-    <!-- Instead of DotsHorizontalOutline we could use ChevronDownOutline-->
-</Listgroup>
+
 ```
 
 ## Projections in View Menu
@@ -205,17 +140,7 @@ holds the 'selected' state.
 ```ts
 // IntegrationExample/webapp/src/lib/main-app/ViewMenu.svelte#L8-L18
 
-let allProjections: (ProjectionItem | undefined)[] = $derived(
-    langInfo.projectionNames.map(view => {
-        let selected: boolean = false;
-        if (view !== 'default') {
-            if (projectionsShown.includes(view)) {
-                selected = true;
-            }
-            return new ProjectionItem(view, selected);
-        }
-    })
-);
+
 ```
 
 We use `allProjections` in the HTML part of the component as follows. The 
@@ -225,21 +150,7 @@ We will not explain this any further.
 ```ts
 // IntegrationExample/webapp/src/lib/main-app/ViewMenu.svelte#L40-L54
 
-<Dropdown class="z-20 w-44 space-y-3 p-3 text-sm">
-    <li>
-        <Checkbox checked disabled>Default</Checkbox>
-    </li>
-    {#each allProjections as option}
-        {#if option !== null && option !== undefined}
-            <li>
-                <Checkbox onchange={() => !!option ? option.selected = !option.selected: null}
-                          checked={option.selected}>{option ? option.name : "unknown view"}</Checkbox>
-            </li>
-        {/if}
-    {/each}
-    <DropdownDivider/>
-    <DropdownItem onclick={() => applyChanges()}>Apply changes</DropdownItem>
-</Dropdown>
+
 ```
 
 ## The result

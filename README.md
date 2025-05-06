@@ -10,6 +10,9 @@ During development, you can use the following commands.
 # Install dependencies
 npm install
 
+# Get the example code from github
+npm run install-examples
+
 # create the website from the Markdown content
 npm run buildSite
 

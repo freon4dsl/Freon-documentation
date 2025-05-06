@@ -13,7 +13,7 @@ The following is the metamodel, which by now you should be able to understand wi
 ```proto
 // CourseSchedule/phase1/defs/main.ast
 
-language CourseSchedule
+anguage CourseSchedule
 
 model CourseSchedule {
     persons: Staff[];
@@ -99,7 +99,7 @@ competences of a teacher in a list of checkboxes, and clean up the rest a little
 ```proto
 // CourseSchedule/phase1/defs/main.edit
 
-editor default
+ditor default
 
 global {
     external {

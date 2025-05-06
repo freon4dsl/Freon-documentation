@@ -28,7 +28,7 @@ Create the file `edu-main.ast` in the `src/defs` folder, and add the following c
 ```proto
 // Education/lesson1-defs/edu-main.ast#L1-L10
 
-language Education
+anguage Education
 
 model Education /* Computer Aided Learning */ {
     name: identifier;
@@ -36,6 +36,14 @@ model Education /* Computer Aided Learning */ {
     flow: Flow[];
     tests: Test[];
     overviews: SiteGroup[];
+}
+
+modelunit SiteGroup {
+    name: identifier;
+    description: string; /* e.g. Mathematics, fractions for students age 10 */
+    reference topics: Topic[];
+    reference flows: Flow[];
+    reference tests: Test[];
 }
 
 ```
@@ -82,13 +90,7 @@ Likewise, we define references to the flows and the tests that are part of this 
 ```proto
 // Education/lesson1-defs/edu-main.ast#L11-L17
 
-modelunit SiteGroup {
-    name: identifier;
-    description: string; /* e.g. Mathematics, fractions for students age 10 */
-    reference topics: Topic[];
-    reference flows: Flow[];
-    reference tests: Test[];
-}
+
 ```
 
 ## The _Topic_ model unit
@@ -106,12 +108,7 @@ Each Topic will have a number of pages. The result for now is the code below.
 ```proto
 // Education/lesson1-defs/edu-topics.ast#L3-L8
 
-modelunit Topic {
-    name: identifier;
-    reference main: SiteGroup;
-    description: string;
-    pages: Page[];
-}
+
 ```
 
 So far, so good!
@@ -126,35 +123,6 @@ idea to make the **Page** concept abstract, and have a number of concepts that i
 ```proto
 // Education/lesson1-defs/edu-topics.ast#L10-L39
 
-abstract concept Page {
-    name: identifier;
-    questions: Question[];
-}
-
-concept Theory base Page {
-    /* For the sake of the example this is simplified.
-    Should be formatted text including pictures, etc. */
-    content: Line[];
-}
-
-concept Line {
-    content: string;
-}
-
-concept Video base Page {
-    url: string;
-}
-
-concept WorkSheet base Page {
-}
-
-concept ExamplePage base Page {
-    content: Line[];
-}
-
-concept InDepthMaterial base Page {
-    content: Line[];
-}
 
 ```
 
@@ -176,22 +144,6 @@ create a concept that represents fractions. A simple number will not be sufficie
 ```proto
 // Education/lesson1-defs/edu-topics.ast#L41-L57
 
-    name: identifier;
-    content: string;
-    correctAnswer: NumberConcept;
-}
-
-abstract concept NumberConcept {
-}
-
-concept SimpleNumber base NumberConcept {
-    value: number;
-}
-
-concept Fraction base NumberConcept {
-    numerator: number;
-    denominator: number;
-}
 
 ```
 
@@ -230,22 +182,12 @@ Let's create a second file called `edu-flow.ast`. This file will contain the par
 ```proto
 // Education/lesson1-defs/edu-flow.ast#L1-L6
 
-language Education
+anguage Education
 
 modelunit Flow {
     reference main: SiteGroup;
     rules: FlowRule[];
 }
-```
-Here again, we use a reference to link the flow a site group.
-
-In the following code, each **FlowRule** is linked to a certain page. This is the page that the pupil is currently
-working on. The flow rule will determine which page to show next, using a set of **PageTransitions**.
-A page transition is simply a condition coupled to another page. If the condition is fulfilled, then that
-page will be the next in the flow.
-
-```proto
-// Education/lesson1-defs/edu-flow.ast#L8-L18
 
 concept FlowRule {
     name: identifier;
@@ -258,14 +200,6 @@ concept PageTransition { /* E.g. Grade A => show pageA, Grade F => show pageC */
     condition: Grade;
     reference toPage: Page;
 }
-```
-
-But how to define the condition for a page transition? Well, we'll take the easy road for now, and make it an enumeration.
-In Freon terminology that is a [limited concept](/Documentation/Creating_the_Metamodel/Language_Structure#limited-concept-7), 
-which is a slightly more extensive notion than the old-fashioned enumeration.
-
-```proto
-// Education/lesson1-defs/edu-flow.ast#L20-L27
 
 limited Grade {
     gradeA;
@@ -275,6 +209,29 @@ limited Grade {
     gradeE;
     gradeF;
 }
+
+```
+Here again, we use a reference to link the flow a site group.
+
+In the following code, each **FlowRule** is linked to a certain page. This is the page that the pupil is currently
+working on. The flow rule will determine which page to show next, using a set of **PageTransitions**.
+A page transition is simply a condition coupled to another page. If the condition is fulfilled, then that
+page will be the next in the flow.
+
+```proto
+// Education/lesson1-defs/edu-flow.ast#L8-L18
+
+
+```
+
+But how to define the condition for a page transition? Well, we'll take the easy road for now, and make it an enumeration.
+In Freon terminology that is a [limited concept](/Documentation/Creating_the_Metamodel/Language_Structure#limited-concept-7), 
+which is a slightly more extensive notion than the old-fashioned enumeration.
+
+```proto
+// Education/lesson1-defs/edu-flow.ast#L20-L27
+
+
 ```
 
 That is the second model unit done! 

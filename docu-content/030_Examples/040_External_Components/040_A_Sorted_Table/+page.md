@@ -13,37 +13,13 @@ As a reminder, here are the AST definitions of Schedule, Slot and TimeSlot.
 ```ts
 // CourseSchedule/phase5/defs/main.ast#L10-L14
 
-modelunit Schedule {
-    name: identifier;
-    timeSlots: Slot[];
-    file-extension = "scd";     // the file extension used by the parser
-}
+
 ```
 
 ```ts
 // CourseSchedule/phase5/defs/main.ast#L33-L53
 
-concept Slot {
-    time: TimeStamp;
-    reference teacher: Person;
-    reference room: Room;
-    reference course: Course;
-}
 
-limited TimeStamp {
-    day: number; // 1 = Monday, 2 = Tuesday, etc
-    part: number; // 1 indicates morning, 2 indicates afternoon
-    MondayMorning = { day: 1, part: 1 }
-    TuesdayMorning = { day: 2, part: 1 }
-    WednesdayMorning = { day: 3, part: 1 }
-    ThursdayMorning = { day: 4, part: 1 }
-    FridayMorning = { day: 5, part: 1 }
-    MondayAfternoon = { day: 1, part: 2 }
-    TuesdayAfternoon = { day: 2, part: 2 }
-    WednesdayAfternoon = { day: 3, part: 2 }
-    ThursdayAfternoon = { day: 4, part: 2 }
-    FridayAfternoon = { day: 5, part: 2 }
-}
 ```
 
 ## Step 1: Create the Svelte Component
@@ -63,107 +39,7 @@ box for each `Slot`, we remember which child box is associated with a `Slot` in 
 ```ts
 // CourseSchedule/phase5/src/external/Schedule.svelte#L56-L156
 
-function sortSlots(startVal: Slot[]) {
-    for (let i = 0; i < 10 ; i++) {
-        sortedSlots[i] = [];
-    }
-    (startVal).forEach((val, index) => {
-        // remember which box belongs to which slot
-        slotToBoxMap.set(val, box.children[index]);
-        switch (val.$time.day) {
-            case 1: {
-                switch (val.$time.part) {
-                    case 1: { // Monday morning
-                        sortedSlots[0].push(val);
-                        break;
-                    }
-                    case 2: { // Monday afternoon
-                        sortedSlots[5].push(val);
-                        break;
-                    }
-                    default: {
-                        sortedSlots[0].push(val);
-                    }
-                }
-                break;
-            }
-            case 2: {
-                switch (val.$time.part) {
-                    case 1: { // Tuesday morning
-                        sortedSlots[1].push(val);
-                        break;
-                    }
-                    case 2: { // Tuesday afternoon
-                        sortedSlots[6].push(val);
-                        break;
-                    }
-                    default: {
-                        sortedSlots[1].push(val);
-                    }
-                }
-                break;
-            }
-            case 3: {
-                switch (val.$time.part) {
-                    case 1: { // Wednesday morning
-                        sortedSlots[2].push(val);
-                        break;
-                    }
-                    case 2: { // Wednesday afternoon
-                        sortedSlots[7].push(val);
-                        break;
-                    }
-                    default: {
-                        sortedSlots[2].push(val);
-                    }
-                }
-                break;
-            }
-            case 4: {
-                switch (val.$time.part) {
-                    case 1: { // Thursday morning
-                        sortedSlots[3].push(val);
-                        break;
-                    }
-                    case 2: { // Thursday afternoon
-                        sortedSlots[8].push(val);
-                        break;
-                    }
-                    default: {
-                        sortedSlots[3].push(val);
-                    }
-                }
-                break;
-            }
-            case 5: {
-                switch (val.$time.part) {
-                    case 1: { // Friday morning
-                        sortedSlots[4].push(val);
-                        break;
-                    }
-                    case 2: { // Friday afternoon
-                        sortedSlots[9].push(val);
-                        break;
-                    }
-                    default: {
-                        sortedSlots[4].push(val);
-                    }
-                }
-                break;
-            }
-        }
-    })
-}
 
-/* Sort the list of slots based on the time */
-function initialize() {
-    let startVal: FreNode[] | undefined = box.getPropertyValue();
-    if (!!startVal && box.getPropertyType() === "Slot") {
-        // cast the startVal to the expected type, in this case "Slot[]".
-        // sort the slots based on the time and remember which box belongs to which slot
-        sortSlots(startVal as Slot[]);
-    }
-}
 ```
 
 The function that adds a new `Slot` takes a parameter of type `TimeStamp`. This enables us to create a new slot with
@@ -173,14 +49,7 @@ one in the `StaffAccordion`.
 ```ts
 // CourseSchedule/phase5/src/external/Schedule.svelte#L158-L165
 
-const addSlot = (timeStamp: TimeStamp) => {
-    // Note that you need to put any changes to the actual model in a 'AST.change' or 'AST.changeNamed',
-    // because all elements in the model are reactive using mobx.
-    AST.change(() => {
-        let newSlot: Slot = Slot.create({time: FreNodeReference.create<TimeStamp>(timeStamp, "TimeStamp")});
-        box.getPropertyValue().push(newSlot);
-    });
-}
+
 ```
 
 Then there are two variables that make live easier in the HTML part.
@@ -188,21 +57,7 @@ Then there are two variables that make live easier in the HTML part.
 ```ts
 // CourseSchedule/phase5/src/external/Schedule.svelte#L40-L54
 
-let dayTitle: string[] = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday' ];
 
-// variables for creating a new slot
-let timeStamps: TimeStamp[] = [
-    TimeStamp.MondayMorning,
-    TimeStamp.TuesdayMorning,
-    TimeStamp.WednesdayMorning,
-    TimeStamp.ThursdayMorning,
-    TimeStamp.FridayMorning,
-    TimeStamp.MondayAfternoon,
-    TimeStamp.TuesdayAfternoon,
-    TimeStamp.WednesdayAfternoon,
-    TimeStamp.ThursdayAfternoon,
-    TimeStamp.FridayAfternoon
-];
 ```
 
 ### The HTML Section
@@ -216,12 +71,7 @@ headers with the texts `Morning` and `Afternoon`, the first header cell is left 
 ```ts
 // CourseSchedule/phase5/src/external/Schedule.svelte#L174-L179
 
-<tr class="demo-header-row">
-    <th class="demo-header-cell">--</th>
-    {#each dayTitle as title}
-        <th class="demo-header-cell">{title}</th>
-    {/each}
-</tr>
+
 ```
 
 Next, we create two rows, one for the mornings and one for the afternoons. 
@@ -236,28 +86,7 @@ The row for the afternoons is almost identical, but takes the last five of the s
 ```ts
 // CourseSchedule/phase5/src/external/Schedule.svelte#L182-L203
 
-<tr class="demo-row">
-    <td class="demo-header-cell">Morning</td>
-    {#each sortedSlots  as slots, index}
-        {#if index < 5}
-            {#if slots.length > 0}
-                <td class="demo-cell">
-                    <div class="demo-cell-content">
-                        {#each slots as slot}
-                            <div class="demo-slot-render">
-                                <RenderComponent box={slotToBoxMap.get(slot)} editor={editor} />
-                            </div>
-                        {/each}
-                    </div>
-                </td>
-            {:else}
-                <td class="demo-cell">
-                    <div class="demo-slot-render">NONE</div>
-                </td>
-            {/if}
-        {/if}
-    {/each}
-</tr>
+
 ```
 
 In between we have added two rows containing buttons to enable the user to add a slot to a specific time.
@@ -268,16 +97,7 @@ to the function that adds a slot.
 ```ts
 // CourseSchedule/phase5/src/external/Schedule.svelte#L204-L213
 
-<tr>
-    <td class="demo-btn-cell"></td>
-    {#each timeStamps as stamp, index}
-        {#if index < 5}
-            <td class="demo-btn-cell">
-                <IconButton class="material-icons" on:click={() => addSlot(stamp)}>add</IconButton>
-            </td>
-        {/if}
-    {/each}
-</tr>
+
 ```
 
 The complete Svelte component can be found at the bottom of this page.
@@ -291,18 +111,7 @@ projection for the `Slot` itself to not show `${self.time}`.
 ```proto
 // CourseSchedule/phase5/defs/externals.edit#L20-L31
 
-Schedule {[
-Schedule ${self.name}
 
-${self.timeSlots replace=Schedule}
-
-]}
-
-Slot {[
-    Teacher: ${self.teacher}
-    Room:    ${self.room}
-    Course:  ${self.course}
-]}
 ```
 
 By now, you will have understood the admin that needs to be done for the external component, so
@@ -342,7 +151,7 @@ For reference, here is the full implementation of the `Schedule.svelte` componen
 ```ts
 // CourseSchedule/phase5/src/external/Schedule.svelte
 
-<script lang="ts">
+ipt lang="ts">
     import IconButton from "@smui/icon-button";
     import {afterUpdate, onMount} from "svelte";
     import {Box, ExternalPartListBox, FreEditor, FreNode, FreNodeReference, AST} from "@freon4dsl/core";

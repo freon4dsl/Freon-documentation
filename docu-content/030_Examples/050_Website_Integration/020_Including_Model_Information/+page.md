@@ -29,25 +29,7 @@ open the model, and to get the names of the available models, to the before ment
 ```ts
 // IntegrationExample/webapp/src/lib/main-app/WebappLayout.svelte#L24-L42
 
-nMount(async () => {
-// If a model is given as parameter, open this model
-// A new model is created when this model does not exist
-const urlParams = new URLSearchParams(window.location.search);
-const model = urlParams.get('model');
-if (model !== null) {
-	openModel(model);
-} else {
-	// No model given as parameter, open the dialog to ask for it
-	// Get list of models from server
-	const names = await WebappConfigurator.getInstance().getAllModelNames();
-	if (!!names && names.length > 0) {
-		// Make the names available for the dialog
-		serverInfo.allModelNames = names;
-	}
 
-	// open the app with the open/new model dialog
-	dialogs.openModelDialogVisible = true;
-}
 ```
 
 So, let's have a look at the `WebappConfigurator`. We first examine the `openModel` function. As you see,
@@ -68,30 +50,7 @@ More on Freon's Box Model can be found in [Editor Framework](/Documentation/Unde
 ```ts
 // IntegrationExample/webapp/src/lib/language/WebappConfigurator.ts#L99-L122
 
-async openModel(modelName: string) {
-    if (!!this.modelStore) {
-        // create new model instance in memory and set its name
-        await this.modelStore.openModel(modelName);
-        const unitIdentifiers = this.modelStore.getUnitIdentifiers();
-        LOGGER.log('unit identifiers: ' + JSON.stringify(unitIdentifiers));
-        if (!!unitIdentifiers && unitIdentifiers.length > 0) {
-            // load the first unit and show it
-            let first: boolean = true;
-            for (const unitIdentifier of unitIdentifiers) {
-                if (first) {
-                    const unit = this.modelStore.getUnitByName(unitIdentifier.name);
-                    LOGGER.log("UnitId " + unitIdentifier.name + " unit is " + unit?.name);
-                    this.currentUnit = unit;
-                    BoxFactory.clearCaches()
-                    this.editorEnvironment?.projectionHandler.clear()
-                    this.showUnit(this.currentUnit);
-                    first = false;
-                }
-            }
-        }
-        this.updateUnitList()
-    }
-}
+
 ```
 
 Upon submit, the Svelte dialog component also uses the `WebappConfigurator.openModel` 
@@ -101,17 +60,7 @@ in the code check whether the user has entered a valid model name.
 ```ts
 // IntegrationExample/webapp/src/lib/dialogs/OpenModelDialog.svelte#L47-L57
 
-async function handleSubmit() {
-	const comm = WebappConfigurator.getInstance();
-	// console.log('Handle "submit": ' + newName)
-	if (internalSelected?.length > 0) { // should be checked first, because newName depends on it
-		await comm.openModel(internalSelected);
-		// $initializing = false;
-	} else if (!newNameInvalid() && newName.length > 0) {
-		console.log("CREATING NEW MODEL: " + newName);
-		await comm.newModel(newName);
-		// $initializing = false;
-	} else {
+
 ```
 
 The result of our work is that upon opening the web page (without the model parameter in the address bar),
@@ -136,31 +85,7 @@ a dropdown menu where every function takes the index in `myUnits` as parameter.
 ```ts
 // IntegrationExample/webapp/src/lib/main-app/ModelInfo.svelte#L66-L90
 
-<Listgroup>
-    {#each langInfo.unitTypes as unitType}
-        <Heading tag="h5" class="pl-2">{unitType}</Heading>
-        <ListgroupItem class="gap-2 text-base font-semibold">
-            <Listgroup>
-                {#each myUnits as unit, index}
-                    {#if unit.freLanguageConcept() === unitType}
-                        <div class="flex justify-between">
-                            {unit.name}
-                            <DotsHorizontalOutline class="dots-menu1 inline dark:text-white"/>
-                        </div>
-                        <Dropdown triggeredBy=".dots-menu1">
-                            <DropdownItem onclick={() => (openUnit(index))}>Open</DropdownItem>
-                            <DropdownItem onclick={() => (saveUnit(index))}>Save</DropdownItem>
-                            <DropdownItem onclick={() => (renameUnit(index))}>Rename</DropdownItem>
-                            <DropdownItem onclick={() => (deleteUnit(index))}>Delete</DropdownItem>
-                            <DropdownItem slot="footer" onclick={() => (exportUnit(index))}>Export</DropdownItem>
-                        </Dropdown>
-                    {/if}
-                {/each}
-            </Listgroup>
-        </ListgroupItem>
-    {/each}
-    <!-- Instead of DotsHorizontalOutline we could use ChevronDownOutline-->
-</Listgroup>
+
 ```
 
 To keep `myUnits` in sync with the current model, we use a Svelte effect. Here we use a state variable,
@@ -169,19 +94,7 @@ called `modelInfo`, that was set by the `WebappConfigurator.updateUnitList()`.
 ```ts
 // IntegrationExample/webapp/src/lib/main-app/ModelInfo.svelte#L16-L28
 
-$effect(() => {
-    myUnits = !!modelInfo.units && modelInfo.units.length > 0
-        ? modelInfo.units.sort((u1: FreModelUnit, u2: FreModelUnit) => {
-            if (u1.name > u2.name) {
-                return 1;
-            }
-            if (u1.name < u2.name) {
-                return -1;
-            }
-            return 0;
-        })
-        : [];
-});
+
 ```
 
 When we open the model information drawer, we can see the result of all our work.

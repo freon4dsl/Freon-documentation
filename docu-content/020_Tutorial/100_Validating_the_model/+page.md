@@ -21,7 +21,7 @@ Thus, we add another file, called `edu.valid`, and add the following definitions
 ```proto
 // Education/lesson9-defs/edu.valid#L1-L11
 
-validator EduValidator for language Education
+alidator EduValidator for language Education
 
 AndExpression {
     typecheck equalsType( self.left, PrimitiveType:Boolean );
@@ -32,14 +32,6 @@ OrExpression {
     typecheck equalsType( self.left, PrimitiveType:Boolean );
     typecheck equalsType( self.right, PrimitiveType:Boolean );
 }
-```
-
-Now what about instances of `LessOrEqualsExpression`, and the other
-comparison expressions? They also have a left, and a right hand side, but for them, it
- is important that the types on both sides are the same. We define that as follows.
-
-```proto
-// Education/lesson9-defs/edu.valid#L13-L31
 
 LessOrEqualsExpression {
     typecheck equalsType( self.left, self.right );
@@ -60,6 +52,17 @@ GreaterThenExpression {
 EqualsExpression {
     typecheck equalsType( self.left, self.right );
 }
+
+```
+
+Now what about instances of `LessOrEqualsExpression`, and the other
+comparison expressions? They also have a left, and a right hand side, but for them, it
+ is important that the types on both sides are the same. We define that as follows.
+
+```proto
+// Education/lesson9-defs/edu.valid#L13-L31
+
+
 ```
 
 ## The result

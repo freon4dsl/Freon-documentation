@@ -64,12 +64,7 @@ instances of `InsurancePart` will be shown as follows.
 ```proto
 // Insurance/src/defs/language-main.ast#L44-L49
 
-concept InsurancePart {
-    name: identifier;                       // internal name
-    isApproved: boolean = false;            // indication of approval status
-    statisticalRisk: PercentageLiteral;     // the statistical risk known for this event
-    maximumPayOut: EuroLiteral;             // maximum payout in case the insured event happens
-}
+
 ```
 
 <Figure
@@ -107,7 +102,7 @@ times, the values must be consistent.</p>
 ```proto
 // Insurance/src/defs/editor-tables.edit#L1-L11
 
-/* This file contains the table definition in a separate editor / projection group.
+* This file contains the table definition in a separate editor / projection group.
 This enables the user to switch tables on and off. */
 
 editor tables precedence 4
@@ -118,6 +113,12 @@ table [
     ${name} | ${statisticalRisk} | ${maximumPayOut} | ${isApproved}
 ]
 }
+
+BaseProduct {[
+    Base Products ${name} for ${theme}
+        ${parts table rows}
+]}
+
 ```
 
 ## Example `.edit` File
@@ -127,7 +128,7 @@ A complete .edit file could look like this.
 ```proto
 // Insurance/src/defs/editor-main-default.edit#L1-L80
 
-/* This file contains the default editor definition. */
+* This file contains the default editor definition. */
 
 editor default
 

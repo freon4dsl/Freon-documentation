@@ -20,53 +20,7 @@ Begin by defining the component's parameters and the necessary state management 
 ```ts
 // CourseSchedule/phase4/src/external/StaffAccordion.svelte#L9-L55
 
-// This component replaces the component for "teachers: Person[];" from model unit "Staff".
-// This property is a parts list, therefore the external box to use is an ExternalPartListBox.
-export let box: ExternalPartListBox;
-export let editor: FreEditor;
 
-let panelOpen: boolean[] = [];      // List of booleans to indicate which panel is open (true) and closed (false).
-let multiplePar: boolean = false;   // Indicates whether multiple panels may be open at the same time.
-
-/*
-    Sets all panels in the state 'closed',
-    and sets the length of 'panelOpen'.
- */
-function initialize() {
-    let param: string = box.findParam("multi");
-    if (param === "multiple") {
-        multiplePar = true;
-    }
-    panelOpen = [];
-    for (let i = 0; i < box.children.length; i++) {
-        // this also sets the length of panelOpen!
-        panelOpen[i] = false;
-        box.children[i].isVisible = false; // the child boxes are not currently shown
-    }
-}
-
-// The following four functions need to be included for the editor to function properly.
-// Please, set the focus to the first editable/selectable element in this component.
-async function setFocus(): Promise<void> {
-    for( let i=0; i < box.children.length; i++) {
-        if (panelOpen[i]) {
-            box.children[i].setFocus();
-        }
-    }
-}
-const refresh = (why?: string): void => {
-    // do whatever needs to be done to refresh the elements that show information from the model
-    initialize();
-};
-onMount(() => {
-    initialize();
-    box.setFocus = setFocus;
-    box.refreshComponent = refresh;
-});
-afterUpdate(() => {
-    box.setFocus = setFocus;
-    box.refreshComponent = refresh;
-});
 ```
 
 We have implemented the `setFocus` function such that when the focus is programmatically set to the
@@ -85,22 +39,7 @@ the box using `Box.getPropertyValue()`, and change it.
 ```ts
 // CourseSchedule/phase4/src/external/StaffAccordion.svelte#L57-L72
 
-const addPerson = () => {
-    // Note that you need to put any changes to the actual model in a 'AST.change or AST.changeNamed',
-    // because all elements in the model are reactive using mobx.
-    AST.change(() => {
-        let newPerson: Person = Person.create({});
-        box.getPropertyValue().push(newPerson);
-    });
-}
 
-const removePerson = (index: number) => {
-    // Note that you need to put any changes to the actual model in a 'AST.change' or
-    // 'AST.changeNamed', because all elements in the AST model are reactive using mobx.
-    AST.change(() => {
-        box.getPropertyValue().splice(index, 1);
-    });
-}
 ```
 
 That done, we need to call both functions somewhere in the HTML section of the component.
@@ -132,25 +71,7 @@ the `removePerson` function for that specific element in the list. The native Fr
 ```ts
 // CourseSchedule/phase4/src/external/StaffAccordion.svelte#L78-L96
 
-<div style="display: flex; align-items: flex-end;">
-    <Accordion multiple="{multiplePar}">
-        {#each box.children as childBox, index}
-            <Panel bind:open={panelOpen[index]}>
-                <Header>
-                    {childBox.node.freLanguageConcept()} {childBox.node["name"]}
-                </Header>
-                <Content>
-                    <div style="display: flex; align-items: flex-end;">
-                        <RenderComponent box={childBox} editor={editor} />
-                        <IconButton class="material-icons" on:click={() => removePerson(index)}>remove</IconButton>
-                    </div>
-                </Content>
-            </Panel>
-        {/each}
-    </Accordion>
 
-    <IconButton class="material-icons" on:click={() => addPerson()}>add</IconButton>
-</div>
 ```
 
 ### The Complete Component
@@ -160,7 +81,7 @@ Now that we've defined the script and HTML sections, here's the full component:
 ```ts
 // CourseSchedule/phase4/src/external/StaffAccordion.svelte
 
-<script lang="ts">
+ipt lang="ts">
     import Accordion, {Panel, Header, Content} from '@smui-extra/accordion';
     import IconButton from '@smui/icon-button';
     import {AST, ExternalPartListBox, FreEditor, FreNodeReference} from "@freon4dsl/core";
@@ -272,11 +193,7 @@ In your `.edit` file:
 ```proto
 // CourseSchedule/phase4/defs/externals.edit#L14-L18
 
-Staff {[
-Staff in the category: ${self.name}
 
-    ${self.teachers replace=StaffAccordion multi="multiple"}
-]}
 ```
 
 ## Step 3: Do the Admin
@@ -289,13 +206,7 @@ In the `global` section of the `main.edit` file:
 ```proto
 // CourseSchedule/phase4/defs/main.edit#L3-L9
 
-global {
-    external {
-        PersonIcon,
-        PhoneButton,
-        StaffAccordion
-    }
-}
+
 ```
 
 In the `externals.ts`, register `StaffAccordion` as a custom component. Don't forget to
@@ -304,13 +215,7 @@ update your `package.json` file to include any library components.
 ```ts
 // CourseSchedule/phase4/src/external/externals.ts#L9-L15
 
-export function configureExternals() {
-    setCustomComponents([
-        { component: PersonIcon, knownAs: "PersonIcon" },
-        { component: PhoneButton, knownAs: "PhoneButton" },
-        { component: StaffAccordion, knownAs: "StaffAccordion" },
-    ]);
-}
+
 ```
 
 ## Final Result

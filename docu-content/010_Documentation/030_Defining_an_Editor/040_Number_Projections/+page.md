@@ -20,9 +20,7 @@ For the sake of the example, we have added two number properties to the concept 
 ```proto
 // Insurance/src/defs/language-main.ast#L34-L36
 
-range: number;
-nrOfUse: number;
-// The previoud two properties are present to show the different options for displaying numbers.
+
 ```
 
 The added properties are displayed like this.
@@ -30,8 +28,7 @@ The added properties are displayed like this.
 ```proto
 // Insurance/src/defs/editor-main-controls.edit#L12-L13
 
-expected nr of use: ${self.nrOfUse}
-range: ${self.range slider}
+
 ```
 
 Which results in the following.

@@ -19,15 +19,7 @@ We want to build a structure of type concepts, not of AST nodes!
 ```proto
 // TyperExample/src/defs/projectY.type#L6-L14
 
-type TT_GenericType {
-    base: FreType;
-    kind: GenericKind;
-}
 
-type TT_MeasurementType {
-    base: FreType;
-    unit: UnitKind;
-}
 ```
 
 ### The Infertype Rules
@@ -38,19 +30,7 @@ the type concepts.
 ```proto
 // TyperExample/src/defs/projectY.type#L34-L46
 
-GenericType {
-    infertype TT_GenericType {
-        base: typeof(self.baseType),
-        kind: self.kind
-    };
-}
 
-UnitOfMeasurement {
-    infertype TT_MeasurementType {
-        base: typeof(self.baseType),
-        unit: self.unit
-    };
-}
 ```
 
 ### The Conforms And Equals Rules
@@ -61,34 +41,7 @@ we need to state the _equalsto_ and/or _conformsto_ rules.
 ```proto
 // TyperExample/src/defs/projectY.type#L91-L118
 
-TT_GenericType {
-    equalsto x:TT_GenericType where {
-            x.base equalsto self.base;
-            x.kind equalsto self.kind;
-        };
-    conformsto other:TT_GenericType where {
-            // both conditions must be true
-            self.base conformsto other.base;
-            self.kind conformsto other.kind;
-        };
-}
 
-GenericKind {
-    Set conformsto Collection;
-    Sequence conformsto Collection;
-    Bag conformsto Collection;
-}
-
-TT_MeasurementType {
-    equalsto aap:TT_MeasurementType where {
-            aap.base equalsto self.base;
-            aap.unit equalsto self.unit;
-        };
-    conformsto rr:TT_MeasurementType where {
-            self.base conformsto rr.base;
-            self.unit equalsto rr.unit;
-        };
-}
 ```
 
 ## The Complete Typer Definition
@@ -96,7 +49,7 @@ TT_MeasurementType {
 ```proto
 // TyperExample/src/defs/projectY.type
 
-typer
+yper
 
 // What are types?
 istype { TopType }
