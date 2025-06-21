@@ -9,7 +9,7 @@ creating a new Freon project with `npm create Freon` and then selecting the `Exp
 ```proto
 // Expressions/src/defs/Expressions.ast#L1-L11
 
-anguage Expressions
+language Expressions
 
 model Expressions {
     name: identifier;
@@ -20,8 +20,17 @@ modelunit ExpressionUnit {
     functions: Function[];
     expressions: Expression[];
 }
+```
 
-limited Type { String; Integer; Boolean; ANY; }
+## Numeric Expressions
+
+Added are some basic expression concepts to represent numeric expressions: 
+a NumberLiteralExpression and the standard binary expressions.
+Note that we specify the priorities of the binary operators to allow 
+straightforward editing (see [Binary Expressions](/Documentation/Defining_an_Editor/Binary_Expressions)):
+
+```proto
+// Expressions/src/defs/Expressions.ast#L15-L40
 
 abstract expression Expression { }
 
@@ -49,6 +58,13 @@ binary expression MinusExpression base BinaryExpression {
 binary expression DivideExpression base BinaryExpression {
     priority = 8;
 }
+```
+
+## Functions
+We also add concepts to represent functions, both function definitions and function calls:
+
+```proto
+// Expressions/src/defs/Expressions.ast#L42-L61
 
 concept Function {
     name: identifier;
@@ -70,30 +86,4 @@ expression FunctionCallExpression base Expression {
     reference calledFunction: Function;
     arguments: Expression[];
 }
-
-
-
-
-```
-
-## Numeric Expressions
-
-Added are some basic expression concepts to represent numeric expressions: 
-a NumberLiteralExpression and the standard binary expressions.
-Note that we specify the priorities of the binary operators to allow 
-straightforward editing (see [Binary Expressions](/Documentation/Defining_an_Editor/Binary_Expressions)):
-
-```proto
-// Expressions/src/defs/Expressions.ast#L15-L40
-
-
-```
-
-## Functions
-We also add concepts to represent functions, both function definitions and function calls:
-
-```proto
-// Expressions/src/defs/Expressions.ast#L42-L61
-
-
 ```

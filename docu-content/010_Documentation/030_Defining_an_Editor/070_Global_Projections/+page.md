@@ -24,7 +24,20 @@ and `NO` for the value `false`.
 ```ts
 // Insurance/src/defs/editor-main-default.edit#L5-L18
 
-
+global {
+    boolean inner-switch [YES | NO] // the strings used to display a boolean value, all booleans will default be displayed as an inner switch control
+//    limited radio
+//    limited[] checkbox
+    // number slider  // you can use the slider control as default projection for numbers, but this will not often be the preferred option
+    referenceSeparator [:] // the string that separates the names in a path name, e.g. pack1:cls3:part
+    external {
+        AnimatedGif,
+        SMUI_Card,
+        SMUI_Accordion,
+        SMUI_Dialog,
+        DatePicker
+    }
+}
 ```
 
 ## Projections for Limited Concepts

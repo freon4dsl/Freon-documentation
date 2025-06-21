@@ -9,27 +9,15 @@
 :root {
 	/* The theme colors */
 	--theme-colors-FRE_LIGHT: #FFFDF5;
-	--theme-colors-FRE_YELLOW: #FDE281;
-	--theme-colors-FRE_ORANGE: #FCCB1A;
-	--theme-colors-FRE_BEIGE: #B08A03;
-	--theme-colors-FRE_BEIGE2: #bc9403;
-	--theme-colors-FRE_BROWN: #342B09;
-	--theme-colors-FRE_DARKER: #1E1905;
-	--theme-colors-FRE_ACCENT: #c94117;
-	--theme-colors-FRE_LINK: #DE6B48;
-	--theme-colors-FRE_CODE: green;			
-	--theme-colors-FRE_CODE_DARK: #74bf74;
-
-	--theme-colors-FRE_LIGHT: #FFFDF5;
 	--theme-colors-FRE_YELLOW: #ffedac;
 	--theme-colors-FRE_ORANGE: #fbd547;
+	--theme-colors-FRE_LINK_DARK: #fb9371;
 	--theme-colors-FRE_BEIGE: #B08A03;
 	--theme-colors-FRE_BEIGE2: #bc9403;
 	--theme-colors-FRE_BROWN: #342B09;
 	--theme-colors-FRE_DARKER: #1E1905;
 	--theme-colors-FRE_ACCENT: #c94117;
 	--theme-colors-FRE_LINK: #DE6B48;
-	--theme-colors-FRE_LINK_DARK: #fb9371;
 	--theme-colors-FRE_CODE: green;
 	--theme-colors-FRE_CODE_DARK: #74bf74;
 

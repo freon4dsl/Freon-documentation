@@ -16,7 +16,7 @@ and add the following lines to it. You should be familiar with everything in the
 ```proto
 // Education/lesson3-defs/edu-flow.edit
 
-* This file contains the default editor definition. */
+/* This file contains the default editor definition. */
 
 editor default
 
@@ -81,7 +81,7 @@ We are going to name this editor definition `rules_as_table`. It goes into the f
 ```proto
 // Education/lesson3-defs/edu-flow-table.edit#L3-L3
 
-
+editor rules_as_table
 ```
 
 Now to create a projection for _FlowRule_ we use almost the same projection as in the default editor. But to indicate
@@ -93,7 +93,14 @@ the keyword `rows` is added. It won't be a surprise that you can also display on
 ```proto
 // Education/lesson3-defs/edu-flow-table.edit#L5-L12
 
+FlowRule {[
+    -------------------------------------
+    Name: ${name}
+        Description: ${self.description}
+        For page ${page}
 
+        ${self.transitions table rows}
+]}
 ```
 
 Next we need to define the table itself. Every element in the list is an instance of the _PageTransition_ concept, therefore we add
@@ -112,7 +119,10 @@ indicates the transition from one table cell to the next table cell.
 ```proto
 // Education/lesson3-defs/edu-flow-table.edit#L14-L17
 
-
+PageTransition { table [
+    Condition          | Goto Page
+    ${self.condition}  |  ${self.toPage}
+]}
 ```
 
 Note that for the _PageTransition_ object we have defined a table with two parts. It is the context 
@@ -146,7 +156,12 @@ Add a file called `page-footing.edit`, and copy the following lines into it.
 ```proto
 // Education/lesson3-defs/page-footing.edit#L3-L8
 
+editor footing
 
+Page {[
+    Questions:
+        ${self.questions vertical terminator [END]}
+]}
 ```
 
 Now we are ready to specify a specific editor. Let's rewrite the `edu-topics.edit` file as follows.
@@ -155,6 +170,49 @@ Now we are ready to specify a specific editor. Let's rewrite the `edu-topics.edi
 // Education/lesson3-defs/edu-topics.edit#L17-L60
 
 
+Theory {[
+    ----------------------------------------------------
+    Theory [=>Page]
+        ${self.content vertical  terminator[== END OF LINE]}
+
+        [=>Page:footing]
+]}
+
+Video {[
+    ----------------------------------------------------
+    Video [=>Page]
+        Maybe this video will help you understand.
+        ${self.url}
+
+        [=>Page:footing]
+]}
+
+WorkSheet {[
+    ----------------------------------------------------
+    Worksheet [=>Page]
+        See if you can answer the following questions.
+
+        [=>Page:footing]
+]}
+
+ExamplePage {[
+    ----------------------------------------------------
+    Example [=>Page]
+        ${self.content}
+
+        Now, please, answer the following questions.
+
+        [=>Page:footing]
+]}
+
+InDepthMaterial {[
+    ----------------------------------------------------
+    InDepthMaterial [=>Page]
+        ${self.content}
+
+        Test your understanding by answering the following questions.
+
+        [=>Page:footing]
 ```
 And try it out! You see, there is so much fun to have with creating projections.
 But do come back for the next lesson where we will tackle the topic of adding 

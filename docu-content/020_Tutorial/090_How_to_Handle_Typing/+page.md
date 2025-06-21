@@ -33,7 +33,15 @@ We add the following to our `edu-main.ast` file.
 ```proto
 // Education/lesson8-defs/edu-main.ast#L19-L27
 
+interface Type {
+    name: identifier;
+}
 
+limited PrimitiveType implements Type {
+    Integer;
+    Boolean;
+    ANY;
+}
 ```
 
 ## How does a concept become a Type?
@@ -51,11 +59,18 @@ that all instances of `ScoreExpression` have a type.
 ```proto
 // Education/lesson8-defs/edu-scoring.type#L1-L5
 
-yper
+typer
 
 istype { Type }
 
 hastype { ScoreExpression }
+```
+
+But what about the NrOfCorrectAnswers concept? How do we express which type to associate with instances of this concept?
+And what about the other concepts that inherit from `ScoreExpression`? Let's not beat around the bush. This is how.
+
+```proto
+// Education/lesson8-defs/edu-scoring.type#L7-L24
 
 QuestionReference {
     infertype PrimitiveType:Boolean;
@@ -75,16 +90,6 @@ AndExpression {
 ComparisonExpression {
     infertype PrimitiveType:Boolean;
 }
-
-```
-
-But what about the NrOfCorrectAnswers concept? How do we express which type to associate with instances of this concept?
-And what about the other concepts that inherit from `ScoreExpression`? Let's not beat around the bush. This is how.
-
-```proto
-// Education/lesson8-defs/edu-scoring.type#L7-L24
-
-
 ```
 
 In the next lesson we will show how to use the typings to validate the grading expressions.

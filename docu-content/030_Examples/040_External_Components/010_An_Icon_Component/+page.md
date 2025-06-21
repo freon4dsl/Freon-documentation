@@ -23,7 +23,7 @@ The complete Svelte component should look like this:
 ```ts
 // CourseSchedule/phase2/src/external/PersonIcon.svelte
 
-ipt lang="ts">
+<script lang="ts">
     import {ExternalSimpleBox, FreEditor} from "@freon4dsl/core";
 
 		// Declare the 'box' and 'editor' parameters as required by Freon
@@ -48,7 +48,11 @@ In the `main.edit` file, add the following code to declare the `PersonIcon` comp
 ```proto
 // CourseSchedule/phase2/defs/main.edit#L3-L7
 
-
+global {
+    external {
+        PersonIcon
+    }
+}
 ```
 
 This tells the editor that `PersonIcon` is an external component. You can name it 
@@ -68,7 +72,7 @@ name this fragment `nameAndIcon`.
 ```proto
 // CourseSchedule/phase2/defs/externals.edit
 
-ditor externals
+editor externals
 
 Person {[
     [fragment nameAndIcon]
@@ -94,7 +98,7 @@ the `setCustomComponents` function like this:
 ```ts
 // CourseSchedule/phase2/src/external/externals.ts
 
-mport {setCustomComponents} from "@freon4dsl/core-svelte";
+import {setCustomComponents} from "@freon4dsl/core-svelte";
 import PersonIcon from "./PersonIcon.svelte";
 
 /**

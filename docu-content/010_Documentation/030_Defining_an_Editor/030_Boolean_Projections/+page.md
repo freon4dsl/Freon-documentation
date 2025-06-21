@@ -25,13 +25,28 @@ respectively, true and false.
 ```proto
 // Insurance/src/defs/language-main.ast#L41-L49
 
-
+// An InsurancePart defines a single aspect of an InsuranceProduct together
+// with the statistical risk of the event happening, and the maximum payout
+// in case the insured event happens.
+concept InsurancePart {
+    name: identifier;                       // internal name
+    isApproved: boolean = false;            // indication of approval status
+    statisticalRisk: PercentageLiteral;     // the statistical risk known for this event
+    maximumPayOut: EuroLiteral;             // maximum payout in case the insured event happens
+}
 ```
 
 ```proto
 // Insurance/src/defs/editor-main-default.edit#L28-L35
 
 
+InsurancePart{
+[
+    Insurance Part ${self.name}
+        risk assessment: ${self.statisticalRisk}
+        maximum payout: ${self.maximumPayOut}
+        is approved: ${self.isApproved [YES | NO]}
+]
 ```
 
 <Figure
@@ -53,6 +68,8 @@ of the property is `true`, the keyword is shown. When the value is `false`, the 
 // Insurance/src/defs/editor-main-default.edit#L67-L69
 
 
+Entity {[
+    ${self.isCompany [COMPANY]} ${self.name}
 ```
 
 This example would be displayed as one of ...
@@ -95,7 +112,22 @@ For the sake of the example, we have added a number of boolean properties to the
 ```proto
 // Insurance/src/defs/language-main.ast#L24-L39
 
-
+concept BaseProduct {
+    name: identifier;               // internal name
+    isUnderConstruction: boolean;   // defines whether this base product is still 'raw'
+    theme: InsuranceTheme;          // the 'kind' of insurance
+    parts: InsurancePart[];         // all parts of this product
+    // The following properties are present to show the different options for displaying booleans.
+    isApprovedLevel1: boolean;
+    isApprovedLevel2: boolean;
+    isApprovedLevel3: boolean;
+    yieldsProfit: boolean;
+    range: number;
+    nrOfUse: number;
+    // The previoud two properties are present to show the different options for displaying numbers.
+    // The following property is present to show the use of an external DatePicker component.
+    date: string;
+}
 ```
 
 Each of the boolean properties is displayed differently.
@@ -103,7 +135,11 @@ Each of the boolean properties is displayed differently.
 ```proto
 // Insurance/src/defs/editor-main-controls.edit#L7-L11
 
-
+is still under construction: ${self.isUnderConstruction switch}
+is approved level1: ${self.isApprovedLevel1 radio [Sure | NoWay]}
+is approved level2: ${self.isApprovedLevel2 inner-switch}
+is approved level3: ${self.isApprovedLevel3 checkbox}
+yields profit: ${self.yieldsProfit text [Plenty | Little]}
 ```
 
 The result of this projection is shown in the screenshot below. Note that

@@ -45,7 +45,7 @@ and separated by commas.
 ```proto
 // Insurance/src/defs/typer-docu.type#L4-L4
 
-
+istype { NamedType }
 ```
 
 To define new type concepts you can use a simplified version of the concept definition in the .ast files.
@@ -56,7 +56,10 @@ the limited concept `GenericKind`.
 ```proto
 // Insurance/src/defs/typer-docu.type#L6-L9
 
-
+type GenericType {
+    base: FreType;
+    kind: GenericKind;
+}
 ```
 
 Note that is it often good practise to have a common superclass or interface for all your types,
@@ -76,7 +79,7 @@ your language between curly brackets, and separated by commas.
 ```proto
 // Insurance/src/defs/typer-docu.type#L12-L12
 
-
+hastype { DocuExpression, DocuType, CalcFunction, Parameter, RiskRef, PayoutRef }
 ```
 
 ## Inference Rules
@@ -91,7 +94,13 @@ represent a type by the above declaration. First, we show the metamodel definiti
 ```proto
 // Insurance/src/defs/language-main.ast#L68-L74
 
-
+concept CalcFunction {
+    name: identifier;                   // the name
+    description?: Description;          // an optional description
+    declaredType : DocuType;            // the type
+    body: DocuExpression;               // the actual calculation definition
+    parameters: Parameter[];            // any parameters
+}
 ```
 
 And, the typer definition looks like this.
@@ -99,7 +108,9 @@ And, the typer definition looks like this.
 ```proto
 // Insurance/src/defs/typer-docu.type#L18-L20
 
-
+CalcFunction {
+    infertype self.declaredType;
+}
 ```
 
 
@@ -119,7 +130,9 @@ the predefined instances of a **limited concept**.
 ```proto
 // Insurance/src/defs/typer-docu.type#L27-L29
 
-
+RiskAdjustmentRef {
+    infertype PercentageType:Percentage;
+}
 ```
 
 ## Type Equals and Type Conformance Rules
@@ -132,7 +145,15 @@ instances of a limited concept.
 ```proto
 // Insurance/src/defs/typer-docu.type#L81-L89
 
-
+// Which types are 'equal' to each other?
+NamedType {
+    equalsto aa:NamedType where {
+            aa.name equalsto self.name;
+        };
+    conformsto other:NamedType where {
+            other.name equalsto self.name;
+        };
+}
 ```
 
 The `where` clause in the above example can be used when a type has some structure. For every property
@@ -167,6 +188,13 @@ any instance of any concept conforms to the given value.
 ```proto
 // TyperExample/src/defs/projectY.type#L21-L28
 
+    conformsto PredefinedType:ANY; // PredefinedType:ANY is the least specific type
+}
+
+PredefinedType {
+    PredefinedType:NULL conformsto anytype; // PredefinedType:NULL is the most specific type
+    NUMBER conformsto STRING;
+}
 
 ```
 

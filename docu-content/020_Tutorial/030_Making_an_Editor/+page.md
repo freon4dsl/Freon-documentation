@@ -15,7 +15,7 @@ and define a default editor for this model unit. Please, enter the following lin
 ```proto
 // Education/lesson2-defs/edu-topics.edit#L3-L3
 
-
+editor default
 ```
 
 There, that's done!
@@ -54,7 +54,20 @@ The projection for _Topic_ consists of four parts.
 ```proto
 // Education/lesson2-defs/edu-topics.edit#L3-L16
 
+editor default
 
+Topic {[
+    SiteGroup: ${self.main}
+    Topic: ${self.name}
+    Topic description: ${self.description}
+
+    Pages:
+    ${self.pages vertical }
+]}
+
+Page {[
+    ${self.name}
+]}
 ```
 
 ## The Possibilities for Lists
@@ -109,7 +122,9 @@ It's nothing fancy, but you could do more, if you like.
 ```proto
 // Education/lesson2-defs/edu-topics.edit#L14-L16
 
-
+Page {[
+    ${self.name}
+]}
 ```
 
 Now look at how we incorporate this projection in the projection of one of `Page`'s children using this syntax: `[=>Page]`. It means
@@ -119,7 +134,14 @@ Note that we can use inherited properties, like `questions`, as expected in the 
 ```proto
 // Education/lesson2-defs/edu-topics.edit#L18-L25
 
+Theory {[
+    ----------------------------------------------------
+    Theory [=>Page]
+        ${self.content vertical terminator[== END OF LINE]}
 
+    Questions:
+        ${self.questions vertical}
+]}
 ```
 
 Now we can almost finish the projection for this model unit by adding the following lines. Each concept
@@ -128,7 +150,56 @@ that inherits from `Page` is defined, as well as the `questions` and `content` p
 ```proto
 // Education/lesson2-defs/edu-topics.edit#L27-L76
 
+Video {[
+    ----------------------------------------------------
+    Video [=>Page]
+        Maybe this video will help you understand.
+        ${self.url}
 
+    Questions:
+        ${self.questions vertical}
+]}
+
+WorkSheet {[
+    ----------------------------------------------------
+    Worksheet [=>Page]
+        See if you can answer the following questions.
+
+    Questions:
+        ${self.questions vertical}
+]}
+
+ExamplePage {[
+    ----------------------------------------------------
+    Example [=>Page]
+        ${self.content}
+
+        Now, please, answer the following questions.
+
+    Questions:
+        ${self.questions vertical}
+]}
+
+InDepthMaterial {[
+    ----------------------------------------------------
+    InDepthMaterial [=>Page]
+        ${self.content}
+
+        Test your understanding by answering the following questions.
+
+    Questions:
+        ${self.questions vertical}
+]}
+
+Question {[
+    ${self.name}
+        ${self.content}
+        Correct Answer: ${self.correctAnswer}
+]}
+
+Line {
+    [${self.content}]
+}
 ```
 
 ## Triggers
@@ -139,7 +210,10 @@ Its called `Fraction`, and it is formed by combining two numbers, a numerator an
 ```proto
 // Education/lesson2-defs/edu-topics.ast#L53-L56
 
-
+concept Fraction base NumberConcept {
+    numerator: number;
+    denominator: number;
+}
 ```
 
 In Freon the user must first choose the Fraction option from a dropdown menu before he/she can enter any number. To avoid
@@ -153,7 +227,14 @@ last two projections are defined as follows.
 ```proto
 // Education/lesson2-defs/edu-topics.edit#L78-L85
 
+SimpleNumber {
+    [${self.value}]
+}
 
+Fraction {
+    [${numerator} / ${denominator}]
+    trigger = "/"
+}
 ```
 
 Now go ahead, generate a new editor, and have a look. Your editor should now look like this. Much better than the result from lesson 1!

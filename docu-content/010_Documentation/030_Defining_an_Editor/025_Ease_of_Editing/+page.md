@@ -19,7 +19,10 @@ Our running example provides the expression concept `InsurancePartRef`.
 ```proto
 // Insurance/src/defs/language-expressions.ast#L54-L57
 
-
+// Expression used to refer to the insurance parts of a product
+expression InsurancePartRef base DocuExpression {
+    reference part: InsurancePart;
+}
 ```
 
 For this concept the following projection is defined.
@@ -27,7 +30,10 @@ For this concept the following projection is defined.
 ```proto
 // Insurance/src/defs/editor-expressions-default.edit#L35-L38
 
-
+InsurancePartRef {
+    [${self.part}]
+    referenceShortcut = ${self.part}
+}
 ```
 
 [//]: # (todo finish this when bug for limited values is fixed)
@@ -44,5 +50,9 @@ The example shows a trigger for entering a function call expression.
 ```proto
 // Insurance/src/defs/editor-expressions-default.edit#L30-L34
 
-
+FunctionCallExpression {
+    [${funcDefinition} ( ${args horizontal separator[,] } )]
+    referenceShortcut = ${funcDefinition}
+    trigger = "calc"
+}
 ```

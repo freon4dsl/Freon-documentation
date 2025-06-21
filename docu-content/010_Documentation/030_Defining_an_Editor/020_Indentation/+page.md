@@ -10,7 +10,15 @@ appear indented 8 spaces from `This is`.
 ```proto
 // Insurance/src/defs/editor-indentation.edit#L6-L14
 
-
+Text {
+[
+This is
+        literal text
+      that is projected in the
+                editor
+  for every concept of type Text.
+]
+}
 ```
 
 However, this is not the complete story. Any whitespace before the line with the least indentation is ignored.
@@ -20,7 +28,15 @@ The next example produces the exact same result as the previous.
 ```proto
 // Insurance/src/defs/editor-indentation.edit#L16-L24
 
-
+Text2 {
+            [
+            This is
+                    literal text
+                  that is projected in the
+                            editor
+              for every concept of type Text.
+            ]
+}
 ```
 
 In the following example, the line with the least indentation is
@@ -31,7 +47,15 @@ the text `This is` will be indented 10 spaces, `literal text` will be indented 8
 ```proto
 // Insurance/src/defs/editor-indentation.edit#L26-L34
 
-
+Text3 {
+    [
+                 This is
+               literal text
+          that is projected in the
+                  editor
+       for every concept of type Text.
+            ]
+}
 ```
 
 In the determination of the least indent, the indentation of the closing bracket is also considered. Therefore,
@@ -41,6 +65,14 @@ will be indented with 3 spaces.
 ```proto
 // Insurance/src/defs/editor-indentation.edit#L37-L45
 
+    [
+                 This is
+               literal text
+          that is projected in the
+                  editor
+       for every concept of type Text.
+    ]
+}
 
 ```
 

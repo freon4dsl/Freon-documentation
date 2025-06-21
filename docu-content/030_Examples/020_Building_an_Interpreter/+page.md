@@ -37,7 +37,19 @@ implement the evaluation functions for the literal expressions, i.e. `SimpleNumb
 ```ts
 // EducationInterpreter/src/custom/interpreter/EducationInterpreter.ts#L216-L228
 
+/////////////////// Literals
 
+override evalSimpleNumber(node: SimpleNumber, ctx: InterpreterContext): RtObject {
+    return new RtNumber(node.value)
+}
+
+override evalNumberLiteralExpression(node: NumberLiteralExpression, ctx: InterpreterContext): RtObject {
+    return new RtNumber(node.value)
+}
+
+override evalFraction(node: Fraction, ctx: InterpreterContext): RtObject {
+    return new RtFraction(new RtNumber(node.numerator), new RtNumber(node.denominator))
+}
 ```
 
 As you see, the first two functions simply return a runtime object of type `RtNumber` which holds the current `value`
@@ -46,7 +58,7 @@ of the node. The third function returns a runtime object of type `RtFraction`, w
 ```ts
 // EducationInterpreter/src/custom/interpreter/runtime/RtFraction.ts
 
-mport { RtBoolean, RtNumber, RtObject } from "@freon4dsl/core";
+import { RtBoolean, RtNumber, RtObject } from "@freon4dsl/core";
 
 export class RtFraction extends RtObject {
     readonly _type: string = "RtFraction";
@@ -93,7 +105,11 @@ are all similar, so here we focus on the evaluation of an `OrExpression`.
 ```ts
 // EducationInterpreter/src/custom/interpreter/EducationInterpreter.ts#L244-L248
 
-
+override evalOrExpression(node: OrExpression, ctx: InterpreterContext): RtObject {
+    const left = main.evaluate(node.left, ctx) as RtBoolean
+    const right = main.evaluate(node.right, ctx) as RtBoolean
+    return left.or(right)
+}
 ```
 
 First we evaluate the
@@ -124,5 +140,9 @@ in a similar fashion. For example, this is the implementation of the `GreaterOrE
 ```ts
 // EducationInterpreter/src/custom/interpreter/EducationInterpreter.ts#L256-L260
 
-
+override evalGreaterOrEqualsExpression(node: GreaterOrEqualsExpression, ctx: InterpreterContext): RtObject {
+    const left = main.evaluate(node.left, ctx) as RtNumber
+    const right = main.evaluate(node.right, ctx) as RtNumber
+    return RtBoolean.of(left.value >= right.value)
+}
 ```

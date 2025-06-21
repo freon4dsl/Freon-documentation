@@ -52,7 +52,13 @@ In the next example a simple animated gif component is added to the fragment pro
 ```proto
 // Insurance/src/defs/editor-externals.edit#L10-L16
 
-
+First Card
+    is still under construction: ${self.isUnderConstruction switch}
+    is approved level1: ${self.isApprovedLevel1 radio}
+    is approved level2: ${self.isApprovedLevel2 inner-switch}
+    is approved level3: ${self.isApprovedLevel3 checkbox}
+    [external=AnimatedGif number="1"]
+]
 ```
 
 <Figure
@@ -91,7 +97,7 @@ The source of the AnimatedGif Svelte component is the following.
 ```swift
 // Insurance/src/external/ShowAnimatedGif.svelte
 
-pt lang="ts">
+<script lang="ts">
 
     import {ExternalSimpleBox, FreEditor} from "@freon4dsl/core";
     import {afterUpdate, onMount} from "svelte";
@@ -191,13 +197,17 @@ In this example a fragment is wrapped in a `Card` component, which is imported f
 ```swift
 // Insurance/src/external/SMUI_Card_Component.svelte#L30-L34
 
-
+<span class="card-container">
+    <Card>
+        <RenderComponent box={box.childBox} editor={editor} />
+    </Card>
+</span>
 ```
 
 ```proto
 // Insurance/src/defs/editor-externals.edit#L6-L6
 
-
+[fragment FirstCard wrap=SMUI_Card] [fragment SecondCard wrap=SMUI_Card]
 ```
 
 ## Replacing a Freon Projection
@@ -230,7 +240,7 @@ the <a href="https://sveltematerialui.com/" target="_blank">SMUI</a> UI library.
 ```proto
 // Insurance/src/defs/editor-externals.edit#L5-L5
 
-
+Base Product for ${self.theme radio} ${self.name replace=SMUI_Dialog buttonLabel = "Change Product Name"}
 ```
 
 <Figure

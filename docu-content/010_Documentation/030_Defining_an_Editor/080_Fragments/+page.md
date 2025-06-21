@@ -20,7 +20,23 @@ Note that every fragment for the same concept must have a unique name.
 ```proto
 // Insurance/src/defs/editor-fragments.edit#L8-L24
 
-
+]
+    fragment First [
+    First Card
+        is still under construction: ${self.isUnderConstruction switch}
+        is approved level1: ${self.isApprovedLevel1 radio}
+        is approved level2: ${self.isApprovedLevel2 inner-switch}
+        is approved level3: ${self.isApprovedLevel3 checkbox}
+    ]
+    fragment Second [
+    Second Card
+        [button text="Push me!" boxRole="MyButton-role"]
+        yields profit: ${self.yieldsProfit}
+        expected nr of use: ${self.nrOfUse slider}
+        range: ${self.range}
+        date: ${self.date}
+    ]
+}
 ```
 
 <Note><svelte:fragment slot="header"> One property, one occurrence in the editor</svelte:fragment>
@@ -44,7 +60,28 @@ fragments are defined.
 ```proto
 // Insurance/src/defs/editor-fragments.edit#L3-L24
 
-
+BaseProduct {
+[
+    Base Product for ${self.theme radio} ${self.name }
+        [fragment First] [fragment Second]
+        ${self.parts}
+]
+    fragment First [
+    First Card
+        is still under construction: ${self.isUnderConstruction switch}
+        is approved level1: ${self.isApprovedLevel1 radio}
+        is approved level2: ${self.isApprovedLevel2 inner-switch}
+        is approved level3: ${self.isApprovedLevel3 checkbox}
+    ]
+    fragment Second [
+    Second Card
+        [button text="Push me!" boxRole="MyButton-role"]
+        yields profit: ${self.yieldsProfit}
+        expected nr of use: ${self.nrOfUse slider}
+        range: ${self.range}
+        date: ${self.date}
+    ]
+}
 ```
 
 In this example we have styled the fragment boxes with a light yellow background. 

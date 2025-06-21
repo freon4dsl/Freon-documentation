@@ -33,10 +33,3 @@
 <div class="demo">
 	<FreonLayout />
 </div>
-
-<style>
-	/*@import '/demo-global.css';*/
-	/*@import '/demo-site.css';*/
-	.demo {
-	}
-</style>

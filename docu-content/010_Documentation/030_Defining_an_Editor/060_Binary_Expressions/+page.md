@@ -13,5 +13,16 @@ It is defined in the `.edit` file, as shown below.
 ```proto
 // Insurance/src/defs/editor-expressions-default.edit#L18-L29
 
-
+MinusExpression  {
+    symbol = "-"
+}
+PlusExpression {
+    symbol = "+"
+}
+MultiplyExpression {
+    symbol = "*"
+}
+DivideExpression {
+    symbol = "/"
+}
 ```

@@ -18,7 +18,9 @@ in `ExpressionsInterpreterBase.ts`.
 ```ts
 // Expressions/src/freon/interpreter/gen/ExpressionsInterpreterBase.ts#L35-L37
 
-
+evalNumberLiteralExpression(node: NumberLiteralExpression, ctx: InterpreterContext): RtObject {
+    throw new RtError("evalNumberLiteralExpression is not defined");
+}
 ```
 
 All evaluation functions are similar. The first parameter is the node for which a value needs to be determined.
@@ -36,7 +38,9 @@ Here is an example of how `evalNumberLiteralExpression` is overridden:
 ```ts
 // Expressions/src/custom/interpreter/ExpressionsInterpreter.ts#L36-L38
 
-
+override evalNumberLiteralExpression(node: NumberLiteralExpression, ctx: InterpreterContext): RtObject {
+    return new RtNumber(node.value);
+}
 ```
 
 ## Freon’s Runtime Object Library
@@ -84,7 +88,16 @@ the value of the parameter to be able to calculate the value of the body. This i
 ```ts
 // Expressions/src/custom/interpreter/ExpressionsInterpreter.ts#L56-L65
 
-
+override evalFunctionCallExpression(node: FunctionCallExpression, ctx: InterpreterContext): RtObject {
+    const calledFunction = node.$calledFunction;
+    const functionContext = new InterpreterContext(ctx);
+    node.arguments.forEach((arg, index) => {
+        const argumentValue = main.evaluate(arg, ctx);
+        // Add the parameter to the context with the value of the evaluated argument
+        functionContext.set(calledFunction.parameters[index], argumentValue);
+    });
+    return main.evaluate(calledFunction, functionContext);
+}
 ```
 
 The evaluation of the function call expression has two parts.
@@ -102,7 +115,9 @@ this evaluation can simply lookup the value of the parameter:
 ```ts
 // Expressions/src/custom/interpreter/ExpressionsInterpreter.ts#L71-L73
 
-
+override evalParameterRef(node: ParameterRef, ctx: InterpreterContext): RtObject {
+    return ctx.find(node.$parameter);
+}
 ```
 Note that the value of the parameter lookup will be different for different calls to the function.
 Which is exactly what we need.

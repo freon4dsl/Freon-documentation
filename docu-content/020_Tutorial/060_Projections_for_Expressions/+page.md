@@ -23,21 +23,45 @@ Thus, the projection needs to be defined like this.
 ```proto
 // Education/lesson5-defs/edu-scoring.edit#L1-L6
 
-ditor default
+editor default
 
 GradeScore {[
     ${self.grade} : ${self.expr}
 ]}
 
-///////////////////////////////////
-/// Expressions
-//////////////////////////////////
+```
+
+## Reference Shortcut
+
+The next thing to tackle is the `Answer to questionY is correct`-part. We represented this in the metamodel by the
+concept `QuestionReference`, so the projection needs to be like this.
+
+```proto
+// Education/lesson5-defs/edu-scoring.edit#L11-L14
 
 QuestionReference {
     [ Answer to ${self.question} is correct ]
     trigger = "question"
     referenceShortcut = ${self.question}
-}
+```
+
+In lesson 2 [Making an Editor](/Tutorial/Making_an_Editor) we already encountered the **trigger**, a means to make editing easier for your user.
+Here we do something even more sophisticated. We use a **reference shortcut**.
+
+To understand what it does, you need know that when a question reference is added, not one, but two nodes must be added to the AST.
+The first is an instance of `QuestionReference`, the second (the child of this instance) is an instance of the core type `FreNodeReference`.
+Normally, the user must select the type of the node to add it to the tree. So in this case, the user should first select `QuestionReference`, and 
+then `FreNodeReference`. 
+
+The reference shortcut is there to avoid the double selection. The instance of `QuestionReference` is automatically created when a reference is 
+selected that fits as content of the property `question`.
+
+We also add the next lines. These should not hold any surprises for you. You have already learned a lot from the previous lessons! Note that
+we suffice with a constant text string for the `NrOfCorrectAnswers` concept.
+
+```proto
+// Education/lesson5-defs/edu-scoring.edit#L16-L22
+
 
 NrOfCorrectAnswers {
     [Number Of Correct Answers]
@@ -45,7 +69,16 @@ NrOfCorrectAnswers {
 
 NumberLiteralExpression {
     [${value}]
-}
+```
+
+# Binary Expressions
+
+Creating projections for binary expressions is no rocket science. All you have to do is tell Freon which symbol to use as 
+operand.
+
+```proto
+// Education/lesson5-defs/edu-scoring.edit#L24-L53
+
 
 ///////////////////////////////////
 /// Boolean AND and OR
@@ -76,50 +109,6 @@ GreaterThenExpression {
 }
 EqualsExpression {
     symbol = "=="
-}
-
-```
-
-## Reference Shortcut
-
-The next thing to tackle is the `Answer to questionY is correct`-part. We represented this in the metamodel by the
-concept `QuestionReference`, so the projection needs to be like this.
-
-```proto
-// Education/lesson5-defs/edu-scoring.edit#L11-L14
-
-
-```
-
-In lesson 2 [Making an Editor](/Tutorial/Making_an_Editor) we already encountered the **trigger**, a means to make editing easier for your user.
-Here we do something even more sophisticated. We use a **reference shortcut**.
-
-To understand what it does, you need know that when a question reference is added, not one, but two nodes must be added to the AST.
-The first is an instance of `QuestionReference`, the second (the child of this instance) is an instance of the core type `FreNodeReference`.
-Normally, the user must select the type of the node to add it to the tree. So in this case, the user should first select `QuestionReference`, and 
-then `FreNodeReference`. 
-
-The reference shortcut is there to avoid the double selection. The instance of `QuestionReference` is automatically created when a reference is 
-selected that fits as content of the property `question`.
-
-We also add the next lines. These should not hold any surprises for you. You have already learned a lot from the previous lessons! Note that
-we suffice with a constant text string for the `NrOfCorrectAnswers` concept.
-
-```proto
-// Education/lesson5-defs/edu-scoring.edit#L16-L22
-
-
-```
-
-# Binary Expressions
-
-Creating projections for binary expressions is no rocket science. All you have to do is tell Freon which symbol to use as 
-operand.
-
-```proto
-// Education/lesson5-defs/edu-scoring.edit#L24-L53
-
-
 ```
 
 Upon generation, you will see the following. Expressions that really look like expressions.
