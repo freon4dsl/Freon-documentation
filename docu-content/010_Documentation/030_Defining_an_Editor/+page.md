@@ -160,7 +160,7 @@ InsurancePart{
     Insurance Part ${self.name}
         risk assessment: ${self.statisticalRisk}
         maximum payout: ${self.maximumPayOut}
-        is approved: ${self.isApproved [JA | NEE]}
+        is approved: ${self.isApproved [YES | NO]}
 ]
 }
 

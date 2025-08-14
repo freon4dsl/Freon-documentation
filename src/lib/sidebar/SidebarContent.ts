@@ -31,6 +31,7 @@ export const documentationToc: TocContentsType =
       { name: 'Scoping, Typing, and Validating', path: '/Documentation/Scoping,_Typing,_and_Validating',
         content: [
          { name: 'Scope Provider', path: '/Documentation/Scoping,_Typing,_and_Validating/Scope_Provider'},
+         { name: 'Extra on Scoping', path: '/Documentation/Scoping,_Typing,_and_Validating/Extra_on_Scoping'},
          { name: 'Type Provider', path: '/Documentation/Scoping,_Typing,_and_Validating/Type_Provider'},
          { name: 'Validator', path: '/Documentation/Scoping,_Typing,_and_Validating/Validator'},
        ]},
