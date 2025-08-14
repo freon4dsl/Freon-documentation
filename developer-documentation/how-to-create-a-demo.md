@@ -1,23 +1,19 @@
 # How to Create and Include a Demo
 
-[//]: # (TODO Expand this file)
-
-## Create the demo from freon4dsl
+## Create the Demo from Freon4dsl
 
 In main project (`Freon4dsl`):
 
-1. copy the file MockServer.ts to weblib-starter/src
-2. change the server in weblib-starter/src/starter.ts to be the MockServer
-3. make sure the sample project is 'Insurance'
-4. build the editor ('npm run build-dev')
-5. copy weblib-starter/public/build/dist/<some-name>.js to Freon-documentation/static or a subfolder of /static,
-6. and rename it to insurance-packaged.mjs
-7. copy the folder with test files called 'Insurance' from Freon/packages/server/modelstore/ to /lib/demo
-8. make sure the styles for the Freon editor are present: demo-global.css, demo-site.css, and demo-site-dark.css.
+1. Copy the folder Freon-documentation/demo-helpers to webapp-flowbite/src, this includes a MockServer.ts file.
+2. Change the server in webapp-flowbite/src/starter.ts to be a new MockServer instance.
+3. Make sure the sample project is 'Insurance' and that the external components are imported.
+4. Build the complete editor ('npm run build-dev' from top level), and check it in a browser (npm run dev).
+5. Build an index-<SOMETHING>.js file by executing 'npm run build-app' in webapp-flowbite (the generated name is different every time).
 
-Use the option to not minify the output to check whether the final lines in the javascript bundle are
+Use the option to not minify the output ("vite build --minify false" or by changing vite.config.js as below) 
+to check whether the final lines in the javascript bundle are
 ```js
-mount(FreonLayout, {
+mount(FlowbiteFreonLayout, {
   target: document.getElementById("freon")
 });
 
@@ -29,35 +25,45 @@ build: {
 }
 ```
 
-## Add the demo to the documentation site
+When all is fine, build the bundle using 'minify: true', and go back to this repo.
 
-1. Set the +page/svelte in /InsuranceDemo to 
+## Move the generated demo to the documentation repo
+
+1. Copy the content of the folder Freon4dsl/webapp-flowbite/dist/ to Freon-documentation/static/demoApp
+2. Rename the index-<SOMETHING>.js file in the above folder to insurance-packaged.js (the generated name is different every time).
+3. Move the freonlogo.svg from demoApp to /static (if it is not already present)
+
+## Add the demo to the documentation pages
+
+Actually, the following should all be in place, but just to be sure it is repeated here.
+
+1. Set the +page.svelte in /DocuProjectDemo to 
 
 ```sveltehtml
 <svelte:head>
-    <title>My App Demo</title>
-    <script type="module" src="./myApp/assets/index-CqA7-OJj.js"></script>
+    <title>Freon Demo</title>
+    <script type="module" src="./demoApp/assets/insurance-packaged.js"></script>
 </svelte:head>
 
 <div id="freon" class="demo"></div>
 ```
 
-Where `src=<>` indicates the path to the javascript bundle created from freon4dsl. 
-The bundle should be in /static, so as not to be tampered with by sveltekit. 
-Obviously the title may be adjusted as well.
-
+Where `src="` indicates the path to the javascript bundle created from freon4dsl. 
+This bundle should be in /static, so as not to be tampered with by sveltekit. 
+Obviously, the title may be adjusted, if you please.
 But most important is that the id of the div is exactly the same as the id in the `document.getElementById()`
 in the javascript bundle.
 
-2. In the +layout.svelte import the corresponding css file. ==> TODO change this, it does not function!
+2. In the +layout.svelte import the corresponding css file.
 
 ```sveltehtml
-<script lang="ts">
-    import "./demo-global.css"
+<link rel="stylesheet" crossorigin href="./demoApp/assets/site.css">
+<slot />
+```
 
-    let { children } = $props();
-</script>
-
+Or, when working with svelte version 5:
+```sveltehtml
+<link rel="stylesheet" crossorigin href="./demoApp/assets/site.css">
 {@render children()}
 ```
 

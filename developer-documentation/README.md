@@ -1,6 +1,6 @@
-# Information for Freon documentation Developers
+# Information for Freon Documentation Developers
 
-In this folder you can find various files that describe part of the documentation repository that will 
+In this folder you can find various files that describe part of the Freon Documentation repository that will 
 help you to understand where and how to change and augment the Freon documentation.
 
 The documentation site is build using SvelteKit, so you need to have some understanding of that tool 
