@@ -1,38 +1,54 @@
-<!-- copied and adjusted from https://www.reddit.com/r/sveltejs/comments/fkfpd8/svg_ripple_button_component/-->
+<!-- Copied and adjusted from https://www.reddit.com/r/sveltejs/comments/fkfpd8/svg_ripple_button_component/-->
+<!-- svelte-check will find errors in this file, they do not hamper the execution for now. Must find a way to avoid them. -->
 <script lang="ts">
-	import { onMount } from 'svelte';
+	import { onMount, type Snippet } from 'svelte';
 	import Ripple from './Ripple.svelte';
 	import { writable } from 'svelte/store';
 
-	export let icon: boolean = false;
+	interface ComponentProps {
+		children: Snippet;
+		icon: boolean;
+	}
+	let { children, icon = false }: ComponentProps = $props();
 
-	let myStyle = 'materialStyle'; // default style
+	// **** TYPES *****
+	interface RippleType {
+		x: number;
+		y: number;
+		size: number;
+	}
+
+	// **** END TYPES *****
+
+	let myStyle: string = $state('materialStyle'); // default style
 
 	// set the defaults for the ripple
-	let rippleBlur = 0;
-	let speed = 900;
-	let sizeIn = 20;
+	let rippleBlur: number = $state(0);
+	let speed: number = $state(900);
+	let sizeIn: number = $state(20);
 
 	if (icon === true) {
 		// override the defaults for the ripple settings
-		(rippleBlur = 9), (speed = 500), (sizeIn = 20);
+		rippleBlur = 9;
+		speed = 500;
+		sizeIn = 20;
 		// and set the style to a different value
 		myStyle = 'iconStyle';
 	}
 
 	function handleRipple() {
-		const ripples = writable([]);
+		const ripples = writable<RippleType[]>([]);
 
 		return {
 			subscribe: ripples.subscribe,
 
-			add: (item) => {
-				ripples.update((items) => {
-					return [...items, item];
+			add: (item: RippleType) => {
+				ripples.update((ripples) => {
+					return [...ripples, item];
 				});
 			},
 			clear: () => {
-				ripples.update((items) => {
+				ripples.update(() => {
 					return [];
 				});
 			}
@@ -41,14 +57,17 @@
 
 	const ripples = handleRipple();
 
-	let rect, rippleBtn, w, h, x, y, offsetX, offsetY, deltaX, deltaY, locationY, locationX, scale_ratio, timer;
+	let w: number, h: number, offsetX: number, offsetY: number, deltaX: number, deltaY: number, locationY: number, locationX: number, scale_ratio: number;
+	let rect: DOMRect, rippleBtn: HTMLButtonElement, timer: ReturnType<typeof setTimeout>;
 	let coords = { x: 50, y: 50 };
 
-	$: (offsetX = Math.abs(w / 2 - coords.x)),
-		(offsetY = Math.abs(h / 2 - coords.y)),
-		(deltaX = w / 2 + offsetX),
-		(deltaY = h / 2 + offsetY),
-		(scale_ratio = Math.sqrt(Math.pow(deltaX, 2.2) + Math.pow(deltaY, 2.2)));
+	$effect(() => {
+			offsetX = Math.abs(w / 2 - coords.x);
+			offsetY = Math.abs(h / 2 - coords.y);
+			deltaX = w / 2 + offsetX;
+			deltaY = h / 2 + offsetY;
+			scale_ratio = Math.sqrt(Math.pow(deltaX, 2.2) + Math.pow(deltaY, 2.2));
+	});
 
 	const debounce = () => {
 		clearTimeout(timer);
@@ -60,25 +79,20 @@
 		);
 	};
 
-	let touch: boolean;
-
-	function handleClick(e, type) {
+	function handleClick(e: MouseEvent | TouchEvent, type: string) {
 		if (type == 'touch') {
-			touch = true;
+			const touch = (e as TouchEvent).touches[0]; // e.touches is an array containing all touches
 			ripples.add({
-				x: e.pageX - locationX,
-				y: e.pageY - locationY,
+				x: touch.clientX - locationX,
+				y: touch.clientY - locationY,
 				size: scale_ratio
 			});
 		} else {
-			if (!touch) {
 				ripples.add({
-					x: e.clientX - locationX,
-					y: e.clientY - locationY,
+					x: (e as MouseEvent).clientX - locationX,
+					y: (e as MouseEvent).clientY - locationY,
 					size: scale_ratio
 				});
-			}
-			touch = false;
 		}
 		debounce();
 	}
@@ -93,17 +107,16 @@
 </script>
 
 <button
-	on:click
 	class="{myStyle} rippleButton"
 	bind:this={rippleBtn}
-	on:touchstart={(e) => handleClick(e.touches[0], 'touch')}
-	on:mousedown={(e) => handleClick(e, 'click')}
+	ontouchstart={(e) => handleClick(e, 'touch')}
+	onmousedown={(e) => handleClick(e, 'click')}
 >
 	<span>
-		<slot />
+		{@render children()}
 	</span>
 	<svg>
-		{#each $ripples as ripple, index}
+		{#each $ripples as ripple, index (index)}
 			<Ripple x={ripple.x} y={ripple.y} size={ripple.size} {speed} {sizeIn} {rippleBlur} />
 		{/each}
 	</svg>

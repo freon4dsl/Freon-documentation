@@ -76,12 +76,12 @@ will be indented with 3 spaces.
 
 ```
 
-<Note>
-<svelte:fragment slot="header"> Indentation is incremental</svelte:fragment>
-<svelte:fragment slot="content">
+<Note {header} {content}> </Note>
+{#snippet header()} Indentation is incremental{/snippet}
+{#snippet content()}
 Any indentation of a property is added to the indentation of the projection of this property.
 Thus, when a `Text` element is used within another projection,
 the indentation that is defined by the projection in the definition for `Text` will be preceded
 by any indentation defined in the projection for the enclosing concept.
-</svelte:fragment>
-</Note>
+{/snippet}
+

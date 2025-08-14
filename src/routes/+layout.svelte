@@ -2,6 +2,8 @@
 	import { onMount } from 'svelte';
 	import { darkMode } from '$lib/Store.js';
 
+	let { children } = $props();
+
 	onMount(() => {
 		// dark preference stored in local storage of browser has precedence
 		if (localStorage.getItem('darkMode') !== null && localStorage.getItem('darkMode') !== undefined) {
@@ -22,5 +24,5 @@
 </script>
 
 <div>
-	<slot />
+	{@render children()}
 </div>

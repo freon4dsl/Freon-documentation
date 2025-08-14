@@ -43,9 +43,9 @@ the concept `Page` is a likely candidate to be a name space. Knowing this, we ad
 ```proto
 // Education/lesson6-defs/edu.scope
 
-scoper EducationScoper for language Education
+scoper for language Education
 
-isnamespace { Page  }
+isNamespace { Page  }
 
 ```
 

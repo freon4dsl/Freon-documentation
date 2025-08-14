@@ -5,12 +5,12 @@
 
 # External Components
 
-<Note><svelte:fragment slot="header">External components are experimental</svelte:fragment>
-<svelte:fragment slot="content">
+<Note {header} {content}> </Note>{#snippet header()}External components are experimental{/snippet}
+{#snippet content()}
 <p>The use of external components in the Freon editor is experimental. 
 Compatibility with every library isn’t guaranteed, and future versions 
 of Freon may alter how external components are included. Proceed with this in mind.</p>
-</svelte:fragment></Note>
+{/snippet}
 
 In this version of Freon it is possible to include UI components that are not native to Freon. For
 instance, you can define your own components, or use components from a UI component library.
@@ -74,14 +74,13 @@ and value are strings. There can be a list of them. In the interface of all box 
 components the method `findParam(key: string): string` is included. This
 method can be used to find the value of the parameter that was included in the `.edit` file.
 
-In every external component two `export let` parameters, and four specific methods need to be provided
+In every external component two `Props` parameters, and four specific methods need to be provided
 in order for the component to fit in the Freon framework. The parameters are the 
 following, where `BOXTYPE` is the type of the box associated 
 with the external component.
 
 ```ts
-    export let box: BOXTYPE;
-    export let editor: FreEditor;
+    let { editor, box }: FreComponentProps<BOXTYPE> = $props();
 ```
 
 The methods are:
@@ -99,66 +98,66 @@ The source of the AnimatedGif Svelte component is the following.
 
 <script lang="ts">
 
-    import {ExternalSimpleBox, FreEditor} from "@freon4dsl/core";
-    import {afterUpdate, onMount} from "svelte";
+    import {FragmentWrapperBox, isNullOrUndefined} from "@freon4dsl/core";
+    import type { FreComponentProps } from "@freon4dsl/core-svelte";
 
-    let src1 = '/cats-kittens.gif';
+    let src1 = './customImages/cats-kittens.gif';
     let name1 = 'Two kittens licking';
-    let src2 = '/rick-roll-rick-rolled.gif';
+    let src2 = './customImages//rick-roll-rick-rolled.gif';
     let name2 = 'Rick Astley dancing';
-    let src3 = '/lenny-confetti-hired-kitten.gif';
+    let src3 = './customImages/lenny-confetti-hired-kitten.gif';
     let name3 = 'Staring kitten';
 
     // Freon expects both of these to be present, even if they are not used.
-    export let box: ExternalSimpleBox;
-    export let editor: FreEditor;
+    // Props
+    let { editor, box }: FreComponentProps<FragmentWrapperBox> = $props();
 
-    let src: string = src1;
-    let name: string = name1;
+    let src: string = $state(src1);
+    let name: string = $state(name1);
 
     function getSrc() {
-        let nrOfSrc: number = Number.parseInt(box.findParam("number"));
-        switch (nrOfSrc) {
-            case 1: {
-                src = src1;
-                name = name1;
-                break;
-            }
-            case 2: {
-                src = src2;
-                name = name2;
-                break;
-            }
-            case 3: {
-                src = src3;
-                name = name3;
-                break;
+        let myParam: string | undefined = box.findParam("number");
+        if (!isNullOrUndefined(myParam)) {
+            let nrOfSrc: number = Number.parseInt(myParam);
+            switch (nrOfSrc) {
+                case 1: {
+                    src = src1;
+                    name = name1;
+                    break;
+                }
+                case 2: {
+                    src = src2;
+                    name = name2;
+                    break;
+                }
+                case 3: {
+                    src = src3;
+                    name = name3;
+                    break;
+                }
             }
         }
     }
     // execute this function to set the initial values
     getSrc();
 
-    // The following four functions need to be included for the editor to function properly.
+    // The following two functions need to be included for the editor to function properly.
     // Please, set the focus to the first editable/selectable element in this component.
     // If this element is not focusable, then do not use this function. Freon will direct
     // the focus to the parent of this component.
-
     // async function setFocus(): Promise<void> {
     // }
     const refresh = (why?: string): void => {
         // do whatever needs to be done to refresh the elements that show information from the model
         getSrc();
     };
-    onMount(() => {
-        getSrc();
+    $effect(() => {
         // box.setFocus = setFocus;
         box.refreshComponent = refresh;
     });
-    afterUpdate(() => {
-        // box.setFocus = setFocus;
-        box.refreshComponent = refresh;
-    });
+
+    // execute getSrc on initialization
+    getSrc();
 </script>
 
 <!-- {src} is short for src={src} -->
@@ -207,7 +206,7 @@ In this example a fragment is wrapped in a `Card` component, which is imported f
 ```proto
 // Insurance/src/defs/editor-externals.edit#L6-L6
 
-[fragment FirstCard wrap=SMUI_Card] [fragment SecondCard wrap=SMUI_Card]
+[fragment FirstCard wrap=ExternalCard] [fragment SecondCard wrap=ExternalCard]
 ```
 
 ## Replacing a Freon Projection
@@ -240,7 +239,7 @@ the <a href="https://sveltematerialui.com/" target="_blank">SMUI</a> UI library.
 ```proto
 // Insurance/src/defs/editor-externals.edit#L5-L5
 
-Base Product for ${self.theme radio} ${self.name replace=SMUI_Dialog buttonLabel = "Change Product Name"}
+Base Product for ${self.theme radio} ${self.name replace=ExternalDialog buttonLabel = "Change Product Name"}
 ```
 
 <Figure

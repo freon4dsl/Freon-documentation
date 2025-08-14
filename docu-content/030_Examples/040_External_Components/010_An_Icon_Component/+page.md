@@ -24,16 +24,16 @@ The complete Svelte component should look like this:
 // CourseSchedule/phase2/src/external/PersonIcon.svelte
 
 <script lang="ts">
-    import {ExternalSimpleBox, FreEditor} from "@freon4dsl/core";
+    import { ExternalSimpleBox } from "@freon4dsl/core";
+    import type { FreComponentProps } from "@freon4dsl/core-svelte";
 
-		// Declare the 'box' and 'editor' parameters as required by Freon
-    export let box: ExternalSimpleBox;
-    export let editor: FreEditor;
+    // Freon expects both props to be present, even if they are not used.
+    // Props
+    let { editor, box }: FreComponentProps<ExternalSimpleBox> = $props();
 
 </script>
 
-<!-- Display the icon with an image -->
-<img src='./icons8-person-94.png' alt="Icon showing Person" height="30px"/>
+<img src='./customImages/icons8-person-94.png' alt="Icon showing Person" height="30px"/>
 
 ```
 

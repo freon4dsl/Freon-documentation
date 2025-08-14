@@ -25,7 +25,7 @@ name is used.
 ```proto
 // Insurance/src/defs/scoper-docu.scope#L3-L3
 
-isnamespace { InsuranceProduct, BaseProduct, CalcFunction, Entity }
+isNamespace { InsuranceProduct, BaseProduct, CalcFunction, Entity, AttributeRef }
 ```
 
 Interfaces can be namespaces as well.
@@ -34,12 +34,12 @@ namespace, but only the names of the properties of the interface will be include
 
 [//]: # (todo check whether the following stills holds)
 
-<Note>
-<svelte:fragment slot="header"> Each model unit is a namespace.</svelte:fragment>
-<svelte:fragment slot="content">
+<Note {header} {content}> </Note>
+{#snippet header()} Each model unit is a namespace.{/snippet}
+{#snippet content()}
 On all Levels of Customizations model units are always considered to be namespaces.
-</svelte:fragment>
-</Note>
+{/snippet}
+
 
 ## Namespace Additions
 
@@ -62,8 +62,8 @@ concept Entity {
 ```proto
 // Insurance/src/defs/scoper-docu.scope#L13-L15
 
-Entity {
-    namespace_addition = self.baseEntity;
+        self.owner().type();
+    } 
 }
 ```
 
@@ -76,7 +76,7 @@ an `AttributeRef` are determined based on the type of its container, i.e. the ty
 ```proto
 // Insurance/src/defs/scoper-docu.scope#L9-L11
 
-AttributeRef {
-	scope = typeof( container );
 }
+
+AttributeRef {
 ```

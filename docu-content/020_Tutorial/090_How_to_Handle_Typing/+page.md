@@ -73,22 +73,22 @@ And what about the other concepts that inherit from `ScoreExpression`? Let's not
 // Education/lesson8-defs/edu-scoring.type#L7-L24
 
 QuestionReference {
-    infertype PrimitiveType:Boolean;
+    infertype #PrimitiveType:Boolean;
 }
 NrOfCorrectAnswers {
-    infertype PrimitiveType:Integer;
+    infertype #PrimitiveType:Integer;
 }
 NumberLiteralExpression {
-    infertype PrimitiveType:Integer;
+    infertype #PrimitiveType:Integer;
 }
 OrExpression {
-    infertype PrimitiveType:Boolean;
+    infertype #PrimitiveType:Boolean;
 }
 AndExpression {
-    infertype PrimitiveType:Boolean;
+    infertype #PrimitiveType:Boolean;
 }
 ComparisonExpression {
-    infertype PrimitiveType:Boolean;
+    infertype #PrimitiveType:Boolean;
 }
 ```
 

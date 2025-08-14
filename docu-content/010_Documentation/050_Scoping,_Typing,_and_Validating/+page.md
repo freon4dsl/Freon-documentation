@@ -18,9 +18,9 @@ npm run freon type-it -d src/defs -o src/"
 npm run freon validate-it -d src/defs -o src/"
 ```
 
-<Note>
-<svelte:fragment slot="header"> Incomplete code</svelte:fragment>
-<svelte:fragment slot="content">
+<Note {header} {content}> </Note>
+{#snippet header()} Incomplete code{/snippet}
+{#snippet content()}
 <p>
 Keep in mind that all commands, except <code>all</code>, when used individually (i.e., without combining 
 them with others), produce code that may not compile correctly. For example, the <code>scoper</code> 
@@ -33,5 +33,5 @@ To avoid such issues, it is best to start with the <code>all</code> command. Onc
 has been run, you can use specific commands for individual aspects of your language as needed. 
 This approach ensures correct dependencies while minimizing regeneration time.
 </p>
-</svelte:fragment>
-</Note>
+{/snippet}
+

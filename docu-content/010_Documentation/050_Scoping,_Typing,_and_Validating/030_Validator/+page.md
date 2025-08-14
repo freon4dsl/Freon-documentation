@@ -36,8 +36,8 @@ complies when the value of the property is unique within the list.
 
 InsuranceProduct {
     notEmpty self.parts;
-    isunique name in self.parts;
-    isunique name in self.helpers;
+    in self.parts isunique name;
+    in self.helpers isunique name;
 }
 ```
 
@@ -56,7 +56,7 @@ concept has a simple property named ‘`name`’ of type ‘`identifier`’, and
 }
 CalcFunction {
     // typecheck conformsTo (self.body, self.declaredType);
-    isunique name in self.parameters;
+    in self.parameters isunique name;
     validIdentifier
     {
 ```
@@ -90,7 +90,7 @@ The severity of the error may or may not be indicated. The possible values are "
 
 CalcFunction {
     // typecheck conformsTo (self.body, self.declaredType);
-    isunique name in self.parameters;
+    in self.parameters isunique name;
     validIdentifier
     {
         message: "El nombre '${self.name}' no es un identificador correcto.",

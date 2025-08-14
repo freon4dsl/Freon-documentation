@@ -17,11 +17,11 @@ of the web application, the variation will be extreme. Therefore, we leave these
 the example (and the GitHub repo that accompanies it) is to give you some pointers on how and were to use
 functionality from the Freon `core` and `core-svelte` packages. 
 
-<Note><svelte:fragment slot="header">Svelte version 5</svelte:fragment>
-<svelte:fragment slot="content">
+<Note {header} {content}> </Note>{#snippet header()}Svelte version 5{/snippet}
+{#snippet content()}
 <p>The example in the GitHub repo uses Svelte version 5 and can therefore only be used with Freon version 1.1.0.
 (There is currently a beta version available: version 1.1.0-beta1.)</p>
-</svelte:fragment></Note>
+{/snippet}
 
 ## Mono Repository
 

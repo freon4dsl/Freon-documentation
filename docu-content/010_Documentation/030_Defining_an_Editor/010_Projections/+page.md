@@ -71,28 +71,29 @@ InsuranceProduct {[
 ]}
 ```
 
-<Note>
-<svelte:fragment slot="header">Only direct properties are allowed</svelte:fragment>
-<svelte:fragment slot="content">
+<Note {header} {content}> </Note>
+{#snippet header()}Only direct properties are allowed{/snippet}
+{#snippet content()}
 Only the properties that are directly owned by the concept or interface are allowed. For instance,
 <code>self.declaredType.name</code> is not a valid property projection. 
-</svelte:fragment>
-</Note>
+{/snippet}
 
-<Note>
-<svelte:fragment slot="header"><code>self</code> is optional</svelte:fragment>
-<svelte:fragment slot="content">
+
+<Note header={header2} content={content2}> </Note>
+{#snippet header2()}<code>self</code> is optional{/snippet}
+{#snippet content2()}
 Because you may only use direct properties, the prefix <code>self</code> may be omitted. 
-</svelte:fragment>
-</Note>
+{/snippet}
 
-<Note><svelte:fragment slot="header"> One property, one occurrence in the editor</svelte:fragment>
-<svelte:fragment slot="content">
+
+<Note header={header3} content={content3}> </Note>
+{#snippet header3()} One property, one occurrence in the editor{/snippet}
+{#snippet content3()}
 Unfortunately, it is not possible to show the same property of a concept twice in the same editor.
 The tooling we use to keep the state of the underlying model in sync with the view in the running editor
 does not allow us to do this.
-</svelte:fragment>
-</Note>
+{/snippet}
+
 
 ## Using Named Projections
 
@@ -161,13 +162,13 @@ InsuranceProduct {[
 ]}
 ```
 
-<Note>
-<svelte:fragment slot="header">Newlines in terminator or separator are ignored</svelte:fragment>
-<svelte:fragment slot="content">
+<Note header={header4} content={content4}> </Note>
+{#snippet header4()}Newlines in terminator or separator are ignored{/snippet}
+{#snippet content4()}
 A terminator or separator should not contain a newline character. Horizontal or vertical layout is
 purely determined by the keywords <code>horizontal</code> and <code>vertical</code>.
-</svelte:fragment>
-</Note>
+{/snippet}
+
 
 ## Tables
 
@@ -185,13 +186,13 @@ display as a table. Optionally, you can also specify either `rows` or `columns`.
 in the list. This projection specifies the table headers and 
 3. determines how the elements of the list are arranged in rows or columns.
 
-<Note>
-<svelte:fragment slot="content">
+<Note content={content5}> </Note>
+{#snippet content5()}
 Note that you only need to include one
 table projection for the elements for both column and row based tables.
 Freon will swap the entries when needed.
-</svelte:fragment>
-</Note>
+{/snippet}
+
 
 To project the `parts` property of concept `BaseProduct` as a row based table, 
 you can use the following code.
@@ -220,23 +221,23 @@ table [
 }
 ```
 
-<Note>
-<svelte:fragment slot="header">Properties within a table are displayed according to their own projection</svelte:fragment>
-<svelte:fragment slot="content">
+<Note header={header6} content={content6}> </Note>
+{#snippet header6()}Properties within a table are displayed according to their own projection{/snippet}
+{#snippet content6()}
 Each of the properties in a table is displayed using its own projection.
 In this example, <code>name</code> is a string, and will be displayed as an editable text,
 and <code>maximumPayout</code> is a <code>EuroLiteral</code>
 Note that the properties can be lists themselves, which can be displayed as lists or tables.
-</svelte:fragment>
-</Note>
+{/snippet}
 
-<Note>
-<svelte:fragment slot="header">Whitespace in headers is ignored</svelte:fragment>
-<svelte:fragment slot="content">
+
+<Note header={header7} content={content7}> </Note>
+{#snippet header7()}Whitespace in headers is ignored{/snippet}
+{#snippet content7()}
 The whitespace between the headers is not needed. However, for clarity, it is
 good style to align the column/row-separators.
-</svelte:fragment>
-</Note>
+{/snippet}
+
 
 ## Optional Projections
 

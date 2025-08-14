@@ -11,11 +11,13 @@ It may hold any number of model units as children. These model units may be of d
 can have model units that define the items in a home automation system, and other model units that define the rules
 that apply in this system.
 
-<Note><svelte:fragment slot="header"> Models are never explicit in an editor</svelte:fragment><svelte:fragment slot="content">
+<Note {header} {content}> </Note>
+{#snippet header()} Models are never explicit in an editor{/snippet}
+{#snippet content()}
 The model is never shown in an editor as a whole.
 It is always shown in parts: the model units. However, the provided webapp does 'show' the model and the units, that are
 part of it, in its left panel.
-</svelte:fragment></Note>
+{/snippet}
 
 ```proto
 // Insurance/src/defs/language-main.ast#L7-L10
@@ -95,9 +97,9 @@ expression NumberLiteral base Literal {
 }
 ```
 
-<Note>
-<svelte:fragment slot="header">Use a Single Root of the Expression AST</svelte:fragment>
-<svelte:fragment slot="content">
+<Note header={header2} content={content2}> </Note>
+{#snippet header2()}Use a Single Root of the Expression AST{/snippet}
+{#snippet content2()}
 <p>
 It is good practice to have all expression concepts inherit from one single root concept. This make it easy 
 to have any type of expression as a part of the expression that you want to define.</p>
@@ -105,7 +107,7 @@ to have any type of expression as a part of the expression that you want to defi
 For instance, when defining a bracketed expression, i.e. an expression surrounded by brackets, you can 
 simply use the root expression concept as type of the property that is to be put between the brackets.
 </p>
-</svelte:fragment></Note>
+{/snippet}
 
 ## Binary Expression Concept
 
@@ -184,13 +186,13 @@ limited PremiumDays {           // limited with various options
 }
 ```
 
-<Note>
-<svelte:fragment slot="header"> No quotes around numbers and booleans.</svelte:fragment>
-<svelte:fragment slot="content">
+<Note header={header3} content={content3}> </Note>
+{#snippet header3()} No quotes around numbers and booleans.{/snippet}
+{#snippet content3()}
 For number and boolean types, quotes (double or single) are not allowed around the values of properties of
 instances of limited concepts.
-</svelte:fragment>
-</Note>
+{/snippet}
+
 
 ## Interface
 

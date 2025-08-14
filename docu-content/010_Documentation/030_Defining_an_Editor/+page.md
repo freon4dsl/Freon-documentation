@@ -20,12 +20,12 @@ The editor offers specialized support for binary expressions, which cannot funct
 if a user-defined projection is applied. Limited concepts are also restricted 
 from having projections because they are intended for use as references only within the editor.
 
-<Note>
-<svelte:fragment slot="header"> The projection is always the first </svelte:fragment>
-<svelte:fragment slot="content">
+<Note {header} {content}> </Note>
+{#snippet header()} The projection is always the first {/snippet}
+{#snippet content()}
 For every concept or interface you have to define the projection before the trigger and/or symbol.  
-</svelte:fragment>
-</Note>
+{/snippet}
+
 
 ## Named Editors or Projection Sets
 
@@ -92,17 +92,17 @@ If you do not specify a precedence, Freon assigns one based on the order
 in which the files are read — typically alphabetically. However, this 
 order is not guaranteed and may vary.
 
-<Note>
-<svelte:fragment slot="header"> Each editor can be defined in multiple files </svelte:fragment>
-<svelte:fragment slot="content">
+<Note header={header2} content={content2}> </Note>
+{#snippet header2()} Each editor can be defined in multiple files {/snippet}
+{#snippet content2()}
 <p>Every <code>.edit</code> file in the folder containing your definitions is read during the 
 generation process. If multiple files define editors with the same name, their information 
 is merged into a single editor.</p>
 
 <p>The precedence value only needs to be specified once. However, if it is defined multiple 
 times, the values must be consistent.</p>
-</svelte:fragment>
-</Note>
+{/snippet}
+
 
 ```proto
 // Insurance/src/defs/editor-tables.edit#L1-L11
@@ -139,9 +139,9 @@ global {
     referenceSeparator [:] // the string that separates the names in a path name, e.g. pack1:cls3:part
     external {
         AnimatedGif,
-        SMUI_Card,
-        SMUI_Accordion,
-        SMUI_Dialog,
+        ExternalCard,
+        ExternalAccordion,
+        ExternalDialog,
         DatePicker
     }
 }

@@ -19,46 +19,6 @@ concept contains the following to methods.
 ```ts
 // Insurance/src/freon/editor/gen/EuroLiteralBoxProvider.ts#L22-L62
 
-    protected getContent(projectionName: string): Box {
-        // console.log("GET CONTENT " + this._node?.freId() + ' ' +  this._node?.freLanguageConcept() + ' ' + projectionName);
-        // see if we need to use a custom projection
-        if (!this.knownBoxProjections.includes(projectionName) && !this.knownTableProjections.includes(projectionName)) {
-            const BOX: Box = this.mainHandler.executeCustomProjection(this._node, projectionName);
-            if (!!BOX) {
-                // found one, so return it
-                return BOX;
-            }
-        } else {
-            // select the box to return based on the projectionName
-            if (projectionName === "default") {
-                return this.getDefault();
-            }
-        }
-        // in all other cases, return the default
-        return this.getDefault();
-    }
-
-    private getDefault(): Box {
-        return createDefaultExpressionBox(
-            this._node as EuroLiteral,
-            [
-                BoxFactory.horizontalLayout(
-                    this._node as EuroLiteral,
-                    "EuroLiteral-hlist-line-0",
-                    "",
-                    [
-                        BoxUtil.labelBox(this._node as EuroLiteral, "EUR", "top-1-line-0-item-0"),
-                        BoxUtil.numberBox(this._node as EuroLiteral, "euros", NumberDisplay.SELECT),
-                        BoxUtil.labelBox(this._node as EuroLiteral, ",", "top-1-line-0-item-2"),
-                        BoxUtil.numberBox(this._node as EuroLiteral, "cents", NumberDisplay.SELECT),
-                    ],
-                    { selectable: false },
-                ),
-            ],
-            { selectable: false },
-        );
-    }
-}
 
 ```
 
@@ -82,6 +42,7 @@ In the below example, a copy is taken of the `getDefault` method above, which is
 ```ts
 // Insurance/src/custom/editor/CustomInsuranceModelProjection.ts#L24-L79
 
+ */
 const euroIcon = "M640 789.333333c-106.88 0-199.68-60.586667-245.973333-149.333333H640v-85.333333H366.293333c-2.133333-13.866667-3.626667-28.16-3.626666-42.666667s1.493333-28.8 3.626666-42.666667H640v-85.333333H394.026667c46.293333-88.746667 138.88-149.333333 245.973333-149.333333 68.906667 0 131.84 25.173333 180.266667 66.773333L896 226.133333A382.72 382.72 0 0 0 640 128c-167.04 0-308.906667 106.88-361.6 256H128v85.333333h130.56c-1.706667 14.08-2.56 28.16-2.56 42.666667 0 14.506667 0.853333 28.586667 2.56 42.666667H128v85.333333h150.4c52.693333 149.12 194.56 256 361.6 256 98.346667 0 188.16-37.333333 256-98.133333l-75.733333-75.52A275.818667 275.818667 0 0 1 640 789.333333z"
 
 /**
@@ -94,6 +55,7 @@ const euroIcon = "M640 789.333333c-106.88 0-199.68-60.586667-245.973333-149.3333
  * (3) if neither (1) nor (2) yields a result, the default is used.
  */
 export class CustomInsuranceModelProjection implements FreProjection {
+    handler: FreProjectionHandler;
     name: string = "Euro-symbol";
     nodeTypeToBoxMethod: Map<string, (node: FreNode) => Box> = new Map<string, (node: FreNode) => Box>([
         // register your custom box methods here
@@ -136,16 +98,15 @@ export class CustomInsuranceModelProjection implements FreProjection {
 
     // TABLE_DEFINITION_FOR_CONCEPT() : FreTableDefinition { ... }
 }
-
 ```
 
-<Note><svelte:fragment slot="header">Use another filename and/or location</svelte:fragment>
-<svelte:fragment slot="content">
+<Note {header} {content}> </Note>{#snippet header()}Use another filename and/or location{/snippet}
+{#snippet content()}
 You can rename the file <code>~/freon/editor/CustomYourLanguageNameProjection.ts</code>, and/or put it in another location.
 In that case, you need to adjust the file <code>~/freon/config/FreonConfiguration</code>. 
 See <a href="/Documentation/Customizations#adding-typeScript-files-4">Adding TypeScript Files</a>.
-</svelte:fragment>
-</Note>
+{/snippet}
+
 
 
 ## Writing Custom Actions

@@ -1,17 +1,25 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { tweened } from 'svelte/motion';
+	import { Tween } from 'svelte/motion';
 	import { backOut } from 'svelte/easing';
 
-	export let x: number, y: number, sizeIn, size: number, speed, rippleBlur: number;
+	interface ComponentProps {
+		x: number;
+		y: number;
+		sizeIn: number;
+		size: number;
+		speed: number;
+		rippleBlur: number;
+	}
+	let { x, y, sizeIn, size, speed, rippleBlur }: ComponentProps = $props();
 
 	onMount(() => {
 		rippleOpacity.set(0);
 		rippleSize.set(size);
 	});
 
-	const rippleSize = tweened(sizeIn, { duration: speed }),
-		rippleOpacity = tweened(0.5, {
+	const rippleSize = new Tween(sizeIn, { duration: speed }),
+		rippleOpacity = new Tween(0.5, {
 			duration: speed + speed * 2.5,
 			easing: backOut
 		});
@@ -23,4 +31,4 @@
 		<feGaussianBlur in="SourceGraphic" stdDeviation={rippleBlur} />
 	</filter>
 </defs>
-<circle style="fill: var(--color-button-active);" cx={x} cy={y} r={$rippleSize} opacity={$rippleOpacity} filter="url(#f1)" />
+<circle style="fill: var(--color-button-active);" cx={x} cy={y} r={rippleSize.current} opacity={rippleOpacity.current} filter="url(#f1)" />

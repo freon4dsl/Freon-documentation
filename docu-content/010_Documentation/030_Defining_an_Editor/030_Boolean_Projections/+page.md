@@ -83,13 +83,13 @@ entity FritsPhilips { // the value of isCompany is false
 }
 ```
 
-<Note>
-<svelte:fragment slot="header">Keywords defined within a projection overwrite the global boolean projection</svelte:fragment>
-<svelte:fragment slot="content">
+<Note {header} {content}> </Note>
+{#snippet header()}Keywords defined within a projection overwrite the global boolean projection{/snippet}
+{#snippet content()}
 In the default editor you can define global boolean projection. These will not be used when a more specific projection
 is present.
-</svelte:fragment>
-</Note>
+{/snippet}
+
 
 ## Switch, Checkbox, Radio Control
 

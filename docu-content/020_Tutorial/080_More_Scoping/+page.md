@@ -125,12 +125,14 @@ the `fromPage` property, but here is no way to refer to other scenarios.
 ```proto
 // Education/lesson7-defs/edu.scope
 
-scoper EducationScoper for language Education
+scoper for language Education
 
-isnamespace { Page, Step }
+isNamespace { Page, Step }
 
 Step {
-    namespace_addition = self.fromPage;
+    imports {
+        self.fromPage;
+    } 
 }
 
 ```

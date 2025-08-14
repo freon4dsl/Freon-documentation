@@ -64,12 +64,13 @@ modelunit SiteGroup {
 Let's focus on the _SiteGroup_ model unit first. Because it is likely that we need to make references to topics,
 we give each topic a `name `of type `identifier`.
 
-<Note><svelte:fragment slot="header"> The type identifier versus the type string.</svelte:fragment>  
-<svelte:fragment slot="content">
+<Note {header} {content}> </Note>
+{#snippet header()} The type identifier versus the type string.{/snippet}  
+{#snippet content()}
 <p>A property of type string may contain any printable character, but the content of an identifier is bound to a number of rules.
 These rules are equal to the rules in Typescript. Any concept or model unit that has a property
 <i>name</i> of type <i>identifier</i> can be referred to. </p>
-</svelte:fragment></Note>
+{/snippet}
 
 Every (sub)topic belongs to a site group, but we do not want this relationship
 to be like a UML aggregation, because we feel that this is too restrictive here. Therefore, we introduce another feature of
@@ -158,8 +159,9 @@ concept InDepthMaterial base Page {
 
 ```
 
-<Note><svelte:fragment slot="header">UML diagrams</svelte:fragment>
-<svelte:fragment slot="content">
+<Note header={header2} content={content2}> </Note>
+{#snippet header2()}UML diagrams{/snippet}
+{#snippet content2()}
 <p>The Freon metamodel can be expressed in UML. For instance, the Freon concept may be compared to a UML class. 
 It can have properties, and may have associations with other concepts.
 It can inherit from other concepts, and/or implement an interface.</p>
@@ -167,7 +169,7 @@ It can inherit from other concepts, and/or implement an interface.</p>
 <p>Freon automatically generates a number of UML class diagrams of your metamodel. You can find them in the
 folder <code>src/diagrams</code>, together with some other diagrams
 (for instance, one that focuses on inheritance relations).  </p>
-</svelte:fragment></Note>
+{/snippet}
 
 But let's not forget to add a definition for the concept **Question**. Freon will complain if you
 do not define all the concepts that you are using. And, because we are dealing with mathematics, we need to

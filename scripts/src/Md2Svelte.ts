@@ -150,7 +150,7 @@ export class Md2Svelte {
 			innerHtml = innerHtml.replace(/<\/script>/, "</script>\n\n<PrevNextSection {prevLink} {nextLink} />\n" )
 			return script + innerHtml + "\n\n<PrevNextSection {prevLink} {nextLink} />";
 		} else {
-			return script + '\n\t</script>\n<PrevNextSection {prevLink} {nextLink} />' + code + "\n\n<PrevNextSection {prevLink} {nextLink} />";
+			return script + '\n</script>\n<PrevNextSection {prevLink} {nextLink} />' + code + "\n\n<PrevNextSection {prevLink} {nextLink} />";
 		}
 	}
 
@@ -216,13 +216,17 @@ export class Md2Svelte {
                       copyPrompt.appendChild(copyIcon);
                       copyPrompt.appendChild(copyPromptText);
                       block.appendChild(copyPrompt);
-                      block.querySelector(".copy-prompt > p").addEventListener("click", (evt) => {
-                          copy(block.querySelector("code").textContent);
-                          block.querySelector(".copy-prompt > p").innerHTML = "Copied!";
-                          setTimeout(() => {
-                              block.querySelector(".copy-prompt > p").innerHTML = "👆 Click to copy";
-                          }, 1000);
-                      });
+											block.querySelector('.copy-prompt > p')?.addEventListener('click', () => {
+												if (block.querySelector('code')?.textContent !== null && block.querySelector('code')?.textContent !== undefined) {
+													copy(block.querySelector('code')!.textContent!);
+												}
+												if (block.querySelector('.copy-prompt > p')?.innerHTML !== null && block.querySelector('.copy-prompt > p')?.innerHTML !== undefined) {
+													block.querySelector('.copy-prompt > p')!.innerHTML = 'Copied!';
+													setTimeout(() => {
+														block.querySelector('.copy-prompt > p')!.innerHTML = '👆 Click to copy';
+													}, 1000);
+												}
+											});
                   });
               });`;
 		let next: string = '';

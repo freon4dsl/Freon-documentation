@@ -12,5 +12,5 @@
 - The word cloud tree was created using <a href="https://www.wordclouds.com/" target="_blank">www.wordclouds.com</a>.
 - The terminology was created using an <a href="https://thisdavej.com/copy-table-in-excel-and-paste-as-a-markdown-table/" target="_blank">online tool</a> created by Dave Johnson.
 
-All the rest, including any errors, can be contributed to the creators of Freon: Jos Warmer and Anneke Kleppe (see <a
-href="https://www.openmodeling.nl/" title="Openmodeling">www.openmodeling.nl</a>).
+All the rest, including any errors, can be contributed to the creators of Freon: Jos Warmer 
+and Anneke Kleppe (see www.openmodeling.nl).

@@ -2,9 +2,12 @@
 <!-- Content: github logo -->
 
 <script lang="ts">
-	export let height: number = 24;
-	export let width: number = 24;
-	export let fill: string = 'var(--color1)';
+	interface ComponentProps {
+		height?: number;
+		width?: number;
+		fill?: string;
+	}
+	let { height = 24, width = 24, fill = 'var(--color1)' }: ComponentProps = $props();
 </script>
 
 <svg

@@ -7,12 +7,11 @@
 	import PopoverMenu from '$lib/appbar/PopoverMenu.svelte';
 	import PopoverCategoryMenu from '$lib/appbar/PopoverCategoryMenu.svelte';
 	import { allCategories } from '$lib/sidebar/SidebarContent.js';
-	import { SvelteComponent } from 'svelte';
 
-	let catMenu: SvelteComponent[] = [];
+	let CatMenu: HTMLDivElement[] = $state([]);
 
 	function expandClick(index: number) {
-		catMenu[index].openContent();
+		CatMenu[index].showPopover();
 	}
 </script>
 
@@ -20,8 +19,8 @@
 <!-- TODO add search mechanism -->
 
 <PopoverMenu />
-{#each allCategories as cat, index}
-	<PopoverCategoryMenu id="category-{index}" content={cat.toc} bind:this={catMenu[index]} />
+{#each allCategories as cat, index (index)}
+	<PopoverCategoryMenu id="category-{index}" content={cat.toc} bind:divElem={CatMenu[index]} />
 {/each}
 
 <div class="app-bar">
@@ -31,7 +30,7 @@
 		<Tooltip tip="Hide/show content" bottom>
 			<button
 				class="app-bar-button"
-				on:click={() => {
+				onclick={() => {
 					$popoverElem.togglePopover();
 				}}
 			>
@@ -54,11 +53,11 @@
 			<div>Freon</div>
 		</a>
 		<nav class="app-bar-main-menu">
-			{#each allCategories as cat, index}
+			{#each allCategories as cat, index (index)}
 				<a href={cat.path} class="app-bar-linkLogo">
 					<h6>{cat.name}</h6>
 				</a>
-				<button class="main-menu-small-expand-button" on:click={() => expandClick(index)}>
+				<button class="main-menu-small-expand-button" onclick={() => expandClick(index)}>
 					<img class="main-menu-small-img" src="/icons/down-chevron-white.png" alt="arrow down" />
 				</button>
 			{/each}

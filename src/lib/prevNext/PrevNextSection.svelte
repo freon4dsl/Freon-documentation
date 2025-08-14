@@ -1,8 +1,11 @@
 <script lang="ts">
 	import { darkMode } from '$lib/Store';
 
-	export let prevLink: string = '';
-	export let nextLink: string = '';
+	interface ComponentProps {
+		prevLink: string;
+		nextLink: string;
+	}
+	let { prevLink = '', nextLink = '' }: ComponentProps = $props();
 </script>
 
 <div class="prev-next">
