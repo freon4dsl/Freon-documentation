@@ -15,7 +15,12 @@
 .app-bar-linkLogo {
     margin-right: 8px;
     margin-left: 8px;
-    color: var(--color2)
+    color: var(--color2);
+}
+.app-bar-light-dark-btn {
+    margin-right: 8px;
+    margin-left: 8px;
+    color: var(--color1);
 }
 .app-bar {
     display: flex;
@@ -41,36 +46,27 @@
     color: var(--color1);
 }
 /* Styles for component Button */
+/* Base button */
 .rippleButton {
     border: none;
     font-weight: 500;
     max-width: 100%;
-    padding: 0;
-    position: relative;
+    padding: 3px 0 0 0;                    /* add horizontal padding if you want */
+    position: relative;            /* needed for ripple positioning */
     cursor: pointer;
     transition: 200ms all ease-out;
-    overflow: hidden;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-}
-.rippleButton.materialStyle {
+    overflow: hidden;              /* clips the ripple */
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
     height: 36px;
-    width: 115px;
+    width: 36px;
     font-size: 0.875rem;
+    line-height: 1;                /* avoids extra vertical height */
     color: var(--color1);
-    background-color: var(--color5);
+    background-color: var(--color6);
     border-radius: 0.2rem;
 }
-.rippleButton.materialStyle:hover,
-.rippleButton.materialStyle:focus {
-    outline: none;
-    background-color: var(--color-button-hover);
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-}
-.rippleButton.materialStyle:active {
-    outline: none;
-    background-color: var(--color-button-active);
-    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-}
+
+/* Icon-only button variant */
 .rippleButton.iconStyle {
     height: 24px;
     width: 24px;
@@ -78,18 +74,25 @@
     background-color: var(--color5);
     border-radius: 2rem;
 }
-.rippleButton.iconStyle:hover,
-.rippleButton.iconStyle:focus {
+
+/* Hover / focus (applies to both base and iconStyle) */
+.rippleButton:hover,
+.rippleButton:focus {
     outline: none;
     background-color: var(--color-button-hover);
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1),
+    0 4px 6px -2px rgba(0,0,0,0.05);
 }
-.rippleButton.iconStyle:active {
+
+/* Active (applies to both) */
+.rippleButton:active {
     outline: none;
     background-color: var(--color-button-active);
-    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    box-shadow: 0 1px 2px 0 rgba(0,0,0,0.05);
 }
-.rippleButton span {
+
+/* Content wrapper: keep this above the ripple */
+.rippleButtonContent {
     position: relative;
     height: 100%;
     width: 100%;
@@ -98,15 +101,33 @@
     justify-content: center;
     padding: 0;
     z-index: 1;
+    pointer-events: none; /* button handles the click */
 }
-.rippleButton svg {
+
+/* NEW: ripple element created by JS */
+.rippleButton .s-ripple {
+    position: absolute;            /* left/top/size set in JS */
+    border-radius: 9999px;
+    pointer-events: none;
+    will-change: transform, opacity;
+    z-index: 0;                    /* keep ripple under content */
+}
+
+/* Keep the SVG icon rule, but scope to icon buttons */
+.rippleButton.iconStyle svg {
     height: 100%;
+    width: 100%;
     pointer-events: none;
     position: absolute;
     top: 0;
     left: 0;
-    z-index: 0;
-    width: 100%;
+    z-index: 1;                    /* ensure icon stays above ripple */
+}
+
+/* Optional, accessible focus ring for keyboard users */
+.rippleButton:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 2px;
 }
 /* Styles for component Figure */
 .figure {

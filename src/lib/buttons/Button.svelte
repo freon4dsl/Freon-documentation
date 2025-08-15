@@ -1,123 +1,104 @@
-<!-- Copied and adjusted from https://www.reddit.com/r/sveltejs/comments/fkfpd8/svg_ripple_button_component/-->
-<!-- svelte-check will find errors in this file, they do not hamper the execution for now. Must find a way to avoid them. -->
+<!-- Button.svelte -->
 <script lang="ts">
-	import { onMount, type Snippet } from 'svelte';
-	import Ripple from './Ripple.svelte';
-	import { writable } from 'svelte/store';
-
-	interface ComponentProps {
-		children: Snippet;
-		icon: boolean;
-	}
-	let { children, icon = false }: ComponentProps = $props();
-
-	// **** TYPES *****
-	interface RippleType {
-		x: number;
-		y: number;
-		size: number;
+	interface Props {
+		disabled?: boolean;
+		ariaLabel: string | undefined;
+		children?: import('svelte').Snippet;
+		onclick?: (e: Event) => void; // parent handler
 	}
 
-	// **** END TYPES *****
+	let {
+		disabled = false,
+		ariaLabel,
+		children,
+		onclick
+	}: Props = $props();
 
-	let myStyle: string = $state('materialStyle'); // default style
+	let btn: HTMLButtonElement;
 
-	// set the defaults for the ripple
-	let rippleBlur: number = $state(0);
-	let speed: number = $state(900);
-	let sizeIn: number = $state(20);
-
-	if (icon === true) {
-		// override the defaults for the ripple settings
-		rippleBlur = 9;
-		speed = 500;
-		sizeIn = 20;
-		// and set the style to a different value
-		myStyle = 'iconStyle';
-	}
-
-	function handleRipple() {
-		const ripples = writable<RippleType[]>([]);
-
-		return {
-			subscribe: ripples.subscribe,
-
-			add: (item: RippleType) => {
-				ripples.update((ripples) => {
-					return [...ripples, item];
-				});
-			},
-			clear: () => {
-				ripples.update(() => {
-					return [];
-				});
-			}
-		};
-	}
-
-	const ripples = handleRipple();
-
-	let w: number, h: number, offsetX: number, offsetY: number, deltaX: number, deltaY: number, locationY: number, locationX: number, scale_ratio: number;
-	let rect: DOMRect, rippleBtn: HTMLButtonElement, timer: ReturnType<typeof setTimeout>;
-	let coords = { x: 50, y: 50 };
-
-	$effect(() => {
-			offsetX = Math.abs(w / 2 - coords.x);
-			offsetY = Math.abs(h / 2 - coords.y);
-			deltaX = w / 2 + offsetX;
-			deltaY = h / 2 + offsetY;
-			scale_ratio = Math.sqrt(Math.pow(deltaX, 2.2) + Math.pow(deltaY, 2.2));
-	});
-
-	const debounce = () => {
-		clearTimeout(timer);
-		timer = setTimeout(
-			() => {
-				ripples.clear();
-			},
-			speed + speed * 2
-		);
-	};
-
-	function handleClick(e: MouseEvent | TouchEvent, type: string) {
-		if (type == 'touch') {
-			const touch = (e as TouchEvent).touches[0]; // e.touches is an array containing all touches
-			ripples.add({
-				x: touch.clientX - locationX,
-				y: touch.clientY - locationY,
-				size: scale_ratio
-			});
-		} else {
-				ripples.add({
-					x: (e as MouseEvent).clientX - locationX,
-					y: (e as MouseEvent).clientY - locationY,
-					size: scale_ratio
-				});
+	function handleClick(e: MouseEvent) {
+		if (disabled) {
+			e.preventDefault();
+			e.stopPropagation();
+			return;
 		}
-		debounce();
+		// Forward the native click (mouse or keyboard-generated) to the parent
+		onclick?.(e);
 	}
 
-	onMount(() => {
-		w = rippleBtn.offsetWidth;
-		h = rippleBtn.offsetHeight;
-		rect = rippleBtn.getBoundingClientRect();
-		locationY = rect.y;
-		locationX = rect.x;
-	});
+	function onPointerDown(e: PointerEvent) {
+		if (disabled) return;
+		if (e.pointerType === 'mouse' && e.button !== 0) return;
+		spawnRipple(e);
+	}
+
+	function onKeyDown(e: KeyboardEvent) {
+		if (disabled) return;
+
+		if (e.key === 'Enter') {
+			// Native will dispatch a click on keydown → DO NOT call onclick here
+			spawnRipple(undefined, true);
+		} else if (e.key === ' ') {
+			// Prevent page scroll; native will dispatch click on keyup → DO NOT call onclick here
+			e.preventDefault();
+			spawnRipple(undefined, true);
+		}
+	}
+
+	function spawnRipple(e?: PointerEvent, keyboard = false) {
+		const node = btn;
+		if (!node) return;
+
+		const prefersReducedMotion =
+			typeof window !== 'undefined' &&
+			window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
+		const duration = prefersReducedMotion ? 500 : 1500;
+
+		const rect = node.getBoundingClientRect();
+		const size = Math.max(rect.width, rect.height);
+		const diameter = Math.ceil(Math.sqrt(rect.width ** 2 + rect.height ** 2)) * 2;
+
+		const fromCenter = keyboard || !e;
+		const x = fromCenter ? rect.width / 2 : (e!.clientX - rect.left);
+		const y = fromCenter ? rect.height / 2 : (e!.clientY - rect.top);
+
+		const el = document.createElement('span');
+		el.className = 's-ripple';
+		el.setAttribute('aria-hidden', 'true');
+
+		const color = getComputedStyle(node).color;
+
+		el.style.position = 'absolute';
+		el.style.borderRadius = '9999px';
+		el.style.pointerEvents = 'none';
+		el.style.width = el.style.height = `${diameter}px`;
+		el.style.left = `${x - diameter / 2}px`;
+		el.style.top = `${y - diameter / 2}px`;
+		el.style.background = color.trim();
+		el.style.opacity = '0.25';
+		el.style.transform = 'scale(0)';
+		el.style.transition = `transform ${duration}ms ease-out, opacity ${duration}ms ease-out`;
+
+		node.appendChild(el);
+
+		void el.offsetHeight;
+		el.style.transform = `scale(${diameter / size})`;
+		el.style.opacity = '0';
+
+		el.addEventListener('transitionend', () => el.remove(), { once: true });
+	}
 </script>
 
 <button
-	class="{myStyle} rippleButton"
-	bind:this={rippleBtn}
-	ontouchstart={(e) => handleClick(e, 'touch')}
-	onmousedown={(e) => handleClick(e, 'click')}
+	bind:this={btn}
+	class="rippleButton"
+	aria-disabled={disabled}
+	disabled={disabled}
+	aria-label={ariaLabel}
+	onclick={handleClick}
+	onpointerdown={onPointerDown}
+	onkeydown={onKeyDown}
 >
-	<span>
-		{@render children()}
-	</span>
-	<svg>
-		{#each $ripples as ripple, index (index)}
-			<Ripple x={ripple.x} y={ripple.y} size={ripple.size} {speed} {sizeIn} {rippleBlur} />
-		{/each}
-	</svg>
+	<span class="rippleButtonContent">{@render children?.()}</span>
 </button>
+

@@ -64,7 +64,7 @@
 		</nav>
 	</div>
 
-	<span class="app-bar-linkLogo">
+	<span class="app-bar-light-dark-btn">
 		<Tooltip tip="light/dark mode" bottom>
 			<ThemeToggle />
 		</Tooltip>
