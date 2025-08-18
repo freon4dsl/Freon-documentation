@@ -19,11 +19,5 @@
 		"build-dev": "npm run embedme && npm run md2svelte",
 		"buildSite": "npm run embedExamples && npm run md2svelte",
 		"install-local": "npm install --registry http://localhost:4873"
-	},
-	"devDependencies": {
-		"@types/prismjs": "1.26.5"
-	},
-	"dependencies": {
-		"prismjs": "1.29.0"
 	}
 }

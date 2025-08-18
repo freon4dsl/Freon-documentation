@@ -6,6 +6,7 @@
 		"type": "git",
 		"url": "https://github.com/freon4dsl/Freon-documentation"
 	},
+	"type": "module",
 	"scripts": {
 		"install-examples": "cd ./scripts && npm run install-examples && cd ../",
 		"buildSite": "npm run cleanRoutes && cd ./scripts && npm run buildSite && cd ../ && npm run format",
@@ -50,10 +51,11 @@
 		"vite": "^7.1.2",
 		"mdast-util-to-string": "^4.0.0",
 		"unist-util-visit": "^5.0.0",
-		"@freon4dsl/meta": "^2.0.0-beta.2"
+		"@freon4dsl/meta": "^2.0.0-beta.2",
+		"@types/prismjs": "1.26.5"
 	},
-	"type": "module",
 	"dependencies": {
+		"prismjs": "1.30.0",
 		"@fontsource/fira-mono": "^5.2.6",
 		"svelte-intersection-observer": "^1.0.0",
 		"@lukeed/uuid": "^2.0.1",
