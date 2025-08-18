@@ -44,16 +44,18 @@ Next, open another (bash) terminal, and start the generated editor from it:
 The last command shows a URL that you can open in your preferred browser. The web page contains the 
 generated editor for the language in your project.
 
-<Note>
-<svelte:fragment slot="header">Use a recent browser version</svelte:fragment>
-<svelte:fragment slot="content">
+<Note {header} {content}> </Note>
+{#snippet header()}Use a recent browser version{/snippet}
+{#snippet content()}
 Please, use a recent version of a browser like Chrome or Edge, because we cannot
 ensure that the editor functions as it should in older browsers.
-</svelte:fragment></Note>
+{/snippet}
 
-<Note><svelte:fragment slot="header"> Use Help Menu</svelte:fragment><svelte:fragment slot="content">
+<Note header={header2} content={content2}> </Note>
+{#snippet header2()} Use Help Menu{/snippet}
+{#snippet content2()}
 For easier use of the editor, have a look at the key-bindings under the <em>Help</em> menu.
-</svelte:fragment></Note>
+{/snippet}
 
 ## Changing the DSL
 
@@ -69,9 +71,9 @@ re-runs the generator, and compiles the newly generated files:
 In order to speed up your development cycle the <code>npm run dev</code>
 command has the -watch flag set, so the webpage in the browser should be updated as well.
 
-<Note>
-<svelte:fragment slot="header">Speedy Development Cycle</svelte:fragment>
-<svelte:fragment slot="content">
+<Note header={header3} content={content3}> </Note>
+{#snippet header3()}Speedy Development Cycle{/snippet}
+{#snippet content3()}
 <p>
 When developing a DSL, you often regenerate the Freon editor to reflect the changes made in the
 metamodel (.ast files), and/or other definitions. Beside the -watch flag being set, your development 
@@ -80,15 +82,15 @@ the following as address in the web browser: <code>http://localhost:8080/?model=
 `TestModel` stands for the name of the model that you are using to test your language definition
 and editor with. Thus, the browser responds to any regeneration with opening your test model instantaneously.
 </p>
-</svelte:fragment></Note>
+{/snippet}
 
-<Note>
-<svelte:fragment slot="header">WebStorm Tip</svelte:fragment>
-<svelte:fragment slot="content">
+<Note header={header4} content={content4}> </Note>
+{#snippet header4()}WebStorm Tip{/snippet}
+{#snippet content4()}
 If you are working with WebStorm, you might consider installing the
 plugin <a href="https://plugins.jetbrains.com/plugin/7677-awesome-console" target="_blank">Awesome Console</a>.
 This plugin redirects a click on an error message in the console to the correct position in any of the language definition files.
-</svelte:fragment></Note>
+{/snippet}
 
 ## Project Structure
 
@@ -135,16 +137,16 @@ In the root of the project the following folder is also needed:
   Each model is stored in a folder in which you can find its model units as separate `.json` files in [LionWeb](/LionWeb/Overview) format.
 
 
-<Note>
-<svelte:fragment slot="header">Be careful with handmade changes in <i>src/freon</i>.</svelte:fragment>
-<svelte:fragment slot="content">
+<Note header={header5} content={content5}> </Note>
+{#snippet header5()}Be careful with handmade changes in <i>src/freon</i>.{/snippet}
+{#snippet content5()}
 The contents of all folders in <code>src/freon</code> is organized into two types of files: 
 those located directly in the folder (typically TypeScript classes) and those within 
 the <code>gen</code> subfolder. Files in the <code>gen</code> subfolder are 
 always deleted before regeneration, so avoid placing important code 
 In contrast, files directly within the folder remain unchanged during regeneration.
-</svelte:fragment>
-</Note>
+{/snippet}
+
 
 ## A Minimal Webapp and Server
 
@@ -187,9 +189,9 @@ The Freon commandline tool generates code from the various definition files.
 If you type ‘`freon`’ in a (bash) terminal you will see the following overview of the different
 arguments that can be used. For detailed help about a specific command, type: ‘`freon  <command> -h`’.
 
-<Note>
-<svelte:fragment slot="header"> Incomplete code</svelte:fragment>
-<svelte:fragment slot="content">
+<Note header={header6} content={content6}> </Note>
+{#snippet header6()} Incomplete code{/snippet}
+{#snippet content6()}
 <p>
 Keep in mind that all commands, except <code>all</code>, when used individually (i.e., without combining 
 them with others), produce code that may not compile correctly. For example, the <code>scoper</code> 
@@ -202,8 +204,8 @@ To avoid such issues, it is best to start with the <code>all</code> command. Onc
 has been run, you can use specific commands for individual aspects of your language as needed. 
 This approach ensures correct dependencies while minimizing regeneration time.
 </p>
-</svelte:fragment>
-</Note>
+{/snippet}
+
 
 ```bash
 freon -h

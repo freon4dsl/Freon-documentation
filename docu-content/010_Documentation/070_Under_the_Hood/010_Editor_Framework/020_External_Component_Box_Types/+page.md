@@ -5,12 +5,12 @@
 
 # External Component Box Types
 
-<Note><svelte:fragment slot="header">External components are experimental</svelte:fragment>
-<svelte:fragment slot="content">
+<Note {header} {content}> </Note>{#snippet header()}External components are experimental{/snippet}
+{#snippet content()}
 <p>The use of external components in the Freon editor is experimental. 
 Compatibility with every library isn’t guaranteed, and future versions 
 of Freon may alter how external components are included. Proceed with this in mind.</p>
-</svelte:fragment></Note>
+{/snippet}
 
 In this version of Freon it is possible to include UI components that are not native to Freon. 
 See [External Components](/Documentation/Customizations/External_Components).

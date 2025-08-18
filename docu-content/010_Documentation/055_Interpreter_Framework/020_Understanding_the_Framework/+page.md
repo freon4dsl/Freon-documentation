@@ -18,9 +18,7 @@ in `ExpressionsInterpreterBase.ts`.
 ```ts
 // Expressions/src/freon/interpreter/gen/ExpressionsInterpreterBase.ts#L35-L37
 
-evalNumberLiteralExpression(node: NumberLiteralExpression, ctx: InterpreterContext): RtObject {
-    throw new RtError("evalNumberLiteralExpression is not defined");
-}
+
 ```
 
 All evaluation functions are similar. The first parameter is the node for which a value needs to be determined.
@@ -57,9 +55,9 @@ Freon provides a set of runtime classes that can be used out-of-the-box. These i
 
 Often you create domain-specific runtime classes that inherit from these foundational classes. 
 
-<Note>
-<svelte:fragment slot="header">Meta Levels</svelte:fragment>
-<svelte:fragment slot="content">
+<Note {header} {content}> </Note>
+{#snippet header()}Meta Levels{/snippet}
+{#snippet content()}
 In Domain Specific language we distinguish the following levels:
 <ol>
 <li>The language definition, defining which concepts are available. Often called the M2 level.
@@ -76,7 +74,7 @@ In Freon this is the result of the interpreter running, or it would be the resul
 For Java this is the execution of a Java program.
 </li>
 </ol>
-</svelte:fragment></Note>
+{/snippet}
 
 ## Interpreter Context
 
@@ -124,14 +122,14 @@ Which is exactly what we need.
 
 ## Running the Interpreter
 
-<Note>
-<svelte:fragment slot="header">The selected node is the one that is interpreted</svelte:fragment>
-<svelte:fragment slot="content">
+<Note header={header2} content={content2}> </Note>
+{#snippet header2()}The selected node is the one that is interpreted{/snippet}
+{#snippet content2()}
 When running the interpreter from the <code>Edit</code> menu, the interpreter will try to evaluate 
 the currently selected node. You will see a different result in the Interpreter tab for different nodes.
 Often the interpretation cannot be done completely, because some context is needed. It is up to the 
 creator of the interpreter to augment this.
-</svelte:fragment></Note>
+{/snippet}
 
 The following shows the result of running the interpreter for our Expressions example. The model 
 has one function `range` and two expressions. When running the interpreter from the `Edit` menu 

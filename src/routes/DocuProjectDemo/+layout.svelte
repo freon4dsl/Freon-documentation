@@ -1,2 +1,2 @@
-<link rel="stylesheet" href="./demoApp/site.css">
+<link rel="stylesheet" href="./demoApp/site.css" />
 <slot />

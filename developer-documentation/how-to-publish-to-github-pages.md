@@ -15,6 +15,12 @@ from '/docs' folder (The name of this folder must be the same as the outDir in t
 
 ## In the Sources
 
+1. Create copy of old 'main' branch.
+   To be able to go back to old documentation when needed, we keep a copy of the old documentation in a separate branch.
+   TODO: we need to establish a naming convention for this.
+
+2. Move the 'development' branch to 'main', work in that branch, and adjust as follows.
+
 1. Set the base path in svelte.config.ts, and use it for all hrefs. The latter is done automatically 
 by the markdown to svelte transformation. (TODO this needs to be implemented.)
 2. Add a .nojekyll file to the root of the project.

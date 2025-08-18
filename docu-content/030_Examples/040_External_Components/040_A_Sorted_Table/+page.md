@@ -63,9 +63,16 @@ box for each `Slot`, we remember which child box is associated with a `Slot` in 
 ```ts
 // CourseSchedule/phase5/src/external/Schedule.svelte#L56-L156
 
+    TimeStamp.TuesdayAfternoon,
+    TimeStamp.WednesdayAfternoon,
+    TimeStamp.ThursdayAfternoon,
+    TimeStamp.FridayAfternoon
+];
+
 function sortSlots(startVal: Slot[]) {
+    const newSlots: Slot[][] = []
     for (let i = 0; i < 10 ; i++) {
-        sortedSlots[i] = [];
+        newSlots[i] = [];
     }
     (startVal).forEach((val, index) => {
         // remember which box belongs to which slot
@@ -74,15 +81,15 @@ function sortSlots(startVal: Slot[]) {
             case 1: {
                 switch (val.$time.part) {
                     case 1: { // Monday morning
-                        sortedSlots[0].push(val);
+                        newSlots[0].push(val);
                         break;
                     }
                     case 2: { // Monday afternoon
-                        sortedSlots[5].push(val);
+                        newSlots[5].push(val);
                         break;
                     }
                     default: {
-                        sortedSlots[0].push(val);
+                        newSlots[0].push(val);
                     }
                 }
                 break;
@@ -90,15 +97,15 @@ function sortSlots(startVal: Slot[]) {
             case 2: {
                 switch (val.$time.part) {
                     case 1: { // Tuesday morning
-                        sortedSlots[1].push(val);
+                        newSlots[1].push(val);
                         break;
                     }
                     case 2: { // Tuesday afternoon
-                        sortedSlots[6].push(val);
+                        newSlots[6].push(val);
                         break;
                     }
                     default: {
-                        sortedSlots[1].push(val);
+                        newSlots[1].push(val);
                     }
                 }
                 break;
@@ -106,15 +113,15 @@ function sortSlots(startVal: Slot[]) {
             case 3: {
                 switch (val.$time.part) {
                     case 1: { // Wednesday morning
-                        sortedSlots[2].push(val);
+                        newSlots[2].push(val);
                         break;
                     }
                     case 2: { // Wednesday afternoon
-                        sortedSlots[7].push(val);
+                        newSlots[7].push(val);
                         break;
                     }
                     default: {
-                        sortedSlots[2].push(val);
+                        newSlots[2].push(val);
                     }
                 }
                 break;
@@ -122,15 +129,15 @@ function sortSlots(startVal: Slot[]) {
             case 4: {
                 switch (val.$time.part) {
                     case 1: { // Thursday morning
-                        sortedSlots[3].push(val);
+                        newSlots[3].push(val);
                         break;
                     }
                     case 2: { // Thursday afternoon
-                        sortedSlots[8].push(val);
+                        newSlots[8].push(val);
                         break;
                     }
                     default: {
-                        sortedSlots[3].push(val);
+                        newSlots[3].push(val);
                     }
                 }
                 break;
@@ -138,32 +145,25 @@ function sortSlots(startVal: Slot[]) {
             case 5: {
                 switch (val.$time.part) {
                     case 1: { // Friday morning
-                        sortedSlots[4].push(val);
+                        newSlots[4].push(val);
                         break;
                     }
                     case 2: { // Friday afternoon
-                        sortedSlots[9].push(val);
+                        newSlots[9].push(val);
                         break;
                     }
                     default: {
-                        sortedSlots[4].push(val);
+                        newSlots[4].push(val);
                     }
                 }
                 break;
             }
         }
     })
+    sortedSlots = newSlots
 }
 
 /* Sort the list of slots based on the time */
-function initialize() {
-    let startVal: FreNode[] | undefined = box.getPropertyValue();
-    if (!!startVal && box.getPropertyType() === "Slot") {
-        // cast the startVal to the expected type, in this case "Slot[]".
-        // sort the slots based on the time and remember which box belongs to which slot
-        sortSlots(startVal as Slot[]);
-    }
-}
 ```
 
 The function that adds a new `Slot` takes a parameter of type `TimeStamp`. This enables us to create a new slot with
@@ -173,20 +173,19 @@ one in the `StaffAccordion`.
 ```ts
 // CourseSchedule/phase5/src/external/Schedule.svelte#L158-L165
 
-const addSlot = (timeStamp: TimeStamp) => {
-    // Note that you need to put any changes to the actual model in a 'AST.change' or 'AST.changeNamed',
-    // because all elements in the model are reactive using mobx.
-    AST.change(() => {
-        let newSlot: Slot = Slot.create({time: FreNodeReference.create<TimeStamp>(timeStamp, "TimeStamp")});
-        box.getPropertyValue().push(newSlot);
-    });
-}
+
 ```
 
 Then there are two variables that make live easier in the HTML part.
 
 ```ts
 // CourseSchedule/phase5/src/external/Schedule.svelte#L40-L54
+
+    for (let i = 0; i < 10; i++) {
+        slots[i] = [];
+    }
+    return slots;
+}
 
 let dayTitle: string[] = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday' ];
 
@@ -197,12 +196,6 @@ let timeStamps: TimeStamp[] = [
     TimeStamp.WednesdayMorning,
     TimeStamp.ThursdayMorning,
     TimeStamp.FridayMorning,
-    TimeStamp.MondayAfternoon,
-    TimeStamp.TuesdayAfternoon,
-    TimeStamp.WednesdayAfternoon,
-    TimeStamp.ThursdayAfternoon,
-    TimeStamp.FridayAfternoon
-];
 ```
 
 ### The HTML Section
@@ -216,12 +209,12 @@ headers with the texts `Morning` and `Afternoon`, the first header cell is left 
 ```ts
 // CourseSchedule/phase5/src/external/Schedule.svelte#L174-L179
 
-<tr class="demo-header-row">
-    <th class="demo-header-cell">--</th>
-    {#each dayTitle as title}
-        <th class="demo-header-cell">{title}</th>
-    {/each}
-</tr>
+
+const findBoxForSlot = (slot: Slot): Box => {
+    let xx = slotToBoxMap.get(slot);
+    if (!isNullOrUndefined(xx)) {
+        return xx;
+    } else {
 ```
 
 Next, we create two rows, one for the mornings and one for the afternoons. 
@@ -236,28 +229,28 @@ The row for the afternoons is almost identical, but takes the last five of the s
 ```ts
 // CourseSchedule/phase5/src/external/Schedule.svelte#L182-L203
 
-<tr class="demo-row">
-    <td class="demo-header-cell">Morning</td>
-    {#each sortedSlots  as slots, index}
-        {#if index < 5}
-            {#if slots.length > 0}
-                <td class="demo-cell">
-                    <div class="demo-cell-content">
-                        {#each slots as slot}
-                            <div class="demo-slot-render">
-                                <RenderComponent box={slotToBoxMap.get(slot)} editor={editor} />
-                            </div>
-                        {/each}
-                    </div>
-                </td>
-            {:else}
-                <td class="demo-cell">
-                    <div class="demo-slot-render">NONE</div>
-                </td>
-            {/if}
-        {/if}
-    {/each}
-</tr>
+    }
+    initialize();
+    const colorCls: string = 'text-light-base-50 dark:text-dark-base-900 ';
+    const buttonCls: string =
+      'bg-light-base-600 					dark:bg-dark-base-200 ' +
+      'hover:bg-light-base-900 		dark:hover:bg-dark-base-50 ' +
+      'border-light-base-100 			dark:border-dark-base-800 ';
+    const iconCls: string = 'ms-0 inline h-6 w-6';
+</script>
+
+
+<div class="demo-table-container">
+    <table class="demo-table">
+        <thead>
+        <tr class="demo-header-row">
+            <th class="demo-header-cell"></th>
+            {#each dayTitle as title}
+                <th class="demo-header-cell">{title}</th>
+            {/each}
+        </tr>
+        </thead>
+        <tbody>
 ```
 
 In between we have added two rows containing buttons to enable the user to add a slot to a specific time.
@@ -268,16 +261,16 @@ to the function that adds a slot.
 ```ts
 // CourseSchedule/phase5/src/external/Schedule.svelte#L204-L213
 
-<tr>
-    <td class="demo-btn-cell"></td>
-    {#each timeStamps as stamp, index}
+<tr class="demo-row">
+    <td class="demo-header-cell">Morning</td>
+    {#each sortedSlots as slots, index}
         {#if index < 5}
-            <td class="demo-btn-cell">
-                <IconButton class="material-icons" on:click={() => addSlot(stamp)}>add</IconButton>
-            </td>
-        {/if}
-    {/each}
-</tr>
+            {#if slots.length > 0}
+                <td class="demo-cell">
+                    <div class="demo-cell-content">
+                    {#each slots as slot}
+                        <div class="demo-slot-render">
+                        <RenderComponent box={findBoxForSlot(slot)} editor={editor} />
 ```
 
 The complete Svelte component can be found at the bottom of this page.
@@ -343,18 +336,24 @@ For reference, here is the full implementation of the `Schedule.svelte` componen
 // CourseSchedule/phase5/src/external/Schedule.svelte
 
 <script lang="ts">
-    import IconButton from "@smui/icon-button";
-    import {afterUpdate, onMount} from "svelte";
-    import {Box, ExternalPartListBox, FreEditor, FreNode, FreNodeReference, AST} from "@freon4dsl/core";
-    import {RenderComponent} from "@freon4dsl/core-svelte";
-    import {Slot, TimeStamp} from "../freon/language/gen/index.js";
+    import {
+        Box,
+        ExternalPartListBox,
+        type FreNode,
+        FreNodeReference,
+        AST, isNullOrUndefined, LabelBox, notNullOrUndefined
+    } from "@freon4dsl/core"
+    import {type FreComponentProps, RenderComponent} from "@freon4dsl/core-svelte";
+    import {Slot, TimeStamp} from "../freon/index.js";
+    import { UserAddOutline } from 'flowbite-svelte-icons';
+    import { Button } from 'flowbite-svelte';
 
     // This component replaces the component for "timeSlots: Slot[];" from model unit "Schedule".
     // This property is a parts list, therefore the external box to use is an ExternalPartListBox.
-    export let box: ExternalPartListBox;
-    export let editor: FreEditor;
+    // Props
+    let { editor, box }: FreComponentProps<ExternalPartListBox> = $props();
 
-    // The following four functions need to be included for the editor to function properly.
+    // The following three functions need to be included for the editor to function properly.
     // Please, set the focus to the first editable/selectable element in this component.
     async function setFocus(): Promise<void> {
     }
@@ -362,25 +361,25 @@ For reference, here is the full implementation of the `Schedule.svelte` componen
         // do whatever needs to be done to refresh the elements that show information from the model
         initialize();
     };
-    onMount(() => {
+    $effect(() => {
         initialize();
-        box.setFocus = setFocus;
-        box.refreshComponent = refresh;
-    });
-    afterUpdate(() => {
-        initialize();
-        sortedSlots = [...sortedSlots]
         box.setFocus = setFocus;
         box.refreshComponent = refresh;
     });
 
     // --------------------------- //
     let slotToBoxMap: Map<Slot, Box> = new Map<Slot, Box>();
-    let sortedSlots: Slot[][]; // an array of 10 positions, making use of the 10 different timeSlots that are available
-    sortedSlots = [];
-    for (let i = 0; i < 10 ; i++) {
-        sortedSlots[i] = [];
+    // an array of 10 positions, making use of the 10 different timeSlots that are available
+    let sortedSlots: Slot[][] = $state(initSortedSlots());
+
+    function initSortedSlots(): Slot[][] {
+        let slots = [];
+        for (let i = 0; i < 10; i++) {
+            slots[i] = [];
+        }
+        return slots;
     }
+
     let dayTitle: string[] = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday' ];
 
     // variables for creating a new slot
@@ -398,8 +397,9 @@ For reference, here is the full implementation of the `Schedule.svelte` componen
     ];
 
     function sortSlots(startVal: Slot[]) {
+        const newSlots: Slot[][] = []
         for (let i = 0; i < 10 ; i++) {
-            sortedSlots[i] = [];
+            newSlots[i] = [];
         }
         (startVal).forEach((val, index) => {
             // remember which box belongs to which slot
@@ -408,15 +408,15 @@ For reference, here is the full implementation of the `Schedule.svelte` componen
                 case 1: {
                     switch (val.$time.part) {
                         case 1: { // Monday morning
-                            sortedSlots[0].push(val);
+                            newSlots[0].push(val);
                             break;
                         }
                         case 2: { // Monday afternoon
-                            sortedSlots[5].push(val);
+                            newSlots[5].push(val);
                             break;
                         }
                         default: {
-                            sortedSlots[0].push(val);
+                            newSlots[0].push(val);
                         }
                     }
                     break;
@@ -424,15 +424,15 @@ For reference, here is the full implementation of the `Schedule.svelte` componen
                 case 2: {
                     switch (val.$time.part) {
                         case 1: { // Tuesday morning
-                            sortedSlots[1].push(val);
+                            newSlots[1].push(val);
                             break;
                         }
                         case 2: { // Tuesday afternoon
-                            sortedSlots[6].push(val);
+                            newSlots[6].push(val);
                             break;
                         }
                         default: {
-                            sortedSlots[1].push(val);
+                            newSlots[1].push(val);
                         }
                     }
                     break;
@@ -440,15 +440,15 @@ For reference, here is the full implementation of the `Schedule.svelte` componen
                 case 3: {
                     switch (val.$time.part) {
                         case 1: { // Wednesday morning
-                            sortedSlots[2].push(val);
+                            newSlots[2].push(val);
                             break;
                         }
                         case 2: { // Wednesday afternoon
-                            sortedSlots[7].push(val);
+                            newSlots[7].push(val);
                             break;
                         }
                         default: {
-                            sortedSlots[2].push(val);
+                            newSlots[2].push(val);
                         }
                     }
                     break;
@@ -456,15 +456,15 @@ For reference, here is the full implementation of the `Schedule.svelte` componen
                 case 4: {
                     switch (val.$time.part) {
                         case 1: { // Thursday morning
-                            sortedSlots[3].push(val);
+                            newSlots[3].push(val);
                             break;
                         }
                         case 2: { // Thursday afternoon
-                            sortedSlots[8].push(val);
+                            newSlots[8].push(val);
                             break;
                         }
                         default: {
-                            sortedSlots[3].push(val);
+                            newSlots[3].push(val);
                         }
                     }
                     break;
@@ -472,27 +472,28 @@ For reference, here is the full implementation of the `Schedule.svelte` componen
                 case 5: {
                     switch (val.$time.part) {
                         case 1: { // Friday morning
-                            sortedSlots[4].push(val);
+                            newSlots[4].push(val);
                             break;
                         }
                         case 2: { // Friday afternoon
-                            sortedSlots[9].push(val);
+                            newSlots[9].push(val);
                             break;
                         }
                         default: {
-                            sortedSlots[4].push(val);
+                            newSlots[4].push(val);
                         }
                     }
                     break;
                 }
             }
         })
+        sortedSlots = newSlots
     }
 
     /* Sort the list of slots based on the time */
     function initialize() {
         let startVal: FreNode[] | undefined = box.getPropertyValue();
-        if (!!startVal && box.getPropertyType() === "Slot") {
+        if (notNullOrUndefined(startVal) && box.getPropertyType() === "Slot") {
             // cast the startVal to the expected type, in this case "Slot[]".
             // sort the slots based on the time and remember which box belongs to which slot
             sortSlots(startVal as Slot[]);
@@ -508,7 +509,21 @@ For reference, here is the full implementation of the `Schedule.svelte` componen
         });
     }
 
+    const findBoxForSlot = (slot: Slot): Box => {
+        let xx = slotToBoxMap.get(slot);
+        if (!isNullOrUndefined(xx)) {
+            return xx;
+        } else {
+            return new LabelBox(box.node, 'no-role', () => { return 'No box found'});
+        }
+    }
     initialize();
+    const colorCls: string = 'text-light-base-50 dark:text-dark-base-900 ';
+    const buttonCls: string =
+      'bg-light-base-600 					dark:bg-dark-base-200 ' +
+      'hover:bg-light-base-900 		dark:hover:bg-dark-base-50 ' +
+      'border-light-base-100 			dark:border-dark-base-800 ';
+    const iconCls: string = 'ms-0 inline h-6 w-6';
 </script>
 
 
@@ -516,7 +531,7 @@ For reference, here is the full implementation of the `Schedule.svelte` componen
     <table class="demo-table">
         <thead>
         <tr class="demo-header-row">
-            <th class="demo-header-cell">--</th>
+            <th class="demo-header-cell"></th>
             {#each dayTitle as title}
                 <th class="demo-header-cell">{title}</th>
             {/each}
@@ -525,16 +540,16 @@ For reference, here is the full implementation of the `Schedule.svelte` componen
         <tbody>
         <tr class="demo-row">
             <td class="demo-header-cell">Morning</td>
-            {#each sortedSlots  as slots, index}
+            {#each sortedSlots as slots, index}
                 {#if index < 5}
                     {#if slots.length > 0}
                         <td class="demo-cell">
                             <div class="demo-cell-content">
-                                {#each slots as slot}
-                                    <div class="demo-slot-render">
-                                        <RenderComponent box={slotToBoxMap.get(slot)} editor={editor} />
-                                    </div>
-                                {/each}
+                            {#each slots as slot}
+                                <div class="demo-slot-render">
+                                <RenderComponent box={findBoxForSlot(slot)} editor={editor} />
+                                </div>
+                            {/each}
                             </div>
                         </td>
                     {:else}
@@ -550,7 +565,9 @@ For reference, here is the full implementation of the `Schedule.svelte` componen
             {#each timeStamps as stamp, index}
                 {#if index < 5}
                     <td class="demo-btn-cell">
-                        <IconButton class="material-icons" on:click={() => addSlot(stamp)}>add</IconButton>
+                        <Button tabindex={-1} id="add-button" class="{buttonCls} {colorCls} " name="ToastOpen" onclick={() => addSlot(stamp)}>
+                            <UserAddOutline class="{iconCls}" />
+                        </Button>
                     </td>
                 {/if}
             {/each}
@@ -563,7 +580,7 @@ For reference, here is the full implementation of the `Schedule.svelte` componen
                         <td class="demo-cell">
                             {#each slots as slot}
                                 <div class="demo-slot-render">
-                                    <RenderComponent box={slotToBoxMap.get(slot)} editor={editor} />
+                                <RenderComponent box={findBoxForSlot(slot)} editor={editor} />
                                 </div>
                             {/each}
                         </td>
@@ -582,7 +599,9 @@ For reference, here is the full implementation of the `Schedule.svelte` componen
             {#each timeStamps as stamp, index}
                 {#if index >= 5}
                     <td class="demo-btn-cell">
-                        <IconButton class="material-icons" on:click={() => addSlot(stamp)}>add</IconButton>
+                        <Button tabindex={-1} id="add-button" class="{buttonCls} {colorCls} " name="ToastOpen" onclick={() => addSlot(stamp)}>
+                            <UserAddOutline class="{iconCls}" />
+                        </Button>
                     </td>
                 {/if}
             {/each}

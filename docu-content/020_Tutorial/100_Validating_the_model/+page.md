@@ -21,16 +21,16 @@ Thus, we add another file, called `edu.valid`, and add the following definitions
 ```proto
 // Education/lesson9-defs/edu.valid#L1-L11
 
-validator EduValidator for language Education
+validator for language Education
 
 AndExpression {
-    typecheck equalsType( self.left, PrimitiveType:Boolean );
-    typecheck equalsType( self.right, PrimitiveType:Boolean );
+    typecheck equalsType( self.left, #PrimitiveType:Boolean );
+    typecheck equalsType( self.right, #PrimitiveType:Boolean );
 }
 
 OrExpression {
-    typecheck equalsType( self.left, PrimitiveType:Boolean );
-    typecheck equalsType( self.right, PrimitiveType:Boolean );
+    typecheck equalsType( self.left, #PrimitiveType:Boolean );
+    typecheck equalsType( self.right, #PrimitiveType:Boolean );
 }
 ```
 

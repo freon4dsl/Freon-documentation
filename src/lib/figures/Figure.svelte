@@ -1,7 +1,10 @@
 <script lang="ts">
-	export let imageName: string;
-	export let figureNumber: number = 1;
-	export let caption: string;
+	interface ComponentProps {
+		imageName: string;
+		figureNumber: number;
+		caption: string;
+	}
+	let { imageName, figureNumber = 1, caption }: ComponentProps = $props();
 </script>
 
 <figure class="figure">

@@ -12,6 +12,6 @@
 	}
 </script>
 
-<Button on:click={toggle} icon={true}>
+<Button onclick={toggle} icon={true}>
 	<InvertColors />
 </Button>

@@ -7,11 +7,11 @@
 
 Freon includes an interpreter framework which makes it easy to write an interpreter for a language.
 
-<Note><svelte:fragment slot="header">The Interpreter Framework is still in Development</svelte:fragment>
-<svelte:fragment slot="content">
+<Note {header} {content}> </Note>{#snippet header()}The Interpreter Framework is still in Development{/snippet}
+{#snippet content()}
 <p>The use of an interpreter in the Freon editor is still in development. Foremost, the presentation of the results
 is likely to change. With this in mind, the interpreter framework is already usable.</p>
-</svelte:fragment></Note>
+{/snippet}
 
 ## What is an Interpreter
 

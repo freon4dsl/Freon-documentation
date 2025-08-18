@@ -24,6 +24,12 @@ npm run dev
 # or start the server and open the app in a new browser tab
 npm run dev -- --open
 ```
+
+Note that during 'buildSite' a number of warnings are given:
+"failed to load language css", and
+"failed to load language javascript". 
+These cannot be helped, because they are due to a bug in mdsvex, see https://github.com/pngwn/MDsveX/issues/719.
+
 ## Creating a documentation website
 
 See https://www.okupter.com/blog/deploy-sveltekit-website-to-github-pages

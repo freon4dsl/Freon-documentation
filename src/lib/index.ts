@@ -5,7 +5,6 @@ export * from './appbar/PopoverCategoryMenu.svelte';
 export * from './breadcrumbs/Breadcrumb.svelte';
 export * from './breadcrumbs/BreadcrumbTypes.js';
 export * from './buttons/Button.svelte';
-export * from './buttons/Ripple.svelte';
 export * from './buttons/Tooltip.svelte';
 export * from './figures/Figure.svelte';
 export * from './footer/Footer.svelte';

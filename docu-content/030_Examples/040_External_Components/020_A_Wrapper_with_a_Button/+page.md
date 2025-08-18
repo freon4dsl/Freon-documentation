@@ -34,8 +34,8 @@ the `NumberWrapperBox`.)
 ```ts
 // CourseSchedule/phase3/src/external/PhoneButton.svelte#L8-L9
 
-export let box: NumberWrapperBox;
-export let editor: FreEditor;
+// Props
+let { editor, box }: FreComponentProps<NumberWrapperBox> = $props();
 ```
 
 We also define four functions that together make sure that the editor is updated correctly
@@ -60,14 +60,14 @@ Make sure these functions are passed to the box using the `onMount` and `afterUp
 ```ts
 // CourseSchedule/phase3/src/external/PhoneButton.svelte#L22-L29
 
-onMount(() => {
+$effect(() => {
     box.setFocus = setFocus;
     box.refreshComponent = refresh;
 });
-afterUpdate(() => {
-    box.setFocus = setFocus;
-    box.refreshComponent = refresh;
-});
+
+const colorCls: string = 'text-light-base-50 dark:text-dark-base-900 ';
+const buttonCls: string =
+  'bg-light-base-600 					dark:bg-dark-base-200 ' +
 ```
 
 ### The HTML Part
@@ -85,10 +85,10 @@ We set up the button to open a snackbar notification when clicked:
 ```ts
 // CourseSchedule/phase3/src/external/PhoneButton.svelte#L33-L36
 
+</script>
+
 <div class="wrapper">
-    Phone number: <RenderComponent box={box.childBox} editor="{editor}"/>
-    <IconButton class="material-icons" on:click={() => {clicked++; snackbarWithClose.open()}} ripple={false}>phone</IconButton>
-</div>
+    Phone number: <RenderComponent box={box.childBox} editor={editor}/>
 ```
 
 Next, we define the `Snackbar` element from SMUI, which will show a message when the phone 
@@ -97,12 +97,12 @@ button is clicked. The message includes the value of the phone number:
 ```ts
 // CourseSchedule/phase3/src/external/PhoneButton.svelte#L38-L43
 
-<Snackbar bind:this={snackbarWithClose}>
-    <Label>This person has been called on number {box.getPropertyValue()}.</Label>
-    <Actions>
-        <IconButton class="material-icons" title="Dismiss">close</IconButton>
-    </Actions>
-</Snackbar>
+    <PhoneOutline class="{iconCls}" />
+    </Button>
+</div>
+
+{#if showToast}
+    <Toast color="green" onclick={() => showToast = false}>
 ```
 
 ### The Style Part
@@ -114,14 +114,14 @@ which is already set up because it is also used for the surrounding web applicat
 ```ts
 // CourseSchedule/phase3/src/external/PhoneButton.svelte#L45-L52
 
+        {#snippet icon()}
+            <PhoneOutline class="{iconCls}" />
+        {/snippet}
+    </Toast>
+{/if}
+
 <style>
     .wrapper {
-        display:flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-    }
-</style>
 ```
 
 ### The Complete Component
@@ -132,19 +132,19 @@ Here's the complete `PhoneButton.svelte` component:
 // CourseSchedule/phase3/src/external/PhoneButton.svelte
 
 <script lang="ts">
-    import IconButton from "@smui/icon-button";
-    import Snackbar, { Actions, Label } from '@smui/snackbar';
-    import {RenderComponent} from "@freon4dsl/core-svelte";
-    import {FreEditor, NumberWrapperBox} from "@freon4dsl/core";
-    import {afterUpdate, onMount} from "svelte";
+    import { Toast } from "flowbite-svelte";
+    import { PhoneOutline } from 'flowbite-svelte-icons';
+    import { type FreComponentProps, RenderComponent } from "@freon4dsl/core-svelte";
+    import { NumberWrapperBox } from "@freon4dsl/core";
+    import { Button } from 'flowbite-svelte';
 
-    export let box: NumberWrapperBox;
-    export let editor: FreEditor;
+    // Props
+    let { editor, box }: FreComponentProps<NumberWrapperBox> = $props();
 
     let clicked: number = 0;
-    let snackbarWithClose: Snackbar;
+    let showToast: boolean = $state(false);
 
-    // The following four functions need to be included for the editor to function properly.
+    // The following three functions need to be included for the editor to function properly.
     // Please, set the focus to the first editable/selectable element in this component.
     async function setFocus(): Promise<void> {
         box.childBox.setFocus();
@@ -152,28 +152,34 @@ Here's the complete `PhoneButton.svelte` component:
     const refresh = (why?: string): void => {
         // do whatever needs to be done to refresh the elements that show information from the model
     };
-    onMount(() => {
-        box.setFocus = setFocus;
-        box.refreshComponent = refresh;
-    });
-    afterUpdate(() => {
+    $effect(() => {
         box.setFocus = setFocus;
         box.refreshComponent = refresh;
     });
 
+    const colorCls: string = 'text-light-base-50 dark:text-dark-base-900 ';
+    const buttonCls: string =
+      'bg-light-base-600 					dark:bg-dark-base-200 ' +
+      'hover:bg-light-base-900 		dark:hover:bg-dark-base-50 ' +
+      'border-light-base-100 			dark:border-dark-base-800 ';
+    const iconCls: string = 'ms-0 inline h-6 w-6';
 </script>
 
 <div class="wrapper">
-    Phone number: <RenderComponent box={box.childBox} editor="{editor}"/>
-    <IconButton class="material-icons" on:click={() => {clicked++; snackbarWithClose.open()}} ripple={false}>phone</IconButton>
+    Phone number: <RenderComponent box={box.childBox} editor={editor}/>
+    <Button tabindex={-1} id="about-button" class="{buttonCls} {colorCls} " name="ToastOpen" onclick={() => {clicked++; showToast = true}}>
+    <PhoneOutline class="{iconCls}" />
+    </Button>
 </div>
 
-<Snackbar bind:this={snackbarWithClose}>
-    <Label>This person has been called on number {box.getPropertyValue()}.</Label>
-    <Actions>
-        <IconButton class="material-icons" title="Dismiss">close</IconButton>
-    </Actions>
-</Snackbar>
+{#if showToast}
+    <Toast color="green" onclick={() => showToast = false}>
+        This person has been called on number {box.getPropertyValue()}.
+        {#snippet icon()}
+            <PhoneOutline class="{iconCls}" />
+        {/snippet}
+    </Toast>
+{/if}
 
 <style>
     .wrapper {

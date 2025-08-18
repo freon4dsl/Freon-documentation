@@ -2,9 +2,12 @@
 <!-- Content: material ui menu icon -->
 
 <script lang="ts">
-	export let height: number = 24;
-	export let width: number = 24;
-	let fill: string = 'var(--color5)';
+	interface ComponentProps {
+		height: number;
+		width: number;
+		fill: string;
+	}
+	let { height = 24, width = 24, fill = 'var(--color5)' }: ComponentProps = $props();
 </script>
 
 <svg

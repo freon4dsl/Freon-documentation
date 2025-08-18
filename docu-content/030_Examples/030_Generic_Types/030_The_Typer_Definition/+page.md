@@ -74,9 +74,9 @@ TT_GenericType {
 }
 
 GenericKind {
-    Set conformsto Collection;
-    Sequence conformsto Collection;
-    Bag conformsto Collection;
+    Set conformsto #GenericKind:Collection;
+    Sequence conformsto #GenericKind:Collection;
+    Bag conformsto #GenericKind:Collection;
 }
 
 TT_MeasurementType {
@@ -116,12 +116,12 @@ hastype { Exp, TypeUsage }
 
 // What are the top and bottom types?
 anytype {
-    conformsto PredefinedType:ANY; // PredefinedType:ANY is the least specific type
+    conformsto #PredefinedType:ANY; // PredefinedType:ANY is the least specific type
 }
 
 PredefinedType {
-    PredefinedType:NULL conformsto anytype; // PredefinedType:NULL is the most specific type
-    NUMBER conformsto STRING;
+    NULL conformsto anytype; // PredefinedType:NULL is the most specific type
+    NUMBER conformsto #PredefinedType:STRING;
 }
 
 // Which type does an expression have?
@@ -144,15 +144,15 @@ UnitOfMeasurement {
 }
 
 NumberLiteral {
-    infertype PredefinedType:NUMBER;
+    infertype #PredefinedType:NUMBER;
 }
 
 StringLiteral {
-    infertype PredefinedType:STRING;
+    infertype #PredefinedType:STRING;
 }
 
 BooleanLiteral {
-    infertype PredefinedType:BOOLEAN;
+    infertype #PredefinedType:BOOLEAN;
 }
 
 NamedExp {
@@ -199,9 +199,9 @@ TT_GenericType {
 }
 
 GenericKind {
-    Set conformsto Collection;
-    Sequence conformsto Collection;
-    Bag conformsto Collection;
+    Set conformsto #GenericKind:Collection;
+    Sequence conformsto #GenericKind:Collection;
+    Bag conformsto #GenericKind:Collection;
 }
 
 TT_MeasurementType {

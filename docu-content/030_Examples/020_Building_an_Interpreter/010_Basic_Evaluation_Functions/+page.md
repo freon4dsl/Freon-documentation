@@ -221,9 +221,9 @@ static evalPage(node: Page, ctx: InterpreterContext): RtObject {
 }
 ```
 
-<Note>
-<svelte:fragment slot="header">Meta Levels</svelte:fragment>
-<svelte:fragment slot="content">
+<Note {header} {content}> </Note>
+{#snippet header()}Meta Levels{/snippet}
+{#snippet content()}
 In Domain Specific language we distinguish the following levels:
 <ol>
 <li>The language definition, defining which concepts are available. Often called the M2 level.
@@ -240,7 +240,7 @@ In Freon this is the result of the interpreter running, or it would be the resul
 For Java this is the execution of a Java program.
 </li>
 </ol>
-</svelte:fragment></Note>
+{/snippet}
 
 
 ```ts

@@ -3,25 +3,24 @@
 	import Sidebar from '$lib/sidebar/Sidebar.svelte';
 	import type { TocContentsType } from '$lib/sidebar/TocContentsType';
 
-	export let id: string;
-	export let content: TocContentsType = tutorialToc;
-	let divElem: HTMLDivElement;
-
-	export function openContent() {
-		divElem.showPopover();
+	interface ComponentProps {
+		id: string;
+		content: TocContentsType;
+		divElem: HTMLDivElement;
 	}
+	let { id, content = tutorialToc, divElem = $bindable() }: ComponentProps = $props();
 </script>
 
 <div bind:this={divElem} popover="auto" {id} class="popover-menu">
 	<nav>
-		<!-- svelte-ignore a11y-no-noninteractive-element-interactions-->
-		<!-- svelte-ignore a11y-click-events-have-key-events -->
+		<!-- svelte-ignore a11y_click_events_have_key_events -->
 		<div
 			class="sub-menu"
-			on:click={() => {
+			onclick={() => {
 				divElem.hidePopover();
 			}}
 			role="dialog"
+			tabindex="0"
 		>
 			<Sidebar tocContent={content} />
 		</div>

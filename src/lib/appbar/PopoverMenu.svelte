@@ -29,13 +29,13 @@
 				<span
 					class="menu-item"
 					role="contentinfo"
-					on:click={() => {
+					onclick={() => {
 						$popoverElem.hidePopover();
 					}}>{content.title}</span
 				>
 				<button
 					class="side-bar-expand-button"
-					on:click={() => {
+					onclick={() => {
 						changeDetails(index);
 					}}
 				>

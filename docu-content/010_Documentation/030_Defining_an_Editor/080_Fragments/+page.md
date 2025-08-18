@@ -39,12 +39,12 @@ Note that every fragment for the same concept must have a unique name.
 }
 ```
 
-<Note><svelte:fragment slot="header"> One property, one occurrence in the editor</svelte:fragment>
-<svelte:fragment slot="content">
+<Note {header} {content}> </Note>{#snippet header()} One property, one occurrence in the editor{/snippet}
+{#snippet content()}
 <p>Unfortunately, it is not possible to show the same property of a concept twice in the same editor.
 The tooling we use to keep the state of the underlying model in sync with the view in the running editor
 does not allow us to do this.</p>
-</svelte:fragment></Note>
+{/snippet}
 
 
 ## Fragment Inclusion

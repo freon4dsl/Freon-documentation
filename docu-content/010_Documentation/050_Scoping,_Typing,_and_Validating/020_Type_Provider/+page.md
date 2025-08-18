@@ -114,11 +114,11 @@ CalcFunction {
 ```
 
 
-<Note>
-<svelte:fragment slot="content">This is a valid inference rule, only if 'declaredType' is an instance 
+<Note {content}> </Note>
+{#snippet content()}This is a valid inference rule, only if 'declaredType' is an instance 
 of a concept that is marked 'isType'.
-</svelte:fragment>
-</Note>
+{/snippet}
+
 
 Concepts that are types (as indicated by `isType`) can also be terms. If an inference rule
 is present, this rule will determine the type of such a term. If no rule is
@@ -131,7 +131,7 @@ the predefined instances of a **limited concept**.
 // Insurance/src/defs/typer-docu.type#L27-L29
 
 RiskAdjustmentRef {
-    infertype PercentageType:Percentage;
+    infertype #PercentageType:Percentage;
 }
 ```
 
@@ -159,12 +159,12 @@ NamedType {
 The `where` clause in the above example can be used when a type has some structure. For every property
 in the type concept a condition is given. If all conditions evaluate to true then the `where` clause results in true.
 
-<Note>
-<svelte:fragment slot="content">
+<Note content={content2}> </Note>
+{#snippet content2()}
 Type concept instances can not be compared based on their identity,
 instead you will need to use an <code>equalsto</code> entry.
-</svelte:fragment>
-</Note>
+{/snippet}
+
 
 ## Use of **conformsto**
 
@@ -172,12 +172,12 @@ In a condition of a `where` clause you may use `conformsto`. In that case, invoc
 all super concepts of the properties in the conditions. For an
 example, see [Typer Example](/Examples/Generic_Types).
 
-<Note>
-<svelte:fragment slot="content">
+<Note content={content3}> </Note>
+{#snippet content3()}
 Be careful with the use of <code>conformsto</code> within <code>where</code> clauses because this can lead to an 
 explosion of newly created type concept instances.
-</svelte:fragment>
-</Note>
+{/snippet}
+
 
 
 ## Rules That Apply to Any Concept
@@ -188,18 +188,18 @@ any instance of any concept conforms to the given value.
 ```proto
 // TyperExample/src/defs/projectY.type#L21-L28
 
-    conformsto PredefinedType:ANY; // PredefinedType:ANY is the least specific type
+    conformsto #PredefinedType:ANY; // PredefinedType:ANY is the least specific type
 }
 
 PredefinedType {
-    PredefinedType:NULL conformsto anytype; // PredefinedType:NULL is the most specific type
-    NUMBER conformsto STRING;
+    NULL conformsto anytype; // PredefinedType:NULL is the most specific type
+    NUMBER conformsto #PredefinedType:STRING;
 }
 
 ```
 
-<Note>
-<svelte:fragment slot="content">
+<Note content={content4}> </Note>
+{#snippet content4()}
 Anytype rules must be included after the 'hasType' rules and before the inference rules. 
-</svelte:fragment>
-</Note>
+{/snippet}
+

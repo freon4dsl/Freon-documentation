@@ -2,9 +2,12 @@
 <!-- Content: announcement icon -->
 
 <script lang="ts">
-	export let height: number = 24;
-	export let width: number = 24;
-	export let fill: string = 'var(--color-accent)';
+	interface ComponentProps {
+		height: number;
+		width: number;
+		fill: string;
+	}
+	let { height = 24, width = 24, fill = 'var(--color-accent)' }: ComponentProps = $props();
 </script>
 
 <svg xmlns="http://www.w3.org/2000/svg" width="{width}px" height="{height}px" viewBox="0 0 {width} {height}" {fill}>
