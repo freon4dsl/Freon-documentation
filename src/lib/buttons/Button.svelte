@@ -7,12 +7,7 @@
 		onclick?: (e: Event) => void; // parent handler
 	}
 
-	let {
-		disabled = false,
-		ariaLabel,
-		children,
-		onclick
-	}: Props = $props();
+	let { disabled = false, ariaLabel, children, onclick }: Props = $props();
 
 	let btn: HTMLButtonElement;
 
@@ -49,9 +44,7 @@
 		const node = btn;
 		if (!node) return;
 
-		const prefersReducedMotion =
-			typeof window !== 'undefined' &&
-			window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
+		const prefersReducedMotion = typeof window !== 'undefined' && window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
 		const duration = prefersReducedMotion ? 500 : 1500;
 
 		const rect = node.getBoundingClientRect();
@@ -59,8 +52,8 @@
 		const diameter = Math.ceil(Math.sqrt(rect.width ** 2 + rect.height ** 2)) * 2;
 
 		const fromCenter = keyboard || !e;
-		const x = fromCenter ? rect.width / 2 : (e!.clientX - rect.left);
-		const y = fromCenter ? rect.height / 2 : (e!.clientY - rect.top);
+		const x = fromCenter ? rect.width / 2 : e!.clientX - rect.left;
+		const y = fromCenter ? rect.height / 2 : e!.clientY - rect.top;
 
 		const el = document.createElement('span');
 		el.className = 's-ripple';
@@ -93,7 +86,7 @@
 	bind:this={btn}
 	class="rippleButton"
 	aria-disabled={disabled}
-	disabled={disabled}
+	{disabled}
 	aria-label={ariaLabel}
 	onclick={handleClick}
 	onpointerdown={onPointerDown}
@@ -101,4 +94,3 @@
 >
 	<span class="rippleButtonContent">{@render children?.()}</span>
 </button>
-

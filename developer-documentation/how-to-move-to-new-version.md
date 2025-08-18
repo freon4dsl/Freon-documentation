@@ -10,4 +10,5 @@ this guide in the 'development' branch, not in 'main'.
 2. In scripts/src/InstallCodeExamples update the constant named 'branch' to the branch where the new 
 examples are stored in the 'create-freon-languages' repo.
 3. In ./package.json update the version number of "@freon4dsl/meta".
+4. Update the `versionNumber` variable in './src/lib/Store.ts'.
 4. Start editing the files in ./docu-content.

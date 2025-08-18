@@ -3,7 +3,7 @@
 	import MenuIcon from '$lib/icons/MenuIcon.svelte';
 	import GithubLogo from '$lib/icons/GithubLogo.svelte';
 	import Tooltip from '../buttons/Tooltip.svelte';
-	import { popoverElem } from '$lib/Store.js';
+	import { popoverElem, versionNumber } from '$lib/Store.js';
 	import PopoverMenu from '$lib/appbar/PopoverMenu.svelte';
 	import PopoverCategoryMenu from '$lib/appbar/PopoverCategoryMenu.svelte';
 	import { allCategories } from '$lib/sidebar/SidebarContent.js';
@@ -50,7 +50,7 @@
 			</Tooltip>
 		</a>
 		<a href="/" class="title">
-			<div>Freon</div>
+			<div><span>Freon</span> <span class="version">{versionNumber}</span></div>
 		</a>
 		<nav class="app-bar-main-menu">
 			{#each allCategories as cat, index (index)}

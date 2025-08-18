@@ -45,6 +45,12 @@
     text-align: left;
     color: var(--color1);
 }
+.version {
+    margin-left: 0.5rem;
+    color: var(--color2);
+    font-size: 0.8rem;
+    font-weight: bold;
+}
 /* Styles for component Button */
 /* Base button */
 .rippleButton {
