@@ -2,20 +2,17 @@
     import Note from "$lib/notes/Note.svelte";
 </script>
 
-# Scoping, Typing, and Validating
+# Scoping
 
-Because, besides to the concrete syntax, scoping, typing, and validation are important parts of a language
-definition, Freon provides defaults and generation tools for each of them.
-
-Each of the generators take as input yet another definition file and can be run independently. For instance, 
-using one of the following commands.
+Scoping is an important part of a language definition. Therefore, Freon is one of the few language 
+workbenches to provide a meta language for declaratively defining scoping rules.
+The **scope provider definition** written in this metalanguage, is the input for the scoper generator. 
+The running scoper that is thus created, is used in the Freon editor. The generator 
+runs every time the `freon all` command is executed, but it can be run independently, 
+using the following command.
 
 ```bash
 npm run freon scope-it -d src/defs -o src/"
-
-npm run freon type-it -d src/defs -o src/"
-
-npm run freon validate-it -d src/defs -o src/"
 ```
 
 <Note {header} {content}> </Note>

@@ -19,7 +19,7 @@
 				{#if part.content}
 					<ul class="sidebar-ul">
 						{#each part.content as pp, index2 (index2)}
-							<li>
+							<li class="sidebar-item">
 								<div class="sidebar-simple">
 									<SidebarEntry name={pp.name} path={pp.path ? pp.path : '/'} />
 								</div>

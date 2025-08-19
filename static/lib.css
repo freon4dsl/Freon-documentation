@@ -371,18 +371,6 @@
 .breadcrumb .label {
     color: var(--color-accent);
 }
-/* Styles for component SidebarEntry */
-.side-bar-entry {
-    padding: 0 0 0 0.5rem;
-    background: 0 0.1rem no-repeat;
-    background-size: 1rem 1rem;
-    white-space: nowrap;
-}
-.side-bar-entry.active a {
-    background: var(--color2);
-    padding: 0.1rem 0.3rem 0.1rem 0.3rem;
-    margin-left: -0.3rem;
-}
 .leafText {
     color: var(--color6);
     font-size: 0.9rem;
@@ -398,12 +386,27 @@
     padding: 0;
     margin: 0;
 }
+.sidebar-item {
+    padding: 0;
+    margin: 0;
+}
 .sidebar-header {
     font-weight: bold;
-    margin-top: 1rem;
+    margin-top: 0.5rem;
 }
 .sidebar-simple {
     font-weight: 520;
     padding-left: 1rem;
-    padding-top: 0.5rem;
+}
+/* Styles for component SidebarEntry */
+.side-bar-entry {
+    padding: 0 0 0 0.5rem;
+    background: 0 0.1rem no-repeat;
+    background-size: 1rem 1rem;
+    white-space: nowrap;
+}
+.side-bar-entry.active a {
+    background: var(--color2);
+    padding: 0.1rem 0.3rem 0.1rem 0.3rem;
+    margin-left: -0.3rem;
 }

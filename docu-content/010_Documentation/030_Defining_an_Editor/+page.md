@@ -120,6 +120,32 @@ table [
 }
 ```
 
+## Running the Editor Generator
+
+The generator for the editor runs every time the `freon all` command is executed. But it is also possible to run 
+the generator for the editor independently. The following command will do the trick.
+
+```bash
+npm run freon edit-it -d src/defs -o src/"
+```
+
+<Note header={header3} content={content3}> </Note>
+{#snippet header3()} Incomplete code{/snippet}
+{#snippet content3()}
+<p>
+Keep in mind that all commands, except <code>all</code>, when used individually (i.e., without combining 
+them with others), produce code that may not compile correctly. For example, the <code>scoper</code> 
+and <code>validator</code> may depend on the <code>typer</code> and attempt to reference its class, 
+which might not yet be generated. Similarly, the <code>editor</code> may try to include 
+the <code>scoper</code>.
+</p>
+<p>
+To avoid such issues, it is best to start with the <code>all</code> command. Once this 
+has been run, you can use specific commands for individual aspects of your language as needed. 
+This approach ensures correct dependencies while minimizing regeneration time.
+</p>
+{/snippet}
+
 ## Example `.edit` File
 
 A complete .edit file could look like this.
