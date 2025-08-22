@@ -50,7 +50,11 @@ which are then used
    as well as info on missing links and/or images, can be found in `./scripts/Image_Check.txt`,
    and `./scripts/Link_Check.txt`.
 
-6. Any images and other files that need not be transformed by SvelteKit should be placed in `/static`. Here you 
+6. Sometimes, the source for an image is in a different format than what is needed for the documentation site. For instance,
+we use the tool `Affinity Designer` (https://affinity.serif.com/en-us/designer/) for more complex images. From 
+these sources .png or other types of images are created. The affinity designer files are kept in the folder `./imgae-sources`.
+
+7. Any images and other files that need not be transformed by SvelteKit should be placed in `/static`. Here you 
 can also find the .css that styles the site.
 
-7. Finally, there is a folder `notes` which is used to store any thoughts worth remembering for a while, and stuff like that.
+8. Finally, there is a folder `notes` which is used to store any thoughts worth remembering for a while, and stuff like that.

@@ -53,7 +53,7 @@ We would like to say: "that's it", but so far there is no information present in
 ## Initialization of the State Variable
 
 Before the start of the web application we need to initialize the `langInfo` state variable. We have chosen to do this 
-in a Svelte hook (see [SvelteKit Hooks](https://svelte.dev/docs/kit/hooks)), because it needs to be done only once. We 
+in a Svelte hook (see <a href="https://svelte.dev/docs/kit/hooks" target="_blank">SvelteKit Hooks</a>), because it needs to be done only once. We 
 use the `configureExternals` and `configureLoggers` functions from the DSL, as well as the `LanguageEnvironment`.
 
 ```ts

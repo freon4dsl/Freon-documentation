@@ -28,11 +28,12 @@ export const documentationToc: TocContentsType =
          { name: 'Styling', path: '/Documentation/Defining_an_Editor/Styling'},
          { name: 'The Parser Projection', path: '/Documentation/Defining_an_Editor/The_Parser_Projection'},
        ]},
-      { name: 'Scoping', path: '/Documentation/Scoping',
+      { name: 'Defining Scope Rules', path: '/Documentation/Defining_Scope_Rules',
         content: [
-         { name: 'Scope Provider', path: '/Documentation/Scoping/Scope_Provider'},
-         { name: 'Namespace Imports', path: '/Documentation/Scoping/Namespace_Imports'},
-         { name: 'Namespace Alternatives', path: '/Documentation/Scoping/Namespace_Alternatives'},
+         { name: 'Basics and Terminology', path: '/Documentation/Defining_Scope_Rules/Basics_and_Terminology'},
+         { name: 'Namespace Imports', path: '/Documentation/Defining_Scope_Rules/Namespace_Imports'},
+         { name: 'Namespace Alternatives', path: '/Documentation/Defining_Scope_Rules/Namespace_Alternatives'},
+         { name: 'The Scoper Definition', path: '/Documentation/Defining_Scope_Rules/The_Scoper_Definition'},
        ]},
       { name: 'Typing and Validating', path: '/Documentation/Typing_and_Validating',
         content: [
