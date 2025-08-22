@@ -25,11 +25,11 @@ But wait, we are forgetting the styling.
 
 ## CSS Styling
 
-The choice for the [Flowbite](https://flowbite-svelte.com/) UI library, means that we 
-must work with [Tailwind](https://tailwindcss.com/) as a CSS library. Furthermore, the
+The choice for the <a href="https://flowbite-svelte.com/" target="_blank">Flowbite</a> UI library, means that we 
+must work with <a href="https://tailwindcss.com/" target="_blank">Tailwind</a> as a CSS library. Furthermore, the
 dark mode button provided by Flowbite depends on the dark mode being toggled based on
 a CSS selector instead of the `prefers-color-scheme` media query 
-(see [Tailwind Dark mode](https://tailwindcss.com/docs/dark-mode#toggling-dark-mode-manually)).
+(see <a href="https://tailwindcss.com/docs/dark-mode#toggling-dark-mode-manually" target="_blank">Tailwind Dark mode</a>).
 So we need to adjust our css files.
 
 For this we have copied the css files from the `@freon4dsl/core-svelte` package and imported them in

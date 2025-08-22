@@ -5,12 +5,14 @@ The content of this repository is structured as follows.
 1. All actual content for the documentation site is written in Markdown. These files can be found in `./docu-content`.
    The only exception is the landing page, which is a standalone Svelte Component in the file `./src/routes/+page.svelte`.
 
-2. Every page on the site is a separate file. The folder structure determines where the page will show on the site. 
+2. Every page on the site is a separate file, which must be named '+page.md', because of SvelteKit. The folder structure determines where the page will show on the site. 
 The numbers in front of the folder names determine the position of the page in the left-hand side content overview,
-as well as the top categories. Similarly, the numbers in the file names determine their position. For instance, the `page.md` in folder `/030_Examples/040_External_Components` will be 
+as well as the top categories. For instance, the `page.md` in folder `/030_Examples/040_External_Components` will be 
 the content shown in the category `Examples`, which will be after category `/020_Tutorial`. Furthermore, it will be shown
 after `/030_Examples/030_Generic_Types` and before `/030_Examples/050_Website_Intregration`. Any underscores in the 
-names of the folders and files will be transformed into spaces. NB when creating a new page, always use three characters for the number, and separate 
+names of the folders will be transformed into spaces. NB when you want to create a new page in the documentation site, 
+create a new folder, always use three characters for 
+the number, and separate 
 it from the actual name using an underscore.
 
 3. The code that is used as examples, both from Freon definition files (i.e. *.ast, *.edit, etc), and
@@ -48,7 +50,11 @@ which are then used
    as well as info on missing links and/or images, can be found in `./scripts/Image_Check.txt`,
    and `./scripts/Link_Check.txt`.
 
-6. Any images and other files that need not be transformed by SvelteKit should be placed in `/static`. Here you 
+6. Sometimes, the source for an image is in a different format than what is needed for the documentation site. For instance,
+we use the tool `Affinity Designer` (https://affinity.serif.com/en-us/designer/) for more complex images. From 
+these sources .png or other types of images are created. The affinity designer files are kept in the folder `./imgae-sources`.
+
+7. Any images and other files that need not be transformed by SvelteKit should be placed in `/static`. Here you 
 can also find the .css that styles the site.
 
-7. Finally, there is a folder `notes` which is used to store any thoughts worth remembering for a while, and stuff like that.
+8. Finally, there is a folder `notes` which is used to store any thoughts worth remembering for a while, and stuff like that.

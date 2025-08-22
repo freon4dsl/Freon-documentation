@@ -167,9 +167,9 @@ A Freon language definition can have five parts:
 
 1. [The AST file](/Documentation/Creating_the_Metamodel): the abstract syntax tree (AST) or metamodel is defined in files with extension `.ast`.
 2. [The Edit file](/Documentation/Defining_an_Editor): the concrete syntax (CST), or editor definition, is defined in files with extension `.edit`.
-3. [The Scope file](/Documentation/Scoping,_Typing,_and_Validating/Scope_Provider): the scope rules are defined in files with extension `.scope`.
-4. [The Type file](/Documentation/Scoping,_Typing,_and_Validating/Type_Provider): the typing rules are defined in files with extension `.type`.
-5. [The Validation file:](/Documentation/Scoping,_Typing,_and_Validating/Validator): the validation rules are defined in files with extension `.valid`.
+3. [The Scope file](/Documentation/Defining_Scope_Rules): the scope rules are defined in files with extension `.scope`.
+4. [The Type file](/Documentation/Typing_and_Validating/Type_Provider): the typing rules are defined in files with extension `.type`.
+5. [The Validation file:](/Documentation/Typing_and_Validating/Validator): the validation rules are defined in files with extension `.valid`.
 
 And yes, you can use multiple files to define one of the parts. For instance, Freon will combine
 multiple .ast files into one AST definition, and multiple .scope files into one scope definition.
