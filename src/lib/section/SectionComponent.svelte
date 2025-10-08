@@ -19,7 +19,7 @@
 	}
 </script>
 
-<IntersectionObserver {element} bind:intersecting on:intersect={handleIntersectChange} threshold={0.5}>
+<IntersectionObserver {element} bind:intersecting on:observe={handleIntersectChange}>
 	<div bind:this={element}>
 		{#if tag === 'h1'}
 			<h1 {id}>{@render children()}</h1>

@@ -30,13 +30,14 @@ export function pageContent(headers): string {
   // Keep current in sync reactively
   $effect(() => {
     const idx = sections.findIndex(s => s.visible);
-    current = idx >= 0 ? idx : 0;
+    if (idx && idx >= 0) {
+      current = idx;
+    }
   });
 
   // callback to update visible elements from child
   function setVisible(id: string, isVisible: boolean) {
-	    console.log(id + ' is visible: ' + isVisible);
-    const s = sections.find(s => s.ref === id);
+    const s = sections.find(s => s.id === id);
     if (s) s.visible = isVisible; // $state tracks deep mutations
   }
 </script>
