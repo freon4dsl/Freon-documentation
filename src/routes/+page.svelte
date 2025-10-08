@@ -1,10 +1,6 @@
 <script lang="ts">
 	import LandingPageFooter from './LandingPageFooter.svelte';
 	import AppBar from '$lib/appbar/AppBar.svelte';
-	// We import resolve to support GitHub pages. It introduces the 'base' path.
-	import { resolve as kitResolve } from '$app/paths';
-	// Patch: cast to the actual runtime signature, because the typings are not up to date
-	const resolve = kitResolve as unknown as (path: string) => string;
 </script>
 
 <main class="main-window">
@@ -16,9 +12,7 @@
 				<div class="landing-name">
 					<div class="landing-name-child">
 						<div class="landing-name-logo">
-							<div class="landing-image-holder">
-								<img src={resolve('/freonlogo.png')} alt="Freon Logo" style="width:70px; margin-top: 10px;" />
-							</div>
+							<div class="landing-image-holder"><img src="freonlogo.png" alt="Freon Logo" style="width:70px; margin-top: 10px;" /></div>
 							<p class="landing-name-text-logo">Freon</p>
 						</div>
 					</div>
@@ -30,7 +24,7 @@
 						<div class="landing-name-logo">
 							Pronunciation:
 							<audio controls class="landing-name-child landing-audio-control">
-								<source src={resolve('/freon - pronunciation.mp3')} type="audio/mpeg" />Your browser does not support the audio element.
+								<source src="../freon - pronunciation.mp3" type="audio/mpeg" />Your browser does not support the audio element.
 							</audio>
 						</div>
 					</div>
@@ -40,7 +34,7 @@
 			<h1 class="landing-name-text">Introducing Freon</h1>
 			<h2>The ultimate Language Workbench for the Web!</h2>
 			<div class="landing-started">
-				<a href={resolve('/Documentation/Overview/Getting_Started')}
+				<a href="/Documentation/Overview/Getting_Started"
 					>Getting Started
 					<span class="landing-arrow">
 						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 412" height="28px"
@@ -91,7 +85,7 @@
 						<div class="landing-testimonial-child"><h2><b>By Mike Vogel, TriRadial Solutions</b></h2></div>
 						<div class="landing-testimonial-child">
 							<a target="_blank" href="https://www.triradial.com/">
-								<img src={resolve('/icons/TriRadial_Logo2024.webp')} alt="TriRadial Logo" style="width:100px" />
+								<img src="icons/TriRadial_Logo2024.webp" alt="TriRadial Logo" style="width:100px" />
 							</a>
 						</div>
 					</div>
@@ -99,7 +93,7 @@
 						<a target="_blank" href="https://www.triradial.com/">TriRadial Solutions</a> used Freon for the DSL that is the basis of our
 						Clinical Research Coordinator (CRC) product. CRCs are the front-line staff that perform clinical trials for drugs and other
 						health products. See
-						<a href={resolve('/Background/Testimonial')} class=".landing-testimonial-more">CRCHub Application</a>
+						<a href="/Background/Testimonial" class=".landing-testimonial-more">CRCHub Application</a>
 						for an explanation of the product and some samples of the product UI. A DSL platform that is optimized for the Web is the void in
 						today’s DSL technology. Having built DSLs using primitive tools like parsers and language servers as well as high-end tools like
 						MPS, our assessment is that Freon is well on the way to being the ideal balance between these extremes. Freon’s break through is
@@ -118,7 +112,7 @@
 						for new features. We would highly recommend using Freon on a DSL project and would be happy to speak with anyone looking to
 						discuss our experience with Freon.
 					</p>
-					<a href={resolve('/Background/Testimonial')} class=".landing-testimonial-more">
+					<a href="/Background/Testimonial" class=".landing-testimonial-more">
 						<p>Learn more...</p>
 					</a>
 				</div>
@@ -126,14 +120,14 @@
 		</section>
 
 		<section class="landing-enter-buttons-grid">
-			<a href={resolve('/Documentation/Overview/Getting_Started')} class="landing-enter-button">
+			<a href="/Documentation/Overview/Getting_Started" class="landing-enter-button">
 				<h3>Getting Started</h3>
 				<p>
 					Want to get started immediately... this is the place to go. We show you how to set up your project with a few commands and clicks.
 				</p>
 				<p>Learn more...</p>
 			</a>
-			<a href={resolve('/Documentation')} class="landing-enter-button"
+			<a href="/Documentation" class="landing-enter-button"
 				><h3>Documentation</h3>
 				<p>
 					In this section you can find the full documentation of all features of Freon. The explanation uses small examples to enlighten
@@ -141,7 +135,7 @@
 				</p>
 				<p>Learn more...</p>
 			</a>
-			<a href={resolve('/Tutorial')} class="landing-enter-button"
+			<a href="/Tutorial" class="landing-enter-button"
 				><h3>Tutorial</h3>
 				<p>
 					When you are new to this tool, you may like to check out our tutorial. The tutorial takes you step-by-step through the creation of
@@ -150,7 +144,7 @@
 				</p>
 				<p>Learn more...</p>
 			</a>
-			<a href={resolve('/Examples')} class="landing-enter-button"
+			<a href="/Examples" class="landing-enter-button"
 				><h3>Examples</h3>
 				<p>
 					In the Examples section the focus is on a number of larger examples that give a more indepth explanation of how to handle a
@@ -158,7 +152,7 @@
 				</p>
 				<p>Learn more...</p>
 			</a>
-			<a href={resolve('/Demos')} class="landing-enter-button"
+			<a href="/Demos" class="landing-enter-button"
 				><h3>Demos, videos, etc</h3>
 				<p>
 					There are a number of demos and videos available on this site. They cover different topics, like how to use the tool, why it was
@@ -166,7 +160,7 @@
 				</p>
 				<p>Learn more...</p>
 			</a>
-			<a href={resolve('/Background/Overview')} class="landing-enter-button"
+			<a href="/Background/Overview" class="landing-enter-button"
 				><h3>Guiding Principles</h3>
 				<p>
 					Freon was created using a lifetime of experience with software development, especially with developing software languages. All

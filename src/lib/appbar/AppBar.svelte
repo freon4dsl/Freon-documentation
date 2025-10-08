@@ -7,10 +7,6 @@
 	import PopoverMenu from '$lib/appbar/PopoverMenu.svelte';
 	import PopoverCategoryMenu from '$lib/appbar/PopoverCategoryMenu.svelte';
 	import { allCategories } from '$lib/sidebar/SidebarContent.js';
-	// We import resolve to support GitHub pages. It introduces the 'base' path.
-	import { resolve as kitResolve } from '$app/paths';
-	// Patch: cast to the actual runtime signature, because the typings are not up to date
-	const resolve = kitResolve as unknown as (path: string) => string;
 
 	let CatMenu: HTMLDivElement[] = $state([]);
 
@@ -50,19 +46,19 @@
 	<div class="app-bar-large">
 		<a href="https://www.freon4dsl.dev" class="app-bar-linkLogo">
 			<Tooltip tip="home" bottom>
-				<img src={resolve('/freonlogo.png')} alt="Freon Logo" height="24" />
+				<img src="/freonlogo.png" alt="Freon Logo" height="24" />
 			</Tooltip>
 		</a>
-		<a href={resolve('/')} class="title">
+		<a href="/" class="title">
 			<div><span>Freon</span> <span class="version">{versionNumber}</span></div>
 		</a>
 		<nav class="app-bar-main-menu">
 			{#each allCategories as cat, index (index)}
-				<a href={resolve(cat.path)} class="app-bar-linkLogo">
+				<a href={cat.path} class="app-bar-linkLogo">
 					<h6>{cat.name}</h6>
 				</a>
 				<button class="main-menu-small-expand-button" onclick={() => expandClick(index)}>
-					<img class="main-menu-small-img" src={resolve('/icons/down-chevron-white.png')} alt="arrow down" />
+					<img class="main-menu-small-img" src="/icons/down-chevron-white.png" alt="arrow down" />
 				</button>
 			{/each}
 		</nav>
