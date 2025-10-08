@@ -1,5 +1,4 @@
 <script lang="ts">
-
 	import type { BreadcrumbItem } from './BreadcrumbTypes';
 	import { page } from '$app/state';
 
@@ -20,7 +19,7 @@
 				href: tokenPath
 			};
 		});
-	})
+	});
 </script>
 
 <div class="breadcrumb">

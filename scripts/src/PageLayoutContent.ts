@@ -72,6 +72,8 @@ return	`<script lang="ts">
   import Footer from '$lib/footer/Footer.svelte';
   import { ${contentName} } from '$lib/sidebar/SidebarContent.js';
   import AppBar from '$lib/appbar/AppBar.svelte';
+  
+  let { children } = $props();
 </script>
 
 
@@ -84,7 +86,7 @@ return	`<script lang="ts">
       </section>
 
       <section class="page-content-container">
-        <slot />
+        {@render children()}
       </section>
     </div>
   </div>

@@ -100,21 +100,17 @@ export class Md2Svelte {
 			smartypants: true,
 			remarkPlugins: [remarkExtractHeaders],
 			highlight: {
-				highlighter(code, lang) {
-					// Escape characters that would break HTML or strings
+				highlighter(code, lang) { // Runs only for fenced <code> blocks, inline blocks need to take care of their own
+					// Escape characters that break HTML or Svelte parsing
 					const escape = (s: string) =>
-						s
-							.replace(/&/g, '&amp;')   // ampersand
-							.replace(/</g, '&lt;')    // opening angle bracket
-							.replace(/>/g, '&gt;')    // closing angle bracket
-							.replace(/`/g, '\\`')   	// backticks
-							.replace(/{/g, '&#123;')  // opening curly brace
-							.replace(/}/g, '&#125;'); // closing curly brace
+						s.replace(/&/g, '&amp;')   // &
+							.replace(/</g, '&lt;')    // <
+							.replace(/>/g, '&gt;')    // >
+							.replace(/{/g, '&#123;')  // {
+							.replace(/}/g, '&#125;'); // }
 
 					const cls = lang ? `language-${lang}` : '';
-
-					// Wrap in backticks to make it a literal string in Svelte output
-					return `<pre class="${cls}"><code class="${cls}">\`${escape(code)}\`</code></pre>`;
+					return `<pre class="${cls}"><code class="${cls}">${escape(code)}</code></pre>`;
 				}
 			}
 		});
