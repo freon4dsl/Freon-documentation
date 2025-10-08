@@ -5,8 +5,12 @@ export const pageContent: string =
   import PageContent from './PageContent.svelte';
   import Breadcrumb from '$lib/breadcrumbs/Breadcrumb.svelte';
 
-  let showDetails: boolean = false;
-  $: current = getCurrent($mySections);
+  let showDetails: boolean = $state(false);
+  let current = $state(0);
+
+  $effect(() => {
+		current = getCurrent($mySections);
+  });
 
   function getCurrent(internalSections: Section[]): number {
     let previous = current;
@@ -17,15 +21,12 @@ export const pageContent: string =
     }
     return previous;
   }
-  function toggleTocDetails() {
-    showDetails = !showDetails;
-  }
 </script>
 
 <div class="page-main">
   <div class='page-toc-small'>
     <p class='page-toc-small-title'>On this page ...</p>
-    <button class='page-toc-small-expand-button' on:click={() => {toggleTocDetails()}  }>
+    <button class='page-toc-small-expand-button' onclick={() => {showDetails = !showDetails}  }>
       {#if showDetails }
         <img class='page-toc-small-img' src="/icons/upload.png" alt="arrow up"/>
       {:else}
@@ -36,7 +37,7 @@ export const pageContent: string =
     {#if showDetails }
       <div class='toc-details'>
         <ul class="page-ul">
-          {#each $mySections as sec, index}
+          {#each $mySections as sec, index (sec)}
             <li class="page-toc-text">
               <a class:page-visible={index === current} class:page-nonvisible={index !== current} href={sec.ref}>
                 {sec.title}
@@ -54,7 +55,7 @@ export const pageContent: string =
 <nav class="page-toc">
   <h3 class="page-toc-title">On this page</h3>
   <ul class="page-ul">
-    {#each $mySections as sec, index}
+    {#each $mySections as sec, index (sec)}
       <li class="page-toc-text">
         <a class:page-visible={index === current} class:page-nonvisible={index !== current} href={sec.ref}>
           {sec.title}
