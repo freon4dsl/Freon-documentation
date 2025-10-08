@@ -21,12 +21,12 @@ from '/docs' folder (The name of this folder must be the same as the outDir in t
 
 2. Move the 'development' branch to 'main', work in that branch, and adjust as follows.
 
-1. Set the base path in svelte.config.ts, and use it for all hrefs. The latter is done automatically 
+3. Set the base path in svelte.config.ts, and use it for all hrefs. The latter is done automatically 
 by the markdown to svelte transformation. (TODO this needs to be implemented.)
-2. Add a .nojekyll file to the root of the project.
-3. When ready for publishing, build the SvelteKit project, using `npm run build`, not `npm run dev`. 
+4. Add a .nojekyll file to the root of the project.
+5. When ready for publishing, build the SvelteKit project, using `npm run build`, not `npm run dev`. 
 This will create a new folder containing the generated publishable sources.
-4. Depending on the settings of outDir in the `vite.config.js` file, you may need to copy the 
+6. Depending on the settings of outDir in the `vite.config.js` file, you may need to copy the 
 `build` folder to `/docs` (NB the same name as in the GitHub settings). To avoid this last step you 
 can add the following to the `vite.config.js` file.
  
@@ -36,5 +36,5 @@ can add the following to the `vite.config.js` file.
     outDir: './docs'
   }
 ```
-5. Finally, make sure the '/docs' folder is added to Git, and push it to GitHub. If you have chosen to use
+1. Finally, make sure the '/docs' folder is added to Git, and push it to GitHub. If you have chosen to use
 a specific branch to deploy from, be sure to push it to that branch.

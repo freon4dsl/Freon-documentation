@@ -4,6 +4,14 @@ The content of this repository is structured as follows.
 
 1. All actual content for the documentation site is written in Markdown. These files can be found in `./docu-content`.
    The only exception is the landing page, which is a standalone Svelte Component in the file `./src/routes/+page.svelte`.
+The Markdown needs to have metadata, in this format:
+```text
+---
+title: Introduction to Documentation
+description: Freon Documentation Introduction
+---
+```
+This needs to be at the very first line of the file.
 
 2. Every page on the site is a separate file, which must be named '+page.md', because of SvelteKit. The folder structure determines where the page will show on the site. 
 The numbers in front of the folder names determine the position of the page in the left-hand side content overview,

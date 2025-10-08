@@ -1,6 +1,5 @@
 <script>
     import Note from "$lib/notes/Note.svelte";
-    import Figure from "$lib/figures/Figure.svelte";
 </script>
 
 # Installing and Using Freon
