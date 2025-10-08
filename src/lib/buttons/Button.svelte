@@ -84,6 +84,7 @@
 
 <button
 	bind:this={btn}
+	type="button"
 	class="rippleButton"
 	aria-disabled={disabled}
 	{disabled}

@@ -12,6 +12,6 @@
 	}
 </script>
 
-<Button onclick={toggle} icon={true}>
+<Button ariaLabel="Invert colors" onclick={toggle}>
 	<InvertColors />
 </Button>

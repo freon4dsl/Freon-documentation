@@ -87,29 +87,79 @@ export class Md2Svelte {
 	}
 
 	private async transformFile(filepath: string, ignore: string, outputFolder: string) {
-		// For each file, create a Svelte file containing the content from the markdown,
-		// and a page content (nav) on the side.
+		// For each file, create a Svelte file containing the content from the markdown, called PageContent.svelte,
+		// and a nav on the side, called +page.svelte, which include the PageContent.
 		// Because embedme only works for known file types, we use the file type "```proto" in the markdown,
 		// but replace it with "```freon" before transforming it to Svelte.
 		// This way Prism sees the correct file type: freon.
 		const markdown: string = fs.readFileSync(filepath, 'utf8').replaceAll("```proto", "```freon").replaceAll("```swift", "```svelte");
+		// Transform the markdown to svelte
 		const transformed_code = await compile(markdown, {
 			extensions: ['.md'],
 			smartypants: true,
-			remarkPlugins: [remarkExtractHeaders]
+			remarkPlugins: [remarkExtractHeaders],
+			highlight: {
+				highlighter(code, lang) {
+					const escape = (s) =>
+						s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+					const cls = lang ? `language-${lang}` : '';
+					// Prism expects the class on BOTH <pre> and <code> (good practice)
+					return `<pre class="${cls}"><code class="${cls}">${escape(code)}</code></pre>`;
+				}
+			}
 		});
-		// find the path of the svelte file that should be created
+		// Find the path of the PageContent.svelte that should be created
 		let outputPath: string = PathCreator.createFilePath(ignore, filepath);
-		// find the folder where the svelte file should be created
+		// Find the folder where the PageContent.svelte should be created
 		const routeName: string = path.dirname(outputPath);
 
-		// create the script part of the svelte file
+		// Create the script part of the PageContent.svelte
 		const scriptPart: string = this.createScriptPart(transformed_code.data.headers, ignore, routeName);
 		let fileContent: string;
 
+		// Create the content part of the PageContent.svelte
+		let code = transformed_code.code as string;
+		// Rewrite internal links in <a>, <img>, <link>, <script> that start with a single '/'
+		// like <a href="/foo"> into <a href={resolve('/foo')}> so they:
+		//  - respect the GitHub Pages base path
+		//  - use client-side navigation
+		//
+		// Regex notes:
+		//   - matches <a ... href="/something" ...>
+		//   - ignores //external links
+		//   - $1 = attributes before href
+		//   - $2 = the path (without leading /)
+		//   - $3 = attributes after href
+		code = code.replace( // double quotes
+			/\b(href|src)\s*=\s*"\/(?!\/)([^"]*)"/g,
+			(_m, attr, rest) => {
+				return `${attr}={resolve('/${rest}')}`;
+			}
+		);
+
+		code = code.replace( // single quotes
+			/\b(href|src)\s*=\s*'\/(?!\/)([^']*)'/g,
+			(_m, attr, rest) => {
+				return `${attr}={resolve('/${rest}')}`;
+			}
+		);
+
+		// Wrap <code> block contents in a JS template literal so Svelte
+		// treats them as plain strings (avoids parse errors on `{}` etc.)
+		// AND escape ` and ${ so they render literally
+		code = code.replace(
+			/<code([^>]*)>([\s\S]*?)<\/code>/g,
+			(_m, attrs, inner) => {
+				const escaped = inner
+					.replace(/`/g, '\\`')      // keep backticks literal
+					.replace(/\$\{/g, '\\${'); // keep ${...} literal
+				return `<code${attrs}>{\`${escaped}\`}</code>`;
+			}
+		);
+
 		PathCreator.createDirIfNotExisting(routeName, outputFolder);
 		if (scriptPart.length > 0) { // There is something to add
-			const htmlPart: string = this.changeHtags(transformed_code.code);
+			const htmlPart: string = this.changeHtags(code);
 			fileContent = this.combineScriptAndCode(scriptPart, htmlPart);
 			// Create and write the SectionStore.ts file
 			const storePath: string = routeName + path.sep + "SectionStore.ts"
@@ -125,14 +175,36 @@ export class Md2Svelte {
 			// change name from '+page.svelte' to 'PageContent.svelte'
 			outputPath = routeName + path.sep + 'PageContent.svelte';
 		} else {
-			fileContent = transformed_code.code;
+			fileContent = code;
 		}
 
 		fs.writeFileSync(outputFolder + path.sep + outputPath, fileContent);
 	}
 
 	/**
-	 * Adds additional content to the <script> part of the svelte file.
+	 * Extracts YAML-style frontmatter from a Markdown string.
+	 * Returns an object with:
+	 *  - meta: key/value pairs from the frontmatter
+	 *  - body: Markdown content without the frontmatter block
+	 */
+	extractFrontmatter(md: string) {
+		const m = md.match(/^---\s*\n([\s\S]*?)\n---\s*\n?/);
+		if (!m) return { meta: {}, body: md }; // no frontmatter found
+		const meta: Record<string, string> = {};
+		for (const line of m[1].split('\n')) {
+			// simple "key: value" parser for each frontmatter line
+			const mm = line.match(/^\s*([A-Za-z_][\w-]*)\s*:\s*(.*)\s*$/);
+			if (mm)
+				meta[mm[1]] = mm[2]
+					.replace(/^"(.*)"$/, '$1') // remove quotes if any
+					.replace(/^'(.*)'$/, '$1');
+		}
+		// return metadata and remaining markdown body
+		return { meta, body: md.slice(m[0].length) };
+	}
+
+	/**
+	 * Adds additional content to the <script> part of the PageContent.svelte.
 	 *
 	 * If there is a script in the Markdown, the start tag is removed, the new script is added in front of the
 	 * script content, and a PrevNextSection is added directly after the closing </script> tag.
@@ -169,34 +241,38 @@ export class Md2Svelte {
 
 	createScriptPart(headers: unknown, ignore: string, filepath: string): string {
 		// console.log('HEADERS: ' + JSON.stringify(headers))
-		let result: string = '';
+		let result: string = `<script lang="ts">
+							import copy from "copy-to-clipboard";
+              import { onMount } from "svelte";
+              import PrevNextSection from '$lib/prevNext/PrevNextSection.svelte';
+              // We import resolve to support GitHub pages. It introduces the 'base' path.
+							import { resolve as kitResolve } from '$app/paths';
+							// Patch: cast to the actual runtime signature, because the typings are not up to date
+							const resolve = kitResolve as unknown as (path: string) => string;`;
 		// eslint-disable-next-line
 		let headerInfo = [];
-		const visibleSetters = [];
 		if (Array.isArray(headers)) {
-			headers.forEach((head, index) => {
+			headers.forEach((head) => {
 				headerInfo.push(`{title: "${head.text}", visible: false, ref: '#${head.id}'}`);
-				visibleSetters.push(`$: $mySections[${index}].visible = visible[${index}];`);
 			});
 		} else {
 			console.log('NO ARRAY');
 		}
 		if (headerInfo.length > 0) {
-			result = `<script lang="ts">
+			result += `
 							import SectionComponent from '$lib/section/SectionComponent.svelte';
 							import {mySections} from './SectionStore.js';
 							$mySections = [
 																${headerInfo.map((hh) => `${hh}`).join(',\n')}
-														]
-						let visible: boolean[] = [];
-						${visibleSetters.map((hh) => `${hh}`).join('\n')}
-						`;
-		} else {
-			result = '';
+														];
+							
+							let visible: boolean[] = [];
+							$effect(() => {
+								$mySections.forEach((s, i) => (s.visible = !!visible[i]));
+							});
+							`;
 		}
-		result += `import copy from "copy-to-clipboard";
-              import { onMount } from "svelte";
-              
+		result += `              
               /**
                * This function will go through all the 'pre' elements
                * on the page and add a copy button to them.
@@ -262,9 +338,7 @@ export class Md2Svelte {
 			}
 		})
 
-		result += `   
-		import PrevNextSection from '$lib/prevNext/PrevNextSection.svelte';
-		
+		result += `	
 		let prevLink= '${prev}';
     let nextLink= '${next}';
     `
