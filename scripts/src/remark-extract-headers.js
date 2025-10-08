@@ -52,8 +52,13 @@ export function remarkExtractHeaders() {
 
 				addIdToNode(node, headerId); // Add the ID to the heading node
 
-				node.data.hProperties.visible = `{visible[${headerCounter - 1}]}`; // Add a visibility index to the node
-				file.data.headers.push(currentHeader); // Add the current header to the headers array
+				// Add a visibility to the node
+				node.data.hProperties['bind:intersecting'] = `REMOVE{visibleById["${headerId}"]}REMOVE`;
+				node.data.hProperties['onIntersectChange'] =
+					`REMOVE{(visible) => setVisible("${headerId}", visible)}REMOVE`;
+
+				// Add the current header to the headers array
+				file.data.headers.push(currentHeader);
 			} else {
 				const headerText = getHeaderText(node);
 				lowerHeaderCounter++;

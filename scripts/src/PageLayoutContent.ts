@@ -1,25 +1,43 @@
-export const pageContent: string =
-`<script lang="ts">
-  import { mySections } from './SectionStore.js';
+export function pageContent(headers): string {
+	let sectionInit: string = '';
+	let headerInfo = [];
+	if (Array.isArray(headers)) {
+		headers.forEach((head) => {
+			headerInfo.push(`{id: "${head.id}", title: "${head.text}", visible: false, ref: '#${head.id}'}`);
+		});
+	} else {
+		console.log('NO HEADERS ARRAY');
+	}
+	if (headerInfo.length > 0) {
+		sectionInit = `
+						const sections = $state<Section[]>([
+																${headerInfo.map((hh) => `${hh}`).join(',\n')}
+														]);
+						`;
+	}
+	return `<script lang="ts">
   import type { Section } from '$lib/section/SectionType.js';
   import PageContent from './PageContent.svelte';
   import Breadcrumb from '$lib/breadcrumbs/Breadcrumb.svelte';
 
   let showDetails: boolean = $state(false);
+  
+  ${sectionInit}
+	
+	// keep 'current' in parent so both Nav and Content can read it
   let current = $state(0);
 
+  // Keep current in sync reactively
   $effect(() => {
-		current = getCurrent($mySections);
+    const idx = sections.findIndex(s => s.visible);
+    current = idx >= 0 ? idx : 0;
   });
 
-  function getCurrent(internalSections: Section[]): number {
-    let previous = current;
-    for (let i = 0; i < internalSections.length; i++) {
-      if (internalSections[i].visible) {
-        return i;
-      }
-    }
-    return previous;
+  // callback to update visible elements from child
+  function setVisible(id: string, isVisible: boolean) {
+	    console.log(id + ' is visible: ' + isVisible);
+    const s = sections.find(s => s.ref === id);
+    if (s) s.visible = isVisible; // $state tracks deep mutations
   }
 </script>
 
@@ -37,7 +55,7 @@ export const pageContent: string =
     {#if showDetails }
       <div class='toc-details'>
         <ul class="page-ul">
-          {#each $mySections as sec, index (sec)}
+          {#each sections as sec, index (sec)}
             <li class="page-toc-text">
               <a class:page-visible={index === current} class:page-nonvisible={index !== current} href={sec.ref}>
                 {sec.title}
@@ -49,13 +67,13 @@ export const pageContent: string =
     {/if}
 
 	<Breadcrumb />
-  <PageContent />
+  <PageContent {setVisible} />
 </div>
 
 <nav class="page-toc">
   <h3 class="page-toc-title">On this page</h3>
   <ul class="page-ul">
-    {#each $mySections as sec, index (sec)}
+    {#each sections as sec, index (sec)}
       <li class="page-toc-text">
         <a class:page-visible={index === current} class:page-nonvisible={index !== current} href={sec.ref}>
           {sec.title}
@@ -65,6 +83,7 @@ export const pageContent: string =
   </ul>
 </nav>
 `;
+}
 
 export function categoryLayoutContent(contentName: string): string {
 return	`<script lang="ts">

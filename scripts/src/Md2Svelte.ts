@@ -120,7 +120,7 @@ export class Md2Svelte {
 		const routeName: string = path.dirname(outputPath);
 
 		// Create the script part of the PageContent.svelte
-		const scriptPart: string = this.createScriptPart(transformed_code.data.headers, ignore, routeName);
+		const scriptPart: string = this.createScriptPart(ignore, routeName);
 		let fileContent: string;
 
 		PathCreator.createDirIfNotExisting(routeName, outputFolder);
@@ -135,7 +135,7 @@ export class Md2Svelte {
 				if (level !== 3) { // level 3 indicates a category, do not create another +layout.svelte
 					// Create and write the page layout including a page nav
 					const layoutPath: string = routeName + path.sep + '+page.svelte';
-					fs.writeFileSync(outputFolder + path.sep + layoutPath, pageContent);
+					fs.writeFileSync(outputFolder + path.sep + layoutPath, pageContent(transformed_code.data.headers));
 				}
 			}
 			// change name from '+page.svelte' to 'PageContent.svelte'
@@ -175,46 +175,30 @@ export class Md2Svelte {
 	 * @param code
 	 */
 	changeHtags(code: string): string {
-		let result = code.replace(/<h2/g, '<SectionComponent tag="h2" ');
-		result = result.replace(/<h1/g, '<SectionComponent tag="h1" ');
-		result = result.replace(/visible=/g, 'bind:intersecting=');
-		result = result.replace(/<\/h2>/g, '</SectionComponent>');
-		result = result.replace(/<\/h1>/g, '</SectionComponent>');
+		const result = code.replace(/<h2/g, '<SectionComponent tag="h2" ')
+			.replace(/<h1/g, '<SectionComponent tag="h1" ')
+			.replace(/"REMOVE\{([^}]+)\}REMOVE"/g, '{$1}')
+			.replace(/'REMOVE\{([^}]+)\}REMOVE'/g, '{$1}')
+			.replace(/<\/h2>/g, '</SectionComponent>')
+			.replace(/<\/h1>/g, '</SectionComponent>');
 		return result;
 	}
 
-	createScriptPart(headers: unknown, ignore: string, filepath: string): string {
+	createScriptPart(ignore: string, filepath: string): string {
 		// console.log('HEADERS: ' + JSON.stringify(headers))
 		let result: string = `<script lang="ts">
 							import SectionComponent from '$lib/section/SectionComponent.svelte';
-							import {mySections} from './SectionStore.js';
 							import copy from "copy-to-clipboard"; 
 							import { onMount } from "svelte";
 							import PrevNextSection from '$lib/prevNext/PrevNextSection.svelte';
-							`;
-		// eslint-disable-next-line
-		let headerInfo = [];
-		const visibleSetters = [];
-		if (Array.isArray(headers)) {
-			headers.forEach((head, index) => {
-				headerInfo.push(`{title: "${head.text}", visible: false, ref: '#${head.id}'}`);
-				visibleSetters.push(`$: $mySections[${index}].visible = visible[${index}];`);
-			});
-		} else {
-			console.log('NO ARRAY');
-		}
-		if (headerInfo.length > 0) {
-			result += `
-							$mySections = [
-																${headerInfo.map((hh) => `${hh}`).join(',\n')}
-														]
-						let visible: boolean[] = [];
-						${visibleSetters.map((hh) => `${hh}`).join('\n')}
-						`;
-		} else {
-			result = '';
-		}
-		result += `
+
+							interface ComponentProps {
+								setVisible: (id: string, v: boolean) => void;
+							}
+							let { setVisible }: ComponentProps = $props();
+							
+							const visibleById = $state<Record<string, boolean>>({});
+
 							/**
                * This function will go through all the 'pre' elements
                * on the page and add a copy button to them.
