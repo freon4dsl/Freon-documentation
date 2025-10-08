@@ -27,18 +27,14 @@ export function pageContent(headers): string {
 	// keep 'current' in parent so both Nav and Content can read it
   let current = $state(0);
 
-  // Keep current in sync reactively
-  $effect(() => {
-    const idx = sections.findIndex(s => s.visible);
-    if (idx && idx >= 0) {
-      current = idx;
-    }
-  });
-
   // callback to update visible elements from child
   function setVisible(id: string, isVisible: boolean) {
-    const s = sections.find(s => s.id === id);
-    if (s) s.visible = isVisible; // $state tracks deep mutations
+  	const s = sections.find((s) => s.id === id);
+   	if (s) s.visible = isVisible; // $state tracks deep mutations
+    const idx = sections.findIndex((s) => s.visible); // set current to the top most visible heading
+    if (idx >= 0) {
+       current = idx;
+    }
   }
 </script>
 
