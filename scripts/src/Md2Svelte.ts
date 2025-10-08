@@ -87,23 +87,43 @@ export class Md2Svelte {
 	}
 
 	private async transformFile(filepath: string, ignore: string, outputFolder: string) {
-		// For each file, create a Svelte file containing the content from the markdown,
-		// and a page content (nav) on the side.
+		// For each file, create a Svelte file containing the content from the markdown, called PageContent.svelte,
+		// and a nav on the side, called +page.svelte, which include the PageContent.
 		// Because embedme only works for known file types, we use the file type "```proto" in the markdown,
 		// but replace it with "```freon" before transforming it to Svelte.
 		// This way Prism sees the correct file type: freon.
 		const markdown: string = fs.readFileSync(filepath, 'utf8').replaceAll("```proto", "```freon").replaceAll("```swift", "```svelte");
+		// Transform the markdown to svelte
+		// We also escape some chars in <code> blocks to avoid the svelte compiler complaining
 		const transformed_code = await compile(markdown, {
 			extensions: ['.md'],
 			smartypants: true,
-			remarkPlugins: [remarkExtractHeaders]
+			remarkPlugins: [remarkExtractHeaders],
+			highlight: {
+				highlighter(code, lang) {
+					// Escape characters that would break HTML or strings
+					const escape = (s: string) =>
+						s
+							.replace(/&/g, '&amp;')   // ampersand
+							.replace(/</g, '&lt;')    // opening angle bracket
+							.replace(/>/g, '&gt;')    // closing angle bracket
+							.replace(/`/g, '\\`')   	// backticks
+							.replace(/{/g, '&#123;')  // opening curly brace
+							.replace(/}/g, '&#125;'); // closing curly brace
+
+					const cls = lang ? `language-${lang}` : '';
+
+					// Wrap in backticks to make it a literal string in Svelte output
+					return `<pre class="${cls}"><code class="${cls}">\`${escape(code)}\`</code></pre>`;
+				}
+			}
 		});
-		// find the path of the svelte file that should be created
+		// Find the path of the PageContent.svelte that should be created
 		let outputPath: string = PathCreator.createFilePath(ignore, filepath);
-		// find the folder where the svelte file should be created
+		// Find the folder where the PageContent.svelte should be created
 		const routeName: string = path.dirname(outputPath);
 
-		// create the script part of the svelte file
+		// Create the script part of the PageContent.svelte
 		const scriptPart: string = this.createScriptPart(transformed_code.data.headers, ignore, routeName);
 		let fileContent: string;
 
