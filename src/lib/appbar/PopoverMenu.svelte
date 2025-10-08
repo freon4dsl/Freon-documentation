@@ -2,6 +2,10 @@
 	import { allCategories, popoverElem } from '$lib';
 	import Sidebar from '$lib/sidebar/Sidebar.svelte';
 	import type { SidebarContentType } from '$lib/sidebar/SidebarContentType';
+	// We import resolve to support GitHub pages. It introduces the 'base' path.
+	import { resolve as kitResolve } from '$app/paths';
+	// Patch: cast to the actual runtime signature, because the typings are not up to date
+	const resolve = kitResolve as unknown as (path: string) => string;
 
 	let sideBarContent: SidebarContentType[] = [];
 
@@ -22,7 +26,7 @@
 
 <div bind:this={$popoverElem} popover="auto" id="main-menu" class="popover-menu">
 	<nav>
-		{#each sideBarContent as content, index}
+		{#each sideBarContent as content, index (index)}
 			<span class="img-container">
 				<!-- svelte-ignore a11y-no-noninteractive-element-interactions-->
 				<!-- svelte-ignore a11y-click-events-have-key-events -->
@@ -40,9 +44,9 @@
 					}}
 				>
 					{#if content.showDetails}
-						<img class="side-bar-img" src="/icons/upload.png" alt="arrow up" />
+						<img class="side-bar-img" src={resolve('/icons/upload.png')} alt="arrow up" />
 					{:else}
-						<img class="side-bar-img" src="/icons/down-arrow.png" alt="arrow down" />
+						<img class="side-bar-img" src={resolve('/icons/down-arrow.png')} alt="arrow down" />
 					{/if}
 				</button>
 			</span>
@@ -54,6 +58,6 @@
 		{/each}
 	</nav>
 	<button class="close-button" popovertarget="main-menu" popovertargetaction="hide">
-		<img src="/icons/close-icon.png" style="color: red" alt="Freon Logo" height="24px" />
+		<img src={resolve('/icons/close-icon.png')} style="color: red" alt="Freon Logo" height="24px" />
 	</button>
 </div>

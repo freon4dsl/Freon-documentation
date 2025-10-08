@@ -123,9 +123,36 @@ export class Md2Svelte {
 		const scriptPart: string = this.createScriptPart(transformed_code.data.headers, ignore, routeName);
 		let fileContent: string;
 
+		// Create the content part of the PageContent.svelte
+		let code = transformed_code.code as string;
+		// Rewrite internal links in <a>, <img>, <link>, <script> that start with a single '/'
+		// like <a href="/foo"> into <a href={resolve('/foo')}> so they:
+		//  - respect the GitHub Pages base path
+		//  - use client-side navigation
+		//
+		// Regex notes:
+		//   - matches <a ... href="/something" ...>
+		//   - ignores //external links
+		//   - $1 = attributes before href
+		//   - $2 = the path (without leading /)
+		//   - $3 = attributes after href
+		code = code.replace( // double quotes
+			/\b(href|src)\s*=\s*"\/(?!\/)([^"]*)"/g,
+			(_m, attr, rest) => {
+				return `${attr}={resolve('/${rest}')}`;
+			}
+		);
+
+		code = code.replace( // single quotes
+			/\b(href|src)\s*=\s*'\/(?!\/)([^']*)'/g,
+			(_m, attr, rest) => {
+				return `${attr}={resolve('/${rest}')}`;
+			}
+		);
+
 		PathCreator.createDirIfNotExisting(routeName, outputFolder);
 		if (scriptPart.length > 0) { // There is something to add
-			const htmlPart: string = this.changeHtags(transformed_code.code);
+			const htmlPart: string = this.changeHtags(code);
 			fileContent = this.combineScriptAndCode(scriptPart, htmlPart);
 			// Create and write the SectionStore.ts file
 			const storePath: string = routeName + path.sep + "SectionStore.ts"
@@ -141,7 +168,7 @@ export class Md2Svelte {
 			// change name from '+page.svelte' to 'PageContent.svelte'
 			outputPath = routeName + path.sep + 'PageContent.svelte';
 		} else {
-			fileContent = transformed_code.code;
+			fileContent = code;
 		}
 
 		fs.writeFileSync(outputFolder + path.sep + outputPath, fileContent);
@@ -185,7 +212,16 @@ export class Md2Svelte {
 
 	createScriptPart(headers: unknown, ignore: string, filepath: string): string {
 		// console.log('HEADERS: ' + JSON.stringify(headers))
-		let result: string = '';
+		let result: string = `<script lang="ts">
+							import copy from "copy-to-clipboard";
+              import { onMount } from "svelte";
+							import SectionComponent from '$lib/section/SectionComponent.svelte';
+							import {mySections} from './SectionStore.js';
+              import PrevNextSection from '$lib/prevNext/PrevNextSection.svelte';
+              // We import resolve to support GitHub pages. It introduces the 'base' path.
+							import { resolve as kitResolve } from '$app/paths';
+							// Patch: cast to the actual runtime signature, because the typings are not up to date
+							const resolve = kitResolve as unknown as (path: string) => string;`;
 		// eslint-disable-next-line
 		let headerInfo = [];
 		const visibleSetters = [];
@@ -198,9 +234,7 @@ export class Md2Svelte {
 			console.log('NO ARRAY');
 		}
 		if (headerInfo.length > 0) {
-			result = `<script lang="ts">
-							import SectionComponent from '$lib/section/SectionComponent.svelte';
-							import {mySections} from './SectionStore.js';
+			result += `
 							$mySections = [
 																${headerInfo.map((hh) => `${hh}`).join(',\n')}
 														]
@@ -210,9 +244,7 @@ export class Md2Svelte {
 		} else {
 			result = '';
 		}
-		result += `import copy from "copy-to-clipboard";
-              import { onMount } from "svelte";
-              
+		result += `              
               /**
                * This function will go through all the 'pre' elements
                * on the page and add a copy button to them.
@@ -278,9 +310,7 @@ export class Md2Svelte {
 			}
 		})
 
-		result += `   
-		import PrevNextSection from '$lib/prevNext/PrevNextSection.svelte';
-		
+		result += `
 		let prevLink= '${prev}';
     let nextLink= '${next}';
     `

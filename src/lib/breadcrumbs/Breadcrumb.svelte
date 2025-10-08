@@ -1,6 +1,10 @@
 <script lang="ts">
-	import type { BreadcrumbItem } from './BreadcrumbTypes';
 	import { page } from '$app/state';
+	import type { BreadcrumbItem } from './BreadcrumbTypes';
+	// We import resolve to support GitHub pages. It introduces the 'base' path.
+	import { resolve as kitResolve } from '$app/paths';
+	// Patch: cast to the actual runtime signature, because the typings are not up to date
+	const resolve = kitResolve as unknown as (path: string) => string;
 
 	let crumbs: BreadcrumbItem[] = $state([]);
 
@@ -23,14 +27,14 @@
 </script>
 
 <div class="breadcrumb">
-	<a href={'/'}>{'Home'}</a> &gt;
+	<a href={resolve('/')}>{'Home'}</a> &gt;
 	{#each crumbs as c, i (i)}
 		{#if i == crumbs.length - 1}
 			<span class="label">
 				{c.label}
 			</span>
 		{:else}
-			<a href={c.href}>{c.label}</a> &gt;&nbsp;
+			<a href={resolve(c.href)}>{c.label}</a> &gt;&nbsp;
 		{/if}
 	{/each}
 </div>

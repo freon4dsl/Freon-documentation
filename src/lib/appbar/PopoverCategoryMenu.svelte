@@ -2,6 +2,10 @@
 	import { tutorialToc } from '$lib';
 	import Sidebar from '$lib/sidebar/Sidebar.svelte';
 	import type { TocContentsType } from '$lib/sidebar/TocContentsType';
+	// We import resolve to support GitHub pages. It introduces the 'base' path.
+	import { resolve as kitResolve } from '$app/paths';
+	// Patch: cast to the actual runtime signature, because the typings are not up to date
+	const resolve = kitResolve as unknown as (path: string) => string;
 
 	interface ComponentProps {
 		id: string;
@@ -26,6 +30,6 @@
 		</div>
 	</nav>
 	<button class="close-button" popovertarget={id} popovertargetaction="hide">
-		<img src="/icons/close-icon.png" style="color: red" alt="Freon Logo" height="24px" />
+		<img src={resolve('/icons/close-icon.png')} style="color: red" alt="Freon Logo" height="24px" />
 	</button>
 </div>
