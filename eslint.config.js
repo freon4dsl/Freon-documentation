@@ -27,10 +27,4 @@ export default [
   {
     ignores: ["build/", ".svelte-kit/", "dist/"],
   },
-  {
-    rules: {
-      'svelte/no-navigation-without-resolve': 'off',
-      'svelte/no-useless-mustaches': 'off'
-    }
-  }
 ];
