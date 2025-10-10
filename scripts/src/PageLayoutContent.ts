@@ -53,19 +53,28 @@ export function pageContent(headers): string {
     const normalized = p === '/' ? '/' : p.replace(/\\/$/, '');
     return \`https://freon4dsl.dev\${normalized}\`;
   });
+  const siteTags: string[] = data.site?.tags ?? [];
+  const categoryTags: string[] = data.category?.tags ?? [];
+  const pageTags: string[] = data.tags ?? [];
+
+  // Combine tags, remove duplicates, and drop falsy values
+  const tags = [...new Set([...siteTags, ...categoryTags, ...pageTags].filter(Boolean))];
+  
   const jsonLd  = {
       "@context": "https://schema.org",
       "@type": "WebPage",
-      headline: fullTitle,
-      description,
-      url: canonical,
-      datePublished: data?.publishedTime,
-      dateModified: data?.modifiedTime,
-      image: image,
-      publisher: data?.site?.title
+      "headline": fullTitle,
+			"description": description,
+			"url": canonical,
+			"datePublished": data.publishedTime,
+			"dateModified": data.modifiedTime,
+      "keywords": tags.length ? tags.join(', ') : undefined,
+      "image": image,
+      "publisher": data?.site?.title
         ? { "@type": "Organization", name: data.site.title }
         : undefined
-    }
+    };
+
 </script>
 
 <svelte:head>
@@ -81,6 +90,13 @@ export function pageContent(headers): string {
   {#if data.modifiedTime}
     <meta property="article:modified_time" content={data.modifiedTime} />
   {/if}
+  
+  {#if tags}
+		{#each tags as tag}
+			<meta property="article:tag" content={tag} />
+		{/each}
+	{/if}
+	<meta name="keywords" content={tags.join(', ')} />
 
   <!-- Open Graph -->
   <meta property="og:type" content="article" />

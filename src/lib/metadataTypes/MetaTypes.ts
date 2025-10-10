@@ -13,14 +13,9 @@ export interface PageProps {
 	};
 }
 
-interface CategoryMeta {
+export interface CategoryMeta {
 	title: string;
 	description: string;
-	tags?: string[];
-}
-
-interface SiteMeta {
-	title: string;
 	tags?: string[];
 }
 
@@ -31,5 +26,17 @@ export interface CategoryProps {
 		// Child pages may provide this (from their +page.ts)
 		pageTitle?: string;
 	};
+	children: Snippet;
+}
+
+export interface SiteMeta {
+	title: string;
+	description: string;
+	tags?: string[];
+	image?: string;
+}
+
+export interface SiteProps {
+	data: SiteMeta;
 	children: Snippet;
 }
