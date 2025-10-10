@@ -40,13 +40,13 @@ export function pageContent(headers): string {
     }
   }
 	
-	// the stuff below ensures that meta data is added to the page
+	// the stuff below ensures that metadata is added to the page
   const fullTitle = $derived(
-    data.pageTitle
-      ? \`\${data.pageTitle} – \${data.category.title} – \${data.site.title}\`
-      : \`\${data.category.title} – \${data.site.title}\`
+    data.page.title
+      ? \`\${data.site.title} – \${data.category.title} – \${data.page.title}\`
+      : \`\${data.site.title} – \${data.category.title}\`
   );
-  const description = $derived(data.description ?? data.category.description);
+  const description = $derived(data.page.description ?? data.category.description);
   const image = 'https://freon4dsl.dev/images/freon-banner.png';
   let canonical = $derived.by(() => {
     const p = page.url.pathname;
@@ -55,19 +55,19 @@ export function pageContent(headers): string {
   });
   const siteTags: string[] = data.site?.tags ?? [];
   const categoryTags: string[] = data.category?.tags ?? [];
-  const pageTags: string[] = data.tags ?? [];
+  const pageTags: string[] = data.page.tags ?? [];
 
   // Combine tags, remove duplicates, and drop falsy values
   const tags = [...new Set([...siteTags, ...categoryTags, ...pageTags].filter(Boolean))];
-  
+  // svelte-ignore state_referenced_locally
   const jsonLd  = {
       "@context": "https://schema.org",
       "@type": "WebPage",
       "headline": fullTitle,
 			"description": description,
 			"url": canonical,
-			"datePublished": data.publishedTime,
-			"dateModified": data.modifiedTime,
+			"datePublished": data.page.publishedTime,
+			"dateModified": data.page.modifiedTime,
       "keywords": tags.length ? tags.join(', ') : undefined,
       "image": image,
       "publisher": data?.site?.title
@@ -84,11 +84,11 @@ export function pageContent(headers): string {
   <meta name="robots" content='index,follow' />
   <link rel="canonical" href={canonical} />
   
-  {#if data.publishedTime}
-    <meta property="article:published_time" content={data.publishedTime} />
+  {#if data.page.publishedTime}
+    <meta property="article:published_time" content={data.page.publishedTime} />
   {/if}
-  {#if data.modifiedTime}
-    <meta property="article:modified_time" content={data.modifiedTime} />
+  {#if data.page.modifiedTime}
+    <meta property="article:modified_time" content={data.page.modifiedTime} />
   {/if}
   
   {#if tags}
@@ -172,9 +172,7 @@ return	`<script lang="ts">
 	
 	// --- Derived title (recomputes when \`data\` changes)
 	const fullTitle: string = $derived(
-		data?.pageTitle
-			? \`\${data.pageTitle} – \${data.category.title} – \${data.site.title}\`
-			: \`\${data.category.title} – \${data.site.title}\`
+		\`\${data.category.title} – \${data.site.title}\`
 	);
 </script>
 
@@ -185,8 +183,8 @@ return	`<script lang="ts">
   <meta name="description" content={data.category.description} />
   <meta property="og:site_name" content={data.site.title} />
   <meta property="og:type" content="website" />
-  {#if data.category.ogImage}
-    <meta property="og:image" content={data.category.ogImage} />
+  {#if data.site.image}
+    <meta property="og:image" content={data.site.image} />
   {/if}
   <meta name="twitter:card" content="summary_large_image" />
 </svelte:head>

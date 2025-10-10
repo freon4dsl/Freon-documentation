@@ -1,12 +1,18 @@
+import type { SiteData } from '$lib/metadataTypes/MetaTypes';
+import type { LayoutLoad } from '../../.svelte-kit/types/src/routes/$types';
+
 export const prerender = true;
 
 export const ssr = true;
 
-export const load = async () => {
+export const load: LayoutLoad = async (): Promise<SiteData> => {
 	return {
-		title: "Freon - Language Workbench",
-		description: "The Freon Language Workbench is a tool that creates domain specific languages, including a web-based projectional editor",
-		tags: [ "DSL", "TypeScript", "forms", "projectional editing", "Svelte"]
+		site: {
+			title: "Freon",
+			description: "The Freon Language Workbench is a tool that creates domain specific languages, including a web-based projectional editor",
+			tags: ["DSL", "TypeScript", "forms", "projectional editing", "Svelte"],
+			image: '/freon-logo.png'
+		}
 	};
 };
 

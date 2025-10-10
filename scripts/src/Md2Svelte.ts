@@ -62,6 +62,7 @@ export class Md2Svelte {
 		for (const file of fileNames) {
 			const folderPath: string = path.join(folder, file);
 			const stat = fs.lstatSync(folderPath);
+			let foundMetaData: boolean = false;
 			if (stat.isDirectory()) {
 				// do it for the sub folders
 				const subResult: boolean = this.transformFolder(folderPath, ignore, outputFolder);
@@ -72,13 +73,70 @@ export class Md2Svelte {
 				if (path.extname(folderPath) !== '.md') {
 					console.log('Skipping non markdown file: ' + folderPath);
 				} else {
-					this.transformFile(folderPath, ignore, outputFolder).then((r) => {
-						return r;
-					});
+					if (path.basename(folderPath) === 'categoryMeta.md') {
+						foundMetaData = true;
+						// Create and write the metadata in '+layout.ts'
+						this.makeCategoryMetaData(folderPath, ignore, outputFolder);
+					} else {
+						this.transformFile(folderPath, ignore, outputFolder).then((r) => {
+							return r;
+						});
+					}
 				}
+			}
+			if (!foundMetaData && level === 2) {
+				this.makeCategoryMetaData(folderPath, ignore, outputFolder, foundMetaData);
 			}
 		}
 		return result;
+	}
+
+	private makeCategoryMetaData(inputFile: string, ignore: string, outputFolder: string, fileIsPresent: boolean = true) {
+		let fileContent: string;
+		if (fileIsPresent) {
+			const markdown: string = fs.readFileSync(inputFile, 'utf8');
+			// Extract the metadata from the markdown using the 'gray-matter' library
+			const extracted: GrayMatterFile<string> = matter(markdown);
+
+			const saveMetaData: { [p: string]: string } = extracted.data;
+			Object.entries(extracted.data).forEach(([key, value]) => {
+				if (key === 'tags') {
+					const tagList: string[] = value.split(',').map(t => t.trim()).filter(Boolean);
+					saveMetaData[key] = `[ ${tagList.map(tag => `"${tag}"`).join(', ')}] `;
+				} else {
+					saveMetaData[key] = this.ensureDoubleQuoted(value);
+				}
+			});
+			fileContent = `import type { LayoutLoad } from './$types';
+			import type { CategoryData } from '$lib/metadataTypes/MetaTypes';
+			
+			export const load: LayoutLoad = async ({ parent }): Promise<CategoryData> => {
+				const { site } = await parent(); // parent() = SiteData
+				return {
+					site,
+					category: {
+							${Object.entries(saveMetaData)
+				.map(([p, v]) => `${p}: ${v}`)
+				.join(',\n')}
+					}
+				};
+			};`
+		} else {
+			fileContent = `import type { LayoutLoad } from './$types';
+			import type { CategoryData } from '$lib/metadataTypes/MetaTypes';
+			
+			export const load: LayoutLoad = async ({ parent }): Promise<CategoryData> => {
+				const { site } = await parent(); // parent() = SiteData
+				return {
+					site,
+					category: {
+					}
+				};
+			};`
+		}
+		const routeName: string = path.dirname(PathCreator.createFilePath(ignore, inputFile));
+		const pagePath: string = routeName + path.sep + '+layout.ts';
+		fs.writeFileSync(outputFolder + path.sep + pagePath, fileContent);
 	}
 
 	private async transformFile(filepath: string, ignore: string, outputFolder: string) {
@@ -126,13 +184,22 @@ export class Md2Svelte {
 		saveMetaData['modifiedTime'] = `"${this.getModifiedTime(filePath)}"`;
 		// add the published time
 		saveMetaData['publishedTime'] = `"${this.getPublishedTime(filePath)}"`;
-		const fileContent: string = `export const load = async () => {
-			return {
-				${Object.entries(saveMetaData)
-					.map(([p, v]) => `${p}: ${v}`)
-					.join(',\n')}
-			};
-		};`;
+		const fileContent: string = `import type { PageLoad } from './$types';
+import type { PageData } from '$lib/metadataTypes/MetaTypes';
+
+export const load: PageLoad = async ({ parent }): Promise<PageData> => {
+  const { site, category } = await parent(); // parent() = CategoryData
+
+  return {
+    site,
+    category,
+    page: {
+			${Object.entries(saveMetaData)
+			.map(([p, v]) => `${p}: ${v}`)
+			.join(',\n')}
+    }
+  };
+};`
 
 		if (routeName !== '.') {
 			// Do not overwrite the site +page.ts file
@@ -348,4 +415,5 @@ export class Md2Svelte {
 		}
 		return result;
 	}
+
 }

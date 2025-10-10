@@ -1,42 +1,46 @@
 // --- Types
 import type { Snippet } from 'svelte';
 
-export interface PageProps {
-	data: {
-		category: CategoryMeta;
-		site: SiteMeta;
-		pageTitle?: string;
-		description: string;
+export type SiteData = {
+	site: {
+		title?: string;
+		description?: string;
+		tags?: string[];
+		image?: string;
+	};
+};
+
+export type CategoryData = SiteData & {
+	category: {
+		title?: string;
+		description?: string;
+		tags?: string[];
+	};
+};
+
+export type PageData = CategoryData & {
+	page: {
+		title?: string;
+		description?: string;
 		publishedTime?: string;     // ISO 8601
 		modifiedTime?: string;      // ISO 8601
 		tags?: string[];
 	};
+};
+
+// For +page.svelte
+export interface PageProps {
+	data: PageData;
 }
 
-export interface CategoryMeta {
-	title: string;
-	description: string;
-	tags?: string[];
-}
-
+// For section/category +layout.svelte
 export interface CategoryProps {
-	data: {
-		site: SiteMeta;
-		category: CategoryMeta;
-		// Child pages may provide this (from their +page.ts)
-		pageTitle?: string;
-	};
+	data: CategoryData;
 	children: Snippet;
 }
 
-export interface SiteMeta {
-	title: string;
-	description: string;
-	tags?: string[];
-	image?: string;
-}
-
+// For root/site +layout.svelte
 export interface SiteProps {
-	data: SiteMeta;
+	data: SiteData;
 	children: Snippet;
 }
