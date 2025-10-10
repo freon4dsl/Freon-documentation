@@ -6,15 +6,10 @@ import { PathCreator } from './PathCreator.js';
 import { CategoryInfoType, TocContentsType } from './TocContentsType.js';
 import { compile } from 'mdsvex';
 import { setupFreon } from "./prism-freon.js"
+import matter, { GrayMatterFile } from 'gray-matter';
 
 // Setup the Freon language for code highlighting with Prism
 setupFreon()
-
-const storeContent: string =
-	`import { writable, type Writable } from 'svelte/store';
-	import type { Section } from '$lib/section/SectionType';
-
-	export const mySections: Writable<Section[]> = writable<Section[]>([]);`;
 
 export class Md2Svelte {
 	allPaths: string[];
@@ -51,7 +46,7 @@ export class Md2Svelte {
 		}
 		// make the category layouts and toc, if folder is at lowest level
 		// find the level by counting the number of file separators in the folder name
-		const level: number = (folder.match(new RegExp("\\" + path.sep, "g")) || []).length;
+		const level: number = (folder.match(new RegExp('\\' + path.sep, 'g')) || []).length;
 		if (level === 2) {
 			// Create and write the layout including a category sidebar
 			const outputPath: string = PathCreator.createFilePath(ignore, folder);
@@ -75,7 +70,7 @@ export class Md2Svelte {
 				}
 			} else {
 				if (path.extname(folderPath) !== '.md') {
-					console.log("Skipping non markdown file: " + folderPath)
+					console.log('Skipping non markdown file: ' + folderPath);
 				} else {
 					this.transformFile(folderPath, ignore, outputFolder).then((r) => {
 						return r;
@@ -87,26 +82,86 @@ export class Md2Svelte {
 	}
 
 	private async transformFile(filepath: string, ignore: string, outputFolder: string) {
-		// For each file, create a Svelte file containing the content from the markdown, called PageContent.svelte,
-		// and a nav on the side, called +page.svelte, which include the PageContent.
+		// For each markdown file, create three Svelte/TS files:
+		// 		+page.svelte: imports PageContent and adds an 'on this page' nav to the side,
+		// 		PageContents.svelte: contains the content from the markdown,
+		// 		+page.ts: contains the metadat extracted from the markdown.
+
 		// Because embedme only works for known file types, we use the file type "```proto" in the markdown,
 		// but replace it with "```freon" before transforming it to Svelte.
 		// This way Prism sees the correct file type: freon.
-		const markdown: string = fs.readFileSync(filepath, 'utf8').replaceAll("```proto", "```freon").replaceAll("```swift", "```svelte");
+		const markdown: string = fs.readFileSync(filepath, 'utf8').replaceAll('```proto', '```freon').replaceAll('```swift', '```svelte');
+		// Extract the metadata from the markdown using the 'gray-matter' library
+		const extracted: GrayMatterFile<string> = matter(markdown);
+		// Find the folder where the files should be created
+		const routeName: string = path.dirname(PathCreator.createFilePath(ignore, filepath));
+		const level: number = (filepath.match(/\\/g) || []).length;
+
+		await this.createPageSvelteFiles(extracted.content, routeName, level, ignore, outputFolder);
+		await this.createPageTsFile(extracted.data, routeName, level, filepath, outputFolder);
+	}
+
+	private getPublishedTime(filePath: string) {
+		return fs.statSync(filePath).birthtime.toISOString();
+	}
+
+	private getModifiedTime(filePath: string) {
+		return fs.statSync(filePath).mtime.toISOString();
+	}
+
+	private ensureDoubleQuoted = (s: string): string => (/^(['"]).*\1$/.test(s) ? s : `"${s.replace(/"/g, '\\"')}"`);
+
+	private async createPageTsFile(metaData: { [p: string]: string }, routeName: string, level: number, filePath: string, outputFolder: string) {
+		const saveMetaData: { [p: string]: string } = metaData;
+		Object.entries(metaData).forEach(([key, value]) => {
+			if (key === 'tags') {
+				const tagList: string[] = value.split(',').map(t => t.trim()).filter(Boolean);
+				saveMetaData[key] = `[ ${tagList.map(tag => `"${tag}"`).join(', ')}] `;
+			} else {
+				saveMetaData[key] = this.ensureDoubleQuoted(value);
+			}
+		});
+
+		// add the modified time
+		saveMetaData['modifiedTime'] = `"${this.getModifiedTime(filePath)}"`;
+		// add the published time
+		saveMetaData['publishedTime'] = `"${this.getPublishedTime(filePath)}"`;
+		const fileContent: string = `export const load = async () => {
+			return {
+				${Object.entries(saveMetaData)
+					.map(([p, v]) => `${p}: ${v}`)
+					.join(',\n')}
+			};
+		};`;
+
+		if (routeName !== '.') {
+			// Do not overwrite the site +page.ts file
+			if (level !== 3) {
+				// level 3 indicates a category, do not create another +page.ts file
+				// Create and write the page layout including a page nav
+				const pagePath: string = routeName + path.sep + '+page.ts';
+				fs.writeFileSync(outputFolder + path.sep + pagePath, fileContent);
+			}
+		}
+	}
+
+	private async createPageSvelteFiles(markdownContent: string, routeName: string, level: number, ignore: string, outputFolder: string) {
 		// Transform the markdown to svelte
 		// We also escape some chars in <code> blocks to avoid the svelte compiler complaining
-		const transformed_code = await compile(markdown, {
+		const transformed_code = await compile(markdownContent, {
 			extensions: ['.md'],
 			smartypants: true,
 			remarkPlugins: [remarkExtractHeaders],
 			highlight: {
-				highlighter(code, lang) { // Runs only for fenced <code> blocks, inline blocks need to take care of their own
+				highlighter(code, lang) {
+					// Runs only for fenced <code> blocks, inline blocks need to take care of their own
 					// Escape characters that break HTML or Svelte parsing
 					const escape = (s: string) =>
-						s.replace(/&/g, '&amp;')   // &
-							.replace(/</g, '&lt;')    // <
-							.replace(/>/g, '&gt;')    // >
-							.replace(/{/g, '&#123;')  // {
+						s
+							.replace(/&/g, '&amp;') // &
+							.replace(/</g, '&lt;') // <
+							.replace(/>/g, '&gt;') // >
+							.replace(/{/g, '&#123;') // {
 							.replace(/}/g, '&#125;'); // }
 
 					const cls = lang ? `language-${lang}` : '';
@@ -114,37 +169,32 @@ export class Md2Svelte {
 				}
 			}
 		});
-		// Find the path of the PageContent.svelte that should be created
-		let outputPath: string = PathCreator.createFilePath(ignore, filepath);
-		// Find the folder where the PageContent.svelte should be created
-		const routeName: string = path.dirname(outputPath);
 
 		// Create the script part of the PageContent.svelte
 		const scriptPart: string = this.createScriptPart(ignore, routeName);
 		let fileContent: string;
 
 		PathCreator.createDirIfNotExisting(routeName, outputFolder);
-		if (scriptPart.length > 0) { // There is something to add
-			const htmlPart: string = this.changeHtags(transformed_code.code);
+		const htmlPart: string = this.changeHtags(transformed_code.code);
+		if (scriptPart.length > 0) {
+			// There is something to add
 			fileContent = this.combineScriptAndCode(scriptPart, htmlPart);
-			// Create and write the SectionStore.ts file
-			const storePath: string = routeName + path.sep + "SectionStore.ts"
-			fs.writeFileSync(outputFolder + path.sep + storePath, storeContent);
-			if (routeName !== '.') { // Do not overwrite the site layout file
-				const level: number = (filepath.match(/\\/g) || []).length;
-				if (level !== 3) { // level 3 indicates a category, do not create another +layout.svelte
-					// Create and write the page layout including a page nav
-					const layoutPath: string = routeName + path.sep + '+page.svelte';
-					fs.writeFileSync(outputFolder + path.sep + layoutPath, pageContent(transformed_code.data.headers));
-				}
-			}
-			// change name from '+page.svelte' to 'PageContent.svelte'
-			outputPath = routeName + path.sep + 'PageContent.svelte';
 		} else {
+			console.log('FOUND ONE!!!!');
 			fileContent = transformed_code.code;
 		}
+		if (routeName !== '.') {
+			// Do not overwrite the site +page.svelte file
+			if (level !== 3) {
+				// level 3 indicates a category, do not create another +page.svelte file
+				// Create and write the page layout including a page nav
+				const pagePath: string = routeName + path.sep + '+page.svelte';
+				fs.writeFileSync(outputFolder + path.sep + pagePath, pageContent(transformed_code.data.headers));
+			}
+		}
 
-		fs.writeFileSync(outputFolder + path.sep + outputPath, fileContent);
+		const pageContentPath: string = routeName + path.sep + 'PageContent.svelte';
+		fs.writeFileSync(outputFolder + path.sep + pageContentPath, fileContent);
 	}
 
 	/**
@@ -163,10 +213,10 @@ export class Md2Svelte {
 			// if there was a script section, remove the script start, and add the <<PrevNextSection> after the script end
 
 			let innerHtml: string = code.replace(/<script>/, '');
-			innerHtml = innerHtml.replace(/<\/script>/, "</script>\n\n<PrevNextSection {prevLink} {nextLink} />\n" )
-			return script + innerHtml + "\n\n<PrevNextSection {prevLink} {nextLink} />";
+			innerHtml = innerHtml.replace(/<\/script>/, '</script>\n\n<PrevNextSection {prevLink} {nextLink} />\n');
+			return script + innerHtml + '\n\n<PrevNextSection {prevLink} {nextLink} />';
 		} else {
-			return script + '\n</script>\n<PrevNextSection {prevLink} {nextLink} />' + code + "\n\n<PrevNextSection {prevLink} {nextLink} />";
+			return script + '\n</script>\n<PrevNextSection {prevLink} {nextLink} />' + code + '\n\n<PrevNextSection {prevLink} {nextLink} />';
 		}
 	}
 
@@ -175,7 +225,8 @@ export class Md2Svelte {
 	 * @param code
 	 */
 	changeHtags(code: string): string {
-		const result = code.replace(/<h2/g, '<SectionComponent tag="h2" ')
+		const result = code
+			.replace(/<h2/g, '<SectionComponent tag="h2" ')
 			.replace(/<h1/g, '<SectionComponent tag="h1" ')
 			.replace(/"REMOVE\{([^}]+)\}REMOVE"/g, '{$1}')
 			.replace(/'REMOVE\{([^}]+)\}REMOVE'/g, '{$1}')
@@ -236,18 +287,18 @@ export class Md2Svelte {
 		// find filepath in allPaths
 
 		// make the filepath the same for both types of path.sep, to be able to compare with the toc
-		filepath = filepath.replace(new RegExp('\\' + path.sep, 'g'),  '/');
+		filepath = filepath.replace(new RegExp('\\' + path.sep, 'g'), '/');
 		filepath = '/' + filepath;
 
 		this.allPaths.forEach((path: string, index: number) => {
 			if (path === filepath) {
 				if (index > 0) {
 					let isCategory: boolean = false;
-					this.allCategories.forEach(cat => {
-						if (this.allPaths[index-1] === cat.path) {
+					this.allCategories.forEach((cat) => {
+						if (this.allPaths[index - 1] === cat.path) {
 							isCategory = true;
 						}
-					})
+					});
 					if (isCategory) {
 						// use a path before the category, because the category has a redirect script to its first route
 						if (index - 1 > 0) {
@@ -262,12 +313,12 @@ export class Md2Svelte {
 				}
 				// console.log(`==> found ${filepath} \n\tprev:${prev} \n\tnext${next}`)
 			}
-		})
+		});
 
 		result += `
 		let prevLink= '${prev}';
     let nextLink= '${next}';
-    `
+    `;
 		return result;
 	}
 
@@ -276,23 +327,24 @@ export class Md2Svelte {
 		let next: string = '/';
 		let prev: string = lastSeen;
 		let found: boolean = false;
-		toc.content.forEach(cont => {
+		toc.content.forEach((cont) => {
 			// console.log(`current: ${cont.path}, last seen ${lastSeen}`)
 			if (found) {
 				next = cont.path;
 				found = false;
-				result = `let prevLink= '${prev}';\nlet nextLink= '${next}';`
+				result = `let prevLink= '${prev}';\nlet nextLink= '${next}';`;
 			}
 			if (cont.path === searchPath) {
 				prev = lastSeen;
 				found = true;
-			} else if ((searchPath).startsWith(cont.path)) {
+			} else if (searchPath.startsWith(cont.path)) {
 				result = this.loopOverToc(cont, searchPath, cont.path);
 			}
 			lastSeen = cont.path;
 		});
-		if (found) { // it was the last, so make an entry with an empty next link
-			result = `let prevLink= '${prev}';\nlet nextLink= '';`
+		if (found) {
+			// it was the last, so make an entry with an empty next link
+			result = `let prevLink= '${prev}';\nlet nextLink= '';`;
 		}
 		return result;
 	}
