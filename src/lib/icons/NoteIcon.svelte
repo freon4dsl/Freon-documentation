@@ -3,9 +3,9 @@
 
 <script lang="ts">
 	interface ComponentProps {
-		height: number;
-		width: number;
-		fill: string;
+		height?: number;
+		width?: number;
+		fill?: string;
 	}
 	let { height = 24, width = 24, fill = 'var(--color-accent)' }: ComponentProps = $props();
 </script>

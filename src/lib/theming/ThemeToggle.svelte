@@ -8,10 +8,10 @@
 		window.document.body.classList.toggle('dark');
 		// Set the local storage of the browser. This enables the user settings to be kept across browser sessions.
 		localStorage.setItem('darkMode', $darkMode ? 'enabled' : 'disabled');
-		console.log(`darkmode toggle: ${$darkMode}`);
+		// console.log(`darkmode toggle: ${$darkMode}`);
 	}
 </script>
 
-<Button onclick={toggle} icon={true}>
+<Button onclick={toggle} ariaLabel="darkmode-toggle">
 	<InvertColors />
 </Button>

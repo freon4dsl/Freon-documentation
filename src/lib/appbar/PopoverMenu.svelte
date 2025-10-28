@@ -22,7 +22,7 @@
 
 <div bind:this={$popoverElem} popover="auto" id="main-menu" class="popover-menu">
 	<nav>
-		{#each sideBarContent as content, index}
+		{#each sideBarContent as content, index (index)}
 			<span class="img-container">
 				<!-- svelte-ignore a11y-no-noninteractive-element-interactions-->
 				<!-- svelte-ignore a11y-click-events-have-key-events -->

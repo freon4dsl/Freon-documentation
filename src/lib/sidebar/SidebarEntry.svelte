@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { page } from '$app/stores';
+	import { page } from '$app/state';
 	import { popoverElem } from '../Store';
 	interface ComponentProps {
 		name: string;
@@ -12,6 +12,6 @@
 	}
 </script>
 
-<span class="side-bar-entry" class:active={$page.url.pathname === path}
-	><a class="leafText" class:active={$page.url.pathname === path} href={path} onclick={becomingActive}>{name}</a></span
+<span class="side-bar-entry" class:active={page.url.pathname === path}
+	><a class="leafText" class:active={page.url.pathname === path} href={path} onclick={becomingActive}>{name}</a></span
 >

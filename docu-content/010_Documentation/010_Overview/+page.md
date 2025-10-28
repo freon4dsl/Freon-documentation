@@ -1,3 +1,9 @@
+---
+title: Introduction
+description: Introduction to the technical documentation of the Freon Language Workbench
+tags: DSL, TypeScript, forms, projectional editing
+---
+
 # Welcome, Language Engineer!
 
 Freon is a Language Workbench, a tool for creating mini-languages, which are also known 

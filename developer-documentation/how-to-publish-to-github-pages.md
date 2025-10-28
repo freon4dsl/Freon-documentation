@@ -5,6 +5,8 @@ information can be found in https://www.okupter.com/blog/deploy-sveltekit-websit
 https://docs.github.com/en/pages.
 This how-to-guide makes the general information explicit for this repo.
 
+Note that we need not add 'base' to our internal links, because the site is published on a custom domain.
+
 ## In the GitHub Settings
 
 1. Go to the GitHub repo where this project is stored.
@@ -19,7 +21,8 @@ from '/docs' folder (The name of this folder must be the same as the outDir in t
    To be able to go back to old documentation when needed, we keep a copy of the old documentation in a separate branch.
    TODO: we need to establish a naming convention for this.
 
-2. Move the 'development' branch to 'main', work in that branch, and adjust as follows.
+2. Move the 'development' branch to 'main', work in that branch, or work in the branch
+   that is chosen to deploy from, and adjust as follows. 
 
 3. Set the base path in svelte.config.ts, and use it for all hrefs. The latter is done automatically 
 by the markdown to svelte transformation. (TODO this needs to be implemented.)

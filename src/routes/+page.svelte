@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	import LandingPageFooter from './LandingPageFooter.svelte';
 	import AppBar from '$lib/appbar/AppBar.svelte';
 </script>
@@ -163,9 +163,9 @@
 			<a href="/Background/Overview" class="landing-enter-button"
 				><h3>Guiding Principles</h3>
 				<p>
-					Freon was created using a lifetime of experience with software development, especially with developing softare languages. All this
-					experience has let to a number of great guiding principles for software development, which are being used in the development of
-					this tool. We happily share our insights with you.
+					Freon was created using a lifetime of experience with software development, especially with developing software languages. All
+					this experience has let to a number of great guiding principles for software development, which are being used in the development
+					of this tool. We happily share our insights with you.
 				</p>
 				<p>Learn more...</p>
 			</a>

@@ -4,15 +4,22 @@
 
 	interface ComponentProps {
 		children: Snippet;
-		intersecting: boolean;
+		intersecting?: boolean;
 		id: string;
-		tag: string;
+		tag?: string;
+		onIntersectChange?: (visible: boolean) => void;
 	}
-	let { children, intersecting = $bindable(), id, tag = 'h1' }: ComponentProps = $props();
+
+	let { children, intersecting = $bindable(), id, tag = 'h1', onIntersectChange }: ComponentProps = $props();
 	let element: HTMLElement | undefined = $state(undefined);
+
+	// Dispatch event when visibility changes
+	function handleIntersectChange(e: CustomEvent<{ isIntersecting: boolean }>) {
+		onIntersectChange?.(e.detail.isIntersecting);
+	}
 </script>
 
-<IntersectionObserver {element} bind:intersecting threshold={0.5}>
+<IntersectionObserver {element} bind:intersecting on:observe={handleIntersectChange}>
 	<div bind:this={element}>
 		{#if tag === 'h1'}
 			<h1 {id}>{@render children()}</h1>
