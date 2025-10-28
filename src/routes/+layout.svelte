@@ -23,25 +23,23 @@
 		// default is 'light', i.e. darkMode === false
 	});
 
-	const jsonLd  = {
-		"@context": "https://schema.org",
-		"@type": "WebPage",
+	const jsonLd = {
+		'@context': 'https://schema.org',
+		'@type': 'WebPage',
 		headline: data?.site.title,
 		description: data?.site.description,
 		url: 'https://freon4dsl.dev',
 		image: data?.site.image,
-		publisher: data?.site.title
-			? { "@type": "Organization", name: data.site.title }
-			: undefined
-	}
+		publisher: data?.site.title ? { '@type': 'Organization', name: data.site.title } : undefined
+	};
 </script>
 
 <svelte:head>
 	<!-- Basic SEO -->
 	<title>{data.site.title}</title>
 	<meta name="description" content={data.site.description} />
-	<meta name="robots" content='index,follow' />
-	<link rel="canonical" href='https://freon4dsl.dev' />
+	<meta name="robots" content="index,follow" />
+	<link rel="canonical" href="https://freon4dsl.dev" />
 
 	<!-- Open Graph -->
 	<meta property="og:type" content="article" />
@@ -49,13 +47,13 @@
 	<meta property="og:description" content={data.site.description} />
 	<meta property="og:site_name" content={data.site.title} />
 	<meta property="og:image" content={data.site.image} />
-	<meta property="og:url" content='https://freon4dsl.dev' />
+	<meta property="og:url" content="https://freon4dsl.dev" />
 
 	<!-- Twitter -->
 	<meta name="twitter:card" content="summary_large_image" />
 	<meta name="twitter:title" content={data.site.title} />
 	<meta name="twitter:description" content={data.site.description} />
-	<meta name="twitter:image" content='https://freon4dsl.dev' />
+	<meta name="twitter:image" content="https://freon4dsl.dev" />
 
 	<!-- JSON-LD -->
 	{@html `<script type="application/ld+json">${JSON.stringify(jsonLd)}</script>`}

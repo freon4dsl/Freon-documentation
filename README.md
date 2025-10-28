@@ -1,64 +1,88 @@
 # Freon Documentation
 
-This project contains the sources for all documentation on [Freon](https://github.com/freon4dsl/Freon4dsl). More 
-information for those who develop the content of this repository can be found in 
-the folder `/developer-documentation`.
+This repository contains the sources for all documentation about [Freon](https://github.com/freon4dsl/freon4dsl).  
+It powers the official [Freon documentation website](https://www.freon4dsl.dev).
 
-## Developing
+For developer information about maintaining or extending this site, see the  
+[`/developer-documentation`](developer-documentation) folder.
 
-During development, you can use the following commands.
+---
+
+## 🧭 Developing
+
+To work on the documentation site locally:
 
 ```bash
+
+git clone https://github.com/freon4dsl/Freon-documentation.git
+cd Freon-documentation
+
 # Install dependencies
 npm install
 
-# Get the example code from github
+# Get the example code from GitHub
 npm run install-examples
 
-# create the website from the Markdown content
+# Generate the website content from Markdown
 npm run buildSite
 
-# create the website and serve it on localhost:3000
+# Create the website and serve it on localhost:3000
 npm run dev
 
-# or start the server and open the app in a new browser tab
+# Or start the server and open the app in a new browser tab
 npm run dev -- --open
 ```
 
-Note that during 'buildSite' a number of warnings are given:
-"failed to load language css", and
-"failed to load language javascript". 
-These cannot be helped, because they are due to a bug in mdsvex, see https://github.com/pngwn/MDsveX/issues/719.
+> **Note:** During `buildSite` several warnings may appear:  
+> “failed to load language css” and “failed to load language javascript”.  
+> These can safely be ignored — they are caused by a known issue in [mdsvex](https://github.com/pngwn/MDsveX/issues/719).
 
-## Creating a documentation website
+---
 
-See https://www.okupter.com/blog/deploy-sveltekit-website-to-github-pages
+## 📁 Project Structure
 
-When the website has been created, it must be build using the following commands.
+The repository follows a simple structure:
+
+- **`docu-content/`** – Markdown source files for the documentation.
+- **`code-examples/`** – Example Freon and TypeScript code used in the docs.
+- **`src/`** – Follows standard [SvelteKit](https://kit.svelte.dev/docs/project-structure) conventions:
+  - `src/routes/` – auto-generated pages from Markdown, plus custom Svelte routes.
+  - `src/lib/` – shared UI components and utilities.
+- **`static/`** – Images, styles, and other assets that don’t need processing.
+- **`developer-documentation/`** – Additional information for contributors.
+  - Includes [structure-of-the-project.md](developer-documentation/structure-of-the-project.md)  
+    for an in-depth explanation of the folder layout and generation process.
+
+---
+
+## 🌐 Getting the Site Ready for Publication
+
+For detailed instructions, see [How to Publish to GitHub Pages](developer-documentation/how-to-publish-to-github-pages.md).
+
+Once the content of the website has been created, build it using the following commands:
 
 ```bash
-# make sure this command has run
+# Make sure this command has run
 npm run buildSite
 
-# create the website in the directory 'build'
+# Create the website in the directory '/docs'
 npm run build
 
-# preview the website
+# Preview the website locally
 npm run preview
 ```
 
-During development the latter two commands can be exchanged by the following command. 
+---
 
-```bash
-# build and serve the website
-npm run dev
-```
+## 🚀 Publishing
 
-> Note: preview should *not* be used to serve your website in production.
+Before pushing to GitHub:
 
-## Publishing
+- Ensure the `.nojekyll` file is present — this prevents GitHub Pages from applying Jekyll processing that may break the site.
+- Ensure the `CNAME` file is present and contains `www.freon4dsl.dev`.
+- Confirm that the GitHub Pages settings are configured to deploy from the /docs folder on the correct branch (typically main).
 
-In de docs folder:
+---
 
-- Check whether the .nojekyll file is there, to avoid GitHub from doing stuff that breaks the site.
-- Check whether the CNAME file with www.freon4dsl.dev is there
+We build Freon and its documentation out of curiosity, passion, and love for language engineering.
+We invite you to share that enthusiasm and help make something meaningful — together. ❤️

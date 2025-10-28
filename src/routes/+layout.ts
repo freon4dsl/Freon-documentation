@@ -8,9 +8,10 @@ export const ssr = true;
 export const load: LayoutLoad = async (): Promise<SiteData> => {
 	return {
 		site: {
-			title: "Freon",
-			description: "The Freon Language Workbench is a tool that creates domain specific languages, including a web-based projectional editor",
-			tags: ["DSL", "TypeScript", "forms", "projectional editing", "Svelte"],
+			title: 'Freon',
+			description:
+				'The Freon Language Workbench is a tool that creates domain specific languages, including a web-based projectional editor',
+			tags: ['DSL', 'TypeScript', 'forms', 'projectional editing', 'Svelte'],
 			image: '/freon-logo.png'
 		}
 	};
