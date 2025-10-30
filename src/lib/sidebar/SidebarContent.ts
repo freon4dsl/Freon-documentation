@@ -29,6 +29,7 @@ export const documentationToc: TocContentsType = {
 				{ name: 'Ease of Editing', path: '/Documentation/Defining_an_Editor/Ease_of_Editing' },
 				{ name: 'Boolean Projections', path: '/Documentation/Defining_an_Editor/Boolean_Projections' },
 				{ name: 'Number Projections', path: '/Documentation/Defining_an_Editor/Number_Projections' },
+				{ name: 'String Projections', path: '/Documentation/Defining_an_Editor/String_Projections' },
 				{ name: 'Projections for Limited Concepts', path: '/Documentation/Defining_an_Editor/Projections_for_Limited_Concepts' },
 				{ name: 'Binary Expressions', path: '/Documentation/Defining_an_Editor/Binary_Expressions' },
 				{ name: 'Global Projections', path: '/Documentation/Defining_an_Editor/Global_Projections' },

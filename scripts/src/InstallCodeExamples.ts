@@ -1,10 +1,10 @@
 import { execSync } from 'node:child_process';
 
 /**
- * Copy all examples from github project `create-freon-languages` to the code-examples folder.
+ * Copy all examples from GitHub project `create-freon-languages` to the code-examples folder.
  */
 {
-	const branch = "#release-2.0.0-beta.2"
+	const branch = "#2.0.0"
 	for (const languageName of ['CourseSchedule', 'CustomizationsProject', 'Education', 'EducationInterpreter', 'Expressions', 'Insurance', "TyperExample"]) {
 		console.log(`Copying ${languageName}`);
 		const langRepo = `https://github.com/freon4dsl/create-freon-languages/languages/${languageName}`;
