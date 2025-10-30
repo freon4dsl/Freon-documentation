@@ -50,7 +50,7 @@
 				</a>
 			</div>
 			<div class="corner-box top-right-box">
-				<a href="/Documentation/Overview/Whats New"
+				<a href="/Documentation/Overview/New_In_Version_2"
 				>New in Version&nbsp;2
 					<span class="landing-arrow">
 						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 70 448 380" height="28px"

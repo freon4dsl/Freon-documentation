@@ -6,6 +6,7 @@ export const documentationToc: TocContentsType =
       { name: 'Overview', path: '/Documentation/Overview',
         content: [
          { name: 'Getting Started', path: '/Documentation/Overview/Getting_Started'},
+         { name: 'New In Version 2', path: '/Documentation/Overview/New_In_Version_2'},
          { name: 'Running Example', path: '/Documentation/Overview/Running_Example'},
        ]},
       { name: 'Creating the Metamodel', path: '/Documentation/Creating_the_Metamodel',
