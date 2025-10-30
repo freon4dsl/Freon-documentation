@@ -424,3 +424,95 @@ code {
 	/*font-size: 0.93rem;*/
 	color: var(--color-code);
 }
+
+/* ******************************************** */
+.corner-box {
+	position: static;
+	width: clamp(10rem, 22vw, 16rem);
+	border: var(--color3);
+	border-style: solid;
+	background: var(--color2);
+	font-weight: bolder;
+	text-align: center;
+	box-sizing: border-box;
+}
+
+.top-left-box {
+	float: left;
+	margin: 0 1rem 1rem 0;
+	border-top: none;     /* touches outer top border */
+	border-left: none;    /* touches outer left border */
+}
+
+.top-right-box {
+	float: right;
+	margin: 0 0 1rem 1rem;
+	border-top: none;     /* touches outer top border */
+	border-right: none;   /* touches outer right border */
+}
+
+.two-corner-box {
+	border: var(--color3);
+	border-style: solid;
+	margin: 2rem;
+	position: relative;
+	box-sizing: border-box;
+	overflow: hidden; /* contain floats */
+}
+
+.landing-text {
+	margin-top: 3rem;
+	padding: 1rem;
+	line-height: 1.6;
+}
+
+/* Mobile: unfloat and stack */
+@media (max-width: 700px) {
+	.corner-box {
+		float: none;
+		width: 100%;
+		margin: 0.5rem 0;
+		text-align: left;
+	}
+	.corner-box a {
+		justify-content: flex-start;  /* align left when stacked */
+	}
+}
+
+/* Make link content bigger and align the arrow */
+/* Make the whole box clickable (nice UX) */
+.corner-box a {
+	display: inline-flex;           /* put text + arrow on one row */
+	align-items: center;            /* vertically center arrow with text */
+	justify-content: center;        /* keep both centered inside the box */
+	gap: 0.5rem;                    /* space between text and arrow */
+	font-size: clamp(1rem, 2.2vw, 1.5rem); /* grow the link text responsively */
+	line-height: 1.2;
+	text-decoration: none;
+	width: 100%;
+	height: 100%;             /* make it fill the box */
+	color: inherit;           /* keep text color consistent */
+	padding: 0.5rem 0.75rem;
+}
+
+/* Let the SVG scale with the text and remove baseline quirks */
+.corner-box .landing-arrow svg {
+	height: 1em;     /* follows the link's font-size */
+	width: auto;
+	display: block;  /* avoids extra descender space */
+}
+
+/* Default arrow color */
+.corner-box .landing-arrow svg {
+	height: 1em;
+	width: auto;
+	display: block;
+	color: var(--color-link); /* or any default */
+	transition: color 0.3s ease;
+}
+
+/* Change arrow color when the whole box is hovered */
+.corner-box:hover .landing-arrow svg {
+	color: var(--color5, var(--color6)); /* replace with your accent color */
+}
+
