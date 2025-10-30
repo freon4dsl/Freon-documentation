@@ -45,7 +45,7 @@ To include a simple external component within a projection, use the
 syntax `[external = <COMPONENT_NAME> ]`, where `<COMPONENT_NAME>` is the name of the desired component.
 Ensure there is no space between the opening square bracket (`[`) and the keyword `external`, and note that the
 component name must be included in the [`global`](/Documentation/Defining_an_Editor/Global_Projections) section of the
-default editor. The box type associated with a simple addition is `ExternalSimpleBox`.
+default editor. The box type associated with a simple addition is `SimpleExternalBox`.
 
 In the next example a simple animated gif component is added to the fragment projection.
 
@@ -220,13 +220,13 @@ where `self.PROPERTY` is the familiar reference to a property and `ExternalCompo
 The box type associated with a replacement is dependent upon the type of property that is being replaced.
 (See [External Component Box Types](/Documentation/Under_the_Hood/Editor_Framework/External_Component_Box_Types).)
 
-- Property of type string: `ExternalStringBox`.
-- Property of type number: `ExternalNumberBox`.
-- Property of type boolean: `ExternalBooleanBox`.
-- [Part property](/Documentation/Creating_the_Metamodel/Defining_Properties#part-properties-3): `ExternalPartBox`. 
-- [Part list property](/Documentation/Creating_the_Metamodel/Defining_Properties#part-properties-3): `ExternalPartListBox`.
-- [Reference property](/Documentation/Creating_the_Metamodel/Defining_Properties#reference-properties-4): `ExternalRefBox`.
-- [Reference list property](/Documentation/Creating_the_Metamodel/Defining_Properties#reference-properties-4): `ExternalRefListBox`.
+- Property of type string: `StringReplacerBox`.
+- Property of type number: `NumberReplacerBox`.
+- Property of type boolean: `BooleanReplacerBox`.
+- [Part property](/Documentation/Creating_the_Metamodel/Defining_Properties#part-properties-3): `PartReplacerBox`. 
+- [Part list property](/Documentation/Creating_the_Metamodel/Defining_Properties#part-properties-3): `PartListReplacerBox`.
+- [Reference property](/Documentation/Creating_the_Metamodel/Defining_Properties#reference-properties-4): `RefReplacerBox`.
+- [Reference list property](/Documentation/Creating_the_Metamodel/Defining_Properties#reference-properties-4): `RefListReplacerBox`.
 
 Each of the box types provide the following methods, where `<TYPE>` depends on the type of the property being replaced.
 - `getPropertyName(): string`: returns the name of the wrapped property.

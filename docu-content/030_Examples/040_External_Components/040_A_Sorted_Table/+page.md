@@ -54,7 +54,7 @@ the user to add new slots.
 
 ### The Script Section
 
-The box type that we are using is an `ExternalPartListBox`. The four mandatory functions are similar to
+The box type that we are using is an `PartListReplacerBox`. The four mandatory functions are similar to
 the ones in the StaffAccordion component, with one exception, which we will explain later on. The key 
 to sorting the schedule lies in the `initialize()` function, which processes the list of `timeSlots` 
 and sorts them based on the `TimeStamp`. While sorting the list, in order to later render the correct 

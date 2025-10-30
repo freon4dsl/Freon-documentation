@@ -14,7 +14,7 @@ Let's get started!
 To begin, we need to create a new Svelte component that will represent the icon for each 
 person. Let's call it `PersonIcon.svelte`. This component must be linked to the box model 
 of the Freon editor. In Freon, each external component must be associated with a box, 
-and the `PersonIcon` component will be tied to a box type called `ExternalSimpleBox`.
+and the `PersonIcon` component will be tied to a box type called `SimpleExternalBox`.
 The parameter `editor: FreEditor` is also mandatory. When the component
 is instantiated by the Freon editor both parameters will get a value.
 

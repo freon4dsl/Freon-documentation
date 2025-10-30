@@ -6,21 +6,21 @@ each box has a mandatory model node and role. The following predefined boxes are
 
 | Primitive Boxes   | Grouping Boxes      | Boxes for External Components |
 |-------------------|---------------------|-------------------------------|
-| ActionBox         | FragmentBox         | ExternalBooleanBox            |
-| AliasBox          | GridBox             | ExternalNumberBox             |
-| BooleanControlBox | GridCellBox         | ExternalPartBox               |
-| ButtonBox         | HorizontalLayoutBox | ExternalPartListBox           |
-| EmptyLineBox      | HorizontalListBox   | ExternalRefBox                |
-| IndentBox         | OptionalBox         | ExternalRefListBox            |
-| LabelBox          | TableBox            | ExternalSimpleBox             |
-| NumberControlBox  | TableCellBox        | ExternalStringBox             |
-| LimitedControlBox | TableRowBox         | BooleanWrapperBox             |
-| MultiLineTextBox  | VerticalLayoutBox   | FragmentWrapperBox            |
-| SelectBox         | VerticalListBox     | NumberWrapperBox              |
-| SvgBox            |                     | PartWrapperBox                |
-| TextBox           |                     | PartListWrapperBox            |
-|                   |                     | RefWrapperBox                 |
-|                   |                     | RefListWrapperBox             |
+| ActionBox         | FragmentBox         | BooleanReplacerBox            |
+| AliasBox          | GridBox             | BooleanWrapperBox             |
+| BooleanControlBox | GridCellBox         | FragmentWrapperBox            |
+| ButtonBox         | HorizontalLayoutBox | NumberReplacerBox             |
+| EmptyLineBox      | HorizontalListBox   | NumberWrapperBox              |
+| IndentBox         | OptionalBox         | PartReplacerBox               |
+| LabelBox          | TableBox            | PartWrapperBox                |
+| NumberControlBox  | TableCellBox        | PartListReplacerBox           |
+| LimitedControlBox | TableRowBox         | PartListWrapperBox            |
+| MultiLineTextBox  | VerticalLayoutBox   | RefReplacerBox                |
+| SelectBox         | VerticalListBox     | RefWrapperBox                 |
+| SvgBox            |                     | RefListReplacerBox            |
+| TextBox           |                     | RefListWrapperBox             |
+|                   |                     | SimpleExternalBox             |
+|                   |                     | StringReplacerBox             |
 |                   |                     | StringWrapperBox              | 
 
 All box types have a corresponding Component that renders the box in the browser. These components are build

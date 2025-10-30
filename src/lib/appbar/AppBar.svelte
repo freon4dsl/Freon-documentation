@@ -50,7 +50,7 @@
 			</Tooltip>
 		</a>
 		<a href="/" class="title">
-			<div><span>Freon</span> <span class="version">{versionNumber}</span></div>
+			<div><span>Freon</span> <span class="version">version {versionNumber}</span></div>
 		</a>
 		<nav class="app-bar-main-menu">
 			{#each allCategories as cat, index (index)}

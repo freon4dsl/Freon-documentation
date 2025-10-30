@@ -29,7 +29,7 @@ component name must be included in the [`global`](/Documentation/Defining_an_Edi
 default editor.
 
 
-- BoxType: `ExternalSimpleBox`.
+- BoxType: `SimpleExternalBox`.
 - Interface:
   - No specific interface.
 
@@ -76,7 +76,7 @@ get tabbing etc. working.
   - `getPropertyName(): string`
     - Returns the name of the wrapped property.
   - `getPropertyValue(): string`
-    - Returns the value of the wrapped property. Type is `string` in case of an ExternalStringBox,
+    - Returns the value of the wrapped property. Type is `string` in case of an StringReplacerBox,
       `number` or `boolean` for the other box types.
   - `childBox: Box`
     - Returns the projection for the property. Use this method and the `RenderComponent` to
@@ -108,7 +108,7 @@ get tabbing etc. working.
   - `getPropertyName(): string`
     - Returns the name of the wrapped property.
   - `getPropertyValue(): FreNodeReference[]`
-    - Type is `string` in case of an ExternalStringBox, `number` or `boolean` for the other box types.
+    - Type is `string` in case of an StringReplacerBox, `number` or `boolean` for the other box types.
   - `childBox: Box`
     - Returns the projection for the property. Use this method and the `RenderComponent` to
       show the property projection in the external component. Note that this method returns
@@ -145,21 +145,21 @@ get tabbing etc. working.
 ## Replacing Primitive Properties
 
 - Syntax: `${self.name replace=SMUI_Dialog}`
-- BoxType: `ExternalStringBox`, `ExternalNumberBox`, or `ExternalBooleanBox`
+- BoxType: `StringReplacerBox`, `NumberReplacerBox`, or `BooleanReplacerBox`
 - Interface:
   - `getPropertyName(): string`
     - Returns the name of the replaced property.
   - `getPropertyValue(): string`
     - Returns the value of the replaced property.
-      Type is `string` in case of an `ExternalStringBox`, `number` or `boolean` for the other box types.
+      Type is `string` in case of an `StringReplacerBox`, `number` or `boolean` for the other box types.
   - `setPropertyValue(newValue: string)`
     - Sets the value of the property.
-      Type is `string` in case of an `ExternalStringBox`, `number` or `boolean` for the other box Types.
+      Type is `string` in case of an `StringReplacerBox`, `number` or `boolean` for the other box Types.
 
 ## Replacing Part List Properties
 
 - Syntax: `${self.parts replace=SMUI_Accordion}`
-- BoxType: `ExternalPartListBox`
+- BoxType: `PartListReplacerBox`
 - Interface:
   - `getPropertyName(): string`
     - Returns the name of the replaced property.
@@ -173,7 +173,7 @@ get tabbing etc. working.
 ## Replacing Reference List Properties
 
 - Syntax: `${self.parts replace=SMUI_Accordion}`
-- BoxType: `ExternalRefListBox`
+- BoxType: `RefListReplacerBox`
 - Interface:
   - `getPropertyName(): string`
     - Returns the name of the replaced property.
@@ -187,7 +187,7 @@ get tabbing etc. working.
 ## Replacing Part Properties
 
 - Syntax: `${self.part replace=SMUI_Dialog}`
-- BoxType: `ExternalPartBox`
+- BoxType: `PartReplacerBox`
 - Interface:
   - `getPropertyName(): string`
     - Returns the name of the replaced property.
@@ -199,7 +199,7 @@ get tabbing etc. working.
 ## Replacing Reference Properties
 
 - Syntax: `${self.reference replace=SMUI_Dialog}`
-- BoxType: `ExternalRefBox`
+- BoxType: `RefReplacerBox`
 - Interface:
   - `getPropertyName(): string`
     - Returns the name of the replaced property.
