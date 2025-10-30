@@ -10,6 +10,6 @@
 #Moves it back over the original file if successful.
 
 for f in $(find ../docu-content -type f -name "*.md"); do
-  npx embedme --stdout "$f" > "$f.tmp" && mv "$f.tmp" "$f"
+  npx embedme --source-root ../code-examples --stdout "$f" > "$f.tmp" && mv "$f.tmp" "$f"
 done
 
