@@ -143,7 +143,7 @@ export class Md2Svelte {
 		// For each markdown file, create three Svelte/TS files:
 		// 		+page.svelte: imports PageContent and adds an 'on this page' nav to the side,
 		// 		PageContents.svelte: contains the content from the markdown,
-		// 		+page.ts: contains the metadat extracted from the markdown.
+		// 		+page.ts: contains the metadata extracted from the markdown.
 
 		// Because embedme only works for known file types, we use the file type "```proto" in the markdown,
 		// but replace it with "```freon" before transforming it to Svelte.

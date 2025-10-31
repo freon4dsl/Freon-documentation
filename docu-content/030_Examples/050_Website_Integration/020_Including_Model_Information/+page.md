@@ -20,7 +20,7 @@ To make things a bit more interesting we have implemented two ways to open a mod
 First, you can add the name of the model to the url in the address bar of your browser.
 Second, you can choose a model from the list of models available on the server. For this 
 option we need to open a dialog.
-(Again, we are mimicking what the standard web application is capable of.)
+(Again, we are mimicking what the standard web app is capable of.)
 
 Below is the code that implements this. Note that we have moved all code to actually
 open the model, and to get the names of the available models, to the before mentioned class

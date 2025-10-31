@@ -52,7 +52,7 @@ We would like to say: "that's it", but so far there is no information present in
 
 ## Initialization of the State Variable
 
-Before the start of the web application we need to initialize the `langInfo` state variable. We have chosen to do this 
+Before the start of the web app we need to initialize the `langInfo` state variable. We have chosen to do this 
 in a Svelte hook (see <a href="https://svelte.dev/docs/kit/hooks" target="_blank">SvelteKit Hooks</a>), because it needs to be done only once. We 
 use the `configureExternals` and `configureLoggers` functions from the DSL, as well as the `LanguageEnvironment`.
 
@@ -110,7 +110,7 @@ Note that the `LanguageEnvironment` initializes the `FreLanguage` class from the
 `LanguageEnvironment.getInstance()` must therefore precede a call to `FreLanguage.getInstance()`. Both classes
 follow the Singleton pattern and are initialized through `getInstance`.
 
-Commented out, because we do not yet have an element in our web application to show error messages, is the way to
+Commented out, because we do not yet have an element in our web app to show error messages, is the way to
 handle messages from the Freon editor. Assign a function to the editor's `setUserMessage` property, which handles
 the messages. Its signature is `setUserMessage(message: string, severity?: FreErrorSeverity): void`.
 
@@ -156,7 +156,7 @@ static initialize(editorEnvironment: FreEnvironment): void {
 
 ## Unit Types in Model Drawer
 
-In this example web application, as in the standard Freon webapp, we show the information about 
+In this example web app, as in the standard Freon web app, we show the information about 
 the current model in a drawer panel.
 For the names of the model unit types in this drawer we use the same approach as above. From the 
 `langInfo` state variable we take the `unitTypes`, and loop over them. The inner list is where 

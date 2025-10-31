@@ -64,13 +64,14 @@ modelunit SiteGroup {
 Let's focus on the _SiteGroup_ model unit first. Because it is likely that we need to make references to topics,
 we give each topic a `name `of type `identifier`.
 
-<Note {header} {content}> </Note>
+<Note {header} {content}> 
 {#snippet header()} The type identifier versus the type string.{/snippet}  
 {#snippet content()}
 <p>A property of type string may contain any printable character, but the content of an identifier is bound to a number of rules.
 These rules are equal to the rules in Typescript. Any concept or model unit that has a property
 <i>name</i> of type <i>identifier</i> can be referred to. </p>
 {/snippet}
+</Note>
 
 Every (sub)topic belongs to a site group, but we do not want this relationship
 to be like a UML aggregation, because we feel that this is too restrictive here. Therefore, we introduce another feature of
@@ -159,7 +160,7 @@ concept InDepthMaterial base Page {
 
 ```
 
-<Note header={header2} content={content2}> </Note>
+<Note header={header2} content={content2}> 
 {#snippet header2()}UML diagrams{/snippet}
 {#snippet content2()}
 <p>The Freon metamodel can be expressed in UML. For instance, the Freon concept may be compared to a UML class. 
@@ -170,6 +171,7 @@ It can inherit from other concepts, and/or implement an interface.</p>
 folder <code>src/diagrams</code>, together with some other diagrams
 (for instance, one that focuses on inheritance relations).  </p>
 {/snippet}
+</Note>
 
 But let's not forget to add a definition for the concept **Question**. Freon will complain if you
 do not define all the concepts that you are using. And, because we are dealing with mathematics, we need to

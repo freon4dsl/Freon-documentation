@@ -109,7 +109,7 @@ button is clicked. The message includes the value of the phone number:
 
 Finally, we have added some styling for the div that wraps the phone number. The styling
 of the SMUI components is all done using the <a href="https://sveltematerialui.com/THEMING.md" target="_blank">SMUI theming</a>, 
-which is already set up because it is also used for the surrounding web application.
+which is already set up because it is also used for the surrounding web app.
 
 ```ts
 // CourseSchedule/phase3/src/external/PhoneButton.svelte#L45-L52

@@ -1,14 +1,20 @@
+---
+title: Styling
+description: Learn how to style the Freon web app and editor using SCSS or CSS, including light and dark theme customization, SMUI integration, and overriding Freon component styles.
+tags: styling, SCSS, CSS, themes, light mode, dark mode, editor styling, SMUI, Material UI, Freon, DSL development
+---
+
 # Styling
 
-The web application and/or the editor, can be styled using either SCSS or CSS. 
+The web app and/or the editor can be styled using either SCSS or CSS. 
 
-# Styling the Web Application
+# Styling the Web App
 
-The provided [web application](/Documentation/Overview/Getting_Started#a-minimal-webapp-and-server-5)
-is build using the <a href="https://sveltematerialui.com/" target="_blank">SMUI</a> UI library.
+The provided [web app](/Documentation/Overview/Getting_Started#a-minimal-webapp-and-server-5)
+is built using the <a href="https://sveltematerialui.com/" target="_blank">SMUI</a> UI library.
 This library uses SCSS, and therefore you need to run the preprocessor provided with SMUI for 
-the styling to take effect. To do so, run the following command. When you do not change the styles,
-a single run will suffice. When you, however, do change the styles, you need to rerun this command.
+the styling to take effect. Run the following command. If you don’t modify the styles, a single 
+run is enough. However, if you do make changes, rerun this command.
 
   ```bash
   npm run prepare-app   # Needed to generate the runtime CSS files. A single run will suffice.
@@ -17,11 +23,11 @@ a single run will suffice. When you, however, do change the styles, you need to 
 The [example](/Documentation/Overview/Getting_Started#example-project-startup-2) 
 and [template](/Documentation/Overview/Getting_Started#template-project-startup-3) projects both
 contain a folder `style` that holds the SCSS files that are provided with the projects.
-There are two sets of styles that determine the look of the web application and editor, 
+There are two sets of styles that determine the look of the web app and editor 
 one for the light theme, and one for the dark theme.
 The latter can be found in the folder `style/dark`.
 
-The styling for the web application can be found in the following files.
+The styling for the web app can be found in the following files.
 
 - `_app.scss`: contains all styling common to both dark and light mode.
 - `_app-theme-light.scss`: contains the styling for the light mode.
@@ -31,8 +37,8 @@ The styling for the web application can be found in the following files.
 
 # Styling the Editor
 
-Because the minimal [web application](/Documentation/Overview/Getting_Started#a-minimal-webapp-and-server-5) 
-is provided for your convenience only, the styling of the editor is kept separate from the styling of the web
+Because the minimal [web app](/Documentation/Overview/Getting_Started#a-minimal-webapp-and-server-5) 
+is provided solely for your convenience, the styling of the editor is kept separate from the styling of the web
 application. When you read the `_smui-theme.scss` and `dark/_smui-theme.scss` files, you will notice that 
 both refer to files that are included in the `@freon4dsl/core-svelte` package.
 
@@ -73,11 +79,13 @@ style is being used. For example, the following styles are defined for horizonta
 }
 ```
 
-To change any of the styling, copy the files from the `@freon4dsl/core-svelte` package into your
+To modify the styling, copy the files from the `@freon4dsl/core-svelte` package into your
 styles folder and adjust the `@use` statement in both `_smui-theme.scss` files to include your own
 files instead of the packaged ones. Then start changing the styles in your own
-copies to your liking, however, take care with the boolean and numeric controls, because they are based on
+copies to your liking, however, take care when modifying the boolean and numeric controls, because they are based on
 Material UI components.
+
+The following components derive their colors from Material UI variables, which you can override using Freon-specific CSS variables:
 
 - RadioComponent uses  "--mdc-theme-secondary" for its color, if you want to override this value set "--freon-boolean-radiobox-color".
 - CheckComponent uses  "--mdc-theme-secondary", if you want to override it, use "--freon-boolean-checkbox-color".

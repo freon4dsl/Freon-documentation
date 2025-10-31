@@ -1,12 +1,19 @@
+---
+title: Installing and Using Freon
+description: Learn how to install the Freon Language Workbench, create your first DSL project, run the projectional editor, and understand the generated project structure.
+tags: installation, setup, getting started, project structure, command line, projectional editor, npm, TypeScript, Svelte
+---
+
 <script>
     import Note from "$lib/notes/Note.svelte";
 </script>
 
 # Installing and Using Freon
 
-Get ready to use Freon by having <a href="https://nodejs.org/" target="_blank">node.js</a>
-and <a href="https://yarnpkg.com/" target="_blank">npm</a>
-installed. We are typically using the latest versions of all,
+Get ready to use Freon by installing <a href="https://nodejs.org/" target="_blank">Node.js<a>, which includes npm. 
+You may also use Yarn or another package manager if you prefer. 
+
+We are typically using the latest versions of all,
 although older versions likely work just as well.
 You could also try other packages managers instead of npm.
 
@@ -43,18 +50,20 @@ Next, open another (bash) terminal, and start the generated editor from it:
 The last command shows a URL that you can open in your preferred browser. The web page contains the 
 generated editor for the language in your project.
 
-<Note {header} {content}> </Note>
+<Note {header} {content}> 
 {#snippet header()}Use a recent browser version{/snippet}
 {#snippet content()}
 Please, use a recent version of a browser like Chrome or Edge, because we cannot
 ensure that the editor functions as it should in older browsers.
 {/snippet}
+</Note>
 
-<Note header={header2} content={content2}> </Note>
+<Note header={header2} content={content2}> 
 {#snippet header2()} Use Help Menu{/snippet}
 {#snippet content2()}
 For easier use of the editor, have a look at the key-bindings under the <em>Help</em> menu.
 {/snippet}
+</Note>
 
 ## Changing the DSL
 
@@ -70,7 +79,7 @@ re-runs the generator, and compiles the newly generated files:
 In order to speed up your development cycle the <code>npm run dev</code>
 command has the -watch flag set, so the webpage in the browser should be updated as well.
 
-<Note header={header3} content={content3}> </Note>
+<Note header={header3} content={content3}> 
 {#snippet header3()}Speedy Development Cycle{/snippet}
 {#snippet content3()}
 <p>
@@ -82,28 +91,30 @@ the following as address in the web browser: <code>http://localhost:8080/?model=
 and editor with. Thus, the browser responds to any regeneration with opening your test model instantaneously.
 </p>
 {/snippet}
+</Note>
 
-<Note header={header4} content={content4}> </Note>
+<Note header={header4} content={content4}> 
 {#snippet header4()}WebStorm Tip{/snippet}
 {#snippet content4()}
 If you are working with WebStorm, you might consider installing the
 plugin <a href="https://plugins.jetbrains.com/plugin/7677-awesome-console" target="_blank">Awesome Console</a>.
 This plugin redirects a click on an error message in the console to the correct position in any of the language definition files.
 {/snippet}
+</Note>
 
 ## Project Structure
 
-The code in a Freon project under `~/src` is organised into the following subfolders.
+The code in a Freon project under `~/src` is organised into the following sub-folders.
 
 - **defs**: the language definition files.
 - **freon**: the generated source code.
-  - **.../commandline**: code that provides commandline access to models in the language.
+  - **.../commandline**: code that provides command line access to models in the language.
   - **.../config**: code that provides the coupling between all parts of the generated workbench.
     This folder contains one file that will not be overwritten at regeneration: `FreonConfiguration.ts`.
     Here you can configure any [customization](/Documentation/Customizations) that you want the generated code to take into account.
   - **.../diagrams**: a number of UML diagrams generated from the language structure including a UML
     class diagram of the AST, an overview of all inheritance in the language, and one diagram per .ast file.
-    You all of them both in ordinary HTML and in Markdown format. 
+    You’ll find all of them in both HTML and Markdown format. 
     In the future we plan to make the generation customizable.
   - **.../editor**: code for the editor. This folder contains two files that will not be overwritten
     at regeneration: `CustomYourLanguageNameActions.ts` and `CustomYourLanguageNameProjection.ts`.
@@ -136,7 +147,7 @@ In the root of the project the following folder is also needed:
   Each model is stored in a folder in which you can find its model units as separate `.json` files in [LionWeb](/LionWeb/Overview) format.
 
 
-<Note header={header5} content={content5}> </Note>
+<Note header={header5} content={content5}> 
 {#snippet header5()}Be careful with handmade changes in <i>src/freon</i>.{/snippet}
 {#snippet content5()}
 The contents of all folders in <code>src/freon</code> is organized into two types of files: 
@@ -145,18 +156,18 @@ the <code>gen</code> subfolder. Files in the <code>gen</code> subfolder are
 always deleted before regeneration, so avoid placing important code 
 In contrast, files directly within the folder remain unchanged during regeneration.
 {/snippet}
+</Note>
 
-
-## A Minimal Webapp and Server
+## A Minimal Web App and Server
 
 The Freon projectional web editor needs to be embedded in an application to work properly.
 It also needs a server that allows to store and retrieve the models the user creates in the editor.
 
 For the server we provide a minimal implementation for your convenience.
-We also provide a complete web application to embed the Freon editor. 
+We also provide a complete web app to embed the Freon editor. 
 
 However, we anticipate that in the context where Freon is used, these components usually
-need to be replaced with appropriate solutions that are for the company or organization where it is being used.
+need to be replaced with solutions appropriate for the company or organization where Freon is being used.
 
 Note that Freon can optionally use the [LionWeb repository](/LionWeb/Overview).
 
@@ -184,11 +195,11 @@ This is what we call the Default Level of the [three levels of customization](/D
 
 ## The Command Line Interface
 
-The Freon commandline tool generates code from the various definition files.
-If you type ‘`freon`’ in a (bash) terminal you will see the following overview of the different
+The Freon command line tool generates code from the various definition files.
+If you type `freon` in a (bash) terminal you will see the following overview of the different
 arguments that can be used. For detailed help about a specific command, type: ‘`freon  <command> -h`’.
 
-<Note header={header6} content={content6}> </Note>
+<Note header={header6} content={content6}> 
 {#snippet header6()} Incomplete code{/snippet}
 {#snippet content6()}
 <p>
@@ -204,7 +215,7 @@ has been run, you can use specific commands for individual aspects of your langu
 This approach ensures correct dependencies while minimizing regeneration time.
 </p>
 {/snippet}
-
+</Note>
 
 ```bash
 freon -h

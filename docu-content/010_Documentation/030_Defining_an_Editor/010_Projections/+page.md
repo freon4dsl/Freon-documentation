@@ -1,3 +1,9 @@
+---
+title: Projections
+description: Learn how to define projections in Freon, including property inclusion, named projections, lists, tables, optional projections, and inherited projections for flexible and readable editor layouts.
+tags: projections, editor definition, named projections, lists, tables, optional projections, inherited projections, Freon, DSL development, concrete syntax
+---
+
 <script>
     import Note from "$lib/notes/Note.svelte";
 </script>
@@ -7,7 +13,7 @@
 A projection is defined using angular brackets, 
 in a style similar to Markdown. The appearance of the definition 
 closely resembles the resulting output. Everything within square 
-brackets (`[]`), except for parts enclosed in `${}`, is interpreted 
+brackets (`[]`), except text enclosed in `${}`, is interpreted 
 literally, including the indentation. For more details, refer to the information 
 on [Indentation](/Documentation/Defining_an_Editor/Indentation).
 
@@ -29,7 +35,7 @@ This is
 
 When defining a projection for a concept or interface, you will likely need 
 to include its properties. This is done using the special notation `${}`, which 
-instructs Freon to include a property according to the projection defined for its type.
+instructs Freon to include a property according to the projection of its type.
 
 For example, given the following metamodel:
 ```proto
@@ -71,29 +77,29 @@ InsuranceProduct {[
 ]}
 ```
 
-<Note {header} {content}> </Note>
+<Note {header} {content}> 
 {#snippet header()}Only direct properties are allowed{/snippet}
 {#snippet content()}
 Only the properties that are directly owned by the concept or interface are allowed. For instance,
 <code>self.declaredType.name</code> is not a valid property projection. 
 {/snippet}
+</Note>
 
-
-<Note header={header2} content={content2}> </Note>
+<Note header={header2} content={content2}> 
 {#snippet header2()}<code>self</code> is optional{/snippet}
 {#snippet content2()}
 Because you may only use direct properties, the prefix <code>self</code> may be omitted. 
 {/snippet}
+</Note>
 
-
-<Note header={header3} content={content3}> </Note>
+<Note header={header3} content={content3}> 
 {#snippet header3()} One property, one occurrence in the editor{/snippet}
 {#snippet content3()}
-Unfortunately, it is not possible to show the same property of a concept twice in the same editor.
+It is not possible to show the same property of a concept twice in the same editor.
 The tooling we use to keep the state of the underlying model in sync with the view in the running editor
 does not allow us to do this.
 {/snippet}
-
+</Note>
 
 ## Using Named Projections
 
@@ -122,8 +128,7 @@ BaseProduct {[
 
 ## Lists
 
-For a property of type list, you can specify whether it should be projected 
-horizontally or vertically. Both options are optional. If 
+For list properties, you can specify horizontal or vertical projection. Both options are optional. If 
 neither `vertical` nor `horizontal` is specified, the property 
 will be displayed as a vertical list by default.
 
@@ -162,13 +167,13 @@ InsuranceProduct {[
 ]}
 ```
 
-<Note header={header4} content={content4}> </Note>
+<Note header={header4} content={content4}> 
 {#snippet header4()}Newlines in terminator or separator are ignored{/snippet}
 {#snippet content4()}
 A terminator or separator should not contain a newline character. Horizontal or vertical layout is
 purely determined by the keywords <code>horizontal</code> and <code>vertical</code>.
 {/snippet}
-
+</Note>
 
 ## Tables
 
@@ -186,13 +191,13 @@ display as a table. Optionally, you can also specify either `rows` or `columns`.
 in the list. This projection specifies the table headers and 
 3. determines how the elements of the list are arranged in rows or columns.
 
-<Note content={content5}> </Note>
+<Note content={content5}> 
 {#snippet content5()}
 Note that you only need to include one
 table projection for the elements for both column and row based tables.
 Freon will swap the entries when needed.
 {/snippet}
-
+</Note>
 
 To project the `parts` property of concept `BaseProduct` as a row based table, 
 you can use the following code.
@@ -208,7 +213,7 @@ BaseProduct {[
 
 Given the above example, there should also be a projection tagged `table` for the 
 concept `InsurancePart` (the type of `parts`).
-Below four columns/rows are defined, each with its own header.
+The example below defines four columns or rows, each with its own header.
 
 ```proto
 // Insurance/src/defs/editor-tables.edit#L6-L11
@@ -221,7 +226,7 @@ table [
 }
 ```
 
-<Note header={header6} content={content6}> </Note>
+<Note header={header6} content={content6}> 
 {#snippet header6()}Properties within a table are displayed according to their own projection{/snippet}
 {#snippet content6()}
 Each of the properties in a table is displayed using its own projection.
@@ -229,15 +234,14 @@ In this example, <code>name</code> is a string, and will be displayed as an edit
 and <code>maximumPayout</code> is a <code>EuroLiteral</code>
 Note that the properties can be lists themselves, which can be displayed as lists or tables.
 {/snippet}
+</Note>
 
-
-<Note header={header7} content={content7}> </Note>
+<Note header={header7} content={content7}> 
 {#snippet header7()}Whitespace in headers is ignored{/snippet}
 {#snippet content7()}
-The whitespace between the headers is not needed. However, for clarity, it is
-good style to align the column/row-separators.
+    Whitespace between headers is ignored, but aligning columns improves readability.
 {/snippet}
-
+</Note>
 
 ## Optional Projections
 
@@ -268,7 +272,7 @@ InsuranceProduct {[
 
 ## Inherited Projections
 
-As concepts may inherit from other concepts, so can the projection definition of a super concept be used in the projection definition of a child concept.
+Just as concepts can inherit from other concepts, projection definitions can also inherit from their super concepts.
 To indicate the inclusion the syntax `[=> SUPER]` is used, where `SUPER` is the name of the super concept.
 
 For instance, in the UML metamodel both `AssociationClass` and `Class` inherit from the abstract `Classifier`. When building an editor for the UML metamodel,

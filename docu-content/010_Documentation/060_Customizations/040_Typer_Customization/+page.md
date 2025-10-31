@@ -1,18 +1,26 @@
+---
+title: Customization of the Typer
+description: Learn how to customize Freon’s typer per concept by extending or overriding generated methods in your custom Typer implementation.
+tags: typer, customization, Freon, type provider, FreTyper, DSL development, TypeScript
+---
+
 # Customization of the Typer
 
-The typer can be customized **per concept**. Your new typer needs
-to implement the [FreTyper interface](/Documentation/Under_the_Hood/FreTool_Interfaces#fretyper-5).
+The typer can be customized **per concept**.  
+Your new typer must implement the [`FreTyper` interface](/Documentation/Under_the_Hood/FreTool_Interfaces#fretyper-5).
 
-As a convenience, Freon generates a file `~/freon/typer/CustomYourLanguageNameTyperPart.ts`,
-which will not be overwritten upon regeneration. It already contains a class that implements this interface.
+As a convenience, Freon generates a file `~/freon/typer/CustomYourLanguageNameTyperPart.ts`,  
+which will **not** be overwritten upon regeneration.  
+It already contains a class that implements this interface, ready for your extensions.
 
 ## Adding Typing Methods
 
-In the new typer class add the code you want to add in one or more of the methods. Let the method return 'null'
-to let Freon know that the typer from the Freon Definition Level should be used instead.
+In the new typer class, you can add custom logic to one or more methods.  
+Let the method return `null` to indicate that the typer from the Freon Definition Level should be used instead.
 
-The following code changes the `conformsList` method for lists of `Variables`. It checks the lists in
-reverse order: A-B-C conforms to C-B-A.
+The following example overrides the `conformsList` method for lists of `Variables`.  
+It checks whether two lists conform when their elements appear in reverse order:  
+for example, `[A, B, C]` conforms to `[C, B, A]`.
 
 ```ts
 // CustomizationsProject/src/custom/typer/CustomEntityModelTyperPart.ts

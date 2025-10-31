@@ -1,3 +1,9 @@
+---
+title: Projections for Limited Concepts
+description: Learn how to display limited concepts in Freon using radio groups for single-valued properties and checkbox lists for multi-valued properties.
+tags: limited concepts, projections, radio group, checkbox list, enumeration, editor controls, projectional editor, Freon, DSL development
+---
+
 <script>
     import Figure from "$lib/figures/Figure.svelte";
 </script>
@@ -5,7 +11,7 @@
 # Projections for Limited Concepts
 
 There are two controls for limited concepts. They differ, based on whether the property is a list or a single value.
-For single values the property can be displayed as a radio group, where all possible values of the 
+For single values, the property can be displayed as a radio group, where all possible values of the 
 limited concept are options. When the property is a list of limited values, it can be displayed as a list of checkboxes.
 
 The example that is used in the documentation defines the limited concept `InsuranceTheme` as a simple enumeration.
@@ -18,7 +24,7 @@ limited InsuranceTheme {        // limited defined as a simple enumeration
 }
 ```
 
-This concept is twice used as property type. Once as a single value in `BaseProduct`, and once 
+This concept is used twice as property type. Once as a single value in `BaseProduct`, and once 
 as a list in `InsurancePart`.
 
 ## Single Valued Properties
@@ -40,7 +46,7 @@ concept BaseProduct {
     yieldsProfit: boolean;
     range: number;
     nrOfUse: number;
-    // The previoud two properties are present to show the different options for displaying numbers.
+    // The previous two properties are present to show the different options for displaying numbers.
     // The following property is present to show the use of an external DatePicker component.
     date: string;
 }
@@ -54,9 +60,9 @@ We combine this metamodel with the following projection.
 BaseProduct {[
     Base Products ${name} for ${theme radio}
         is still under construction: ${self.isUnderConstruction switch}
-        is approved level1: ${self.isApprovedLevel1 radio [Sure | NoWay]}
-        is approved level2: ${self.isApprovedLevel2 inner-switch}
-        is approved level3: ${self.isApprovedLevel3 checkbox}
+        is approved level 1: ${self.isApprovedLevel1 radio [Sure | NoWay]}
+        is approved level 2: ${self.isApprovedLevel2 inner-switch}
+        is approved level 3: ${self.isApprovedLevel3 checkbox}
         yields profit: ${self.yieldsProfit text [Plenty | Little]}
         expected nr of use: ${self.nrOfUse}
         range: ${self.range slider}
@@ -66,7 +72,7 @@ BaseProduct {[
 ]}
 ```
 
-And the result looks like this.
+The result is shown below.
 
 <Figure
 imageName={'documentation/Documentation-Limited-Projections-screenshot1.png'}
@@ -74,7 +80,7 @@ caption={'A control for a single value of limited type'}
 figureNumber={1}
 />
 
-## Multivalued Properties
+## Multi-Valued Properties
 
 The metamodel for `InsuranceProduct` is the following.
 
@@ -119,6 +125,6 @@ And the result is the following.
 
 <Figure
 imageName={'documentation/Documentation-Limited-Projections-screenshot2.png'}
-caption={'A control for a multivalued property of limited type'}
+caption={'A control for a multi-valued property of limited type'}
 figureNumber={2}
 />

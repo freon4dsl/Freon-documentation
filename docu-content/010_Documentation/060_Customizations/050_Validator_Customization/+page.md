@@ -12,7 +12,9 @@ part of the visitor pattern, adding an error list.
 ```ts
 // CustomizationsProject/src/freon/validator/gen/EntityModelValidator.ts#L15-L17
 
-
+* its nodes, where any errors are deposited in 'errorList'.
+* Every checker that is used by the validator 'EntityModelValidator' should implement this interface.
+*/
 ```
 
 The worker defines two methods for each concept in the language, as shown in the next example.

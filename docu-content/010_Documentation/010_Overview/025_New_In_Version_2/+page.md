@@ -1,3 +1,9 @@
+---
+title: What’s New in Freon 2.0
+description: Discover the major improvements in Freon 2.0, including the redesigned Scoper, Flowbite-based web app, enhanced editor customization, smarter references, and updated tooling for Svelte 5.
+tags: Freon 2.0, release notes, new features, Scoper, Flowbite, Svelte 5, projectional editor, customization, DSL development, changelog
+---
+
 # 🌟 What’s New in Freon 2.0
 
 Freon 2.0 is here — and it’s our biggest release yet!  
@@ -38,6 +44,9 @@ At last, you can create **multi-line text components** directly in the editor.
 Definition files have been aligned and simplified for a more consistent syntax across all generators.
 
 ### 🧱 Clearer External Components
+External 
+components are **no longer experimental** and are now a **fully supported part of the editor framework**, 
+allowing you to embed custom Svelte components in your projections with confidence.
 All boxes previously called `External…` have been renamed to `…ReplacerBox` for clarity.
 
 ### ⚙️ Improved Handling of Optional Primitives

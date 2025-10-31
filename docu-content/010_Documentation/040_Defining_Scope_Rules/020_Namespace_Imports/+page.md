@@ -1,11 +1,18 @@
+---
+title: Namespace Imports
+description: Learn how to extend visibility in Freon by importing namespaces, define inheritance-like behavior, use recursive imports, and control visibility with public and private properties.
+tags: namespace imports, scoping, visibility, recursive imports, private properties, Freon, DSL development, scope rules
+---
+
 <script>
     import Figure from "$lib/figures/Figure.svelte";
 </script>
 
 # Namespace Imports
 
-Previously we have seen that the set of visible nodes in a namespace consists of its declared nodes plus the visible nodes 
-of its parent namespace. This standard visibility can be extended with **imports**. When a namespace is imported into 
+Previously, we saw that the set of visible nodes in a namespace consists of the nodes it declares and 
+the nodes visible in its parent namespace. This standard visibility can be extended with **imports**. 
+When a namespace is imported into 
 another namespace, its declared nodes are added to the visible nodes of the latter.
 
 In the following example, `basedOn` is in the language structure definition (`.ast` file) a property of the
@@ -29,8 +36,8 @@ concept InsuranceProduct {
 }
 ```
 
-When the following import statement is included in the .scope file, the declared nodes in the `basedOn` property in the user's model
-will be included in the namespace identified by an `InsuranceProduct`. Note, that of course both `InsuranceProduct` and 
+If the following import statement is included in the .scope file, the declared nodes in the `basedOn` property in the user's model
+will be included in the namespace identified by an `InsuranceProduct`. Note that both `InsuranceProduct` and 
 `BaseProduct` (the type of `basedOn`) need to be defined as a namespace.
 
 ```proto
@@ -46,8 +53,8 @@ InsuranceProduct {
 ```
 
 ## Effect on the Namespace Tree
-A namespace import makes the namespace tree actually a graph, like references make the abstract syntax _tree_ become a graph.
-For instance, when the namespace A8 is imported in namespace A3 an extra edge is made between nodes A3 and A8, as shown in 
+A namespace import effectively turns the namespace tree into a graph, like references make the abstract syntax _tree_ become a graph.
+For instance, when the namespace A8 is imported into namespace A3 an extra edge is made between nodes A3 and A8, as shown in 
 the next figure. This edge signifies the inclusion of the declared nodes of A8 ([F1, D7, D8]) in the visible nodes of A3.
 
 <Figure
@@ -58,7 +65,7 @@ figureNumber={1}
 
 ## Example: Defining Inheritance
 
-Using namespace imports, you can support some kind of inheritance in your DSL. Say, `baseClass` is to represent the "super class" 
+Using namespace imports, you can support some kind of inheritance in your DSL. Suppose `baseClass` represents the "super class" 
 of `ClassWithInheritance` in your language, as follows.
 
 ```proto
@@ -77,7 +84,7 @@ concept Method {
 }
 ```
 
-To keep it brief, the definitions of `Parameter` and `Body` are not included. The only thing you need to know is 
+For brevity, the definitions of `Parameter` and `Body` are omitted. The only thing you need to know is 
 that `Body` is an expression in which you can refer to a method.
 
 Next, use a scope import to include all the declared nodes of the "super class" in the visible nodes of the "subclass".
@@ -94,7 +101,7 @@ ClassWithInheritance {
 ```
 
 Now suppose, the user's model is this. (Again, for brevity, we do not include the editor definition, 
-but the keywords `class`, `super`, and `method` are a definite give-away to the link between concrete 
+but the keywords `class`, `super`, and `method` are a definite giveaway to the link between concrete 
 and abstract syntax.😊)
 
 ```
@@ -116,13 +123,13 @@ class DryCleaner super SmallBusiness
 
 ```
 
-The user is able to use the names of the methods of `SmallBusiness` because they are 
+The user can reference the methods of `SmallBusiness` because they are 
 in the declared nodes of the namespace identified by `SmallBusiness`, and they are imported in the
 `DryCleaner` namespace by the import statement in the scope file.
 
 ## Recursive Imports
 
-Sometimes you want to add not only the declared nodes of the imported namespace, but its imported 
+Sometimes you may want to include not only the declared nodes of the imported namespace, but its imported 
 nodes as well. In the example above, where a sort of inheritance is defined, you would want the
 methods of the superclass of the superclass also to be included. We can define this in the scope 
 file by simply adding the keyword `recursive` in front of the import. Each import in the list can 
@@ -140,12 +147,12 @@ ClassWithInheritance {
 
 ## Public and Private Properties
 
-To add an even further control over what and what is not imported, you can add the keyword 'private' 
-to the definition of the properties in the .ast file. (Not in the .scope file!) Any property that is 
+To add an even finer control over what and what is not imported, you can add the keyword 'private' 
+to the definition of properties in the .ast file. (Not in the .scope file!) Any property that is 
 thus marked `private` will not be included in the set of imported nodes. The marking does not affect
 the declared nodes, only the imported nodes of any namespace that imports a namespace with private 
-properties. Meaning that properties marked private are visible in their 'own' namespace, but not when this
-namespace is imported elsewhere.
+properties. This means that properties marked `private` are visible within their own namespace, 
+but not when that namespace is imported elsewhere.
 
 Suppose that in the inheritance example we want to have private methods. We could adjust the .ast file like this:
 

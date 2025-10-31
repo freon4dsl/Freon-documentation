@@ -17,7 +17,7 @@ Build the project (`npm run build`). Start the editor and select the model named
 basically the same as the model called 'Lesson6' that was used in the tutorial. Open the model unit 'TestB' and run the 
 interpreter from the `Edit` menu on the complete test (i.e. by selecting the test as current node).
 
-<Note {header} {content}> </Note>
+<Note {header} {content}> 
 {#snippet header()}The selected node is the one that is interpreted{/snippet}
 {#snippet content()}
 When running the interpreter from the <code>Edit</code> menu, the interpreter will try to evaluate 
@@ -25,6 +25,7 @@ the currently selected node. You will see a different result in the Interpreter 
 Often the interpretation cannot be done completely, because some context is needed. It is up to the 
 creator of the interpreter to augment this.
 {/snippet}
+</Note>
 
 ## Values for the Literals
 

@@ -221,7 +221,7 @@ static evalPage(node: Page, ctx: InterpreterContext): RtObject {
 }
 ```
 
-<Note {header} {content}> </Note>
+<Note {header} {content}> 
 {#snippet header()}Meta Levels{/snippet}
 {#snippet content()}
 In Domain Specific language we distinguish the following levels:
@@ -241,7 +241,7 @@ For Java this is the execution of a Java program.
 </li>
 </ol>
 {/snippet}
-
+</Note>
 
 ```ts
 // EducationInterpreter/src/custom/interpreter/runtime/RtGrade.ts

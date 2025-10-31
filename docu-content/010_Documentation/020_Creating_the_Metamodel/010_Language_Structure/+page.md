@@ -1,3 +1,9 @@
+---
+title: The Language Structure
+description: Understand the main structural elements of a Freon language definition, including models, model units, concepts, expression concepts, binary expression concepts, limited concepts, and interfaces.
+tags: language structure, metamodel, model units, concepts, expression concepts, binary expressions, limited concepts, interfaces, Freon, DSL development
+---
+
 <script>
     import Note from "$lib/notes/Note.svelte";
 </script>
@@ -7,17 +13,18 @@
 ## Model
 
 A _model_ is the root of the abstract syntax tree.
-It may hold any number of model units as children. These model units may be of different type. For instance, you
+It may hold any number of model units as children. These model units may be of different types. For instance, you
 can have model units that define the items in a home automation system, and other model units that define the rules
 that apply in this system.
 
-<Note {header} {content}> </Note>
+<Note {header} {content}> 
 {#snippet header()} Models are never explicit in an editor{/snippet}
 {#snippet content()}
 The model is never shown in an editor as a whole.
-It is always shown in parts: the model units. However, the provided webapp does 'show' the model and the units, that are
+It is always shown in parts: the model units. However, the provided web app does 'show' the model and the units, that are
 part of it, in its left panel.
 {/snippet}
+</Note>
 
 ```proto
 // Insurance/src/defs/language-main.ast#L7-L10
@@ -97,7 +104,7 @@ expression NumberLiteral base Literal {
 }
 ```
 
-<Note header={header2} content={content2}> </Note>
+<Note header={header2} content={content2}> 
 {#snippet header2()}Use a Single Root of the Expression AST{/snippet}
 {#snippet content2()}
 <p>
@@ -108,17 +115,18 @@ For instance, when defining a bracketed expression, i.e. an expression surrounde
 simply use the root expression concept as type of the property that is to be put between the brackets.
 </p>
 {/snippet}
+</Note>
 
 ## Binary Expression Concept
 
-A _binary expression concept_ is an expression concept that has two sub expressions, `left` and `right` operands,
+A _binary expression concept_ is an expression concept that has two sub-expressions, `left` and `right` operands,
 and an operator, which in the concrete syntax is shown in the middle. For example, the expression `4 + 5`
 has as left operand `4`, as operator `+`, and as right operand `5`.
 
 Any concrete binary expression concept needs to have a priority. For example, in mathematics the 
-priority of the multiplication is higher than the priority of the plus. The expression 5 + 67 \* 8 
+priority of the multiplication is higher than the priority of addition. The expression 5 + 67 \* 8 
 should be read as 5 + (67 \* 8), not as (5 + 67) \* 8. The priorities are used by Freon to balance the
-abstract syntax tree (see [Projectional Editing](/Background/Projectional_Editing#tree-balancing)). In
+abstract syntax tree (See [Projectional Editing](/Background/Projectional_Editing#tree-balancing)). In
 [Ease of Editing](/Documentation/Defining_an_Editor/Ease_of_Editing) you can
 find more information on how to set the concrete syntax for the operand.
 
@@ -152,7 +160,7 @@ binary expression DivideExpression base BinaryExpression {
 
 ## Limited Concept
 
-A _limited concept_ is a concept that has a limited number of predefined instances. Actually, it is an extended
+A _limited concept_ defines a fixed set of predefined instances. Actually, it is an extended
 version of an enumeration. All instances become part of the standard library of your language.
 
 A limited concept must always have a name property (`name: identifier;`), but if this is not provided
@@ -186,13 +194,13 @@ limited PremiumDays {           // limited with various options
 }
 ```
 
-<Note header={header3} content={content3}> </Note>
+<Note header={header3} content={content3}> 
 {#snippet header3()} No quotes around numbers and booleans.{/snippet}
 {#snippet content3()}
 For number and boolean types, quotes (double or single) are not allowed around the values of properties of
 instances of limited concepts.
 {/snippet}
-
+</Note>
 
 ## Interface
 
