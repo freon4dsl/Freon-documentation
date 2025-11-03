@@ -13,7 +13,7 @@ tags: interpreter, interpretation, AST, evaluation, projectional editor, Freon, 
 
 Freon includes an interpreter framework that makes it easy to build an interpreter for your language.
 
-<Note {header} {content}> 
+<Note> 
 {#snippet header()}The Interpreter Framework is still in Development{/snippet}
 {#snippet content()}
 <p>The use of an interpreter in the Freon editor is still in development. In particular, 

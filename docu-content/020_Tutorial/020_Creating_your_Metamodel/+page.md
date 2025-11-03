@@ -69,8 +69,7 @@ modelunit SiteGroup {
 Let’s focus on the _SiteGroup_ model unit first. Because it’s likely that we’ll need to reference topics,
 we give each topic a `name` of type `identifier`.
 
-<Note {header} {content}>
-{#snippet header()} The type identifier versus the type string.{/snippet}  
+<Note>{#snippet header()} The type identifier versus the type string.{/snippet}  
 {#snippet content()}
 <p>A property of type string may contain any printable character, but the content of an identifier is bound to a number of rules.
 These rules are equal to the rules in Typescript. Any concept or model unit that has a property

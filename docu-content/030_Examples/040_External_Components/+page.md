@@ -20,8 +20,8 @@ by incorporating your own Svelte components, whether from a library or custom-ma
 
 In this extended example, you’ll learn how to use external Svelte components to customize the Freon editor.
 We’ll demonstrate how to add icons and buttons, use an Accordion component from a library, and create
-a sorted table component. Since the complementary web app already uses the
-<a href="https://sveltematerialui.com/" target="_blank">SMUI</a> UI library, we’ll use it in our example.
+a sorted table component. Since the complementary web app already uses 
+the <a href="https://flowbite-svelte.com/" target="_blank">Flowbite Svelte</a> UI library, we’ll use it in our example.
 You’re free to choose any HTML component library and CSS tooling you prefer.
 
 The source code for this example is available on GitHub—see

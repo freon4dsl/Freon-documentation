@@ -10,7 +10,7 @@ tags: installation, setup, getting started, project structure, command line, pro
 
 # Installing and Using Freon
 
-Get ready to use Freon by installing <a href="https://nodejs.org/" target="_blank">Node.js<a>, which includes npm. 
+Get ready to use Freon by installing <a href="https://nodejs.org/" target="_blank">Node.js</a>, which includes npm. 
 You may also use Yarn or another package manager if you prefer. 
 
 We are typically using the latest versions of all,
@@ -50,7 +50,7 @@ Next, open another (bash) terminal, and start the generated editor from it:
 The last command shows a URL that you can open in your preferred browser. The web page contains the 
 generated editor for the language in your project.
 
-<Note {header} {content}> 
+<Note> 
 {#snippet header()}Use a recent browser version{/snippet}
 {#snippet content()}
 Please, use a recent version of a browser like Chrome or Edge, because we cannot

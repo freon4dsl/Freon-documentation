@@ -21,8 +21,7 @@ npm run freon type-it -d src/defs -o src/
 npm run freon validate-it -d src/defs -o src/
 ```
 
-<Note {header} {content}>
-{#snippet header()} Incomplete code{/snippet}
+<Note>{#snippet header()} Incomplete code{/snippet}
 {#snippet content()}
 <p>
 Keep in mind that all commands, except <code>all</code>, when used individually (i.e., without combining 

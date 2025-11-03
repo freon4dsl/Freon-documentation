@@ -34,7 +34,7 @@ command is executed, but can also be executed independently using:
 npm run freon scope-it -d src/defs -o src/
 ```
 
-<Note {header} {content}> 
+<Note> 
 {#snippet header()} Incomplete code{/snippet}
 {#snippet content()}
 <p>

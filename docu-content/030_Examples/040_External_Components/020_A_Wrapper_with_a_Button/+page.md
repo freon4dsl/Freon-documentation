@@ -17,8 +17,6 @@ Our example combines a person’s **phone number** with a **button** that can tr
 Here, clicking the button shows the phone number in a snackbar notification—but you could just as well send it to an
 external system to initiate a call or validate it against another database.
 
-*Note: This guide assumes Svelte v4 and SMUI v7. Updates for newer versions will follow.*
-
 ---
 
 ## Step 1: Create the Svelte Component

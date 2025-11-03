@@ -11,8 +11,7 @@ tags: external components, box types, wrappers, replacers, editor, RenderCompone
 
 # External Component Box Types
 
-<Note {header} {content}>
-{#snippet header()}External components are fully supported{/snippet}
+<Note>{#snippet header()}External components are fully supported{/snippet}
 {#snippet content()}
 <p>External components are a fully supported part of the editor framework. While compatibility with every third-party library cannot be guaranteed, the APIs described here are stable.</p>
 {/snippet}

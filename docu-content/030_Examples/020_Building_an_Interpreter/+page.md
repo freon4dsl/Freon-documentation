@@ -31,8 +31,7 @@ it’s essentially the same as the tutorial’s `Lesson6` model.
 Open the model unit **TestB**, then run the interpreter from the **Edit** menu on the entire test  
 (by selecting the test as the current node).
 
-<Note {header} {content}>
-{#snippet header()}The selected node is the one that is interpreted{/snippet}
+<Note>{#snippet header()}The selected node is the one that is interpreted{/snippet}
 {#snippet content()}
 When running the interpreter from the <code>Edit</code> menu, Freon evaluates the <strong>currently selected node</strong>.  
 You’ll see different results in the <em>Interpreter</em> tab depending on the selection.  

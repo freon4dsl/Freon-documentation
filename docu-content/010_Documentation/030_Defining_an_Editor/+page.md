@@ -25,7 +25,7 @@ The editor offers specialized support for binary expressions, which cannot funct
 if a user-defined projection is applied. Limited concepts are also restricted 
 from having projections because they are intended for use as references only within the editor.
 
-<Note {header} {content}> 
+<Note> 
 {#snippet header()} The projection comes first {/snippet}
 {#snippet content()}
 For every concept or interface, define the projection before the trigger and/or symbol.  

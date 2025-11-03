@@ -17,7 +17,7 @@ It may hold any number of model units as children. These model units may be of d
 can have model units that define the items in a home automation system, and other model units that define the rules
 that apply in this system.
 
-<Note {header} {content}> 
+<Note> 
 {#snippet header()} Models are never explicit in an editor{/snippet}
 {#snippet content()}
 The model is never shown in an editor as a whole.

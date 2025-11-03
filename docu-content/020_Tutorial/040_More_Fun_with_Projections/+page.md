@@ -70,7 +70,7 @@ When an editor definition doesn’t include a projection for a certain concept, 
 editor definition. Which projection is chosen is determined by a fixed algorithm.
 For details, see [Editor Precedence](/Documentation/Defining_an_Editor#editor-precedence-4).
 
-<Note {header} {content}> {#snippet header()} One property, one occurrence in the editor{/snippet}
+<Note> {#snippet header()} One property, one occurrence in the editor{/snippet}
 {#snippet content()}
 <p>Unfortunately, it’s not possible to show the same property of a concept twice in the same editor.
 The tooling that keeps the underlying model and the editor view in sync doesn’t allow this.</p>

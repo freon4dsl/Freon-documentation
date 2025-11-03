@@ -184,7 +184,7 @@ The first such grade determines the result for that page.
 To represent this at runtime, we introduce a new class, `RtGrade`, since we want to distinguish **runtime objects (M0)**  
 from **model objects (M1)** and **language definitions (M2)**.
 
-<Note {header} {content}>
+<Note>
 {#snippet header()}Meta Levels{/snippet}
 {#snippet content()}
 In Domain-Specific Languages, we distinguish between three levels:
@@ -197,8 +197,9 @@ In Domain-Specific Languages, we distinguish between three levels:
 
 3. **M0 – Runtime**: The results produced by running or interpreting an M1 model.  
    In Freon, this is what your interpreter computes. In Java, this would be the execution of a program.
-   {/snippet}
-   </Note>
+
+{/snippet}
+</Note>
 
 ### The `RtGrade` class
 

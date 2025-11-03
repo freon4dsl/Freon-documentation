@@ -82,7 +82,7 @@ will be indented with three spaces.
 
 ```
 
-<Note {header} {content}> 
+<Note> 
 {#snippet header()} Indentation is incremental{/snippet}
 {#snippet content()}
 Any indentation applied to a property is added to the indentation of that property’s projection.

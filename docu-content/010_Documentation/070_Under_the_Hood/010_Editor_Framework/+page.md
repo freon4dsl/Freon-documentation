@@ -10,8 +10,8 @@ tags: Editor Framework, Box Tree, AST, DOM, Projection, Freon
 
 # The Projectional Editor Framework
 
-The Projectional Editor Framework is written in [TypeScript](https://www.typescriptlang.org/) and [Svelte](https://svelte.dev/).
-This page provides an overview of the framework.  
+The Projectional Editor Framework is written in <a href="https://www.typescriptlang.org/" target="_blank">TypeScript</a> 
+and <a href="https://svelte.dev/" target="_blank">Svelte</a>. This page provides an overview of the framework.  
 If you want to know how to customize it, see [Editor Customization](/Documentation/Customizations/Editor_Customization).
 
 ## The AST, the Box Tree, and the DOM
@@ -30,9 +30,9 @@ Thus, at any given moment there are two internal TypeScript representations of t
 - The **Concrete Syntax Tree (CST)**, or **Box Tree**
 
 Because Freon produces a web-based editor, there is yet another representation of the content: the **Document Object Model (DOM)**.  
-According to [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model/Introduction), the DOM is the data representation of the objects that comprise the structure and content of a document on the web.
+According to <a href="https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model/Introduction" target="_blank">MDN Web Docs</a>, the DOM is the data representation of the objects that comprise the structure and content of a document on the web.
 
-In Freon, DOM elements are implemented as [Svelte](https://svelte.dev/) components.  
+In Freon, DOM elements are implemented as <a href="https://svelte.dev/" target="_blank">Svelte</a> components.  
 Whenever the Freon editor is in use, it keeps these three different representations of the user's model in sync.
 
 This section of the documentation explains the **Box Tree**.

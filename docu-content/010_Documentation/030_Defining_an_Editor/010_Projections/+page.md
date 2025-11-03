@@ -77,7 +77,7 @@ InsuranceProduct {[
 ]}
 ```
 
-<Note {header} {content}> 
+<Note> 
 {#snippet header()}Only direct properties are allowed{/snippet}
 {#snippet content()}
 Only the properties that are directly owned by the concept or interface are allowed. For instance,

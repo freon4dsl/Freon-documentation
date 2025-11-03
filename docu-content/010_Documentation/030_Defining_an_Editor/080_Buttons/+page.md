@@ -52,7 +52,15 @@ table [
 To style these buttons the following SCSS code is added.
 
 ```scss
-// Styling/app.scss#L29-L43
+// Styling/button.css#L9-L31
+
+.MyButton-role::after {
+  font-family: 'Material Icons', emoji;
+  content: "\e5d2"; // this number is called the icon's code point in Material
+  color: green;
+  font-size: 25px;
+  rotate: 30deg;
+}
 
 .MyTableButton-role::before {
   font-family: "Font Awesome 6 Free", emoji;

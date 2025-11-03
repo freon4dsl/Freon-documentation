@@ -1,7 +1,7 @@
 ---
 title: Replacing a Part List
-description: Replace a Freon part list with a custom Svelte accordion component. Learn to build StaffAccordion.svelte, wire it to ExternalPartListBox, manage focus and refresh, and register it for use in projections.
-tags: Freon, Svelte, external components, ExternalPartListBox, StaffAccordion, Accordion, RenderComponent, AST.change, MobX, projections, CourseSchedule
+description: Replace a Freon part list with a custom Svelte accordion component. Learn to build StaffAccordion.svelte, wire it to PartListReplacerBox, manage focus and refresh, and register it for use in projections.
+tags: Freon, Svelte, external components, PartListReplacerBox, StaffAccordion, Accordion, RenderComponent, AST.change, MobX, projections, CourseSchedule
 ---
 
 <script>

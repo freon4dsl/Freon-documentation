@@ -1,15 +1,3 @@
-// Overall styles applied to the webapp and the editor in both light and dark mode
-
-// linear-progress is included for the progress indicator in the EditorPart component
-@use '@material/linear-progress/index' as linear-progress;
-@use '@material/typography/mdc-typography';
-
-html,
-body {
-  padding: 0;
-  margin: 0;
-}
-
 // example of adding icons to a button
 
 // Don't forget to include one of these in webapp-starter/public/index.html:
@@ -43,31 +31,3 @@ body {
 }
 
 // end example of adding icons to a button
-
-// styles for wrapping and replacing native components
-.wrapper {
-  border: 2px groove #666666;
-  border-radius: 8px;
-  background: whitesmoke;
-  padding: 2px;
-}
-.wrapper:focus {
-  background: lightblue;
-}
-
-.replacer {
-  border: 2px groove #666666;
-  border-radius: 8px;
-  background: whitesmoke;
-  padding: 2px;
-}
-.replacer:focus {
-  background: lightblue;
-}
-
-.fragment-component {
-  border: 2px groove #666666;
-  border-radius: 8px;
-  background: blanchedalmond;
-  padding: 2px;
-}

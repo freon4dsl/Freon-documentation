@@ -61,8 +61,7 @@ Freon provides a standard set of runtime classes ready for immediate use. These 
 
 You can extend these foundational classes to create domain-specific runtime objects. 
 
-<Note {header} {content}>
-{#snippet header()}Meta Levels{/snippet}
+<Note>{#snippet header()}Meta Levels{/snippet}
 {#snippet content()}
 Freon’s interpreter framework distinguishes three meta levels, similar to the standard M2/M1/M0 structure used in modeling.
 <ol>

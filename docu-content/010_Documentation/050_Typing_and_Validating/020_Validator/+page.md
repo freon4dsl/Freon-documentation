@@ -72,7 +72,7 @@ CalcFunction {
 
 ## Type Check Rules
 
-Based on the typing rules defined in the [typer](/Documentation/Typing_and_Validation/Type_Provider), rules can be stated to ensure type compliance.
+Based on the typing rules defined in the [typer](/Documentation/Typing_and_Validating/Type_Provider), rules can be stated to ensure type compliance.
 To indicate a **type checking rule** the keyword `typecheck` is used, followed by either `equalsType` or `conformsTo`.
 **`equalsType`** requires both properties to have identical types, while **`conformsTo`** allows the first to conform to the second.
 

@@ -56,7 +56,7 @@ string 'EUR'. Note that the method checks whether it is used for concepts of typ
 
 ```
 
-<Note {header} {content}> {#snippet header()}Use another filename and/or location{/snippet}
+<Note> {#snippet header()}Use another filename and/or location{/snippet}
 {#snippet content()}
 You can rename the file <code>~/freon/editor/CustomYourLanguageNameProjection.ts</code>, and/or place it in another location.
 In that case, you need to adjust the file <code>~/freon/config/FreonConfiguration</code>. 

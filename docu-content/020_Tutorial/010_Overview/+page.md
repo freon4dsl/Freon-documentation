@@ -12,10 +12,9 @@ You will learn how to create the supporting tools—such as the editor, validato
 You can also consult the full documentation, or—if you’re eager to get started locally—[create a project](/Documentation/Overview/Getting_Started#example-project-startup-2).
 
 We assume that you have an interest in DSLs and are familiar with terms such as *metamodel*, *abstract syntax*, and *model*, as well as abbreviations like *AST*.  
-If not, please refer to introductory materials, such as the book  
-<a href="https://www.manning.com/books/building-user-friendly-dsls" target="_blank">*Building User-Friendly DSLs*</a> by Meinte Boersma.  
-If you just need a refresher, see the [Freon Terminology](/Documentation/Terminology) page.  
-Some basic knowledge of UML is useful, but not strictly required.
+If not, please refer to introductory materials, such as the 
+book <a href="https://www.manning.com/books/building-user-friendly-dsls" target="_blank">*Building User-Friendly DSLs*</a> by Meinte Boersma.
+If you just need a refresher, see the [Freon Terminology](/Documentation/Terminology) page. Some basic knowledge of UML is useful, but not strictly required.
 
 ## The DSL: Computer Aided Learning
 
@@ -75,7 +74,8 @@ For tips on using the editor, click the **question mark** icon on the editor’s
 Your project is set up so that all Freon definition files reside in the `src/defs` folder.  
 If you prefer a different structure, you can modify your `package.json` file.  
 Check the scripts for `generate` and `clean-gen`, which reference `src/defs`.  
-Changing these paths allows you to place your language definition files anywhere you like or adjust the output location (currently `src/freon`).
+Changing these paths allows you to place your language definition files anywhere you like. 
+You might also adjust the output location (currently `src/freon`).
 
 ```
 "generate": "freon -v all -d src/defs -o src/freon",
@@ -89,9 +89,5 @@ All metamodel definitions belong in `.ast` files, editor definitions in `.edit` 
 If you’re following this tutorial in your own IDE and notice that the browser occasionally displays an empty page after regeneration, don’t worry.  
 This happens because the browser reloads faster than the regeneration process completes.  
 In the browser’s developer console, you might see the message:
-
-```
-Uncaught SyntaxError: Unexpected end of input
-```
-
+`Uncaught SyntaxError: Unexpected end of input`.
 Simply reload the page—everything will display correctly afterward.
