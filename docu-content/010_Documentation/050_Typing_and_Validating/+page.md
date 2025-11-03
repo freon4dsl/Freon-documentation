@@ -1,7 +1,7 @@
 ---
 pageTitle: Typing and Validating
 description: Explains how Freon handles typing and validation through separate generators, their dependencies, and recommended usage.
-tags: [Freon, typing, validation, language definition, generator, dependency, build]
+tags: Freon, typing, validation, language definition, generator, dependency, build
 ---
 
 <script>

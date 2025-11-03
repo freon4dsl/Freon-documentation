@@ -1,3 +1,9 @@
+---
+title: Testimonial
+description: A case study from TriRadial Solutions demonstrating how Freon powers a DSL for clinical research coordination. Highlights include custom Svelte integration, DSL-based clinical trial modeling, and use of the Freon interpreter framework.
+tags: Freon, testimonial, TriRadial, DSL, clinical research, CRC, Svelte, interpreter framework, simulation, prototype, enterprise application, documentation
+---
+
 <script>
     import Figure from "$lib/figures/Figure.svelte";
 </script>

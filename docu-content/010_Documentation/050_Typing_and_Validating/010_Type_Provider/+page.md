@@ -1,7 +1,7 @@
 ---
 title: Type Provider
 description: Explains how Freon uses the type provider (typer) definition to determine and enforce typing rules in your language metamodel.
-tags: [Freon, typer, type provider, typing rules, language definition, metamodel, conformance, inference]
+tags: Freon, typer, type provider, typing rules, language definition, metamodel, conformance, inference
 ---
 
 <script>

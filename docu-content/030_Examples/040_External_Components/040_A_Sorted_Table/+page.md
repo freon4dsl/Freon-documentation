@@ -1,14 +1,18 @@
+---
+title: A Sorted Table
+description: Build a custom Svelte component to sort and render schedule time slots in a table before display. Uses PartListReplacerBox, RenderComponent, and AST.change for reactive model updates.
+tags: Freon, Svelte, external components, PartListReplacerBox, Schedule, Schedule.svelte, RenderComponent, AST.change, MobX, projections, CourseSchedule, Table
+---
+
 <script>
     import Figure from "$lib/figures/Figure.svelte";
 </script>
 
 # A Sorted Table
 
-The native Freon Table takes a list of nodes of the same type, and displays the properties of those nodes
-each in a column or row. But what if you want something completely different? In this example we are going
-to sort the list of time slots in a schedule based on the time stamp in each slot, before we display the schedule.
+The native Freon `Table` takes a list of nodes of the same type and displays their properties in columns or rows. But what if you want something different? In this example we sort a schedule’s list of time slots by their `TimeStamp` (day/part) *before* displaying the schedule.
 
-As a reminder, here are the AST definitions of Schedule, Slot and TimeSlot.
+As a reminder, here are the AST definitions of `Schedule`, `Slot` and `TimeStamp`.
 
 ```ts
 // CourseSchedule/phase5/defs/main.ast#L10-L14
@@ -48,17 +52,11 @@ limited TimeStamp {
 
 ## Step 1: Create the Svelte Component
 
-To create a dynamic schedule table, we will define a Svelte component named `Schedule.svelte`. 
-This component will handle the sorting of time slots, display the sorted list, and allow 
-the user to add new slots.
+To create a dynamic schedule table, we define a Svelte component named `Schedule.svelte`. This component handles sorting the time slots, displays the sorted grid, and lets the user add new slots.
 
 ### The Script Section
 
-The box type that we are using is an `PartListReplacerBox`. The four mandatory functions are similar to
-the ones in the StaffAccordion component, with one exception, which we will explain later on. The key 
-to sorting the schedule lies in the `initialize()` function, which processes the list of `timeSlots` 
-and sorts them based on the `TimeStamp`. While sorting the list, in order to later render the correct 
-box for each `Slot`, we remember which child box is associated with a `Slot` in the variable `slotToBoxMap`.
+The box type we use is a `PartListReplacerBox`. The four mandatory functions are similar to the ones in the `StaffAccordion` example, with one exception explained later. The key to sorting is the `initialize()` function, which processes the list of `timeSlots` and sorts them by `TimeStamp`. While sorting, we remember which child box is associated with which `Slot` in `slotToBoxMap` so we can render the correct child box.
 
 ```ts
 // CourseSchedule/phase5/src/external/Schedule.svelte#L56-L156
@@ -166,17 +164,22 @@ function sortSlots(startVal: Slot[]) {
 /* Sort the list of slots based on the time */
 ```
 
-The function that adds a new `Slot` takes a parameter of type `TimeStamp`. This enables us to create a new slot with
-the given time stamp. We did not bother with creating the function to remove a `Slot`. It would be similar to the
-one in the `StaffAccordion`.
+The function that adds a new `Slot` takes a `TimeStamp` parameter, allowing us to create a new slot for the specified time. We didn’t include a “remove slot” function here; it would be similar to the one in `StaffAccordion`.
 
 ```ts
 // CourseSchedule/phase5/src/external/Schedule.svelte#L158-L165
 
 
+
+
+
+
+
+
+
 ```
 
-Then there are two variables that make live easier in the HTML part.
+Then there are two variables that make life easier in the HTML part.
 
 ```ts
 // CourseSchedule/phase5/src/external/Schedule.svelte#L40-L54
@@ -200,31 +203,24 @@ let timeStamps: TimeStamp[] = [
 
 ### The HTML Section
 
-Unfortunately, we could not use the `Table` component from the SMUI library, because it cuts off its content,
-including any dropdown menu. But with a little bit of extra CSS styling we have recreated the table in plain HTML.
+We couldn’t use the SMUI `Table` because it clips its content (including dropdowns). With a bit of CSS we recreated a table in plain HTML.
 
-Have a look at the headers first, each of which hold the name of a day. Because, on the other axis, we want to display 
-headers with the texts `Morning` and `Afternoon`, the first header cell is left empty.
+First, the headers: each holds a day name. Because we also display row headers (`Morning` and `Afternoon`), the first header cell is empty.
 
-```ts
+```svelte
 // CourseSchedule/phase5/src/external/Schedule.svelte#L174-L179
-
-
-const findBoxForSlot = (slot: Slot): Box => {
-    let xx = slotToBoxMap.get(slot);
-    if (!isNullOrUndefined(xx)) {
-        return xx;
-    } else {
+<thead>
+  <tr class="demo-header-row">
+    <th class="demo-header-cell"></th>
+    {#each dayTitle as title}
+      <th class="demo-header-cell">{title}</th>
+    {/each}
+  </tr>
+</thead>
 ```
 
-Next, we create two rows, one for the mornings and one for the afternoons. 
-Let's take a look at the first row. The first cell is the row header showing the text `Morning`.
-Then we loop over the sorted slots, but we take only the first five, because these represent 
-the five mornings. Note that each morning can hold a list of slots. If there are slots for 
-a certain morning then for each of those
-we get the associated box using the `slotToBoxMap` variable, and we render them using the 
-Freon `RenderComponent`. We add some `divs` to the lot to be able to style everything.
-The row for the afternoons is almost identical, but takes the last five of the sorted slots.
+Next, we create two rows—one for mornings and one for afternoons.  
+For the morning row: the first cell is the row header (`Morning`). We then loop over `sortedSlots` but only take the first five entries (the mornings). Each morning can contain a *list* of slots. For each slot we resolve its child box via `slotToBoxMap` and render it with Freon’s `<RenderComponent>`. The afternoon row mirrors this but uses the last five entries.
 
 ```ts
 // CourseSchedule/phase5/src/external/Schedule.svelte#L182-L203
@@ -253,10 +249,7 @@ The row for the afternoons is almost identical, but takes the last five of the s
         <tbody>
 ```
 
-In between we have added two rows containing buttons to enable the user to add a slot to a specific time.
-Again, the first cell is left empty, because that is the column with the headers. Then, looping over the 
-`timeStamp` list, we add a cell with a button that takes the element from the `timeStamp` list as a parameter
-to the function that adds a slot.
+Between the two time rows we add button rows so the user can create a slot for a specific time. Again, the first cell is empty (row header column). We loop over `timeStamps` and pass each value to `addSlot`.
 
 ```ts
 // CourseSchedule/phase5/src/external/Schedule.svelte#L204-L213
@@ -273,13 +266,11 @@ to the function that adds a slot.
                         <RenderComponent box={findBoxForSlot(slot)} editor={editor} />
 ```
 
-The complete Svelte component can be found at the bottom of this page.
+The complete Svelte component is at the bottom of this page.
 
 ## Step 2: Include in the Projection
 
-We include the new component in the projection with the text `replace=Schedule`. Furthermore, 
-because the table already makes clear what the time stamp of each slot is, we adjust the 
-projection for the `Slot` itself to not show `${self.time}`.
+We include the new component in the projection with `replace=Schedule`. Because the table already conveys each slot’s time, we hide `\${self.time}` in the `Slot` projection.
 
 ```proto
 // CourseSchedule/phase5/defs/externals.edit#L20-L31
@@ -298,12 +289,11 @@ Slot {[
 ]}
 ```
 
-By now, you will have understood the admin that needs to be done for the external component, so
-we won't bother with that here.
+By now you know the small amount of admin needed to register an external component, so we won’t repeat it here.
 
 ## Final Result
 
-When all is done, the editor should look like this. Rather neat! At least, we like it, and hope you do as well.
+When all is done, the editor should look like this. Neat, right?
 
 <Figure
 imageName={'examples/CourseSchedule/Screenshot-step5.png'}
@@ -313,20 +303,11 @@ figureNumber={1}
 
 ## Conclusion
 
-Once you've followed these steps, you will have a fully functional Svelte component that displays a sorted table for your time slots.
-This solution can be adapted to various use cases where you need to manage and display structured data in a table format.
-The editor will show the schedule neatly sorted by day and time, allowing users to interact with the schedule and add new time slots.
+After following these steps, you’ll have a Svelte component that displays a sorted table of time slots. This approach adapts well to any case where you want to preprocess and present structured data in a table. The editor shows the schedule neatly sorted by day and time, and users can interactively add slots.
 
-This extended example demonstrates how integrating custom Svelte components into the Freon editor unlocks limitless 
-possibilities for creating unique designs and functionalities. We’re confident that, after following 
-this example, you’ll be well-equipped to utilize any of 
-the [External Component Box Types](/Documentation/Under_the_Hood/Editor_Framework/External_Component_Box_Types) 
-offered by Freon.
+This extended example demonstrates how custom Svelte components in the Freon editor unlock many design and UX possibilities. Once you’re comfortable with this pattern, you can reuse it with any of the [External Component Box Types](/Documentation/Under_the_Hood/Editor_Framework/External_Component_Box_Types).
 
-Since external components are still in the experimental stage, we are eager to learn how you plan to use 
-them. If you decide to incorporate external components, please reach out to the Freon team. You can 
-contact us via email at info AT freon4dsl.dev or through GitHub. We would love to hear from you and 
-are happy to provide any assistance you need.
+Since external components are still experimental, we’re eager to learn how you plan to use them. If you decide to incorporate them, please reach out to the Freon team at info AT freon4dsl.dev or via GitHub—we’re happy to help.
 
 ## The Complete Svelte Component
 
@@ -671,5 +652,4 @@ For reference, here is the full implementation of the `Schedule.svelte` componen
         justify-content: space-between;
     }
 </style>
-
 ```

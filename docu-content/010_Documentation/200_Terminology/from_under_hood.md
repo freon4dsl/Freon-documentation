@@ -1,10 +1,7 @@
 ---
 title: "Freon Documentation – Key Phrases"
 description: "Index of important terms, interfaces, and concepts used throughout the Freon documentation."
-tags:
-  - Glossary
-  - Keywords
-  - Freon
+tags: Glossary, Keywords, Freon
 ---
 
 # Freon Documentation — Key Phrases

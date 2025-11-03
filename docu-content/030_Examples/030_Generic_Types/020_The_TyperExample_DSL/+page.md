@@ -1,11 +1,17 @@
+---
+title: The Metamodel Definition of the Example Language
+description: Review the complete AST for a simple language that pairs expressions with declared types. Learn how TypeUsage, TypeRef, TypeDecl, GenericType, and UnitOfMeasurement model generic types and units of measurement.
+tags: Freon, metamodel, AST, TypeUsage, TypeRef, TypeDecl, GenericType, UnitOfMeasurement, GenericKind, UnitKind, PredefinedType, expressions, literals, typer, example language
+---
+
 # The Metamodel Definition of the Example Language
 
-To explain the type definition, we first need the metamodel of the example language.
-Below is the complete .ast file. But first, let's explain some highlights.
+To explain the type definition, we first need the **metamodel** of the example language.
+Below is the complete `.ast` file—first, a few highlights.
 
-Every type in the list of _expression_ - _declared type_ pairs is an instance of the AST
-concept **TypeUsage**, which comes in two flavours: a type declaration,
-and a type reference, that holds a reference to another AST node.
+Every type in the list of *expression – declared type* pairs is an instance of the AST
+concept **TypeUsage**, which comes in two flavours: a **type reference** (pointing to a named type),
+and a **type declaration** (an inline declaration that stands on its own).
 
 ```proto
 // TyperExample/src/defs/projectY.ast#L18-L26
@@ -21,9 +27,9 @@ abstract concept TypeDecl base TypeUsage {
 }
 ```
 
-There are also two options for a type declaration, a generic type, and a unit of measurement. For this example,
-we have used the names of the generic types from the Object Constraint Language: Set, Bag, Sequence, and Collection.
-Note that these declarations are part of the AST. They are not type concepts themselves.
+There are two options for a type declaration: a **generic type** and a **unit of measurement**.
+For this example we borrow the generic kinds from OCL: `Set`, `Bag`, `Sequence`, and `Collection`.
+Note that these are **AST declarations**; they are not type concepts by themselves.
 
 ```proto
 // TyperExample/src/defs/projectY.ast#L37-L47
@@ -41,8 +47,8 @@ concept UnitOfMeasurement base TypeDecl {
 limited UnitKind { Meters; Grams; kWh; Hours; }
 ```
 
-The definitions of the expressions in the example language are straightforward. There are literal expressions for
-strings, booleans, and number, as well as generic literals and unit literals.
+The expression definitions are straightforward: literal expressions for
+strings, booleans, and numbers, as well as generic literals and unit literals.
 
 ```proto
 // TyperExample/src/defs/projectY.ast#L61-L75

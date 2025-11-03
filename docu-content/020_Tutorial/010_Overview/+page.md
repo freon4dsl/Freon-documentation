@@ -1,73 +1,97 @@
-# Welcome to the Freon tutorial!
+---
+title: Welcome to the Freon Tutorial
+description: Follow this step-by-step tutorial to learn how to create your own domain-specific language (DSL) with Freon. Build editors, validators, and interpreters while exploring an example in the domain of Computer Aided Learning.
+tags: tutorial, introduction, DSL, domain-specific language, Freon, metamodel, projectional editing, TypeScript, language workbench, computer aided learning
+---
 
-This step-by-step guide will teach you everything you need to know to easily build your own domain specific language (DSL).
-You will learn how to create the set of tools, editor, validator, interpreter, etc., which will enable your end-users to use your DSL efficiently.
+# Welcome to the Freon Tutorial!
 
-You can also consult the documentation, or - if you’re impatient to start hacking on your machine 
-locally - [create a project](/Documentation/Overview/Getting_Started#example-project-startup-2).
+This step-by-step guide will teach you everything you need to know to build your own domain-specific language (DSL) using **Freon**.  
+You will learn how to create the supporting tools—such as the editor, validator, and interpreter—that enable your end-users to work efficiently with your DSL.
 
-We assume that you are interested in DSLs, and are therefore familiar with terms
-like metamodel, abstract syntax, and model, as well as abbreviations like AST. If you
-are not, please first refer to other sources, for instance the 
-book <a href="https://www.manning.com/books/building-user-friendly-dsls" target="_blank">'Building User-Friendly DSLs'</a> written by Meinte Boersma. 
-If you just need to refresh your knowledge, refer to [Freon Terminology](/Documentation/Terminology).
-Furthermore, a little knowledge of UML will come in handy, but this is not a true requirement.
+You can also consult the full documentation, or—if you’re eager to get started locally—[create a project](/Documentation/Overview/Getting_Started#example-project-startup-2).
+
+We assume that you have an interest in DSLs and are familiar with terms such as *metamodel*, *abstract syntax*, and *model*, as well as abbreviations like *AST*.  
+If not, please refer to introductory materials, such as the book  
+<a href="https://www.manning.com/books/building-user-friendly-dsls" target="_blank">*Building User-Friendly DSLs*</a> by Meinte Boersma.  
+If you just need a refresher, see the [Freon Terminology](/Documentation/Terminology) page.  
+Some basic knowledge of UML is useful, but not strictly required.
 
 ## The DSL: Computer Aided Learning
 
-The first thing to do is explain the domain in which our DSL is positioned, which is Computer Aided Learning. Our (hypothetical) client is a company that provides
-a service to children of various ages to help them learn certain topics, like arithmetic and mathematics, geography, history, biology, or
-road safety. For this purpose the company deploys a number of websites, each dedicated to a certain topic.
+To illustrate how Freon can be used, this tutorial focuses on a domain called **Computer Aided Learning (CAL)**.
 
-The company, therefore, needs a lean and agile means
-to define the content of the webpages, and the flow between them. For instance, when a pupil makes many mistakes, the page that will be
-shown next to this specific pupil is one that might contain extra explanation, or extra practice material. But when another pupil goes through the topic
-with much ease, he or she will be shown more advanced material to keep him/her interested. Furthermore, our client company want a means to test the page
-flow before the actual webpages are produced.
+Our hypothetical client is a company that offers educational services to children of various ages.  
+Through multiple websites, it helps students learn subjects such as arithmetic, mathematics, geography, history, biology, and road safety.
 
-So you might see that we have a bit of task before us to satisfy this client's needs and expectations.
+### The Client’s Needs
 
-## How to use this tutorial
+The company wants to create and manage educational webpages for these subjects in a way that is both **lean** and **flexible**.  
+They need a system to define:
 
-This tutorial is split into 9 lessons. Each lesson has a dedicated subject, but it will 
-build upon the previous lessons. So the best way is to work through them in the given order.
+- The **content** of each page, and
+- The **flow** between pages, depending on how each student performs.
 
-The easiest way to follow this tutorial is to use the create project command, and choose the language `Education`.
-This way you can recreate the project, and toy with many of the options.
+For example:
+- When a pupil makes many mistakes, the next page should provide extra explanations or more practice material.
+- When a pupil progresses easily, the next page should offer more advanced exercises to maintain engagement.
+
+In addition, the company wants to **test and validate** the page flow before generating the actual webpages.
+
+### How the DSL Addresses These Needs
+
+Our task is to design a **domain-specific language** that allows the company to define these pages and their flow in a simple, structured, and testable way.  
+With the DSL, non-programmers can specify educational content and behavior directly, while developers can generate the necessary website logic automatically.
+
+As you can see, satisfying this client’s requirements gives us an excellent example of how a well-designed DSL can combine **expressiveness**, **usability**, and **automation**.
+
+
+## How to Use This Tutorial
+
+This tutorial consists of **nine lessons**, each covering a specific topic while building upon the previous ones.  
+For the best learning experience, follow the lessons in the given order.
+
+The easiest way to follow along is to use the *create project* command and choose the language `Education`.  
+This lets you recreate the example project and experiment with its components.
 
 ```bash
-  npm create freon@latest
+npm create freon@latest
 ```
 
-In the `Education` project you will find all definition files needed for one of the lessons in a separate folder,
-so you won't be bothered by any of the details that are not yet explained, when going through the lessons one by one.
-For instance, you can find all definition files for lesson&nbsp3 in the folder named `lesson3-defs`, and likewise for all other lessons. 
-The files for lesson1 are present in the `src/defs` folder (see <a href='#where-do-the-files-go-4'>Where do the files go?</a>) at the start.
-Empty this folder before the next lesson, and copy in the files for the lesson you are about to follow. You can also find 
-a number of models that fit the language(s) from the lessons in the **modelstore** folder. (For an explanation of the content of the project see
-[Project_Structure](/Documentation/Overview/Getting_Started#project_structure-4).) Use the model called `Lesson1` for lessons 1 till 3, 
-the model `Lesson4` for lessons 4 and 5, and `Lesson6` for the rest of the lessons.
+In the `Education` project, you’ll find all definition files for each lesson in separate folders.  
+This prevents you from being distracted by details not yet introduced.  
+For example, the files for Lesson 3 are in the folder `lesson3-defs`, and so on.  
+Lesson 1 files are located in the `src/defs` folder (see [Where do the files go?](#where-do-the-files-go)).
 
-For some hints on how to use the editor, click on the question mark on the top bar of the editor.
+Before starting a new lesson, empty the `src/defs` folder and copy in the files for the lesson you’re about to follow.  
+You’ll also find example models for the lessons in the **modelstore** folder.  
+(For details on the project contents, see [Project Structure](/Documentation/Overview/Getting_Started#project_structure-4).)  
+Use the model `Lesson1` for Lessons 1–3, `Lesson4` for Lessons 4–5, and `Lesson6` for the remaining lessons.
 
-## Where do the files go?
+For tips on using the editor, click the **question mark** icon on the editor’s top bar.
 
-Your project will be set up to have all your Freon definition files in the folder `src/defs`,
-but if you decide to do things differently, you can change the `package.json` file.
-Look at the scripts for `generate `and `clean-gen`. There you find the folder `src/defs`
-mentioned. If you change these entries you can place the language definition files anywhere you like.
+## Where Do the Files Go?
+
+Your project is set up so that all Freon definition files reside in the `src/defs` folder.  
+If you prefer a different structure, you can modify your `package.json` file.  
+Check the scripts for `generate` and `clean-gen`, which reference `src/defs`.  
+Changing these paths allows you to place your language definition files anywhere you like or adjust the output location (currently `src/freon`).
 
 ```
 "generate": "freon -v all -d src/defs -o src/freon",
 "clean-gen": "freon clean-it -d src/defs -o src/freon",
 ```
 
-In this tutorial we will make a number of Freon definition files. Note that the extension of the 
-file (for instance, `.ast`, `.valid`) is important, but the name is not. All metamodel definitions 
-need to be in a `.ast` file, all editor definitions in a `.edit` file, etc.
+In this tutorial, we’ll create several Freon definition files.  
+Note that the **file extension** (e.g., `.ast`, `.valid`) is important, while the file name is not.  
+All metamodel definitions belong in `.ast` files, editor definitions in `.edit` files, and so on.
 
-When you have checked out the source code and are following this
-example in your own IDE, you might notice that upon regeneration the browser sometimes shows an empty page. The reason
-is that the browser is quicker than the regeneration process. (In the console of the browser development tools you will see
-the message `Uncaught SyntaxError: Unexpected end of input`.) Don't worry, simply reload
-the page, and everything will be fine.
+If you’re following this tutorial in your own IDE and notice that the browser occasionally displays an empty page after regeneration, don’t worry.  
+This happens because the browser reloads faster than the regeneration process completes.  
+In the browser’s developer console, you might see the message:
+
+```
+Uncaught SyntaxError: Unexpected end of input
+```
+
+Simply reload the page—everything will display correctly afterward.

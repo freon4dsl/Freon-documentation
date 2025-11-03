@@ -89,6 +89,7 @@ We can now show the full TypeScript code for this projection.
 Assume that `literal` is the `StringLiteral` object:
 
 ```ts
+
 new HorizontalListBox(literal, "full-string", [      // <1>
     new LabelBox(literal, "start-quote", '"'),       // <2>
     new TextBox(                                     // <3>

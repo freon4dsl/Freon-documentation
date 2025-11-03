@@ -173,8 +173,12 @@ export class Md2Svelte {
 		const saveMetaData: { [p: string]: string } = metaData;
 		Object.entries(metaData).forEach(([key, value]) => {
 			if (key === 'tags') {
-				const tagList: string[] = value.split(',').map(t => t.trim()).filter(Boolean);
-				saveMetaData[key] = `[ ${tagList.map(tag => `"${tag}"`).join(', ')}] `;
+				if (typeof value === 'string') {
+					const tagList: string[] = value.split(',').map(t => t.trim()).filter(Boolean);
+					saveMetaData[key] = `[ ${tagList.map(tag => `"${tag}"`).join(', ')}] `;
+				} else {
+					console.log(`${key}: ${value} ${typeof value}`);
+				}
 			} else {
 				saveMetaData[key] = this.ensureDoubleQuoted(value);
 			}

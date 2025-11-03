@@ -1,13 +1,20 @@
+---
+title: More Basic Evaluation Functions
+description: Extend the EducationInterpreter with evaluation functions for tests, pages, answers, and score expressions. Learn how to compute runtime values and handle abstract concepts in Freon interpreters.
+tags: Freon, interpreter, evaluation, EducationInterpreter, Answer, LastStep, Page, ScoreExpression, QuestionReference, NrOfCorrectAnswers, RtGrade, runtime, M1, M0, M2, DSL, tutorial, example
+---
+
 <script>
     import Note from "$lib/notes/Note.svelte";
 </script>
 
 # More Basic Evaluation Functions
 
-With the simplest evaluation functions done, we can turn to the actual test that needs to be done.
+With the simplest evaluation functions done, we can now focus on the **test evaluation logic** itself.
 
-## The AST of the Test Model Unit 
-Let's refresh your memory and have a look at the AST of the `Test` model unit.
+## The AST of the Test Model Unit
+
+Let’s refresh your memory and look at the AST of the `Test` model unit.
 
 ```proto
 // Education/lesson9-defs/edu-tests.ast
@@ -43,14 +50,12 @@ concept Answer {
     reference question: Question;
     value: NumberConcept;
 }
-
 ```
 
 ## Evaluations of `LastStep` and `Answer`
 
-The simplest concept in the model unit is `LastStep`. The runtime value of each of its instances
-should be `true`, because a last step does not have a next page and therefore does not put any 
-restrictions on the correctness of the step. The evaluation function is implemented as follows:
+The simplest concept is `LastStep`. Its runtime value should always be **true**, because it has no follow-up page and no restrictions.  
+The evaluation function looks like this:
 
 ```ts
 // EducationInterpreter/src/custom/interpreter/EducationInterpreter.ts#L212-L214
@@ -60,12 +65,9 @@ override evalLastStep(node: LastStep, ctx: InterpreterContext): RtObject {
 }
 ```
 
-Next, we are going to determine the runtime value for an `Answer`. Here, we need to compare the answer 
-that is given with the one that is defined as being the correct answer to the question. The 
-first is found by evaluating the `value` of the answer, which is either a simple number or a fraction. For 
-both the evaluation functions are already defined. The second is found by evaluating the correct answer 
-from the question, but because `question` is defined in the .ast file as a reference, we need to use `.referred`
-to obtain its value and check whether the reference was found. 
+Next, let’s determine the runtime value of an `Answer`.  
+We need to compare the **given answer** with the **expected correct answer** from the question.  
+The given answer is evaluated from `value`, while the expected answer comes from the referenced `question`.
 
 ```ts
 // EducationInterpreter/src/custom/interpreter/EducationInterpreter.ts#L202-L210
@@ -81,11 +83,10 @@ override evalAnswer(node: Answer, ctx: InterpreterContext): RtObject {
 }
 ```
 
-## Evaluation of Page
+## Evaluation of `Page`
 
-The next concept up in the AST is `Step`, but we haven't determined yet how to evaluate 
-one of its parts: `reference fromPage: Page`. So, we first have to define the evaluation 
-function for pages. However, the concept `Page` is an abstract concept.
+Before we can evaluate a `Step`, we need to know how to evaluate its `fromPage` property.  
+The concept `Page` is abstract:
 
 ```proto
 // Education/lesson9-defs/edu-topics.ast#L10-L14
@@ -97,9 +98,8 @@ abstract concept Page {
 }
 ```
 
-For abstract concepts no evaluation functions are defined. But there are evaluation
-functions for the concrete children of `Page`: `Theory`, `Video`, `WorkSheet`, `ExamplePage`,
-and `InDepthMaterial`, so these are the ones that we will implement.
+We therefore define evaluation functions for each concrete subtype of `Page`:  
+`Theory`, `Video`, `WorkSheet`, `ExamplePage`, and `InDepthMaterial`.
 
 ```ts
 // EducationInterpreter/src/custom/interpreter/EducationInterpreter.ts#L153-L182
@@ -136,26 +136,15 @@ override evalExamplePage(node: ExamplePage, ctx: InterpreterContext): RtObject {
 }
 ```
 
-## Evaluation of ScoreExpressions
+## Evaluation of `ScoreExpression`s
 
-When you look at the function `evalPage` you can see that we are missing yet another evaluation 
-function, the one that calculates the value of `score.expr`. Remember what it looks like in the model:
+In the `evalPage` function, we call `main.evaluate(score.expr, ctx)`.  
+That means we still need evaluation functions for the remaining expression concepts — namely `QuestionReference` and `NrOfCorrectAnswers`.
 
-```txt
-GradeC: Answer to questionX is correct AND the Number of Correct Answers = 3
+### `NrOfCorrectAnswers`
 
-GradeD: Answer to questionY is correct OR Answer to questionZ is correct AND the Number of Correct Answers > 2
-```
-
-The type of `score.expr` is `ScoreExpression`, but 
-again this is an abstract concept. Its children are `QuestionReference`, `NrOfCorrectAnswers`, 
-a bunch of binary expressions and `NumberLiteralExpression`, for which we have already defined 
-evaluation functions. So what is left is to implement evaluations for `QuestionReference` and `NrOfCorrectAnswers`.
-
-The value of the latter needs to be calculated for the complete page, thus we will search for it in the 
-context. Note, that we have to remember to put this value in the context somewhere higher up the chain.
-
-[//]: # (todo check the above statement)
+The total number of correct answers for the current page is stored in the **context**.  
+We retrieve it using `ctx.find`.
 
 ```ts
 // EducationInterpreter/src/custom/interpreter/EducationInterpreter.ts#L198-L200
@@ -165,16 +154,9 @@ override evalNrOfCorrectAnswers(node: NrOfCorrectAnswers, ctx: InterpreterContex
 }
 ```
 
-The implementation of the evaluation of a `QuestionReference` is a bit more complicated. Remember what it looks like in the model:
+### `QuestionReference`
 
-```txt
-Answer to questionX is correct
-```
-
-The evaluation should result in a boolean value based on the comparison between the correct answer to 
-the question, and the answer given by the pupil. The correct answer can be found in the model. We 
-just need to evaluate `question.correctAnswer`. The answer given by the pupil is present in the test, 
-and should be found in the context.
+This one evaluates a comparison between the **expected answer** (from the model) and the **given answer** (from the test context).
 
 ```ts
 // EducationInterpreter/src/custom/interpreter/EducationInterpreter.ts#L184-L196
@@ -196,52 +178,29 @@ override evalQuestionReference(node: QuestionReference, ctx: InterpreterContext)
 
 ## More About Evaluation of Pages
 
-Now we can return to the `evalPage` function. We know how to determine the runtime value of a single ScoreExpression,
-but how do we determine the runtime value of the complete page? We have chosen to go over all grades and see for which 
-the score expression returns true. The first one that we find will be the page's grade. But wait, there is no runtime
-object that represents a grade. We could return an M1 object (of type `Grade`), but we want to make a clear distinction
-between the M1 and M0 levels. So we make a new runtime class: `RtGrade`.
+The `evalPage` function loops through all grades and evaluates each grading expression until it finds one that returns `true`.  
+The first such grade determines the result for that page.
 
-```ts
-// EducationInterpreter/src/custom/interpreter/EducationInterpreter.ts#L153-L166
+To represent this at runtime, we introduce a new class, `RtGrade`, since we want to distinguish **runtime objects (M0)**  
+from **model objects (M1)** and **language definitions (M2)**.
 
-static evalPage(node: Page, ctx: InterpreterContext): RtObject {
-    // Find grade for given answers
-    console.log(`Evaluating Page ${node?.name}`)
-    for (const score of node.grading) {
-        const scoreValue = main.evaluate(score.expr, ctx)
-        if (isRtBoolean(scoreValue)) {
-            if (scoreValue.asBoolean()) {
-                console.log(`Evaluating Page returning ${score.$grade?.name}`)
-                return new RtGrade(score.$grade)
-            }
-        }
-    }
-    return new RtError(`No grade found for current answers in page ${node.name}`)
-}
-```
-
-<Note {header} {content}> 
+<Note {header} {content}>
 {#snippet header()}Meta Levels{/snippet}
 {#snippet content()}
-In Domain Specific language we distinguish the following levels:
-<ol>
-<li>The language definition, defining which concepts are available. Often called the M2 level.
-In Freon this is represented by the language definition in the .ast files.
-In Java this would be the Java Language Definition.
-</li>   
-<li>The model, which contains instances of the  language concepts, called the M1 level.
-In Freon this is what you edit in a Freon application.
-In Java this would be a Java program consisting of Java classes.
-</li>
-<li>The runtime level, values resulting from executing or interpreting the model,
-called the M0 level.
-In Freon this is the result of the interpreter running, or it would be the result of executing code generated from the model (M1) level.
-For Java this is the execution of a Java program.
-</li>
-</ol>
-{/snippet}
-</Note>
+In Domain-Specific Languages, we distinguish between three levels:
+
+1. **M2 – Language Definition**: Defines which concepts exist. In Freon, this is represented by the `.ast` files.  
+   In Java, this would correspond to the Java language definition.
+
+2. **M1 – Model**: Contains instances of those concepts. In Freon, this is what you edit in the Freon editor.  
+   In Java, this would be the program itself (Java classes, methods, etc.).
+
+3. **M0 – Runtime**: The results produced by running or interpreting an M1 model.  
+   In Freon, this is what your interpreter computes. In Java, this would be the execution of a program.
+   {/snippet}
+   </Note>
+
+### The `RtGrade` class
 
 ```ts
 // EducationInterpreter/src/custom/interpreter/runtime/RtGrade.ts
@@ -275,5 +234,7 @@ export function isRtGrade(object: any): object is RtGrade {
     const _type = (object as any)?._type;
     return !!_type && _type === "RtGrade";
 }
-
 ```
+
+This runtime class allows us to represent a **grade result** separately from the model itself —  
+a clean, modular way to connect interpretation results to the model.

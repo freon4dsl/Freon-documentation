@@ -24,9 +24,7 @@ in `ExpressionsInterpreterBase.ts`.
 ```ts
 // Expressions/src/freon/interpreter/gen/ExpressionsInterpreterBase.ts#L35-L37
 
-}
 
-evalNumberLiteralExpression(node: NumberLiteralExpression, ctx: InterpreterContext): RtObject {
 ```
 
 All evaluation functions are similar. The first parameter is the node for which a value needs to be determined.
