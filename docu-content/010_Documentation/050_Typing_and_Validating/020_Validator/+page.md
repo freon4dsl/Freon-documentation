@@ -113,5 +113,4 @@ Freon automatically applies the following default validation rules:
 
 - Non-optional properties must be set.
 - Non-optional lists must contain at least one element.
-- Names of model units must be valid identifiers.
 - Any reference must resolve to an existing element.

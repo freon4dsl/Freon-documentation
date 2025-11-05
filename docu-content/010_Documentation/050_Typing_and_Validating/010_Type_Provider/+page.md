@@ -119,7 +119,7 @@ CalcFunction {
 }
 ```
 
-<Note {content}> 
+<Note> 
 {#snippet content()}This is a valid inference rule, only if 'declaredType' is an instance 
 of a concept that is marked 'isType'.
 {/snippet}

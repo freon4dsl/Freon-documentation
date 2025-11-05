@@ -123,6 +123,11 @@ img {
 	max-width: var(--max-image-width);
 }
 
+.figure img {
+	width: auto;
+	height: auto;
+}
+
 table {
 	background: var(--color2);
 	margin: auto;

@@ -9,7 +9,7 @@ tags: tutorial, introduction, DSL, domain-specific language, Freon, metamodel, p
 This step-by-step guide will teach you everything you need to know to build your own domain-specific language (DSL) using **Freon**.  
 You will learn how to create the supporting tools—such as the editor, validator, and interpreter—that enable your end-users to work efficiently with your DSL.
 
-You can also consult the full documentation, or—if you’re eager to get started locally—[create a project](/Documentation/Overview/Getting_Started#example-project-startup-2).
+You can also consult the full documentation, or — if you’re eager to get started locally — [create a project](/Documentation/Overview/Getting_Started#creating-a-project-2).
 
 We assume that you have an interest in DSLs and are familiar with terms such as *metamodel*, *abstract syntax*, and *model*, as well as abbreviations like *AST*.  
 If not, please refer to introductory materials, such as the 
@@ -60,11 +60,11 @@ npm create freon@latest
 In the `Education` project, you’ll find all definition files for each lesson in separate folders.  
 This prevents you from being distracted by details not yet introduced.  
 For example, the files for Lesson 3 are in the folder `lesson3-defs`, and so on.  
-Lesson 1 files are located in the `src/defs` folder (see [Where do the files go?](#where-do-the-files-go)).
+Lesson 1 files are located in the `src/defs` folder (see [Where do the files go?](/Tutorial/Overview#where-do-the-files-go-4)).
 
 Before starting a new lesson, empty the `src/defs` folder and copy in the files for the lesson you’re about to follow.  
 You’ll also find example models for the lessons in the **modelstore** folder.  
-(For details on the project contents, see [Project Structure](/Documentation/Overview/Getting_Started#project_structure-4).)  
+(For details on the project contents, see [Project Structure](/Documentation/Overview/Getting_Started#project_structure-5).)  
 Use the model `Lesson1` for Lessons 1–3, `Lesson4` for Lessons 4–5, and `Lesson6` for the remaining lessons.
 
 For tips on using the editor, click the **question mark** icon on the editor’s top bar.

@@ -25,7 +25,7 @@ the <a href="https://flowbite-svelte.com/" target="_blank">Flowbite Svelte</a> U
 You’re free to choose any HTML component library and CSS tooling you prefer.
 
 The source code for this example is available on GitHub—see
-[Getting Started](/Documentation/Overview/Getting_Started#example-project-startup-2).
+[Getting Started](/Documentation/Overview/Getting_Started#creating-a-project-2).
 Choose the language **CourseSchedule**. The files for each phase of the example are in folders
 named `phase1`, `phase2`, and so on.
 

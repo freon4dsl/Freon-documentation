@@ -41,7 +41,6 @@ Example:
 [external=AnimatedGif number="1"]
 ```
 
----
 
 ## Fragment Wrappers
 
@@ -68,14 +67,12 @@ MyConcept {
 }
 ```
 
----
 
 ## Property Projections: Wrapping vs. Replacing
 
 A property projection can be **wrapped** by an external component, or the external component can **replace** the native projection.  
 For **replacers**, you are responsible for reading/writing the property value and handling keyboard/tab behavior.
 
----
 
 ## Wrapping Primitive Properties
 
@@ -86,7 +83,6 @@ For **replacers**, you are responsible for reading/writing the property value an
   - `getPropertyValue(): string | number | boolean` — type depends on the wrapper box.
   - `childBox: Box` — the native projection for the property (or for the entire list if wrapping a list).
 
----
 
 ## Wrapping Part List Properties
 
@@ -97,7 +93,6 @@ For **replacers**, you are responsible for reading/writing the property value an
   - `getPropertyValue(): FreNode[]` — cast as needed.
   - `childBox: Box` — the native projection for the whole list (horizontal/vertical/table).
 
----
 
 ## Wrapping Reference List Properties
 
@@ -108,7 +103,6 @@ For **replacers**, you are responsible for reading/writing the property value an
   - `getPropertyValue(): FreNodeReference[]`
   - `childBox: Box` — the native projection for the whole list (horizontal/vertical/table).
 
----
 
 ## Wrapping Part Properties
 
@@ -119,7 +113,6 @@ For **replacers**, you are responsible for reading/writing the property value an
   - `getPropertyValue(): FreNode` — cast as needed.
   - `childBox: Box` — render with `RenderComponent`.
 
----
 
 ## Wrapping Reference Properties
 
@@ -130,7 +123,6 @@ For **replacers**, you are responsible for reading/writing the property value an
   - `getPropertyValue(): FreNodeReference`
   - `childBox: Box` — render with `RenderComponent`.
 
----
 
 ## Replacing Primitive Properties
 
@@ -141,7 +133,6 @@ For **replacers**, you are responsible for reading/writing the property value an
   - `getPropertyValue(): string | number | boolean`
   - `setPropertyValue(newValue: string | number | boolean)`
 
----
 
 ## Replacing Part List Properties
 
@@ -153,7 +144,6 @@ For **replacers**, you are responsible for reading/writing the property value an
   - `setPropertyValue(newValue: FreNode[])`
   - `children: Box[]` — one box per list element.
 
----
 
 ## Replacing Reference List Properties
 
@@ -165,7 +155,6 @@ For **replacers**, you are responsible for reading/writing the property value an
   - `setPropertyValue(newValue: FreNodeReference[])`
   - `children: Box[]` — one box per list element.
 
----
 
 ## Replacing Part Properties
 
@@ -176,7 +165,6 @@ For **replacers**, you are responsible for reading/writing the property value an
   - `getPropertyValue(): FreNode`
   - `setPropertyValue(newValue: FreNode)`
 
----
 
 ## Replacing Reference Properties
 
@@ -187,7 +175,6 @@ For **replacers**, you are responsible for reading/writing the property value an
   - `getPropertyValue(): FreNodeReference`
   - `setPropertyValue(newValue: FreNodeReference)`
 
----
 
 ## Wiring
 
@@ -225,7 +212,6 @@ For **replacers**, you are responsible for reading/writing the property value an
    ]);
    ```
 
----
 
 ## External Component Parameters
 

@@ -143,7 +143,7 @@ export interface FreBehavior {
 
 /** Behavior with a custom action, intended for non-expression elements */
 export interface FreCustomBehavior extends FreBehavior {
-	action: (box: Box, trigger: string, editor: FreEditor, propertyName?: string) => FreElement | null;
+	action: (box: Box, trigger: string, editor: FreEditor, propertyName?: string) => FreNode | null;
 	undo?: (box: Box, ed: FreEditor) => void;
 }
 
@@ -159,17 +159,9 @@ export interface FreBinaryExpressionCreator extends FreBehavior {
 
 /** Special behavior initiated by keyboard strokes */
 export interface KeyboardShortcutBehavior extends FreBehavior {
-	action: (box: Box, trigger: FreKey, editor: FreEditor, propertyName?: string) => Promise<FreElement>;
+	action: (box: Box, trigger: FreKey, editor: FreEditor, propertyName?: string) => Promise<FreNode>;
 	trigger: FreKey;
 }
 ```
 
 To attach a behavior to one or more boxes, add those box roles to the `activeInBoxRoles` property of the action.
-
----
-
-**Related Topics**
-
-- [Predefined Boxes](/Documentation/Under_the_Hood/Editor_Framework/Predefined_Boxes)  
-- [Core Interfaces](/Documentation/Under_the_Hood/Core_Interfaces)  
-- [Editor Customization](/Documentation/Customizations/Editor_Customization)

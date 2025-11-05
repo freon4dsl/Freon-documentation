@@ -16,7 +16,8 @@ To do this, we need to define **scope rules**.
 ## A Simple View on Scoping
 
 Oh my, you might think—this is going to be difficult. But with Freon we stick to the philosophy:  
-“_Simple things should be simple, complex things should be possible._” (See our [Background](/Background) for more.)
+“_Simple things should be simple, complex things should be possible._” 
+(See our [Background](/Background) for more.)
 
 Scoping answers the question: **which names are visible where?** In general, all names in a context are divided into **sets**.  
 These sets don’t overlap, but there are subsets within larger sets, as shown below.

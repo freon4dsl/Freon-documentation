@@ -108,34 +108,34 @@ The code in a Freon project under `~/src` is organised into the following sub-fo
 
 - **defs**: the language definition files.
 - **freon**: the generated source code.
-  - **.../commandline**: code that provides command line access to models in the language.
-  - **.../config**: code that provides the coupling between all parts of the generated workbench.
+  - **/commandline**: code that provides command line access to models in the language.
+  - **/config**: code that provides the coupling between all parts of the generated workbench.
     This folder contains one file that will not be overwritten at regeneration: `FreonConfiguration.ts`.
     Here you can configure any [customization](/Documentation/Customizations) that you want the generated code to take into account.
-  - **.../diagrams**: a number of UML diagrams generated from the language structure including a UML
+  - **/diagrams**: a number of UML diagrams generated from the language structure including a UML
     class diagram of the AST, an overview of all inheritance in the language, and one diagram per .ast file.
     You’ll find all of them in both HTML and Markdown format. 
     In the future we plan to make the generation customizable.
-  - **.../editor**: code for the editor. This folder contains two files that will not be overwritten
+  - **/editor**: code for the editor. This folder contains two files that will not be overwritten
     at regeneration: `CustomYourLanguageNameActions.ts` and `CustomYourLanguageNameProjection.ts`.
     (`YourLanguageName` will be replaced by the name you have given your language in the .ast files.)
     These two files are the placeholders for any [customization](/Documentation/Customizations) that you
     would like to do.
-  - **.../interpreter**: code that implements an interpreter [interpreter](/Examples/Building_an_Interpreter) for the language.
-  - **.../language**: code that implements the language structure.
-  - **.../reader**: a parser that is able to read [model units](/Background#models-and-model-units-4)
+  - **/interpreter**: code that implements an interpreter [interpreter](/Examples/Building_an_Interpreter) for the language.
+  - **/language**: code that implements the language structure.
+  - **/reader**: a parser that is able to read [model units](/Background#models-and-model-units-4)
     from a text string or file.
-  - **.../scoper**: code for that determines which elements are visible for a certain element in the user's model.
-  - **.../stdlib**: code that implements some standard elements of your language, for instance
+  - **/scoper**: code for that determines which elements are visible for a certain element in the user's model.
+  - **/stdlib**: code that implements some standard elements of your language, for instance
     [limited concepts](/Documentation/Creating_the_Metamodel/Language_Structure).
-  - **.../typer**: code that that determines which type is associated with a certain element in the
+  - **/typer**: code that that determines which type is associated with a certain element in the
     user's model. The file `CustomYourLanguageNameTyperPart.ts` is the placeholder for any [customization](/Documentation/Customizations) that you
     would like to do.
-  - **.../utils**: a default implementation of a visitor for your user's model.
-  - **.../validator**: code that determines whether certain parts of your user's model contain
+  - **/utils**: a default implementation of a visitor for your user's model.
+  - **/validator**: code that determines whether certain parts of your user's model contain
     errors. The file `CustomYourLanguageNameValidator.ts` is the placeholder for any [customization](/Documentation/Customizations) that you
     would like to do.
-  - **.../writer**: code that is able to write your user's [model units](/Background#models-and-model-units-4)
+  - **/writer**: code that is able to write your user's [model units](/Background#models-and-model-units-4)
     in string format to a file.
 - **external**: any external Svelte components and the code to plug these into Freon.
 - **style**: All CSS and SCSS file for [styling Freon](/Documentation/Defining_an_Editor/Styling).

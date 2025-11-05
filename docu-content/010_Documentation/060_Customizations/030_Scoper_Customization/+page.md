@@ -8,7 +8,7 @@ tags: scoper, customization, Freon, scope provider, environment, DSL development
 
 The scoper cannot yet be customized **per concept**.  
 Instead, you can replace the entire scoper with your own implementation.  
-Your custom scoper must implement the standard `PiScoper` interface.
+Your custom scoper must implement the standard `FreScoper` interface.
 
 ## Adjusting the Environment
 
@@ -20,9 +20,9 @@ Suppose your improved scoper is implemented in the class `YourScoper`.
 Then the relevant line in the environment class should look like this:
 
 ```ts
-export class EntityEnvironment implements PiEnvironment {
+export class EntityEnvironment implements FreEnvironment {
     ...
-    scoper: PiScoper = new YourScoper();
+    scoper: FreScoper = new YourScoper();
     ...
 }
 ```

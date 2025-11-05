@@ -128,7 +128,7 @@ in the .edit file, any `ComplexVarReference` would indeed look like `moduleA.par
 would look like `partX`. Now, the behaviour that you would normally get is that the user must create either a `ComplexVarReference` 
 instance, or a `SimpleVarReference` instance, and then add the option from the correct list. The behaviour that you would like, is probably
 that the user is simply able to select an option from the correct list. The trick to get this behaviour is to add the reference
-shortcuts as shown below (See [Ease of Editing](/Documentation/Defining_an_Editor).
+shortcuts as shown below (See [Ease of Editing](/Documentation/Defining_an_Editor)).
 
 ```proto
 // QName/src/defs/LanguageWithScopes.edit#L10-L20

@@ -10,11 +10,11 @@ tags: Freon, projectional editing, AST, expressions, tree balancing, persistence
 
 # What is Projectional Editing?
 
-The essential characteristic of projectional editing is that the user manipulates  
-the Abstract Syntax Tree (AST) directly. In contrast, the traditional manner of editing is that  
+The essential characteristic of projectional editing is that the user manipulates
+the Abstract Syntax Tree (AST) directly. In contrast, the traditional manner of editing is that
 a user manipulates a text-string, which is then (re)parsed into a (changed) AST.
 
-For a generic view on projectional editing  
+For a generic view on projectional editing
 see <a href="https://en.wikipedia.org/wiki/Structure*editor" target="_blank">this page</a> on Wikipedia.
 
 ## Projectional workflow
@@ -35,26 +35,22 @@ figureNumber={1}
 
 ## Support For Expressions
 
-Editing expressions in a projectional editor is a well-known challenge. The representation of an expression  
-in the AST is highly structured. Yet, because its appearance to the user looks textual, users expect that  
+Editing expressions in a projectional editor is a well-known challenge. The representation of an expression
+in the AST is highly structured. Yet, because its appearance to the user looks textual, users expect that
 the editing behavior resembles classical text editing as much as possible.
 
-In <a href="https://www.voelter.de/data/pub/fse2016-projEditing.pdf" target="_blank">Efficiency  
+In <a href="https://www.voelter.de/data/pub/fse2016-projEditing.pdf" target="_blank">Efficiency
 of Projectional Editing: A Controlled Experiment</a> the authors express the problem as follows.
 
----
-
-Editing expressions with their fine-grained tree structure is one of the major challenges in a  
-projectional editor. The inability to insert and remove parentheses in arbitrary places (and  
-then refactor the tree structure according to the precedence expressed by the parentheses) is an  
+Editing expressions with their fine-grained tree structure is one of the major challenges in a
+projectional editor. The inability to insert and remove parentheses in arbitrary places (and
+then refactor the tree structure according to the precedence expressed by the parentheses) is an
 example.
 
 [Markus Voelter a.o., Efficiency of Projectional Editing]
 
----
-
-For this reason, Freon has in-built support for expressions. There is extra functionality to  
-be able to add an expression before or after an existing expression. Secondly, the AST of any binary  
+For this reason, Freon has in-built support for expressions. There is extra functionality to
+be able to add an expression before or after an existing expression. Secondly, the AST of any binary
 expression is automatically balanced.
 
 ## Adding to an Existing Expression
@@ -65,28 +61,28 @@ caption={'Editing expressions'}
 figureNumber={2}
 />
 
-In the above figure, when the user types a `+` symbol after the `**`, it is not enough  
+In the above figure, when the user types a `+` symbol after the `**`, it is not enough
 to simply add the `+` in the AST.
 
-- First of all, a placeholder should be added to make the expression structurally correct,  
+- First of all, a placeholder should be added to make the expression structurally correct,
   so we should see something like
   - `a * ... + b`.
 - Doing so will lead to the second AST shown.
 - But ... this AST is not balanced right!
   - When adding parenthesis to show the AST, this will look like `a * (... + b)`
   - But the user (using their knowledge of priorities of `**` and `+`) will read `(a * ...) + b`.
-- Therefore, the AST needs to be re-balanced to take the priorities of the multiplication and addition into account.  
-  This re-balancing leads to the third AST shown, where the structure of the AST  
+- Therefore, the AST needs to be re-balanced to take the priorities of the multiplication and addition into account.
+  This re-balancing leads to the third AST shown, where the structure of the AST
   properly reflects what the user understands.
 
 Freon understands this kind of tree balancing and will automatically apply it while editing expressions.
 
 ## Persistence
 
-Typical user actions are to _create_ a new element in the AST, to _change_ the content of an element,  
+Typical user actions are to _create_ a new element in the AST, to _change_ the content of an element,
 or to _delete_ an element.
 
-Certainly, these changes may need to be persisted. When the user triggers  
+Certainly, these changes may need to be persisted. When the user triggers
 the menu actions _save unit_ or _open unit_, the AST is pushed to or retrieved from a server.
 
 <Figure
