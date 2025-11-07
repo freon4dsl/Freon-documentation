@@ -5,7 +5,7 @@ information can be found in https://www.okupter.com/blog/deploy-sveltekit-websit
 https://docs.github.com/en/pages.
 This how-to-guide makes the general information explicit for this repo.
 
-Note that we need not add 'base' to our internal links, because the site is published on a custom domain.
+Note that we need NOT add 'base' to our internal links, because the site is published on a custom domain.
 
 ## In the GitHub Settings
 

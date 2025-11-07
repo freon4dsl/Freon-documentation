@@ -159,6 +159,11 @@ a {
 a:hover {
 	color: var(--color4);
 }
+/* This is added for the demo, because otherwise the github button is shown blue. Should be done in main project, if possible. */
+nav a {
+	color: var(--color1);
+}
+/* end added for demo */
 .landing-enter-buttons-grid a:hover {
 	color: var(--color5);
 }

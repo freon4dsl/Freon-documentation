@@ -6,9 +6,16 @@ In main project (`Freon4dsl`):
 
 1. Copy the folder Freon-documentation/demo-helpers to webapp-flowbite/src, this includes a MockServer.ts file.
 2. Change the server in webapp-flowbite/src/starter.ts to be a new MockServer instance.
-3. Make sure the sample project is 'Insurance' and that the external components are imported.
-4. Build the complete editor ('npm run build-dev' from top level), and check it in a browser (npm run dev).
-5. Build an index-<SOMETHING>.js file by executing 'npm run build-app' in webapp-flowbite (the generated name is different every time).
+3. Add this statement to webapp-flowbite/src/starter.ts, before `WebappConfigurator.getInstance().setEnvironment()`:
+
+```ts
+WebappConfigurator.getInstance().isDemo = true;
+```
+
+3. Make sure the sample project is 'Insurance' and that the external components are imported (in externals.ts).
+4. Build the complete editor ('npm run build-dev' from top level/Freon4dsl), and check it in a browser (npm run dev).
+5. Build an index-<SOMETHING>.js file by executing 'npm run build-app' in webapp-flowbite (the generated name is different every time). 
+   You will find it in "webapp-flowbite/dist/assets".
 
 Use the option to not minify the output ("vite build --minify false" or by changing vite.config.js as below) 
 to check whether the final lines in the javascript bundle are
@@ -37,7 +44,7 @@ When all is fine, build the bundle using 'minify: true', and go back to this rep
 
 Actually, the following should all be in place, but just to be sure it is repeated here.
 
-1. Set the +page.svelte in /DocuProjectDemo to 
+1. Set the +page.svelte in src/routes/DocuProjectDemo to 
 
 ```sveltehtml
 <svelte:head>
@@ -57,13 +64,13 @@ in the javascript bundle.
 2. In the +layout.svelte import the corresponding css file.
 
 ```sveltehtml
-<link rel="stylesheet" crossorigin href="./demoApp/assets/site.css">
+<link rel="stylesheet" crossorigin href="./demoApp/site.css">
 <slot />
 ```
 
 Or, when working with svelte version 5:
 ```sveltehtml
-<link rel="stylesheet" crossorigin href="./demoApp/assets/site.css">
+<link rel="stylesheet" crossorigin href="./demoApp/site.css">
 {@render children()}
 ```
 
