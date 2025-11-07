@@ -1,7 +1,7 @@
 ---
 title: Styling
-description: Learn how to style the Freon web app and editor using SCSS or CSS, including light and dark theme customization, SMUI integration, and overriding Freon component styles.
-tags: styling, SCSS, CSS, themes, light mode, dark mode, editor styling, SMUI, Material UI, Freon, DSL development
+description: Learn how to style the Freon web app and editor using SCSS or CSS, including light and dark theme customization, Flowbite integration, and overriding Freon component styles.
+tags: styling, SCSS, CSS, themes, light mode, dark mode, editor styling, Flowbite, Material UI, Freon, DSL development
 ---
 
 # Styling

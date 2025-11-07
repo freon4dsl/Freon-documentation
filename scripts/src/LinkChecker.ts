@@ -67,7 +67,7 @@ export class LinkChecker {
 				// remove any reference to an anchor
 				link = link.replace(/#[a-zA-Z0-9-_]*/, '');
 				// now check the link against the available routes, except when it refers to an email address
-				if (link !== "mailto:info@freon4dsl.dev") {
+				if (link !== "mailto:info@openmodeling.nl") {
 					if (!this._correctRoutes.includes(link)) {
 						errors.push(`${link}, on line ${i + 1}`);
 					} else if (!link.startsWith('/')) {

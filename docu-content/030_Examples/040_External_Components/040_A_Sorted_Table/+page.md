@@ -319,7 +319,8 @@ This extended example demonstrates how custom Svelte components in the Freon edi
 Once you’re comfortable with this pattern, you can reuse it with any of the [External Component Box Types](/Documentation/Under_the_Hood/Editor_Framework/External_Component_Box_Types).
 
 Since external components are still experimental, we’re eager to learn how you plan to use them. If you decide to incorporate 
-them, please reach out to the Freon team at [info@freon4dsl.dev](mailto:info@freon4dsl.dev) or via GitHub—we’re happy to help.
+them, please reach out to the Freon team at [info@openmodeling.nl](mailto:info@openmodeling.nl) or via 
+GitHub — we’re happy to help.
 
 ## The Complete Svelte Component
 

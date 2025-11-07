@@ -85,7 +85,7 @@ This table gives an overview of the fre-tools, and shows how you can adjust them
 | visitor pattern implementation |     yes     |        .ast        |                                          can be extended                                           |
 | web app                        |     yes     |   none available   |                                     can be changed or replaced                                     |
 
-If you are missing a specific tool or feature, please contact us at [info@freon4dsl.dev](mailto:info@freon4dsl.dev).
+If you are missing a specific tool or feature, please contact us at [info@openmodeling.nl](mailto:info@openmodeling.nl).
 
 
 ## Adding A Fre-tool
