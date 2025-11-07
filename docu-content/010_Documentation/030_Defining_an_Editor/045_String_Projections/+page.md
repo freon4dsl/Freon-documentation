@@ -51,7 +51,7 @@ To indicate the use of a multi-line display add the keyword `multiline` to the p
 ```proto
 // Insurance/src/defs/editor-main-comments.edit#L37-L37
 
-Insurance Product ${name} ( public name: ${productName multiline} ) USES ${basedOn horizontal separator[, ]}
+Insurance Product ${name} ( public name: ${productName} ) USES ${basedOn horizontal separator[, ]}
 ```
 
 This results in the following.

@@ -28,7 +28,7 @@ For the sake of the example, we have added two number properties to the concept 
 
 range: number;
 nrOfUse: number;
-// The previous two properties are present to show the different options for displaying numbers.
+// The previoud two properties are present to show the different options for displaying numbers.
 ```
 
 The added properties are displayed like this.

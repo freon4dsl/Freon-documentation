@@ -203,38 +203,12 @@ let timeStamps: TimeStamp[] = [
 
 ### The HTML Section
 
-We couldn’t use the SMUI `Table` because it clips its content (including dropdowns). With a bit of CSS we recreated a table in plain HTML.
+We couldn’t use the `Table` component from the library because it clips its content (including dropdowns). With a bit of CSS we recreated a table in plain HTML.
 
 First, the headers: each holds a day name. Because we also display row headers (`Morning` and `Afternoon`), the first header cell is empty.
 
-```svelte
-// CourseSchedule/phase5/src/external/Schedule.svelte#L174-L179
-<thead>
-  <tr class="demo-header-row">
-    <th class="demo-header-cell"></th>
-    {#each dayTitle as title}
-      <th class="demo-header-cell">{title}</th>
-    {/each}
-  </tr>
-</thead>
-```
-
-Next, we create two rows—one for mornings and one for afternoons.  
-For the morning row: the first cell is the row header (`Morning`). We then loop over `sortedSlots` but only take the first five entries (the mornings). Each morning can contain a *list* of slots. For each slot we resolve its child box via `slotToBoxMap` and render it with Freon’s `<RenderComponent>`. The afternoon row mirrors this but uses the last five entries.
-
-```ts
-// CourseSchedule/phase5/src/external/Schedule.svelte#L182-L203
-
-    }
-    initialize();
-    const colorCls: string = 'text-light-base-50 dark:text-dark-base-900 ';
-    const buttonCls: string =
-      'bg-light-base-600 					dark:bg-dark-base-200 ' +
-      'hover:bg-light-base-900 		dark:hover:bg-dark-base-50 ' +
-      'border-light-base-100 			dark:border-dark-base-800 ';
-    const iconCls: string = 'ms-0 inline h-6 w-6';
-</script>
-
+```swift
+// CourseSchedule/phase5/src/external/Schedule.svelte#L193-L203
 
 <div class="demo-table-container">
     <table class="demo-table">
@@ -249,10 +223,11 @@ For the morning row: the first cell is the row header (`Morning`). We then loop 
         <tbody>
 ```
 
-Between the two time rows we add button rows so the user can create a slot for a specific time. Again, the first cell is empty (row header column). We loop over `timeStamps` and pass each value to `addSlot`.
+Next, we create two rows—one for mornings and one for afternoons.  
+For the morning row: the first cell is the row header (`Morning`). We then loop over `sortedSlots` but only take the first five entries (the mornings). Each morning can contain a *list* of slots. For each slot we resolve its child box via `slotToBoxMap` and render it with Freon’s `<RenderComponent>`. The afternoon row mirrors this but uses the last five entries.
 
-```ts
-// CourseSchedule/phase5/src/external/Schedule.svelte#L204-L213
+```swift
+// CourseSchedule/phase5/src/external/Schedule.svelte#L204-L225
 
 <tr class="demo-row">
     <td class="demo-header-cell">Morning</td>
@@ -264,13 +239,46 @@ Between the two time rows we add button rows so the user can create a slot for a
                     {#each slots as slot}
                         <div class="demo-slot-render">
                         <RenderComponent box={findBoxForSlot(slot)} editor={editor} />
+                        </div>
+                    {/each}
+                    </div>
+                </td>
+            {:else}
+                <td class="demo-cell">
+                    <div class="demo-slot-render">NONE</div>
+                </td>
+            {/if}
+        {/if}
+    {/each}
+</tr>
+```
+
+Between the two time rows we add button rows so the user can create a slot for a specific time. Again, the first cell is empty (row header column). 
+We loop over `timeStamps` and pass each value to `addSlot`.
+
+```swift
+// CourseSchedule/phase5/src/external/Schedule.svelte#L226-L237
+
+<tr>
+    <td class="demo-btn-cell"></td>
+    {#each timeStamps as stamp, index}
+        {#if index < 5}
+            <td class="demo-btn-cell">
+                <Button tabindex={-1} id="add-button" class="{buttonCls} {colorCls} " name="ToastOpen" onclick={() => addSlot(stamp)}>
+                    <UserAddOutline class="{iconCls}" />
+                </Button>
+            </td>
+        {/if}
+    {/each}
+</tr>
 ```
 
 The complete Svelte component is at the bottom of this page.
 
 ## Step 2: Include in the Projection
 
-We include the new component in the projection with `replace=Schedule`. Because the table already conveys each slot’s time, we hide `\${self.time}` in the `Slot` projection.
+We include the new component in the projection with `replace=Schedule`. Because the table already conveys each slot’s time, 
+we hide `\${self.time}` in the `Slot` projection.
 
 ```proto
 // CourseSchedule/phase5/defs/externals.edit#L20-L31
@@ -303,11 +311,15 @@ figureNumber={1}
 
 ## Conclusion
 
-After following these steps, you’ll have a Svelte component that displays a sorted table of time slots. This approach adapts well to any case where you want to preprocess and present structured data in a table. The editor shows the schedule neatly sorted by day and time, and users can interactively add slots.
+After following these steps, you’ll have a Svelte component that displays a sorted table of time slots. This approach adapts well 
+to any case where you want to preprocess and present structured data in a table. The editor shows the schedule neatly sorted by 
+day and time, and users can interactively add slots.
 
-This extended example demonstrates how custom Svelte components in the Freon editor unlock many design and UX possibilities. Once you’re comfortable with this pattern, you can reuse it with any of the [External Component Box Types](/Documentation/Under_the_Hood/Editor_Framework/External_Component_Box_Types).
+This extended example demonstrates how custom Svelte components in the Freon editor unlock many design and UX possibilities. 
+Once you’re comfortable with this pattern, you can reuse it with any of the [External Component Box Types](/Documentation/Under_the_Hood/Editor_Framework/External_Component_Box_Types).
 
-Since external components are still experimental, we’re eager to learn how you plan to use them. If you decide to incorporate them, please reach out to the Freon team at info AT freon4dsl.dev or via GitHub—we’re happy to help.
+Since external components are still experimental, we’re eager to learn how you plan to use them. If you decide to incorporate 
+them, please reach out to the Freon team at [info@freon4dsl.dev](mailto:info@freon4dsl.dev) or via GitHub—we’re happy to help.
 
 ## The Complete Svelte Component
 
@@ -319,7 +331,7 @@ For reference, here is the full implementation of the `Schedule.svelte` componen
 <script lang="ts">
     import {
         Box,
-        ExternalPartListBox,
+        PartListReplacerBox,
         type FreNode,
         FreNodeReference,
         AST, isNullOrUndefined, LabelBox, notNullOrUndefined
@@ -330,9 +342,9 @@ For reference, here is the full implementation of the `Schedule.svelte` componen
     import { Button } from 'flowbite-svelte';
 
     // This component replaces the component for "timeSlots: Slot[];" from model unit "Schedule".
-    // This property is a parts list, therefore the external box to use is an ExternalPartListBox.
+    // This property is a parts list, therefore the external box to use is an PartListReplacerBox.
     // Props
-    let { editor, box }: FreComponentProps<ExternalPartListBox> = $props();
+    let { editor, box }: FreComponentProps<PartListReplacerBox> = $props();
 
     // The following three functions need to be included for the editor to function properly.
     // Please, set the focus to the first editable/selectable element in this component.
@@ -652,4 +664,5 @@ For reference, here is the full implementation of the `Schedule.svelte` componen
         justify-content: space-between;
     }
 </style>
+
 ```

@@ -195,7 +195,7 @@ In this example, a fragment is wrapped in a `Card` component imported from the
 <a href="https://sveltematerialui.com/" target="_blank">SMUI</a> library.
 
 ```swift
-// Insurance/src/external/SMUI_Card_Component.svelte#L30-L34
+// Insurance/src/external/FB_Card_Component.svelte#L25-L29
 
 <span class="card-container">
     <Card>

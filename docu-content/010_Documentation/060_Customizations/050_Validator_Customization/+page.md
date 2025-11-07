@@ -12,9 +12,7 @@ part of the visitor pattern, adding an error list.
 ```ts
 // CustomizationsProject/src/freon/validator/gen/EntityModelValidator.ts#L38-L40
 
-public validate(node: FreNode, includeChildren: boolean = true): FreError[] {
-    // initialize the errorlist
-    const errorlist: FreError[] = [];
+
 ```
 
 The worker defines two methods for each concept in the language, as shown in the next example.
@@ -22,15 +20,6 @@ The worker defines two methods for each concept in the language, as shown in the
 ```ts
 // CustomizationsProject/src/freon/utils/gen/EntityModelWorker.ts#L48-L57
 
-export interface EntityModelWorker {
-    execBeforeEntityModel(node: EntityModel): boolean;
-    execAfterEntityModel(node: EntityModel): boolean;
-
-    execBeforeSomeOtherModelUnit(node: SomeOtherModelUnit): boolean;
-    execAfterSomeOtherModelUnit(node: SomeOtherModelUnit): boolean;
-
-    execBeforeEntityModelUnit(node: EntityModelUnit): boolean;
-    execAfterEntityModelUnit(node: EntityModelUnit): boolean;
 
 ```
 

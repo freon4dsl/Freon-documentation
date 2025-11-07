@@ -31,6 +31,6 @@ be using the generated work environment are simply called **users**.
 So welcome, language engineer, to the world of Freon. This documentation is meant for you. It explains how Freon can help
 you in creating a language, and building a work environment for it. 
 If you have questions that are not answered in this documentation, please get in contact with the Freon team,
-for instance via email at [info@freon4dsl.dev](mailto:info@freon4dsl.dev).
+for instance via email at [info@openmodeling.nl](mailto:info@openmodeling.nl).
 
 **Have fun!**

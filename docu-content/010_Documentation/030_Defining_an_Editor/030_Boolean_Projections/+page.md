@@ -129,7 +129,7 @@ concept BaseProduct {
     yieldsProfit: boolean;
     range: number;
     nrOfUse: number;
-    // The previous two properties are present to show the different options for displaying numbers.
+    // The previoud two properties are present to show the different options for displaying numbers.
     // The following property is present to show the use of an external DatePicker component.
     date: string;
 }
@@ -141,9 +141,9 @@ Each of the boolean properties is displayed differently.
 // Insurance/src/defs/editor-main-controls.edit#L7-L11
 
 is still under construction: ${self.isUnderConstruction switch}
-is approved level 1: ${self.isApprovedLevel1 radio [Sure | NoWay]}
-is approved level 2: ${self.isApprovedLevel2 inner-switch}
-is approved level 3: ${self.isApprovedLevel3 checkbox}
+is approved level1: ${self.isApprovedLevel1 radio [Sure | NoWay]}
+is approved level2: ${self.isApprovedLevel2 inner-switch}
+is approved level3: ${self.isApprovedLevel3 checkbox}
 yields profit: ${self.yieldsProfit text [Plenty | Little]}
 ```
 
