@@ -17,15 +17,12 @@ from '/docs' folder (The name of this folder must be the same as the outDir in t
 
 ## In the Sources
 
-1. Create copy of old 'main' branch.
+1. Create copy of old 'main' branch, and name it 'release-<NUMBER>, with the right number.
    To be able to go back to old documentation when needed, we keep a copy of the old documentation in a separate branch.
-   TODO: we need to establish a naming convention for this.
 
 2. Move the 'development' branch to 'main', work in that branch, or work in the branch
    that is chosen to deploy from, and adjust as follows. 
 
-3. Set the base path in svelte.config.ts, and use it for all hrefs. The latter is done automatically 
-by the markdown to svelte transformation. (TODO this needs to be implemented.)
 4. Add a .nojekyll file to the root of the project.
 5. When ready for publishing, build the SvelteKit project, using `npm run build`, not `npm run dev`. 
 This will create a new folder containing the generated publishable sources.
