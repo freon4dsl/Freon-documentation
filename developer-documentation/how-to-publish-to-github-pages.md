@@ -20,12 +20,14 @@ from '/docs' folder (The name of this folder must be the same as the outDir in t
 1. Create copy of old 'main' branch, and name it 'release-<NUMBER>, with the right number.
    To be able to go back to old documentation when needed, we keep a copy of the old documentation in a separate branch.
 
-2. Move the 'development' branch to 'main', work in that branch, or work in the branch
-   that is chosen to deploy from, and adjust as follows. 
+2. Push the 'development' branch to 'main', or the branch
+   that is chosen to deploy from, work in that branch, and adjust as follows. 
 
 4. Add a .nojekyll file to the root of the project.
+
 5. When ready for publishing, build the SvelteKit project, using `npm run build`, not `npm run dev`. 
 This will create a new folder containing the generated publishable sources.
+
 6. Depending on the settings of outDir in the `vite.config.js` file, you may need to copy the 
 `build` folder to `/docs` (NB the same name as in the GitHub settings). To avoid this last step you 
 can add the following to the `vite.config.js` file.
@@ -36,5 +38,5 @@ can add the following to the `vite.config.js` file.
     outDir: './docs'
   }
 ```
-1. Finally, make sure the '/docs' folder is added to Git, and push it to GitHub. If you have chosen to use
+7. Finally, make sure the '/docs' folder is added to Git, and push it to GitHub. If you have chosen to use
 a specific branch to deploy from, be sure to push it to that branch.
