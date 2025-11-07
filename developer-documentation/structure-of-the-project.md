@@ -33,7 +33,8 @@ it from the actual name using an underscore.
    every example must be positioned within a code block (enclosed by three backticks). Using the
    name `proto` after the first three backticks indicates that the example comes from a Freon definition
    file, and the code will be highlighted as such. (You can use other names, for instance, for javascript (`js`).
-   (See https://www.markdownguide.org/extended-syntax/ for more details.) The line
+   (See https://www.markdownguide.org/extended-syntax/ for more details.) You may also use `swift`, which 
+   will be transformed in `svelte`.The line
    before the code block must be empty, and the first entry in the code block must be the path to the
    file that needs to be included. By using an expression like `#L4-L50` after the filepath, you can indicate
    that only the lines 4 till 50 need to be included in the code block. 

@@ -1,18 +1,24 @@
+---
+title: Finishing the Test
+description: Combine the interpreter’s building blocks to evaluate test flows end-to-end. Learn how to check step sequencing, aggregate scenario results, pass flow data via context, and present errors to the user.
+tags: Freon, interpreter, Test, Scenario, TestFlow, Step, Page, Flow, context, CURRENT_FLOW, RtPage, RtError, evaluation, EducationInterpreter, tutorial, example
+---
+
 <script>
     import Figure from "$lib/figures/Figure.svelte";
 </script>
 
 # Finishing the Test
 
-All basic building blocks for the interpreter have been implemented. What is left to do is to combine the information
+All basic building blocks for the interpreter have been implemented. What’s left is to combine the information
 and present it to the user.
 
 ## Evaluation of TestFlow
 
-Every TestFlow consists of a series of steps, where the page that is a result of a previous step should be equal
-to the `fromPage` of the next. In the following code we loop over the steps, remember the evaluation result from the previous step,
-and compare that to the `fromPage` of the current step. If there is an error, we create a reasonably readable 
-error message that will be shown to the user.
+Every `TestFlow` consists of a series of steps, where the page that is the result of a previous step should equal
+the `fromPage` of the next. In the following code we loop over the steps, remember the evaluation result from the previous step,
+and compare it to the `fromPage` of the current step. If there’s an error, we create a readable
+message that will be shown to the user.
 
 ```ts
 // EducationInterpreter/src/custom/interpreter/EducationInterpreter.ts#L84-L107
@@ -41,12 +47,11 @@ override evalTestFlow(node: TestFlow, ctx: InterpreterContext): RtObject {
     }
     return RtBoolean.TRUE
 }
-```    
+```
 
 ## Evaluation of Scenario and Test
 
-The implementation of the evaluation function for `Scenario` is reasonably simple. It loops 
-over all test flows, if any of them has an error than the result is false.
+The evaluation of `Scenario` is straightforward: loop over all test flows and return `false` if any produces an error.
 
 ```ts
 // EducationInterpreter/src/custom/interpreter/EducationInterpreter.ts#L70-L82
@@ -66,8 +71,8 @@ override evalScenario(node: Scenario, ctx: InterpreterContext): RtObject {
 }
 ```
 
-In the final evaluation function, the one for `Test` we need to include adding the flow to the context.
-The rest is simple admin as in the `evalScenario` function.
+In the final evaluation function, `evalTest`, we also add the flow to the context under `CURRENT_FLOW`.
+The rest mirrors the `evalScenario` logic.
 
 ```ts
 // EducationInterpreter/src/custom/interpreter/EducationInterpreter.ts#L52-L68
@@ -93,8 +98,8 @@ override evalTest(node: Test, ctx: InterpreterContext): RtObject {
 
 ## The Result
 
-Running the interpreter on the complete `TestB` model unit from our model (named "Model4Interpreter"),
-results in this error.
+Running the interpreter on the complete `TestB` model unit from our model (named **Model4Interpreter**)
+results in this error:
 
 <Figure
 imageName={'examples/Interpreter/Interpreter-result.png'}

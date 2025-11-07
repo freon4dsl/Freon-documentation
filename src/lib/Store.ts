@@ -1,7 +1,7 @@
 import { type Writable, writable } from 'svelte/store';
 
 // info about Freon
-export const versionNumber: string = '2.0.0-beta.2';
+export const versionNumber: string = '2.0.0';
 
 export const popoverElem: Writable<HTMLDivElement> = writable<HTMLDivElement>(undefined);
 

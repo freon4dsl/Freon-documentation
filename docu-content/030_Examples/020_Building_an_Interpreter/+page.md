@@ -1,38 +1,52 @@
+---
+title: Building an Interpreter
+description: Learn how to build an interpreter in Freon using the Computer Aided Learning DSL. This example walks through implementing literal and binary expression evaluation functions in TypeScript.
+tags: Freon, interpreter, EducationInterpreter, evaluation, AST, RtNumber, RtFraction, RtBoolean, SimpleNumber, NumberLiteralExpression, OrExpression, binary expressions, runtime, tutorial, example
+---
+
 <script>
     import Note from "$lib/notes/Note.svelte";
 </script>
 
 # Building an Interpreter
 
-This example shows how to create an interpreter.
+This example demonstrates how to **create an interpreter** for your Freon-based language.
 
 ## The Computer Aided Learning DSL
 
-The language used in this extended example is the one that is in depth explained in the [tutorial](/Tutorial/Overview).
-When you take another look at the requirements for this DSL, you see that our hypothetical client wants a means to test the page flow.
-We are going to build an interpreter to do just that.
+The language used in this extended example is the same one explained in detail in the [tutorial](/Tutorial/Overview).  
+In the DSL’s requirements, our hypothetical client wanted a way to **test the page flow**.  
+We’ll build an interpreter to do just that.
 
-To follow the example use the `npm create freon@latest` command and choose the language called `EducationInterpreter`. 
-Build the project (`npm run build`). Start the editor and select the model named 'Model4Interpreter', which is 
-basically the same as the model called 'Lesson6' that was used in the tutorial. Open the model unit 'TestB' and run the 
-interpreter from the `Edit` menu on the complete test (i.e. by selecting the test as current node).
+To follow along, run:
 
-<Note {header} {content}> </Note>
-{#snippet header()}The selected node is the one that is interpreted{/snippet}
+```bash
+npm create freon@latest
+```
+
+Then select the language **EducationInterpreter**.  
+Build the project (`npm run build`), start the editor, and select the model named **Model4Interpreter** —  
+it’s essentially the same as the tutorial’s `Lesson6` model.
+
+Open the model unit **TestB**, then run the interpreter from the **Edit** menu on the entire test  
+(by selecting the test as the current node).
+
+<Note>{#snippet header()}The selected node is the one that is interpreted{/snippet}
 {#snippet content()}
-When running the interpreter from the <code>Edit</code> menu, the interpreter will try to evaluate 
-the currently selected node. You will see a different result in the Interpreter tab for different nodes.
-Often the interpretation cannot be done completely, because some context is needed. It is up to the 
-creator of the interpreter to augment this.
+When running the interpreter from the <code>Edit</code> menu, Freon evaluates the <strong>currently selected node</strong>.  
+You’ll see different results in the <em>Interpreter</em> tab depending on the selection.  
+Sometimes interpretation cannot complete because additional context is needed — it’s up to the interpreter creator to handle such cases.
 {/snippet}
+</Note>
 
 ## Values for the Literals
 
-As explained in [Interpreter Framework](/Documentation/Interpreter_Framework) there is only one file that we need
-to change: `/src/freon/interpreter/EducationInterpreter.ts`.
+As explained in [Interpreter Framework](/Documentation/Interpreter_Framework),  
+there’s only one file we need to modify:  
+`/src/freon/interpreter/EducationInterpreter.ts`.
 
-Because this is the easiest manner, we are going to build the evaluation from the bottom up. This means that we are first going to
-implement the evaluation functions for the literal expressions, i.e. `SimpleNumber`, `NumberLiteralExpression`, and `Fraction`.
+We’ll build the evaluation **from the bottom up** — starting with the literal expressions:  
+`SimpleNumber`, `NumberLiteralExpression`, and `Fraction`.
 
 ```ts
 // EducationInterpreter/src/custom/interpreter/EducationInterpreter.ts#L216-L228
@@ -52,8 +66,8 @@ override evalFraction(node: Fraction, ctx: InterpreterContext): RtObject {
 }
 ```
 
-As you see, the first two functions simply return a runtime object of type `RtNumber` which holds the current `value`
-of the node. The third function returns a runtime object of type `RtFraction`, which is defined as follows:
+The first two functions return an `RtNumber` runtime object containing the node’s value.  
+The third returns an `RtFraction`, defined as:
 
 ```ts
 // EducationInterpreter/src/custom/interpreter/runtime/RtFraction.ts
@@ -89,18 +103,15 @@ export function isRtFraction(object: any): object is RtFraction {
     const _type = (object as any)?._type;
     return !!_type && _type === "RtFraction";
 }
-
 ```
 
-What makes things easy is that we do not actually need the result of a fraction, that 
-is, if the fraction is 6/3, we do not need the number 2. All we have to do, when 
-building the test for our customer, is to compare one fraction with another.
-Therefore, the only function we need to define for the `RtFraction` class is the `equals` function.
+For our purposes, we don’t need to simplify fractions (e.g., `6/3 → 2`).  
+We just need to compare them for equality, which is handled by the `equals` method.
 
 ## Values for Binary Expressions
 
-The next step is to create the evaluation functions for the binary expressions. They 
-are all similar, so here we focus on the evaluation of an `OrExpression`. 
+Next, let’s define the evaluation functions for **binary expressions**.  
+They all follow a similar pattern. Here’s the `OrExpression`:
 
 ```ts
 // EducationInterpreter/src/custom/interpreter/EducationInterpreter.ts#L244-L248
@@ -112,11 +123,10 @@ override evalOrExpression(node: OrExpression, ctx: InterpreterContext): RtObject
 }
 ```
 
-First we evaluate the
-left and right hand side of the expression. Note that we use the `main` interpreter from the file 
-`MainEducationInterpreter.ts`. The `main` interpreter is able to obtain the runtime value for
-any node type. Next we use the predefined `or` function of the class
-`RtBoolean`, which is defined as follows.
+We first evaluate both sides of the expression.  
+Note the use of the **main interpreter** from `MainEducationInterpreter.ts`,  
+which can evaluate any node type.  
+We then use the built-in `or` function of the `RtBoolean` class, defined as:
 
 ```ts
 export class RtBoolean extends RtObject {
@@ -134,8 +144,8 @@ export class RtBoolean extends RtObject {
 }		
 ```
 
-The other comparison expressions, like `AndExpression`, and `EqualsExpression`, are implemented
-in a similar fashion. For example, this is the implementation of the `GreaterOrEqualsExpression`:
+Other expressions, like `AndExpression` and `EqualsExpression`, are implemented in much the same way.  
+For example, here’s the `GreaterOrEqualsExpression`:
 
 ```ts
 // EducationInterpreter/src/custom/interpreter/EducationInterpreter.ts#L256-L260
@@ -146,3 +156,5 @@ override evalGreaterOrEqualsExpression(node: GreaterOrEqualsExpression, ctx: Int
     return RtBoolean.of(left.value >= right.value)
 }
 ```
+
+This pattern makes your interpreter modular, easy to extend, and consistent across expression types.

@@ -1,24 +1,26 @@
+---
+title: An Icon Component
+description: Learn how to create and integrate a custom Svelte icon component into a Freon editor using the SimpleExternalBox and global external registration.
+tags: Freon, Svelte, external components, PersonIcon, SimpleExternalBox, editor customization, projection, CourseSchedule, FreEditor, setCustomComponents
+---
+
 <script>
     import Figure from "$lib/figures/Figure.svelte";
 </script>
 
 # An Icon Component
 
-In this part of the example, we will guide you through the process of enhancing the look of 
-the `Staff` model by adding an icon to each person. We will create a 
-custom Svelte component named `PersonIcon.svelte`, and integrate it into the editor. 
-Let's get started!
+In this part of the example, you’ll learn how to enhance the look of the **Staff** model by adding an icon to each person.  
+We’ll create a custom Svelte component called `PersonIcon.svelte` and integrate it into the Freon editor.
+
+---
 
 ## Step 1: Create the Svelte Component
 
-To begin, we need to create a new Svelte component that will represent the icon for each 
-person. Let's call it `PersonIcon.svelte`. This component must be linked to the box model 
-of the Freon editor. In Freon, each external component must be associated with a box, 
-and the `PersonIcon` component will be tied to a box type called `ExternalSimpleBox`.
-The parameter `editor: FreEditor` is also mandatory. When the component
-is instantiated by the Freon editor both parameters will get a value.
-
-The complete Svelte component should look like this:
+Start by creating a new Svelte component that represents the icon for each person.  
+Let’s name it `PersonIcon.svelte`.  
+Every external component in Freon must be associated with a **box type**, and in this case, our component will use the `SimpleExternalBox`.  
+The `editor: FreEditor` parameter is mandatory—Freon provides both props automatically at runtime.
 
 ```ts
 // CourseSchedule/phase2/src/external/PersonIcon.svelte
@@ -37,13 +39,12 @@ The complete Svelte component should look like this:
 
 ```
 
+---
+
 ## Step 2: Add to the Global Section
 
-The next step is to inform the Freon code generator about the new external 
-component. We can achieve this by modifying the [`global`](/Documentation/Defining_an_Editor/Global_Projections)  section 
-of the default editor configuration.
-
-In the `main.edit` file, add the following code to declare the `PersonIcon` component:
+Next, inform Freon about your new external component by modifying the [`global`](/Documentation/Defining_an_Editor/Global_Projections) section of your editor configuration.  
+In `main.edit`, add the following:
 
 ```proto
 // CourseSchedule/phase2/defs/main.edit#L3-L7
@@ -55,19 +56,19 @@ global {
 }
 ```
 
-This tells the editor that `PersonIcon` is an external component. You can name it 
-anything you like, but for simplicity, we will use `PersonIcon`.
+This tells Freon that a component named `PersonIcon` is available as an external component.  
+You can give it any name, but we’ll keep it simple and consistent.
 
-## Step3: Include in the Projection
+---
 
-To include the new component, we need to reference it in the editor's projection for 
-the `Person` concept. The way to do this is by adding `[external=PersonIcon]` to the projection.
-To be able to see the differences in the browser between the native editor and 
-the one with external components we have decided to add the adjusted projection to a new 
-editor (projection set). The icon is included in the fragment that shows the
-name and phone number details.
-Every fragment for the same concept must have a unique name. Therefore, we 
-name this fragment `nameAndIcon`.
+## Step 3: Include in the Projection
+
+To use the new component, reference it in the editor’s projection for the `Person` concept.  
+Add `[external=PersonIcon]` in the fragment where you want it to appear.
+
+To keep both the native and extended editors available, we’ll create a **new projection set** called `externals.edit`.  
+The icon will appear in the fragment that displays a person’s name and phone number.  
+Each fragment for the same concept must have a unique name, so we’ll name this one `nameAndIcon`.
 
 ```proto
 // CourseSchedule/phase2/defs/externals.edit
@@ -84,16 +85,14 @@ Full Name: ${self.fullName}
 Phone number: ${self.phone}
 ]
 }
-
 ```
 
-## Step4: Register in the Starter Code
+---
 
-Now, we need to ensure the Freon editor knows how to instantiate our custom component. 
-This is done by calling the `setCustomComponents` function in the application’s startup code.
+## Step 4: Register in the Starter Code
 
-In your `externals.ts` file, import the `PersonIcon` component and add it to 
-the `setCustomComponents` function like this:
+Finally, register your external component so Freon can instantiate it.  
+Open `externals.ts`, import your component, and add it to the `setCustomComponents` call:
 
 ```ts
 // CourseSchedule/phase2/src/external/externals.ts
@@ -112,22 +111,23 @@ export function configureExternals() {
 
 ```
 
+---
+
 ## Final Result
 
-Once all the steps are completed, your editor will look like this, with each person 
-displaying their details alongside the newly added icon:
+After completing all steps, your editor will now display each person’s information along with the new icon.
 
 <Figure
 imageName={'examples/CourseSchedule/Screenshot-step2.png'}
-caption={'Editor with added Icon'}
+caption={'Editor with added icon for each person'}
 figureNumber={1}
 />
 
-### Conclusion:
-You’ve successfully added an icon to the `Staff` model in the Freon editor! 
-By following these steps, you've created a custom Svelte component, integrated 
-it into the Freon editor, and made it available in your projections. 
+---
 
-Next, you are going to learn how to get the information from the AST model, and use it
-in your external components.
+### ✅ Conclusion
 
+You’ve successfully added an **icon component** to the `Staff` model in the Freon editor!  
+By following these steps, you created a **custom Svelte component**, integrated it into the Freon editor, and made it available in your projections.
+
+Next, you’ll learn how to **access AST model data** from within your external components.

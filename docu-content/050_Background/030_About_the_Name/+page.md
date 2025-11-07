@@ -1,3 +1,9 @@
+---
+title: About the Name Freon
+description: Explains the origin of the name Freon — from its early days as ProjectIt to its meaning as ‘friend’ in Frisian — and includes the myth of Freon, the God of languages.
+tags: Freon, name, origin, ProjectIt, mythology, linguistics, Frisian, god of languages, story, background, documentation
+---
+
 <script>
     import Figure from "$lib/figures/Figure.svelte";
 </script>
@@ -17,7 +23,7 @@ We certainly want Freon to be a developer-, and user-friendly tool. There has be
 Freon. A native Frisian speaker has been so kind to provide us with a sound bite. (Thanks, Meinte!)
 <audio controls><source src="../../freon - pronunciation.mp3" type="audio/mpeg">Your browser does not support the audio element.</audio>
 
-Besides that, we could not resist the temptation to invent yet another reason for this name. 
+Besides that, we could not resist the temptation to invent yet another reason for this name.
 If you like, you can read all about the myth of the god of languages, who is, of course, named _Freon_.
 
 ## The Myth of <i>Freon</i>
@@ -36,7 +42,7 @@ natural ease and charm. (Or rather he still does, being a God he is of course et
 character is known to be highly adverse to change.) Being a curious child Freon was very
 interested in the sounds that were made when people were talking. He noticed that many people
 used the same sounds for expressing the same thing. For instance, the sound "oh" was often used
-when one was surprised, were "ah" was used in case of fatigue, and a longer "aaahh" accompanied
+when one was surprised, where "ah" was used in case of fatigue, and a longer "aaahh" accompanied
 pain. In his childlike playful way Freon started to invent sounds for certain expressions, and
 he and his friends used these instead of the psychic communication as their special, secret way
 of communicating.
@@ -56,21 +62,21 @@ on the other side of earth, or in another time, he would use another.
 In a few heavenly moments, which took about three ages on earth, Freon's father, the leader
 of the gods, noticed that the humans relied more and more on the sounds, and less on the
 psychic form of communication. In fact, the humans were losing the ability to understand
-each other without aid of sound or gestures all together. So Freon's father told him to
+each other without aid of sound or gestures altogether. So Freon's father told him to
 stop making "languages" and "for heaven's sake speak normally from now on". Freon reacted
 like the teenager he was at that time, telling his father not to act like an old demented
 human, and that he, Freon, would do exactly what he liked.
 
-When his father insisted, pulling rank - he was the leader of the gods, after all - Freon
+When his father insisted, pulling rank — he was the leader of the gods, after all — Freon
 went to complain to his mother. Unfortunately for Freon, she agreed with his father. "Take
-pity on the humans", she said, "they already suffered enough from the deluge. You remember,
+pity on the humans," she said, "they already suffered enough from the deluge. You remember,
 don't you, Noah and his Arc. They have lost so much because of your father's anger, don't make
 them lose their ability to know and understand as well." Of course Freon argued, but she was
 not to be persuaded. At the end of the day, Freon went away from the earth, out of time and
 space, back to his heavenly bedroom, pining.
 
-Freon was resentful, so he devised a plan to taunt his parents. In the next few weeks, (if
-you can call it weeks, outside of time) without his parents knowing, he went back to earth.
+Freon was resentful, so he devised a plan to taunt his parents. In the next few weeks (if
+you can call it weeks, outside of time), without his parents knowing, he went back to earth.
 This time (no pun intended, it's simply difficult to communicate heavenly time to humans) he
 used his godly abilities to enter earth in a certain time and at a certain place. He went to
 places and times where he knew that his former human friends were, and he contacted them
@@ -81,8 +87,8 @@ was Indra and Shachi, then Jupiter and Juno, and in the north it was Wodan and F
 
 Actually, the north was the first part of the earth that Freon visited, when he was still
 very angry with his parents. And the north winters being so cold and dark, the people had
-ot much else to do than listen to stories. In this particular winter Freon used more than
-a hundred different names for his father. All very good names, the name Fimbultyr, for
+not much else to do than listen to stories. In this particular winter Freon used more than
+a hundred different names for his father. All very good names — the name Fimbultyr, for
 instance, means "mighty god". Freon never stooped to name-calling. But later Freon
 wondered if he might not have overdone things a bit.
 
@@ -95,11 +101,11 @@ whole thing over as soon as possible.
 
 Meanwhile, on earth, people argued who was the top God. Some said Zeus, others Indra,
 others Wodan, and things soon became nasty. Blows were exchanged, brothers and sisters
-were no longer speaking with each, neighbours weren't neighbourly no more. In a
-few ages - this all happened while Freon was grounded in his heavenly room - the whole world got
+were no longer speaking with each other, neighbours weren't neighbourly anymore. In a
+few ages — this all happened while Freon was grounded in his heavenly room — the whole world got
 out of control. There were so many disputes that finally the people of the town of
 Babel decided to ask the God himself by what name they should pray to him. Unfortunately, at
-that time the gods did not frequent the earth anymore, they had acquired a bit of a
+that time the gods did not frequent the earth anymore; they had acquired a bit of a
 "been there, done that" kind of attitude. So how to contact the gods?
 
 Finally, the people of Babel decided to build a tower that would be high enough to
@@ -115,7 +121,7 @@ figureNumber={2}
 />
 
 This disaster naturally was brought to the attention of Freon's father. He sent out his
-ministers to investigate and when all of them in their reports mentioned Freon in one
+ministers to investigate, and when all of them in their reports mentioned Freon in one
 way or another, he called his son to his office. Freon knew that this was serious.
 The office was where important matters were dealt with, and Freon had never before
 been summoned there. The story doesn't tell what was said exactly. His father and Freon
@@ -123,7 +129,7 @@ agreed that it should better stay between them, and both have kept this agreemen
 to this day.
 
 However, since that day the leader of the gods called his son Freon, meaning <i>wise friend</i>.
-Because - as he explained later to his ministers - Freon needed to be reminded that being
+Because — as he explained later to his ministers — Freon needed to be reminded that being
 a god meant that he should be wise, at least wiser than a human, and that he should be a
 friend to the humans and help them along in their short lives. And in the ministerial
 council that followed, Freon was officially charged with helping humans overcome the

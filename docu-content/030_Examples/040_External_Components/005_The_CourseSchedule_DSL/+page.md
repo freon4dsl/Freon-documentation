@@ -1,14 +1,20 @@
+---
+title: The CourseSchedule Language
+description: Define a simple DSL for scheduling adult training courses with teachers, rooms, and weekly time slots, and create a minimal native Freon editor to view and edit schedules.
+tags: Freon, CourseSchedule, DSL, scheduling, teachers, rooms, TimeStamp, modelunit, editor, projections, checkbox, fragments
+---
+
 <script>
     import Figure from "$lib/figures/Figure.svelte";
 </script>
 
 # The CourseSchedule Language
 
-The CourseSchedule DSL revolves about the
-scheduling of training courses for adults. The main concepts are courses, rooms, and teachers, and there is a simplified
-notion of time. There are 10 time slots in a week, from Monday morning to Friday afternoon. 
+The **CourseSchedule** DSL focuses on scheduling adult training courses.  
+Its core concepts are **courses**, **rooms**, and **teachers**, with a simplified notion of time:  
+ten time slots per week—**Monday morning** through **Friday afternoon**.
 
-The following is the metamodel, which by now you should be able to understand without problems.
+Below is the metamodel, which by now should feel familiar.
 
 ```proto
 // CourseSchedule/phase1/defs/main.ast
@@ -87,14 +93,12 @@ concept Room {
     name: identifier;
     equipment: string;
 }
-
 ```
 
 ## The Freon Native Editor
 
-As a first step we will create a native Freon editor, but we are not going to spend much effort on it.
-We will make the name and phone number information of a teacher into a fragment, put the list of 
-competences of a teacher in a list of checkboxes, and clean up the rest a little bit.
+As a first step we’ll create a **native Freon editor**—kept intentionally simple.  
+We’ll extract a **fragment** for the teacher’s name and phone info, display a teacher’s **competences** as a **checkbox** list, and tidy up the rest.
 
 ```proto
 // CourseSchedule/phase1/defs/main.edit
@@ -147,10 +151,9 @@ ${self.time}
     Room:    ${self.room}
     Course:  ${self.course}
 ]}
-
 ```
 
-The editor for the staff model unit now looks like this.
+The editor for the **Staff** model unit now looks like this:
 
 <Figure
 imageName={'examples/CourseSchedule/Screenshot-step1.png'}

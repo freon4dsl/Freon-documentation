@@ -1,17 +1,23 @@
+---
+title: Ease of Editing
+description: Learn how to make editing easier in Freon using reference shortcuts and triggers, simplifying user interactions and streamlining expression editing in the projectional editor.
+tags: ease of editing, reference shortcuts, triggers, projectional editor, expressions, user experience, Freon, DSL development
+---
+
 # Ease of Editing
 
-As language engineer, you can make editing a little bit easier for your users. Freon offers two options to do so.
+As a language engineer, you can make editing a little bit easier for your users. Freon offers two options to do so.
 
 ## Reference Shortcuts
 
-In the actual abstract syntax tree, a reference property is stored as a node that holds the information on,
-and link to, the referred node. The type of this node is `FreNodeReference`. When creating a new reference property, 
+In the actual abstract syntax tree, a reference property is stored as a node that holds the information about,
+and a link to, the referred node. The type of this node is `FreNodeReference`. When creating a new reference property, 
 this means that two actions need to be executed by Freon. First, the `FreNodeReference` instance needs to be 
 created, and second, the link needs to be established between this `FreNodeReference` instance and the node that 
 is referred to.
 
-To avoid exposing this two-step process to the user, the language engineer may define a **reference shortcut**.
-This is a property of the concept that is named directly, and when selected by the user causes this two-step 
+To hide exposing this two-step process to the user, the language engineer may define a **reference shortcut**.
+This is a property defined directly on the concept, and when selected by the user causes this two-step 
 process to be performed as one. This can be useful, especially when dealing with expressions. 
 
 Our running example provides the expression concept `InsurancePartRef`.
@@ -41,8 +47,8 @@ InsurancePartRef {
 ## Triggers
 
 When the user wants to create an instance of a concept using the keyboard, a special character or string
-of characters can be used to trigger the creation of that instance. This makes it easier
-to enter an expression in the projectional editor, similar to entering that expression in a text-based editor.
+of characters can be used to trigger the creation of that instance. This makes entering expressions in the 
+projectional editor feel more like typing them in a text-based editor.
 The character or string of characters is called a **trigger**.
 
 The example shows a trigger for entering a function call expression.

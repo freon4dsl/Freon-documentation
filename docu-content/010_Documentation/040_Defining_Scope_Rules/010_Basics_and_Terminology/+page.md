@@ -1,3 +1,9 @@
+---
+title: Basics and Terminology
+description: Learn the foundational concepts of Freon’s scoping system — including namespaces, visibility rules, and the structure of namespace trees — and how they relate to the abstract syntax tree (AST).
+tags: scoping, namespaces, visibility, scope graphs, Freon, DSL development, AST, scope hierarchy, language engineering
+---
+
 <script>
     import Note from "$lib/notes/Note.svelte";
     import Figure from "$lib/figures/Figure.svelte";
@@ -5,9 +11,9 @@
 
 # Basics and Terminology
 
-Traditionally, scoping is about the questions of (1) which names are accessible/visible in a certain context, and (2) to
-which AST node a visible name is bound. Because Freon creates a projectional editor, we can simplify these two
-questions into one:
+Traditionally, scoping concerns two questions: (1) which names are visible in a given context, and (2) to 
+which AST node each visible name is bound. Because Freon uses a projectional editor, these two questions 
+can be combined into one simpler question:
 
 > **Which AST nodes are accessible/visible/usable within a certain context?**
 
@@ -20,10 +26,10 @@ the AST the parameters are not visible.
 
 In the Freon scoper definition the focus lies on the context in which a reference may appear. These contexts 
 are called **namespaces**. 
-Every namespace is _a subtree of the AST where a certain set of nodes is visible_. Meaning that wherever in this subtree you may 
-add a reference, the same set of nodes is available.
+Every namespace is a subtree of the AST where a certain set of nodes is visible. This means that anywhere within this 
+subtree, the same set of nodes is available for reference.
 
-In the Freon meta language a namespace is defined using metatypes. All instances of such a metatype identify a namespace, namely the 
+In the Freon meta-language a namespace is defined using metatypes. All instances of such a metatype identify a namespace, namely the 
 subtree of the AST whose top is such an instance. The leaves of this subtree are either the leaves of the AST, or any node that itself 
 identifies a namespace. In other words, a namespace does not include the child nodes of another namespace.
 In the following example all instances of the concepts `InsuranceProduct`, `BaseProduct`, 
@@ -38,7 +44,7 @@ isNamespace { InsuranceProduct, BaseProduct, CalcFunction, Entity, AttributeRef 
 
 ## The Namespace Tree and the AST
 
-All namespaces (or better, all nodes that identify a namespace) together form a tree. This tree is similar to, but not equal to the AST. 
+All namespaces — or more precisely, all nodes that identify a namespace — together form a tree. This tree is similar to, but distinct from the AST. 
 The namespace tree is an overlay over the AST, where some nodes in the AST are namespaces, and some are not. 
 The following figure shows an abstract syntax tree, where all nodes are named. In this example, we use a shorthand.
 If the name of the node equals A1, then the node is of type A, if it equals H4, then the node is of type H, etc.
@@ -77,7 +83,7 @@ the nodes that are in the parent namespace are also visible in the child namespa
 the nodes from the child namespace are not visible in the parent namespace,
 except for the name of the child namespace itself.
 
-To define this more clearly we identify five sets of nodes for every namespace.
+To define this more clearly, we identify five sets of nodes for every namespace.
 
 1. The **declared nodes**: all nodes that have a property `name:identifier` (or _named nodes_) in the namespace subtree.
 2. The **parent nodes**: all named nodes that are visible in the parent namespace of this namespace.
@@ -102,17 +108,16 @@ recursive nature of this definition,
 the visible nodes of the parent namespace are its declared nodes plus the visible nodes of its parent namespace. When 
 there are no **imports** or **alternatives** this is the rule to stick with.
 
-As an example, let's again focus on
-the namespace identified by Z2. It's declared nodes are [H2, D4, and A8], it's parent namespace is A1. The declared nodes of namespace A1 are
+As an example, consider the namespace identified by Z2. It's declared nodes are [H2, D4, and A8], it's parent namespace is A1. The declared nodes of namespace A1 are
 [B1, C3, C1, B2, C2, D1, E1, A2, E2, Z1, D2, A3, E3, A4, Z2, and A5], and A1 does not have a parent namespace, thus the visible nodes of [Z2] are:
 [H2, D4, A8, B1, C3, C1, B2, C2, D1, E1, A2, E2, Z1, D2, A3, E3, A4, Z2, and A5]. So when a reference is added anywhere within namespace Z2, it is 
-only valid when it references one of the nodes from this set. In the editor this means that the dropdown menu will contain these names only.
+only valid when it references one of the nodes from this set. In the editor this means that the dropdown menu will show only these names.
 
 ## Shadowing
 
 In the scope graph theory, shadowing is used to determine which node to choose if there are two nodes with the same name 
 visible in a certain context. Normally, the node from the nearest namespace will have preference over other nodes.
-This is necessary because scope graphs are originally defined for use with text based parsers.
+This is necessary because scope graphs are originally defined for use with text-based parsers.
 In Freon, we are using the AST as the basis for scoping, not a text that needs to be parsed.
 Therefore, we don't need the concept of shadowing, as we can explicitly point to any node using
 the node-id. In the editor the dropdown list for a reference will show options with the same name, but a different origin.

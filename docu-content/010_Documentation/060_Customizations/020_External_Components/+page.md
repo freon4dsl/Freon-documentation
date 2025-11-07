@@ -1,3 +1,9 @@
+---
+title: External Components
+description: How to embed non-native UI components in Freon projections—simple additions, wrappers, and replacers—plus required props, lifecycle hooks, and wiring.
+tags: external components, editor, projections, wrappers, replacers, Svelte, Box Model, Freon, DSL development
+---
+
 <script>
     import Note from "$lib/notes/Note.svelte";
     import Figure from "$lib/figures/Figure.svelte";
@@ -5,47 +11,46 @@
 
 # External Components
 
-<Note {header} {content}> </Note>{#snippet header()}External components are experimental{/snippet}
+<Note>{#snippet header()}External components are fully supported{/snippet}
 {#snippet content()}
-<p>The use of external components in the Freon editor is experimental. 
-Compatibility with every library isn’t guaranteed, and future versions 
-of Freon may alter how external components are included. Proceed with this in mind.</p>
+<p>External components are now a fully supported part of the editor framework. 
+While compatibility with every third-party library cannot be guaranteed, the APIs described here are stable.</p>
 {/snippet}
+</Note>
 
-In this version of Freon it is possible to include UI components that are not native to Freon. For
-instance, you can define your own components, or use components from a UI component library.
-As Freon is built using the <a href="https://svelte.dev/" target="_blank">Svelte</a> UI framework, all external components 
-should either be Svelte components, or components that are wrapped in a Svelte component. 
+You can include UI components that are not native to Freon. For example, you can define your own components
+or use components from an existing UI library. Freon is built on the
+<a href="https://svelte.dev/" target="_blank">Svelte</a> framework, so external components must either be Svelte components
+or components wrapped in Svelte.
 
 In general, there are three forms in which an external component can be present in a Freon projection:
 
-- simple additions, where an independent external component is added to a projection,
-- wrappers, where the projection of a property, or a [fragment](/Documentation/Defining_an_Editor/Fragments), is displayed within an external component,
-- replacers, where the projection of a property, or a [fragment](/Documentation/Defining_an_Editor/Fragments), is completely 
-replaced by an external component. It is up to the language engineer to get and set the value of the property correctly, and to
-get tabbing etc. working.
+- **Simple additions** — an independent external component is added to a projection.
+- **Wrappers** — a property or [fragment](/Documentation/Defining_an_Editor/Fragments) is displayed inside an external component.
+- **Replacers** — a property is replaced by an external component (fragments cannot be replaced).  
+  You are responsible for reading and writing property values correctly, and for handling keyboard and tab behavior.
 
-Especially the two latter cases require knowledge of the Freon [Box Model](/Documentation/Under_the_Hood/Editor_Framework). 
-Please, become familiar with that topic first, as below we will refer to the different types of boxes associated with
-the various forms of external components. More information on the API of these box types can be 
+Especially the two latter cases require knowledge of the Freon [Box Model](/Documentation/Under_the_Hood/Editor_Framework).
+Please become familiar with that topic first, as below we will refer to the different types of boxes associated with
+the various forms of external components. More information on the API of these box types can be
 found in [External Component Box Types](/Documentation/Under_the_Hood/Editor_Framework/External_Component_Box_Types).
 
 ## More Information and Assistance
 
-Because external components are in an experimental phase, the information included here is brief.
-However, a more extensive example can be found in the [Examples](/Examples/External_Components) section.
-Furthermore, anyone who is interested in using external components can certainly rely on the assistance of the Freon team.
-Please get in contact with us, for instance via email at info AT freon4dsl.dev. This will also 
-ensure that you are updated on the latest news about this feature.
+This page provides the essentials; a more extensive example is available in the
+[Examples](/Examples/External_Components) section.  
+Anyone interested in using external components can contact the Freon team for assistance.  
+Please email us at [info@freon4dsl.dev](mailto:info@freon4dsl.dev) to stay updated on the latest news about this feature.
 
-## Simple additions
+## Simple Additions
 
 Simple additions have no link to the model (the AST). They may appear anywhere in the projection.
-To include a simple external component within a projection, use the
-syntax `[external = <COMPONENT_NAME> ]`, where `<COMPONENT_NAME>` is the name of the desired component.
-Ensure there is no space between the opening square bracket (`[`) and the keyword `external`, and note that the
-component name must be included in the [`global`](/Documentation/Defining_an_Editor/Global_Projections) section of the
-default editor. The box type associated with a simple addition is `ExternalSimpleBox`.
+To include a simple external component within a projection, use the syntax `[external=<COMPONENT_NAME>]`,
+where `<COMPONENT_NAME>` is the name of the desired component.  
+Ensure there is no space between the opening bracket (`[`) and the keyword `external`.  
+The component name must be included in the [`global`](/Documentation/Defining_an_Editor/Global_Projections) section of the
+default editor.  
+The associated box type is `SimpleExternalBox`.
 
 In the next example a simple animated gif component is added to the fragment projection.
 
@@ -69,29 +74,24 @@ figureNumber={1}
 
 ## Parameters and Required Functions
 
-You can set parameters to an external component in the `.edit` file. These are simple key-value pairs, both key
-and value are strings. There can be a list of them. In the interface of all box types for external 
-components the method `findParam(key: string): string` is included. This
-method can be used to find the value of the parameter that was included in the `.edit` file.
+You can set parameters to an external component in the `.edit` file. These are simple key-value pairs (both key
+and value are strings). There can be a list of them.  
+All box types for external components include the method `findParam(key: string): string`  
+to retrieve parameter values from the `.edit` file.
 
-In every external component two `Props` parameters, and four specific methods need to be provided
-in order for the component to fit in the Freon framework. The parameters are the 
-following, where `BOXTYPE` is the type of the box associated 
-with the external component.
+Every external component receives two props and should define the following methods/hooks to integrate with Freon:
 
 ```ts
-    let { editor, box }: FreComponentProps<BOXTYPE> = $props();
+let { editor, box }: FreComponentProps<BOXTYPE> = $props();
 ```
 
-The methods are:
+- `box.setFocus` — sets the focus on the first selectable element (optional if nothing is focusable).
+- `box.refreshComponent` — called when the underlying model changes and the UI needs to update.
+- `onMount` — runs when the component is mounted.
+- `afterUpdate` — runs after the DOM is updated.
 
-- `box.setFocus`: used to set the focus on a part of the content of the component.
-- `box.refreshComponent`: called when the underlying Freon model is changed and its representation on the screen needs to be changed as well.
-- `onMount`: executes when the component is mounted.
-- `afterUpdate`: executes when the DOM is updated.
-
-In the simple additions example the parameter is a number, which is used to choose the image source from a list. 
-The source of the AnimatedGif Svelte component is the following. 
+In the example below, the parameter is a number used to select an image source.  
+The source code of the `AnimatedGif` Svelte component is shown next.
 
 ```swift
 // Insurance/src/external/ShowAnimatedGif.svelte
@@ -167,31 +167,32 @@ The source of the AnimatedGif Svelte component is the following.
 
 ## Wrapping a Freon Projection
 
-An external component may wrap a Freon projection, either a property projection or 
+An external component may wrap a Freon projection—either a property projection or
 a [fragment projection](/Documentation/Defining_an_Editor/Fragments).
-Wrappers may appear anywhere in a projection. 
-The wrapped projection is called the `childBox` of the external component, and can be accessed 
-through the method `childBox: Box`.
-Note that the childBox itself may be a vertical or horizontal layout containing many other elements.
+Wrappers may appear anywhere in a projection.  
+The wrapped projection is available as the `childBox` property (`Box`).  
+Note that the `childBox` itself may be a vertical or horizontal layout containing multiple elements.
 
-The syntax to position the wrapper within the projection is either `[fragment NAME wrap=ExternalComponent]`, where `NAME` is
-the name of the fragment, and `ExternalComponent` is the name of the external component, 
-or `${self.PROPERTY wrap=ExternalComponent}`, where `self.PROPERTY` is the familiar reference to a property.
+The syntax is:
 
-The box type associated with a wrapper is dependent upon the type of property or fragment that is being wrapped.
-(See [External Component Box Types](/Documentation/Under_the_Hood/Editor_Framework/External_Component_Box_Types).)
+- `[fragment NAME wrap=ExternalComponent]`, where `NAME` is the fragment name.
+- `${self.PROPERTY wrap=ExternalComponent}`, where `self.PROPERTY` refers to a property.
 
-- Fragment: `FragmentWrapperBox`.
-- Property of type string: `StringWrapperBox`. 
-- Property of type number: `NumberWrapperBox`. 
-- Property of type boolean: `BooleanWrapperBox`.
-- [Part property](/Documentation/Creating_the_Metamodel/Defining_Properties#part-properties-3): `PartWrapperBox`.
-- [Part list property](/Documentation/Creating_the_Metamodel/Defining_Properties#part-properties-3): `PartListWrapperBox`.
-- [Reference property](/Documentation/Creating_the_Metamodel/Defining_Properties#reference-properties-4): `RefWrapperBox`.
-- [Reference list property](/Documentation/Creating_the_Metamodel/Defining_Properties#reference-properties-4): `RefListWrapperBox`.
+The box type associated with a wrapper depends on the type of property or fragment that is being wrapped  
+(see [External Component Box Types](/Documentation/Under_the_Hood/Editor_Framework/External_Component_Box_Types)):
 
-To display the childBox the external component needs to include the Freon `RenderComponent`, as shown in the next example.
-In this example a fragment is wrapped in a `Card` component, which is imported from the <a href="https://sveltematerialui.com/" target="_blank">SMUI</a> library of UI components.
+- Fragment: `FragmentWrapperBox`
+- Property of type string: `StringWrapperBox`
+- Property of type number: `NumberWrapperBox`
+- Property of type boolean: `BooleanWrapperBox`
+- [Part property](/Documentation/Creating_the_Metamodel/Defining_Properties#part-properties-3): `PartWrapperBox`
+- [Part list property](/Documentation/Creating_the_Metamodel/Defining_Properties#part-properties-3): `PartListWrapperBox`
+- [Reference property](/Documentation/Creating_the_Metamodel/Defining_Properties#reference-properties-4): `RefWrapperBox`
+- [Reference list property](/Documentation/Creating_the_Metamodel/Defining_Properties#reference-properties-4): `RefListWrapperBox`
+
+To display the `childBox`, the external component must include the Freon `RenderComponent`, as shown below.  
+In this example, a fragment is wrapped in a `Card` component imported from the
+<a href="https://sveltematerialui.com/" target="_blank">SMUI</a> library.
 
 ```swift
 // Insurance/src/external/SMUI_Card_Component.svelte#L30-L34
@@ -211,30 +212,34 @@ In this example a fragment is wrapped in a `Card` component, which is imported f
 
 ## Replacing a Freon Projection
 
-A Freon projection may also be replaced by an external component. Note that 
-a [fragment projection](/Documentation/Defining_an_Editor/Fragments) may not be replaced.
+A Freon projection may also be replaced by an external component.  
+A [fragment projection](/Documentation/Defining_an_Editor/Fragments) may **not** be replaced.
 
-The syntax to position the replacement within the projection is `${self.PROPERTY replace=ExternalComponent}`, 
-where `self.PROPERTY` is the familiar reference to a property and `ExternalComponent` is the name of the external component.
+The syntax is:
 
-The box type associated with a replacement is dependent upon the type of property that is being replaced.
-(See [External Component Box Types](/Documentation/Under_the_Hood/Editor_Framework/External_Component_Box_Types).)
+```proto
+${self.PROPERTY replace=ExternalComponent}
+```
 
-- Property of type string: `ExternalStringBox`.
-- Property of type number: `ExternalNumberBox`.
-- Property of type boolean: `ExternalBooleanBox`.
-- [Part property](/Documentation/Creating_the_Metamodel/Defining_Properties#part-properties-3): `ExternalPartBox`. 
-- [Part list property](/Documentation/Creating_the_Metamodel/Defining_Properties#part-properties-3): `ExternalPartListBox`.
-- [Reference property](/Documentation/Creating_the_Metamodel/Defining_Properties#reference-properties-4): `ExternalRefBox`.
-- [Reference list property](/Documentation/Creating_the_Metamodel/Defining_Properties#reference-properties-4): `ExternalRefListBox`.
+The box type associated with a replacement depends on the type of property that is being replaced  
+(see [External Component Box Types](/Documentation/Under_the_Hood/Editor_Framework/External_Component_Box_Types)):
 
-Each of the box types provide the following methods, where `<TYPE>` depends on the type of the property being replaced.
-- `getPropertyName(): string`: returns the name of the wrapped property.
-- `getPropertyValue(): <TYPE>`: returns the value of the wrapped property.
-- `setPropertyValue(newValue: <TYPE>)`: sets the value of the property.
+- Property of type string: `StringReplacerBox`
+- Property of type number: `NumberReplacerBox`
+- Property of type boolean: `BooleanReplacerBox`
+- [Part property](/Documentation/Creating_the_Metamodel/Defining_Properties#part-properties-3): `PartReplacerBox`
+- [Part list property](/Documentation/Creating_the_Metamodel/Defining_Properties#part-properties-3): `PartListReplacerBox`
+- [Reference property](/Documentation/Creating_the_Metamodel/Defining_Properties#reference-properties-4): `RefReplacerBox`
+- [Reference list property](/Documentation/Creating_the_Metamodel/Defining_Properties#reference-properties-4): `RefListReplacerBox`
 
-In the following example the `name` property of a `BaseProduct` is being displayed using a dialog component from 
-the <a href="https://sveltematerialui.com/" target="_blank">SMUI</a> UI library.
+Each box type provides the following methods (where `<TYPE>` depends on the property type):
+
+- `getPropertyName(): string` — returns the name of the wrapped property.
+- `getPropertyValue(): <TYPE>` — returns the current property value.
+- `setPropertyValue(newValue: <TYPE>)` — sets the property value.
+
+In the following example the `name` property of a `BaseProduct` is displayed using a dialog component
+from the <a href="https://sveltematerialui.com/" target="_blank">SMUI</a> UI library.
 
 ```proto
 // Insurance/src/defs/editor-externals.edit#L5-L5
@@ -250,32 +255,31 @@ figureNumber={1}
 
 ## Wiring
 
-The setup for including external components needs some care.
+The setup for including external components requires some care.
 
-1. Of course, as first step you need to create your Svelte components. Notice which type of box your component will be
-   linked to. Use the interface of this box to get and set any model (AST) values.
-2. You must let the Freon generator know which external projections there are. This done in the `global` section of the
-   default editor. See [Global Projections](/Documentation/Defining_an_Editor/Global_Projections).
-3. You must let the Freon runtime know which external projections there are. This is done using the `setCustomComponents()` method
-    from the '@freon4dsl/core-svelte' package. This method should be called in the `~src/starter.ts` file before starting the actual application. Note that 
-the names of the component should be equal to the names used in step 2.
+1. **Create your Svelte components.**  
+   Note which box type your component will link to, and use its interface to get and set model values.
+2. **Declare external components in the editor definition.**  
+   This is done in the `global` section of the default editor  
+   (see [Global Projections](/Documentation/Defining_an_Editor/Global_Projections)).
+3. **Register external components at runtime.**  
+   Use `setCustomComponents()` from the `@freon4dsl/core-svelte` package.  
+   Call this method in `src/starter.ts` before launching the app.  
+   The component names must match those declared in step 2.
 
-The following is an example of the use of this method.
+Example:
 
 ```ts
 setCustomComponents([
-   {component: ShowAnimatedGif, knownAs: "AnimatedGif"},
-   {component: SMUI_Card_Component, knownAs: "SMUI_Card"},
-   {component: SMUI_Accordion, knownAs: "SMUI_Accordion"},
-   {component: SMUI_Dialog, knownAs: "SMUI_Dialog"},
-   {component: DatePicker, knownAs: "DatePicker"}
+   { component: ShowAnimatedGif, knownAs: "AnimatedGif" },
+   { component: SMUI_Card_Component, knownAs: "SMUI_Card" },
+   { component: SMUI_Accordion, knownAs: "SMUI_Accordion" },
+   { component: SMUI_Dialog, knownAs: "SMUI_Dialog" },
+   { component: DatePicker, knownAs: "DatePicker" }
 ]);
 
-/**
- * Now start the app ...
- */
 const app = new FreonLayout({
-	target: document.body,
+    target: document.body,
 });
 
 export default app;
@@ -283,12 +287,13 @@ export default app;
 
 ## Nesting
 
-External projections may be nested.
+External projections may be nested.  
 Example:
 
 ```proto
-external SMUI_Card [
+[external=SMUI_Card [
     This Card is showing animated gif number 1.
         [external=AnimatedGif number="1"]
     ]
+]
 ```

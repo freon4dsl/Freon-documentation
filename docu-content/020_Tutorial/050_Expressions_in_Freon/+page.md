@@ -1,14 +1,18 @@
+---
+title: Expressions in Freon
+description: Add grading logic to your DSL by introducing expressions in Freon. Define ScoreExpression variants (question references, number literals, counts), build binary and comparison expressions with priorities, and update the editor to show grading.
+tags: Freon, expressions, DSL, grading, ScoreExpression, QuestionReference, NrOfCorrectAnswers, NumberLiteralExpression, binary expressions, AND, OR, comparisons, Equals, GreaterThan, LessThan, editor projections, Page, GradeScore, tutorial
+---
+
 <script>
     import Figure from '$lib/figures/Figure.svelte';
 </script>
 
 # Expressions in Freon
 
-Many DSLs have some form of expressions, like `24 + 56`. Even though they may appear simple, if you have ever
-tried to build a language, you will know that expressions are tricky bastards (excuse the French). In Freon, therefore, they take
-a very special place.
+Many DSLs include expressions like `24 + 56`. Even though they may look simple, anyone who has tried to build a language knows expressions can be tricky. In Freon, they therefore have a special place.
 
-In this lesson we introduce expressions by adding grading rules to each `Topic`. Therefore, we need to change the metamodel.
+In this lesson we introduce expressions by adding grading rules to each `Topic`. To do this, we need to update the metamodel.
 Open the file `edu-topics.ast` and add one line to the `Page` concept.
 
 ```proto
@@ -21,8 +25,8 @@ abstract concept Page {
 }
 ```
 
-Of course, we are going to define the `GradeScore` concept, but for this we create a new file called `edu-scoring.ast`.
-Add the following lines to it.
+We’ll define the `GradeScore` concept in a new file called `edu-scoring.ast`.
+Add the following lines:
 
 ```proto
 // Education/lesson4-defs/edu-scoring.ast#L1-L6
@@ -35,16 +39,11 @@ concept GradeScore {
 }
 ```
 
-Yes, the concept `ScoreExpression` represents our expression. To get an idea of
-how the concept should be defined, let's get some idea what the user wants to express.
+Yes, the `expr` property uses `ScoreExpression`, which represents our expressions. To design it well, let’s first understand what users want to express.
 
 ## The Requirements
 
-Grading is all about the answers given to the questions on the page. For instance, if all answers are correct,
-the score should be top grade. But, if all answers are incorrect, the score should be the lowest grade.
-Speaking to our hypothetical client (<img src="/icons/smile.png" alt="Smiley" width="20" height="20">), we
-learn that the teachers also want to give a certain grade when the answers to certain questions are correct,
-where the answers to other questions are less important. So, the teachers may want to write things like:
+Grading depends on answers to the questions on a page. For instance, if all answers are correct, the score should be the top grade; if all are incorrect, the lowest grade applies. Talking to our hypothetical client (<img src="/icons/smile.png" alt="Smiley" width="20" height="20">), we learn that teachers want to assign a grade when specific questions are correct, even if others matter less. They might write:
 
 ```txt
 GradeC: Answer to questionX is correct AND the Number of Correct Answers = 3
@@ -52,16 +51,16 @@ GradeC: Answer to questionX is correct AND the Number of Correct Answers = 3
 GradeD: Answer to questionY is correct OR Answer to questionZ is correct AND the Number of Correct Answers > 2
 ```
 
-So, what do we have here.
+So, what do we need?
 
-1. There is a number literal for the **3** and **2**.
-2. We need something that represent **Number of Correct Answers**.
-3. To deal with **questionX** and **questionY** we need a reference to a question on the page.
-4. We need binary expressions for the boolean **AND** and **OR**.
-5. There is also a need for an equals expression to be able to deal with the **=-sign**.
-6. The **>-sign** also introduces a new type of expression.
+1. A number literal for the **3** and **2**.
+2. Something that represents **Number of Correct Answers**.
+3. A reference to a question on the page (for **questionX**, **questionY**, etc.).
+4. Binary boolean expressions (**AND**, **OR**).
+5. An equals comparison for `=`.
+6. A greater-than comparison for `>` (and we’ll add the others for completeness).
 
-This is how we define the first three concepts of the above list.
+Here’s how we define the first three items:
 
 ```proto
 // Education/lesson4-defs/edu-scoring.ast#L8-L28
@@ -89,16 +88,12 @@ expression NumberLiteralExpression base ScoreExpression {
 }
 ```
 
-Instead of the keyword `concept`, we use the keyword `expression` to let Freon know that instances
-of these concepts should be treated differently. We make `ScoreExpression` the base parent of all
-our expressions, so we can use it where ever we need an expression. For the rest, the definitions look
-like ordinary concepts.
+Instead of `concept`, we use `expression` to tell Freon that instances of these types are expressions.  
+`ScoreExpression` is the common base so we can use it wherever an expression is needed. Otherwise, the definitions look similar to ordinary concepts.
 
 ## Binary Expressions
 
-Freon adds loads of extra stuff to handle binary expressions. All we have to do is tell Freon that
-the concept is a binary expression concept. Look at how we define the two binary expressions for
-the boolean **AND** and **OR**.
+Freon provides extra support for binary expressions. We only need to declare that a concept is a binary expression. Below we define boolean **AND** and **OR**:
 
 ```proto
 // Education/lesson4-defs/edu-scoring.ast#L30-L44
@@ -120,27 +115,15 @@ binary expression OrExpression base BinaryExpression {
 }
 ```
 
-Here it comes in handy that there is a single base parent for
-expressions, the `ScoreExpression`. We can have any instance of a
-`ScoreExpression` at the left hand side of any `BinaryExpression`, as well as to the
-right hand side.
+Because all expressions share `ScoreExpression` as a base, any `ScoreExpression` can appear on the left or right side of a `BinaryExpression`.
 
-Notice that the `AndExpression` and `OrExpression` have no properties of their own.
-This is usually the case.
-It often makes no sense to add properties, but Freon does not forbid it. However, we
-do add a special feature, namely the `priority`. To be able to balance the abstract syntax tree for
-an expression you need to know which expression has priority over the other.
-
-For instance, in mathematics multiplication has priority over plus. The expression
-`8 * 7 + 1` should be read as `(8 * 7) + 1`, and not as `8 * (7 + 1)`.
-
-In Freon, we indicate this priority by a number. A high number means high priority,
-a low number means low priority.
+`AndExpression` and `OrExpression` don’t need extra properties (that’s typical), but we do set a `priority`. Expression trees need priorities to parse and render correctly.  
+In math, multiplication has higher priority than addition, so `8 * 7 + 1` is `(8 * 7) + 1`, not `8 * (7 + 1)`.  
+In Freon, a higher number means higher priority.
 
 ## The Comparison Expressions
 
-What is left of the requirements for our expressions are the `=` and `>` signs. But let's
-not be stingy, and create expression concepts for `<`, `>=`, and `<=` as well.
+To satisfy `=` and `>`, we’ll also add `<`, `>=`, and `<=` for completeness:
 
 ```proto
 // Education/lesson4-defs/edu-scoring.ast#L46-L70
@@ -172,13 +155,10 @@ binary expression EqualsExpression base ComparisonExpression {
 }
 ```
 
-Now, let Freon generate the editor again, and open the model `lesson4`. Note that we are opening 
-another model, because we have added concept to the metamodel. The new model contains instances of the new concepts.
+Now generate the editor again and open the `lesson4` model. We switch models because the metamodel gained new concepts, and the new model contains instances of them.
 
-`%@$#&*!!!`, so much work, and nothing has changed!
-Yep, as so often occurs, we forgot one tiny thing: the editor definition for `Page` (or any of its children) does
-not mention the new `grading` property, thus it will not be shown. Let's address that right now. We'll change the `Page` projection
-in `page-footing.edit` to the following.
+`%@$#&*!!!`—after all that, nothing changed!  
+Right: the `Page` projection (or its children) doesn’t mention the new `grading` property, so it isn’t shown. Let’s fix that by updating the `Page` projection in `page-footing.edit`:
 
 ```proto
 // Education/lesson4-defs/page-footing.edit#L5-L11
@@ -192,8 +172,8 @@ Page {[
 ]}
 ```
 
-Generate again, and this is (part of) what you will see. Not especially pretty, but we have our expressions. In the next
-lesson you will learn how to project expressions.
+Generate again and you’ll see (part of) the grading information. It’s not pretty yet, but the expressions are there.  
+In the next lesson, you’ll learn how to **project expressions** nicely.
 
 <Figure
 imageName={'tutorial/Tutorial-lesson4-screenshot1.png'}

@@ -1,25 +1,31 @@
+---
+title: Customization of the Scoper
+description: Learn how to replace Freon’s generated scoper with your own implementation and configure the environment to use it.
+tags: scoper, customization, Freon, scope provider, environment, DSL development
+---
+
 # Customization of the Scoper
 
-[//]: # (todo change this code based upon example from Jos)
-
-The scoper can not yet be customized **per concept**. Instead, you can replace the whole
-scoper by one create yourself.
-The new scoper needs to implement the following interface.
+The scoper cannot yet be customized **per concept**.  
+Instead, you can replace the entire scoper with your own implementation.  
+Your custom scoper must implement the standard `FreScoper` interface.
 
 ## Adjusting the Environment
 
-Furthermore, you need to tell Freon to use this new scoper instead of the generated one. You do this by
-changing the line that initializes the scoper in the class `YourLanguageNameEnvironment`. You can find it
-in `~/freon/environment/`. Obviously,
-you need to exchange `YourLanguageName` by the name of the language that you are creating.
+To make Freon use your custom scoper instead of the generated one, modify the initialization line in the class  
+`YourLanguageNameEnvironment` (found in `~/freon/environment/`).  
+Replace `YourLanguageName` with the name of your DSL.
 
-Suppose the class `YourScoper`
-holds the scoper with the improvements that you have made, then the entry in the environment class would be:
+Suppose your improved scoper is implemented in the class `YourScoper`.  
+Then the relevant line in the environment class should look like this:
 
 ```ts
-export class EntityEnvironment implements PiEnvironment {
+export class EntityEnvironment implements FreEnvironment {
     ...
-    scoper: PiScoper = new YourScoper();
+    scoper: FreScoper = new YourScoper();
     ...
 }
 ```
+
+[//]: # (TODO: update this code example once the version from Jos is available)
+

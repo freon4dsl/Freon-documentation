@@ -11,13 +11,13 @@
 	--theme-colors-FRE_LIGHT: #FFFDF5;
 	--theme-colors-FRE_YELLOW: #ffedac;
 	--theme-colors-FRE_ORANGE: #fbd547;
-	--theme-colors-FRE_LINK_DARK: #fb9371;
+	--theme-colors-FRE_LINK_DARK: #7EA6F6;
 	--theme-colors-FRE_BEIGE: #B08A03;
 	--theme-colors-FRE_BEIGE2: #bc9403;
 	--theme-colors-FRE_BROWN: #342B09;
 	--theme-colors-FRE_DARKER: #1E1905;
 	--theme-colors-FRE_ACCENT: #c94117;
-	--theme-colors-FRE_LINK: #DE6B48;
+	--theme-colors-FRE_LINK: #2747E7;
 	--theme-colors-FRE_CODE: green;
 	--theme-colors-FRE_CODE_DARK: #74bf74;
 
@@ -61,7 +61,7 @@ body {
 	--color5: var(--theme-colors-FRE_BROWN);
 	--color6: var(--theme-colors-FRE_DARKER);
 	--color-accent: var(--theme-colors-FRE_ACCENT);
-	--color-link: var(--theme-colors-FRE_ACCENT);
+	--color-link: var(--theme-colors-FRE_LINK);
 	--color-code: var(--theme-colors-FRE_CODE);
 	--color-button-active: rgba(var(--color5), 0.7); /* --theme-colors-FRE_BROWN with opacity .7 */
 	--color-button-hover:rgba(var(--color5), 0.8); /* --theme-colors-FRE_BROWN with opacity .8 */
@@ -123,6 +123,11 @@ img {
 	max-width: var(--max-image-width);
 }
 
+.figure img {
+	width: auto;
+	height: auto;
+}
+
 table {
 	background: var(--color2);
 	margin: auto;
@@ -154,6 +159,11 @@ a {
 a:hover {
 	color: var(--color4);
 }
+/* This is added for the demo, because otherwise the github button is shown blue. Should be done in main project, if possible. */
+nav a {
+	color: var(--color1);
+}
+/* end added for demo */
 .landing-enter-buttons-grid a:hover {
 	color: var(--color5);
 }
@@ -424,3 +434,95 @@ code {
 	/*font-size: 0.93rem;*/
 	color: var(--color-code);
 }
+
+/* ******************************************** */
+.corner-box {
+	position: static;
+	width: clamp(10rem, 22vw, 16rem);
+	border: var(--color3);
+	border-style: solid;
+	background: var(--color2);
+	font-weight: bolder;
+	text-align: center;
+	box-sizing: border-box;
+}
+
+.top-left-box {
+	float: left;
+	margin: 0 1rem 1rem 0;
+	border-top: none;     /* touches outer top border */
+	border-left: none;    /* touches outer left border */
+}
+
+.top-right-box {
+	float: right;
+	margin: 0 0 1rem 1rem;
+	border-top: none;     /* touches outer top border */
+	border-right: none;   /* touches outer right border */
+}
+
+.two-corner-box {
+	border: var(--color3);
+	border-style: solid;
+	margin: 2rem;
+	position: relative;
+	box-sizing: border-box;
+	overflow: hidden; /* contain floats */
+}
+
+.landing-text {
+	margin-top: 3rem;
+	padding: 1rem;
+	line-height: 1.6;
+}
+
+/* Mobile: unfloat and stack */
+@media (max-width: 700px) {
+	.corner-box {
+		float: none;
+		width: 100%;
+		margin: 0.5rem 0;
+		text-align: left;
+	}
+	.corner-box a {
+		justify-content: flex-start;  /* align left when stacked */
+	}
+}
+
+/* Make link content bigger and align the arrow */
+/* Make the whole box clickable (nice UX) */
+.corner-box a {
+	display: inline-flex;           /* put text + arrow on one row */
+	align-items: center;            /* vertically center arrow with text */
+	justify-content: center;        /* keep both centered inside the box */
+	gap: 0.5rem;                    /* space between text and arrow */
+	font-size: clamp(1rem, 2.2vw, 1.5rem); /* grow the link text responsively */
+	line-height: 1.2;
+	text-decoration: none;
+	width: 100%;
+	height: 100%;             /* make it fill the box */
+	color: inherit;           /* keep text color consistent */
+	padding: 0.5rem 0.75rem;
+}
+
+/* Let the SVG scale with the text and remove baseline quirks */
+.corner-box .landing-arrow svg {
+	height: 1em;     /* follows the link's font-size */
+	width: auto;
+	display: block;  /* avoids extra descender space */
+}
+
+/* Default arrow color */
+.corner-box .landing-arrow svg {
+	height: 1em;
+	width: auto;
+	display: block;
+	color: var(--color-link); /* or any default */
+	transition: color 0.3s ease;
+}
+
+/* Change arrow color when the whole box is hovered */
+.corner-box:hover .landing-arrow svg {
+	color: var(--color5, var(--color6)); /* replace with your accent color */
+}
+

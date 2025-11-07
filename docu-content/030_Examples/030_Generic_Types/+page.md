@@ -1,11 +1,18 @@
+---
+title: Generic Types, an Example Typer Definition
+description: Define generic types and units of measurement in a simple example language. See how models pair expressions with declared types to enable type comparison.
+tags: Freon, typing, typer definition, generic types, units of measurement, Set, Bag, NUMBER, STRING, BOOLEAN, Meters, kWh, expressions, model unit, example
+---
+
 # Generic Types: an Example Typer Definition
 
-This example shows how generic types and unit of measurements can be defined.
+This example shows how **generic types** and **units of measurement** can be defined.
 
 ## The Example Language
 
-The language is very simple, its units consists of lists of _expression_ - _declared type_ pairs. Ultimately, we want to compare the declared
-type with the type of the expression. Below is an example of a model unit of this language.
+The language is intentionally simple: its units consist of lists of **expression – declared type** pairs.  
+Ultimately, we want to compare the declared type with the **inferred type** of the expression.  
+Below is an example of a model unit in this language.
 
 ```txt
 UnitA correctExps
@@ -24,4 +31,4 @@ Bag { Set { 12, 13, 14 }, Set { 12, 13, 14, 15, 16 } } : Bag<Set<NUMBER>>;
 45 kWh : kWh<NUMBER>;
 ```
 
-Next the metamodel of this language will be explained.
+Next, we’ll explain the **metamodel** of this language.

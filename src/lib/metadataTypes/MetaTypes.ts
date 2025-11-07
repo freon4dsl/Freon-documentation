@@ -22,8 +22,8 @@ export type PageData = CategoryData & {
 	page: {
 		title?: string;
 		description?: string;
-		publishedTime?: string;     // ISO 8601
-		modifiedTime?: string;      // ISO 8601
+		publishedTime?: string; // ISO 8601
+		modifiedTime?: string; // ISO 8601
 		tags?: string[];
 	};
 };

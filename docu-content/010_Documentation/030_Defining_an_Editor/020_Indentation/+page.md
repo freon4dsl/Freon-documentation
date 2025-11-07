@@ -1,11 +1,17 @@
+---
+title: Projections and Indentation
+description: Understand how indentation in Freon projections affects the visual layout of text and nested elements in the editor, including how least indentation and incremental indentation are handled.
+tags: projections, indentation, editor layout, text alignment, whitespace handling, projection syntax, Freon, DSL development
+---
+
 <script>
     import Note from "$lib/notes/Note.svelte";
 </script>
 
 # Projections and Indentation
 
-The indentation you use in a projection is taken into account in the display. Thus, in the following example `literal text` will
-appear indented 8 spaces from `This is`.
+Indentation in a projection directly affects its display. Thus, in the following example `literal text` will 
+appear eight spaces farther to the right than `This is`.
 
 ```proto
 // Insurance/src/defs/editor-indentation.edit#L6-L14
@@ -22,7 +28,7 @@ This is
 ```
 
 However, this is not the complete story. Any whitespace before the line with the least indentation is ignored.
-Therefore, you can indent the projection as a whole, without it having any influence on the projection.
+Therefore, you can indent the projection block as a whole without affecting its appearance.
 The next example produces the exact same result as the previous.
 
 ```proto
@@ -58,9 +64,9 @@ Text3 {
 }
 ```
 
-In the determination of the least indent, the indentation of the closing bracket is also considered. Therefore,
+When determining of the least indent, the indentation of the closing bracket is also considered. Therefore,
 the following example will take the closing bracket as margin, and even the line `for every concept of type Text.`
-will be indented with 3 spaces.
+will be indented with three spaces.
 
 ```proto
 // Insurance/src/defs/editor-indentation.edit#L37-L45
@@ -76,12 +82,12 @@ will be indented with 3 spaces.
 
 ```
 
-<Note {header} {content}> </Note>
+<Note> 
 {#snippet header()} Indentation is incremental{/snippet}
 {#snippet content()}
-Any indentation of a property is added to the indentation of the projection of this property.
+Any indentation applied to a property is added to the indentation of that property’s projection.
 Thus, when a `Text` element is used within another projection,
 the indentation that is defined by the projection in the definition for `Text` will be preceded
 by any indentation defined in the projection for the enclosing concept.
 {/snippet}
-
+</Note>

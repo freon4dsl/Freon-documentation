@@ -1,3 +1,9 @@
+---
+title: Defining Properties
+description: Learn how to define properties in Freon language structures, including primitive, part, reference, and optional properties, and how containment and references work in the metamodel.
+tags: properties, primitive properties, part properties, reference properties, optional properties, language structure, metamodel, Freon, DSL development
+---
+
 <script>
     import Note from "$lib/notes/Note.svelte";
 </script>
@@ -5,7 +11,7 @@
 # Defining Properties
 
 Each of the language structure elements (concepts, interfaces, expressions, etc.) may have **Properties**.  
-Properties can be lists, this is indicated by square brackets after the type name. There are three types
+Properties can be lists; this is indicated by square brackets after the type name. There are three types
 of properties.
 
 ## Primitive Properties
@@ -24,7 +30,7 @@ isUnderConstruction: boolean;   // defines whether this base product is still 'r
 
 **Parts** have as type one of the _concepts_ (including _expression concepts_ and _limited concepts_)
 or interfaces in the language, and are _contained in the concept_ that holds the property (as in
-the UML composition relationship). Parts are also called children.
+the UML composition relationship). Parts are also referred to as children.
 In the example below `body` and `parameters` are parts. 
 
 ```proto
@@ -74,9 +80,9 @@ concept InsurancePart {
 ## Optional Properties
 
 Properties may be optional. This is indicated using a question mark after the property name.
-Lists are always considered to be optional, i.e. they maybe empty, - there is no need for the question mark there.
+Lists are always considered to be optional, i.e. they may be empty &mdash; there is no need for the question mark there.
 
-Primitive properties may not be optional at the moment, but we plan to change this in the future.
+As of Freon 2.0, primitive properties may also be defined as optional, just like other property types.
 
 ```proto
 // Insurance/src/defs/language-main.ast#L70-L70

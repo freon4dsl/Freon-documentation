@@ -1,12 +1,18 @@
+---
+title: Adding Buttons
+description: Learn how to add buttons to Freon projections, define their behavior using box roles and custom actions, and style them with icons using CSS or SCSS.
+tags: buttons, editor customization, custom actions, boxRole, icon buttons, styling, projectional editor, Freon, DSL development
+---
+
 <script>
     import Figure from "$lib/figures/Figure.svelte";
 </script>
 
 # Adding Buttons
 
-It is possible to add an extra button to any projection. To do so add
-the following line in one of the projections. Note that there may not be
-a space between the start square bracket `[` and `button`.
+It is possible to add an extra button to any projection. To do so, add
+the following line in one of the projections. There must be no space between 
+the opening square bracket `[` and `button`.
 
 ```proto
 // Insurance/src/defs/editor-fragments.edit#L18-L18
@@ -14,21 +20,21 @@ a space between the start square bracket `[` and `button`.
 [button text="Push me!" boxRole="MyButton-role"]
 ```
 
-The **text** is the text that will be shown on the button. The **boxRole** is the manner in which the button is coupled to an action.
+The **text** is the text that will be shown on the button. The **boxRole** defines how the button is linked to an action.
 For this you need to create a [custom action](/Documentation/Customizations/Editor_Customization#writing-custom-actions-4). 
 
 Note that in the custom action you need to specify the
 exact same **boxRole** as the one that has been supplied with the button in the .edit file.
-When implementing this custom action, you can use `box.node` to get the node in the ast associated with the button.
+When implementing this custom action, you can use `box.node` to get the node in the AST associated with the button.
 For more information see [Writing_Actions](/Documentation/Customizations/Editor_Customization#writing-custom-actions-4).
 
-Note that we are still working on exposing the in-built actions in the editor core.
+Work is ongoing to expose the built-in actions in the editor core.
 
 [//]: # (See Samples/DocuProject/editor/CustomInsuranceModelActions.ts, line 30.)
 
 ## Icon Buttons
 
-You can add an icon before or after the text using CSS or SCSS. The text for the button is optional.
+You can add an icon before or after the text using CSS or SCSS; the text itself is optional.
 
 As an example, buttons are added to a table definition.
 
@@ -46,7 +52,15 @@ table [
 To style these buttons the following SCSS code is added.
 
 ```scss
-// Styling/app.scss#L29-L43
+// Styling/button.css#L9-L31
+
+.MyButton-role::after {
+  font-family: 'Material Icons', emoji;
+  content: "\e5d2"; // this number is called the icon's code point in Material
+  color: green;
+  font-size: 25px;
+  rotate: 30deg;
+}
 
 .MyTableButton-role::before {
   font-family: "Font Awesome 6 Free", emoji;

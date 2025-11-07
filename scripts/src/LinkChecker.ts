@@ -53,10 +53,11 @@ export class LinkChecker {
 			// check the links
 			if (line.includes('](')) {
 				// remove the chars before the link
-				line = line.replace(/[a-zA-Z0-9 .,*/:()-_'"`]*\[/, '[');
+				// \u002D\u2013\u2014 stand for hyphen, en dash, em dash, respectively
+				line = line.replace(/[a-zA-Z0-9 .,*/:()\u002D\u2013\u2014_'"’`]*\[/, '[');
 				// remove the chars behind the link until end of line
 				// TODO the following line removes too much when round brackets are used within the angular brackets
-				line = line.replace(/\)[a-zA-Z0-9 .,*/:()-_'"`]*$/, ')');
+				line = line.replace(/\)[a-zA-Z0-9 .,*/:()\u002D\u2013\u2014_'"`]*$/, ')');
 				// remember 'line' for the error message, thus use new variable from here on
 				// remove the part between the angular brackets
 				let link: string = line.replace(/\[[a-zA-Z0-9 .,*/:()-_'"`]*]/, '');
@@ -65,12 +66,14 @@ export class LinkChecker {
 				link = link.replace(/\)/, '');
 				// remove any reference to an anchor
 				link = link.replace(/#[a-zA-Z0-9-_]*/, '');
-				// now check the link against the available routes
-				if (!this._correctRoutes.includes(link)) {
-					errors.push(`${link}, on line ${i + 1}`);
-				} else if (!link.startsWith('/')) {
-					// always link relative to "/"
-					warnings.push(`${line}, on line ${i + 1}`);
+				// now check the link against the available routes, except when it refers to an email address
+				if (link !== "mailto:info@freon4dsl.dev") {
+					if (!this._correctRoutes.includes(link)) {
+						errors.push(`${link}, on line ${i + 1}`);
+					} else if (!link.startsWith('/')) {
+						// always link relative to "/"
+						warnings.push(`${line}, on line ${i + 1}`);
+					}
 				}
 			}
 			// checks TODOs

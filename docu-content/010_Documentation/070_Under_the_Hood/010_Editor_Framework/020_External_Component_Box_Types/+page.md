@@ -1,3 +1,9 @@
+---
+title: External Component Box Types
+description: API reference for the box types used to embed external (Svelte) components in Freon projections—simple additions, wrappers, and replacers—with syntax and wiring steps.
+tags: external components, box types, wrappers, replacers, editor, RenderComponent, Svelte, Freon
+---
+
 <script>
     import Note from "$lib/notes/Note.svelte";
     import Figure from "$lib/figures/Figure.svelte";
@@ -5,55 +11,54 @@
 
 # External Component Box Types
 
-<Note {header} {content}> </Note>{#snippet header()}External components are experimental{/snippet}
+<Note>{#snippet header()}External components are fully supported{/snippet}
 {#snippet content()}
-<p>The use of external components in the Freon editor is experimental. 
-Compatibility with every library isn’t guaranteed, and future versions 
-of Freon may alter how external components are included. Proceed with this in mind.</p>
+<p>External components are a fully supported part of the editor framework. While compatibility with every third-party library cannot be guaranteed, the APIs described here are stable.</p>
 {/snippet}
+</Note>
 
-In this version of Freon it is possible to include UI components that are not native to Freon. 
-See [External Components](/Documentation/Customizations/External_Components).
+You can include UI components that are not native to Freon.  
+See **[External Components](/Documentation/Customizations/External_Components)** for an overview.
 
-The use of external components requires knowledge of the Freon [Box Model](/Documentation/Under_the_Hood/Editor_Framework). 
-In this section we explain the API for the various forms of external components.
+Using external components requires knowledge of the Freon **[Box Model](/Documentation/Under_the_Hood/Editor_Framework)**.  
+This page documents the **API** for the various external-component box types.
+
+---
 
 ## Simple Additions
 
-Simple additions have no link to the model (the AST). They may appear anywhere in the projection.
-However, because they are present in the projection of a certain node, they are coupled to this node.
-To include a simple external component within a projection, use the
-syntax `[external = AnimatedGif ]`, where `AnimatedGif` is the name of the desired component.
-Ensure there is no space between the opening square bracket (`[`) and the keyword fragment, and note that the
-component name must be included in the [`global`](/Documentation/Defining_an_Editor/Global_Projections) section of the
-default editor.
+Simple additions have **no link to the model (AST)** and may appear anywhere in a projection.  
+They are still associated with the node whose projection they are placed in.
 
+- **Syntax:** `[external=<ComponentName>]` (no space after `[`).
+- The component name must be declared in the **[`global`](/Documentation/Defining_an_Editor/Global_Projections)** section of the default editor.
+- **Box type:** `SimpleExternalBox`
+- **Interface:** *(no specific API beyond common external props and `findParam()`)*
 
-- BoxType: `ExternalSimpleBox`.
-- Interface:
-  - No specific interface.
+Example:
+
+```proto
+[external=AnimatedGif number="1"]
+```
+
 
 ## Fragment Wrappers
 
-Fragment wrappers may appear anywhere in a projection. Fragment wrappers wrap a single projection. This is the `childBox`.
-Note that the childBox itself may be a vertical or horizontal layout containing many other elements.
+A **fragment wrapper** surrounds a single projection (the **child box**).  
+The `childBox` itself may be a vertical or horizontal layout containing many other boxes.
 
-- Syntax:
-  - To position the wrapper within the projection:
-    `[fragment XX wrap=SMUI_Card]`
-  - To define the wrapped content the following must be included within the square brackets of the projection
-    definition. It must be beneath the projection (the bit between `[]` brackets).
-- BoxType: `FragmentWrapperBox`.
-- Interface:
-  - `childBox: Box`
-    - Use this method and the `RenderComponent` to show the childBox in the external component.
+- **Syntax (positioning):** `[fragment <NAME> wrap=<ExternalComponent>]`
+- **Define wrapped content:** Provide the fragment body in the fragment’s own bracketed section.
+- **Box type:** `FragmentWrapperBox`
+- **Interface:**
+  - `childBox: Box` — the wrapped projection; render it with `RenderComponent`.
 
 Example:
 
 ```proto
 MyConcept {
     [
-        Here is a fragment [fragment XX wrap = SMUI_Card]
+        Here is a fragment [fragment XX wrap=SMUI_Card]
     ]
     fragment XX [
         My First Card wrapping a property: ${self.isUnderConstruction}
@@ -62,205 +67,155 @@ MyConcept {
 }
 ```
 
-## Property Projections: Wrapping or Replacing
 
-A property projection may be wrapped in an external component, or the external component can replace the native
-projection. In the latter case it is up to the language engineer to get and set the value correctly, and to
-get tabbing etc. working.
+## Property Projections: Wrapping vs. Replacing
+
+A property projection can be **wrapped** by an external component, or the external component can **replace** the native projection.  
+For **replacers**, you are responsible for reading/writing the property value and handling keyboard/tab behavior.
+
 
 ## Wrapping Primitive Properties
 
-- Syntax: `${self.name wrap=SMUI_Dialog}`
-- BoxType: `StringWrapperBox`, `NumberWrapperBox`, or `BooleanWrapperBox`
-- Interface:
+- **Syntax:** `${self.name wrap=SMUI_Dialog}`
+- **Box types:** `StringWrapperBox`, `NumberWrapperBox`, `BooleanWrapperBox`
+- **Interface:**
   - `getPropertyName(): string`
-    - Returns the name of the wrapped property.
-  - `getPropertyValue(): string`
-    - Returns the value of the wrapped property. Type is `string` in case of an ExternalStringBox,
-      `number` or `boolean` for the other box types.
-  - `childBox: Box`
-    - Returns the projection for the property. Use this method and the `RenderComponent` to
-      show the property projection in the external component. Note that when a list is wrapped, this method returns
-      a single Box that holds the native projection for the complete list, i.e. a horizontal list, vertical list, or
-      table projection.
+  - `getPropertyValue(): string | number | boolean` — type depends on the wrapper box.
+  - `childBox: Box` — the native projection for the property (or for the entire list if wrapping a list).
+
 
 ## Wrapping Part List Properties
 
-- Syntax: `${self.parts wrap=SMUI_Accordion}`
-- BoxType: `PartListWrapperBox`
-- Interface:
+- **Syntax:** `${self.parts wrap=SMUI_Accordion}`
+- **Box type:** `PartListWrapperBox`
+- **Interface:**
   - `getPropertyName(): string`
-    - Returns the name of the wrapped property.
-  - `getPropertyValue(): FreNode[]`
-    - Returns the value of the wrapped property. You need to cast the returned value to the required type.
-  - `childBox: Box`
-    - Returns the projection for the property. Use this method and the `RenderComponent` to
-      show the property projection in the external component. Note that this method returns
-      a single Box that holds the native projection for the complete list, i.e. a horizontal
-      list, vertical list, or table projection.
-- Example:
+  - `getPropertyValue(): FreNode[]` — cast as needed.
+  - `childBox: Box` — the native projection for the whole list (horizontal/vertical/table).
+
 
 ## Wrapping Reference List Properties
 
-- Syntax: `${self.parts wrap=SMUI_Accordion}`
-- BoxType: `RefListWrapperBox`
-- Interface:
+- **Syntax:** `${self.parts wrap=SMUI_Accordion}`
+- **Box type:** `RefListWrapperBox`
+- **Interface:**
   - `getPropertyName(): string`
-    - Returns the name of the wrapped property.
   - `getPropertyValue(): FreNodeReference[]`
-    - Type is `string` in case of an ExternalStringBox, `number` or `boolean` for the other box types.
-  - `childBox: Box`
-    - Returns the projection for the property. Use this method and the `RenderComponent` to
-      show the property projection in the external component. Note that this method returns
-      a single Box that holds the native projection for the complete list, i.e. a horizontal
-      list, vertical list, or table projection.
-- Example:
+  - `childBox: Box` — the native projection for the whole list (horizontal/vertical/table).
+
 
 ## Wrapping Part Properties
 
-- Syntax: `${self.part wrap=SMUI_Dialog}`
-- BoxType: `PartWrapperBox`
-- Interface:
+- **Syntax:** `${self.part wrap=SMUI_Dialog}`
+- **Box type:** `PartWrapperBox`
+- **Interface:**
   - `getPropertyName(): string`
-    - Returns the name of the wrapped property.
-  - `getPropertyValue(): FreNode`
-    - Returns the value of the wrapped property. You need to cast the returned value to the required type.
-  - `childBox: Box`
-    - Returns the projection for the property. Use this method and the `RenderComponent` to
-      show the property projection in the external component.
+  - `getPropertyValue(): FreNode` — cast as needed.
+  - `childBox: Box` — render with `RenderComponent`.
+
 
 ## Wrapping Reference Properties
 
-- Syntax: `${self.reference wrap=SMUI_Dialog}`
-- BoxType: `RefWrapperBox`
-- Interface:
+- **Syntax:** `${self.reference wrap=SMUI_Dialog}`
+- **Box type:** `RefWrapperBox`
+- **Interface:**
   - `getPropertyName(): string`
-    - Returns the name of the wrapped property.
   - `getPropertyValue(): FreNodeReference`
-    - Returns the value of the wrapped property.
-  - `childBox: Box`
-    - Returns the projection for the property. Use this method and the `RenderComponent` to
-      show the property projection in the external component.
+  - `childBox: Box` — render with `RenderComponent`.
+
 
 ## Replacing Primitive Properties
 
-- Syntax: `${self.name replace=SMUI_Dialog}`
-- BoxType: `ExternalStringBox`, `ExternalNumberBox`, or `ExternalBooleanBox`
-- Interface:
+- **Syntax:** `${self.name replace=SMUI_Dialog}`
+- **Box types:** `StringReplacerBox`, `NumberReplacerBox`, `BooleanReplacerBox`
+- **Interface:**
   - `getPropertyName(): string`
-    - Returns the name of the replaced property.
-  - `getPropertyValue(): string`
-    - Returns the value of the replaced property.
-      Type is `string` in case of an `ExternalStringBox`, `number` or `boolean` for the other box types.
-  - `setPropertyValue(newValue: string)`
-    - Sets the value of the property.
-      Type is `string` in case of an `ExternalStringBox`, `number` or `boolean` for the other box Types.
+  - `getPropertyValue(): string | number | boolean`
+  - `setPropertyValue(newValue: string | number | boolean)`
+
 
 ## Replacing Part List Properties
 
-- Syntax: `${self.parts replace=SMUI_Accordion}`
-- BoxType: `ExternalPartListBox`
-- Interface:
+- **Syntax:** `${self.parts replace=SMUI_Accordion}`
+- **Box type:** `PartListReplacerBox`
+- **Interface:**
   - `getPropertyName(): string`
-    - Returns the name of the replaced property.
   - `getPropertyValue(): FreNode[]`
-    - Returns the value of the replaced property. You need to cast the returned value to the required type.
   - `setPropertyValue(newValue: FreNode[])`
-    - Sets the value of the property.
-  - `children: Box[]`
-    - Returns a list of boxes that hold the projection for every item in the list.
+  - `children: Box[]` — one box per list element.
+
 
 ## Replacing Reference List Properties
 
-- Syntax: `${self.parts replace=SMUI_Accordion}`
-- BoxType: `ExternalRefListBox`
-- Interface:
+- **Syntax:** `${self.parts replace=SMUI_Accordion}`
+- **Box type:** `RefListReplacerBox`
+- **Interface:**
   - `getPropertyName(): string`
-    - Returns the name of the replaced property.
   - `getPropertyValue(): FreNodeReference[]`
-    - Returns the value of the replaced property. You need to cast the returned value to the required type.
   - `setPropertyValue(newValue: FreNodeReference[])`
-    - Sets the value of the property.
-  - `children: Box[]`
-    - Returns a list of boxes that hold the projection for every item in the list.
+  - `children: Box[]` — one box per list element.
+
 
 ## Replacing Part Properties
 
-- Syntax: `${self.part replace=SMUI_Dialog}`
-- BoxType: `ExternalPartBox`
-- Interface:
+- **Syntax:** `${self.part replace=SMUI_Dialog}`
+- **Box type:** `PartReplacerBox`
+- **Interface:**
   - `getPropertyName(): string`
-    - Returns the name of the replaced property.
   - `getPropertyValue(): FreNode`
-    - Returns the value of the replaced property. You need to cast the returned value to the required type.
   - `setPropertyValue(newValue: FreNode)`
-    - Sets the value of the property.
+
 
 ## Replacing Reference Properties
 
-- Syntax: `${self.reference replace=SMUI_Dialog}`
-- BoxType: `ExternalRefBox`
-- Interface:
+- **Syntax:** `${self.reference replace=SMUI_Dialog}`
+- **Box type:** `RefReplacerBox`
+- **Interface:**
   - `getPropertyName(): string`
-    - Returns the name of the replaced property.
   - `getPropertyValue(): FreNodeReference`
-    - Returns the value of the replaced property.
   - `setPropertyValue(newValue: FreNodeReference)`
-    - Sets the value of the property.
+
 
 ## Wiring
 
-1. Create your Svelte components in the webapp package. Be sure to which type of box your component will be
-   linked. Use the box interface to get and set any model values.
-2. Let the generator know which external projections there are. This done in the 'global' part of the default editor.
+1. **Create your Svelte components.**  
+   Identify which **box type** your component will integrate with, and use that box’s interface to get/set model values.
+
+2. **Declare components in the editor definition.**  
+   Add names in the `global` section of the default editor (see **[Global Projections](/Documentation/Defining_an_Editor/Global_Projections)**).
 
    Example:
+   ```proto
+   global {
+       external {
+           AnimatedGif,
+           SMUI_Card,
+           SMUI_Accordion,
+           SMUI_Dialog,
+           DatePicker
+       }
+   }
+   ```
 
-```proto
-    global {
-        external {
-            AnimatedGif,
-            SMUI_Card,
-            SMUI_Accordion,
-            SMUI_Dialog,
-            DatePicker
-        }
-    }
-```
+3. **Register components at runtime.**  
+   Call `setCustomComponents()` from `@freon4dsl/core-svelte` **before** launching the app.  
+   Names **must match** those declared in step 2.
 
-3.  Let the RenderComponent know which external projections there are. This is done using the setCustomComponents() method
-    from the '@freon4dsl/core-svelte' package. This method should be called before starting the actual application.
+   Example:
+   ```ts
+   setCustomComponents([
+      { component: ShowAnimatedGif,      knownAs: "AnimatedGif" },
+      { component: SMUI_Card_Component,  knownAs: "SMUI_Card" },
+      { component: SMUI_Accordion,       knownAs: "SMUI_Accordion" },
+      { component: SMUI_Dialog,          knownAs: "SMUI_Dialog" },
+      { component: DatePicker,           knownAs: "DatePicker" }
+   ]);
+   ```
 
-        Note that the names should be equal to the names used in step 2.
-
-        Example:
-
-```ts
-setCustomComponents([
-   {component: ShowAnimatedGif, knownAs: "AnimatedGif"},
-   {component: SMUI_Card_Component, knownAs: "SMUI_Card"},
-   {component: SMUI_Accordion, knownAs: "SMUI_Accordion"},
-   {component: SMUI_Dialog, knownAs: "SMUI_Dialog"},
-   {component: DatePicker, knownAs: "DatePicker"}
-]);
-```
 
 ## External Component Parameters
 
-You can set parameters to an external component in the .edit file. These are simple key-value pairs, both key
-and value are strings. There can be a list of parameters.
+You can pass parameters to an external component from the `.edit` file as simple **key-value** pairs (both strings).  
+All external-component box types provide:
 
-In the interface of all box types explained above the method `findParam(key: string): string` is included. This
-method can be used to find the value of the parameter that was included in the .edit file.
-
-## Nesting
-
-External projections may be nested.
-Example:
-
-```proto
-external SMUI_Card [
-    This Card is showing animated gif number 1.
-        [external=AnimatedGif number="1"]
-    ]
-```
+- `findParam(key: string): string` — returns the parameter value (if present).

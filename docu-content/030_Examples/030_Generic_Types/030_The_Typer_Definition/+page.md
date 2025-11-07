@@ -1,20 +1,24 @@
-# Generic Types: an Example Typer Definition
+---
+title: Generic Types — Example Typer Definition
+description: Learn how to define a typer for generic types and units of measurement in Freon. Explore infertype, equalsto, and conformsto rules and how type concepts connect to AST nodes.
+tags: Freon, typer, generic types, measurement units, infertype, equalsto, conformsto, TT_GenericType, TT_MeasurementType, GenericType, UnitOfMeasurement, type system, example
+---
 
-This example shows how generic types and unit of measurements can be defined.
+# Generic Types — Example Typer Definition
+
+This example shows how **generic types** and **units of measurement** can be defined.
 
 ## The Typer Definition of the Example Language
 
-Once the structure of the example language is defined, we are able to focus on
-the typer definition. Because types in Freon do not reside within the AST,
-but are completely separate from it, we need to associate a type concept with
-each of our AST concepts.
+Once the structure of the example language is defined, we can focus on its **typer definition**.  
+In Freon, types do **not** reside inside the AST—they are defined separately.  
+We therefore need to associate a **type concept** with each relevant AST concept.
 
 ### The Type Concepts
 
-First, we define a type concept that corresponds
-with our type declaration called _GenericType_, and one that corresponds with _UnitOfMeasurement_.
-They are quite similar to their AST counterparts, but note that here we use **FreType** as type for the property.
-We want to build a structure of type concepts, not of AST nodes!
+First, we define type concepts that correspond to the AST’s `GenericType` and `UnitOfMeasurement`.  
+They are similar to their AST counterparts, but note that here we use **FreType** as the property type.
+We want to build a **hierarchy of type concepts**, not AST nodes.
 
 ```proto
 // TyperExample/src/defs/projectY.type#L6-L14
@@ -32,8 +36,8 @@ type TT_MeasurementType {
 
 ### The Infertype Rules
 
-Next, we associate the AST nodes with the type concepts, using infertype rules. When invoked, these rules will create a new instance of
-the type concepts.
+Next, we associate AST nodes with their corresponding type concepts using **infertype** rules.  
+When invoked, these rules create new instances of the type concepts.
 
 ```proto
 // TyperExample/src/defs/projectY.type#L34-L46
@@ -53,10 +57,9 @@ UnitOfMeasurement {
 }
 ```
 
-### The Conforms And Equals Rules
+### The Conforms and Equals Rules
 
-To be able to compare the types of expressions and of type declarations,
-we need to state the _equalsto_ and/or _conformsto_ rules.
+To compare expression types with declared types, we define **equalsto** and **conformsto** rules.
 
 ```proto
 // TyperExample/src/defs/projectY.type#L91-L118

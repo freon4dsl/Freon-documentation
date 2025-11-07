@@ -1,22 +1,28 @@
+---
+title: Validating the Model
+description: Use Freon’s typing system to validate expressions in your DSL. Learn how to define custom validation rules with type checks that detect mismatched operand types in logical and comparison expressions.
+tags: Freon, validation, typing, type checking, equalsType, AndExpression, OrExpression, comparison expressions, validator, DSL, Education language, tutorial
+---
+
 <script>
     import Figure from '$lib/figures/Figure.svelte';
 </script>
 
-# Validating the model
+# Validating the Model
 
-In the previous lesson we learned how to add typings to the model, but there was not yet a way to show them.
-In this lesson we will use the typings to validate the model, and produce type errors.
+In the previous lesson, we learned how to add typings to the model, but we didn’t yet use them to provide user feedback.  
+In this lesson, we’ll use those typings to **validate the model** and produce **type errors**.
 
-## Adding type checking
+## Adding Type Checking
 
-Freon generates a validator for your DSL that has a number of built-in checks. For instance, the validator checks
-whether all references have a correct value. It also checks whether everything that has the type identifier in the metamodel,
-has a value that is correct according to the rules of TypeScript.
+Freon automatically generates a **validator** for your DSL that includes several built-in checks.  
+For example, it verifies that all references point to valid targets and that every property with the type `identifier` has a valid TypeScript identifier as its value.
 
-However, for the typings there are no built-in checks. We have to define them ourselves. So, what is it that needs to be
-defined? Let's take the `AndExpression` concept. It has a left, and a right hand side, and the types on both sides should 
-be Boolean. It will be no surprise that we can define the rules for `OrExpression`s in the same way. 
-Thus, we add another file, called `edu.valid`, and add the following definitions to it.
+However, Freon doesn’t include built-in checks for **types**—you need to define those yourself.  
+Let’s take the `AndExpression` concept. It has both a left-hand and a right-hand side, and both should have the type **Boolean**.  
+We can define a similar rule for `OrExpression`.
+
+Add a file called `edu.valid` and include the following definitions:
 
 ```proto
 // Education/lesson9-defs/edu.valid#L1-L11
@@ -34,9 +40,9 @@ OrExpression {
 }
 ```
 
-Now what about instances of `LessOrEqualsExpression`, and the other
-comparison expressions? They also have a left, and a right hand side, but for them, it
- is important that the types on both sides are the same. We define that as follows.
+Now, what about instances of `LessOrEqualsExpression` and the other comparison expressions?  
+They also have left and right sides, but for them, it’s not about a specific type—it’s about **both sides having the same type**.  
+We can define that as follows:
 
 ```proto
 // Education/lesson9-defs/edu.valid#L13-L31
@@ -62,11 +68,13 @@ EqualsExpression {
 }
 ```
 
-## The result
+## The Result
 
-The result should be some error message in the editor. Unfortunately, validation is not done
-immediately. That is something we like to add in a next version of Freon. In the current version 
-you must select `Validate` from the Edit menu to activate the validator. But then it shows you...
+Once validation is configured, Freon can identify type mismatches and display errors in the editor.
+
+Currently, validation doesn’t run automatically—you need to activate it manually.  
+Open the **Edit** menu and select **Validate** to trigger the checks.  
+When you do, you’ll see something like this:
 
 <Figure
 imageName={'tutorial/Tutorial-lesson9-screenshot1.png'}

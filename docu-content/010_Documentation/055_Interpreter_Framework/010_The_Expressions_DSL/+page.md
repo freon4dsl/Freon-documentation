@@ -1,10 +1,16 @@
+---
+title: The Expressions DSL
+description: Introduces the Expressions DSL used as an example for Freon’s interpreter framework, explaining its structure, expression concepts, and function definitions.
+tags: expressions, DSL, interpreter, AST, numeric expressions, functions, Freon, DSL development
+---
+
 # The Expressions DSL
 
-Before explaining the interpreter framwework, we take a look at the following simple DSL, which will be used as an example.
-It is defined with a single
-model unit called `ExpressionUnit` that contains both function definitions and expressions.
-You can check out this language by
-creating a new Freon project with `npm create Freon` and then selecting the `Expressions` language.
+Before explaining the interpreter framework, we introduce a simple DSL that will serve as our running example. This DSL 
+will serve as the foundation for illustrating how Freon’s interpreter framework processes and evaluates expressions.
+The language defines a single model unit, `ExpressionUnit`, which contains both function definitions and expressions.
+You can explore this language by creating a new Freon project using `npm create freon`, then selecting the 
+`Expressions` template.
 
 ```proto
 // Expressions/src/defs/Expressions.ast#L1-L11
@@ -24,10 +30,9 @@ modelunit ExpressionUnit {
 
 ## Numeric Expressions
 
-Added are some basic expression concepts to represent numeric expressions: 
-a NumberLiteralExpression and the standard binary expressions.
-Note that we specify the priorities of the binary operators to allow 
-straightforward editing (see [Binary Expressions](/Documentation/Defining_an_Editor/Binary_Expressions)):
+We add several basic expression concepts to represent numeric 
+operations: `NumberLiteralExpression` and standard binary expressions.
+Operator priorities are specified to support straightforward editing (See [Binary Expressions](/Documentation/Defining_an_Editor/Binary_Expressions) for details.):
 
 ```proto
 // Expressions/src/defs/Expressions.ast#L15-L40
@@ -61,7 +66,7 @@ binary expression DivideExpression base BinaryExpression {
 ```
 
 ## Functions
-We also add concepts to represent functions, both function definitions and function calls:
+We also define concepts to represent functions — both their definitions and calls:
 
 ```proto
 // Expressions/src/defs/Expressions.ast#L42-L61

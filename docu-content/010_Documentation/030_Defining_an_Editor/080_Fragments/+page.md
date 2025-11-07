@@ -1,3 +1,9 @@
+---
+title: Projection Fragments
+description: Learn how to define and include projection fragments in Freon to organize complex editor layouts and reuse projection parts across concepts.
+tags: projection fragments, fragments, editor layout, reusable projections, projectional editor, styling, Freon, DSL development
+---
+
 <script>
     import Note from "$lib/notes/Note.svelte";
     import Figure from "$lib/figures/Figure.svelte";
@@ -5,17 +11,17 @@
 
 # Projection Fragments
 
-Parts of a projection may be defined separately to provide more flexibility in the layout.
+You can define parts of a projection separately to create more flexible layouts.
 These parts are called **fragments**.
 
 ## Fragment Definition
 
-A fragment is defined in a similar manner as normal projections, except it starts
+A fragment is defined in a similar way to normal projections, except it starts
 with the keyword `fragment`, followed by the name of the fragment. The content is given
 in the familiar manner between the square brackets (`[]`). 
 
 The next example defines two fragments called (rather unimaginative) `First` and `Second`.
-Note that every fragment for the same concept must have a unique name.
+Each fragment for a given concept must have a unique name.
 
 ```proto
 // Insurance/src/defs/editor-fragments.edit#L8-L24
@@ -39,23 +45,23 @@ Note that every fragment for the same concept must have a unique name.
 }
 ```
 
-<Note {header} {content}> </Note>{#snippet header()} One property, one occurrence in the editor{/snippet}
+<Note> {#snippet header()} One property, one occurrence in the editor{/snippet}
 {#snippet content()}
 <p>Unfortunately, it is not possible to show the same property of a concept twice in the same editor.
 The tooling we use to keep the state of the underlying model in sync with the view in the running editor
 does not allow us to do this.</p>
 {/snippet}
-
+</Note>
 
 ## Fragment Inclusion
 
-Each fragment definition must be associated with a concept entry in a .edit file, but it cannot be 
-directly included in the projection. To include a fragment within a projection, use the 
+Each fragment must belong to a concept entry in a .edit file but cannot be used directly inside the main projection. 
+To include a fragment within a projection, use the 
 syntax `[fragment <FRAGMENT_NAME>]`, where `<FRAGMENT_NAME>` is the name of the desired fragment. 
 Ensure there is no space between the opening square bracket (`[`) and the keyword `fragment`.
 
-Thus, the complete example is the following. Note that the concept's projection is closed before the
-fragments are defined.
+Thus, the complete example is the following. Note that the concept’s main projection is closed 
+before defining its fragments.
 
 ```proto
 // Insurance/src/defs/editor-fragments.edit#L3-L24
@@ -84,7 +90,7 @@ BaseProduct {
 }
 ```
 
-In this example we have styled the fragment boxes with a light yellow background. 
+In this example the fragment boxes have been styled with a light yellow background. 
 (More on styling can be found in [Styling](/Documentation/Defining_an_Editor/Styling).)
 The styled editor looks like this.
 

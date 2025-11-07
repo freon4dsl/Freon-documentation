@@ -1,21 +1,24 @@
+---
+title: Replacing a Part List
+description: Replace a Freon part list with a custom Svelte accordion component. Learn to build StaffAccordion.svelte, wire it to PartListReplacerBox, manage focus and refresh, and register it for use in projections.
+tags: Freon, Svelte, external components, PartListReplacerBox, StaffAccordion, Accordion, RenderComponent, AST.change, MobX, projections, CourseSchedule
+---
+
 <script>
     import Figure from "$lib/figures/Figure.svelte";
 </script>
 
 # Replacing a Part List
 
-In this part of the extended example, you’ll learn how to replace a part list in your 
-application by creating a custom Svelte component, `StaffAccordion.svelte`, to display 
-and manage a list of teachers within an accordion. Let’s dive in step by step.
+In this part of the extended example, you’ll learn how to replace a **part list** in your application by creating a custom Svelte component, `StaffAccordion.svelte`, to display and manage a list of teachers within an accordion.
 
 ## Step 1: Create the Svelte Component
 
-We’ll start by creating the `StaffAccordion.svelte` component. This component will 
-replace the default projection of the `teachers` property in the `Staff` model unit.
+We’ll create the `StaffAccordion.svelte` component to replace the default projection of the `teachers` property in the `Staff` model unit.
 
 ### The Script Section
 
-Begin by defining the component's parameters and the necessary state management functions:
+Begin by defining the component’s parameters and the necessary state management functions:
 
 ```ts
 // CourseSchedule/phase4/src/external/StaffAccordion.svelte#L9-L55
@@ -69,18 +72,10 @@ const addPerson = () => {
 }
 ```
 
-We have implemented the `setFocus` function such that when the focus is programmatically set to the
-list, it is redirected to the element in the first panel that is open. Furthermore, we have added
-an `initialize` function, which does two things. It finds the parameter that is given in the .edit file
-under the name `multi`, and it initializes the `panelOpen` variable.
+We implement `setFocus` so that when focus is programmatically set to the list, it forwards focus to the first **open** panel’s content.  
+`initialize` reads the `multi` parameter (from the `.edit` file) and initializes `panelOpen`.
 
-Also, we need to take care of adding to and removing from the list. Therefore, we add two functions
-`addPerson` and `removePerson`. Because the reactivity of the AST model is implemented using
-the <a href="https://mobx.js.org/" target="_blank">MobX</a> state management library, we need to put any
-changes to the AST inside a MobX action. Freon provides two methods for this purpose: `AST.change` and
-`AST.changeNamed`. The latter is only useful for logging purposes, and will not be used in this example.
-The rest of the implementation of both functions is straightforward. We get the list of AST nodes from
-the box using `Box.getPropertyValue()`, and change it.
+We also provide `addPerson` and `removePerson` to mutate the list. Because the AST is reactive via **MobX**, changes must be wrapped in `AST.change` (or `AST.changeNamed`).
 
 ```ts
 // CourseSchedule/phase4/src/external/StaffAccordion.svelte#L57-L72
@@ -103,31 +98,17 @@ $effect(() => {
     // Needed to get an effect
 ```
 
-That done, we need to call both functions somewhere in the HTML section of the component.
-
 ### The HTML Section
 
-The actual HTML in the component consists of a `div` with the `Accordion`, and an icon button to add an element to the list.
-We have added some inline styling, just to make things look a little bit better, but the focus of this example is
-not on styling, therefore it is kept to a minimum.
+The HTML consists of a wrapper `div` with an `Accordion` and a button to **add** items.  
+Inside the `Accordion`, we iterate over `box.children`, creating a `Panel` per child.  
+For each panel header, we use AST info from `childBox.node`:
 
-In the `Accordion` component we loop over the children of the box, using both the child box and its index in the list.
-We create a `Panel` for each childBox, setting it to `open` based the value in `panelOpen[index]`.
-Take a look at the header of each `Panel`, which contains
-information from the AST model. Every box is associated with the AST node that it represents. This AST node can be accessed
-using `childBox.node`, which returns an object of type `FreNode`. Also, every AST node knows its meta type, i.e. the
-concept from the .edit file that is used to instantiate the node. We can access this name using
-`childBox.node.freLanguageConcept()`. Here the result is a string with the value 'Person'.
+- `childBox.node.freLanguageConcept()` → the meta concept name (e.g., `Person`)
+- `childBox.node.freId()` → a stable id
+- For ad-hoc access to properties without casting, we use **typed index access**: `childBox.node["name"]`.
 
-We can do even more with the AST, but because its type is `FreNode` and not `Person`, this is a little bit more complex.
-We could use a different variable, and cast the node to the right type, but that would mean that we have a lot more admin
-to do in the `initialize` function. Therefore, we have chosen to access the information using a generic TypeScript manner
-called <a href="https://www.typescriptlang.org/docs/handbook/2/indexed-access-types.html" target="_blank">typed index accessing</a>
-to look up a specific property on another type: `childBox.node["name"]`. This results in the name of the `Person` object.
-
-The content of each panel is defined as the native Freon component for the child box coupled with an icon button that calls
-the `removePerson` function for that specific element in the list. The native Freon component is rendered by the Freon
-`RenderComponent` as in the `PhoneButton.svelte` component.
+The panel content renders the native Freon component for the child via `RenderComponent`, and includes a **remove** button.
 
 ```ts
 // CourseSchedule/phase4/src/external/StaffAccordion.svelte#L78-L96
@@ -154,8 +135,6 @@ the `removePerson` function for that specific element in the list. The native Fr
 ```
 
 ### The Complete Component
-
-Now that we've defined the script and HTML sections, here's the full component:
 
 ```ts
 // CourseSchedule/phase4/src/external/StaffAccordion.svelte
@@ -271,18 +250,11 @@ Now that we've defined the script and HTML sections, here's the full component:
         <UserAddOutline class="{iconCls}" />
     </Button>
 </div>
-
 ```
 
 ## Step 2: Include in the Projection
 
-To integrate our new accordion component into the projection, we need to modify the `.edit` file. 
-Specifically, we'll replace the `teachers` property with the `StaffAccordion` component and 
-pass the `multi` parameter to allow multiple panels to be open. Note that
-parameter passing is string based. Any parameter is a key-value pair, where both the key and the
-value are strings. There are no checks on any types or values.
-
-In your `.edit` file:
+Replace the `teachers` property with the `StaffAccordion` component and pass the string parameter `multi="multiple"` to allow multiple panels to be open:
 
 ```proto
 // CourseSchedule/phase4/defs/externals.edit#L14-L18
@@ -296,10 +268,7 @@ Staff in the category: ${self.name}
 
 ## Step 3: Do the Admin
 
-All that is left to do, is the familiar admin. Add `StaffAccordion` to the global 
-section of your editor's definition and ensure it's recognized as a custom component.
-
-In the `global` section of the `main.edit` file:
+Add `StaffAccordion` to the global section and register it as a custom component.
 
 ```proto
 // CourseSchedule/phase4/defs/main.edit#L3-L9
@@ -312,9 +281,6 @@ global {
     }
 }
 ```
-
-In the `externals.ts`, register `StaffAccordion` as a custom component. Don't forget to
-update your `package.json` file to include any library components.
 
 ```ts
 // CourseSchedule/phase4/src/external/externals.ts#L9-L15
@@ -330,9 +296,10 @@ export function configureExternals() {
 
 ## Final Result
 
-After following these steps, your editor will display the staff list in an accordion format. Here's what the result will look like:
+After these steps, your editor displays the staff list in an **accordion**:
 
 - **All panels closed:**
+
 <Figure
 imageName={'examples/CourseSchedule/Screenshot-step4a.png'}
 caption={'Staff model unit with Accordion'}
@@ -340,6 +307,7 @@ figureNumber={1}
 />
 
 - **A panel open:**
+
 <Figure
 imageName={'examples/CourseSchedule/Screenshot-step4b.png'}
 caption={'Accordion with open panel'}
@@ -348,5 +316,5 @@ figureNumber={2}
 
 ### Conclusion
 
-And that's it! You've successfully replaced the `teachers` list with an accordion in Svelte.
-Next up, you will learn how to manipulate AST nodes and display them in a different order.
+That’s it! You’ve replaced the `teachers` list with a Svelte accordion.  
+Next, you’ll learn how to reorder AST nodes and display them in a different order.

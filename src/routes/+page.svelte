@@ -33,22 +33,36 @@
 
 			<h1 class="landing-name-text">Introducing Freon</h1>
 			<h2>The ultimate Language Workbench for the Web!</h2>
-			<div class="landing-started">
+		</section>
+
+		<section class="two-corner-box">
+			<div class="corner-box top-left-box">
 				<a href="/Documentation/Overview/Getting_Started"
-					>Getting Started
+				>Getting Started
 					<span class="landing-arrow">
-						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 412" height="28px"
-							><!--!Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path
-								fill="currentColor"
-								d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"
-							/></svg
+						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 70 448 380" height="28px"
+						><!--!Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path
+							fill="currentColor"
+							d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"
+						/></svg
 						>
 					</span>
 				</a>
 			</div>
-		</section>
+			<div class="corner-box top-right-box">
+				<a href="/Documentation/Overview/New_In_Version_2"
+				>New in Version&nbsp;2
+					<span class="landing-arrow">
+						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 70 448 380" height="28px"
+						><!--!Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path
+							fill="currentColor"
+							d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"
+						/></svg
+						>
+					</span>
+				</a>
+			</div>
 
-		<section class="landing-main-text">
 			<div class="landing-text">
 				<p class="see-me">
 					Freon is an advanced language workbench that simplifies the creation of domain-specific languages (DSLs) through a web-based

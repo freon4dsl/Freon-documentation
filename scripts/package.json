@@ -5,13 +5,22 @@
 	"bin": {
 		"navTree": "dist/NavTreeFiller.js"
 	},
-	"scripts": {
-		"generateExamples": "npm run insuranceProject && npm run customizations && npm run expressions && npm run education",
-		"insuranceProject": "cd ../code-examples/Insurance && npm run generate && cd ../../scripts/",
+"scripts": {
+		"generateExamples": "npm run courseSchedule && npm run customizations && npm run education && npm run educationInterpreter && npm run expressions && npm run insurance && npm run qName && npm run typerExample",
+		"courseSchedule": "cd ../code-examples/CourseSchedule && npm run generate && cd ../../scripts/",
 		"customizations": "cd ../code-examples/CustomizationsProject && npm run generate && cd ../../scripts/",
-		"education": "cd ../code-examples/EducationInterpreter && npm run generate && cd ../../scripts/",
+		"education": "cd ../code-examples/Education && npm run generate && cd ../../scripts/",
+		"educationInterpreter": "cd ../code-examples/EducationInterpreter && npm run generate && cd ../../scripts/",
 		"expressions": "cd ../code-examples/Expressions && npm run generate && cd ../../scripts/",
+		"insurance": "cd ../code-examples/Insurance && npm run generate && cd ../../scripts/",
+		"qName": "cd ../code-examples/QName && npm run generate && cd ../../scripts/",
 		"typerExample": "cd ../code-examples/TyperExample && npm run generate && cd ../../scripts/",
+		"touch-ast": "find ../code-examples -type f -name \"*.ast\" -exec touch -m {} +",
+		"touch-edit": "find ../code-examples -type f -name \"*.edit\" -exec touch -m {} +",
+		"touch-scope": "find ../code-examples -type f -name \"*.scope\" -exec touch -m {} +",
+		"touch-type": "find ../code-examples -type f -name \"*.type\" -exec touch -m {} +",
+		"touch-valid": "find ../code-examples -type f -name \"*.valid\" -exec touch -m {} +",
+		"touch-examples": "npm run touch-ast && npm run touch-edit && npm run touch-scope && npm run touch-type && npm run touch-valid",
 		"embedme": "embedme --source-root ../code-examples \"../docu-content/**/*.md\"",
 		"embedExamples": "npm run generateExamples && npm run embedme",
 		"install-examples": "tsc && node dist/InstallCodeExamples.js",

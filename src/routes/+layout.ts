@@ -8,10 +8,18 @@ export const ssr = true;
 export const load: LayoutLoad = async (): Promise<SiteData> => {
 	return {
 		site: {
-			title: 'Freon',
+			title: 'Freon — The Language Workbench for Domain-Specific Languages',
 			description:
-				'The Freon Language Workbench is a tool that creates domain specific languages, including a web-based projectional editor',
-			tags: ['DSL', 'TypeScript', 'forms', 'projectional editing', 'Svelte'],
+				`Freon is a modern language workbench that lets you design and generate domain-specific languages (DSLs) with a built-in web-based projectional editor — all powered by TypeScript and Svelte.`,
+			tags: [
+				'language workbench',
+				'DSL',
+				'domain-specific languages',
+				'projectional editing',
+				'TypeScript',
+				'Svelte',
+				'code generation'
+			],
 			image: '/freon-logo.png'
 		}
 	};

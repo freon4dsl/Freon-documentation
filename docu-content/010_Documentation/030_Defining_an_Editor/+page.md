@@ -1,3 +1,9 @@
+---
+title: Defining an Editor
+description: Learn how to define editor behavior in Freon using .edit files, including projections, triggers, symbols, named editors, and precedence for customizing the projectional editor interface.
+tags: editor definition, .edit file, projections, triggers, symbols, named editors, editor precedence, projectional editor, Freon, DSL development
+---
+
 <script>
     import Note from "$lib/notes/Note.svelte";
     import Figure from "$lib/figures/Figure.svelte";
@@ -5,14 +11,13 @@
 
 # Defining an Editor
 
-An editor's behavior is specified 
-through an editor definition file (a `.edit` file). 
+An editor's behavior is specified in an editor definition file (a `.edit` file). 
 You can define the following three aspects for each _concept_ or _interface_:
 
 - **Projection**: Defines how the _concept_ is visually represented in the editor. This is also called the [concrete syntax](/Documentation/Terminology).
 - **Trigger** (optional): Specifies the key or keys that a user must type to create a new instance of the _concept_ and that
-the user will see in a dropdown menu.
-- **Symbol** (optional): Used exclusively for binary expressions, it is the character or string that represents 
+appears in a dropdown menu.
+- **Symbol** (optional): Used exclusively for binary expressions: the character or string that represents 
 the _operator_. If a _symbol_ is not provided, the _trigger_ will serve this purpose.
  
 Note that projections cannot be specified for _binary expression concepts_ or _limited concepts_. 
@@ -20,12 +25,12 @@ The editor offers specialized support for binary expressions, which cannot funct
 if a user-defined projection is applied. Limited concepts are also restricted 
 from having projections because they are intended for use as references only within the editor.
 
-<Note {header} {content}> </Note>
-{#snippet header()} The projection is always the first {/snippet}
+<Note> 
+{#snippet header()} The projection comes first {/snippet}
 {#snippet content()}
-For every concept or interface you have to define the projection before the trigger and/or symbol.  
+For every concept or interface, define the projection before the trigger and/or symbol.  
 {/snippet}
-
+</Note>
 
 ## Named Editors or Projection Sets
 
@@ -56,7 +61,7 @@ for all concepts — projections for the missing concepts are automatically
 generated. As a result, the default editor is always complete during generation.
 
 The generated default will show the concept's name and all of its properties in the order given in the .ast file.
-Any list property will be displayed as a vertical list.
+List properties will be displayed as a vertical list.
 
 For example, if no projection is specified for the concepts `InsurancePart`, `PercentageLiteral`, and `EuroLiteral` 
 instances of `InsurancePart` will be shown as follows.
@@ -85,24 +90,23 @@ a precedence value to each editor. Projections are resolved following this order
 The default editor always has the lowest precedence (0) and is evaluated last.
 
 If a projection for a concept is not found in the editor with the highest precedence, 
-the system searches the next editor in the sequence, continuing until it 
+the system checks the next editor in the sequence, continuing until it 
 reaches the default editor.
 
 If you do not specify a precedence, Freon assigns one based on the order 
 in which the files are read — typically alphabetically. However, this 
-order is not guaranteed and may vary.
+order isn't guaranteed.
 
-<Note header={header2} content={content2}> </Note>
+<Note header={header2} content={content2}> 
 {#snippet header2()} Each editor can be defined in multiple files {/snippet}
 {#snippet content2()}
 <p>Every <code>.edit</code> file in the folder containing your definitions is read during the 
 generation process. If multiple files define editors with the same name, their information 
 is merged into a single editor.</p>
 
-<p>The precedence value only needs to be specified once. However, if it is defined multiple 
-times, the values must be consistent.</p>
+<p>You only need to set precedence once; if defined in multiple files, the values must match.</p>
 {/snippet}
-
+</Note>
 
 ```proto
 // Insurance/src/defs/editor-tables.edit#L1-L11
@@ -126,10 +130,10 @@ The generator for the editor runs every time the `freon all` command is executed
 the generator for the editor independently. The following command will do the trick.
 
 ```bash
-npm run freon edit-it -d src/defs -o src/"
+npm run freon edit-it -d src/defs -o src/
 ```
 
-<Note header={header3} content={content3}> </Note>
+<Note header={header3} content={content3}> 
 {#snippet header3()} Incomplete code{/snippet}
 {#snippet content3()}
 <p>
@@ -145,6 +149,7 @@ has been run, you can use specific commands for individual aspects of your langu
 This approach ensures correct dependencies while minimizing regeneration time.
 </p>
 {/snippet}
+</Note>
 
 ## Example `.edit` File
 

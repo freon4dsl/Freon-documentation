@@ -1,23 +1,35 @@
+---
+title: "The Freon Editor Interfaces"
+description: "Interfaces that define the extensibility and flexibility of the Freon editor framework, including projections, actions, and expressions."
+tags: Editor Interfaces, FreProjection, FreExpression, FreBinaryExpression, Freon
+---
+
 # The Freon Editor Interfaces
 
-There are two series of interfaces that make Freon and its generated code extensible and flexible. The first
-series are the xref:../tools-interfaces/tools-interfaces-intro[interfaces of the generated code].
+There are two series of interfaces that make Freon and its generated code extensible and flexible.  
+The first series are the [interfaces of the generated code](/Documentation/Under_the_Hood/FreTool_Interfaces).
 
-The second series of interfaces are those that define the editor framework:
+The second series of interfaces define the **editor framework** itself.
+
 
 ## FreProjection
 
-The projection from your model/AST is defined by implementing the _FreProjection_ interface:
+The projection from your model or AST is defined by implementing the `FreProjection` interface.
 
 ```ts
-/* File: core/src/editor/FreProjection.ts  */
+/* File: core/src/editor/projections/FreProjection.ts  */
 
 /**
  * Interface for a custom projection.
  */
 export interface FreProjection {
+	// todo add priority
+
 	// Name of the custom projection
 	name: string;
+
+	// The projection handler that this projection is registered in.
+	handler: FreProjectionHandler;
 
 	// A map from the name of the concept (or the freLanguageConcept() of the FreElement node) to
 	// the function that may return the custom box for a node of that type.
@@ -25,69 +37,52 @@ export interface FreProjection {
 
 	// A map from the name of the concept (or the freLanguageConcept() of the FreElement node) to
 	// the function that may return the custom box for a node of that type.
-	nodeTypeToTableDefinition: Map<string, () => FreTableDefinition>;
+	nodeTypeToTableDefinition: Map<string, () => FreTableDefinition>; // todo change name and remove Tabledefinition type
 }
 ```
 
-Implementing this interface should return a _Box_ for each `element` in the AST.
-Freon includes boxes of various types (textual, tabular, horizontal or vertical collections, etc.)
+Implementing this interface should return a **Box** for each `element` in the AST.  
+Freon includes many predefined boxes (textual, tabular, horizontal or vertical collections, etc.)  
 to define this projection.
-The box model is further described in the [editor framework](/Documentation/Under_the_Hood/Editor_Framework#projection-layout-based-on-boxes-3).
 
-## FreAction
+The box model is further described in the [Editor Framework documentation](/Documentation/Under_the_Hood/Editor_Framework#projection-layout-based-on-boxes-3).
 
-An object that implements `FreCombinedActions` 
+## FreExpressionNode
 
-[//]: # (todo write this)
-
-```ts
-/* File: core/src/editor/FreCombinedActions.ts */
-
-export interface FreCombinedActions {
-	binaryExpressionActions: FreCreateBinaryExpressionAction[];
-
-	customActions: FreCustomAction[];
-}
-```
-
-## FreExpression
-
-An object that implements `FreExpression` 
-
-[//]: # (todo write this)
+An object that implements `FreExpressionNode` represents a typed node within the model AST that behaves as an expression.
 
 ```ts
 /* File: core/src/language/FreExpression.ts */
 
-export interface FreExpression extends FreElement {}
+export interface FreExpressionNode extends FreNode {}
 ```
+
 
 ## FreBinaryExpression
 
-An object that implements `FreBinaryExpression` is a node in the model AST. It represents
-an expression that has exactly two operands, which are usually written to the left and right of
-the operator symbol. For example, '4+5'.
+An object that implements `FreBinaryExpression` is a node in the model AST.  
+It represents an expression that has exactly two operands, which are usually written to the left and right of the operator symbol (for example, `4 + 5`).
 
-This interface extends the [`FreExpression`](/Documentation/Under_the_Hood/Editor_Interfaces#freexpression-4) interface.
+This interface extends [`FreExpression`](/Documentation/Under_the_Hood/Editor_Interfaces#freexpression-4).
 
 ```ts
 /* File: core/src/language/FreBinaryExpression.ts */
 
-export interface FreBinaryExpression extends FreExpression {
-    piLeft(): FreExpression;
+export interface FreBinaryExpression extends FreExpressionNode {
+	freLeft(): FreExpressionNode;
 
-    piSetLeft(left: FreExpression): void;
+	freSetLeft(left: FreExpressionNode): void;
 
-    piRight(): FreExpression;
+	freRight(): FreExpressionNode;
 
-    piSetRight(right: FreExpression): void;
+	freSetRight(right: FreExpressionNode): void;
 
-    piPriority(): number;
+	frePriority(): number;
 }
- */
 ```
 
-In both series the following two interfaces are used:
 
-- [FreElement](/Documentation/Under_the_Hood/Core_Interfaces#fre-node-1)
-- [FreNamedElement](/Documentation/Under_the_Hood/Core_Interfaces#fre-named-node-2)
+In both series of interfaces, the following two core interfaces are reused:
+
+- [FreNode](/Documentation/Under_the_Hood/Core_Interfaces#fre-node-1)
+- [FreNamedNode](/Documentation/Under_the_Hood/Core_Interfaces#fre-named-node-2)

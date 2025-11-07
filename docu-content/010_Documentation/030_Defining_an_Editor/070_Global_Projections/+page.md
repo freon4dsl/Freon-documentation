@@ -1,3 +1,9 @@
+---
+title: Projections to Be Used Globally
+description: Learn how to define global projection settings in Freon, including default boolean, limited concept, and number projections, reference separators, and external components.
+tags: global projections, editor defaults, boolean projections, limited concepts, number projections, reference separator, external components, Freon, DSL development
+---
+
 <script>
     import Note from "$lib/notes/Note.svelte";
 </script>
@@ -5,11 +11,11 @@
 # Projections to be used Globally
 
 For some concrete syntax elements you may provide a global definition, i.e. these definitions 
-to be used everywhere in the editor.
-Note that this can be done once in the complete set of editors, only in the _default_ editor definition. 
+are to be used everywhere in the editor.
+This can only be done once, in the _default_ editor definition. 
 However, the global definitions can be overwritten per property. 
 
-All global projection definitions need to be within curly brackets (`{}`) prefixed with the keyword `global`.
+All global projection definitions must be enclosed in curly brackets (`{}`) and prefixed with the keyword `global`.
 
 ## Boolean Projections
 
@@ -43,7 +49,7 @@ global {
 ## Projections for Limited Concepts
 
 To indicate global definitions for limited concepts you can use the keywords `limited` and `limited[]` for
-single valued properties and multivalued properties respectively. The keyword(s) must be followed by the 
+single-valued properties and multi-valued properties respectively. The keyword(s) must be followed by the 
 options available for limited concepts, as described 
 in [Projections for Limited Concepts](/Documentation/Defining_an_Editor/Projections_for_Limited_Concepts).
 
@@ -55,11 +61,11 @@ in [Number Projections](/Documentation/Defining_an_Editor/Number_Projections).
 
 ## Reference Separator
 
-References to other objects may consist of a series of names, like _country.city.street.house_. The string used to separate
+References to other objects can consist of a series of names, like _country.city.street.house_. The string used to separate
 these names (in the example above ".") can be set.
 
 ## Adding Names of External Components
 
 Freon offers the possibility to include Svelte components that are defined outside of Freon. These components
-are called [_external_](/Documentation/Customizations/External_Components). All names of external components 
+are called [external components](/Documentation/Customizations/External_Components). All names of external components 
 need to be declared in the `global` section.
