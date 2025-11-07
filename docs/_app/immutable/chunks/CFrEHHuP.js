@@ -1,0 +1,2 @@
+import{f as e,a as t}from"./nks1QWJh.js";import"./DxNsL9I7.js";var a=e('<footer class="page-footer"><span class="copyright">&copy; 2018 - 2025 Freon contributors - Freon is open source under the <a target="_blank" href="https://github.com/freon4dsl/Freon4dsl?tab=MIT-1-ov-file#readme">MIT License</a>.</span></footer>');function p(o){var r=a();t(o,r)}export{p as F};
+//# sourceMappingURL=CFrEHHuP.js.map

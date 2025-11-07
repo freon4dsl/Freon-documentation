@@ -1,0 +1,2 @@
+import{f as s,a as n}from"../chunks/nks1QWJh.js";import{u as a,x as i}from"../chunks/bZIXIZs8.js";import{s as l}from"../chunks/C_oLqE9A.js";const p=!0,d=Object.freeze(Object.defineProperty({__proto__:null,prerender:p},Symbol.toStringTag,{value:"Module"}));var m=s('<link rel="stylesheet" crossorigin="anonymous" href="./demoApp/site.css"/> <!>',1);function _(o,r){var e=m(),t=a(i(e),2);l(t,()=>r.children),n(o,e)}export{_ as component,d as universal};
+//# sourceMappingURL=5.Bf3vuUD6.js.map

@@ -1,0 +1,2 @@
+import{f as t,a as i}from"../chunks/nks1QWJh.js";import"../chunks/DxNsL9I7.js";var r=t('<div class="error-page svelte-1j96wlh"><img src="/icons/oops-emoji-icon.png" alt="oops-emoji-icon" width="200" height="200"/> <h1>Oops, something went wrong.</h1> <p>Maybe you would like to go back to the <a href="/"><b>main content</b></a>.</p></div>');function p(o){var e=r();i(o,e)}export{p as component};
+//# sourceMappingURL=1.B5s_Be8q.js.map

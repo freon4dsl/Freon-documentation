@@ -1,0 +1,2 @@
+import{f as a,a as o,w as e}from"../chunks/nks1QWJh.js";import"../chunks/DxNsL9I7.js";import{$ as m,u as p,x as d}from"../chunks/bZIXIZs8.js";import{h as n}from"../chunks/aX-frc9G.js";var c=e(a('<script type="module" src="./demoApp/assets/insurance-packaged.js"><\/script><!>',1)),f=a('<div id="freon" class="demo"></div>');function _(s){var t=f();n(i=>{var r=c();m.title="Freon Demo",p(d(r)),o(i,r)}),o(s,t)}export{_ as component};
+//# sourceMappingURL=68.DbyXMihP.js.map

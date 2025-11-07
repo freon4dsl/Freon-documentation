@@ -1,0 +1,316 @@
+/* Original by Taylor Buckner, based on [VS Codes Dark+](https://github.com/VS Codes Dark+) */
+
+:root {
+	/* all colors are put in variables, to be able to switch from light to dark theme */
+	--code-color-grey: #d4d4d4;
+	--code-color-purple: #c586c0;
+	--code-color-light-marroon: #ce9178;
+	--code-color-blue: #569cd6;
+	--code-color-light-blue: #9cdcfe;
+	--code-color-light-green: #b5cea8;
+	--code-color-dark-green: #6a9955;
+	--code-color-red: #db4c69;
+	--code-color-grey-green: #dcdcaa;
+	--code-color-light-red: #d16969;
+	--code-color-aqua: #4ec9b0;
+	--code-color-black: #1e1e1e;
+
+	--code_color: var(--code-color-grey);
+	--code_background: var(--code-color-black);
+	--code_inline_background: var(--theme-colors-FRE_BEIGE);
+	--code_block_background: var(--theme-colors-FRE_DARKER);
+	--code_keyword: var(--code-color-purple);
+	--code_border: var(--code-color-grey);
+
+	--token_color_string: var(--code-color-light-marroon);
+	--token_keyword: var(--code-color-blue);
+	--token_constant: var(--code-color-light-blue);
+	--token_number: var(--code-color-light-green);
+	--token_not_pre: var(--code-color-red);
+	--token_operator: var(--code-color-grey);
+	--token_att_value: var(--code-color-light-marroon);
+	--token_atrule: var(--code-color-purple);
+	--token_function: var(--code-color-grey-green);
+	--token_regex: var(--code-color-light-red);
+	--token_boolean: var(--code-color-blue);
+	--token_class_name: var(--code-color-aqua);
+	--token_comment: var(--code-color-dark-green);
+}
+
+pre[class*='language-'],
+code[class*='language-'] {
+	color: var(--code_color);
+	font-size: 13px;
+	text-shadow: none;
+	font-family: Menlo, Monaco, Consolas, 'Andale Mono', 'Ubuntu Mono', 'Courier New', monospace;
+	direction: ltr;
+	text-align: left;
+	white-space: pre;
+	word-spacing: normal;
+	word-break: normal;
+	line-height: 1.5;
+	-moz-tab-size: 4;
+	-o-tab-size: 4;
+	tab-size: 4;
+	-webkit-hyphens: none;
+	-moz-hyphens: none;
+	-ms-hyphens: none;
+	hyphens: none;
+}
+
+pre[class*='language-']::selection,
+code[class*='language-']::selection,
+pre[class*='language-'] *::selection,
+code[class*='language-'] *::selection {
+	text-shadow: none;
+	background: var(--code_background);
+}
+
+@media print {
+	pre[class*='language-'],
+	code[class*='language-'] {
+		text-shadow: none;
+	}
+}
+
+pre[class*='language-'] {
+	padding: 1em;
+	margin: 0.5em 0;
+	overflow: auto;
+	background: var(--code_background_color);
+	border: 1px solid var(--code_border);
+}
+
+:not(pre) > code[class*='language-'] {
+	padding: 0.1em 0.3em;
+	border-radius: 0.3em;
+	color: var(--token_not_pre);
+	background: var(--code_background_color);
+	border: 1px solid var(--code_border);
+}
+/*********************************************************
+* Tokens
+*/
+.namespace {
+	opacity: 0.7;
+}
+
+.token.doctype .token.doctype-tag {
+	color: var(--token_keyword);
+}
+
+.token.doctype .token.name {
+	color: var(--token_constant);
+}
+
+.token.comment,
+.token.prolog {
+	color: var(--token_comment);
+}
+
+.token.punctuation,
+.language-html .language-css .token.punctuation,
+.language-html .language-javascript .token.punctuation {
+	color: var(--token_operator);
+}
+
+.token.property,
+.token.tag,
+.token.boolean,
+.token.number,
+.token.constant,
+.token.symbol,
+.token.inserted,
+.token.unit {
+	color: var(--token_number);
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.deleted {
+	color: var(--token_color_string);
+}
+
+.language-css .token.string.url {
+	text-decoration: underline;
+}
+
+.token.operator,
+.token.entity {
+	color: var(--token_operator);
+}
+
+.token.operator.arrow {
+	color: var(--token_keyword);
+}
+
+.token.atrule {
+	color: var(--token_att_value);
+}
+
+.token.atrule .token.rule {
+	color: var(--token_atrule);
+}
+
+.token.atrule .token.url {
+	color: var(--token_constant);
+}
+
+.token.atrule .token.url .token.function {
+	color: var(--token_function);
+}
+
+.token.atrule .token.url .token.punctuation {
+	color: var(--token_operator);
+}
+
+.token.keyword {
+	color: var(--token_keyword);
+}
+
+.token.keyword.module,
+.token.keyword.control-flow {
+	color: var(--code_keyword);
+}
+
+.token.function,
+.token.function .token.maybe-class-name {
+	color: var(--token_function);
+}
+
+.token.regex {
+	color: var(--token_regex);
+}
+
+.token.important {
+	color: var(--token_boolean);
+}
+
+.token.italic {
+	font-style: italic;
+}
+
+.token.constant {
+	color: var(--token_constant);
+}
+
+.token.class-name,
+.token.maybe-class-name {
+	color: var(--token_class_name);
+}
+
+.token.console {
+	color: var(--token_constant);
+}
+
+.token.parameter {
+	color: var(--token_constant);
+}
+
+.token.interpolation {
+	color: var(--token_constant);
+}
+
+.token.punctuation.interpolation-punctuation {
+	color: var(--token_boolean);
+}
+
+.token.boolean {
+	color: var(--token_boolean);
+}
+
+.token.property,
+.token.variable,
+.token.imports .token.maybe-class-name,
+.token.exports .token.maybe-class-name {
+	color: var(--token_constant);
+}
+
+.token.selector {
+	color: #d7ba7d;
+}
+
+.token.escape {
+	color: #d7ba7d;
+}
+
+.token.tag {
+	color: var(--token_boolean);
+}
+
+.token.tag .token.punctuation {
+	color: #808080;
+}
+
+.token.cdata {
+	color: #808080;
+}
+
+.token.attr-name {
+	color: var(--token_constant);
+}
+
+.token.attr-value,
+.token.attr-value .token.punctuation {
+	color: var(--token_att_value);
+}
+
+.token.attr-value .token.punctuation.attr-equals {
+	color: var(--token_operator);
+}
+
+.token.entity {
+	color: var(--token_boolean);
+}
+
+.token.namespace {
+	color: var(--token_class_name);
+}
+/*********************************************************
+* Language Specific
+*/
+
+pre[class*='language-javascript'],
+code[class*='language-javascript'],
+pre[class*='language-jsx'],
+code[class*='language-jsx'],
+pre[class*='language-typescript'],
+code[class*='language-typescript'],
+pre[class*='language-tsx'],
+code[class*='language-tsx'] {
+	color: var(--token_constant);
+}
+
+pre[class*='language-css'],
+code[class*='language-css'] {
+	color: var(--token_att_value);
+}
+
+pre[class*='language-html'],
+code[class*='language-html'] {
+	color: var(--token_operator);
+}
+
+.language-regex .token.anchor {
+	color: var(--token_function);
+}
+
+.language-html .token.punctuation {
+	color: #808080;
+}
+/*********************************************************
+* Line highlighting
+*/
+pre[class*='language-'] > code[class*='language-'] {
+	position: relative;
+	z-index: 1;
+}
+
+.line-highlight.line-highlight {
+	background: #f7ebc6;
+	box-shadow: inset 5px 0 0 #f7d87c;
+	z-index: 0;
+}
