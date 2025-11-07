@@ -41,7 +41,7 @@ a specific task or point of view.
 Editors are **named**, allowing you to define multiple editors with coordinated 
 sets of projections. 
 
-For example, if you group all [table projections](/Documentation/Defining_an_Editor/Projections#tables) under 
+For example, if you group all [table projections](/Documentation/Defining_an_Editor/Projections#tables-5) under 
 a specific named editor, 
 users can switch between viewing objects as lists or as tables. Similarly, 
 you could create one editor (or projection set) that displays only a subset 

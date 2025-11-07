@@ -60,7 +60,7 @@ string 'EUR'. Note that the method checks whether it is used for concepts of typ
 {#snippet content()}
 You can rename the file <code>~/freon/editor/CustomYourLanguageNameProjection.ts</code>, and/or place it in another location.
 In that case, you need to adjust the file <code>~/freon/config/FreonConfiguration</code>. 
-See <a href="/Documentation/Customizations#adding-typeScript-files-4">Adding TypeScript Files</a>.
+See <a href="/Documentation/Customizations#customizability-of-the-fre-tools-3">Adding TypeScript Files</a>.
 {/snippet}
 </Note>
 
@@ -81,7 +81,7 @@ on normal concepts. Actions on binary expressions should be added to the array
 `MANUAL_BINARY_EXPRESSION_ACTIONS`. When you define these constants, Freon 
 merges your actions with the default actions.
 
-Any `CustomAction` must implement the [`FreCustomAction`](/Documentation/Under_the_Hood/Core_Interfaces#frecustomaction-4) 
+Any `CustomAction` must implement the [`FreCustomAction`](/Documentation/Under_the_Hood/Core_Interfaces#frecustomaction-5) 
 interface. An easy way to create one is to use the predefined method `FreCustomAction.create()`, which 
 takes a partial `CustomAction` object as a parameter. The most important properties of the `CustomAction` 
 object are the action itself, and the box roles that indicate the action could be activated.

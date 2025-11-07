@@ -13,14 +13,14 @@ but additional checks on the model or Abstract Syntax Tree (AST).
 
 The **validator** definition provides the constraints or rules that should be true in the models built by your users. 
 Any part of the validator
-definition must be included in a file with the extension `.valid`. All files with this extension in the [_defs_ folder](/Documentation/Overview/Getting_Started#template-project-startup-3)
+definition must be included in a file with the extension `.valid`. All files with this extension in the [_defs_ folder](/Documentation/Overview/Getting_Started#creating-a-project-2)
 (i.e. the folder containing your definition files) are combined into one validator definition.
 
 Freon supports four types of validation rules.
 
 ## Simple Value Rules
 
-A simple value rule defines constraints on the value of a single property. Given a [simple property](/Documentation/Creating_the_Metamodel/Defining_Properties#simple-properties-2),
+A simple value rule defines constraints on the value of a single property. Given a [simple property](/Documentation/Creating_the_Metamodel/Defining_Properties#primitive-properties-2),
 its value can be restricted to a specified range or set of values.
 
 ```proto

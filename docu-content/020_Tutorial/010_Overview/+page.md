@@ -64,7 +64,7 @@ Lesson 1 files are located in the `src/defs` folder (see [Where do the files go?
 
 Before starting a new lesson, empty the `src/defs` folder and copy in the files for the lesson you’re about to follow.  
 You’ll also find example models for the lessons in the **modelstore** folder.  
-(For details on the project contents, see [Project Structure](/Documentation/Overview/Getting_Started#project_structure-5).)  
+(For details on the project contents, see [Project Structure](/Documentation/Overview/Getting_Started#project-structure-5).)  
 Use the model `Lesson1` for Lessons 1–3, `Lesson4` for Lessons 4–5, and `Lesson6` for the remaining lessons.
 
 For tips on using the editor, click the **question mark** icon on the editor’s top bar.

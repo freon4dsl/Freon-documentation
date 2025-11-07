@@ -7,7 +7,11 @@ const config = {
 	preprocess: [vitePreprocess()],
 
 	kit: {
-		adapter: adapter()
+		adapter: adapter({ pages: "docs" }),
+		prerender: {
+			handleHttpError: 'warn',
+			handleMissingId: 'warn'
+		}
 	}
 };
 

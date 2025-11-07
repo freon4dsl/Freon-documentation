@@ -13,7 +13,7 @@ tags: customization, fre-tools, editor, typer, validator, scoper, Freon, DSL dev
 From the five parts of a language definition, Freon generates a complete work environment containing an editor, 
 scope provider (scoper), type provider (typer), validator, standard library, and utilities such as a parser and deparser.
 These individual components are collectively referred to as **_fre-tools_**.
-Other sections of this documentation describe how to fine-tune the generated fre-tools using the files in the [_defs_ folder](/Documentation/Overview/Getting_Started#template-project-startup-3) 
+Other sections of this documentation describe how to fine-tune the generated fre-tools using the files in the [_defs_ folder](/Documentation/Overview/Getting_Started#creating-a-project-2) 
 (i.e. the folder containing your definition files).
 (See for instance [Defining_an_editor](/Documentation/Defining_an_Editor).)
 In this section, we focus on deeper customizations implemented through TypeScript code.
@@ -47,7 +47,7 @@ figureNumber={1}
 
 Freon combines the definitions for each tool, together with the customized TypeScript code into one application, 
 where the third level precedes the second, and the second level precedes the first.
-For example, the generated editor determines for each [**concept**](/Documentation/Creating_the_Metamodel/Language_Structure#concept) in the language which projection to use, in the following order:
+For example, the generated editor determines for each [**concept**](/Documentation/Creating_the_Metamodel/Language_Structure#concept-4) in the language which projection to use, in the following order:
 
 1. use the _hand-written projection_ from the Customization level, when this is present. If not, the editor will
 2. use the _projection generated from the .edit definition_ from the Freon definition Level, when this definition is present.
@@ -63,7 +63,7 @@ figureNumber={2}
 This layered approach allows language engineers to start quickly with a working environment and 
 refine it gradually at either the definition or customization level.
 For this purpose,
-the [Command Line Interface](/Documentation/Overview/Getting_Started#the-command-line-interface-8) includes separate commands
+the [Command Line Interface](/Documentation/Overview/Getting_Started#the-command-line-interface-9) includes separate commands
 for generating the different fre-tools.
 
 ## Customizability of the Fre-Tools 

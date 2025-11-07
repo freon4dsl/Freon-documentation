@@ -11,7 +11,7 @@ tags: Freon, Integration, Svelte, Flowbite, core, core-svelte, monorepo, web app
 
 # Integrating a Freon Editor into your own Web App
 
-As explained in [Getting Started](/Documentation/Overview/Getting_Started#a-minimal-webapp-and-server-6), the web
+As explained in [Getting Started](/Documentation/Overview/Getting_Started#a-minimal-web-app-and-server-6), the web
 application that Freon provides will usually need to be replaced with appropriate solutions for the
 company or organization where the resulting product will be used. In this example we explain how to integrate a Freon
 editor in your own web app. The code that is shown here can be found in

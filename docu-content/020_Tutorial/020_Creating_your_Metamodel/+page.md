@@ -12,7 +12,7 @@ tags: Freon, metamodel, model units, AST, Topic, Flow, Test, SiteGroup, Page, re
 
 From this point onward, we assume you have a Freon project open in your
 favorite IDE—either by cloning the [Example project](/Documentation/Overview/Getting_Started#creating-a-project-2)
-or the [Template project](/Documentation/Overview/Getting_Started#template-project-startup-3).
+or the [Template project](/Documentation/Overview/Getting_Started#creating-a-project-2).
 
 ## Defining the model and model units
 

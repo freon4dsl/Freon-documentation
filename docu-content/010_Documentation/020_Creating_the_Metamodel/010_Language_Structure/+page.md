@@ -126,7 +126,7 @@ has as left operand `4`, as operator `+`, and as right operand `5`.
 Any concrete binary expression concept needs to have a priority. For example, in mathematics the 
 priority of the multiplication is higher than the priority of addition. The expression 5 + 67 \* 8 
 should be read as 5 + (67 \* 8), not as (5 + 67) \* 8. The priorities are used by Freon to balance the
-abstract syntax tree (See [Projectional Editing](/Background/Projectional_Editing#tree-balancing)). In
+abstract syntax tree (See [Projectional Editing](/Background/Projectional_Editing#adding-to-an-existing-expression-4)). In
 [Ease of Editing](/Documentation/Defining_an_Editor/Ease_of_Editing) you can
 find more information on how to set the concrete syntax for the operand.
 

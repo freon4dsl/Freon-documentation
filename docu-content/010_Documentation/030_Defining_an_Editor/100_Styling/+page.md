@@ -10,7 +10,7 @@ The web app and/or the editor can be styled using either SCSS or CSS.
 
 # Styling the Web App
 
-The provided [web app](/Documentation/Overview/Getting_Started#a-minimal-webapp-and-server-5)
+The provided [web app](/Documentation/Overview/Getting_Started#a-minimal-web-app-and-server-6)
 is built using the <a href="https://flowbite-svelte.com/" target="_blank">Flowbite Svelte</a> UI library.
 This library uses <a href="https://tailwindcss.com/" target="_blank">Tailwind</a>. We have provided a CSS file that includes the required styling, which is called
 `webapp-styles.css`. It imports the base Tailwind styles, as well as styles for the core-svelte and the webapp libraries.
@@ -174,7 +174,7 @@ This file contains various sets of colors that are used in the webapp dark and l
 
 ## Styling the Editor
 
-Because the minimal [web app](/Documentation/Overview/Getting_Started#a-minimal-webapp-and-server-5) 
+Because the minimal [web app](/Documentation/Overview/Getting_Started#a-minimal-web-app-and-server-6) 
 is provided solely for your convenience, the styling of the editor is kept separate from the styling of the web
 application. In the above `webapp-styles.css` file, you will notice that four CSS files from 
 the `@freon4dsl/core-svelte` package are imported. One includes all styling that does not concern colors (`freon.css`). 

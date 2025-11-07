@@ -63,7 +63,7 @@ export interface FreExpressionNode extends FreNode {}
 An object that implements `FreBinaryExpression` is a node in the model AST.  
 It represents an expression that has exactly two operands, which are usually written to the left and right of the operator symbol (for example, `4 + 5`).
 
-This interface extends [`FreExpression`](/Documentation/Under_the_Hood/Editor_Interfaces#freexpression-4).
+This interface extends [`FreExpression`](/Documentation/Under_the_Hood/Editor_Interfaces#freexpressionnode-3).
 
 ```ts
 /* File: core/src/language/FreBinaryExpression.ts */
@@ -84,5 +84,5 @@ export interface FreBinaryExpression extends FreExpressionNode {
 
 In both series of interfaces, the following two core interfaces are reused:
 
-- [FreNode](/Documentation/Under_the_Hood/Core_Interfaces#fre-node-1)
-- [FreNamedNode](/Documentation/Under_the_Hood/Core_Interfaces#fre-named-node-2)
+- [FreNode](/Documentation/Under_the_Hood/Core_Interfaces#frenode-2)
+- [FreNamedNode](/Documentation/Under_the_Hood/Core_Interfaces#frenamednode-3)

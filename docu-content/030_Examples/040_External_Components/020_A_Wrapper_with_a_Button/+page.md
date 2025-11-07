@@ -28,7 +28,7 @@ There are three key parts: **Script**, **HTML**, and **CSS**.
 
 Declare the two mandatory props: `editor` and `box`.  
 The `box` is a `NumberWrapperBox`, which can wrap a number node
-(see [Wrapping Property Projections of Primitive type](/Documentation/Under_the_Hood/Editor_Framework/External_Component_Box_Types#wrapping-property-projections-of-primitive-type-5)).
+(see [Wrapping Property Projections of Primitive type](/Documentation/Under_the_Hood/Editor_Framework/External_Component_Box_Types#wrapping-primitive-properties-5)).
 
 ```ts
 // CourseSchedule/phase3/src/external/PhoneButton.svelte#L8-L9

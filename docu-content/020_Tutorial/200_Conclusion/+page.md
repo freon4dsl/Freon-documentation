@@ -15,7 +15,7 @@ Even better—you’ve produced a web-based editor with just **501 lines of code
 There are several directions you can take to continue your Freon journey and explore DSL creation further.
 
 - Browse through the [documentation](/Documentation/Overview), where many of the topics covered in this tutorial are explained in greater detail.
-- Dive deeper into the **Computer Aided Learning** DSL by extending it with your own ideas. You’ll find a [list of suggestions](/Tutorial/Conclusion#ideas-to-extend-the-dsl3) below.
+- Dive deeper into the **Computer Aided Learning** DSL by extending it with your own ideas. You’ll find a [list of suggestions](/Tutorial/Conclusion#ideas-to-extend-the-dsl-3) below.
 - Check out the [examples](/Examples/Overview) on this site. Each example focuses on a specific part of Freon. In particular, [Building an Interpreter](/Examples/Building_an_Interpreter) is a great next step, as it builds directly upon the Computer Aided Learning DSL.
 - Explore the [LionWeb](/LionWeb/Overview) section to learn more about **model and language interchange formats** for language engineering tools.
 
