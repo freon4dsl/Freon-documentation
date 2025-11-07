@@ -133,7 +133,7 @@ neither `vertical` nor `horizontal` is specified, the property
 will be displayed as a vertical list by default.
 
 You can also choose to project a list property 
-as a [table](/Documentation/Defining_an_Editor/Projections#tables-4).
+as a [table](/Documentation/Defining_an_Editor/Projections#tables-5).
 
 For a list, you can include the following options:
 

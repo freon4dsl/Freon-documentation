@@ -13,7 +13,7 @@ tags: scoper definition, scope provider, .scope, namespaces, imports, alternativ
 
 The **scope provider** (or **scoper** for short) is defined by a scoper definition, which must be in a file with 
 the extension `.scope`. The scoper definition holds all your DSL's scoping rules. All files with the .scope extension in
-the [_defs_ folder](/Documentation/Overview/Getting_Started#template-project-startup-3) (i.e. the folder where you keep your definition files) are combined into one scoper definition.
+the [_defs_ folder](/Documentation/Overview/Getting_Started#creating-a-project-2) (i.e. the folder where you keep your definition files) are combined into one scoper definition.
 Any `.scope` file should start by declaring the language for which the scoper is defined.
 
 ```proto

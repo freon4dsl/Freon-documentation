@@ -1,7 +1,7 @@
 ---
 title: Using External Svelte Components
-description: Learn how to customize the Freon editor with external Svelte components—adding icons, buttons, accordions, and a sortable table—using libraries like SMUI or your own components.
-tags: Freon, Svelte, external components, editor customization, SMUI, styling, Accordion, icons, buttons, sortable table, CourseSchedule, projections
+description: Learn how to customize the Freon editor with external Svelte components—adding icons, buttons, accordions, and a sortable table—using libraries like Flowbite or your own components.
+tags: Freon, Svelte, external components, editor customization, Flowbite, styling, Accordion, icons, buttons, sortable table, CourseSchedule, projections
 ---
 
 <script>

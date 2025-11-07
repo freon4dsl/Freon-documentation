@@ -58,7 +58,7 @@ Example:
 ```proto
 MyConcept {
     [
-        Here is a fragment [fragment XX wrap=SMUI_Card]
+        Here is a fragment [fragment XX wrap=FB_Card]
     ]
     fragment XX [
         My First Card wrapping a property: ${self.isUnderConstruction}
@@ -76,7 +76,7 @@ For **replacers**, you are responsible for reading/writing the property value an
 
 ## Wrapping Primitive Properties
 
-- **Syntax:** `${self.name wrap=SMUI_Dialog}`
+- **Syntax:** `${self.name wrap=FB_Dialog}`
 - **Box types:** `StringWrapperBox`, `NumberWrapperBox`, `BooleanWrapperBox`
 - **Interface:**
   - `getPropertyName(): string`
@@ -86,7 +86,7 @@ For **replacers**, you are responsible for reading/writing the property value an
 
 ## Wrapping Part List Properties
 
-- **Syntax:** `${self.parts wrap=SMUI_Accordion}`
+- **Syntax:** `${self.parts wrap=FB_Accordion}`
 - **Box type:** `PartListWrapperBox`
 - **Interface:**
   - `getPropertyName(): string`
@@ -96,7 +96,7 @@ For **replacers**, you are responsible for reading/writing the property value an
 
 ## Wrapping Reference List Properties
 
-- **Syntax:** `${self.parts wrap=SMUI_Accordion}`
+- **Syntax:** `${self.parts wrap=FB_Accordion}`
 - **Box type:** `RefListWrapperBox`
 - **Interface:**
   - `getPropertyName(): string`
@@ -106,7 +106,7 @@ For **replacers**, you are responsible for reading/writing the property value an
 
 ## Wrapping Part Properties
 
-- **Syntax:** `${self.part wrap=SMUI_Dialog}`
+- **Syntax:** `${self.part wrap=FB_Dialog}`
 - **Box type:** `PartWrapperBox`
 - **Interface:**
   - `getPropertyName(): string`
@@ -116,7 +116,7 @@ For **replacers**, you are responsible for reading/writing the property value an
 
 ## Wrapping Reference Properties
 
-- **Syntax:** `${self.reference wrap=SMUI_Dialog}`
+- **Syntax:** `${self.reference wrap=FB_Dialog}`
 - **Box type:** `RefWrapperBox`
 - **Interface:**
   - `getPropertyName(): string`
@@ -126,7 +126,7 @@ For **replacers**, you are responsible for reading/writing the property value an
 
 ## Replacing Primitive Properties
 
-- **Syntax:** `${self.name replace=SMUI_Dialog}`
+- **Syntax:** `${self.name replace=FB_Dialog}`
 - **Box types:** `StringReplacerBox`, `NumberReplacerBox`, `BooleanReplacerBox`
 - **Interface:**
   - `getPropertyName(): string`
@@ -136,7 +136,7 @@ For **replacers**, you are responsible for reading/writing the property value an
 
 ## Replacing Part List Properties
 
-- **Syntax:** `${self.parts replace=SMUI_Accordion}`
+- **Syntax:** `${self.parts replace=FB_Accordion}`
 - **Box type:** `PartListReplacerBox`
 - **Interface:**
   - `getPropertyName(): string`
@@ -147,7 +147,7 @@ For **replacers**, you are responsible for reading/writing the property value an
 
 ## Replacing Reference List Properties
 
-- **Syntax:** `${self.parts replace=SMUI_Accordion}`
+- **Syntax:** `${self.parts replace=FB_Accordion}`
 - **Box type:** `RefListReplacerBox`
 - **Interface:**
   - `getPropertyName(): string`
@@ -158,7 +158,7 @@ For **replacers**, you are responsible for reading/writing the property value an
 
 ## Replacing Part Properties
 
-- **Syntax:** `${self.part replace=SMUI_Dialog}`
+- **Syntax:** `${self.part replace=FB_Dialog}`
 - **Box type:** `PartReplacerBox`
 - **Interface:**
   - `getPropertyName(): string`
@@ -168,7 +168,7 @@ For **replacers**, you are responsible for reading/writing the property value an
 
 ## Replacing Reference Properties
 
-- **Syntax:** `${self.reference replace=SMUI_Dialog}`
+- **Syntax:** `${self.reference replace=FB_Dialog}`
 - **Box type:** `RefReplacerBox`
 - **Interface:**
   - `getPropertyName(): string`
@@ -189,9 +189,9 @@ For **replacers**, you are responsible for reading/writing the property value an
    global {
        external {
            AnimatedGif,
-           SMUI_Card,
-           SMUI_Accordion,
-           SMUI_Dialog,
+           FB_Card,
+           FB_Accordion,
+           FB_Dialog,
            DatePicker
        }
    }
@@ -204,11 +204,11 @@ For **replacers**, you are responsible for reading/writing the property value an
    Example:
    ```ts
    setCustomComponents([
-      { component: ShowAnimatedGif,      knownAs: "AnimatedGif" },
-      { component: SMUI_Card_Component,  knownAs: "SMUI_Card" },
-      { component: SMUI_Accordion,       knownAs: "SMUI_Accordion" },
-      { component: SMUI_Dialog,          knownAs: "SMUI_Dialog" },
-      { component: DatePicker,           knownAs: "DatePicker" }
+      { component: ShowAnimatedGif,    knownAs: "AnimatedGif" },
+      { component: FB_Card_Component,  knownAs: "FB_Card" },
+      { component: FB_Accordion,       knownAs: "FB_Accordion" },
+      { component: FB_Dialog,          knownAs: "FB_Dialog" },
+      { component: DatePicker,         knownAs: "DatePicker" }
    ]);
    ```
 

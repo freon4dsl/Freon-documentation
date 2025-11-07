@@ -17,7 +17,7 @@ If you want to know how to customize it, see [Editor Customization](/Documentati
 ## The AST, the Box Tree, and the DOM
 
 The internal representation of any model written in a DSL is a tree of instances of TypeScript classes —  
-the **Abstract Syntax Tree (AST)**. All AST classes implement the core interface [`FreNode`](/Documentation/Under_the_Hood/Core_Interfaces).
+the **Abstract Syntax Tree (AST)**. All AST classes implement the core interface [`FreNode`](/Documentation/Under_the_Hood/Core_Interfaces#frenode-2).
 
 Because the visual representation in the editor can differ from the AST, every visual element is represented by another TypeScript class called a **Box**.  
 All boxes used to render a certain projection set or editor view form another tree called the **Box Tree**.  

@@ -45,7 +45,7 @@ or with extra time to tackle the difficult bits of your application (fulfilling!
 
 ## Name-Based References
 
-In [Support for Expressions](/Background/Projectional_Editing#expressions) we explain
+In [Support for Expressions](/Background/Projectional_Editing#support-for-expressions-3) we explain
 that editing expressions is a known challenge for projectional editors. A second challenge
 is posed by _references_, which is stated in <a href="https://www.voelter.de/data/pub/fse2016-projEditing.pdf" target="_blank">
 Efficiency of Projectional Editing: A Controlled Experiment</a> as follows.

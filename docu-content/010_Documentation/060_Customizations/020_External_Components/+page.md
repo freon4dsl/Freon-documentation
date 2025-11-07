@@ -40,7 +40,7 @@ found in [External Component Box Types](/Documentation/Under_the_Hood/Editor_Fra
 This page provides the essentials; a more extensive example is available in the
 [Examples](/Examples/External_Components) section.  
 Anyone interested in using external components can contact the Freon team for assistance.  
-Please email us at [info@freon4dsl.dev](mailto:info@freon4dsl.dev) to stay updated on the latest news about this feature.
+Please email us at [info@openmodeling.nl](mailto:info@openmodeling.nl) to stay updated on the latest news about this feature.
 
 ## Simple Additions
 
@@ -192,7 +192,7 @@ The box type associated with a wrapper depends on the type of property or fragme
 
 To display the `childBox`, the external component must include the Freon `RenderComponent`, as shown below.  
 In this example, a fragment is wrapped in a `Card` component imported from the
-<a href="https://sveltematerialui.com/" target="_blank">SMUI</a> library.
+<a href="https://flowbite-svelte.com/" target="_blank">Flowbite Svelte</a> library.
 
 ```swift
 // Insurance/src/external/FB_Card_Component.svelte#L25-L29
@@ -239,7 +239,7 @@ Each box type provides the following methods (where `<TYPE>` depends on the prop
 - `setPropertyValue(newValue: <TYPE>)` — sets the property value.
 
 In the following example the `name` property of a `BaseProduct` is displayed using a dialog component
-from the <a href="https://sveltematerialui.com/" target="_blank">SMUI</a> UI library.
+from the <a href="https://flowbite-svelte.com/" target="_blank">Flowbite Svelte</a> UI library.
 
 ```proto
 // Insurance/src/defs/editor-externals.edit#L5-L5
@@ -272,9 +272,9 @@ Example:
 ```ts
 setCustomComponents([
    { component: ShowAnimatedGif, knownAs: "AnimatedGif" },
-   { component: SMUI_Card_Component, knownAs: "SMUI_Card" },
-   { component: SMUI_Accordion, knownAs: "SMUI_Accordion" },
-   { component: SMUI_Dialog, knownAs: "SMUI_Dialog" },
+   { component: FB_Card_Component, knownAs: "FB_Card" },
+   { component: FB_Accordion, knownAs: "FB_Accordion" },
+   { component: FB_Dialog, knownAs: "FB_Dialog" },
    { component: DatePicker, knownAs: "DatePicker" }
 ]);
 
@@ -291,7 +291,7 @@ External projections may be nested.
 Example:
 
 ```proto
-[external=SMUI_Card [
+[external=FB_Card [
     This Card is showing animated gif number 1.
         [external=AnimatedGif number="1"]
     ]

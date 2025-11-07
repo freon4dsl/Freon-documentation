@@ -1,7 +1,7 @@
 ---
 title: A Wrapper with a Button
 description: Build a custom Svelte wrapper component in Freon that augments a phone number with a clickable button and snackbar notification, and register it for use in projections.
-tags: Freon, Svelte, external components, wrapper, NumberWrapperBox, RenderComponent, PhoneButton, SMUI, Flowbite, CourseSchedule, projections
+tags: Freon, Svelte, external components, wrapper, NumberWrapperBox, RenderComponent, PhoneButton, Flowbite, CourseSchedule, projections
 ---
 
 <script>
@@ -12,7 +12,7 @@ tags: Freon, Svelte, external components, wrapper, NumberWrapperBox, RenderCompo
 
 In this part of the example, we’ll create a **custom wrapper component** in Freon.
 The component wraps a native Freon property using the
-<a href="https://sveltematerialui.com/" target="_blank">SMUI</a> (Svelte Material UI) library.
+<a href="https://flowbite-svelte.com/" target="_blank">Flowbite Svelte</a> library.
 Our example combines a person’s **phone number** with a **button** that can trigger actions using that value.
 Here, clicking the button shows the phone number in a snackbar notification—but you could just as well send it to an
 external system to initiate a call or validate it against another database.
@@ -28,7 +28,7 @@ There are three key parts: **Script**, **HTML**, and **CSS**.
 
 Declare the two mandatory props: `editor` and `box`.  
 The `box` is a `NumberWrapperBox`, which can wrap a number node
-(see [Wrapping Property Projections of Primitive type](/Documentation/Under_the_Hood/Editor_Framework/External_Component_Box_Types#wrapping-property-projections-of-primitive-type-5)).
+(see [Wrapping Property Projections of Primitive type](/Documentation/Under_the_Hood/Editor_Framework/External_Component_Box_Types#wrapping-primitive-properties-5)).
 
 ```ts
 // CourseSchedule/phase3/src/external/PhoneButton.svelte#L8-L9
@@ -68,7 +68,7 @@ const buttonCls: string =
 
 ### The HTML Part
 
-The HTML contains a wrapper `<div>` with the rendered phone number and an SMUI button.
+The HTML contains a wrapper `<div>` with the rendered phone number and an Flowbite button.
 You **cannot** mount a box directly; instead, use Freon’s `RenderComponent` which renders any known box.
 It requires both `box` and `editor`—the same props your component receives.
 
@@ -96,8 +96,8 @@ Add a toast/snackbar that appears when the button is clicked. The message includ
 
 ### The Style Part
 
-Basic styling for the wrapper; SMUI components themselves are themed via
-<a href="https://sveltematerialui.com/THEMING.md" target="_blank">SMUI theming</a> (already configured for the host app).
+Basic styling for the wrapper; Flowbite components themselves are themed via
+<a href="https://tailwindcss.com/" target="_blank">Tailwind</a> (already configured for the host app).
 
 ```ts
 // CourseSchedule/phase3/src/external/PhoneButton.svelte#L45-L52

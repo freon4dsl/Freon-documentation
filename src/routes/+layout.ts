@@ -15,5 +15,3 @@ export const load: LayoutLoad = async (): Promise<SiteData> => {
 		}
 	};
 };
-
-// todo make sure the metadata at the highest level is in order

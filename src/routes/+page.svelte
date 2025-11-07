@@ -166,7 +166,7 @@
 				</p>
 				<p>Learn more...</p>
 			</a>
-			<a href="/Demos" class="landing-enter-button"
+			<a href="/Demo" class="landing-enter-button"
 				><h3>Demos, videos, etc</h3>
 				<p>
 					There are a number of demos and videos available on this site. They cover different topics, like how to use the tool, why it was
